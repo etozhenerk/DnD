@@ -2,7 +2,7 @@
   "name": "dnd-campaign-atlas",
   "private": true,
   "version": "0.1.0",
-  "packageManager": "npm@11",
+  "packageManager": "npm@10.9.8",
   "type": "module",
   "scripts": {
     "dev": "vite",

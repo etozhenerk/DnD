@@ -1,0 +1,3 @@
+.page { background: var(--gradient-fantasy); min-height: 100vh; overflow-x: clip; padding-top: 72px; }
+
+@media (max-width: 520px) { .page { padding-top: 60px; } }

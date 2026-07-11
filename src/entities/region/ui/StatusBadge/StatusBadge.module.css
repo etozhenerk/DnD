@@ -1,0 +1,28 @@
+.badge {
+  border: 1px solid var(--color-ice-alpha-24);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
+  padding: 0.42rem 0.62rem;
+  text-transform: uppercase;
+}
+
+.planned {
+  background: var(--color-ice-alpha-08);
+  color: var(--color-ice);
+}
+
+.ready {
+  background: var(--color-ice-alpha-14);
+  border-color: var(--color-ice-alpha-38);
+  color: var(--color-ice-bright);
+}
+
+.completed {
+  background: var(--color-gold-alpha-12);
+  border-color: var(--color-gold-alpha-62);
+  color: var(--color-gold-light);
+}

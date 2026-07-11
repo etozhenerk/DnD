@@ -1,0 +1,26 @@
+.book {
+  background: var(--gradient-parchment);
+  box-shadow: var(--shadow-book), var(--shadow-inset-paper);
+  color: var(--color-ink-dark);
+  max-height: min(76vw, 820px);
+  overflow: auto;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem);
+  position: relative;
+  min-width: 0;
+}
+
+.book::before {
+  border: 1px solid var(--color-parchment-dark);
+  content: '';
+  inset: 0.65rem;
+  pointer-events: none;
+  position: absolute;
+}
+
+.heading { border-bottom: 2px solid var(--color-parchment-dark); margin-bottom: 0.25rem; padding: 0 0.4rem 1rem; text-align: center; }
+.heading span { color: var(--color-wine); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+.heading h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 500; margin: 0.35rem 0; }
+.heading p { color: var(--color-ink-brown); font-family: var(--font-display); font-size: 0.8rem; font-style: italic; line-height: 1.45; margin: 0 auto; max-width: 19rem; }
+.entries { position: relative; }
+
+@media (max-width: 960px) { .book { max-height: none; } }

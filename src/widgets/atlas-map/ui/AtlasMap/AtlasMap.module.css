@@ -1,0 +1,49 @@
+.frame {
+  aspect-ratio: 1;
+  background: var(--gradient-frost-dark);
+  border: 2px solid var(--color-silver);
+  box-shadow: var(--shadow-map), var(--shadow-inset-ice);
+  clip-path: polygon(2.2rem 0, calc(100% - 2.2rem) 0, 100% 2.2rem, 100% calc(100% - 2.2rem), calc(100% - 2.2rem) 100%, 2.2rem 100%, 0 calc(100% - 2.2rem), 0 2.2rem);
+  padding: clamp(0.45rem, 1.4vw, 1rem);
+  position: relative;
+  min-width: 0;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 100%;
+  width: auto;
+}
+
+.frame::before {
+  border: 1px solid var(--color-ice-alpha-58);
+  content: '';
+  inset: 0.45rem;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.corner {
+  color: var(--color-gold-light);
+  font-size: 1.25rem;
+  left: 1rem;
+  position: absolute;
+  top: 0.75rem;
+  z-index: 3;
+}
+
+.map {
+  background: var(--color-night);
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.region { cursor: pointer; }
+.region polygon { fill: var(--color-transparent); stroke: var(--color-transparent); stroke-width: 4; transition: fill 160ms ease, stroke 160ms ease; }
+.region circle { fill: var(--color-black-alpha-74); stroke: var(--color-gold); stroke-width: 2; transition: fill 160ms ease, transform 160ms ease; transform-box: fill-box; transform-origin: center; }
+.region text { fill: var(--color-ice-bright); font-family: var(--font-display); font-size: 24px; pointer-events: none; text-anchor: middle; }
+.region:hover polygon,
+.region:focus polygon { fill: var(--color-ice-alpha-14); stroke: var(--color-ice-alpha-58); }
+.region:hover circle,
+.region:focus circle { fill: var(--color-wine); transform: scale(1.14); }
+.region:focus { outline: none; }

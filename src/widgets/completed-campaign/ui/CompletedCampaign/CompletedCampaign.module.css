@@ -1,0 +1,19 @@
+.campaign { padding: 1rem clamp(1rem, 4vw, 4rem) 6rem; }
+.hero { align-items: center; display: grid; gap: clamp(1rem, 4vw, 4rem); grid-template-columns: minmax(280px, 1fr) minmax(310px, 0.9fr); margin: 0 auto; max-width: 1180px; min-height: 640px; }
+.regionArt { filter: drop-shadow(0 28px 38px var(--color-black-alpha-74)); min-width: 0; position: relative; }
+.regionArt::before { background: var(--gradient-ice-glow); content: ''; inset: 5%; position: absolute; z-index: -1; }
+.regionArt img { margin: auto; max-height: 610px; object-fit: contain; }
+.plaque { background: var(--gradient-frost-dark); border: 2px solid var(--color-silver); box-shadow: var(--shadow-map), var(--shadow-inset-ice); clip-path: polygon(2rem 0, calc(100% - 2rem) 0, 100% 2rem, 100% calc(100% - 2rem), calc(100% - 2rem) 100%, 2rem 100%, 0 calc(100% - 2rem), 0 2rem); min-width: 0; padding: clamp(2.5rem, 5vw, 4.5rem); position: relative; text-align: center; }
+.plaque::before { border: 1px solid var(--color-ice-alpha-58); content: ''; inset: 0.7rem; pointer-events: none; position: absolute; }
+.plaque > p { color: var(--color-gold-light); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; }
+.plaque h2 { color: var(--color-ice-bright); font-family: var(--font-display); font-size: clamp(1.75rem, 2.8vw, 3rem); font-weight: 500; line-height: 1.02; margin: 0.8rem auto; max-width: 100%; }
+.plaque > span { color: var(--color-ink-muted); font-family: var(--font-display); font-size: 0.9rem; font-style: italic; }
+.seal { align-items: center; background: var(--color-wine); border: 3px double var(--color-gold-light); border-radius: 50%; box-shadow: 0 0 0 8px var(--color-wine-alpha-32); display: flex; flex-direction: column; height: 126px; justify-content: center; margin: 2.2rem auto; transform: rotate(-5deg); width: 126px; }
+.seal strong { font-family: var(--font-display); font-size: 1.25rem; }
+.seal b { color: var(--color-gold-light); font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.plaque blockquote { color: var(--color-ink-muted); font-family: var(--font-display); font-size: 0.8rem; font-style: italic; line-height: 1.55; margin: 0; }
+.reward { background: var(--gradient-frost-dark); border: 1px solid var(--color-gold); box-shadow: var(--shadow-soft), var(--shadow-inset-ice); margin: 4rem auto 0; max-width: 820px; padding: 2.5rem; text-align: center; }
+.reward span { color: var(--color-gold-light); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.reward h2 { color: var(--color-ice-bright); font-family: var(--font-display); font-size: 2.4rem; font-weight: 500; margin: 0.6rem 0; }
+.reward p { color: var(--color-ink-muted); font-family: var(--font-display); font-style: italic; line-height: 1.55; margin: auto; max-width: 38rem; }
+@media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 2rem; } .regionArt img { max-height: 430px; } }

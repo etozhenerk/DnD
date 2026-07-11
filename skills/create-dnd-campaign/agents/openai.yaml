@@ -1,0 +1,4 @@
+interface:
+  display_name: "Создание кампании D&D"
+  short_description: "Создаёт новые вариативные кампании для карты"
+  default_prompt: "Используй $create-dnd-campaign, чтобы создать новую кампанию для области карты."

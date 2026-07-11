@@ -1,0 +1,84 @@
+.legends {
+  background: var(--gradient-fantasy);
+  color: var(--color-ink-dark);
+  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 5vw, 5rem) clamp(5rem, 10vw, 10rem);
+  position: relative;
+}
+
+.legends::before { background: var(--gradient-frost); content: ''; height: 5px; left: 0; position: absolute; right: 0; top: 0; }
+.heading { margin: 0 auto clamp(3rem, 6vw, 6rem); max-width: 820px; text-align: center; }
+.heading span { color: var(--color-gold-light); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+.race,
+.motivation span { color: var(--color-wine); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; }
+.heading h2 { color: var(--color-ice-bright); font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5.8rem); font-weight: 500; line-height: 0.92; margin: 0.8rem 0 1rem; text-shadow: 0 4px 24px var(--color-black-alpha-58); }
+.heading p { color: var(--color-ink-muted); font-family: var(--font-display); font-style: italic; }
+.shelf { display: grid; gap: clamp(3rem, 7vw, 7rem); margin: 0 auto; max-width: 1220px; }
+
+.book {
+  background: var(--gradient-book);
+  border: 12px solid var(--color-wood);
+  box-shadow: var(--shadow-book), var(--shadow-inset-paper);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 640px;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.book::before { border: 1px solid var(--color-parchment-dark); content: ''; inset: 0.65rem; pointer-events: none; position: absolute; z-index: 3; }
+.book::after { background: var(--gradient-page-fold); content: ''; inset: 0; pointer-events: none; position: absolute; z-index: 2; }
+.portraitPage { margin: clamp(1.2rem, 3vw, 2.2rem); min-height: 0; overflow: hidden; position: relative; }
+.portraitPage img { height: 100%; object-fit: cover; object-position: center 22%; width: 100%; }
+.storyPage { align-self: stretch; min-width: 0; overflow: auto; overflow-x: hidden; padding: clamp(2rem, 4vw, 3.8rem); position: relative; z-index: 1; }
+.storyPage h3 { font-family: var(--font-display); font-size: clamp(2.25rem, 3.8vw, 4.65rem); font-weight: 500; letter-spacing: -0.035em; line-height: 0.9; margin: 0.65rem 0 0.85rem; max-width: 100%; }
+.race { margin: 0; }
+.role { color: var(--color-ink-brown); font-family: var(--font-display); font-size: 1rem; font-style: italic; }
+.ornament { color: var(--color-gold-dark); margin: 1.5rem 0; text-align: center; }
+.story { font-family: var(--font-display); font-size: clamp(0.82rem, 1.15vw, 1rem); line-height: 1.58; }
+.motivation { border-left: 3px solid var(--color-wine); margin-top: 1.6rem; padding-left: 1rem; }
+.motivation p { color: var(--color-ink-brown); font-family: var(--font-display); font-size: 0.84rem; line-height: 1.5; margin: 0.35rem 0 0; }
+
+.hp,
+.ac { align-items: center; background: var(--gradient-frost); border: 5px ridge var(--color-silver); border-radius: 50%; color: var(--color-night-deep); display: flex; flex-direction: column; height: 78px; justify-content: center; position: absolute; top: 1rem; width: 78px; z-index: 4; }
+.hp { background: var(--color-wine); color: var(--color-white); left: 1rem; }
+.ac { right: 1rem; }
+.hp small,
+.ac small { font-size: 0.52rem; letter-spacing: 0.12em; }
+.hp strong,
+.ac strong { font-family: var(--font-display); font-size: 1.6rem; }
+
+.statsPage,
+.abilitiesPage { min-height: 0; min-width: 0; overflow: auto; overflow-x: hidden; padding: clamp(2rem, 4vw, 3.8rem); position: relative; z-index: 1; }
+.statsPage { align-self: stretch; padding-block: 1.75rem; }
+.statsPage h3 { font-family: var(--font-display); font-size: clamp(2rem, 3.2vw, 3.8rem); font-weight: 500; line-height: 0.92; margin: 0.35rem 0 0.85rem; }
+.stats { display: grid; gap: 0.42rem; }
+.stats div { align-items: center; background: var(--color-black-alpha-14); border-radius: 999px; display: flex; justify-content: space-between; min-height: 2.5rem; padding: 0.28rem 0.5rem 0.28rem 1rem; }
+.stats span { font-family: var(--font-display); font-size: 0.82rem; }
+.stats strong { align-items: center; background: var(--gradient-frost); border: 2px ridge var(--color-silver); border-radius: 50%; color: var(--color-night-deep); display: flex; font-family: var(--font-display); height: 1.9rem; justify-content: center; width: 1.9rem; }
+.vitals { display: flex; gap: 0.7rem; margin-top: 0.8rem; }
+.vitals span { border: 1px solid var(--color-wine); color: var(--color-wine); flex: 1; font-size: 0.65rem; letter-spacing: 0.14em; padding: 0.5rem; text-align: center; }
+.vitals strong { font-family: var(--font-display); font-size: 1.3rem; margin-left: 0.35rem; }
+.abilitiesPage { align-self: stretch; display: flex; flex-direction: column; overflow: hidden; padding-block: 1.75rem; }
+.abilities { counter-reset: ability; display: grid; flex: 1; gap: 0 1.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); margin-top: 0.7rem; }
+.abilities div { align-self: stretch; border-bottom: 1px solid var(--color-parchment-dark); counter-increment: ability; display: flex; flex-direction: column; justify-content: flex-start; min-width: 0; padding: 0.72rem 0.25rem 0.35rem 2.15rem; position: relative; }
+.abilities div::before { align-items: center; border: 1px solid var(--color-gold-dark); border-radius: 50%; color: var(--color-wine); content: counter(ability, upper-roman); display: flex; font-family: var(--font-display); font-size: 0.7rem; height: 1.55rem; justify-content: center; left: 0; position: absolute; top: 50%; transform: translateY(-50%); width: 1.55rem; }
+.abilities h4 { align-items: flex-end; display: flex; font-family: var(--font-display); font-size: 0.92rem; line-height: 1.1; margin: 0 0 0.16rem; min-height: 2.05rem; }
+.abilities p { color: var(--color-ink-brown); font-size: 0.58rem; line-height: 1.25; margin: 0 0 0.18rem; min-height: 2.2rem; }
+.abilities small { color: var(--color-ink-dark); display: block; font-family: var(--font-display); font-size: 0.58rem; line-height: 1.25; }
+.pagination { inset: 0; pointer-events: none; position: absolute; z-index: 5; }
+.pagination button { align-items: center; background: var(--color-black-alpha-74); border: 1px solid var(--color-gold); color: var(--color-gold-light); cursor: pointer; display: flex; font-family: var(--font-display); font-size: 2rem; height: 3.6rem; justify-content: center; pointer-events: auto; position: absolute; top: 50%; transform: translateY(-50%); width: 2.6rem; }
+.pagination button:first-child { left: 0.7rem; }
+.pagination button:last-child { right: 0.7rem; }
+.pagination button:disabled { visibility: hidden; }
+.pagination span { display: none; }
+
+@media (max-width: 760px) {
+  .book { border-width: 7px; grid-template-columns: 1fr; grid-template-rows: 480px minmax(0, 1fr); height: 1080px; }
+  .portraitPage { grid-column: 1; grid-row: 1; min-height: 0; }
+  .storyPage { grid-column: 1; grid-row: 2; }
+  .statsPage { grid-column: 1; grid-row: 1; }
+  .abilitiesPage { grid-column: 1; grid-row: 2; max-height: none; }
+  .abilities { gap: 0; grid-template-columns: 1fr; grid-template-rows: repeat(6, minmax(0, 1fr)); }
+  .book::after { display: none; }
+}

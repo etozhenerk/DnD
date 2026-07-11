@@ -1,0 +1,4 @@
+interface:
+  display_name: "Создание врага D&D"
+  short_description: "Создаёт врагов, злодеев и боевые встречи"
+  default_prompt: "Используй $create-dnd-enemy, чтобы создать нового противника для кампании."

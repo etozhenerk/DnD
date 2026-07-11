@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "policy": {
+    "canonical": "Утверждённое изображение сущности, доступное фронтенду.",
+    "reference": "Визуальный ориентир для генерации и дизайна.",
+    "sourcePhotosAllowed": false
+  },
+  "characters": [
+    {"id": "bubsilda", "path": "assets/concepts/characters/bubsilda.webp", "status": "canonical", "raceConceptIds": ["ice-wardens", "elves"]},
+    {"id": "linda", "path": "assets/concepts/characters/linda.webp", "status": "canonical", "raceConceptIds": ["fairies"]},
+    {"id": "lambert", "path": "assets/concepts/characters/lambert.webp", "status": "canonical", "raceConceptIds": ["humans"]},
+    {"id": "lord-krayneplot", "path": "assets/concepts/characters/lord-krayneplot.webp", "status": "canonical", "raceConceptIds": ["elves"]},
+    {"id": "golovach-lena", "path": "assets/concepts/characters/golovach-lena.webp", "status": "canonical", "raceConceptIds": ["dragonborn"]}
+  ],
+  "races": [
+    {"id": "ice-wardens", "path": "assets/concepts/races/ice-wardens.webp", "status": "reference"},
+    {"id": "humans", "path": "assets/concepts/races/humans.webp", "status": "reference"},
+    {"id": "elves", "path": "assets/concepts/races/elves.webp", "status": "reference"},
+    {"id": "halflings", "path": "assets/concepts/races/halflings.webp", "status": "reference"},
+    {"id": "dwarves", "path": "assets/concepts/races/dwarves.webp", "status": "reference"},
+    {"id": "dragonborn", "path": "assets/concepts/races/dragonborn.webp", "status": "reference"},
+    {"id": "fairies", "path": "assets/concepts/races/fairies-linfea.webp", "status": "reference", "note": "Текущий ориентир основан на утверждённом образе Линды."}
+  ],
+  "style": [
+    {"id": "party-lineup", "path": "assets/concepts/style/party-lineup.webp", "status": "reference", "purpose": "Масштаб, свет, единый стиль команды."},
+    {"id": "character-sheet-profile", "path": "assets/concepts/style/character-sheet-profile.webp", "status": "reference", "purpose": "Паспорт героя."},
+    {"id": "character-sheet-abilities", "path": "assets/concepts/style/character-sheet-abilities.webp", "status": "reference", "purpose": "Разворот способностей."},
+    {"id": "character-sheet-inventory", "path": "assets/concepts/style/character-sheet-inventory.webp", "status": "reference", "purpose": "Разворот инвентаря."}
+  ],
+  "world": [
+    {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "География и кликабельные области кампаний."}
+  ],
+  "regions": [
+    {"id": "nor-il-skald", "path": "assets/concepts/world/regions/nor-il-skald.png", "status": "canonical"},
+    {"id": "cloud-island", "path": "assets/concepts/world/regions/cloud-island.png", "status": "canonical"},
+    {"id": "waterfall-island", "path": "assets/concepts/world/regions/waterfall-island.png", "status": "canonical"},
+    {"id": "green-peninsula", "path": "assets/concepts/world/regions/green-peninsula.png", "status": "canonical"},
+    {"id": "mushroom-forest", "path": "assets/concepts/world/regions/mushroom-forest.png", "status": "canonical"},
+    {"id": "great-tree-island", "path": "assets/concepts/world/regions/great-tree-island.png", "status": "canonical"},
+    {"id": "white-castle-island", "path": "assets/concepts/world/regions/white-castle-island.png", "status": "canonical"},
+    {"id": "desert-lands", "path": "assets/concepts/world/regions/desert-lands.png", "status": "canonical"}
+  ]
+}

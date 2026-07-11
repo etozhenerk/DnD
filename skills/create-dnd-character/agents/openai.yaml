@@ -1,0 +1,4 @@
+interface:
+  display_name: "Создание героя по фото"
+  short_description: "Создаёт героев по фото в стиле мира и расы"
+  default_prompt: "Используй $create-dnd-character, чтобы создать узнаваемого героя по фотографии в стиле выбранной расы."

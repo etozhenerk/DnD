@@ -1,0 +1,25 @@
+# Private/heavy generation inputs
+/source-materials/
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Frontend dependencies and outputs
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Temporary render artifacts
+tmp/
+.cache/

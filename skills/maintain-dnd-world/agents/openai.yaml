@@ -1,0 +1,4 @@
+interface:
+  display_name: "Поддержка мира D&D"
+  short_description: "Сохраняет структуру и связность игрового мира"
+  default_prompt: "Используй $maintain-dnd-world, чтобы безопасно обновить канонические данные мира."

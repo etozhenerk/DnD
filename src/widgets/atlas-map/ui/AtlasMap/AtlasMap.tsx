@@ -1,4 +1,5 @@
 import type {Region, WorldMap} from '../../../../entities/region/model/types';
+import {RegionOrderSeal} from '../../../../entities/region/ui/RegionOrderSeal/RegionOrderSeal';
 import {getPolygonCenter} from '../../../../shared/lib/map/getPolygonCenter';
 import {toPolygonPoints} from '../../../../shared/lib/map/toPolygonPoints';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
@@ -25,10 +26,7 @@ export function AtlasMap({map, onSelect}: AtlasMapProps) {
             <g className={styles.region} data-status={region.status} key={region.id} role="button" tabIndex={0} aria-label={`Открыть регион ${region.name}`} onClick={() => onSelect(region.id)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') onSelect(region.id); }}>
               <polygon points={toPolygonPoints(region.polygon)} />
               <image className={styles.regionLayer} href={resolveAsset(region.image)} width={map.viewBox.width} height={map.viewBox.height} />
-              <circle className={styles.sealGlow} cx={center.x} cy={center.y} r="31" />
-              <circle className={styles.seal} cx={center.x} cy={center.y} r="23" />
-              <circle className={styles.sealInner} cx={center.x} cy={center.y} r="17" />
-              <text x={center.x} y={center.y + 7}>{region.order}</text>
+              <RegionOrderSeal order={region.order} x={center.x} y={center.y} />
               <g className={styles.regionLabel} transform={`translate(${center.x} ${center.y + 52})`}>
                 <rect x={-labelWidth / 2} y="-17" width={labelWidth} height="34" rx="4" />
                 <path d={`M ${-labelWidth / 2 + 8} 0 L ${-labelWidth / 2 - 5} 0 M ${labelWidth / 2 - 8} 0 L ${labelWidth / 2 + 5} 0`} />

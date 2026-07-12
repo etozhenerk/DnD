@@ -80,6 +80,8 @@
   --gradient-map-glass: linear-gradient(135deg, var(--color-white-alpha-05), var(--color-transparent) 34%, var(--color-black-alpha-14));
   --gradient-navigation: linear-gradient(180deg, var(--color-night-deep), var(--color-black-alpha-74)), var(--gradient-wood);
   --gradient-sigil: radial-gradient(circle, var(--color-wine), var(--color-wine-dark));
+  --gradient-mystic-ink: radial-gradient(ellipse, var(--color-wine-alpha-32), var(--color-transparent) 70%);
+  --gradient-mystic-gold: radial-gradient(circle, var(--color-gold-alpha-62), var(--color-transparent) 68%);
 
   --shadow-map: 0 28px 70px var(--color-black-alpha-58);
   --shadow-book: 0 28px 75px var(--color-black-alpha-42);

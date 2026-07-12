@@ -1,0 +1,10 @@
+.group { pointer-events: none; }
+.group circle { transform-box: fill-box; transform-origin: center; transition: fill 220ms ease, opacity 220ms ease, stroke 220ms ease, transform 220ms ease; }
+.glow { fill: var(--color-black-alpha-58); opacity: 0.78; stroke: var(--color-black-alpha-42); stroke-width: 7; }
+.seal { fill: var(--color-wine-dark); stroke: var(--color-brass-light); stroke-width: 2.5; }
+.inner { fill: var(--color-black-alpha-24); stroke: var(--color-brass-alpha-62); stroke-dasharray: 2 3; stroke-width: 1.5; }
+.label { fill: var(--color-parchment-pale); font-family: var(--font-display); font-size: 22px; font-weight: 700; pointer-events: none; text-anchor: middle; text-shadow: 0 2px 3px var(--color-black-alpha-74); }
+
+@media (prefers-reduced-motion: reduce) {
+  .group circle { transition: none; }
+}

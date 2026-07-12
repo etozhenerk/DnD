@@ -26,7 +26,9 @@
     {"id": "character-sheet-profile", "path": "assets/concepts/style/character-sheet-profile.webp", "status": "reference", "purpose": "Паспорт героя."},
     {"id": "character-sheet-abilities", "path": "assets/concepts/style/character-sheet-abilities.webp", "status": "reference", "purpose": "Разворот способностей."},
     {"id": "character-sheet-inventory", "path": "assets/concepts/style/character-sheet-inventory.webp", "status": "reference", "purpose": "Разворот инвентаря."},
-    {"id": "atlas-background", "path": "assets/concepts/style/atlas-background.webp", "status": "reference", "purpose": "Атмосферный фон стола мастера для главной страницы атласа."}
+    {"id": "atlas-background", "path": "assets/concepts/style/atlas-background.webp", "status": "reference", "purpose": "Атмосферный фон стола мастера для главной страницы атласа."},
+    {"id": "planned-campaign-background", "path": "assets/concepts/style/planned-campaign-background.webp", "status": "reference", "purpose": "Тёмный стол картографа для страниц ещё не открытых кампаний."},
+    {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}
   ],
   "world": [
     {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "Карта главного экрана с питахайями на Великом Древе."}

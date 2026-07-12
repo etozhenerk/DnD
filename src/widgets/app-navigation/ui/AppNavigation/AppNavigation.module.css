@@ -1,10 +1,10 @@
 .navigation {
   align-items: center;
-  background: var(--color-black-alpha-74);
-  border-bottom: 1px solid var(--color-gold-alpha-62);
-  box-shadow: var(--shadow-soft);
+  background: var(--gradient-navigation);
+  border-bottom: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-navigation);
   display: flex;
-  height: 72px;
+  height: 76px;
   justify-content: space-between;
   left: 0;
   padding: 0 clamp(1rem, 5vw, 5rem);
@@ -15,15 +15,28 @@
 }
 
 .brand { align-items: center; display: flex; gap: 0.65rem; }
-.brand span { color: var(--color-gold-light); }
-.brand strong { color: var(--color-ice-bright); font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; }
-.links { align-items: stretch; display: flex; height: 100%; }
-.links button { background: var(--color-transparent); border: 0; border-bottom: 2px solid var(--color-transparent); color: var(--color-ink-muted); cursor: pointer; font-family: var(--font-display); min-width: 7rem; padding: 0 1.5rem; }
-.links button:hover { color: var(--color-ice-bright); }
-.links .active { border-bottom-color: var(--color-gold-light); color: var(--color-gold-light); }
+.sigil { align-items: center; background: var(--gradient-sigil); border: 1px solid var(--color-brass-light); border-radius: 50%; box-shadow: inset 0 0 0 3px var(--color-black-alpha-42); color: var(--color-parchment-pale); display: flex; font-family: var(--font-display); font-size: 0.62rem; height: 2.35rem; justify-content: center; letter-spacing: 0.08em; width: 2.35rem; }
+.brand div { display: grid; }
+.brand small { color: var(--color-brass-muted); font-size: 0.5rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.brand strong { color: var(--color-parchment-pale); font-family: var(--font-display); font-size: 1.16rem; font-weight: 500; letter-spacing: 0.025em; }
+.links { align-items: center; display: flex; gap: 0.35rem; height: 100%; }
+.links button { align-items: center; background: var(--color-transparent); border: 1px solid var(--color-transparent); color: var(--color-ink-muted); cursor: pointer; display: flex; font-family: var(--font-display); gap: 0.45rem; min-width: 6.7rem; padding: 0.65rem 1.15rem; position: relative; }
+.links button::after { background: var(--gradient-brass-line); bottom: -0.2rem; content: ''; height: 1px; left: 50%; position: absolute; transform: translateX(-50%) scaleX(0); transition: transform 180ms ease; width: calc(100% - 2rem); }
+.links button span { color: var(--color-brass-muted); font-size: 0.88rem; }
+.links button:hover { color: var(--color-parchment-pale); }
+.links .active { background: var(--color-brass-alpha-12); border-color: var(--color-brass-alpha-38); color: var(--color-brass-light); }
+.links .active::after { transform: translateX(-50%) scaleX(1); }
+.links .active span { color: var(--color-brass-light); }
 
 @media (max-width: 520px) {
-  .navigation { height: 60px; }
-  .brand strong { display: none; }
-  .links button { min-width: 5.2rem; padding: 0 0.8rem; }
+  .navigation { height: 60px; padding: 0 0.65rem; }
+  .brand { gap: 0; }
+  .brand div { display: none; }
+  .sigil { height: 2rem; width: 2rem; }
+  .links { gap: 0.18rem; }
+  .links button { gap: 0.3rem; min-width: auto; padding: 0.55rem 0.68rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links button::after { transition: none; }
 }

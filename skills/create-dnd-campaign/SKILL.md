@@ -9,7 +9,7 @@ description: Create a new clickable map-region campaign or substantially expand 
 
 ## Контекст
 
-Прочитать `AGENTS.md`, весь базовый `content/`, `assets/concepts/manifest.json`, список героев и существующие кампании. Осмотреть соответствующую область в `assets/concepts/world/world-map.webp`. Не копировать сюжет Нор’Иль’Скальда под новыми именами.
+Прочитать `AGENTS.md`, весь базовый `content/`, `assets/concepts/manifest.json`, список героев и существующие кампании. Осмотреть соответствующую область по пути актуальной карты из `content/world-map.json`. Не копировать сюжет Нор’Иль’Скальда под новыми именами.
 
 ## Воронка вопросов
 

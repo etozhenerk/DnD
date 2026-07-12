@@ -10,10 +10,13 @@ interface AppNavigationProps {
 export function AppNavigation({activeView, onAtlas, onHeroes}: AppNavigationProps) {
   return (
     <nav className={styles.navigation} aria-label="Основная навигация">
-      <div className={styles.brand}><span>✦</span><strong>Хроники Восьми Земель</strong></div>
+      <div className={styles.brand}>
+        <span className={styles.sigil} aria-hidden="true">D20</span>
+        <div><small>D&amp;D кампании</small><strong>Атлас приключений</strong></div>
+      </div>
       <div className={styles.links}>
-        <button className={activeView === 'atlas' ? styles.active : ''} type="button" onClick={onAtlas}>Карта</button>
-        <button className={activeView === 'heroes' ? styles.active : ''} type="button" onClick={onHeroes}>Герои</button>
+        <button aria-current={activeView === 'atlas' ? 'page' : undefined} className={activeView === 'atlas' ? styles.active : ''} type="button" onClick={onAtlas}><span aria-hidden="true">⌖</span>Карта</button>
+        <button aria-current={activeView === 'heroes' ? 'page' : undefined} className={activeView === 'heroes' ? styles.active : ''} type="button" onClick={onHeroes}><span aria-hidden="true">♜</span>Герои</button>
       </div>
     </nav>
   );

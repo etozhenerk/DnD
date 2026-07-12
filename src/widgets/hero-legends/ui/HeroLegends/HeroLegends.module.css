@@ -22,7 +22,7 @@
 .bookmarks {
   align-items: flex-start;
   display: flex;
-  gap: 0.28rem;
+  gap: 0.18rem;
   height: 7.1rem;
   justify-content: center;
   left: 70%;
@@ -31,7 +31,7 @@
   position: absolute;
   top: 0.65rem;
   transform: translateX(-50%);
-  width: min(36%, 22rem);
+  width: min(42%, 28rem);
   z-index: 8;
 }
 
@@ -46,7 +46,7 @@
   color: var(--color-ink-dark);
   cursor: pointer;
   display: flex;
-  flex: 0 0 3.35rem;
+  flex: 0 0 3.25rem;
   flex-direction: column;
   height: 10.4rem;
   justify-content: flex-start;
@@ -70,21 +70,24 @@
 }
 
 .bookmarkPortrait {
-  border: 1px solid var(--color-gold-dark);
-  border-radius: 50%;
-  display: block;
+  align-items: center;
+  display: flex;
   flex: 0 0 auto;
-  height: 2.1rem;
-  overflow: hidden;
-  width: 2.1rem;
+  height: 3.05rem;
+  justify-content: center;
+  overflow: visible;
+  width: 3.05rem;
 }
 
 .bookmarkPortrait img {
+  display: block;
   height: 100%;
-  object-fit: cover;
-  object-position: var(--face-position);
-  transform: scale(var(--face-scale));
-  width: 100%;
+  margin: 0 auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  transform: translateX(var(--bookmark-icon-x));
+  width: auto;
 }
 
 .bookmarkName {
@@ -480,9 +483,9 @@
 
 @media (max-width: 1080px) {
   .book { min-height: 28rem; }
-  .bookmarks { gap: 0.22rem; height: 6.4rem; left: 70%; top: 0.65rem; width: 38%; }
-  .bookmarkButton { flex-basis: 3rem; height: 9.35rem; padding: 3.24rem 0.38rem 0.8rem; }
-  .bookmarkPortrait { height: 1.94rem; width: 1.94rem; }
+  .bookmarks { gap: 0.16rem; height: 6.4rem; left: 70%; top: 0.65rem; width: 43%; }
+  .bookmarkButton { flex-basis: 2.9rem; height: 9.35rem; padding: 3.24rem 0.34rem 0.8rem; }
+  .bookmarkPortrait { height: 2.7rem; width: 2.7rem; }
   .bookmarkName { font-size: 0.42rem; max-width: 3.2rem; }
   .identityCopy h2 { font-size: 1.72rem; }
   .story { font-size: 0.56rem; line-height: 1.24; }
@@ -496,7 +499,7 @@
 
 @media (max-width: 860px) {
   .stage { padding-top: 2.35rem; }
-  .bookmarks { left: 50%; top: -1.2rem; width: 58%; }
+  .bookmarks { left: 50%; top: -1.2rem; width: 70%; }
   .pageTurn { height: 4rem; width: 6.7rem; }
   .previous { left: -1rem; }
   .next { right: -1rem; }
@@ -521,7 +524,7 @@
     box-sizing: border-box;
     display: grid;
     gap: 0.36rem;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     height: auto;
     left: auto;
     margin: 0 0 0.75rem;
@@ -561,13 +564,9 @@
   }
 
   .bookmarkPortrait {
-    height: 2.7rem;
+    height: 2.9rem;
     margin: auto;
-    width: 2.7rem;
-  }
-
-  .bookmarkPortrait img {
-    transform: scale(var(--face-scale));
+    width: 2.9rem;
   }
 
   .bookmarkName {
@@ -759,7 +758,7 @@
     padding: 0.28rem;
   }
 
-  .bookmarkPortrait { height: 2.46rem; width: 2.46rem; }
+  .bookmarkPortrait { height: 2.48rem; width: 2.48rem; }
   .bookmarkName { display: none; }
 
   .book {
@@ -785,11 +784,11 @@
 
 @media (max-width: 360px) {
   .bookmarks {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 
   .bookmarkButton { min-height: 2.72rem; padding: 0.22rem; }
-  .bookmarkPortrait { height: 2.22rem; width: 2.22rem; }
+  .bookmarkPortrait { height: 2.18rem; width: 2.18rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

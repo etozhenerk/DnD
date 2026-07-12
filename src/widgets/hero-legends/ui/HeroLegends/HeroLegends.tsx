@@ -9,19 +9,16 @@ import styles from './HeroLegends.module.css';
 export function HeroLegends({heroes}: {heroes: Character[]}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeHero = heroes[activeIndex] ?? heroes[0];
-  const facePosition: Record<string, string> = {
-    bubsilda: 'center 24%',
-    linda: '42% 24%',
-    lambert: 'center 22%',
-    'lord-krayneplot': '47% 24%',
-    'golovach-lena': 'center 18%',
+  const bookmarkPortraits: Record<string, string> = {
+    bubsilda: 'assets/concepts/characters/bookmarks/bubsilda-bookmark.png',
+    linda: 'assets/concepts/characters/bookmarks/linda-bookmark.png',
+    lambert: 'assets/concepts/characters/bookmarks/lambert-bookmark.png',
+    'lord-krayneplot': 'assets/concepts/characters/bookmarks/lord-krayneplot-bookmark.png',
+    'golovach-lena': 'assets/concepts/characters/bookmarks/golovach-lena-bookmark.png',
+    'thorin-pukoshchit': 'assets/concepts/characters/bookmarks/thorin-pukoshchit-bookmark.png',
   };
-  const faceScale: Record<string, string> = {
-    bubsilda: '1.18',
-    linda: '1.14',
-    lambert: '1.12',
-    'lord-krayneplot': '1.16',
-    'golovach-lena': '1.2',
+  const bookmarkIconOffset: Record<string, string> = {
+    linda: '0.68rem',
   };
   const sceneStyle = {
     '--arrow-left-image': `url("${resolveAsset('assets/concepts/ui/hero-book-arrow-left.png')}")`,
@@ -60,13 +57,14 @@ export function HeroLegends({heroes}: {heroes: Character[]}) {
               className={`${styles.bookmarkButton} ${hero.id === activeHero.id ? styles.currentHero : ''}`}
               key={hero.id}
               onClick={() => setActiveIndex(index)}
-              style={{
-                '--face-position': facePosition[hero.id] ?? 'center 16%',
-                '--face-scale': faceScale[hero.id] ?? '1.9',
-              } as CSSProperties}
               type="button"
             >
-              <span className={styles.bookmarkPortrait}><img src={resolveAsset(hero.visual.portrait)} alt="" /></span>
+              <span
+                className={styles.bookmarkPortrait}
+                style={{'--bookmark-icon-x': bookmarkIconOffset[hero.id] ?? '0rem'} as CSSProperties}
+              >
+                <img src={resolveAsset(bookmarkPortraits[hero.id] ?? hero.visual.portrait)} alt="" />
+              </span>
             </button>
           ))}
         </nav>

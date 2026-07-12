@@ -1,0 +1,7 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Luminari';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Luminari'), url('../assets/fonts/Luminari-Regular.woff') format('woff');
+}

@@ -10,7 +10,8 @@
     {"id": "linda", "path": "assets/concepts/characters/linda.webp", "status": "canonical", "raceConceptIds": ["fairies"]},
     {"id": "lambert", "path": "assets/concepts/characters/lambert.webp", "status": "canonical", "raceConceptIds": ["humans"]},
     {"id": "lord-krayneplot", "path": "assets/concepts/characters/lord-krayneplot.webp", "status": "canonical", "raceConceptIds": ["elves"]},
-    {"id": "golovach-lena", "path": "assets/concepts/characters/golovach-lena.webp", "status": "canonical", "raceConceptIds": ["dragonborn"]}
+    {"id": "golovach-lena", "path": "assets/concepts/characters/golovach-lena.webp", "status": "canonical", "raceConceptIds": ["dragonborn"]},
+    {"id": "thorin-pukoshchit", "path": "assets/concepts/characters/thorin-pukoshchit.webp", "status": "canonical", "raceConceptIds": ["dwarves"]}
   ],
   "races": [
     {"id": "ice-wardens", "path": "assets/concepts/races/ice-wardens.webp", "status": "reference"},
@@ -33,6 +34,12 @@
   ],
   "ui": [
     {"id": "hero-book-bookmark", "path": "assets/concepts/ui/hero-book-bookmark.png", "status": "reference", "purpose": "Кликабельная закладка выбора героя для книжного разворота."},
+    {"id": "hero-bookmark-avatar-bubsilda", "path": "assets/concepts/characters/bookmarks/bubsilda-bookmark.png", "status": "reference", "purpose": "Аватар Бубсильды для закладки книги героев."},
+    {"id": "hero-bookmark-avatar-linda", "path": "assets/concepts/characters/bookmarks/linda-bookmark.png", "status": "reference", "purpose": "Аватар Линды для закладки книги героев."},
+    {"id": "hero-bookmark-avatar-lambert", "path": "assets/concepts/characters/bookmarks/lambert-bookmark.png", "status": "reference", "purpose": "Аватар Ламберта для закладки книги героев."},
+    {"id": "hero-bookmark-avatar-lord-krayneplot", "path": "assets/concepts/characters/bookmarks/lord-krayneplot-bookmark.png", "status": "reference", "purpose": "Аватар Лорда Крайнеплота для закладки книги героев."},
+    {"id": "hero-bookmark-avatar-golovach-lena", "path": "assets/concepts/characters/bookmarks/golovach-lena-bookmark.png", "status": "reference", "purpose": "Аватар Головача Лены для закладки книги героев."},
+    {"id": "hero-bookmark-avatar-thorin-pukoshchit", "path": "assets/concepts/characters/bookmarks/thorin-pukoshchit-bookmark.png", "status": "reference", "purpose": "Аватар Торина Пукощита II для закладки книги героев."},
     {"id": "hero-book-arrow-left", "path": "assets/concepts/ui/hero-book-arrow-left.png", "status": "reference", "purpose": "Книжная стрелка перелистывания героя влево."},
     {"id": "hero-book-arrow-right", "path": "assets/concepts/ui/hero-book-arrow-right.png", "status": "reference", "purpose": "Книжная стрелка перелистывания героя вправо."},
     {"id": "hero-book-icon-hp", "path": "assets/concepts/ui/hero-book-icon-hp.png", "status": "reference", "purpose": "Иконка HP для книжной карточки героя."},

@@ -74,6 +74,7 @@
   --gradient-atlas-desk: radial-gradient(circle at 50% 35%, var(--color-night-soft), var(--color-night-deep) 68%), linear-gradient(135deg, var(--color-wood), var(--color-night-deep));
   --gradient-atlas-vignette: radial-gradient(ellipse at center, var(--color-transparent) 28%, var(--color-black-alpha-58) 100%);
   --gradient-atlas-scrim: linear-gradient(180deg, var(--color-black-alpha-42), var(--color-transparent) 34%, var(--color-black-alpha-42));
+  --gradient-page-bottom-fade: linear-gradient(180deg, var(--color-transparent), var(--color-night-deep) 82%);
   --gradient-candle-glow: radial-gradient(circle, var(--color-gold-alpha-32), var(--color-transparent) 68%);
   --gradient-brass-line: linear-gradient(90deg, var(--color-transparent), var(--color-brass-light), var(--color-transparent));
   --gradient-map-frame: linear-gradient(145deg, var(--color-wood-light), var(--color-gold-dark) 18%, var(--color-wood) 48%, var(--color-gold-dark) 82%, var(--color-wood-light));

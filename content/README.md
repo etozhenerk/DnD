@@ -52,6 +52,19 @@ choices[]: label, check, success, failure
 encounterId, rewards[], clues[], nextSceneIds[]
 ```
 
+### Летопись завершённой кампании
+
+```text
+completedChronicle:
+  template, statusLabel, completedSummary, finalResult
+  story[]
+  trials[]: id, title, locationId, result
+  defeatedEnemies[]: enemyId, count, outcome
+  restored[]: id, title, result
+```
+
+`completedChronicle` — публичный шаблон пройденной кампании. Он хранит только то, что игроки уже знают после финала: какие испытания пройдены, какие враги побеждены или выведены из строя, что восстановлено и чем завершилась глава. Поля `enemyId` и `locationId` ссылаются на существующие сущности кампании.
+
 ## Термины времени
 
 - `turn` — ход одного участника.

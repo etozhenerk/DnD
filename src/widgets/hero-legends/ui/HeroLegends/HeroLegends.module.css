@@ -22,7 +22,7 @@
 .bookmarks {
   align-items: flex-start;
   display: flex;
-  gap: 0.42rem;
+  gap: 0.28rem;
   height: 7.1rem;
   justify-content: center;
   left: 70%;
@@ -31,7 +31,7 @@
   position: absolute;
   top: 0.65rem;
   transform: translateX(-50%);
-  width: min(44%, 30rem);
+  width: min(36%, 22rem);
   z-index: 8;
 }
 
@@ -41,17 +41,17 @@
   background-image: var(--bookmark-image);
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   border: 0;
   color: var(--color-ink-dark);
   cursor: pointer;
   display: flex;
-  flex: 0 0 4.45rem;
+  flex: 0 0 3.35rem;
   flex-direction: column;
-  height: 9.55rem;
+  height: 10.4rem;
   justify-content: flex-start;
   min-width: 0;
-  padding: 2.72rem 0.62rem 1rem;
+  padding: 3.55rem 0.52rem 1rem;
   pointer-events: auto;
   position: relative;
   text-align: center;
@@ -61,10 +61,11 @@
 .bookmarkButton:hover,
 .currentHero {
   filter: drop-shadow(0 8px 14px var(--color-black-alpha-42));
-  transform: translateY(0.2rem);
+  transform: translateY(0.16rem);
 }
 
 .currentHero {
+  filter: drop-shadow(0 0 10px var(--color-gold-alpha-62)) drop-shadow(0 8px 14px var(--color-black-alpha-42));
   z-index: 2;
 }
 
@@ -73,21 +74,21 @@
   border-radius: 50%;
   display: block;
   flex: 0 0 auto;
-  height: 2.05rem;
+  height: 2.1rem;
   overflow: hidden;
-  width: 2.05rem;
+  width: 2.1rem;
 }
 
 .bookmarkPortrait img {
   height: 100%;
   object-fit: cover;
   object-position: var(--face-position);
-  transform: scale(1.85);
+  transform: scale(var(--face-scale));
   width: 100%;
 }
 
 .bookmarkName {
-  display: block;
+  display: none;
   font-family: var(--font-display);
   font-size: 0.48rem;
   font-weight: 700;
@@ -479,9 +480,9 @@
 
 @media (max-width: 1080px) {
   .book { min-height: 28rem; }
-  .bookmarks { height: 6.4rem; left: 70%; top: 0.65rem; width: 46%; }
-  .bookmarkButton { flex-basis: 3.8rem; height: 9rem; padding: 2.75rem 0.5rem 0.8rem; }
-  .bookmarkPortrait { height: 1.78rem; width: 1.78rem; }
+  .bookmarks { gap: 0.22rem; height: 6.4rem; left: 70%; top: 0.65rem; width: 38%; }
+  .bookmarkButton { flex-basis: 3rem; height: 9.35rem; padding: 3.24rem 0.38rem 0.8rem; }
+  .bookmarkPortrait { height: 1.94rem; width: 1.94rem; }
   .bookmarkName { font-size: 0.42rem; max-width: 3.2rem; }
   .identityCopy h2 { font-size: 1.72rem; }
   .story { font-size: 0.56rem; line-height: 1.24; }
@@ -495,15 +496,86 @@
 
 @media (max-width: 860px) {
   .stage { padding-top: 2.35rem; }
-  .bookmarks { left: 50%; top: -1.2rem; width: 82%; }
+  .bookmarks { left: 50%; top: -1.2rem; width: 58%; }
   .pageTurn { height: 4rem; width: 6.7rem; }
   .previous { left: -1rem; }
   .next { right: -1rem; }
 }
 
 @media (max-width: 760px) {
+  .legends {
+    display: block;
+    height: auto;
+    padding-top: 0;
+  }
+
   .stage {
     display: block;
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .bookmarks {
+    background: var(--color-black-alpha-42);
+    border: 1px solid var(--color-brass-alpha-38);
+    box-sizing: border-box;
+    display: grid;
+    gap: 0.36rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    height: auto;
+    left: auto;
+    margin: 0 0 0.75rem;
+    overflow: visible;
+    padding: 0.5rem;
+    pointer-events: auto;
+    position: relative;
+    top: auto;
+    transform: none;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .bookmarkButton {
+    background: var(--gradient-parchment);
+    border: 1px solid var(--color-parchment-dark);
+    box-shadow: var(--shadow-soft);
+    color: var(--color-ink-dark);
+    display: flex;
+    height: auto;
+    min-height: 3.45rem;
+    padding: 0.35rem;
+    text-align: center;
+    transform: none;
+    width: 100%;
+  }
+
+  .bookmarkButton:hover,
+  .currentHero {
+    filter: none;
+    transform: none;
+  }
+
+  .currentHero {
+    border-color: var(--color-wine);
+    box-shadow: inset 0 0 0 2px var(--color-wine), 0 0 14px var(--color-gold-alpha-62), var(--shadow-soft);
+  }
+
+  .bookmarkPortrait {
+    height: 2.7rem;
+    margin: auto;
+    width: 2.7rem;
+  }
+
+  .bookmarkPortrait img {
+    transform: scale(var(--face-scale));
+  }
+
+  .bookmarkName {
+    display: none;
+    font-size: 0.82rem;
+    line-height: 1;
+    margin: 0;
+    max-width: none;
   }
 
   .book {
@@ -515,7 +587,7 @@
     margin: 0 auto;
     max-height: none;
     max-width: 35rem;
-    min-height: 67rem;
+    min-height: 0;
     width: 100%;
   }
 
@@ -530,7 +602,8 @@
   .bookInner {
     bottom: auto;
     display: grid;
-    gap: 1rem;
+    gap: 1.4rem;
+    grid-template-columns: 1fr;
     left: auto;
     padding: 1rem;
     position: relative;
@@ -545,77 +618,178 @@
   }
 
   .identityPage {
-    grid-template-rows: 17rem auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: auto auto;
+  }
+
+  .identityCopy h2 {
+    font-size: 2.4rem;
+    line-height: 0.92;
+  }
+
+  .kicker,
+  .longKicker {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+  }
+
+  .role {
+    font-size: 0.9rem;
+  }
+
+  .portraitFrame {
+    aspect-ratio: 16 / 10;
+    padding: 0.3rem;
+  }
+
+  .heroSummary {
+    grid-template-columns: 4.5rem 4.5rem minmax(0, 1fr);
+    margin-top: 0.7rem;
+  }
+
+  .vital,
+  .primaryAttack {
+    min-height: 3rem;
+  }
+
+  .primaryAttack strong {
+    font-size: 0.8rem;
+    white-space: normal;
+  }
+
+  .primaryAttack p {
+    display: block;
+    font-size: 0.62rem;
+    line-height: 1.2;
+  }
+
+  .stats {
+    gap: 0.4rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.65rem;
+  }
+
+  .stats div {
+    min-height: 3rem;
+    padding: 0.42rem 0.5rem;
+  }
+
+  .stats span {
+    font-size: 0.58rem;
+  }
+
+  .stats strong {
+    font-size: 1.25rem;
+  }
+
+  .story {
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .motivation span {
+    font-size: 0.72rem;
+  }
+
+  .motivation p {
+    font-size: 0.9rem;
+    line-height: 1.38;
+  }
+
+  .sheetPage {
+    display: block;
+  }
+
+  .skillList {
+    display: grid;
+    gap: 0.7rem;
+    grid-auto-rows: auto;
+  }
+
+  .skills h3 {
+    font-size: 0.8rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .skillCard {
+    background: var(--color-black-alpha-14);
+    border: 1px solid var(--color-parchment-dark);
+    gap: 0.38rem;
+    padding: 0.75rem;
+  }
+
+  .skillCard header {
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: 1fr;
+  }
+
+  .skillCard strong {
+    font-size: 1.15rem;
+  }
+
+  .skillCard header span {
+    font-size: 0.62rem;
+    justify-self: start;
+    white-space: normal;
+  }
+
+  .skillCard p,
+  .skillCard small {
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .pageTurn {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .stage { padding-top: 0; }
+
+  .bookmarks {
+    gap: 0.3rem;
+  }
+
+  .bookmarkButton {
+    min-height: 3.1rem;
+    padding: 0.28rem;
+  }
+
+  .bookmarkPortrait { height: 2.46rem; width: 2.46rem; }
+  .bookmarkName { display: none; }
+
+  .book {
+    min-height: 0;
+  }
+
+  .bookInner {
+    padding: 0.85rem;
   }
 
   .identityCopy h2 {
     font-size: 2rem;
   }
 
-  .story {
-    font-size: 0.72rem;
-    line-height: 1.45;
-  }
-
-  .motivation p {
-    font-size: 0.68rem;
-    line-height: 1.38;
-  }
-
-  .sheetPage {
-    gap: 0.65rem;
-  }
-
-  .skillList {
-    grid-auto-rows: auto;
-  }
-
-  .skillCard strong {
-    font-size: 0.78rem;
-  }
-
-  .skillCard p,
-  .skillCard small {
-    font-size: 0.66rem;
-    line-height: 1.35;
-  }
-
-  .pageTurn {
-    top: 20rem;
-  }
-}
-
-@media (max-width: 520px) {
-  .stage { padding-top: 2rem; }
-  .bookmarks { top: -1.05rem; width: 100%; }
-  .bookmarkButton { flex-basis: 2.35rem; height: 7.8rem; padding: 2.4rem 0.32rem 0.72rem; }
-  .bookmarkPortrait { height: 1.4rem; width: 1.4rem; }
-  .bookmarkName { display: none; }
-
-  .book {
-    min-height: 73rem;
-  }
-
-  .bookInner {
-    padding: 0.8rem;
-  }
-
-  .identityPage {
-    grid-template-rows: 15rem auto;
-  }
-
-  .stats {
+  .heroSummary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pageTurn {
-    height: 3.25rem;
-    top: 18.3rem;
-    width: 5.45rem;
+  .primaryAttack {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 360px) {
+  .bookmarks {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
-  .previous { left: -0.6rem; }
-  .next { right: -0.6rem; }
+  .bookmarkButton { min-height: 2.72rem; padding: 0.22rem; }
+  .bookmarkPortrait { height: 2.22rem; width: 2.22rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

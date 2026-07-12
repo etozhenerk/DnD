@@ -10,11 +10,18 @@ export function HeroLegends({heroes}: {heroes: Character[]}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeHero = heroes[activeIndex] ?? heroes[0];
   const facePosition: Record<string, string> = {
-    bubsilda: 'center 11%',
-    linda: 'center 12%',
-    lambert: 'center 13%',
-    'lord-krayneplot': 'center 12%',
-    'golovach-lena': 'center 13%',
+    bubsilda: 'center 24%',
+    linda: '42% 24%',
+    lambert: 'center 22%',
+    'lord-krayneplot': '47% 24%',
+    'golovach-lena': 'center 18%',
+  };
+  const faceScale: Record<string, string> = {
+    bubsilda: '1.18',
+    linda: '1.14',
+    lambert: '1.12',
+    'lord-krayneplot': '1.16',
+    'golovach-lena': '1.2',
   };
   const sceneStyle = {
     '--arrow-left-image': `url("${resolveAsset('assets/concepts/ui/hero-book-arrow-left.png')}")`,
@@ -53,11 +60,13 @@ export function HeroLegends({heroes}: {heroes: Character[]}) {
               className={`${styles.bookmarkButton} ${hero.id === activeHero.id ? styles.currentHero : ''}`}
               key={hero.id}
               onClick={() => setActiveIndex(index)}
-              style={{'--face-position': facePosition[hero.id] ?? 'center 12%'} as CSSProperties}
+              style={{
+                '--face-position': facePosition[hero.id] ?? 'center 16%',
+                '--face-scale': faceScale[hero.id] ?? '1.9',
+              } as CSSProperties}
               type="button"
             >
               <span className={styles.bookmarkPortrait}><img src={resolveAsset(hero.visual.portrait)} alt="" /></span>
-              <span className={styles.bookmarkName}>{hero.name}</span>
             </button>
           ))}
         </nav>

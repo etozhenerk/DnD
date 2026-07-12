@@ -6,6 +6,7 @@ const artworkBounds: Record<string, ArtworkBounds> = {
   'great-tree-island': [37, 467, 242, 730],
   'green-peninsula': [179, 312, 553, 637],
   'mushroom-forest': [530, 430, 888, 709],
+  'nor-il-skald': [0, 0, 402, 418],
   'waterfall-island': [599, 6, 1000, 427],
   'white-castle-island': [36, 618, 510, 1024],
 };

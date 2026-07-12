@@ -28,6 +28,7 @@
     {"id": "character-sheet-inventory", "path": "assets/concepts/style/character-sheet-inventory.webp", "status": "reference", "purpose": "Разворот инвентаря."},
     {"id": "atlas-background", "path": "assets/concepts/style/atlas-background.webp", "status": "reference", "purpose": "Атмосферный фон стола мастера для главной страницы атласа."},
     {"id": "planned-campaign-background", "path": "assets/concepts/style/planned-campaign-background.webp", "status": "reference", "purpose": "Тёмный стол картографа для страниц ещё не открытых кампаний."},
+    {"id": "nor-il-skald-completed-background", "path": "assets/concepts/style/nor-il-skald-completed-background-tall.png", "status": "reference", "purpose": "Сгенерированный вертикальный фон ледяного тронного ангара для завершённой страницы Нор’Иль’Скальда."},
     {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}
   ],
   "ui": [
@@ -40,6 +41,9 @@
   ],
   "world": [
     {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "Карта главного экрана с питахайями на Великом Древе."}
+  ],
+  "rewards": [
+    {"id": "key-nor-il-skald", "path": "assets/concepts/rewards/key-nor-il-skald.png", "status": "reference", "purpose": "Сгенерированный арт награды «Ключ Нор’Иль’Скальда» для финала завершённой кампании."}
   ],
   "regions": [
     {"id": "nor-il-skald", "path": "assets/concepts/world/regions/nor-il-skald.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},

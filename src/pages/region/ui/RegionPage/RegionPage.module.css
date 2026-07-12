@@ -1,5 +1,16 @@
 .page { background: var(--gradient-fantasy); min-height: 100vh; overflow-x: clip; padding-top: 72px; }
 
+.completed {
+  background-color: var(--color-night-deep);
+  background-image: var(--gradient-atlas-scrim), var(--gradient-atlas-vignette), var(--region-page-background);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  isolation: isolate;
+  min-height: 100dvh;
+  position: relative;
+}
+
 .planned {
   background-color: var(--color-night-deep);
   background-image: var(--gradient-atlas-vignette), var(--region-page-background);

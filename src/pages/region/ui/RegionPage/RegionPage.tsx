@@ -13,12 +13,15 @@ interface RegionPageProps {
 
 export function RegionPage({region, onBack}: RegionPageProps) {
   const isPlanned = region.status !== 'completed';
-  const pageStyle = isPlanned ? {
-    '--region-page-background': `url("${resolveAsset('assets/concepts/style/planned-campaign-background.webp')}")`,
-  } as CSSProperties : undefined;
+  const backgroundAsset = isPlanned
+    ? 'assets/concepts/style/planned-campaign-background.webp'
+    : 'assets/concepts/style/nor-il-skald-completed-background-tall.png';
+  const pageStyle = {
+    '--region-page-background': `url("${resolveAsset(backgroundAsset)}")`,
+  } as CSSProperties;
 
   return (
-    <main className={`${styles.page} ${isPlanned ? styles.planned : ''}`} style={pageStyle}>
+    <main className={`${styles.page} ${isPlanned ? styles.planned : styles.completed}`} style={pageStyle}>
       <PageHeader eyebrow={isPlanned ? '' : `Летопись ${String(region.order).padStart(2, '0')}`} title={region.name} subtitle={isPlanned ? '' : region.description} onBack={onBack} />
       {region.status === 'completed' ? <CompletedCampaign region={region} /> : <PlannedCampaign region={region} />}
     </main>

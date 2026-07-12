@@ -23,3 +23,5 @@ coverage/
 # Temporary render artifacts
 tmp/
 .cache/
+
+.playwright-cli/

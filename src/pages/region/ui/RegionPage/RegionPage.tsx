@@ -13,6 +13,7 @@ interface RegionPageProps {
 
 export function RegionPage({region, onBack}: RegionPageProps) {
   const isPlanned = region.status !== 'completed';
+  const completedSubtitle = 'Северное королевство льда, дворцовых ангаров и упрямых жителей, переживших самый долгий рейс в истории.';
   const backgroundAsset = isPlanned
     ? 'assets/concepts/style/planned-campaign-background.webp'
     : 'assets/concepts/style/nor-il-skald-completed-background-tall.png';
@@ -22,7 +23,7 @@ export function RegionPage({region, onBack}: RegionPageProps) {
 
   return (
     <main className={`${styles.page} ${isPlanned ? styles.planned : styles.completed}`} style={pageStyle}>
-      <PageHeader eyebrow={isPlanned ? '' : `Летопись ${String(region.order).padStart(2, '0')}`} title={region.name} subtitle={isPlanned ? '' : region.description} onBack={onBack} />
+      <PageHeader eyebrow="" title={region.name} subtitle={isPlanned ? '' : completedSubtitle} onBack={onBack} />
       {region.status === 'completed' ? <CompletedCampaign region={region} /> : <PlannedCampaign region={region} />}
     </main>
   );

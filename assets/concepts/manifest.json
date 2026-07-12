@@ -30,6 +30,14 @@
     {"id": "planned-campaign-background", "path": "assets/concepts/style/planned-campaign-background.webp", "status": "reference", "purpose": "Тёмный стол картографа для страниц ещё не открытых кампаний."},
     {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}
   ],
+  "ui": [
+    {"id": "hero-book-bookmark", "path": "assets/concepts/ui/hero-book-bookmark.png", "status": "reference", "purpose": "Кликабельная закладка выбора героя для книжного разворота."},
+    {"id": "hero-book-arrow-left", "path": "assets/concepts/ui/hero-book-arrow-left.png", "status": "reference", "purpose": "Книжная стрелка перелистывания героя влево."},
+    {"id": "hero-book-arrow-right", "path": "assets/concepts/ui/hero-book-arrow-right.png", "status": "reference", "purpose": "Книжная стрелка перелистывания героя вправо."},
+    {"id": "hero-book-icon-hp", "path": "assets/concepts/ui/hero-book-icon-hp.png", "status": "reference", "purpose": "Иконка HP для книжной карточки героя."},
+    {"id": "hero-book-icon-ac", "path": "assets/concepts/ui/hero-book-icon-ac.png", "status": "reference", "purpose": "Иконка защиты для книжной карточки героя."},
+    {"id": "hero-book-icon-attack", "path": "assets/concepts/ui/hero-book-icon-attack.png", "status": "reference", "purpose": "Иконка основной атаки для книжной карточки героя."}
+  ],
   "world": [
     {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "Карта главного экрана с питахайями на Великом Древе."}
   ],

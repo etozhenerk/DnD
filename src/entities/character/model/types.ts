@@ -1,3 +1,26 @@
+interface AbilityUses {
+  scope: 'turn' | 'round' | 'battle' | 'location' | 'campaign';
+  max: number;
+}
+
+export interface CharacterAbility {
+  id: string;
+  name: string;
+  description: string;
+  trigger?: string;
+  check?: string;
+  effect: string;
+  uses?: AbilityUses | null;
+}
+
+export interface CharacterItem {
+  id: string;
+  name: string;
+  description?: string;
+  effect: string;
+  charges?: number | AbilityUses | null;
+}
+
 export interface Character {
   id: string;
   name: string;
@@ -11,6 +34,6 @@ export interface Character {
   stats: Record<'strength' | 'dexterity' | 'constitution' | 'wisdom' | 'intelligence' | 'charisma', number>;
   story: string;
   motivation: string;
-  abilities: {id: string; name: string; description: string; effect: string}[];
-  items: {id: string; name: string; effect: string}[];
+  abilities: CharacterAbility[];
+  items: CharacterItem[];
 }

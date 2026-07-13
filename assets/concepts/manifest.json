@@ -30,6 +30,7 @@
     {"id": "atlas-background", "path": "assets/concepts/style/atlas-background.webp", "status": "reference", "purpose": "Атмосферный фон стола мастера для главной страницы атласа."},
     {"id": "planned-campaign-background", "path": "assets/concepts/style/planned-campaign-background.webp", "status": "reference", "purpose": "Тёмный стол картографа для страниц ещё не открытых кампаний."},
     {"id": "nor-il-skald-completed-background", "path": "assets/concepts/style/nor-il-skald-completed-background-tall.png", "status": "reference", "purpose": "Сгенерированный вертикальный фон ледяного тронного ангара для завершённой страницы Нор’Иль’Скальда."},
+    {"id": "linda-small-completed-background", "path": "assets/concepts/style/linda-small-completed-background-tall.png", "status": "canonical", "purpose": "Сгенерированный вертикальный фон тропического зала и острова с питахайями для завершённой страницы Линда Смолл."},
     {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}
   ],
   "campaigns": [

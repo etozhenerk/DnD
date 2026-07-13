@@ -18,7 +18,7 @@
   "campaignGoal": "Снять проклятие океана, освободить жителей Вьетимы и вернуть Линде её остров.",
   "presentation": {
     "pageSubtitle": "Тёплая Вьетима и остров волшебной питахайи, освобождённые от власти красных фей.",
-    "background": "assets/concepts/campaigns/linda-small/locations/stroganessa-lair.webp",
+    "background": "assets/concepts/style/linda-small-completed-background-tall.png",
     "statusSeal": {"primary": "Остров", "secondary": "свободен"},
     "milestonesEyebrow": "Путь освобождения",
     "milestonesTitle": "Как герои вернули Линде её остров",

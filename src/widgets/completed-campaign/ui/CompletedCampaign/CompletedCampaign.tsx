@@ -1,6 +1,8 @@
 import type {Campaign, CampaignPerson} from '../../../../entities/campaign/model/types';
+import {CampaignMedia} from '../../../../entities/campaign/ui/CampaignMedia/CampaignMedia';
 import type {Region} from '../../../../entities/region/model/types';
 import {RegionOrderSeal} from '../../../../entities/region/ui/RegionOrderSeal/RegionOrderSeal';
+import {characters} from '../../../../shared/config/gameData';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {getRegionArtworkViewBox} from '../../../../shared/lib/map/getRegionArtworkViewBox';
 import {JourneyBook} from '../../../journey-book/ui/JourneyBook/JourneyBook';
@@ -11,8 +13,19 @@ interface CompletedCampaignProps {
   region: Region;
 }
 
-function getPersonSummary(person: CampaignPerson): string {
-  return person.description ?? person.story ?? person.role ?? '';
+const enemyTierLabels: Record<string, string> = {
+  minion: 'Рядовой противник',
+  brute: 'Тяжёлый противник',
+  lieutenant: 'Особый противник',
+  'final-boss': 'Финальный босс',
+};
+
+function getPersonLabel(person: CampaignPerson & {tier?: string}): string {
+  return person.role ?? enemyTierLabels[person.tier ?? ''] ?? 'Противник';
+}
+
+function getPersonSummary(person: CampaignPerson & {tier?: string}): string {
+  return person.description ?? person.story ?? person.motivation ?? getPersonLabel(person);
 }
 
 export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
@@ -23,7 +36,14 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
   const enemiesById = new Map(campaign.enemies.map((enemy) => [enemy.id, enemy]));
   const regionImages = region.imageLayers ?? [region.image];
   const illustratedLocations = campaign.locations.filter((location) => location.visual);
-  const illustratedCast = [...(campaign.npcs ?? []), ...campaign.enemies].filter((person) => person.visual);
+  const npcCast = campaign.npcs ?? [];
+  const charactersById = new Map(characters.map((character) => [character.id, character]));
+  const gameMaster = campaign.gameMasterCharacterId
+    ? charactersById.get(campaign.gameMasterCharacterId)
+    : undefined;
+  const partyMembers = (campaign.partyAtTime ?? [])
+    .filter((member) => member.visual)
+    .map((member) => ({member, character: charactersById.get(member.characterId)}));
   const presentation = campaign.presentation;
   const statusSeal = presentation?.statusSeal ?? {primary: 'Глава', secondary: 'закрыта'};
 
@@ -81,7 +101,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
           <div className={styles.locationGallery}>
             {illustratedLocations.map((location) => (
               <figure key={location.id}>
-                <img src={resolveAsset(location.visual!.image)} alt={location.visual!.alt} loading="lazy" decoding="async" />
+                <CampaignMedia visual={location.visual!} />
                 <figcaption><span>{String(location.order).padStart(2, '0')}</span><div><strong>{location.name}</strong><p>{location.summary}</p></div></figcaption>
               </figure>
             ))}
@@ -91,17 +111,64 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
 
       <JourneyBook campaign={campaign} />
 
-      {illustratedCast.length > 0 && (
-        <section className={styles.cast} aria-label="Персонажи кампании">
+      {partyMembers.length > 0 && (
+        <section className={styles.party} aria-label="Герои завершённого похода">
           <div className={styles.sectionHeading}>
-            <span>Лица кампании</span>
-            <h2>{presentation?.castTitle ?? 'Союзники и противники'}</h2>
+            <span>Состав экспедиции</span>
+            <h2>Герои этого похода</h2>
+          </div>
+          {campaign.groupVisual && (
+            <figure className={styles.groupVisual}>
+              <CampaignMedia visual={campaign.groupVisual} />
+              <figcaption>
+                <strong>{presentation?.groupTitle ?? 'Герои завершённого похода'}</strong>
+                {gameMaster && <span>{gameMaster.name} — мастер игры</span>}
+              </figcaption>
+            </figure>
+          )}
+          <div className={styles.partyGrid}>
+            {partyMembers.map(({member, character}) => (
+              <article key={member.characterId}>
+                <CampaignMedia visual={member.visual!} />
+                <div className={styles.partyCopy}><span>{character?.race ?? 'Герой'}</span><h3>{member.displayName}</h3><p>{member.note ?? character?.role}</p></div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {npcCast.length > 0 && (
+        <section className={styles.cast} aria-label="Неигровые персонажи кампании">
+          <div className={styles.sectionHeading}>
+            <span>Встреченные в пути</span>
+            <h2>NPC кампании</h2>
+          </div>
+          <div className={`${styles.castGrid} ${styles.npcGrid}`}>
+            {npcCast.map((person) => (
+              <article key={person.id}>
+                {person.visual
+                  ? <CampaignMedia visual={person.visual} />
+                  : <div className={styles.castPlaceholder} aria-hidden="true"><span>✦</span></div>}
+                <div className={styles.castCopy}><span>{getPersonLabel(person)}</span><h3>{person.name}</h3><p>{getPersonSummary(person)}</p></div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {campaign.enemies.length > 0 && (
+        <section className={styles.cast} aria-label="Противники кампании">
+          <div className={styles.sectionHeading}>
+            <span>Бестиарий похода</span>
+            <h2>{presentation?.castTitle ?? 'Противники кампании'}</h2>
           </div>
           <div className={styles.castGrid}>
-            {illustratedCast.map((person) => (
-              <article key={person.id}>
-                <img src={resolveAsset(person.visual!.image)} alt={person.visual!.alt} loading="lazy" decoding="async" />
-                <div><span>{person.role ?? 'Противник'}</span><h3>{person.name}</h3><p>{getPersonSummary(person)}</p></div>
+            {campaign.enemies.map((enemy) => (
+              <article key={enemy.id}>
+                {enemy.visual
+                  ? <CampaignMedia visual={enemy.visual} />
+                  : <div className={styles.castPlaceholder} aria-hidden="true"><span>✦</span></div>}
+                <div className={styles.castCopy}><span>{getPersonLabel(enemy)}</span><h3>{enemy.name}</h3><p>{getPersonSummary(enemy)}</p></div>
               </article>
             ))}
           </div>
@@ -132,7 +199,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
       <section className={styles.reward}>
         {campaign.ending.visual && (
           <figure className={styles.rewardArt}>
-            <img src={resolveAsset(campaign.ending.visual.image)} alt={campaign.ending.visual.alt} loading="lazy" decoding="async" />
+            <CampaignMedia visual={campaign.ending.visual} />
           </figure>
         )}
         <div className={styles.rewardCopy}>
@@ -142,6 +209,19 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
           <p>{campaign.ending.reward}</p>
         </div>
       </section>
+
+      {campaign.ending.closingVisual && (
+        <section className={styles.closing} aria-label="Последний сюжетный кадр кампании">
+          <div className={styles.sectionHeading}>
+            <span>Эпилог финальной битвы</span>
+            <h2>{campaign.ending.closingTitle ?? 'Последний кадр кампании'}</h2>
+          </div>
+          <figure>
+            <CampaignMedia visual={campaign.ending.closingVisual} />
+            {campaign.ending.closingCaption && <figcaption>{campaign.ending.closingCaption}</figcaption>}
+          </figure>
+        </section>
+      )}
     </div>
   );
 }

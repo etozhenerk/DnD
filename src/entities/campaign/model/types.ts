@@ -1,7 +1,18 @@
-export interface CampaignVisual {
+export interface CampaignImageVisual {
   image: string;
   alt: string;
+  video?: never;
+  poster?: never;
 }
+
+export interface CampaignVideoVisual {
+  video: string;
+  alt: string;
+  poster?: string;
+  image?: never;
+}
+
+export type CampaignVisual = CampaignImageVisual | CampaignVideoVisual;
 
 export interface CampaignPresentation {
   pageSubtitle: string;
@@ -14,6 +25,7 @@ export interface CampaignPresentation {
   galleryEyebrow: string;
   galleryTitle: string;
   castTitle: string;
+  groupTitle?: string;
 }
 
 export interface CampaignLocation {
@@ -31,6 +43,14 @@ export interface CampaignPerson {
   role?: string;
   description?: string;
   story?: string;
+  motivation?: string;
+  visual?: CampaignVisual;
+}
+
+export interface CampaignPartyMember {
+  characterId: string;
+  displayName: string;
+  note?: string;
   visual?: CampaignVisual;
 }
 
@@ -42,7 +62,9 @@ export interface Campaign {
   summary: string;
   campaignGoal: string;
   partyCharacterIds: string[];
-  partyAtTime?: {characterId: string; displayName: string; note?: string}[];
+  gameMasterCharacterId?: string;
+  groupVisual?: CampaignVisual;
+  partyAtTime?: CampaignPartyMember[];
   presentation?: CampaignPresentation;
   completedChronicle?: {
     template: string;
@@ -59,5 +81,14 @@ export interface Campaign {
   locations: CampaignLocation[];
   npcs?: CampaignPerson[];
   enemies: (CampaignPerson & {tier: string; hp: number; ac: number; defeat?: string})[];
-  ending: {readAloud: string; epilogues: string[]; reward: string; featureTitle?: string; visual?: CampaignVisual};
+  ending: {
+    readAloud: string;
+    epilogues: string[];
+    reward: string;
+    featureTitle?: string;
+    visual?: CampaignVisual;
+    closingTitle?: string;
+    closingCaption?: string;
+    closingVisual?: CampaignVisual;
+  };
 }

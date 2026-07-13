@@ -280,6 +280,7 @@
 
 .sealTrack,
 .artGallery,
+.party,
 .cast,
 .aftermath {
   margin: 3rem auto 0;
@@ -364,8 +365,10 @@
   overflow: hidden;
 }
 
-.locationGallery img {
+.locationGallery img,
+.locationGallery video {
   aspect-ratio: 16 / 9;
+  background: var(--color-night-deep);
   display: block;
   object-fit: cover;
   width: 100%;
@@ -387,6 +390,7 @@
 }
 
 .locationGallery strong,
+.party h3,
 .cast h3 {
   color: var(--color-ice-bright);
   font-family: var(--font-display);
@@ -394,6 +398,7 @@
 }
 
 .locationGallery p,
+.party p,
 .cast p {
   color: var(--color-ink-muted);
   font-size: 0.76rem;
@@ -401,12 +406,30 @@
   margin: 0.35rem 0 0;
 }
 
+.partyGrid,
 .castGrid {
   display: grid;
   gap: 1rem;
+}
+
+.partyGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.castGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.npcGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.npcGrid article {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.9fr) minmax(0, 1.1fr);
+}
+
+.partyGrid article,
 .castGrid article {
   background: var(--gradient-frost-dark);
   border: 1px solid var(--color-ice-alpha-24);
@@ -415,19 +438,70 @@
   overflow: hidden;
 }
 
-.castGrid img {
+.partyGrid article:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: calc(50% - 0.5rem);
+}
+
+.groupVisual {
+  background: var(--gradient-frost-dark);
+  border: 1px solid var(--color-gold-alpha-32);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-ice);
+  margin: 0 0 1rem;
+  overflow: hidden;
+}
+
+.groupVisual img,
+.groupVisual video {
+  aspect-ratio: 12 / 5;
+  background: var(--color-night-deep);
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.groupVisual figcaption {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem 1.5rem;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+}
+
+.groupVisual strong {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.groupVisual span {
+  color: var(--color-gold-light);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.partyGrid img,
+.partyGrid video,
+.castGrid img,
+.castGrid video {
   aspect-ratio: 16 / 9;
+  background: var(--color-night-deep);
   display: block;
   object-fit: cover;
   object-position: center top;
   width: 100%;
 }
 
-.castGrid article > div {
+.partyCopy,
+.castCopy {
   padding: 1rem;
 }
 
-.castGrid article > div > span {
+.partyCopy > span,
+.castCopy > span {
   color: var(--color-gold-light);
   font-size: 0.58rem;
   font-weight: 700;
@@ -435,9 +509,40 @@
   text-transform: uppercase;
 }
 
+.party h3,
 .cast h3 {
   font-size: 1.15rem;
   margin: 0.35rem 0 0;
+}
+
+.castPlaceholder {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  background: var(--gradient-frost-dark);
+  border-bottom: 1px solid var(--color-ice-alpha-24);
+  display: flex;
+  justify-content: center;
+}
+
+.castPlaceholder span {
+  align-items: center;
+  background: var(--gradient-sigil);
+  border: 1px solid var(--color-gold-light);
+  border-radius: 50%;
+  color: var(--color-gold-light);
+  display: flex;
+  font-size: 1.4rem;
+  height: 3.5rem;
+  justify-content: center;
+  width: 3.5rem;
+}
+
+.npcGrid img,
+.npcGrid video,
+.npcGrid .castPlaceholder {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 13.5rem;
 }
 
 .enemyLedger {
@@ -494,7 +599,8 @@
   overflow: hidden;
 }
 
-.rewardArt img {
+.rewardArt img,
+.rewardArt video {
   height: 100%;
   object-fit: cover;
   width: 100%;
@@ -525,6 +631,36 @@
   padding-bottom: 1rem;
 }
 
+.closing {
+  margin: 4rem auto 0;
+  max-width: 1180px;
+}
+
+.closing figure {
+  background: var(--gradient-frost-dark);
+  border: 1px solid var(--color-gold-alpha-32);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-ice);
+  margin: 0;
+  overflow: hidden;
+}
+
+.closing img,
+.closing video {
+  aspect-ratio: 16 / 9;
+  background: var(--color-night-deep);
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.closing figcaption {
+  color: var(--color-ink-muted);
+  font-family: var(--font-display);
+  font-style: italic;
+  line-height: 1.55;
+  padding: 1rem 1.25rem;
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -540,9 +676,14 @@
 
   .scoreboard,
   .sealTrack ol,
+  .partyGrid,
   .castGrid,
   .restored {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .npcGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -564,13 +705,41 @@
     margin: auto;
   }
 
-    .scoreboard,
+  .scoreboard,
     .sealTrack ol,
     .locationGallery,
     .enemyLedger,
+    .partyGrid,
     .castGrid,
     .restored {
     grid-template-columns: 1fr;
+  }
+
+  .partyGrid article:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .groupVisual img,
+  .groupVisual video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .groupVisual figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .npcGrid article {
+    grid-template-columns: 1fr;
+  }
+
+  .npcGrid img,
+  .npcGrid video,
+  .npcGrid .castPlaceholder {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    min-height: 0;
   }
 
   .scoreboard div {
@@ -591,7 +760,8 @@
     margin: -2rem -1.25rem 0;
   }
 
-  .rewardArt img {
+  .rewardArt img,
+  .rewardArt video {
     aspect-ratio: 16 / 10;
     height: auto;
   }

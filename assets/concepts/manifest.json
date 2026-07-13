@@ -34,6 +34,32 @@
     {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}
   ],
   "campaigns": [
+    {"id": "nor-il-skald-starting-camp", "path": "assets/concepts/campaigns/nor-il-skald/locations/starting-camp.mp4", "status": "canonical", "purpose": "Зацикленная панорама стартового лагеря с доской объявлений."},
+    {"id": "nor-il-skald-northern-mines", "path": "assets/concepts/campaigns/nor-il-skald/locations/northern-mines.mp4", "status": "canonical", "purpose": "Зацикленная панорама северных шахт среди труб и ледяных пиков."},
+    {"id": "nor-il-skald-astronomer-tower", "path": "assets/concepts/campaigns/nor-il-skald/locations/astronomer-tower.mp4", "status": "canonical", "purpose": "Зацикленная панорама башни звёздного механизма."},
+    {"id": "nor-il-skald-luggage-forest", "path": "assets/concepts/campaigns/nor-il-skald/locations/luggage-forest.mp4", "status": "canonical", "purpose": "Зацикленная панорама леса потерянных чемоданов."},
+    {"id": "nor-il-skald-frozen-city", "path": "assets/concepts/campaigns/nor-il-skald/locations/frozen-city.mp4", "status": "canonical", "purpose": "Зацикленная панорама покинутого замёрзшего города."},
+    {"id": "nor-il-skald-ice-gates", "path": "assets/concepts/campaigns/nor-il-skald/locations/ice-gates.mp4", "status": "canonical", "purpose": "Зацикленная панорама закрытых ледяных врат."},
+    {"id": "nor-il-skald-runway-terminal", "path": "assets/concepts/campaigns/nor-il-skald/locations/runway-terminal.mp4", "status": "canonical", "purpose": "Зацикленная панорама зоны ожидания у полосы."},
+    {"id": "nor-il-skald-final-battle", "path": "assets/concepts/campaigns/nor-il-skald/locations/final-battle.mp4", "status": "canonical", "purpose": "Зацикленная панорама места финальной битвы."},
+    {"id": "nor-il-skald-party-group", "path": "assets/concepts/campaigns/nor-il-skald/party/group-with-game-master.jpg", "status": "canonical", "purpose": "Общий кадр пяти героев и Торина Пукощита в роли мастера игры."},
+    {"id": "nor-il-skald-party-bubsilda", "path": "assets/concepts/campaigns/nor-il-skald/party/bubsilda.mp4", "status": "canonical", "purpose": "Зацикленная походная карточка Бубсильды в Нор’Иль’Скальде."},
+    {"id": "nor-il-skald-party-linda", "path": "assets/concepts/campaigns/nor-il-skald/party/linda.mp4", "status": "canonical", "purpose": "Зацикленная походная карточка Линды в Нор’Иль’Скальде."},
+    {"id": "nor-il-skald-party-lambert", "path": "assets/concepts/campaigns/nor-il-skald/party/lambert.mp4", "status": "canonical", "purpose": "Зацикленная походная карточка Ламберта в Нор’Иль’Скальде."},
+    {"id": "nor-il-skald-party-lord-krayneplot", "path": "assets/concepts/campaigns/nor-il-skald/party/lord-krayneplot.mp4", "status": "canonical", "purpose": "Зацикленная походная карточка Лорда Крайнеплота в Нор’Иль’Скальде."},
+    {"id": "nor-il-skald-party-golovach-lena", "path": "assets/concepts/campaigns/nor-il-skald/party/golovach-lena.mp4", "status": "canonical", "purpose": "Зацикленная походная карточка Головача Лены в Нор’Иль’Скальде."},
+    {"id": "nor-il-skald-npc-alina", "path": "assets/concepts/campaigns/nor-il-skald/npcs/alina.mp4", "status": "canonical", "purpose": "Зацикленная карточка Алины из стартового лагеря."},
+    {"id": "nor-il-skald-npc-boris", "path": "assets/concepts/campaigns/nor-il-skald/npcs/boris.mp4", "status": "canonical", "purpose": "Зацикленная карточка Бориса из стартового лагеря."},
+    {"id": "nor-il-skald-npc-selia", "path": "assets/concepts/campaigns/nor-il-skald/npcs/selia.mp4", "status": "canonical", "purpose": "Зацикленная карточка Селии из стартового лагеря."},
+    {"id": "nor-il-skald-npc-camp-steward", "path": "assets/concepts/campaigns/nor-il-skald/npcs/camp-steward.mp4", "status": "canonical", "purpose": "Зацикленная карточка лагерного стюарда."},
+    {"id": "nor-il-skald-mountain-trolls", "path": "assets/concepts/campaigns/nor-il-skald/enemies/mountain-trolls.mp4", "status": "canonical", "purpose": "Одна группа из четырёх горных троллей в северных шахтах."},
+    {"id": "nor-il-skald-mine-tsar", "path": "assets/concepts/campaigns/nor-il-skald/enemies/mine-tsar.mp4", "status": "canonical", "purpose": "Зацикленная карточка Царя шахт с пустым баллончиком."},
+    {"id": "nor-il-skald-ice-sphinx", "path": "assets/concepts/campaigns/nor-il-skald/enemies/ice-sphinx.mp4", "status": "canonical", "purpose": "Зацикленная карточка Ледяного сфинкса из леса чемоданов."},
+    {"id": "nor-il-skald-northern-fleet-captains", "path": "assets/concepts/campaigns/nor-il-skald/enemies/northern-fleet-captains.jpg", "status": "canonical", "purpose": "Капитаны Северного флота как один групповой тип противника."},
+    {"id": "nor-il-skald-ice-stewards", "path": "assets/concepts/campaigns/nor-il-skald/enemies/ice-stewards.jpg", "status": "canonical", "purpose": "Ледяные стюарды как один групповой тип противника."},
+    {"id": "nor-il-skald-aerodrax", "path": "assets/concepts/campaigns/nor-il-skald/enemies/aerodrax.mp4", "status": "canonical", "purpose": "Единственный ледяной дракон и финальный босс кампании."},
+    {"id": "nor-il-skald-liberated-region", "path": "assets/concepts/campaigns/nor-il-skald/ending/liberated-nor-il-skald.jpg", "status": "canonical", "purpose": "Открытая карта Нор’Иль’Скальда как положительный итог снятого проклятия."},
+    {"id": "nor-il-skald-dragon-defeat", "path": "assets/concepts/campaigns/nor-il-skald/ending/dragon-defeat.mp4", "status": "canonical", "purpose": "Зацикленный эпилог гибели того же ледяного дракона после финальной битвы."},
     {"id": "linda-small-silent-shore", "path": "assets/concepts/campaigns/linda-small/locations/silent-shore.webp", "status": "canonical", "purpose": "Набережная «Молчаливый берег»."},
     {"id": "linda-small-last-breath-tavern", "path": "assets/concepts/campaigns/linda-small/locations/last-breath-tavern.webp", "status": "canonical", "purpose": "Таверна «Последний вздох»."},
     {"id": "linda-small-boathouse", "path": "assets/concepts/campaigns/linda-small/locations/boathouse.webp", "status": "canonical", "purpose": "Сарай с лодками у берега Вьетимы."},
@@ -75,9 +101,7 @@
   "world": [
     {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "Карта главного экрана с питахайями на Великом Древе."}
   ],
-  "rewards": [
-    {"id": "key-nor-il-skald", "path": "assets/concepts/rewards/key-nor-il-skald.png", "status": "reference", "purpose": "Сгенерированный арт награды «Ключ Нор’Иль’Скальда» для финала завершённой кампании."}
-  ],
+  "rewards": [],
   "regions": [
     {"id": "nor-il-skald", "path": "assets/concepts/world/regions/nor-il-skald.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
     {"id": "cloud-island", "path": "assets/concepts/world/regions/cloud-island.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},

@@ -10,10 +10,9 @@ import styles from './RegionPage.module.css';
 export function RegionPage() {
   const navigate = useNavigate();
   const {regionId} = useParams();
-  const region = worldMap.regions.find((item) => item.id === regionId || item.aliases?.includes(regionId ?? ''));
+  const region = worldMap.regions.find((item) => item.id === regionId);
 
   if (!region) return <Navigate replace to="/not-found" />;
-  if (region.id !== regionId) return <Navigate replace to={`/region/${region.id}`} />;
 
   const campaign = campaigns.find((item) => item.id === region.campaignId);
   const isPlanned = region.status !== 'completed' || !campaign;

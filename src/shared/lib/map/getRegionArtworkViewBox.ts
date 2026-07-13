@@ -3,8 +3,7 @@ type ArtworkBounds = readonly [left: number, top: number, right: number, bottom:
 const artworkBounds: Record<string, ArtworkBounds> = {
   'cloud-island': [382, 40, 678, 321],
   'desert-lands': [592, 557, 985, 979],
-  'great-tree-island': [37, 467, 242, 730],
-  'green-peninsula': [0, 312, 553, 740],
+  'linda-small': [0, 312, 553, 740],
   'mushroom-forest': [530, 430, 888, 709],
   'nor-il-skald': [0, 0, 402, 418],
   'waterfall-island': [599, 6, 1000, 427],

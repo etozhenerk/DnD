@@ -36,8 +36,7 @@
     },
     {
       "order": 1,
-      "id": "green-peninsula",
-      "aliases": ["great-tree-island"],
+      "id": "linda-small",
       "name": "Вьетима и Линда Смолл",
       "description": "Тёплая Вьетима и подаренный Линде остров волшебной питахайи образуют один сюжетный регион.",
       "image": "assets/concepts/world/regions/green-peninsula.png",

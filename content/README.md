@@ -39,14 +39,14 @@ unlockCondition, nextLocations[]
 ### Регион мировой карты
 
 ```text
-order, id, aliases[], name, description, image, imageLayers[], campaignId, status
+order, id, name, description, image, imageLayers[], campaignId, status
 polygon[]: пары [x, y] в системе координат viewBox 1024 × 1024
 additionalPolygons[]: дополнительные несмежные области того же региона
 ```
 
 `status` принимает `completed`, `ready` или `planned`. `campaignId` остаётся `null`, пока файл кампании не создан.
 `image` указывает на полноразмерный прозрачный слой региона 1024 × 1024, совмещённый с актуальной мировой картой. Он используется и как изображение региона, и для выделения земли при наведении.
-`imageLayers` и `additionalPolygons` используются, когда один сюжетный регион состоит из нескольких несмежных земель. `aliases` сохраняет старые URL объединённых областей.
+`imageLayers` и `additionalPolygons` используются, когда один сюжетный регион состоит из нескольких несмежных земель.
 
 ### Сцена
 

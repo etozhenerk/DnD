@@ -24,7 +24,7 @@ export function JourneyBook({campaign}: {campaign: Campaign}) {
           <h2>{chronicle?.finaleTitle ?? 'Финал легенды'}</h2>
           <p className={styles.ending}>{campaign.ending.readAloud}</p>
           <div className={styles.epilogueText}>
-            {campaign.ending.epilogues.slice(0, 3).map((epilogue) => <p key={epilogue}>{epilogue}</p>)}
+            {campaign.ending.epilogues.map((epilogue) => <p key={epilogue}>{epilogue}</p>)}
           </div>
           <p className={styles.reward}>{campaign.ending.reward}</p>
         </article>

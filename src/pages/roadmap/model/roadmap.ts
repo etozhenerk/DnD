@@ -22,6 +22,8 @@ export interface RoadmapSection {
 export interface RoadmapStage {
   number: number;
   title: string;
+  shortTitle: string;
+  summary: string;
   status: string;
   goal: string;
   sections: RoadmapSection[];
@@ -135,6 +137,8 @@ function parseSections(source: string): RoadmapSection[] {
 function parseStage(source: string): RoadmapStage {
   const titleMatch = source.match(/^# Этап (\d+)\.\s+(.+)$/m);
   const statusMatch = source.match(/^Статус:\s*(.+?)\.?$/m);
+  const shortTitleMatch = source.match(/^Короткое название:\s*(.+)$/m);
+  const summaryMatch = source.match(/^Краткое описание:\s*(.+)$/m);
   const sections = parseSections(source);
   const goal = sections.find((section) => section.title === 'Цель')?.blocks
     .filter((block): block is Extract<MarkdownBlock, {type: 'paragraph'}> => block.type === 'paragraph')
@@ -146,6 +150,8 @@ function parseStage(source: string): RoadmapStage {
   return {
     number: Number(titleMatch[1]),
     title: titleMatch[2],
+    shortTitle: plainText(shortTitleMatch?.[1] ?? titleMatch[2]).replace(/\.$/, ''),
+    summary: plainText(summaryMatch?.[1] ?? goal).replace(/\.$/, ''),
     status: statusMatch?.[1] ?? 'Не указан',
     goal,
     sections,

@@ -185,7 +185,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             const enemy = enemiesById.get(defeated.enemyId);
             return (
               <article key={defeated.enemyId}>
-                <span>{defeated.count}</span>
+                <span aria-label={`Количество: ${defeated.count}`}>×{defeated.count}</span>
                 <div><strong>{enemy?.name}</strong><p>{defeated.outcome}</p></div>
               </article>
             );

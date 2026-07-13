@@ -14,14 +14,14 @@ export function JourneyBook({campaign}: {campaign: Campaign}) {
       <div className={styles.bookInner}>
         <article className={styles.page}>
           <p className={styles.kicker}>Летопись похода</p>
-          <h2>Путь через вечный рейс</h2>
+          <h2>{chronicle?.journeyTitle ?? 'Летопись завершённого похода'}</h2>
           <div className={styles.story}>
             {(chronicle?.story ?? [campaign.summary]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
         </article>
         <article className={styles.page}>
           <p className={styles.kicker}>Финал легенды</p>
-          <h2>Прибытие — сейчас</h2>
+          <h2>{chronicle?.finaleTitle ?? 'Финал легенды'}</h2>
           <p className={styles.ending}>{campaign.ending.readAloud}</p>
           <div className={styles.epilogueText}>
             {campaign.ending.epilogues.slice(0, 3).map((epilogue) => <p key={epilogue}>{epilogue}</p>)}

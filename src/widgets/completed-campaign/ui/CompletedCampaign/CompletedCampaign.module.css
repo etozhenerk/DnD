@@ -279,6 +279,8 @@
 }
 
 .sealTrack,
+.artGallery,
+.cast,
 .aftermath {
   margin: 3rem auto 0;
   max-width: 1180px;
@@ -344,6 +346,97 @@
   color: var(--color-ink-muted);
   font-size: 0.78rem;
   line-height: 1.5;
+  margin: 0.35rem 0 0;
+}
+
+.locationGallery {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.locationGallery figure {
+  background: var(--gradient-frost-dark);
+  border: 1px solid var(--color-gold-alpha-32);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-ice);
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.locationGallery img {
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.locationGallery figcaption {
+  align-items: start;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: auto 1fr;
+  padding: 1rem;
+}
+
+.locationGallery figcaption > span {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.locationGallery strong,
+.cast h3 {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.locationGallery p,
+.cast p {
+  color: var(--color-ink-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  margin: 0.35rem 0 0;
+}
+
+.castGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.castGrid article {
+  background: var(--gradient-frost-dark);
+  border: 1px solid var(--color-ice-alpha-24);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-ice);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.castGrid img {
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  width: 100%;
+}
+
+.castGrid article > div {
+  padding: 1rem;
+}
+
+.castGrid article > div > span {
+  color: var(--color-gold-light);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cast h3 {
+  font-size: 1.15rem;
   margin: 0.35rem 0 0;
 }
 
@@ -447,6 +540,7 @@
 
   .scoreboard,
   .sealTrack ol,
+  .castGrid,
   .restored {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -470,10 +564,12 @@
     margin: auto;
   }
 
-  .scoreboard,
-  .sealTrack ol,
-  .enemyLedger,
-  .restored {
+    .scoreboard,
+    .sealTrack ol,
+    .locationGallery,
+    .enemyLedger,
+    .castGrid,
+    .restored {
     grid-template-columns: 1fr;
   }
 

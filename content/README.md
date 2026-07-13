@@ -9,8 +9,9 @@
 - `characters.json` — шесть готовых героев.
 - `characters/` — человекочитаемые lore-файлы героев, дополняющие канонический JSON.
 - `world-map.json` — карта, восемь кликабельных регионов и связи с кампаниями.
-- `campaigns/nor-il-skald.json` — кампания, локации, NPC, враги, сцены и финальный босс.
-- `campaigns/nor-il-skald-guide.md` — сценарий для мастера в удобном для чтения виде.
+- `campaigns/nor-il-skald.json` — завершённая северная кампания, локации, NPC, враги и летопись.
+- `campaigns/linda-small.json` — завершённая кампания Вьетимы и острова Линда Смолл.
+- `campaigns/*-guide.md` — синхронные человекочитаемые сценарии и итоги для мастера.
 
 ## Типовой шаблон сущностей
 
@@ -38,12 +39,14 @@ unlockCondition, nextLocations[]
 ### Регион мировой карты
 
 ```text
-order, id, name, description, image, campaignId, status
+order, id, aliases[], name, description, image, imageLayers[], campaignId, status
 polygon[]: пары [x, y] в системе координат viewBox 1024 × 1024
+additionalPolygons[]: дополнительные несмежные области того же региона
 ```
 
 `status` принимает `completed`, `ready` или `planned`. `campaignId` остаётся `null`, пока файл кампании не создан.
 `image` указывает на полноразмерный прозрачный слой региона 1024 × 1024, совмещённый с актуальной мировой картой. Он используется и как изображение региона, и для выделения земли при наведении.
+`imageLayers` и `additionalPolygons` используются, когда один сюжетный регион состоит из нескольких несмежных земель. `aliases` сохраняет старые URL объединённых областей.
 
 ### Сцена
 
@@ -53,11 +56,16 @@ choices[]: label, check, success, failure
 encounterId, rewards[], clues[], nextSceneIds[]
 ```
 
+### Исторический состав партии
+
+`partyCharacterIds` всегда ссылается на текущие стабильные `id` героев. Если во время старой кампании герой носил другое имя или ещё не прошёл каноническое перерождение, `partyAtTime[]` хранит `characterId`, историческое `displayName` и при необходимости поясняющее `note`.
+
 ### Летопись завершённой кампании
 
 ```text
 completedChronicle:
   template, statusLabel, completedSummary, finalResult
+  journeyTitle, finaleTitle
   story[]
   trials[]: id, title, locationId, result
   defeatedEnemies[]: enemyId, count, outcome
@@ -66,12 +74,14 @@ completedChronicle:
 
 `completedChronicle` — публичный шаблон пройденной кампании. Он хранит только то, что игроки уже знают после финала: какие испытания пройдены, какие враги побеждены или выведены из строя, что восстановлено и чем завершилась глава. Поля `enemyId` и `locationId` ссылаются на существующие сущности кампании.
 
+Кампания может хранить `presentation.pageSubtitle`, `presentation.background`, `presentation.statusSeal` и визуальные поля `visual.image` / `visual.alt` у локаций, NPC и врагов. Эти поля управляют только публичной подачей уже канонических фактов и ссылаются на зарегистрированные файлы из `assets/concepts/`.
+
 ## Термины времени
 
 - `turn` — ход одного участника.
 - `round` — все участники сделали по одному ходу.
 - `battle` — один бой.
 - `location` — пребывание в одной локации до перехода.
-- `campaign` — вся кампания Нор’Иль’Скальда.
+- `campaign` — вся текущая кампания.
 
 До появления автоматического движка спорные исходы решает мастер. Значения DC и характеристики в данных — рекомендуемые.

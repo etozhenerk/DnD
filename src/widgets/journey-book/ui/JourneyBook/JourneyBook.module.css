@@ -5,8 +5,8 @@
 .page:last-child { padding-left: 7%; padding-right: 7%; transform: translateX(-3%); }
 .kicker { color: var(--color-wine); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; margin: 0; text-transform: uppercase; }
 .page h2 { font-family: var(--font-display); font-size: clamp(1.25rem, 1.82vw, 2.12rem); font-weight: 500; line-height: 1; margin: 0.45rem 0 0.9rem; }
-.story { color: var(--color-ink-brown); font-family: var(--font-display); font-size: clamp(0.64rem, 0.88vw, 0.84rem); line-height: 1.48; }
-.story p { margin: 0 0 0.72rem; }
+.story { color: var(--color-ink-brown); font-family: var(--font-display); font-size: clamp(0.6rem, 0.78vw, 0.76rem); line-height: 1.42; }
+.story p { margin: 0 0 0.58rem; }
 .ending { border-top: 1px solid var(--color-parchment-dark); color: var(--color-ink-brown); font-family: var(--font-display); font-size: clamp(0.62rem, 0.85vw, 0.78rem); font-style: italic; line-height: 1.5; margin: 1rem 0 0; padding-top: 0.8rem; }
 .epilogueText { border-block: 1px solid var(--color-parchment-dark); color: var(--color-ink-brown); display: grid; font-size: clamp(0.54rem, 0.72vw, 0.68rem); gap: 0.52rem; line-height: 1.36; margin: 1rem 0 0; padding: 0.8rem 0; }
 .epilogueText p { margin: 0; }

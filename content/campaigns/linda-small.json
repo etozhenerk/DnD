@@ -1,0 +1,116 @@
+{
+  "id": "linda-small",
+  "title": "Линда и освобождение острова Линда Смолл",
+  "subtitle": "Пять героев против проклятого океана, красных фей и питахайевой диктатуры",
+  "status": "completed",
+  "recommendedPlayers": 5,
+  "recommendedDuration": "1,5–2 часа",
+  "tone": ["тропическое фэнтези", "личные шутки", "героический абсурд", "освобождение"],
+  "summary": "Красные феи во главе с древней Строганессой захватили остров Линда Смолл, подчинили жителей Вьетимы и окружили берег смертельным проклятием. Линда вернулась с друзьями, собрала зелье защиты, пересекла заколдованный океан и уничтожила источник силы Строганессы.",
+  "partyCharacterIds": ["linda", "lambert", "lord-krayneplot", "thorin-pukoshchit", "golovach-lena"],
+  "partyAtTime": [
+    {"characterId": "linda", "displayName": "Фея Линда"},
+    {"characterId": "lambert", "displayName": "Ламберт"},
+    {"characterId": "lord-krayneplot", "displayName": "Лорд Крайнеплот"},
+    {"characterId": "thorin-pukoshchit", "displayName": "Торин Пукощит II"},
+    {"characterId": "golovach-lena", "displayName": "Со Сал", "note": "В этой кампании ещё был полуросликом Со Салом; позже переродился в Головача Лену."}
+  ],
+  "campaignGoal": "Снять проклятие океана, освободить жителей Вьетимы и вернуть Линде её остров.",
+  "presentation": {
+    "pageSubtitle": "Тёплая Вьетима и остров волшебной питахайи, освобождённые от власти красных фей.",
+    "background": "assets/concepts/campaigns/linda-small/locations/stroganessa-lair.webp",
+    "statusSeal": {"primary": "Остров", "secondary": "свободен"},
+    "milestonesEyebrow": "Путь освобождения",
+    "milestonesTitle": "Как герои вернули Линде её остров",
+    "aftermathEyebrow": "Итоги сопротивления",
+    "aftermathTitle": "Кто больше не собирает чужую питахайю",
+    "galleryEyebrow": "Концепт-арты кампании",
+    "galleryTitle": "От Молчаливого берега до трона из корней",
+    "castTitle": "Жители, союзники и захватчики"
+  },
+  "completedChronicle": {
+    "template": "completed-campaign-v1",
+    "statusLabel": "Кампания завершена",
+    "completedSummary": "Отряд нашёл способ пережить проклятие океана, собрал ингредиенты для защитного зелья, добыл лодку и высадился на Линда Смолл. Пройдя плантации, меняющий тропы лес и зал красных воительниц, герои уничтожили дерево, питавшее Строганессу, и освободили остров.",
+    "finalResult": "Строганесса побеждена, её магия рассеялась, жители Вьетимы вышли из подчинения, а остров Линда Смолл снова принадлежит Линде.",
+    "journeyTitle": "Через Вьетиму к проклятому острову",
+    "finaleTitle": "Мой остров, мои правила",
+    "story": [
+      "На Молчаливом берегу Рыбалох рассказал героям о проклятии океана и спрятанных лодках. Через Марту, Элеонору и Архипа отряд собрал защитное зелье из Слезы русалки, пыльцы красной феи и древнего корня.",
+      "Линда открыла сарай, Ламберт починил лодку, и пятеро пересекли фиолетовую воду. На острове они миновали пристань и плантации, а сама Линда уговорила меняющий тропы лес показать дорогу к логову.",
+      "После боя в зале стражей герои разрушили дерево питахайи, лишили Строганессу регенерации и победили её совместной атакой. Океан очистился, жители Вьетимы вернули волю, а остров снова стал домом Линды."
+    ],
+    "trials": [
+      {"id": "curse-learned", "title": "Тайна фиолетового океана раскрыта", "locationId": "silent-shore", "result": "Рыбалох рассказал о проклятии и указал путь к лодкам и алхимику."},
+      {"id": "ingredients-gathered", "title": "Ингредиенты защитного зелья собраны", "locationId": "alchemist-house", "result": "Слеза русалки, пыльца красной феи и корень древнего дерева оказались у Элеоноры."},
+      {"id": "patrol-defeated", "title": "Патруль на площади остановлен", "locationId": "patrol-square", "result": "Красные феи потеряли контроль над центром города, а сопротивление Эдгара получило шанс действовать открыто."},
+      {"id": "boat-launched", "title": "Лодка возвращена в море", "locationId": "boathouse", "result": "Линда открыла сарай, Ламберт починил судно, а зелье Элеоноры защитило всю группу."},
+      {"id": "cursed-ocean-crossed", "title": "Проклятый океан пересечён", "locationId": "island-dock", "result": "Пятеро добрались до острова и не позволили стражам поднять тревогу вовремя."},
+      {"id": "island-crossed", "title": "Плантации и Лес заблуждений пройдены", "locationId": "maze-forest", "result": "Линда договорилась с растениями, и меняющиеся тропы вывели отряд к логову."},
+      {"id": "guard-hall-cleared", "title": "Зал стражей открыт", "locationId": "guard-hall", "result": "Четыре красные феи-воительницы побеждены, путь к трону Строганессы свободен."},
+      {"id": "stroganessa-defeated", "title": "Источник вечной жизни разрушен", "locationId": "stroganessa-lair", "result": "Дерево питахайи уничтожено, Строганесса лишилась регенерации и проиграла финальный бой."}
+    ],
+    "defeatedEnemies": [
+      {"enemyId": "red-fairy-patrol", "count": 3, "outcome": "Патрульные на площади побеждены, их пыльца стала ингредиентом защитного зелья."},
+      {"enemyId": "red-fairy-warrior", "count": 4, "outcome": "Элитные воительницы выведены из строя в зале перед логовом."},
+      {"enemyId": "stroganessa", "count": 1, "outcome": "Строганесса лишена силы дерева и побеждена в собственном тронном зале."}
+    ],
+    "restored": [
+      {"id": "ocean-cleansed", "title": "Океан снова безопасен", "result": "Смертельное проклятие рассеялось вместе с магией Строганессы."},
+      {"id": "vyetima-freed", "title": "Жители Вьетимы освобождены", "result": "Порабощённые люди вернули волю и больше не работают на красных фей."},
+      {"id": "linda-small-returned", "title": "Линда Смолл возвращён", "result": "Подаренный Линде остров снова принадлежит ей и её садам."},
+      {"id": "pitahaya-saved", "title": "Волшебная питахайя спасена", "result": "Плоды снова дарят вдохновение и силы, а не продлевают власть захватчицы."}
+    ]
+  },
+  "npcs": [
+    {"id": "rybalok", "name": "Рыбалох", "role": "Старый рыбак", "description": "Когда-то лучший рыбак Вьетимы. Рассказал героям о проклятии океана и спрятанных лодках.", "help": "Подсказал путь к сараю и Элеоноре.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/rybalok.webp", "alt": "Старый рыбак Рыбалох на заброшенной набережной Вьетимы."}},
+    {"id": "marta", "name": "Марта", "role": "Хозяйка таверны «Последний вздох»", "description": "Усталая, но наблюдательная хозяйка главного места встреч городского подполья.", "help": "Связала отряд с Элеонорой и сопротивлением.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/marta.webp", "alt": "Бармен Марта в тускло освещённой таверне."}},
+    {"id": "boris", "name": "Борис", "role": "Сторож сарая с лодками", "description": "Охранял лодки из страха за семью, а не из верности красным феям.", "help": "Не стал мешать героям после того, как понял их цель.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/boris.webp", "alt": "Сторож Борис с ключами у лодочного сарая."}},
+    {"id": "eleonora", "name": "Элеонора", "role": "Алхимик", "description": "Единственная в городе знала рецепт защиты от океанского проклятия.", "help": "Сварила зелье из Слезы русалки, пыльцы красной феи и древнего корня.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/eleonora.webp", "alt": "Алхимик Элеонора среди склянок и сушёных трав."}},
+    {"id": "arkhip", "name": "Архип", "role": "Библиотекарь", "description": "Древний гном, хранивший историю Вьетимы и сведения о слабости Строганессы.", "help": "Передал корень древнего дерева и объяснил связь босса с питахайей.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/arkhip.webp", "alt": "Гном-библиотекарь Архип среди высоких книжных полок."}},
+    {"id": "captain-edgar", "name": "Капитан Эдгар", "role": "Лидер сопротивления", "description": "Бывший капитан стражи, организовавший подполье против красных фей.", "help": "Раскрыл распорядок патрулей и защиту острова.", "visual": {"image": "assets/concepts/campaigns/linda-small/npcs/edgar.webp", "alt": "Капитан Эдгар, лидер сопротивления Вьетимы."}}
+  ],
+  "enemies": [
+    {"id": "red-fairy-patrol", "name": "Красная фея-патрульная", "tier": "minion", "tags": ["fairy", "flying", "red-fairy"], "hp": 15, "ac": 13, "attack": {"name": "Магические когти", "bonus": 4, "damage": "1d4+2"}, "weakness": "Аллергия на орехи: способность Со Сала накладывает помеху на 2 хода.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/red-fairy-patrol.webp", "alt": "Красная фея-патрульная Вьетимы."}},
+    {"id": "red-fairy-guard", "name": "Красная фея-стражница", "tier": "ordinary", "tags": ["fairy", "flying", "red-fairy"], "hp": 18, "ac": 14, "attack": {"name": "Магические когти", "bonus": 5, "damage": "1d6+3"}, "ability": {"name": "Поднять тревогу", "effect": "Один раз за бой призывает ещё двух патрульных, если герои не остановят её до следующего хода."}, "weakness": "Обман, скрытность и ослепляющая пыльца позволяют пройти пристань без затяжного боя.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/red-fairy-guard.webp", "alt": "Красная фея-стражница на островной пристани."}},
+    {"id": "red-fairy-overseer", "name": "Красная фея-надсмотрщица", "tier": "minion", "tags": ["fairy", "flying", "red-fairy"], "hp": 15, "ac": 13, "attack": {"name": "Магические когти", "bonus": 4, "damage": "1d4+2"}, "ability": {"name": "Приказ рабам", "effect": "Пытается заставить одного порабощённого жителя преградить путь; Мудрость DC 12 снимает приказ."}, "weakness": "Орехи Со Сала и освобождение жителей лишают её контроля поля боя.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/red-fairy-overseer.webp", "alt": "Красная фея-надсмотрщица на плантации питахайи."}},
+    {"id": "magic-guard-bush", "name": "Магический страж-куст", "tier": "ordinary", "tags": ["plant", "magic"], "hp": 20, "ac": 12, "attack": {"name": "Колючие плети", "bonus": 5, "damage": "1d6+3"}, "ability": {"name": "Запутывающие ветви", "effect": "Мудрость DC 13, иначе герой теряет перемещение до следующего хода."}, "weakness": "Зелёный шёпот Линды позволяет успокоить стража или найти безопасную тропу.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/magic-guard-bush.webp", "alt": "Оживший колючий куст в Лесу заблуждений."}},
+    {"id": "red-fairy-warrior", "name": "Красная фея-воительница", "tier": "elite", "tags": ["fairy", "flying", "red-fairy"], "hp": 25, "ac": 15, "attack": {"name": "Магический меч", "bonus": 6, "damage": "1d8+4"}, "ability": {"name": "Магический щит", "effect": "+2 AC до начала следующего хода.", "uses": 1}, "weakness": "Обман Со Сала и групповая кислотная атака Крайнеплота ломают строй стражи.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/red-fairy-warrior.webp", "alt": "Элитная красная фея-воительница с магическим оружием."}},
+    {"id": "stroganessa", "name": "Строганесса", "tier": "final-boss", "tags": ["fairy", "mage", "boss", "red-fairy"], "hp": 80, "ac": 16, "story": "Древняя красная фея, продлевавшая жизнь волшебной питахайей и подчинившая ради неё Вьетиму.", "motivation": "Сохранить вечную жизнь и монополию на сады Линды.", "attack": {"name": "Магическая атака", "bonus": 8, "damage": "2d8+6"}, "passive": {"name": "Питание дерева", "effect": "Пока дерево живо, в начале хода восстанавливает 1d6 HP. Уничтожение дерева снижает AC и бонус атаки на 2."}, "abilities": [{"name": "Магический взрыв", "effect": "Все в радиусе 5 метров проверяют Ловкость DC 14; при провале получают 2d6+4 урона."}, {"name": "Порабощение", "effect": "Мудрость DC 15, иначе цель действует по приказу Строганессы 2 хода."}, {"name": "Призыв воительниц", "effect": "Один раз за бой призывает двух красных фей-воительниц.", "uses": 1}], "weakness": "Дерево питахайи имеет 40 HP и AC 12. После его уничтожения Строганесса теряет регенерацию, 2 AC и 2 к атаке.", "visual": {"image": "assets/concepts/campaigns/linda-small/enemies/stroganessa.webp", "alt": "Строганесса — древняя фея в красном платье и с огромными алыми крыльями."}}
+  ],
+  "locations": [
+    {"id": "silent-shore", "order": 1, "name": "Набережная «Молчаливый берег»", "mapLabel": "Молчаливый берег", "summary": "Заброшенная пристань, где герои впервые увидели фиолетовую воду и остров в тумане.", "atmosphere": "Гниющие доски, мусор, опалённые листья и объявление о запрете плавания.", "npcs": ["rybalok"], "nextLocations": ["last-breath-tavern", "boathouse"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/silent-shore.webp", "alt": "Заваленная мусором набережная и остров Линда Смолл в тумане."}},
+    {"id": "last-breath-tavern", "order": 2, "name": "Таверна «Последний вздох»", "mapLabel": "Последний вздох", "summary": "Унылое заведение оказалось воротами к городскому сопротивлению.", "atmosphere": "Дешёвый эль, тихие разговоры и портрет Строганессы на стене.", "npcs": ["marta", "captain-edgar"], "nextLocations": ["alchemist-house", "patrol-square"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/last-breath-tavern.webp", "alt": "Тусклая таверна Вьетимы, где собираются отчаявшиеся жители."}},
+    {"id": "alchemist-house", "order": 3, "name": "Дом алхимика Элеоноры", "mapLabel": "Дом Элеоноры", "summary": "Здесь появился план пересечь проклятый океан и было сварено защитное зелье.", "atmosphere": "Склянки, сушёные травы, ладан и кислый запах магических реактивов.", "npcs": ["eleonora"], "nextLocations": ["patrol-square", "forgotten-knowledge-library", "boathouse"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/alchemist-house.webp", "alt": "Дом алхимика со склянками, травами и магическим светом."}},
+    {"id": "patrol-square", "order": 4, "name": "Площадь патруля", "mapLabel": "Площадь патруля", "summary": "На центральной площади герои добыли пыльцу красных фей и помогли сопротивлению.", "atmosphere": "Высохший фонтан, испуганные прохожие и проверки красных фей.", "encounters": ["city-patrol"], "nextLocations": ["forgotten-knowledge-library", "alchemist-house"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/patrol-square.webp", "alt": "Каменная площадь Вьетимы под контролем красных фей."}},
+    {"id": "forgotten-knowledge-library", "order": 5, "name": "Библиотека «Забытые знания»", "mapLabel": "Забытые знания", "summary": "Архип раскрыл слабость Строганессы и отдал корень древнего дерева.", "atmosphere": "Пыльные тома, высокие полки и проклятая красная книга.", "npcs": ["arkhip"], "nextLocations": ["alchemist-house", "boathouse"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/forgotten-knowledge-library.webp", "alt": "Старая библиотека Вьетимы с высокими книжными полками."}},
+    {"id": "boathouse", "order": 6, "name": "Сарай с лодками", "mapLabel": "Лодочный сарай", "summary": "Линда открыла замок, а Ламберт вернул к жизни старую лодку.", "atmosphere": "Пыль, инструменты, запах дерева и единственный путь через проклятую воду.", "npcs": ["boris"], "nextLocations": ["island-dock"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/boathouse.webp", "alt": "Запертый сарай со старыми лодками и инструментами."}},
+    {"id": "island-dock", "order": 7, "name": "Пристань острова", "mapLabel": "Пристань Линда Смолл", "summary": "Первая линия защиты острова была пройдена до того, как стражи подняли тревогу.", "atmosphere": "Мшистые колонны, светящиеся символы и сладко-гнилой запах питахайи.", "encounters": ["island-guards"], "nextLocations": ["pitahaya-plantations"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/island-dock.webp", "alt": "Древняя каменная пристань острова Линда Смолл в тумане."}},
+    {"id": "pitahaya-plantations", "order": 8, "name": "Плантации питахайи", "mapLabel": "Плантации", "summary": "Порабощённые жители выращивали плоды для вечной жизни Строганессы.", "atmosphere": "Ряды кустов, красное свечение фруктов и молчаливые рабочие под надзором фей.", "encounters": ["plantation-crossing"], "nextLocations": ["maze-forest"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/pitahaya-plantations.webp", "alt": "Светящиеся плантации питахайи на острове Линда Смолл."}},
+    {"id": "maze-forest", "order": 9, "name": "Лес заблуждений", "mapLabel": "Меняющийся лес", "summary": "Деревья двигали тропы, но Зелёный шёпот Линды заставил лес помочь героям.", "atmosphere": "Густые кроны, исчезающие тропинки и колючие стражи в тенях.", "encounters": ["maze-forest-crossing"], "nextLocations": ["guard-hall"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/maze-forest.webp", "alt": "Магический лес с меняющимися тропами и густой растительностью."}},
+    {"id": "guard-hall", "order": 10, "name": "Зал стражей", "mapLabel": "Зал воительниц", "summary": "Последняя охрана логова встретила героев под фресками Строганессы.", "atmosphere": "Высокие своды, красные фрески и магические клинки четырёх воительниц.", "encounters": ["warrior-hall"], "nextLocations": ["stroganessa-lair"], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/guard-hall.webp", "alt": "Высокий зал красных фей-воительниц перед логовом Строганессы."}},
+    {"id": "stroganessa-lair", "order": 11, "name": "Логово Строганессы", "mapLabel": "Трон из корней", "summary": "В тронном зале герои разрушили дерево питахайи и победили древнюю фею.", "atmosphere": "Трон из корней, гигантское дерево и руны, вспыхивающие под ногами.", "encounters": ["final-battle"], "nextLocations": [], "visual": {"image": "assets/concepts/campaigns/linda-small/locations/stroganessa-lair.webp", "alt": "Трон из корней под гигантским магическим деревом питахайи."}}
+  ],
+  "encounters": [
+    {"id": "city-patrol", "type": "combat-or-deception", "setup": "Три патрульные проверяют жителей у высохшего фонтана.", "combat": [{"enemyId": "red-fairy-patrol", "count": 3}], "success": "Пыльца добыта, жители освобождены, сопротивление получает пространство для действий."},
+    {"id": "island-guards", "type": "stealth-social-or-combat", "setup": "Две стражницы охраняют пристань и готовы поднять тревогу.", "combat": [{"enemyId": "red-fairy-guard", "count": 2}], "peacefulSolutions": ["Скрытность DC 14.", "История Со Сала или блёстки Линды против Мудрости DC 13."], "success": "Отряд проходит к плантациям без ранней тревоги."},
+    {"id": "plantation-crossing", "type": "exploration-or-combat", "setup": "Три надсмотрщицы следят за порабощёнными рабочими.", "combat": [{"enemyId": "red-fairy-overseer", "count": 3}], "peacefulSolutions": ["Обойти плантации по краю Мудростью DC 12.", "Отвлечь надсмотрщиц Харизмой DC 13."], "success": "Герои добираются до леса, не подвергая жителей лишней опасности."},
+    {"id": "maze-forest-crossing", "type": "exploration", "setup": "Тропы меняются каждые десять минут.", "challenges": ["Мудрость DC 13 для направления.", "Зелёный шёпот Линды автоматически открывает безопасную тропу."], "combatOnFailure": [{"enemyId": "magic-guard-bush", "count": 2}], "success": "Лес выводит героев к залу стражей."},
+    {"id": "warrior-hall", "type": "elite-combat-or-deception", "setup": "Четыре воительницы закрывают путь к тронному залу.", "combat": [{"enemyId": "red-fairy-warrior", "count": 4}], "peacefulSolutions": ["Со Сал убеждает стражу в придуманном приказе Строганессы."], "success": "Дверь в логово открыта."},
+    {"id": "pitahaya-tree", "type": "timed-objective", "setup": "Дерево питает броню и регенерацию Строганессы.", "objective": "Нанести дереву 40 урона против AC 12.", "success": "Строганесса теряет регенерацию, 2 AC и 2 к атакам."},
+    {"id": "final-battle", "type": "final-boss", "setup": "Строганесса защищает дерево, ставит ловушки и пытается подчинить героев.", "combat": [{"enemyId": "stroganessa", "count": 1}], "linkedObjective": "pitahaya-tree", "success": "Строганесса побеждена, проклятие океана и контроль жителей прекращаются."}
+  ],
+  "ending": {
+    "readAloud": "Строганесса падает на колени, и красный свет покидает её руны. Корни под троном затихают, фиолетовая вода за стенами светлеет, а над плантациями впервые за три года слышны не приказы, а голоса свободных жителей.",
+    "epilogues": [
+      "Линда возвращает острову своё имя и снова объявляет: «Мой остров, мои правила! И мои питахайи!»",
+      "Ламберт чинит всё, что успело сломаться за три года, и мысленно пересчитывает стоимость острова мечты.",
+      "Со Сал наедается вдохновляющей питахайей и отправляется спать. Позже он решит, что полуросликовая роль недостойна «Оскара», и переродится в Головача Лену.",
+      "Лорд Крайнеплот получает бесплатный ночлег в «Последнем вздохе» и новую порцию слухов под плащом.",
+      "Торин возвращается к семи работам с ещё одним искренним «спасибо» и истёртой картой Вьетимы в сумке."
+    ],
+    "reward": "Главная награда отряда — свободные жители, очищенный океан и спасённые сады волшебной питахайи.",
+    "featureTitle": "Остров Линда Смолл свободен",
+    "visual": {"image": "assets/concepts/campaigns/linda-small/locations/stroganessa-lair.webp", "alt": "Опустевший трон Строганессы под спасённым деревом питахайи."}
+  }
+}

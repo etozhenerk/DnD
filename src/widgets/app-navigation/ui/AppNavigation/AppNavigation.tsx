@@ -1,24 +1,22 @@
-import type {AppView} from '../../../../shared/lib/navigation/regionHash';
+import {NavLink, useLocation} from 'react-router-dom';
 import styles from './AppNavigation.module.css';
 
-interface AppNavigationProps {
-  activeView: AppView;
-  onAtlas: () => void;
-  onHeroes: () => void;
-}
+export function AppNavigation() {
+  const {pathname} = useLocation();
+  const isAtlasActive = pathname === '/' || pathname.startsWith('/region/');
 
-export function AppNavigation({activeView, onAtlas, onHeroes}: AppNavigationProps) {
-  const isAtlasActive = activeView === 'atlas' || activeView === 'region';
+  const getLinkClass = ({isActive}: {isActive: boolean}) => isActive ? styles.active : undefined;
 
   return (
     <nav className={styles.navigation} aria-label="Основная навигация">
-      <div className={styles.brand}>
+      <NavLink className={styles.brand} to="/" aria-label="Атлас приключений — на карту">
         <span className={styles.sigil} aria-hidden="true">D20</span>
-        <div><small>D&amp;D кампании</small><strong>Атлас приключений</strong></div>
-      </div>
+        <span className={styles.brandText}><small>D&amp;D кампании</small><strong>Атлас приключений</strong></span>
+      </NavLink>
       <div className={styles.links}>
-        <button aria-current={isAtlasActive ? 'page' : undefined} className={isAtlasActive ? styles.active : ''} type="button" onClick={onAtlas}><span aria-hidden="true">⌖</span>Карта</button>
-        <button aria-current={activeView === 'heroes' ? 'page' : undefined} className={activeView === 'heroes' ? styles.active : ''} type="button" onClick={onHeroes}><span aria-hidden="true">♜</span>Герои</button>
+        <NavLink end aria-current={isAtlasActive ? 'page' : undefined} className={isAtlasActive ? styles.active : undefined} to="/"><span aria-hidden="true">⌖</span>Карта</NavLink>
+        <NavLink className={getLinkClass} to="/heroes"><span aria-hidden="true">♜</span>Герои</NavLink>
+        <NavLink className={getLinkClass} to="/roadmap"><span aria-hidden="true">◫</span>Roadmap</NavLink>
       </div>
     </nav>
   );

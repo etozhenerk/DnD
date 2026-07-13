@@ -9,6 +9,15 @@
     <link rel="icon" type="image/png" href="%BASE_URL%favicon-32x32.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
     <title>Атлас приключений</title>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var route = params.get('route');
+        if (!route) return;
+        var base = '%BASE_URL%';
+        window.history.replaceState(null, '', base.replace(/\/$/, '') + route);
+      }());
+    </script>
   </head>
   <body>
     <div id="root"></div>

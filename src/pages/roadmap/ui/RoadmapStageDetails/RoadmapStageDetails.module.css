@@ -1,0 +1,27 @@
+.details { background: var(--gradient-roadmap-paper); border: 1px solid var(--color-roadmap-line); border-radius: 1rem; box-shadow: var(--shadow-roadmap); color: var(--color-roadmap-copy); min-width: 0; overflow: hidden; }
+.details > header { border-bottom: 1px solid var(--color-roadmap-line); padding: clamp(1.2rem, 3vw, 2rem); }
+.meta { align-items: center; color: var(--color-roadmap-accent); display: flex; font-size: 0.67rem; font-weight: 700; justify-content: space-between; letter-spacing: 0.12em; text-transform: uppercase; }
+.status { align-items: center; color: var(--color-roadmap-status); display: flex; gap: 0.4rem; letter-spacing: 0.04em; text-transform: capitalize; }
+.status i { background: var(--color-roadmap-status); border-radius: 50%; height: 0.42rem; width: 0.42rem; }
+.details h2 { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: clamp(1.7rem, 3.4vw, 2.8rem); font-weight: 500; line-height: 1.05; margin: 0.65rem 0 0.75rem; }
+.details > header > p { color: var(--color-roadmap-copy); font-size: 0.92rem; line-height: 1.62; margin: 0; max-width: 48rem; }
+.sections { padding: 0 clamp(1rem, 2.5vw, 1.6rem) 1.4rem; }
+.sections details { border-bottom: 1px solid var(--color-roadmap-line); }
+.sections summary { align-items: center; color: var(--color-roadmap-heading); cursor: pointer; display: flex; font-size: 0.88rem; font-weight: 700; justify-content: space-between; list-style: none; padding: 1rem 0.35rem; }
+.sections summary::-webkit-details-marker { display: none; }
+.sections summary i { border-bottom: 1px solid currentColor; border-right: 1px solid currentColor; height: 0.48rem; margin-right: 0.3rem; transform: rotate(45deg); transition: transform 160ms ease; width: 0.48rem; }
+.sections details[open] summary i { transform: rotate(225deg); }
+.sections summary:hover { color: var(--color-roadmap-accent); }
+.sections summary:focus-visible { outline: 2px solid var(--color-ice-bright); outline-offset: 3px; }
+.sectionBody { padding: 0 0.35rem 1rem; }
+
+@media (max-width: 520px) {
+  .details > header { padding: 1.1rem; }
+  .details > header > p { font-size: 0.86rem; }
+  .sections { padding-inline: 0.7rem; }
+  .sections summary { font-size: 0.82rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sections summary i { transition: none; }
+}

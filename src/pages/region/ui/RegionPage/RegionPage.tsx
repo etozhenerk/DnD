@@ -1,17 +1,19 @@
 import type {CSSProperties} from 'react';
-import type {Region} from '../../../../entities/region/model/types';
+import {Navigate, useNavigate, useParams} from 'react-router-dom';
+import {worldMap} from '../../../../shared/config/gameData';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {PageHeader} from '../../../../widgets/page-header/ui/PageHeader/PageHeader';
 import {PlannedCampaign} from '../../../../widgets/planned-campaign/ui/PlannedCampaign/PlannedCampaign';
 import {CompletedCampaign} from '../../../../widgets/completed-campaign/ui/CompletedCampaign/CompletedCampaign';
 import styles from './RegionPage.module.css';
 
-interface RegionPageProps {
-  region: Region;
-  onBack: () => void;
-}
+export function RegionPage() {
+  const navigate = useNavigate();
+  const {regionId} = useParams();
+  const region = worldMap.regions.find((item) => item.id === regionId);
 
-export function RegionPage({region, onBack}: RegionPageProps) {
+  if (!region) return <Navigate replace to="/not-found" />;
+
   const isPlanned = region.status !== 'completed';
   const completedSubtitle = 'Северное королевство льда, дворцовых ангаров и упрямых жителей, переживших самый долгий рейс в истории.';
   const backgroundAsset = isPlanned
@@ -23,7 +25,7 @@ export function RegionPage({region, onBack}: RegionPageProps) {
 
   return (
     <main className={`${styles.page} ${isPlanned ? styles.planned : styles.completed}`} style={pageStyle}>
-      <PageHeader eyebrow="" title={region.name} subtitle={isPlanned ? '' : completedSubtitle} onBack={onBack} />
+      <PageHeader eyebrow="" title={region.name} subtitle={isPlanned ? '' : completedSubtitle} onBack={() => navigate('/')} />
       {region.status === 'completed' ? <CompletedCampaign region={region} /> : <PlannedCampaign region={region} />}
     </main>
   );

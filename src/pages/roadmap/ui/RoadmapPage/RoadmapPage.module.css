@@ -1,0 +1,33 @@
+.page { background: var(--gradient-roadmap-background); min-height: 100dvh; padding: 112px clamp(1rem, 4vw, 4rem) 4rem; }
+.intro { align-items: end; display: flex; gap: 2rem; justify-content: space-between; margin: 0 auto 1.6rem; max-width: 84rem; }
+.eyebrow { color: var(--color-roadmap-accent); display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; margin-bottom: 0.5rem; text-transform: uppercase; }
+.intro h1 { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4.4rem); font-weight: 500; letter-spacing: 0.01em; line-height: 0.98; margin: 0; max-width: 48rem; text-shadow: var(--shadow-title); }
+.overview { align-items: center; border-left: 1px solid var(--color-roadmap-line-strong); display: grid; flex: 0 0 auto; grid-template-columns: auto auto; padding-left: 1.2rem; }
+.overview strong { color: var(--color-roadmap-accent); font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; grid-row: 1 / 3; margin-right: 0.7rem; }
+.overview span { color: var(--color-roadmap-heading); font-size: 0.72rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
+.overview small { color: var(--color-roadmap-copy); font-size: 0.62rem; line-height: 1.35; margin-top: 0.35rem; }
+.layout { align-items: start; display: grid; gap: clamp(1rem, 2vw, 1.6rem); grid-template-columns: minmax(17rem, 21rem) minmax(0, 1fr); margin: 0 auto; max-width: 84rem; }
+.sidebar { background: var(--color-roadmap-sidebar); border: 1px solid var(--color-roadmap-line); border-radius: 1rem; padding: 1rem; position: sticky; top: 92px; }
+.sidebarTitle { align-items: baseline; display: flex; justify-content: space-between; margin-bottom: 0.8rem; padding: 0 0.2rem; }
+.sidebarTitle span { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: 1rem; }
+.sidebarTitle small { color: var(--color-roadmap-copy); font-size: 0.64rem; }
+.picker { display: none; }
+
+@media (max-width: 780px) {
+  .page { padding: 88px 0.85rem 2.5rem; }
+  .intro { align-items: start; }
+  .overview { display: none; }
+  .layout { display: block; }
+  .sidebar { margin-bottom: 1rem; position: static; }
+  .stageList { display: none; }
+  .picker { display: grid; gap: 0.45rem; }
+  .picker span { color: var(--color-roadmap-copy); font-size: 0.68rem; }
+  .picker select { appearance: none; background-color: var(--color-roadmap-card); border: 1px solid var(--color-roadmap-line-strong); border-radius: 0.6rem; color: var(--color-roadmap-heading); font: inherit; font-size: 0.85rem; padding: 0.72rem 2.4rem 0.72rem 0.75rem; width: 100%; }
+  .picker select:focus-visible { outline: 2px solid var(--color-ice-bright); outline-offset: 3px; }
+}
+
+@media (max-width: 520px) {
+  .page { padding: 78px 0.65rem 2rem; }
+  .intro { margin-bottom: 1rem; padding-inline: 0.3rem; }
+  .intro h1 { font-size: 2rem; line-height: 1.05; }
+}

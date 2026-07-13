@@ -30,7 +30,8 @@ button {
 }
 
 button:focus-visible,
-[role='button']:focus-visible {
+[role='button']:focus-visible,
+a:focus-visible {
   outline: 2px solid var(--color-ice-bright);
   outline-offset: 3px;
 }

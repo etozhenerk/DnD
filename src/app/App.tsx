@@ -1,18 +1,24 @@
-import {useAppNavigation} from '../features/region-navigation/model/useAppNavigation';
-import {worldMap} from '../shared/config/gameData';
+import {RouterProvider, createBrowserRouter} from 'react-router-dom';
+import {AppLayout} from './ui/AppLayout/AppLayout';
 import {AtlasPage} from '../pages/atlas/ui/AtlasPage/AtlasPage';
-import {RegionPage} from '../pages/region/ui/RegionPage/RegionPage';
 import {HeroesPage} from '../pages/heroes/ui/HeroesPage/HeroesPage';
-import {AppNavigation} from '../widgets/app-navigation/ui/AppNavigation/AppNavigation';
+import {NotFoundPage} from '../pages/not-found/ui/NotFoundPage/NotFoundPage';
+import {RegionPage} from '../pages/region/ui/RegionPage/RegionPage';
+import {RoadmapPage} from '../pages/roadmap/ui/RoadmapPage/RoadmapPage';
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {index: true, element: <AtlasPage />},
+      {path: 'heroes', element: <HeroesPage />},
+      {path: 'region/:regionId', element: <RegionPage />},
+      {path: 'roadmap', element: <RoadmapPage />},
+      {path: '*', element: <NotFoundPage />},
+    ],
+  },
+], {basename: import.meta.env.BASE_URL});
 
 export function App() {
-  const {view, regionId, openRegion, openAtlas, openHeroes} = useAppNavigation();
-  const region = worldMap.regions.find((item) => item.id === regionId);
-
-  return (
-    <>
-      <AppNavigation activeView={view} onAtlas={openAtlas} onHeroes={openHeroes} />
-      {region ? <RegionPage region={region} onBack={openAtlas} /> : view === 'heroes' ? <HeroesPage /> : <AtlasPage onSelect={openRegion} />}
-    </>
-  );
+  return <RouterProvider router={router} />;
 }

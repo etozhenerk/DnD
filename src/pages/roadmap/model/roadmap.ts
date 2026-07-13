@@ -29,6 +29,15 @@ export interface RoadmapStage {
   sections: RoadmapSection[];
 }
 
+export interface ResearchProduct {
+  name: string;
+  url: string;
+  solutionType: string;
+  capabilities: string;
+  adopted: string;
+  excluded: string;
+}
+
 function normalizeInline(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
 }
@@ -158,9 +167,36 @@ function parseStage(source: string): RoadmapStage {
   };
 }
 
+function parseResearchProducts(source: string): ResearchProduct[] {
+  const start = source.indexOf('### Сравнение по продуктам');
+  if (start < 0) return [];
+
+  const section = source.slice(start).split('\n### ')[0];
+  const rows = section.split('\n').filter((line) => line.startsWith('|'));
+
+  return rows.slice(2).map((row) => {
+    const [product, solutionType, capabilities, adopted, excluded] = row
+      .split('|')
+      .slice(1, -1)
+      .map((cell) => cell.trim());
+    const link = product.match(/^\[([^\]]+)]\(([^)]+)\)$/);
+
+    return {
+      name: link?.[1] ?? plainText(product),
+      url: link?.[2] ?? '',
+      solutionType: plainText(solutionType),
+      capabilities: plainText(capabilities),
+      adopted: plainText(adopted),
+      excluded: plainText(excluded),
+    };
+  });
+}
+
 const stageSources = [stage1Source, stage2Source, stage3Source, stage4Source, stage5Source, stage6Source, stage7Source];
 
 export const roadmapStages = stageSources.map(parseStage);
+
+export const roadmapResearch = parseResearchProducts(productRoadmapSource);
 
 export const roadmapOverview = {
   title: productRoadmapSource.match(/^#\s+(.+)$/m)?.[1] ?? 'Продуктовый roadmap',

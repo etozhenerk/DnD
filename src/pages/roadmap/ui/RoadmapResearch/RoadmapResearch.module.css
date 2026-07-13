@@ -1,0 +1,43 @@
+.research { background: var(--color-roadmap-sidebar); border: 1px solid var(--color-roadmap-line); border-radius: 1rem; overflow: hidden; padding: clamp(1rem, 2.4vw, 1.8rem); }
+.intro { align-items: end; display: flex; gap: 2rem; justify-content: space-between; }
+.intro > div > span { color: var(--color-roadmap-accent); display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; margin-bottom: 0.35rem; text-transform: uppercase; }
+.intro h2 { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 500; line-height: 1.08; margin: 0; max-width: 40rem; }
+.intro p { color: var(--color-roadmap-copy); font-size: 0.8rem; line-height: 1.5; margin: 0; max-width: 28rem; text-align: right; }
+.categories { display: grid; gap: 0.7rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1.5rem 0; }
+.categories > div { align-items: center; background: var(--color-roadmap-card); border: 1px solid var(--color-roadmap-line); border-radius: 0.75rem; display: flex; gap: 0.7rem; padding: 0.75rem 0.9rem; }
+.categories strong { color: var(--color-roadmap-accent); font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; }
+.categories span { color: var(--color-roadmap-heading); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; }
+.grid { display: grid; gap: 0.8rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { background: var(--color-roadmap-card); border: 1px solid var(--color-roadmap-line); border-radius: 0.85rem; min-width: 0; overflow: hidden; }
+.card > header { align-items: start; border-bottom: 1px solid var(--color-roadmap-line); display: flex; gap: 1rem; justify-content: space-between; padding: 0.9rem 1rem; }
+.card > header > span { color: var(--color-roadmap-status); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.card a { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; text-align: right; text-decoration-color: var(--color-roadmap-line-strong); text-underline-offset: 0.18em; }
+.card a i { color: var(--color-roadmap-accent); font-family: var(--font-body); font-size: 0.65em; font-style: normal; margin-left: 0.3rem; }
+.card dl { margin: 0; }
+.card dl > div { padding: 0.85rem 1rem; }
+.card dl > div + div { border-top: 1px solid var(--color-roadmap-line); }
+.card dt { color: var(--color-roadmap-accent); font-size: 0.61rem; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 0.25rem; text-transform: uppercase; }
+.card dd { color: var(--color-roadmap-copy); font-size: 0.78rem; line-height: 1.5; margin: 0; }
+.card .adopted { background: var(--gradient-roadmap-selected); }
+.card .adopted dt { color: var(--color-roadmap-status); }
+.card .excluded dt { color: var(--color-roadmap-copy); }
+.card .excluded dd { font-size: 0.72rem; }
+.research > footer { border-top: 1px solid var(--color-roadmap-line-strong); margin-top: 1.4rem; padding: 1.2rem 0.3rem 0.2rem; }
+.research > footer strong { color: var(--color-roadmap-accent); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.research > footer p { color: var(--color-roadmap-copy-strong); font-family: var(--font-display); font-size: 1.05rem; line-height: 1.5; margin: 0.45rem 0 0; max-width: 65rem; }
+
+@media (max-width: 780px) {
+  .intro { align-items: start; display: grid; gap: 0.65rem; }
+  .intro p { text-align: left; }
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .research { padding: 1rem 0.75rem; }
+  .intro h2 { font-size: 1.5rem; }
+  .categories { gap: 0.45rem; grid-template-columns: 1fr; margin: 1rem 0; }
+  .categories > div { padding: 0.6rem 0.75rem; }
+  .categories strong { font-size: 1.2rem; }
+  .card > header { align-items: center; }
+  .card a { font-size: 1.05rem; }
+}

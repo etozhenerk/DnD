@@ -7,6 +7,12 @@
 .overview strong { color: var(--color-roadmap-accent); font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; grid-row: 1 / 3; margin-right: 0.7rem; }
 .overview span { color: var(--color-roadmap-heading); font-size: 0.72rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
 .overview small { color: var(--color-roadmap-copy); font-size: 0.62rem; line-height: 1.35; margin-top: 0.35rem; }
+.sections { display: flex; gap: 0.45rem; margin: 0 auto 0.8rem; max-width: 84rem; }
+.sections button { background: var(--color-roadmap-card); border: 1px solid var(--color-roadmap-line); border-radius: 0.7rem; color: var(--color-roadmap-copy); cursor: pointer; font-size: 0.76rem; font-weight: 700; padding: 0.7rem 0.9rem; transition: background 160ms ease, border-color 160ms ease; }
+.sections button:hover { background: var(--color-roadmap-card-hover); border-color: var(--color-roadmap-line-strong); color: var(--color-roadmap-heading); }
+.sections button:focus-visible { outline: 2px solid var(--color-ice-bright); outline-offset: 3px; }
+.sections button span { color: var(--color-roadmap-accent); font-family: var(--font-display); font-size: 0.7rem; margin-right: 0.4rem; }
+.sections .active { background: var(--gradient-roadmap-selected); border-color: var(--color-roadmap-accent); color: var(--color-roadmap-heading); box-shadow: var(--shadow-roadmap-selected); }
 .content { display: grid; gap: clamp(1rem, 2vw, 1.6rem); margin: 0 auto; max-width: 84rem; }
 
 @media (max-width: 780px) {
@@ -20,4 +26,10 @@
   .intro { margin-bottom: 1rem; padding-inline: 0.3rem; }
   .intro h1 { font-size: 2.25rem; line-height: 1.02; }
   .intro > div > p { font-size: 0.82rem; }
+  .sections { display: grid; grid-template-columns: 1fr; }
+  .sections button { text-align: left; width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sections button { transition: none; }
 }

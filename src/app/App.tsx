@@ -4,6 +4,7 @@ import {AtlasPage} from '../pages/atlas/ui/AtlasPage/AtlasPage';
 import {HeroesPage} from '../pages/heroes/ui/HeroesPage/HeroesPage';
 import {NotFoundPage} from '../pages/not-found/ui/NotFoundPage/NotFoundPage';
 import {RegionPage} from '../pages/region/ui/RegionPage/RegionPage';
+import {RacesPage} from '../pages/races/ui/RacesPage/RacesPage';
 import {RoadmapPage} from '../pages/roadmap/ui/RoadmapPage/RoadmapPage';
 
 const router = createBrowserRouter([
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       {index: true, element: <AtlasPage />},
       {path: 'heroes', element: <HeroesPage />},
+      {path: 'races', element: <RacesPage />},
       {path: 'region/:regionId', element: <RegionPage />},
       {path: 'roadmap', element: <RoadmapPage />},
       {path: '*', element: <NotFoundPage />},

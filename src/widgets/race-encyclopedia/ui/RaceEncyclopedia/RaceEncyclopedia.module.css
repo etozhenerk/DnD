@@ -1,0 +1,42 @@
+.index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 1.4rem clamp(1rem, 4vw, 3rem) 2rem;
+}
+
+.index a {
+  background: var(--color-black-alpha-24);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-silver);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  padding: 0.55rem 0.75rem;
+  text-decoration: none;
+}
+
+.index a:hover { background: var(--color-brass-alpha-12); color: var(--color-gold-light); }
+.catalogue { padding-bottom: 1rem; }
+
+@media (max-width: 520px) {
+  .index {
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    max-width: 100vw;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-inline: 0.75rem 2rem;
+    scroll-padding-inline: 0.75rem;
+    scroll-snap-type: inline proximity;
+    scrollbar-width: thin;
+    touch-action: pan-x;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .index a { flex: 0 0 auto; scroll-snap-align: start; }
+}

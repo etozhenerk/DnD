@@ -14,13 +14,15 @@
     {"id": "thorin-pukoshchit", "path": "assets/concepts/characters/thorin-pukoshchit.webp", "status": "canonical", "raceConceptIds": ["dwarves"]}
   ],
   "races": [
-    {"id": "ice-wardens", "path": "assets/concepts/races/ice-wardens.webp", "status": "reference"},
-    {"id": "humans", "path": "assets/concepts/races/humans.webp", "status": "reference"},
-    {"id": "elves", "path": "assets/concepts/races/elves.webp", "status": "reference"},
-    {"id": "halflings", "path": "assets/concepts/races/halflings.webp", "status": "reference"},
-    {"id": "dwarves", "path": "assets/concepts/races/dwarves.webp", "status": "reference"},
-    {"id": "dragonborn", "path": "assets/concepts/races/dragonborn.webp", "status": "reference"},
-    {"id": "fairies", "path": "assets/concepts/races/fairies-linfea.webp", "status": "reference", "note": "Текущий ориентир основан на утверждённом образе Линды."}
+    {"id": "ice-wardens", "path": "assets/concepts/races/ice-wardens-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "humans", "path": "assets/concepts/races/humans-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "elves", "path": "assets/concepts/races/elves-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "halflings", "path": "assets/concepts/races/halflings-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "dwarves", "path": "assets/concepts/races/dwarves-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "dragonborn", "path": "assets/concepts/races/dragonborn-clean.avif", "status": "reference", "note": "Чистый арт без текстового блока исходного листа расы."},
+    {"id": "fairies", "path": "assets/concepts/races/fairies-linfea-clean.avif", "status": "reference", "note": "Безымянная фея Линфеи; образ не основан на Линде."},
+    {"id": "gnomes", "path": "assets/concepts/races/gnomes.avif", "status": "reference", "note": "Сгенерированный общий образ гномов по концепту Архипа."},
+    {"id": "mountain-trolls", "path": "assets/concepts/races/mountain-trolls.avif", "status": "reference", "note": "Сгенерированный общий образ горных троллей по летописи Нор’Иль’Скальда."}
   ],
   "style": [
     {"id": "party-lineup", "path": "assets/concepts/style/party-lineup.webp", "status": "reference", "purpose": "Масштаб, свет, единый стиль команды."},
@@ -29,6 +31,7 @@
     {"id": "character-sheet-inventory", "path": "assets/concepts/style/character-sheet-inventory.webp", "status": "reference", "purpose": "Разворот инвентаря."},
     {"id": "atlas-background", "path": "assets/concepts/style/atlas-background.webp", "status": "reference", "purpose": "Атмосферный фон стола мастера для главной страницы атласа."},
     {"id": "planned-campaign-background", "path": "assets/concepts/style/planned-campaign-background.webp", "status": "reference", "purpose": "Тёмный стол картографа для страниц ещё не открытых кампаний."},
+    {"id": "races-archive-background", "path": "assets/concepts/style/races-archive-background.avif", "status": "reference", "purpose": "Сгенерированный тёмный стол-архив для энциклопедии рас."},
     {"id": "nor-il-skald-completed-background", "path": "assets/concepts/style/nor-il-skald-completed-background-tall.png", "status": "reference", "purpose": "Сгенерированный вертикальный фон ледяного тронного ангара для завершённой страницы Нор’Иль’Скальда."},
     {"id": "linda-small-completed-background", "path": "assets/concepts/style/linda-small-completed-background-tall.png", "status": "canonical", "purpose": "Сгенерированный вертикальный фон тропического зала и острова с питахайями для завершённой страницы Линда Смолл."},
     {"id": "planned-campaign-open-book", "path": "assets/concepts/style/planned-campaign-open-book.png", "status": "reference", "purpose": "Прозрачный открытый книжный разворот для страницы будущей кампании."}

@@ -136,6 +136,7 @@
     "race": "Огненный драконорождённый, бывший полурослик Со Сал",
     "role": "Огненный боец и искатель секретов",
     "visual": {"portrait": "assets/concepts/characters/golovach-lena.webp", "status": "canonical", "raceConceptIds": ["dragonborn"], "alt": "Головач Лена — рогатый драконорождённый с тёмной чешуёй и огненными руками среди ледников."},
+    "raceHistory": [{"raceConceptId": "halflings", "displayName": "Со Сал", "status": "former", "note": "Прошёл кампанию Вьетимы полуросликом, а позже переродился в Головача Лену."}],
     "hp": 50,
     "maxHp": 50,
     "ac": 12,

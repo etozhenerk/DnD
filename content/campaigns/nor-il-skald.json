@@ -164,6 +164,7 @@
       "id": "alina",
       "name": "Алина",
       "role": "Торговка стартового лагеря",
+      "raceConceptIds": ["humans"],
       "description": "Считает объявление на доске заманухой во время кризиса. Продаёт пирожки с наценкой, знает о колесе и умеет превращать любой торг в цену ещё выше.",
       "visual": {
         "video": "assets/concepts/campaigns/nor-il-skald/npcs/alina.mp4",
@@ -174,6 +175,7 @@
       "id": "boris",
       "name": "Борис",
       "role": "Завсегдатай лагеря",
+      "raceConceptIds": ["humans"],
       "description": "Обычно просто болтает и не отвечает ничего конкретного. За выпивку или удачный обман может дать базовые сведения о соседях, намекнуть на врата и на обзор с башни.",
       "visual": {
         "video": "assets/concepts/campaigns/nor-il-skald/npcs/boris.mp4",
@@ -184,6 +186,7 @@
       "id": "selia",
       "name": "Селия",
       "role": "Механик и устроительница конкурсов",
+      "raceConceptIds": ["gnomes"],
       "description": "Проводит лагерные конкурсы. Главный приз — информация про шахты и пустой баллончик, который хранится у Царя шахт.",
       "visual": {
         "video": "assets/concepts/campaigns/nor-il-skald/npcs/selia.mp4",
@@ -205,6 +208,7 @@
     {
       "id": "mountain-troll",
       "name": "Горный тролль",
+      "raceConceptIds": ["mountain-trolls"],
       "tier": "brute",
       "hp": 28,
       "ac": 12,
@@ -221,6 +225,7 @@
     {
       "id": "mine-tsar",
       "name": "Царь шахт",
+      "raceConceptIds": ["mountain-trolls"],
       "tier": "lieutenant",
       "hp": 52,
       "ac": 13,
@@ -237,6 +242,7 @@
     {
       "id": "ice-sphinx",
       "name": "Ледяной сфинкс",
+      "raceConceptIds": ["ice-sphinxes"],
       "tier": "lieutenant",
       "hp": 50,
       "ac": 14,
@@ -252,6 +258,7 @@
     {
       "id": "northern-fleet-captain",
       "name": "Капитан Северного флота",
+      "raceConceptIds": ["ice-wardens"],
       "tier": "brute",
       "hp": 28,
       "ac": 13,
@@ -267,6 +274,7 @@
     {
       "id": "ice-steward",
       "name": "Ледяной стюард",
+      "raceConceptIds": ["ice-wardens"],
       "tier": "minion",
       "hp": 16,
       "ac": 11,
@@ -282,10 +290,11 @@
     {
       "id": "aerodrax",
       "name": "Ледяной дракон Нор’Иль’Скальда",
+      "raceConceptIds": ["ice-dragons"],
       "tier": "final-boss",
       "hp": 90,
       "ac": 16,
-      "description": "Единственный дракон кампании и финальный босс. Все изображения и видео дракона относятся к этой одной сущности.",
+      "description": "Единственный дракон кампании и финальный босс. Аэродракс пикировал на героев как самолёт, выпускал ледяной шторм из турбин и голосом встроенного динамика объявлял бесконечную задержку рейса. Все изображения и видео дракона относятся к этой одной сущности.",
       "visual": {
         "video": "assets/concepts/campaigns/nor-il-skald/enemies/aerodrax.mp4",
         "alt": "Ледяной дракон готовится к финальной битве в Нор’Иль’Скальде."

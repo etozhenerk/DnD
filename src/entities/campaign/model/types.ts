@@ -41,6 +41,8 @@ export interface CampaignPerson {
   id: string;
   name: string;
   role?: string;
+  raceConceptIds?: string[];
+  tags?: string[];
   description?: string;
   story?: string;
   motivation?: string;

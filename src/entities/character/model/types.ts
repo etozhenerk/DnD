@@ -31,6 +31,7 @@ export interface Character {
   maxHp: number;
   ac: number;
   visual: {portrait: string; status: string; raceConceptIds: string[]; alt: string};
+  raceHistory?: {raceConceptId: string; displayName: string; status: 'former'; note: string}[];
   stats: Record<'strength' | 'dexterity' | 'constitution' | 'wisdom' | 'intelligence' | 'charisma', number>;
   story: string;
   motivation: string;

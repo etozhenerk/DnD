@@ -1,0 +1,45 @@
+.page {
+  background-color: var(--color-night-deep);
+  background-attachment: fixed;
+  background-image: var(--gradient-atlas-scrim), var(--gradient-atlas-vignette), var(--races-background);
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100dvh;
+  overflow-x: clip;
+  padding: 76px 0 5rem;
+  position: relative;
+}
+
+.page::before {
+  background: var(--gradient-brass-line);
+  content: '';
+  height: 1px;
+  left: 8%;
+  position: absolute;
+  right: 8%;
+  top: 76px;
+}
+
+.hero { margin: 0 auto; max-width: 1180px; padding: clamp(3rem, 8vw, 6.5rem) 1rem 1.4rem; text-align: center; }
+.ornament { color: var(--color-gold); font-size: 1.4rem; margin-bottom: 0.65rem; }
+.hero > span { color: var(--color-gold-light); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; }
+
+.hero h1 {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.6vw, 6rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  margin: 0.8rem auto 1rem;
+  text-shadow: var(--shadow-title);
+}
+
+.hero > p { color: var(--color-silver); font-family: var(--font-display); font-size: clamp(0.86rem, 1.4vw, 1.05rem); line-height: 1.6; margin: 0 auto; max-width: 48rem; }
+
+@media (max-width: 620px) {
+  .page { padding-top: 60px; }
+  .page::before { top: 60px; }
+  .hero { padding-top: 3rem; }
+}

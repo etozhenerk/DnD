@@ -16,6 +16,7 @@ export function AppNavigation() {
       <div className={styles.links}>
         <NavLink end aria-current={isAtlasActive ? 'page' : undefined} className={isAtlasActive ? styles.active : undefined} to="/"><span aria-hidden="true">⌖</span>Карта</NavLink>
         <NavLink className={getLinkClass} to="/heroes"><span aria-hidden="true">♜</span>Герои</NavLink>
+        <NavLink className={getLinkClass} to="/races"><span aria-hidden="true">✦</span>Расы</NavLink>
         <NavLink className={getLinkClass} to="/roadmap"><span aria-hidden="true">◫</span>Roadmap</NavLink>
       </div>
     </nav>

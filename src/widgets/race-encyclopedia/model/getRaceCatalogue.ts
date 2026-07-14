@@ -1,7 +1,9 @@
 import type {CampaignPerson, CampaignVisual} from '../../../entities/campaign/model/types';
+import {campaigns} from '../../../entities/campaign/model/data';
+import {characters} from '../../../entities/character/model/data';
 import type {Character} from '../../../entities/character/model/types';
+import {raceConcepts, races} from '../../../entities/race/model/data';
 import type {Race, RaceAppearance, RaceCatalogueAudit, RaceCatalogueEntry, RaceConcept} from '../../../entities/race/model/types';
-import {campaigns, characters, raceConcepts, races} from '../../../shared/config/gameData';
 
 function toCampaignAppearance(person: CampaignPerson, campaignTitle: string, kind: 'npc' | 'enemy'): RaceAppearance {
   const visual = person.visual;

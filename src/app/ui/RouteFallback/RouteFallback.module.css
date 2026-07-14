@@ -1,0 +1,22 @@
+.fallback {
+  align-items: center;
+  background: var(--gradient-night);
+  color: var(--color-parchment-pale);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  gap: 0.65rem;
+  height: 100dvh;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.fallback span {
+  color: var(--color-brass-light);
+  font-size: 1.5rem;
+}
+
+.fallback p {
+  margin: 0;
+}

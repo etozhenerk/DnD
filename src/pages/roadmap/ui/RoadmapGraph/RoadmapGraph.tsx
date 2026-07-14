@@ -34,18 +34,20 @@ export function RoadmapGraph({stages, selectedStage, onSelect}: RoadmapGraphProp
         <ol className={styles.stages} aria-label="Семь этапов развития проекта">
           {stages.map((stage) => {
             const isSelected = stage.number === selectedStage;
+            const isCompleted = stage.status.toLocaleLowerCase('ru').startsWith('заверш');
             return (
               <li key={stage.number}>
                 <button
                   aria-controls="roadmap-stage-details"
                   aria-pressed={isSelected}
-                  className={isSelected ? styles.selected : undefined}
+                  className={[isSelected && styles.selected, isCompleted && styles.completed].filter(Boolean).join(' ')}
                   onClick={() => onSelect(stage.number)}
                   type="button"
                 >
                   <span className={styles.stageMeta}>
                     <b>{String(stage.number).padStart(2, '0')}</b>
                     <small>Этап {stage.number}</small>
+                    {isCompleted && <span className={styles.completion}>✓ {stage.status}</span>}
                   </span>
                   <strong>{stage.shortTitle}</strong>
                   <span className={styles.summary}>{stage.summary}.</span>

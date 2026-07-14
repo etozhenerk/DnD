@@ -1,5 +1,5 @@
 import type {CSSProperties} from 'react';
-import {characters} from '../../../../shared/config/gameData';
+import {characters} from '../../../../entities/character/model/data';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {HeroLegends} from '../../../../widgets/hero-legends/ui/HeroLegends/HeroLegends';
 import styles from './HeroesPage.module.css';

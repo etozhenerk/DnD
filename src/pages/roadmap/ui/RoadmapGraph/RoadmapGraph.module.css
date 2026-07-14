@@ -17,9 +17,11 @@
 .stages button:hover { background: var(--color-roadmap-card-hover); border-color: var(--color-roadmap-line-strong); transform: translateY(-0.18rem); }
 .stages button:focus-visible { outline: 2px solid var(--color-ice-bright); outline-offset: 3px; }
 .stages .selected { background: var(--gradient-roadmap-selected); border-color: var(--color-roadmap-accent); box-shadow: var(--shadow-roadmap-selected); }
+.stages .completed { border-color: var(--color-roadmap-status); box-shadow: var(--shadow-roadmap-completed); }
 .stageMeta { align-items: center; display: flex; gap: 0.55rem; margin-bottom: 0.7rem; }
 .stageMeta b { align-items: center; background: var(--color-roadmap-sidebar); border: 1px solid var(--color-roadmap-accent); border-radius: 50%; color: var(--color-roadmap-accent); display: flex; font-family: var(--font-display); font-size: 0.68rem; height: 2rem; justify-content: center; width: 2rem; }
 .stageMeta small { color: var(--color-roadmap-status); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.completion { background: var(--color-roadmap-status-alpha-12); border: 1px solid var(--color-roadmap-status-alpha-48); border-radius: 999px; color: var(--color-roadmap-status); font-size: 0.56rem; font-weight: 800; letter-spacing: 0.06em; margin-left: auto; padding: 0.28rem 0.45rem; text-transform: uppercase; }
 .stages strong { color: var(--color-roadmap-heading); font-family: var(--font-display); font-size: 1.18rem; font-weight: 500; line-height: 1.1; }
 .summary { font-size: 0.76rem; line-height: 1.48; margin-top: 0.48rem; }
 .action { color: var(--color-roadmap-accent); font-size: 0.63rem; font-weight: 700; margin-top: auto; padding-top: 0.8rem; text-transform: uppercase; }

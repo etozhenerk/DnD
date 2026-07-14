@@ -1,6 +1,7 @@
 import type {CSSProperties} from 'react';
 import {Navigate, useNavigate, useParams} from 'react-router-dom';
-import {campaigns, worldMap} from '../../../../shared/config/gameData';
+import {campaigns} from '../../../../entities/campaign/model/data';
+import {worldMap} from '../../../../entities/region/model/data';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {PageHeader} from '../../../../widgets/page-header/ui/PageHeader/PageHeader';
 import {PlannedCampaign} from '../../../../widgets/planned-campaign/ui/PlannedCampaign/PlannedCampaign';

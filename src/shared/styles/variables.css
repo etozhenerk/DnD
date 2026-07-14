@@ -60,6 +60,8 @@
   --color-roadmap-accent: #d8b66c;
   --color-roadmap-link: #bdefff;
   --color-roadmap-status: #78bd94;
+  --color-roadmap-status-alpha-12: rgba(120, 189, 148, 0.12);
+  --color-roadmap-status-alpha-48: rgba(120, 189, 148, 0.48);
   --color-roadmap-sidebar: rgba(3, 9, 14, 0.7);
   --color-roadmap-card: rgba(255, 255, 255, 0.035);
   --color-roadmap-card-hover: rgba(255, 255, 255, 0.065);
@@ -110,4 +112,5 @@
   --shadow-navigation: 0 12px 32px var(--color-black-alpha-42), inset 0 -1px var(--color-black-alpha-42);
   --shadow-roadmap: 0 24px 70px var(--color-black-alpha-42);
   --shadow-roadmap-selected: inset 3px 0 var(--color-roadmap-accent);
+  --shadow-roadmap-completed: inset 3px 0 var(--color-roadmap-status), 0 0 24px var(--color-roadmap-status-alpha-12);
 }

@@ -1,6 +1,6 @@
 import type {CSSProperties} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {worldMap} from '../../../../shared/config/gameData';
+import {worldMap} from '../../../../entities/region/model/data';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {AtlasMap} from '../../../../widgets/atlas-map/ui/AtlasMap/AtlasMap';
 import styles from './AtlasPage.module.css';

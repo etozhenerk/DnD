@@ -2,7 +2,7 @@ import type {Campaign, CampaignPerson} from '../../../../entities/campaign/model
 import {CampaignMedia} from '../../../../entities/campaign/ui/CampaignMedia/CampaignMedia';
 import type {Region} from '../../../../entities/region/model/types';
 import {RegionOrderSeal} from '../../../../entities/region/ui/RegionOrderSeal/RegionOrderSeal';
-import {characters} from '../../../../shared/config/gameData';
+import {characters} from '../../../../entities/character/model/data';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {getRegionArtworkViewBox} from '../../../../shared/lib/map/getRegionArtworkViewBox';
 import {JourneyBook} from '../../../journey-book/ui/JourneyBook/JourneyBook';

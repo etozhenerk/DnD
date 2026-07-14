@@ -1,0 +1,4 @@
+interface:
+  display_name: "Сценарий сцен"
+  short_description: "Написать сцены для мастера"
+  default_prompt: "Используй $write-dnd-scene-script для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Публикация кампании"
+  short_description: "Перенести сценарий в канонические данные"
+  default_prompt: "Используй $publish-dnd-campaign для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "План реализации"
+  short_description: "Разбить кампанию на задачи кода"
+  default_prompt: "Используй $plan-dnd-campaign-implementation для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Интерфейс кампании"
+  short_description: "Реализовать представление кампании"
+  default_prompt: "Используй $implement-dnd-campaign-ui для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Механики кампании"
+  short_description: "Формализовать игровые эффекты"
+  default_prompt: "Используй $design-dnd-gameplay для выполнения этого этапа кампании."

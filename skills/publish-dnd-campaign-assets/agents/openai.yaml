@@ -1,0 +1,4 @@
+interface:
+  display_name: "Публикация артов"
+  short_description: "Зарегистрировать утверждённые арты"
+  default_prompt: "Используй $publish-dnd-campaign-assets для выполнения этого этапа кампании."

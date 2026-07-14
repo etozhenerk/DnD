@@ -1,4 +1,4 @@
 interface:
-  display_name: "Создание кампании D&D"
-  short_description: "Создаёт новые вариативные кампании для карты"
-  default_prompt: "Используй $create-dnd-campaign, чтобы создать новую кампанию для области карты."
+  display_name: "Кампания: полный цикл"
+  short_description: "Провести кампанию через все этапы"
+  default_prompt: "Используй $create-dnd-campaign для выполнения этого этапа кампании."

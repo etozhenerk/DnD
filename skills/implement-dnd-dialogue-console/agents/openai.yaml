@@ -1,0 +1,4 @@
+interface:
+  display_name: "Консоль реплик"
+  short_description: "Реализовать выбор реплик мастером"
+  default_prompt: "Используй $implement-dnd-dialogue-console для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Арт-план кампании"
+  short_description: "Составить реестр необходимых артов"
+  default_prompt: "Используй $plan-dnd-campaign-art для выполнения этого этапа кампании."

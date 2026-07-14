@@ -1,0 +1,4 @@
+interface:
+  display_name: "Движок правил"
+  short_description: "Реализовать эффекты домашней системы"
+  default_prompt: "Используй $implement-dnd-rules-engine для выполнения этого этапа кампании."

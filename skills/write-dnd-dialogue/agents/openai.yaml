@@ -1,0 +1,4 @@
+interface:
+  display_name: "Реплики персонажей"
+  short_description: "Подготовить диалоговые пресеты"
+  default_prompt: "Используй $write-dnd-dialogue для выполнения этого этапа кампании."

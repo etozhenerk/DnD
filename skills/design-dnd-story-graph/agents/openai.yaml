@@ -1,0 +1,4 @@
+interface:
+  display_name: "Сюжетный граф"
+  short_description: "Создать и проверить граф сцен"
+  default_prompt: "Используй $design-dnd-story-graph для выполнения этого этапа кампании."

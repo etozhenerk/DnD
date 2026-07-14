@@ -117,11 +117,18 @@ src/
 
 ## Обязательная маршрутизация по локальным скиллам
 
-- Структура данных, связи, правила или несколько типов сущностей: `skills/maintain-dnd-world/SKILL.md`.
-- Новый герой или существенная переработка героя: `skills/create-dnd-character/SKILL.md`.
-- Новый враг, NPC-противник, злодей, босс или боевая группа: `skills/create-dnd-enemy/SKILL.md`.
-- Новая область, кампания, сюжетная ветка или набор локаций: `skills/create-dnd-campaign/SKILL.md`.
-- Если задача пересекает несколько областей, применять `maintain-dnd-world` последним для проверки целостности.
+- Новая область или полный цикл кампании: `skills/create-dnd-campaign/SKILL.md` как оркестратор и `docs/campaign-skill-workflow.md` как контракт передачи.
+- Концепция: `define-dnd-campaign-concept`; сюжетный каркас: `outline-dnd-campaign`; граф: `design-dnd-story-graph`.
+- Обычный сюжетный NPC: `create-dnd-npc`; игровой герой: `create-dnd-character`; враг, злодей или боевая группа: `create-dnd-enemy`.
+- Полный текст сцен: `write-dnd-scene-script`; диалоговые пресеты мастера: `write-dnd-dialogue`; формальные механики: `design-dnd-gameplay`.
+- Редакторская приёмка до артов: `review-dnd-campaign`.
+- Арты: `plan-dnd-campaign-art` → `generate-dnd-campaign-art` → `review-dnd-campaign-art` → `publish-dnd-campaign-assets`.
+- Реализация: `plan-dnd-campaign-implementation` → `publish-dnd-campaign` → `implement-dnd-campaign-ui`.
+- Локальная игра: `model-dnd-game-session` → `implement-dnd-rules-engine` → `implement-dnd-npc-behavior` → `implement-dnd-dialogue-console` → `implement-dnd-gm-console`.
+- Проверка игровых сценариев: `test-dnd-gameplay-scenarios`; финальная приёмка: `verify-dnd-campaign-release`.
+- Структура данных, связи, правила или несколько типов сущностей: `maintain-dnd-world`; применять его последним для проверки целостности.
+
+Каждый этап изменяет только свой рабочий артефакт. Следующий этап запускается после явного утверждения пользователя; изменение раннего этапа помечает зависимые результаты устаревшими.
 
 Всегда сообщать пользователю, какой локальный скилл применяется и почему.
 
@@ -131,7 +138,9 @@ src/
 - Создание или обновление полного экрана в Figma: `$figma-use` и `$figma-generate-design`.
 - Компоненты и дизайн-система в Figma: `$figma-use`, `$figma-generate-library` и при необходимости `$figma-create-design-system-rules`.
 - Связь Figma-компонентов с React-компонентами: `$figma-code-connect-components`.
-- Визуальная проверка frontend-изменений в реальном браузере: `$playwright` или `$playwright-interactive`; для фиксации результата использовать `$screenshot`.
+- Визуальная и интерактивная проверка frontend-изменений: встроенный браузер Codex через `browser:control-in-app-browser` и локальный `verify-dnd-campaign-release`.
+- Standalone `$playwright`, `$playwright-interactive` и `playwright-cli` не запускать автоматически; использовать их только после отдельного разрешения пользователя, если встроенный браузер недоступен.
+- Контрольные скриншоты делать средствами встроенного браузера; `$screenshot` использовать только когда явно нужен снимок окна или всего рабочего стола.
 - Для существенной переработки UI сначала зафиксировать контрольные viewport и референсы, затем проверить итоговый рендер скриншотом на тех же размерах. Успешные `typecheck` и `build` не заменяют визуальную проверку.
 
 Всегда сообщать пользователю, какие frontend/design-скиллы применяются и для какой части работы.
@@ -198,6 +207,8 @@ npm run build:pages
 - отсутствие внутреннего скролла у статистики и навыков;
 - длинные имена и заголовки на ширинах 1024 и 1280 px;
 - мобильную компоновку, если менялись адаптивные стили.
+
+Для кампании с локальным игровым циклом дополнительно проверить применение навыка и расход использований, инициативу и раунды, решение NPC и override мастера, выбор диалогового пресета, ручное изменение HP/AC/атаки/инвентаря, отмену, восстановление из `localStorage` и влияние раннего решения на позднюю сцену или финал.
 
 ## GitHub Pages
 

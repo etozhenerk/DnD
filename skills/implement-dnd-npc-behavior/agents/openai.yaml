@@ -1,0 +1,4 @@
+interface:
+  display_name: "Поведение NPC"
+  short_description: "Реализовать боевые решения NPC"
+  default_prompt: "Используй $implement-dnd-npc-behavior для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Модель игровой сессии"
+  short_description: "Создать состояние и журнал прохождения"
+  default_prompt: "Используй $model-dnd-game-session для выполнения этого этапа кампании."

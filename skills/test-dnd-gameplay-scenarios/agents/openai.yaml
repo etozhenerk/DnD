@@ -1,0 +1,4 @@
+interface:
+  display_name: "Игровые сценарии"
+  short_description: "Проверить движок воспроизводимыми играми"
+  default_prompt: "Используй $test-dnd-gameplay-scenarios для выполнения этого этапа кампании."

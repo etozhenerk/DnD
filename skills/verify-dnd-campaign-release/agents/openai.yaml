@@ -1,0 +1,4 @@
+interface:
+  display_name: "Проверка релиза"
+  short_description: "Проверить кампанию во встроенном браузере"
+  default_prompt: "Используй $verify-dnd-campaign-release для выполнения этого этапа кампании."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Сюжетный NPC"
+  short_description: "Создать небоевого персонажа кампании"
+  default_prompt: "Используй $create-dnd-npc для выполнения этого этапа кампании."

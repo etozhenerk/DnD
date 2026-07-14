@@ -1,0 +1,4 @@
+interface:
+  display_name: "Сюжетный каркас"
+  short_description: "Построить драматургию кампании"
+  default_prompt: "Используй $outline-dnd-campaign для выполнения этого этапа кампании."

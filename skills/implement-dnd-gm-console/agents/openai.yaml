@@ -1,0 +1,4 @@
+interface:
+  display_name: "Консоль мастера"
+  short_description: "Реализовать управление игровой сессией"
+  default_prompt: "Используй $implement-dnd-gm-console для выполнения этого этапа кампании."

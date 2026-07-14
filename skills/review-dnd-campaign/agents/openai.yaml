@@ -1,0 +1,4 @@
+interface:
+  display_name: "Проверка сценария"
+  short_description: "Проверить творческий пакет кампании"
+  default_prompt: "Используй $review-dnd-campaign для выполнения этого этапа кампании."

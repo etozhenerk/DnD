@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "campaignId": "noncanonical-example",
+  "recommendedDurationMinutes": {"min": 25, "max": 90},
+  "criticalClues": [
+    {"id": "bell-secret", "sourceSceneIds": ["old-square", "bell-tower"]}
+  ],
+  "nodes": [
+    {
+      "id": "old-square",
+      "title": "Старая площадь",
+      "type": "start",
+      "start": true,
+      "expectedMinutes": 15,
+      "clueIds": ["bell-secret"],
+      "transitions": [
+        {"to": "bell-tower", "label": "Подняться к колоколу"},
+        {"to": "quiet-ending", "label": "Договориться", "condition": {"flag": "truce", "equals": true}},
+        {"to": "bell-tower", "label": "Иначе продолжить поиски", "condition": {"otherwise": true}}
+      ]
+    },
+    {
+      "id": "bell-tower",
+      "title": "Колокольня",
+      "type": "climax",
+      "expectedMinutes": 30,
+      "clueIds": ["bell-secret"],
+      "transitions": [
+        {"to": "quiet-ending", "label": "Завершить историю"}
+      ]
+    },
+    {
+      "id": "quiet-ending",
+      "title": "Тихий финал",
+      "type": "ending",
+      "ending": true,
+      "expectedMinutes": 10,
+      "transitions": []
+    }
+  ]
+}

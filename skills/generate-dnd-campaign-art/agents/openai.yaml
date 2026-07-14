@@ -1,0 +1,4 @@
+interface:
+  display_name: "Генерация артов"
+  short_description: "Создать утверждённые арты кампании"
+  default_prompt: "Используй $generate-dnd-campaign-art для выполнения этого этапа кампании."

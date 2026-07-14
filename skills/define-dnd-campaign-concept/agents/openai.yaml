@@ -1,0 +1,4 @@
+interface:
+  display_name: "Концепция кампании"
+  short_description: "Согласовать замысел новой кампании"
+  default_prompt: "Используй $define-dnd-campaign-concept для выполнения этого этапа кампании."

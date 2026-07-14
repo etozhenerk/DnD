@@ -1,0 +1,4 @@
+interface:
+  display_name: "Проверка артов"
+  short_description: "Проверить созданные арты кампании"
+  default_prompt: "Используй $review-dnd-campaign-art для выполнения этого этапа кампании."

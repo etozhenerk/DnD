@@ -1,5 +1,10 @@
 # Private/heavy generation inputs
 /source-materials/
+/референсы/
+
+# Local campaign art iterations
+/docs/campaigns/*/art-drafts/*
+!/docs/campaigns/*/art-drafts/README.md
 
 # OS and editor files
 .DS_Store

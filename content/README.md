@@ -53,7 +53,9 @@ unlockCondition, nextLocations[]
 ### Регион мировой карты
 
 ```text
-order, id, name, description, image, imageLayers[], campaignId, status
+order, id, name, subtitle, description, image, imageLayers[], campaignId, status
+gameMasterCharacterId
+teaser: image, eyebrow, title, description
 polygon[]: пары [x, y] в системе координат viewBox 1024 × 1024
 additionalPolygons[]: дополнительные несмежные области того же региона
 ```
@@ -61,6 +63,7 @@ additionalPolygons[]: дополнительные несмежные облас
 `status` принимает `completed`, `ready` или `planned`. `campaignId` остаётся `null`, пока файл кампании не создан.
 `image` указывает на полноразмерный прозрачный слой региона 1024 × 1024, совмещённый с актуальной мировой картой. Он используется и как изображение региона, и для выделения земли при наведении.
 `imageLayers` и `additionalPolygons` используются, когда один сюжетный регион состоит из нескольких несмежных земель.
+Необязательное `subtitle` хранит красивую подпись земли, а `gameMasterCharacterId` ссылается на ответственного мастера из `characters.json`. Для ещё не опубликованной кампании `teaser` может показывать утверждённый публичный арт и неспойлерный анонс на странице региона.
 
 ### Сцена
 

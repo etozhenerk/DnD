@@ -1,4 +1,5 @@
 import type {Region, WorldMap} from '../../../../entities/region/model/types';
+import {getCharacterById} from '../../../../entities/character/model/data';
 import {RegionOrderSeal} from '../../../../entities/region/ui/RegionOrderSeal/RegionOrderSeal';
 import {getPolygonCenter} from '../../../../shared/lib/map/getPolygonCenter';
 import {toPolygonPoints} from '../../../../shared/lib/map/toPolygonPoints';
@@ -21,7 +22,11 @@ export function AtlasMap({map, onSelect}: AtlasMapProps) {
         <image href={resolveAsset(map.image)} width={map.viewBox.width} height={map.viewBox.height} />
         {map.regions.map((region: Region) => {
           const center = getPolygonCenter(region.polygon);
-          const labelWidth = Math.min(Math.max(region.name.length * 12 + 36, 164), 284);
+          const gameMaster = getCharacterById(region.gameMasterCharacterId);
+          const longestLabel = Math.max(region.name.length * 12, (region.subtitle?.length ?? 0) * 8, (gameMaster?.name.length ?? 0) * 9);
+          const labelWidth = Math.min(Math.max(longestLabel + 42, 164), 310);
+          const labelHeight = gameMaster ? 72 : region.subtitle ? 52 : 34;
+          const titleY = gameMaster ? -17 : region.subtitle ? -8 : 6;
           const polygons = [region.polygon, ...(region.additionalPolygons ?? [])];
           const imageLayers = region.imageLayers ?? [region.image];
           return (
@@ -30,9 +35,11 @@ export function AtlasMap({map, onSelect}: AtlasMapProps) {
               {imageLayers.map((image, index) => <image className={styles.regionLayer} href={resolveAsset(image)} key={`${region.id}-image-${index}`} width={map.viewBox.width} height={map.viewBox.height} />)}
               <RegionOrderSeal order={region.order} x={center.x} y={center.y} />
               <g className={styles.regionLabel} transform={`translate(${center.x} ${center.y + 52})`}>
-                <rect x={-labelWidth / 2} y="-17" width={labelWidth} height="34" rx="4" />
+                <rect x={-labelWidth / 2} y={-labelHeight / 2} width={labelWidth} height={labelHeight} rx="4" />
                 <path d={`M ${-labelWidth / 2 + 8} 0 L ${-labelWidth / 2 - 5} 0 M ${labelWidth / 2 - 8} 0 L ${labelWidth / 2 + 5} 0`} />
-                <text y="6">{region.name}</text>
+                <text className={styles.regionName} y={titleY}>{region.name}</text>
+                {region.subtitle ? <text className={styles.regionSubtitle} y={titleY + 20}>{region.subtitle}</text> : null}
+                {gameMaster ? <text className={styles.regionMaster} y={titleY + 40}>Мастер · {gameMaster.name}</text> : null}
               </g>
             </g>
           );

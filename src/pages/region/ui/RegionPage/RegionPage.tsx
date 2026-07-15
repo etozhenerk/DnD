@@ -26,7 +26,7 @@ export function RegionPage() {
 
   return (
     <main className={`${styles.page} ${isPlanned ? styles.planned : styles.completed}`} style={pageStyle}>
-      <PageHeader eyebrow="" title={region.name} subtitle={isPlanned ? '' : campaign.presentation?.pageSubtitle ?? campaign.subtitle} onBack={() => navigate('/')} />
+      <PageHeader eyebrow="" title={region.name} subtitle={isPlanned ? region.subtitle ?? '' : campaign.presentation?.pageSubtitle ?? campaign.subtitle} onBack={() => navigate('/')} />
       {!isPlanned ? <CompletedCampaign campaign={campaign} region={region} /> : <PlannedCampaign region={region} />}
     </main>
   );

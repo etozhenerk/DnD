@@ -30,6 +30,7 @@ plan-dnd-campaign-art
 generate-dnd-campaign-art
 review-dnd-campaign-art
 publish-dnd-campaign-assets
+prepare-dnd-scene-video (только если кампании нужны трейлер или внутриигровые видео)
 plan-dnd-campaign-implementation
 publish-dnd-campaign
 implement-dnd-campaign-ui

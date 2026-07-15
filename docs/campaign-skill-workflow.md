@@ -20,6 +20,8 @@ gameplay.json
 gameplay-notes.md
 review.md
 art-plan.json
+video-plan.json
+video-production.md
 implementation-plan.md
 retrospective.md
 ```
@@ -52,15 +54,16 @@ retrospective.md
 
 ```text
 concept -> outline -> story-graph -> cast -> script
-        -> dialogue + gameplay -> review -> art-plan
-        -> implementation-plan -> published content, assets and code
+        -> dialogue + gameplay -> review -> art-plan -> approved assets
+        -> video-plan (если нужны видео) -> implementation-plan
+        -> published content, assets and code
 ```
 
 Если изменение локально и не влияет на зависимый артефакт, скилл обязан объяснить это. Молчаливо считать зависимый результат актуальным нельзя.
 
 ## Контрольные точки
 
-Отдельное подтверждение пользователя требуется после концепции, каркаса, графа, состава персонажей, сценария и реплик, механик, редакторской проверки, арт-плана, каждого финального арта, плана реализации, публикации данных и реализации игрового интерфейса.
+Отдельное подтверждение пользователя требуется после концепции, каркаса, графа, состава персонажей, сценария и реплик, механик, редакторской проверки, арт-плана, каждого финального арта, video production pack при наличии видео, плана реализации, публикации данных и реализации игрового интерфейса.
 
 ## Разделение данных
 

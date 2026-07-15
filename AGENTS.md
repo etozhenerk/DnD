@@ -123,6 +123,7 @@ src/
 - Полный текст сцен: `write-dnd-scene-script`; диалоговые пресеты мастера: `write-dnd-dialogue`; формальные механики: `design-dnd-gameplay`.
 - Редакторская приёмка до артов: `review-dnd-campaign`.
 - Арты: `plan-dnd-campaign-art` → `generate-dnd-campaign-art` → `review-dnd-campaign-art` → `publish-dnd-campaign-assets`.
+- Видео трейлера или внутриигровой сцены: после утверждения сценария и артов применять `prepare-dnd-scene-video` для покадрового production pack; он не генерирует и не монтирует видео.
 - Реализация: `plan-dnd-campaign-implementation` → `publish-dnd-campaign` → `implement-dnd-campaign-ui`.
 - Локальная игра: `model-dnd-game-session` → `implement-dnd-rules-engine` → `implement-dnd-npc-behavior` → `implement-dnd-dialogue-console` → `implement-dnd-gm-console`.
 - Проверка игровых сценариев: `test-dnd-gameplay-scenarios`; финальная приёмка: `verify-dnd-campaign-release`.

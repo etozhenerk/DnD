@@ -1,0 +1,4 @@
+interface:
+  display_name: "Подготовка видео сцен"
+  short_description: "Собрать production pack для видео сцены"
+  default_prompt: "Используй $prepare-dnd-scene-video, чтобы подготовить материалы для генерации видео по утверждённой сцене и артам."

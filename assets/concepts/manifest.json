@@ -85,7 +85,8 @@
     {"id": "linda-small-red-fairy-overseer", "path": "assets/concepts/campaigns/linda-small/enemies/red-fairy-overseer.webp", "status": "canonical", "purpose": "Красная фея-надсмотрщица."},
     {"id": "linda-small-red-fairy-warrior", "path": "assets/concepts/campaigns/linda-small/enemies/red-fairy-warrior.webp", "status": "canonical", "purpose": "Красная фея-воительница."},
     {"id": "linda-small-magic-guard-bush", "path": "assets/concepts/campaigns/linda-small/enemies/magic-guard-bush.webp", "status": "canonical", "purpose": "Магический страж-куст."},
-    {"id": "linda-small-stroganessa", "path": "assets/concepts/campaigns/linda-small/enemies/stroganessa.webp", "status": "canonical", "purpose": "Строганесса, финальный босс кампании."}
+    {"id": "linda-small-stroganessa", "path": "assets/concepts/campaigns/linda-small/enemies/stroganessa.webp", "status": "canonical", "purpose": "Строганесса, финальный босс кампании."},
+    {"id": "penisuela-final-teaser", "path": "assets/concepts/campaigns/penisuela/key-art/teaser.png", "status": "canonical", "purpose": "Вертикальный тизер кампании с пятью героями, мастером и тремя сюжетными гостями."}
   ],
   "ui": [
     {"id": "hero-book-bookmark", "path": "assets/concepts/ui/hero-book-bookmark.png", "status": "reference", "purpose": "Кликабельная закладка выбора героя для книжного разворота."},
@@ -110,7 +111,7 @@
     {"id": "cloud-island", "path": "assets/concepts/world/regions/cloud-island.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
     {"id": "waterfall-island", "path": "assets/concepts/world/regions/waterfall-island.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
     {"id": "green-peninsula", "path": "assets/concepts/world/regions/green-peninsula.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
-    {"id": "mushroom-forest", "path": "assets/concepts/world/regions/mushroom-forest.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
+    {"id": "penisuela", "path": "assets/concepts/world/regions/penisuela.png", "status": "canonical", "purpose": "Временный полноцветный hover-слой Пенисуэлы на актуальной карте."},
     {"id": "great-tree-island", "path": "assets/concepts/world/regions/great-tree-island.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты с питахайями."},
     {"id": "white-castle-island", "path": "assets/concepts/world/regions/white-castle-island.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."},
     {"id": "desert-lands", "path": "assets/concepts/world/regions/desert-lands.png", "status": "canonical", "purpose": "Полноцветный hover-слой актуальной карты."}

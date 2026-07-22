@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 18,
+  "skill": "review-dnd-campaign-art",
+  "status": "resolved-by-user",
+  "userDecision": "Пользователь согласился продолжить после решения оставить панель мастера и отказаться от отдельной боевой рамки сообщением «ок го дальше».",
+  "items": [
+    {"assetId": "penisuela-ui-gm-drawer-frame", "variant": "art-drafts/technical-ui/gm-drawer-frame-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Вертикальная панель функционально отделена от публичного экрана; замок обозначает приватный режим без текста."]},
+    {"assetId": "penisuela-ui-combat-arena-frame", "variant": "art-drafts/technical-ui/combat-arena-frame-v1.png", "verdict": "reject", "userDecision": "discarded", "technicalProcessing": "Черновик остаётся только в art-drafts и не публикуется.", "notes": ["Отдельный полноэкранный боевой PNG визуально дублирует квестовую рамку.", "Боевое состояние создаётся кодом поверх утверждённой квестовой рамки: красное свечение, пульсация углов и маркеры угрозы."]}
+  ]
+}

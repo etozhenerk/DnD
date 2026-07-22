@@ -1,0 +1,327 @@
+.section {
+  align-self: stretch;
+  background: var(--color-black-alpha-58);
+  border: 1px solid var(--color-brass-alpha-38);
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.4rem;
+  width: 100%;
+}
+
+.heading {
+  align-items: baseline;
+  display: flex;
+  gap: 0.4rem;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.heading > div {
+  align-items: baseline;
+  display: flex;
+  min-width: 0;
+}
+
+.heading p { display: none; }
+
+.heading h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heading > span,
+.heading > strong {
+  color: var(--color-brass-light);
+  font-size: 0.68rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list,
+.section[data-layout='rows'] .list,
+.section[data-layout='tokens'] .list {
+  align-content: start;
+  display: grid;
+  gap: 0.28rem;
+  grid-auto-rows: 3.05rem;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  min-width: 0;
+  overflow: auto;
+  padding-right: 0.1rem;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.section[data-layout='rows'] .list {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.section[data-layout='rows'] .target {
+  height: 100%;
+}
+
+.target,
+.section[data-layout='tokens'] .target {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  box-sizing: border-box;
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  display: grid;
+  gap: 0.35rem;
+  grid-template-columns: 2.45rem minmax(0, 1fr);
+  height: 3.05rem;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.2rem 0.3rem;
+  position: relative;
+  text-align: left;
+}
+
+.target:hover:not(:disabled) { background: var(--color-gold-alpha-12); }
+
+.selected {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-combat-target-selected);
+}
+
+.target:disabled { cursor: default; }
+.downed { filter: grayscale(0.7); opacity: 0.46; }
+.revivable { cursor: pointer; filter: none; opacity: 0.78; }
+.revivable:hover { opacity: 1; }
+
+.token,
+.section[data-layout='tokens'] .token {
+  height: 2.3rem;
+  position: relative;
+  width: 2.3rem;
+}
+
+.portrait,
+.section[data-layout='tokens'] .portrait {
+  border-radius: 50%;
+  height: 1.75rem;
+  left: 50%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(var(--portrait-shift-y, 0%)) scale(var(--portrait-scale, 1));
+  transform-origin: center;
+  width: 1.75rem;
+}
+
+.target[data-faction='hero'] .portrait,
+.section[data-layout='tokens'] .target[data-faction='hero'] .portrait {
+  height: 2.15rem;
+  object-fit: contain;
+  width: 2.15rem;
+}
+
+.frame {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+.frame img {
+  height: 100%;
+  max-width: none;
+  position: absolute;
+  top: 0;
+  width: 300%;
+}
+
+.target[data-faction='enemy'] .frame img { left: -175%; }
+
+.copy,
+.section[data-layout='tokens'] .copy {
+  align-items: center;
+  display: grid;
+  gap: 0.12rem 0.3rem;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+}
+
+.copy > strong,
+.section[data-layout='tokens'] .copy > strong {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  grid-column: 1;
+  grid-row: 1;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.health,
+.section[data-layout='tokens'] .health {
+  background: var(--color-black-alpha-74);
+  display: block;
+  grid-column: 1 / -1;
+  grid-row: 3;
+  height: 0.22rem;
+  overflow: hidden;
+}
+
+.health i {
+  background: var(--gradient-combat-health);
+  display: block;
+  height: 100%;
+}
+
+.stats,
+.section[data-layout='tokens'] .stats {
+  align-items: center;
+  display: flex;
+  gap: 0.24rem;
+  grid-column: 1;
+  grid-row: 2;
+  white-space: nowrap;
+}
+
+.stats > span {
+  align-items: center;
+  display: flex;
+  gap: 0.1rem;
+}
+
+.stats img,
+.section[data-layout='tokens'] .stats img {
+  height: 0.68rem;
+  object-fit: contain;
+  width: 0.68rem;
+}
+
+.stats small { display: none; }
+
+.stats strong,
+.section[data-layout='tokens'] .stats strong {
+  color: var(--color-parchment-light);
+  font-size: 0.66rem;
+}
+
+.state { display: none; }
+
+.target:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (min-width: 1501px) {
+  .list,
+  .section[data-layout='tokens'] .list { grid-auto-rows: 4.7rem; }
+
+  .section[data-layout='rows'] .list { grid-auto-rows: minmax(0, 1fr); }
+
+  .target,
+  .section[data-layout='tokens'] .target {
+    gap: 0.65rem;
+    grid-template-columns: 4.35rem minmax(0, 1fr);
+    height: 4.7rem;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .section[data-layout='rows'] .target { height: 100%; }
+
+  .token,
+  .section[data-layout='tokens'] .token { height: 4.1rem; width: 4.1rem; }
+
+  .portrait,
+  .section[data-layout='tokens'] .portrait { height: 3.15rem; width: 3.15rem; }
+
+  .target[data-faction='hero'] .portrait,
+  .section[data-layout='tokens'] .target[data-faction='hero'] .portrait { height: 3.85rem; width: 3.85rem; }
+
+  .copy > strong,
+  .section[data-layout='tokens'] .copy > strong {
+    color: var(--color-gold-light);
+    font-family: var(--font-display);
+    font-size: 1.08rem;
+  }
+
+  .health { height: 0.32rem; }
+  .stats { gap: 0.8rem; }
+  .stats > span { gap: 0.2rem; }
+  .stats img,
+  .section[data-layout='tokens'] .stats img { height: 1rem; width: 1rem; }
+
+  .stats small {
+    color: var(--color-brass-muted);
+    display: inline;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .stats strong,
+  .section[data-layout='tokens'] .stats strong { font-size: 0.95rem; }
+}
+
+@media (max-width: 1100px) {
+  .section { gap: 0.25rem; padding: 0.3rem; }
+  .heading h2 { font-size: 0.9rem; }
+  .heading > span,
+  .heading > strong { font-size: 0.62rem; }
+
+  .list,
+  .section[data-layout='rows'] .list,
+  .section[data-layout='tokens'] .list { grid-auto-rows: 2.8rem; }
+
+  .target,
+  .section[data-layout='tokens'] .target {
+    gap: 0.25rem;
+    grid-template-columns: 2.15rem minmax(0, 1fr);
+    height: 2.8rem;
+    padding: 0.16rem 0.22rem;
+  }
+
+  .token,
+  .section[data-layout='tokens'] .token { height: 2rem; width: 2rem; }
+
+  .target[data-faction='hero'] .portrait,
+  .section[data-layout='tokens'] .target[data-faction='hero'] .portrait { height: 1.9rem; width: 1.9rem; }
+
+  .copy > strong,
+  .section[data-layout='tokens'] .copy > strong { font-size: 0.74rem; }
+
+  .stats strong,
+  .section[data-layout='tokens'] .stats strong { font-size: 0.6rem; }
+}
+
+@media (max-height: 600px) and (max-width: 1500px) {
+  .list,
+  .section[data-layout='rows'] .list,
+  .section[data-layout='tokens'] .list { grid-auto-rows: 2.65rem; }
+
+  .target,
+  .section[data-layout='tokens'] .target {
+    grid-template-columns: 2.05rem minmax(0, 1fr);
+    height: 2.65rem;
+    padding-block: 0.12rem;
+  }
+
+  .token,
+  .section[data-layout='tokens'] .token { height: 1.95rem; width: 1.95rem; }
+
+  .target[data-faction='hero'] .portrait,
+  .section[data-layout='tokens'] .target[data-faction='hero'] .portrait { height: 1.85rem; width: 1.85rem; }
+}

@@ -1,4 +1,6 @@
 import type {CSSProperties} from 'react';
+import {Link} from 'react-router-dom';
+import {penisuelaPreview} from '../../../../entities/campaign-preview/model/data';
 import type {Region} from '../../../../entities/region/model/types';
 import {getCharacterById} from '../../../../entities/character/model/data';
 import {RegionOrderSeal} from '../../../../entities/region/ui/RegionOrderSeal/RegionOrderSeal';
@@ -9,6 +11,7 @@ import styles from './PlannedCampaign.module.css';
 export function PlannedCampaign({region}: {region: Region}) {
   const gameMaster = getCharacterById(region.gameMasterCharacterId);
   const teaser = region.teaser;
+  const preview = region.id === penisuelaPreview.regionId ? penisuelaPreview : null;
   const bookStyle = {
     '--chronicle-cover': `url("${resolveAsset('assets/concepts/style/planned-campaign-open-book.png')}")`,
   } as CSSProperties;
@@ -36,22 +39,44 @@ export function PlannedCampaign({region}: {region: Region}) {
             </div>
             <svg className={styles.chapterSeal} viewBox="0 0 64 64" aria-hidden="true"><RegionOrderSeal order={region.order} x={32} y={32} /></svg>
           </section>
-          <section className={`${styles.bookPage} ${styles.detailsPage} ${teaser ? styles.teaserDetails : ''}`}>
+          <section className={`${styles.bookPage} ${styles.detailsPage} ${teaser ? styles.teaserDetails : ''} ${preview ? styles.entryPage : ''}`}>
             <div className={styles.copy}>
               <p className={styles.kicker}>{teaser?.eyebrow ?? 'Неизведанная земля'}</p>
               <h2>{teaser?.title ?? 'Летопись ещё молчит'}</h2>
               <p className={styles.description}>{teaser?.description ?? region.description}</p>
               {gameMaster ? <p className={styles.assignment}><span>Мастер региона</span><strong>{gameMaster.name}</strong></p> : null}
-              <p className={styles.legend}>{teaser ? '«Райский остров уже готовит первую страницу. Осталось дождаться, когда будет сломана печать новой кампании».' : '«Чернила ещё не коснулись этой страницы. Когда печать будет сломлена, земля откроет мастеру свои дороги, тайны и имена».'}</p>
-              <p className={styles.contentsTitle}>В грядущей главе</p>
-              <ul className={styles.contents}>
-                {teaser ? <><li>Разрушительный мальчишник</li><li>Райский тропический остров</li><li>Новая глава Восьми Земель</li></> : <><li>Пути сквозь неизведанное</li><li>Лица, хранящие тайны</li><li>Испытания и реликвии</li></>}
-              </ul>
+              {preview ? (
+                <div className={styles.campaignEntry}>
+                  <p className={styles.entryEyebrow}>Первая глава</p>
+                  <h3>{preview.title}</h3>
+                  <Link
+                    className={styles.startButton}
+                    to="/campaign/penisuela/prologue"
+                    aria-label={`Начать кампанию «${teaser?.title ?? region.name}»: открыть пролог «${preview.title}»`}
+                  >
+                    <svg className={styles.startSeal} viewBox="0 0 64 64" aria-hidden="true">
+                      <RegionOrderSeal order={region.order} x={32} y={32} />
+                    </svg>
+                    <strong>Начать кампанию</strong>
+                    <span className={styles.startArrow} aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <p className={styles.legend}>{teaser ? '«Райский остров уже готовит первую страницу. Осталось дождаться, когда будет сломана печать новой кампании».' : '«Чернила ещё не коснулись этой страницы. Когда печать будет сломлена, земля откроет мастеру свои дороги, тайны и имена».'}</p>
+                  <p className={styles.contentsTitle}>В грядущей главе</p>
+                  <ul className={styles.contents}>
+                    {teaser ? <><li>Разрушительный мальчишник</li><li>Райский тропический остров</li><li>Новая глава Восьми Земель</li></> : <><li>Пути сквозь неизведанное</li><li>Лица, хранящие тайны</li><li>Испытания и реликвии</li></>}
+                  </ul>
+                </>
+              )}
             </div>
-            <div className={styles.status}>
-              <span aria-hidden="true">◈</span>
-              <div><small>Статус экспедиции</small><strong>{teaser ? 'Кампания скоро' : 'Подготовка к путешествию'}</strong></div>
-            </div>
+            {!preview ? (
+              <div className={styles.status}>
+                <span aria-hidden="true">◈</span>
+                <div><small>Статус экспедиции</small><strong>{teaser ? 'Кампания скоро' : 'Подготовка к путешествию'}</strong></div>
+              </div>
+            ) : null}
           </section>
         </div>
       </article>

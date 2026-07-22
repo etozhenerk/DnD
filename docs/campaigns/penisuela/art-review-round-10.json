@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 10,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-gallery",
+      "variant": "art-drafts/hotel-gallery-empty-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-gallery.png.",
+      "notes": [
+        "Камера, стены, две двери, лестница, паланкин, реквизит и свет сохранены по активному кадру кракена.",
+        "Кракен, его основание, щупальца, сервисный люк и красная линия полностью удалены.",
+        "Латунный сценический рельс сохранён как пустой неактивный объект локации.",
+        "В кадре нет людей, героев, NPC, UI, читаемого текста и новых сюжетных спойлеров."
+      ]
+    }
+  ]
+}

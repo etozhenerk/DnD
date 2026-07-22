@@ -1,0 +1,717 @@
+.sessionHud {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-sizing: border-box;
+  color: var(--color-parchment-light);
+  display: grid;
+  font-family: var(--font-display);
+  font-size: clamp(0.62rem, 0.8vw, 0.78rem);
+  gap: 0.38rem;
+  left: 1rem;
+  padding: 0.58rem;
+  position: absolute;
+  top: 5.2rem;
+  width: 11rem;
+  z-index: 14;
+}
+
+.sessionHud button {
+  background: var(--color-transparent);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-brass-light);
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.28rem 0.45rem;
+  text-align: left;
+  width: 100%;
+}
+
+.doorField {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 11;
+}
+
+.door {
+  background: var(--color-transparent);
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  pointer-events: auto;
+  position: absolute;
+}
+
+.door::before {
+  backdrop-filter: brightness(1.38) contrast(1.06);
+  background: var(--color-white-alpha-05);
+  box-shadow: inset 0 0 1.5rem var(--color-white-alpha-10);
+  content: '';
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 180ms ease;
+}
+
+.door[data-door='pussy-suite'] {
+  height: 51%;
+  left: 18%;
+  top: 13%;
+  width: 23%;
+}
+
+.door[data-door='pussy-suite']::before {
+  clip-path: polygon(8% 5%, 87% 5%, 98% 18%, 98% 100%, 2% 100%, 2% 17%);
+}
+
+.door[data-door='archive'] {
+  height: 43%;
+  left: 52%;
+  top: 17%;
+  width: 15%;
+}
+
+.door[data-door='archive']::before {
+  border-radius: 42% 42% 4% 4% / 16% 16% 4% 4%;
+}
+
+.door[data-door='prop-room-stairs'] {
+  height: 55%;
+  right: 4%;
+  top: 12%;
+  width: 25%;
+}
+
+.door[data-door='prop-room-stairs']::before {
+  clip-path: polygon(62% 0, 100% 0, 100% 100%, 0 100%, 5% 84%, 20% 68%, 35% 51%, 48% 34%);
+}
+
+.door:hover::before,
+.door:focus-visible::before {
+  opacity: 1;
+}
+
+.legendPanel,
+.dialoguePanel {
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-brass-alpha-62);
+  bottom: clamp(5.2rem, 8vh, 6.2rem);
+  box-shadow: var(--shadow-session-story);
+  color: var(--color-parchment-light);
+  left: 50%;
+  max-width: 70rem;
+  padding: clamp(1rem, 1.6vw, 1.35rem) clamp(1.25rem, 2.5vw, 2rem);
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(82%, calc(100% - 10rem));
+  z-index: 13;
+}
+
+.legendPanel h1,
+.dialoguePanel h1 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1;
+  margin: 0.25rem 0 0.65rem;
+}
+
+.legendPanel > p:not(.eyebrow, .notice),
+.dialoguePanel > p:not(.eyebrow, .resolution) {
+  font-family: var(--font-display);
+  font-size: clamp(0.76rem, 0.95vw, 0.92rem);
+  line-height: 1.42;
+  margin: 0;
+}
+
+.eyebrow {
+  color: var(--color-brass-light);
+  font-size: clamp(0.55rem, 0.7vw, 0.66rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.notice {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  margin: 0.6rem 0 0;
+}
+
+.dialoguePanel blockquote {
+  border-left: 2px solid var(--color-wine);
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 1.02vw, 0.98rem);
+  line-height: 1.46;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.actions,
+.rollControls,
+.statChoices,
+.heroChoices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+}
+
+.actions button,
+.actions a,
+.rollControls button,
+.statChoices button,
+.heroChoices button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 0.86vw, 0.82rem);
+  font-weight: 700;
+  padding: 0.55rem 0.78rem;
+  text-decoration: none;
+}
+
+.actions button:disabled {
+  cursor: default;
+  opacity: 0.38;
+}
+
+.rollControls button:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
+.secondaryAction {
+  background: var(--color-black-alpha-42) !important;
+  color: var(--color-brass-light) !important;
+}
+
+.dangerAction {
+  background: var(--color-wine) !important;
+  color: var(--color-parchment-light) !important;
+}
+
+.gmAccessButton {
+  align-items: center;
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-control);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  display: flex;
+  height: 2.9rem;
+  justify-content: center;
+  left: 12.4rem;
+  padding: 0;
+  position: absolute;
+  top: 5.2rem;
+  width: 2.9rem;
+  z-index: 15;
+}
+
+.gmAccessButton svg {
+  fill: none;
+  height: 1.6rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  width: 1.6rem;
+}
+
+.gmAccessButton::after {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-brass-light);
+  content: attr(data-label);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  left: calc(100% + 0.55rem);
+  opacity: 0;
+  padding: 0.35rem 0.5rem;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 160ms ease;
+  white-space: nowrap;
+}
+
+.gmAccessButton:hover::after,
+.gmAccessButton:focus-visible::after {
+  opacity: 1;
+}
+
+.characterStatus {
+  border-left: 2px solid var(--color-brass-light);
+  color: var(--color-parchment-light);
+  padding-left: 1rem;
+}
+
+.modalBackdrop {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  position: fixed;
+  z-index: 80;
+}
+
+.gmBackdrop {
+  background: var(--gradient-session-story);
+}
+
+.characterModal {
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  max-height: min(78vh, 42rem);
+  max-width: 42rem;
+  min-width: 0;
+  overflow: auto;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+  width: min(100%, 42rem);
+}
+
+.loreModal {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(20rem, 0.9fr);
+  height: min(78vh, 38rem);
+  max-height: min(78vh, 38rem);
+  max-width: 64rem;
+  overflow: hidden;
+  padding: 0;
+  width: min(100%, 64rem);
+}
+
+.loreArtwork {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.loreArtwork::after {
+  background: var(--gradient-preview-vignette);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.loreArtwork img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
+.loreContent {
+  min-width: 0;
+  overflow: hidden;
+  padding: clamp(1rem, 2.4vw, 1.6rem);
+}
+
+.gmModal {
+  border-color: var(--color-wine);
+  max-width: 48rem;
+  width: min(100%, 48rem);
+}
+
+.modalHeader {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--color-brass-alpha-38);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+}
+
+.modalHeader h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0.25rem 0 0;
+}
+
+.modalHeader > button {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 1.25rem;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.loreText,
+.gmChoices {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.loreText p,
+.gmChoices p {
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 1.25vw, 1rem);
+  line-height: 1.55;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.gmChoices button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  justify-self: start;
+  padding: 0.62rem 0.82rem;
+}
+
+.resultContinuation {
+  border-top: 1px solid var(--color-brass-alpha-38);
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.8rem;
+}
+
+.resultContinuation button,
+.questOffer button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
+  font-weight: 700;
+  padding: 0.58rem 0.82rem;
+}
+
+.questOffer {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  display: grid;
+  gap: 0.8rem;
+  padding: clamp(0.85rem, 1.4vw, 1.15rem);
+}
+
+.questOffer > div {
+  border-bottom: 1px solid var(--color-brass-alpha-38);
+  padding-bottom: 0.65rem;
+}
+
+.questOffer > div span {
+  color: var(--color-brass-muted);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.questOffer h3 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  font-weight: 500;
+  margin: 0.2rem 0 0;
+}
+
+.questOffer p {
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.9vw, 0.84rem);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 58rem;
+}
+
+.questOffer button { justify-self: start; }
+
+.gmRevealControl {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  display: flex;
+  gap: 0.8rem;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  padding: 0.75rem;
+}
+
+.gmRevealControl p {
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.gmRevealControl button {
+  background: var(--color-wine);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 0.5rem 0.7rem;
+}
+
+.checkPanel {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  margin-top: 0.8rem;
+  padding: 0.75rem;
+}
+
+.checkHeading {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkHeading div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.checkHeading span {
+  color: var(--color-brass-muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.checkHeading strong {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.checkHeading > button {
+  background: var(--color-transparent);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-gold-light);
+  cursor: pointer;
+}
+
+.heroChoices button,
+.statChoices button {
+  background: var(--color-black-alpha-42);
+  color: var(--color-brass-light);
+}
+
+.heroChoices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr));
+}
+
+.heroChoices button {
+  align-items: center;
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  min-width: 0;
+  padding: 0.35rem 0.25rem;
+}
+
+.heroAvatarFrame {
+  align-items: center;
+  aspect-ratio: 1;
+  display: flex;
+  height: clamp(3rem, 5vw, 4.4rem);
+  justify-content: center;
+  overflow: hidden;
+  width: clamp(3rem, 5vw, 4.4rem);
+}
+
+.heroAvatarFrame img {
+  --hero-check-scale: 1;
+  --hero-check-y: 0%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transform: translateY(var(--hero-check-y)) scale(var(--hero-check-scale));
+  transform-origin: center;
+  width: 100%;
+}
+
+.heroAvatarFrame img[data-hero-id="bubsilda"] { --hero-check-scale: 1.12; --hero-check-y: 6.1%; }
+.heroAvatarFrame img[data-hero-id="linda"] { --hero-check-scale: 0.99; --hero-check-y: 1.1%; }
+.heroAvatarFrame img[data-hero-id="lambert"] { --hero-check-scale: 1.04; --hero-check-y: 3.5%; }
+.heroAvatarFrame img[data-hero-id="golovach-lena"] { --hero-check-scale: 0.97; --hero-check-y: 0.3%; }
+.heroAvatarFrame img[data-hero-id="thorin-pukoshchit"] { --hero-check-scale: 1.12; --hero-check-y: 6.7%; }
+
+.hiddenAction {
+  filter: saturate(0.72);
+  opacity: 0.82;
+}
+
+.fallbackChoices {
+  border-left: 1px solid var(--color-brass-alpha-38);
+  display: grid;
+  gap: 0.55rem;
+  padding-left: 0.8rem;
+}
+
+.fallbackChoices > p {
+  color: var(--color-brass-muted);
+  font-size: clamp(0.7rem, 0.9vw, 0.82rem);
+}
+
+.gmAside {
+  border-top: 1px solid var(--color-brass-alpha-38);
+  padding-top: 0.6rem;
+}
+
+.heroChoiceName {
+  font-size: clamp(0.55rem, 0.75vw, 0.7rem);
+  line-height: 1.05;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.heroChoices .selected,
+.statChoices .selected {
+  background: var(--gradient-gold);
+  color: var(--color-ink-dark);
+}
+
+.rollControls {
+  align-items: end;
+}
+
+.dieRollButton {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 9.6rem;
+}
+
+.rollStatus {
+  color: var(--color-brass-muted);
+  flex-basis: 100%;
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  min-height: 1em;
+}
+
+.rollControls label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.rollControls label span {
+  color: var(--color-brass-muted);
+  font-size: 0.62rem;
+}
+
+.rollControls input {
+  background: var(--color-black-alpha-58);
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--color-brass-alpha-62);
+  color: var(--color-parchment-light);
+  padding: 0.45rem;
+}
+
+.rollControls input {
+  appearance: textfield;
+  font-size: 1rem;
+  min-width: 4.4rem;
+  text-align: center;
+}
+
+.rollControls input::-webkit-inner-spin-button,
+.rollControls input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.resolution {
+  background: var(--color-black-alpha-42);
+  border-left: 3px solid var(--color-brass-light);
+  display: grid;
+  gap: 0.32rem;
+  margin: 0.35rem 0 0.9rem;
+  padding: 0.7rem 0.85rem;
+}
+
+.resolutionLabel {
+  color: var(--color-brass-muted);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.resolution strong {
+  color: var(--color-gold-light);
+  font-family: var(--font-body);
+  font-size: clamp(0.72rem, 0.85vw, 0.82rem);
+}
+
+.resolution > span:last-child {
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+  line-height: 1.42;
+}
+
+.success { border-color: var(--color-ice-bright); }
+.failure { border-color: var(--color-wine); }
+
+.sessionHud button:focus-visible,
+.actions button:focus-visible,
+.actions a:focus-visible,
+.checkPanel button:focus-visible,
+.rollControls input:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.rollControls input:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-gold-light);
+  outline: 0;
+}
+
+.door:focus-visible {
+  outline: 0;
+}
+
+.modalHeader > button:focus-visible,
+.gmChoices button:focus-visible,
+.gmRevealControl button:focus-visible,
+.gmAccessButton:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+
+@media (max-width: 1100px) {
+  .legendPanel,
+  .dialoguePanel { bottom: 5.1rem; width: calc(100% - 9rem); }
+  .sessionHud { left: 0.65rem; top: 4.8rem; width: 10rem; }
+  .gmAccessButton { left: 11rem; top: 4.8rem; }
+}
+
+@media (max-width: 700px) {
+  .modalBackdrop { padding: 0.75rem; }
+  .characterModal { max-height: 86vh; }
+  .loreModal { display: block; overflow: auto; }
+  .loreArtwork { height: 12rem; min-height: 0; }
+  .gmRevealControl { align-items: stretch; flex-direction: column; }
+}

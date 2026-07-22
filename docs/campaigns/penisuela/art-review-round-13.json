@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 13,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-overload-empty-reverse",
+      "variant": "art-drafts/hotel-overload-empty-reverse-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png.",
+      "notes": [
+        "Комната совпадает по архитектуре, свету и последствиям вечеринки с опубликованным кадром пробуждения.",
+        "Камера развёрнута от балкона к двери выхода, а не повторяет исходный ракурс.",
+        "Вертикальная кровать, фонтан, пустое кресло и сумка с пальмой сохранены.",
+        "Герои, NPC, читаемый текст, UI и новые спойлеры отсутствуют."
+      ]
+    }
+  ]
+}

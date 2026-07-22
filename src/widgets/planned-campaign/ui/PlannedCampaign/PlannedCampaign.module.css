@@ -171,6 +171,12 @@
 .teaserDetails .contents { gap: 0.22rem; margin-top: 0.4rem; }
 .teaserDetails .status { margin-top: 0.35rem; transform: none; }
 
+.entryPage {
+  justify-content: flex-start;
+  padding-bottom: 10%;
+  padding-top: 10%;
+}
+
 .copy { min-height: 0; }
 
 .kicker,
@@ -218,6 +224,75 @@
 
 .assignment span { font-style: italic; }
 .assignment strong { color: var(--color-wine-dark); font-weight: 700; }
+
+.campaignEntry {
+  border-top: 1px solid var(--color-parchment-dark);
+  margin-top: 0.8rem;
+  padding-top: 0.72rem;
+  text-align: center;
+}
+
+.entryEyebrow {
+  color: var(--color-wine);
+  font-size: clamp(0.48rem, 0.62vw, 0.58rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.campaignEntry h3 {
+  color: var(--color-ink-dark);
+  font-family: var(--font-display);
+  font-size: clamp(0.92rem, 1.12vw, 1.18rem);
+  font-weight: 500;
+  line-height: 1.1;
+  margin: 0.28rem 0 0;
+  text-wrap: balance;
+}
+
+.startButton {
+  align-items: center;
+  background: var(--gradient-parchment);
+  border: 1px solid var(--color-wine-dark);
+  box-shadow: var(--shadow-inset-paper), var(--shadow-soft);
+  color: var(--color-wine-dark);
+  display: flex;
+  gap: 0.55rem;
+  justify-content: center;
+  margin: 0.82rem auto 0;
+  max-width: 16rem;
+  padding: 0.5rem 0.65rem;
+  text-align: center;
+  text-decoration: none;
+  transition: filter 160ms ease, transform 160ms ease;
+  width: 100%;
+}
+
+.startButton:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.startSeal {
+  flex: 0 0 auto;
+  height: 2.15rem;
+  overflow: visible;
+  width: 2.15rem;
+}
+
+.startButton strong {
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 1vw, 1.02rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.startArrow {
+  color: var(--color-gold-dark);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
 
 .legend {
   border-bottom: 1px solid var(--color-parchment-dark);
@@ -282,6 +357,11 @@
 .status div { display: flex; flex-direction: column; min-width: 0; }
 .status small { color: var(--color-silver); font-size: clamp(0.38rem, 0.5vw, 0.48rem); letter-spacing: 0.13em; text-transform: uppercase; }
 .status strong { color: var(--color-gold-light); font-family: var(--font-display); font-size: clamp(0.65rem, 0.9vw, 0.86rem); font-weight: 500; margin-top: 0.08rem; }
+
+.startButton:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 3px;
+}
 
 @media (max-width: 680px) {
   .scene {
@@ -353,7 +433,7 @@
   .contents { font-size: 0.82rem; gap: 0.5rem; margin-top: 0.65rem; }
   .contents li { padding-bottom: 0.4rem; padding-left: 0.9rem; }
   .contents li::before { font-size: 0.38rem; top: 0.3rem; }
-  .status { gap: 0.65rem; margin-top: 1.15rem; padding: 0.75rem; width: 100%; }
+  .status { flex-wrap: wrap; gap: 0.65rem; margin-top: 1.15rem; padding: 0.75rem; width: 100%; }
   .status { transform: none; }
   .status > span { font-size: 1.05rem; }
   .status small { font-size: 0.5rem; }

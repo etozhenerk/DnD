@@ -1,0 +1,22 @@
+{
+  "campaignId": "penisuela",
+  "round": 21,
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-ui-preview-legend-parchment",
+      "variant": "art-drafts/technical-ui/preview-legend-parchment-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Исходный PNG с равномерным chroma-key сохранён отдельно; фон удалён в RGBA PNG с soft matte и despill. Итог 1942×809, прозрачные углы подтверждены.",
+      "checks": [
+        "Один отдельный горизонтальный лист без корешка и двойного разворота.",
+        "Материал, цвет и тонкий угловой орнамент соответствуют существующей книге проекта.",
+        "Центральное поле свободно от текста и крупных деталей и подходит для мастерского текста разной длины.",
+        "На изображении нет текста, стрелок, кнопок, печатей, гербов, логотипов и водяных знаков.",
+        "Края отделены от фона, четыре угла полностью прозрачны."
+      ]
+    }
+  ],
+  "result": "Пользователь утвердил подложку сообщением «ок». RGBA PNG без перекодирования опубликован в assets/concepts/campaigns/penisuela/ui/preview-legend-parchment.png и зарегистрирован в manifest."
+}

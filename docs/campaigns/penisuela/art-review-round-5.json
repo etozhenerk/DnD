@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 5,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {"assetId": "penisuela-party-bubsilda-summer", "variant": "assets/concepts/campaigns/penisuela/party/bubsilda.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-party-linda-summer", "variant": "assets/concepts/campaigns/penisuela/party/linda.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-party-lambert-summer", "variant": "assets/concepts/campaigns/penisuela/party/lambert.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-party-golovach-lena-summer", "variant": "assets/concepts/campaigns/penisuela/party/golovach-lena.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-party-thorin-summer", "variant": "assets/concepts/campaigns/penisuela/party/thorin-pukoshchit.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-lord-krayneplot-tavern", "variant": "assets/concepts/campaigns/penisuela/party/lord-krayneplot.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-pussy-sultan", "variant": "assets/concepts/campaigns/penisuela/npcs/pussy-sultan.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-style-sphinx", "variant": "assets/concepts/campaigns/penisuela/npcs/archive-linfea.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-eternal-all-inclusive", "variant": "assets/concepts/campaigns/penisuela/npcs/eternal-all-inclusive.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-olga-vasilenko", "variant": "assets/concepts/campaigns/penisuela/npcs/bungalow-consultant-linfea.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-celebrity-decoy-satyr", "variant": "assets/concepts/campaigns/penisuela/npcs/celebrity-decoy-satyr.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-egor-kreed", "variant": "assets/concepts/campaigns/penisuela/npcs/anonymous-elf-artist.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-igor-sinyak", "variant": "assets/concepts/campaigns/penisuela/npcs/ceremony-linfea.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-egorik-private", "variant": "assets/concepts/campaigns/penisuela/npcs/false-groom-guest.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-nastya-private", "variant": "assets/concepts/campaigns/penisuela/npcs/guest-organizer.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-bungalow-spouse-a-private", "variant": "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-a.webp", "verdict": "accept", "userDecision": "approved"},
+    {"assetId": "penisuela-npc-bungalow-spouse-b-private", "variant": "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-b.webp", "verdict": "accept", "userDecision": "approved"}
+  ]
+}

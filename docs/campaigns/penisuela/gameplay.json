@@ -1,0 +1,900 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "status": "approved",
+  "balanceStatus": "provisional",
+  "balanceRevisitAfter": "hero-abilities-rebalance",
+  "systemRef": "content/rules.json",
+  "sourceRefs": [
+    "story-graph.json",
+    "cast.md",
+    "script.md",
+    "dialogue.json"
+  ],
+  "party": {
+    "size": 5,
+    "characterIds": [
+      "bubsilda",
+      "linda",
+      "lambert",
+      "golovach-lena",
+      "thorin-pukoshchit"
+    ]
+  },
+  "difficultyClasses": {
+    "easy": 8,
+    "normal": 12,
+    "hard": 15,
+    "heroic": 18
+  },
+  "campaignConditions": [
+    {
+      "id": "shamed",
+      "name": "Пристыжен",
+      "effect": "-2 к следующей атаке или проверке; после её разрешения состояние снимается.",
+      "defaultDuration": "until-next-roll"
+    },
+    {
+      "id": "assigned-role",
+      "name": "Навязанная роль",
+      "effect": "Перед следующим действием герой может отвергнуть роль проверкой Мудрости DC 12. При провале действие всё равно совершается, но с -2; затем состояние снимается.",
+      "defaultDuration": "until-next-action"
+    }
+  ],
+  "state": {
+    "flagsRef": "story-graph.json#/state/flags",
+    "counters": [
+      {
+        "id": "time-pressure",
+        "initial": 0,
+        "minimum": 0,
+        "maximum": 8,
+        "automaticRules": [
+          {
+            "condition": {"counter": "time-pressure", "gt": 4},
+            "effect": "План режиссёрского монтажа недоступен. Штатный и физический планы остаются доступны."
+          }
+        ]
+      },
+      {
+        "id": "pre-final-combats",
+        "initial": 0,
+        "minimum": 0,
+        "maximum": 5,
+        "effect": "Информационный счётчик реально начатых боёв до финала; сам по себе не усиливает босса."
+      }
+    ],
+    "relationshipTracks": [
+      {
+        "id": "egorik-nastasya-trust",
+        "initial": 0,
+        "minimum": -1,
+        "maximum": 1,
+        "thresholds": {
+          "1": "Даёт один повтор проверки канала в финале.",
+          "0": "Обязательные улики выданы, дополнительной помощи нет.",
+          "-1": "Пара сохраняет дистанцию; сюжет не блокируется."
+        }
+      },
+      {
+        "id": "wedding-couple-trust",
+        "initial": 0,
+        "minimum": -1,
+        "maximum": 1,
+        "thresholds": {
+          "1": "Доступен штатный голосовой сброс.",
+          "0": "Нужно явно подтвердить границы записи перед штатным сбросом.",
+          "-1": "Штатный сброс недоступен; режиссёрский и физический планы остаются."
+        }
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "closed-bar-token",
+      "name": "Жетон закрытого бара",
+      "owner": "party",
+      "quantity": 1,
+      "charges": null,
+      "persistence": "campaign",
+      "acquiredIn": "hotel-gallery",
+      "requiredIn": null,
+      "action": null
+    },
+    {
+      "id": "pussy-sultan-womanizer",
+      "name": "Вуманайзер Pussy Sultan",
+      "owner": "party",
+      "quantity": 1,
+      "charges": 1,
+      "persistence": "campaign-until-transferred",
+      "acquiredIn": "hotel-gallery",
+      "requiredIn": "guest-bungalows",
+      "action": {
+        "id": "transfer-womanizer-to-polina",
+        "name": "Передать Вуманайзер Полине",
+        "actor": "party-hero",
+        "target": "bungalow-spouse-b",
+        "trigger": "action",
+        "resolution": "automatic",
+        "check": null,
+        "preconditions": {
+          "all": [
+            {"scene": "guest-bungalows"},
+            {"itemHeld": "pussy-sultan-womanizer"},
+            {"not": {"flag": "family-branch-therapy", "equals": true}}
+          ]
+        },
+        "effects": [
+          {"type": "transfer-item", "target": "bungalow-spouse-b", "itemId": "pussy-sultan-womanizer", "quantity": 1, "log": "Полина получает Вуманайзер и уходит до предложения Олвы."},
+          {"type": "set-flag", "target": "campaign", "flag": "womanizer-given-to-polina", "value": true, "log": "Полина добровольно выбирает самостоятельный вечер."},
+          {"type": "set-flag", "target": "campaign", "flag": "family-branch-womanizer", "value": true, "log": "Зафиксирована ветка Вуманайзера; парная сессия недоступна."}
+        ]
+      }
+    },
+    {
+      "id": "red-button-18-plus",
+      "name": "Красная кнопка 18+",
+      "owner": "party",
+      "quantity": 1,
+      "charges": 1,
+      "persistence": "campaign",
+      "acquiredIn": "show-18-pavilion",
+      "uses": {"scope": "campaign", "max": 1},
+      "action": {
+        "id": "press-red-button-18-plus",
+        "name": "Прервать навязанную роль",
+        "actor": "item-holder",
+        "target": "one-hero-or-system-reaction",
+        "trigger": "reaction",
+        "resolution": "manual",
+        "check": null,
+        "preconditions": {
+          "any": [
+            {"targetHasCondition": "stunned"},
+            {"targetHasCondition": "shamed"},
+            {"targetHasCondition": "assigned-role"},
+            {"systemReactionPending": true}
+          ]
+        },
+        "effects": [
+          {"type": "remove-condition", "target": "chosen-hero", "condition": "stunned-or-shamed-or-assigned-role", "duration": "immediate", "log": "Красная кнопка снимает одно допустимое состояние."},
+          {"type": "set-location-state", "target": "pending-system-reaction", "value": "cancelled", "duration": "current-reaction", "log": "Вместо снятия состояния кнопка может отменить одну реакцию сценической системы."},
+          {"type": "spend-charge", "target": "red-button-18-plus", "value": 1, "log": "Заряд Красной кнопки израсходован."}
+        ],
+        "limitations": [
+          "Выбирается ровно один из первых двух эффектов.",
+          "Не отменяет уже нанесённый урон, переход фазы, обязательный старт босса или последствие полного поражения партии."
+        ]
+      }
+    },
+    {
+      "id": "clear-choice-confirmation",
+      "name": "Подтверждение ясного выбора",
+      "owner": "party",
+      "quantity": 1,
+      "charges": 1,
+      "persistence": "campaign",
+      "acquiredIn": "couples-session-choice",
+      "requiredIn": null,
+      "uses": {"scope": "campaign", "max": 1},
+      "action": {
+        "id": "invoke-clear-choice-confirmation",
+        "name": "Подтвердить собственное решение",
+        "actor": "item-holder",
+        "target": "one-hero",
+        "trigger": "before-roll",
+        "resolution": "manual",
+        "check": null,
+        "preconditions": {
+          "all": [
+            {"itemCharge": {"itemId": "clear-choice-confirmation", "gte": 1}},
+            {"heroStatesChosenIntent": true}
+          ]
+        },
+        "effects": [
+          {"type": "add-condition", "target": "chosen-hero", "condition": "inspired", "duration": "until-next-roll", "log": "Герой вслух формулирует собственное решение и получает +2 к следующей подходящей проверке или атаке."},
+          {"type": "spend-charge", "target": "clear-choice-confirmation", "value": 1, "log": "Подтверждение ясного выбора использовано."}
+        ],
+        "limitations": [
+          "Мастер подтверждает, что заявленное действие соответствует вслух сформулированному намерению героя.",
+          "Не отменяет урон, состояние, реакцию системы, переход фазы или уже разрешённый бросок.",
+          "Не складывается с другим источником состояния inspired."
+        ]
+      }
+    }
+  ],
+  "globalRules": [
+    {
+      "id": "safe-location-rest",
+      "name": "Безопасная передышка",
+      "actor": "party",
+      "target": "all-heroes",
+      "trigger": "location-complete",
+      "resolution": "automatic",
+      "check": null,
+      "effects": [
+        {"type": "healing", "target": "each-hero", "value": "1d8", "limit": "maxHp", "log": "Безопасная локация завершена: каждый герой восстанавливает 1d8 HP."}
+      ]
+    },
+    {
+      "id": "critical-clue-fail-forward",
+      "name": "Улика не исчезает",
+      "actor": "gm",
+      "target": "failed-critical-check",
+      "trigger": "check-failed",
+      "resolution": "manual",
+      "check": null,
+      "effects": [
+        {"type": "reveal-clue", "target": "party", "valueRef": "failed-check.clueId", "log": "Связанная с проваленной проверкой критическая улика выдана вместе с осложнением."},
+        {"type": "increment-counter", "target": "time-pressure", "value": 1, "optional": true, "log": "Мастер выбирает время, урон или активный модуль как цену провала."}
+      ]
+    }
+  ],
+  "sceneMechanics": [
+    {
+      "sceneId": "tavern-invitation",
+      "mode": "framing",
+      "actions": [],
+      "automaticEffects": [
+        {"type": "set-flag", "target": "campaign", "flag": "invitation-accepted", "value": true, "log": "Кострюлька отправлена за пятерых героев."}
+      ]
+    },
+    {
+      "sceneId": "hotel-overload",
+      "mode": "investigation",
+      "actions": [
+        {"id": "read-overload-console", "name": "Прочитать переносной пульт", "actor": "party-hero", "target": "overload-console", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 8}, "effects": [{"type": "reveal-clue", "target": "party", "value": "system-overload", "log": "Сценическая сеть разрушит курорт через пять часов."}]},
+        {"id": "inspect-pendant-log", "name": "Изучить журнал кулона", "actor": "party-hero", "target": "camera-pendant", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 12, "automaticSuccessAbilityId": "video-surveillance"}, "effects": [{"type": "reveal-clue", "target": "party", "value": "shutdown-options", "log": "Аварию физически запустила сценическая сеть; доступ к ней идёт через переносной пульт."}]},
+        {"id": "restore-egorik-recording", "name": "Восстановить запись для Егорика", "actor": "party-hero", "target": "damaged-recording", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 12}, "effects": [{"type": "reveal-clue", "target": "party", "value": "egorik-lead", "log": "Виден Егорик с конвертом и служебный вход."}]},
+        {"id": "keep-pendant-connected", "name": "Оставить кулон подключённым", "actor": "party", "target": "camera-pendant", "trigger": "scene-choice", "resolution": "automatic", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pendant-connected", "value": true, "log": "Журнал кулона остаётся полным."}, {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Подключённый кулон ускоряет перегрузку."}]}
+      ]
+    },
+    {
+      "sceneId": "hotel-gallery",
+      "mode": "investigation-hazard",
+      "actions": [
+        {"id": "earn-pussy-acquaintance", "name": "Заслужить знакомство с Pussy", "actor": "party-hero", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": {"stat": "charisma", "dc": 12, "eligibleHeroIds": ["bubsilda", "linda", "lambert", "golovach-lena", "thorin-pukoshchit"]}, "conditions": {"all": [{"not": {"flag": "pussy-acquainted", "value": true}}, {"not": {"flag": "pussy-acquaintance-failed", "value": true}}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-acquainted", "value": true, "log": "Незнакомец признаёт героев достойной делегацией и готов назвать себя."}], "failureEffects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-acquaintance-failed", "value": true, "log": "Повтор знакомства закрыт; очарование и давление получают +2 DC."}, {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Неудачная попытка знакомства отнимает время и больше не повторяется."}]},
+        {"id": "reveal-pussy-lore", "name": "Открыть игрокам имя и лор Pussy", "actor": "game-master", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": null, "conditions": {"all": [{"flag": "pussy-acquainted", "value": true}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-lore-revealed", "value": true, "log": "После успешного знакомства мастер открывает имя Pussy, закрывает свою панель и показывает игрокам карточку лора."}]},
+        {"id": "earn-pussy-trust", "name": "Очаровать и разговорить Pussy о вчерашней ночи", "actor": "party-hero", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": {"stat": "charisma", "dc": 14, "eligibleHeroIds": ["bubsilda", "linda"], "dcModifiers": [{"flag": "pussy-acquaintance-failed", "delta": 2}]}, "conditions": {"any": [{"flag": "pussy-lore-revealed", "value": true}, {"flag": "pussy-acquaintance-failed", "value": true}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-acquainted", "value": true, "log": "Незнакомец признаёт знакомство после успешного очарования."}, {"type": "set-flag", "target": "campaign", "flag": "pussy-trust-max", "value": true, "log": "Pussy доверяет героиням уцелевшее воспоминание о вчерашней ночи."}, {"type": "reveal-clue", "target": "party", "value": "egorik-nastya-service-door", "log": "Pussy вспоминает Егорика, Настасью, чёрный конверт, золотой браслет и служебную дверь."}], "failureEffects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-trust-refused", "value": true, "log": "Доверительная ветка закрыта; после провала знакомства остаётся только силовое давление."}, {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Pussy окончательно отказывает в помощи."}]},
+        {"id": "intimidate-pussy", "name": "Надавить на Pussy силой", "actor": "party-hero", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": {"stat": "strength", "dc": 15, "eligibleHeroIds": ["lambert", "golovach-lena", "thorin-pukoshchit"], "dcModifiers": [{"flag": "pussy-acquaintance-failed", "delta": 2}]}, "conditions": {"any": [{"flag": "pussy-trust-refused", "value": true}, {"flag": "pussy-acquaintance-failed", "value": true}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-acquainted", "value": true, "log": "Незнакомец вынужден назвать себя после успешного давления."}, {"type": "set-flag", "target": "campaign", "flag": "pussy-intimidated", "value": true, "log": "Pussy отдаёт ключ и раскрывает воспоминание без доверия."}, {"type": "set-flag", "target": "campaign", "flag": "archive-key-recovered", "value": true, "log": "Ключ от архива у героев."}, {"type": "reveal-clue", "target": "party", "value": "egorik-nastya-service-door", "log": "Pussy раскрывает имена и служебную дверь."}], "failureEffects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-guards-summoned", "value": true, "log": "Pussy вызывает охрану VIP-крыла."}, {"type": "set-location-state", "target": "hotel-gallery-pussy", "value": "guards-ready", "log": "Общий экран показывает предбоевую сцену."}]},
+        {"id": "steal-pussy-key", "name": "Украсть ключ уменьшившейся Линдой", "actor": "linda", "target": "pussy-sultan-key", "trigger": "gm-choice", "resolution": "automatic", "check": {"stat": "dexterity", "dc": 12, "eligibleHeroIds": ["linda"]}, "conditions": {"all": [{"flag": "pussy-trust-refused", "value": true}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "archive-key-recovered", "value": true, "log": "Линда незаметно крадёт ключ."}], "failureEffects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-guards-summoned", "value": true, "log": "Звон цепочки выдаёт Линду; Pussy вызывает охрану."}, {"type": "set-location-state", "target": "hotel-gallery-pussy", "value": "guards-ready", "log": "Общий экран показывает предбоевую сцену охраны."}]},
+        {"id": "start-hotel-vip-guards-combat", "name": "Начать бой с охраной VIP-крыла", "actor": "gm", "target": "hotel-vip-guards", "trigger": "gm-choice", "resolution": "automatic", "conditions": {"all": [{"flag": "pussy-guards-summoned", "value": true}]}, "effects": [{"type": "increment-counter", "target": "pre-final-combats", "value": 1, "log": "Мастер начинает бой с охраной."}, {"type": "set-location-state", "target": "hotel-gallery-pussy", "value": "guards-combat", "log": "Определяется инициатива охраны и героев."}]},
+        {"id": "accept-pussy-quest", "name": "Принять поручение Pussy", "actor": "party", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": null, "conditions": {"all": [{"flag": "pussy-trust-max", "value": true}]}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "pussy-quest-accepted", "value": true, "log": "При максимальном доверии Pussy объясняет, что золотой скипетр зажат под паланкином на верхней галерее."}]},
+        {"id": "calm-alexis", "name": "Успокоить запертого Алексиса", "actor": "party-hero", "target": "style-sphinx", "trigger": "action", "resolution": "automatic", "check": {"stat": "charisma", "dc": 12, "automaticSuccessAbilityId": "hypnotic-smile", "advantageAbilityId": "sarcasm"}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "alexis-calmed", "value": true, "log": "Алексис успокоен и готов говорить по делу."}, {"type": "reveal-clue", "target": "party", "value": "egorik-lead", "log": "Алексис показывает документ о проживании Егорика и Настасьи: общий номер, цветы, торт и обычный тариф."}, {"type": "reveal-clue", "target": "party", "value": "dressing-room-route", "log": "Алексис ведёт партию к закрытому бару по связанному заказу."}, {"type": "transfer-item", "target": "party", "itemId": "closed-bar-token", "quantity": 1, "log": "Алексис вручает партии жетон закрытого бара со служебной меткой артистического коридора."}]},
+        {"id": "search-hotel-archive", "name": "Разобрать архив самостоятельно", "actor": "party-hero", "target": "hotel-archive", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 12}, "effects": [{"type": "reveal-clue", "target": "party", "value": "dressing-room-route", "log": "Барный заказ ведёт к артистическому коридору."}]},
+        {"id": "find-vip-prop-room", "name": "Подняться к опрокинутому паланкину", "actor": "party-hero", "target": "vip-zone-staircase", "trigger": "action", "resolution": "automatic", "check": null, "effects": [{"type": "set-location-state", "target": "hotel-gallery", "value": "vip-prop-room-visited", "log": "Партия свободно поднимается на верхнюю галерею и видит паланкин со скипетром среди VIP-реквизита; без поручения Pussy предмет остаётся чужой вещью без контекста."}]},
+        {"id": "recover-pussy-scepter", "name": "Достать золотой скипетр-микрофон", "actor": "party-hero", "target": "vip-prop-room-palanquin", "trigger": "action", "resolution": "automatic", "check": {"anyStat": ["strength", "dexterity"], "dc": 12}, "effects": [{"type": "transfer-item", "target": "party", "itemId": "pussy-sultan-golden-scepter-microphone", "quantity": 1, "log": "Скипетр освобождён, показан отдельной карточкой и помещён во временную ячейку общего инвентаря."}, {"type": "set-flag", "target": "campaign", "flag": "scepter-recovered", "value": true, "log": "Герои остаются на верхней галерее со скипетром у себя."}], "failureEffects": [{"type": "transfer-item", "target": "party", "itemId": "pussy-sultan-golden-scepter-microphone", "quantity": 1, "log": "После долгой возни скипетр всё равно освобождён и помещён в инвентарь."}, {"type": "set-flag", "target": "campaign", "flag": "scepter-recovered", "value": true, "log": "Герои остаются на верхней галерее со скипетром у себя."}, {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Возня с паланкином и костюмными рейлами отнимает время."}]},
+        {"id": "descend-with-pussy-scepter", "name": "Спуститься со скипетром", "actor": "party", "target": "hotel-gallery", "trigger": "action", "resolution": "automatic", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "rail-kraken-awakened-by-scepter", "value": true, "log": "Система защиты замечает вынесенную регалию и выпускает Рельсового кракена."}, {"type": "set-location-state", "target": "hotel-gallery", "value": "kraken-active", "log": "Кракен агрится на скипетр и перекрывает нижнюю галерею."}]},
+        {"id": "return-pussy-scepter", "name": "Вернуть скипетр Pussy после встречи с кракеном", "actor": "party", "target": "pussy-sultan", "trigger": "gm-choice", "resolution": "automatic", "check": null, "conditions": {"all": [{"flag": "pussy-trust-max", "value": true}, {"flag": "pussy-quest-accepted", "value": true}]}, "effects": [{"type": "transfer-item", "target": "pussy-sultan", "itemId": "pussy-sultan-golden-scepter-microphone", "quantity": 1, "log": "Pussy получает обратно золотой скипетр-микрофон."}, {"type": "transfer-item", "target": "party", "itemId": "pussy-sultan-womanizer", "quantity": 1, "log": "Только за выполненное доверительное поручение Pussy вручает Вуманайзер."}, {"type": "set-flag", "target": "campaign", "flag": "archive-key-recovered", "value": true, "log": "Ключ от запертого архива Алексис у партии."}]},
+        {"id": "linda-enter-kraken-service-hatch", "name": "Уменьшиться и отключить привод изнутри", "actor": "linda", "target": "rail-prop-kraken-service-hatch", "trigger": "action", "resolution": "automatic", "check": {"automaticSuccessAbilityId": "tiny-size"}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "rail-kraken-disabled", "value": true, "log": "Уменьшившаяся Линда проникает через сервисный люк и штатно отключает Рельсового кракена."}, {"type": "set-location-state", "target": "hotel-gallery", "value": "kraken-disabled-by-linda", "log": "Кракен остаётся целым, люк открыт, привод погашен."}]}
+      ],
+      "encounterRef": "rail-prop-kraken"
+    },
+    {
+      "sceneId": "rail-kraken-fight",
+      "mode": "combat",
+      "encounterRef": "rail-prop-kraken"
+    },
+    {
+      "sceneId": "closed-bar",
+      "mode": "investigation-social",
+      "actions": [
+        {"id": "restore-bar-route", "name": "Восстановить маршрут заказа", "actor": "party-hero", "target": "bar-dispatcher", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 12}, "effects": [{"type": "reveal-clue", "target": "party", "value": "dressing-room-route", "log": "Последняя доставка ушла в артистический коридор."}]},
+        {"id": "close-prokhor-order", "name": "Убедить Прохора закрыть заказ", "actor": "party-hero", "target": "eternal-all-inclusive", "trigger": "action", "resolution": "manual", "check": {"stat": "charisma", "dc": 12, "autoSuccessOnExactArgument": "Закрытие заказа не завершает отдых."}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "bar-order-closed", "value": true, "log": "Прохор добровольно закрывает all-inclusive-заказ."}]},
+        {"id": "ask-stas-for-route", "name": "Помочь Стасу сформулировать решение", "actor": "party-hero", "target": "bungalow-spouse-a", "trigger": "action", "resolution": "manual", "check": {"anyStat": ["wisdom", "charisma"], "dc": 12}, "effects": [{"type": "reveal-clue", "target": "party", "value": "egorik-lead", "log": "Стас называет ряд бунгало; при провале ряд остаётся в журнале."}]},
+        {"id": "ask-stas-for-future-conversation", "name": "Получить разрешение на прямой разговор", "actor": "party-hero", "target": "bungalow-spouse-a", "trigger": "dialogue", "resolution": "automatic", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "stas-met", "value": true, "log": "Герои встретили Стаса в баре."}, {"type": "set-flag", "target": "campaign", "flag": "stas-call-consent", "value": true, "log": "Стас разрешает один будущий прямой разговор; это не согласие на программу или продолжение брака."}]}
+      ]
+    },
+    {
+      "sceneId": "bar-module-shutdown",
+      "mode": "skill-challenge",
+      "challenge": {
+        "successesRequired": 2,
+        "failuresBeforeComplication": 2,
+        "checks": [
+          {"stat": "intelligence", "dc": 12, "task": "Отсоединить цветные шланги по чеку."},
+          {"anyStat": ["dexterity", "charisma"], "dc": 12, "task": "Завершить последний счёт танцевального цикла."},
+          {"abilityId": "magic-whisper", "dc": 10, "task": "Попросить сеть закрыть простой заказ."},
+          {"abilityId": "helping-stick", "resolution": "automatic", "task": "Предоставить нужный вентиль."}
+        ],
+        "successEffects": [
+          {"type": "set-flag", "target": "campaign", "flag": "bar-power-key", "value": true, "log": "Ключ питания бара получен."},
+          {"type": "set-flag", "target": "campaign", "flag": "bar-module-active", "value": false, "log": "Барный модуль отключён."},
+          {"type": "set-flag", "target": "campaign", "flag": "dance-troupe-allies", "value": true, "log": "Труппа освобождена и готова помочь в финале."}
+        ],
+        "failureEffect": {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Лишние коктейли задерживают группу, но испытание продолжается."}
+      }
+    },
+    {
+      "sceneId": "bar-tap-fight",
+      "mode": "combat",
+      "encounterRef": "bottomless-bar-taps"
+    },
+    {
+      "sceneId": "artists-dressing-room",
+      "mode": "investigation-hazard",
+      "actions": [
+        {"id": "identify-secret-artist", "name": "Опознать тайного артиста", "actor": "party-hero", "target": "artist-clues", "trigger": "action", "resolution": "automatic", "check": {"anyStat": ["intelligence", "charisma"], "dc": 12, "requiresClueCount": 2}, "effects": [{"type": "reveal-clue", "target": "party", "value": "celebrity-kreed", "log": "На вечере выступал Егор Крид; его свадебная роль не раскрыта."}]},
+        {"id": "read-mask-route", "name": "Сопоставить журнал и зеркало", "actor": "party-hero", "target": "route-mirror", "trigger": "action", "resolution": "automatic", "check": {"stat": "wisdom", "dc": 12}, "effects": [{"type": "reveal-clue", "target": "party", "value": "egorik-lead", "log": "Егорик передал конверт человеку в маске и ушёл к бунгало."}]},
+        {"id": "finish-dressing-rehearsal", "name": "Завершить финальную позу", "actor": "party-hero", "target": "mirror-doubles", "trigger": "action", "resolution": "automatic", "check": {"stat": "charisma", "dc": 12}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "dressing-doubles-disabled", "value": true, "log": "Манекены отключены без боя."}, {"type": "set-flag", "target": "campaign", "flag": "stage-rehearsal-cue", "value": true, "log": "Satyr даёт одноразовую репетиционную команду."}]}
+      ],
+      "encounterRef": "dressing-room-mirror-doubles"
+    },
+    {
+      "sceneId": "dressing-room-double-fight",
+      "mode": "combat",
+      "encounterRef": "dressing-room-mirror-doubles"
+    },
+    {
+      "sceneId": "stage-module-shutdown",
+      "mode": "cooperative-check",
+      "challenge": {
+        "simultaneousRoles": 3,
+        "checks": [
+          {"stat": "intelligence", "dc": 12, "task": "Выстроить порядок линий."},
+          {"stat": "strength", "dc": 12, "task": "Удержать механический рычаг."},
+          {"any": ["magic-whisper", "helping-stick"], "resolution": "automatic", "task": "Заменить одну проверку подходящей магией или предметом."}
+        ],
+        "successEffects": [
+          {"type": "set-flag", "target": "campaign", "flag": "stage-power-key", "value": true, "log": "Ключ питания сцены получен."},
+          {"type": "set-flag", "target": "campaign", "flag": "stage-module-active", "value": false, "log": "Сценический модуль отключён."}
+        ],
+        "failureEffect": {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Прожекторы срабатывают, но повтор остаётся возможен."}
+      }
+    },
+    {
+      "sceneId": "guest-bungalows",
+      "mode": "exclusive-social-choice",
+      "actions": [
+        {
+          "id": "choose-womanizer-branch",
+          "name": "Передать Вуманайзер Полине",
+          "actor": "party",
+          "target": "bungalow-spouse-b",
+          "trigger": "scene-choice",
+          "resolution": "automatic",
+          "check": null,
+          "preconditions": {
+            "all": [
+              {"itemHeld": "pussy-sultan-womanizer"},
+              {"not": {"flag": "family-branch-therapy", "equals": true}}
+            ]
+          },
+          "effects": [
+            {"type": "transfer-item", "target": "bungalow-spouse-b", "itemId": "pussy-sultan-womanizer", "quantity": 1, "log": "Полина получает Вуманайзер и уходит до предложения Олвы."},
+            {"type": "set-flag", "target": "campaign", "flag": "womanizer-given-to-polina", "value": true, "log": "Полина добровольно выбирает самостоятельный вечер."},
+            {"type": "set-flag", "target": "campaign", "flag": "family-branch-womanizer", "value": true, "log": "Зафиксирована ветка Вуманайзера; парная сессия недоступна."}
+          ],
+          "nextSceneOptions": ["show-18-pavilion", "egorik-bungalow-reveal"]
+        },
+        {
+          "id": "choose-couples-session-branch",
+          "name": "Сохранить Вуманайзер и позвать Стаса",
+          "actor": "party",
+          "target": "olga-vasilenko-and-bungalow-spouse-a",
+          "trigger": "scene-choice",
+          "resolution": "automatic",
+          "check": null,
+          "preconditions": {
+            "all": [
+              {"itemHeld": "pussy-sultan-womanizer"},
+              {"flag": "stas-call-consent", "equals": true},
+              {"not": {"flag": "family-branch-womanizer", "equals": true}}
+            ]
+          },
+          "effects": [
+            {"type": "set-flag", "target": "campaign", "flag": "womanizer-given-to-polina", "value": false, "log": "Вуманайзер остаётся у партии."},
+            {"type": "set-flag", "target": "campaign", "flag": "family-branch-therapy", "value": true, "log": "Зафиксирована ветка парной сессии; Павильон 18+ недоступен."},
+            {"type": "set-flag", "target": "campaign", "flag": "stas-called-to-session", "value": true, "log": "Стас добровольно приходит на один прямой разговор."}
+          ],
+          "nextSceneId": "couples-session-stas"
+        }
+      ],
+      "rules": [
+        "Выбирается ровно одна ветка; бросок не определяет выбор или добровольность.",
+        "При передаче Вуманайзера Полина уходит до предложения Павильона 18+.",
+        "При сохранении предмета Стас приходит только по ранее данному разрешению; Вуманайзер остаётся у партии.",
+        "Павильон 18+ и парная сессия взаимоисключающие.",
+        "Егорик и Настасья не могут появиться в этой сцене."
+      ]
+    },
+    {
+      "sceneId": "show-18-pavilion",
+      "mode": "optional-mixed-encounter",
+      "encounterRef": "universal-advice-algorithm",
+      "challenge": {
+        "routes": [
+          {
+            "id": "live-contradiction",
+            "successesRequired": 3,
+            "failuresBeforeCombatOrAbort": 2,
+            "checks": [
+              {"anyStat": ["charisma", "wisdom"], "dc": 12, "task": "Задать один и тот же вопрос всем трём маскам."},
+              {"stat": "intelligence", "dc": 12, "task": "Показать логическое противоречие в ответах."}
+            ]
+          },
+          {
+            "id": "rewrite-teleprompter",
+            "successesRequired": 2,
+            "failuresBeforeCombatOrAbort": 2,
+            "checks": [
+              {"stat": "intelligence", "dc": 12, "task": "Заменить команды открытыми вопросами."},
+              {"stat": "dexterity", "dc": 12, "task": "Добраться до резервного суфлёра или камеры."}
+            ]
+          },
+          {
+            "id": "combat",
+            "encounterRef": "universal-advice-algorithm",
+            "startEffects": [
+              {"type": "increment-counter", "target": "pre-final-combats", "value": 1, "log": "Боевой вариант Павильона считается пятой потенциальной схваткой."}
+            ]
+          }
+        ],
+        "successEffects": [
+          {"type": "set-flag", "target": "campaign", "flag": "show-18-complete", "value": true, "log": "Алгоритм остановлен."},
+          {"type": "transfer-item", "target": "party", "itemId": "red-button-18-plus", "quantity": 1, "log": "Олва выдаёт Красную кнопку 18+."}
+        ],
+        "abortEffects": [
+          {"type": "set-flag", "target": "campaign", "flag": "show-18-complete", "value": false, "log": "Эфир аварийно оборван."},
+          {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Аварийное закрытие павильона отнимает время."}
+        ]
+      }
+    },
+    {
+      "sceneId": "couples-session-stas",
+      "mode": "guided-social-reflection",
+      "actions": [
+        {
+          "id": "clarify-stas-motivation",
+          "name": "Отделить свободу от избегания",
+          "actor": "party-hero",
+          "target": "bungalow-spouse-a",
+          "trigger": "optional-dialogue-check",
+          "resolution": "manual",
+          "check": {"anyStat": ["wisdom", "charisma"], "dc": 12},
+          "effects": [
+            {"type": "set-location-state", "target": "couples-session-stas", "value": "core-motivation-stated-clearly", "duration": "scene", "log": "Герои замечают, что Стас оживляется при слове «сам», а не при слове «бар»."}
+          ]
+        },
+        {
+          "id": "complete-stas-reflection",
+          "name": "Выслушать Стаса",
+          "actor": "party",
+          "target": "bungalow-spouse-a",
+          "trigger": "scene-complete",
+          "resolution": "automatic",
+          "check": null,
+          "effects": [
+            {"type": "set-flag", "target": "campaign", "flag": "stas-motivation-heard", "value": true, "log": "Партия услышала желание Стаса самому принять решение."}
+          ]
+        }
+      ],
+      "rules": [
+        "Бой, принуждение и обязательная проверка отсутствуют.",
+        "Провал необязательной проверки вызывает только неловкую переформулировку Олвы и не меняет состояние кампании.",
+        "Флаг мотивации ставится после одного открытого вопроса или уважительного пересказа услышанного."
+      ]
+    },
+    {
+      "sceneId": "couples-session-polina",
+      "mode": "guided-social-reflection",
+      "actions": [
+        {
+          "id": "clarify-polina-motivation",
+          "name": "Отделить семью от гарантии",
+          "actor": "party-hero",
+          "target": "bungalow-spouse-b",
+          "trigger": "optional-dialogue-check",
+          "resolution": "manual",
+          "check": {"anyStat": ["wisdom", "intelligence"], "dc": 12},
+          "effects": [
+            {"type": "set-location-state", "target": "couples-session-polina", "value": "core-motivation-stated-clearly", "duration": "scene", "log": "Герои отделяют желание семьи и ребёнка от попытки гарантировать их договором."}
+          ]
+        },
+        {
+          "id": "complete-polina-reflection",
+          "name": "Выслушать Полину",
+          "actor": "party",
+          "target": "bungalow-spouse-b",
+          "trigger": "scene-complete",
+          "resolution": "automatic",
+          "check": null,
+          "effects": [
+            {"type": "set-flag", "target": "campaign", "flag": "polina-motivation-heard", "value": true, "log": "Партия услышала желание Полины иметь семью, ребёнка и устойчивое будущее."}
+          ]
+        }
+      ],
+      "rules": [
+        "Бой, принуждение и обязательная проверка отсутствуют.",
+        "Провал необязательной проверки вызывает возврат к одному слову «семья» и не меняет состояние кампании.",
+        "Желание иметь ребёнка не является осложнением; конфликт создаёт только попытка заменить добровольное решение договором."
+      ]
+    },
+    {
+      "sceneId": "couples-session-choice",
+      "mode": "manual-global-choice",
+      "availableWhen": {
+        "all": [
+          {"flag": "stas-motivation-heard", "equals": true},
+          {"flag": "polina-motivation-heard", "equals": true}
+        ]
+      },
+      "actions": [
+        {
+          "id": "support-stas-freedom",
+          "name": "Поддержать свободу Стаса и завершить брак",
+          "actor": "party",
+          "target": "bungalow-spouse-a-and-bungalow-spouse-b",
+          "trigger": "scene-choice",
+          "resolution": "manual",
+          "check": null,
+          "effects": [
+            {"type": "set-flag", "target": "campaign", "flag": "stas-marriage-ended", "value": true, "log": "Стас произносит прямое «нет», и брак завершается."},
+            {"type": "set-flag", "target": "campaign", "flag": "polina-family-plan", "value": false, "log": "Семейный план Полины больше не включает Стаса."},
+            {"type": "set-flag", "target": "campaign", "flag": "clear-choice-confirmation", "value": true, "log": "Олва подтверждает ясность решения."},
+            {"type": "transfer-item", "target": "party", "itemId": "clear-choice-confirmation", "quantity": 1, "log": "Партия получает Подтверждение ясного выбора."}
+          ],
+          "nextSceneId": "egorik-bungalow-reveal"
+        },
+        {
+          "id": "support-polina-family-plan",
+          "name": "Поддержать добровольный семейный план Полины",
+          "actor": "party",
+          "target": "bungalow-spouse-a-and-bungalow-spouse-b",
+          "trigger": "scene-choice",
+          "resolution": "manual",
+          "check": null,
+          "effects": [
+            {"type": "set-flag", "target": "campaign", "flag": "stas-marriage-ended", "value": false, "log": "Стас добровольно остаётся в браке на новых условиях."},
+            {"type": "set-flag", "target": "campaign", "flag": "polina-family-plan", "value": true, "log": "Полина принимает взаимное согласие и отказывается от тайных приложений."},
+            {"type": "set-flag", "target": "campaign", "flag": "clear-choice-confirmation", "value": true, "log": "Олва подтверждает ясность решения."},
+            {"type": "transfer-item", "target": "party", "itemId": "clear-choice-confirmation", "quantity": 1, "log": "Партия получает Подтверждение ясного выбора."}
+          ],
+          "nextSceneId": "egorik-bungalow-reveal"
+        }
+      ],
+      "rules": [
+        "Выбирается ровно один исход; третьего скрытого исхода нет.",
+        "Бросок не определяет согласие и не позволяет заменить финальное «да» или «нет» NPC.",
+        "Чары, угроза или подкуп не могут сделать недобровольный ответ допустимым.",
+        "Оба исхода выдают одинаковую механическую награду и открывают основной маршрут."
+      ]
+    },
+    {
+      "sceneId": "egorik-bungalow-reveal",
+      "mode": "midpoint-reveal",
+      "actions": [
+        {"id": "test-egorik-voice", "name": "Проверить голос Егорика", "actor": "party", "target": "egorik", "trigger": "action", "resolution": "automatic", "check": null, "effects": [{"type": "reveal-clue", "target": "party", "value": "egorik-not-groom", "log": "Переносной пульт отвергает голос Егорика без броска."}]},
+        {"id": "watch-nastasya-recording", "name": "Посмотреть запись Настасьи", "actor": "party", "target": "nastya-recording", "trigger": "action", "resolution": "automatic", "check": null, "effects": [{"type": "reveal-clue", "target": "party", "value": "kreed-is-groom", "log": "Крид репетирует клятву и уходит под сцену."}]},
+        {"id": "apologize-to-egorik-and-nastasya", "name": "Признать ошибку и помочь паре", "actor": "party", "target": "egorik-and-nastya", "trigger": "scene-choice", "resolution": "manual", "check": null, "effects": [{"type": "modify-relationship", "target": "egorik-nastasya-trust", "value": 1, "log": "Пара становится союзниками."}, {"type": "set-flag", "target": "campaign", "flag": "egorik-nastya-allies", "value": true, "log": "В финале доступен один повтор проверки."}]}
+      ],
+      "restRuleRef": "safe-location-rest"
+    },
+    {
+      "sceneId": "groom-tunnel",
+      "mode": "hazard",
+      "challenge": {
+        "successesRequired": 3,
+        "checks": [
+          {"anyStat": ["dexterity", "charisma"], "dc": 12, "task": "Повторить текущую позу допуска."},
+          {"anyStat": ["strength", "intelligence"], "dc": 12, "task": "Сработать аварийным противовесом."},
+          {"abilityId": "tiny-size", "resolution": "automatic", "task": "Открыть тоннель из вентиляции."}
+        ],
+        "successEffects": [{"type": "set-flag", "target": "campaign", "flag": "corp-de-ballet-disabled", "value": true, "log": "Кордебалет пропускает героев без боя."}]
+      },
+      "encounterRef": "confidentiality-corp-de-ballet"
+    },
+    {
+      "sceneId": "corp-de-ballet-fight",
+      "mode": "combat",
+      "encounterRef": "confidentiality-corp-de-ballet"
+    },
+    {
+      "sceneId": "groom-preparation-room",
+      "mode": "rescue-reveal",
+      "actions": [
+        {"id": "free-groom-microphone", "name": "Освободить микрофонный контур", "actor": "party-hero", "target": "groom-microphone", "trigger": "action", "resolution": "automatic", "check": {"stat": "intelligence", "dc": 12, "advantageIfFlag": "stage-power-key"}, "effects": [{"type": "set-flag", "target": "campaign", "flag": "groom-voice-key", "value": true, "log": "Получен голосовой ключ жениха."}]},
+        {"id": "stabilize-groom-door", "name": "Стабилизировать дверь", "actor": "party-hero", "target": "groom-door", "trigger": "action", "resolution": "automatic", "check": {"stat": "strength", "dc": 12}, "effects": [{"type": "set-location-state", "target": "groom-door", "value": "safe", "log": "Крид освобождён без дополнительного урона."}]},
+        {"id": "name-bride", "name": "Назвать невесту", "actor": "egor-kreed", "target": "party", "trigger": "dialogue", "resolution": "automatic", "check": null, "effects": [{"type": "reveal-clue", "target": "party", "value": "bride-sinyak", "log": "Невеста — Игорь Румянец."}]}
+      ]
+    },
+    {
+      "sceneId": "restore-control-log",
+      "mode": "optional-skill-challenge",
+      "challenge": {
+        "successesRequired": 2,
+        "checks": [
+          {"stat": "intelligence", "dc": 12, "task": "Совместить временные метки."},
+          {"stat": "wisdom", "dc": 12, "task": "Отделить важные кадры от шума."}
+        ],
+        "advantages": [
+          {"condition": {"heroAcceptedResponsibility": "golovach-lena"}, "effect": "Преимущество на одну проверку."},
+          {"abilityId": "documentary", "effect": "Преимущество на одну проверку."}
+        ],
+        "successEffects": [{"type": "set-flag", "target": "campaign", "flag": "control-log-restored", "value": true, "log": "Режиссёрский монтаж доступен при допустимом time-pressure."}],
+        "failureEffects": [{"type": "set-flag", "target": "campaign", "flag": "control-log-restored", "value": true, "log": "Журнал восстановлен с помехами."}, {"type": "increment-counter", "target": "time-pressure", "value": 1, "log": "Повторная сборка журнала отнимает время."}]
+      }
+    },
+    {
+      "sceneId": "ceremony-villa",
+      "mode": "consent-and-preparation",
+      "actions": [
+        {"id": "explain-reset-to-couple", "name": "Объяснить техническую необходимость", "actor": "party-hero", "target": "wedding-couple", "trigger": "dialogue", "resolution": "manual", "check": {"stat": "charisma", "dc": 12, "invalidApproaches": ["threat", "deception-about-recording-rights"]}, "effects": [{"type": "modify-relationship", "target": "wedding-couple-trust", "value": 1, "log": "Пара добровольно соглашается на штатный сброс."}, {"type": "set-flag", "target": "campaign", "flag": "couple-trust", "value": true, "log": "Штатный план доступен."}]},
+        {"id": "confirm-bride-voice", "name": "Получить голос невесты", "actor": "igor-sinyak", "target": "ceremony-console", "trigger": "dialogue", "resolution": "automatic", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "bride-voice-key", "value": true, "log": "Получен второй голосовой ключ."}]},
+        {"id": "authorize-footage", "name": "Разрешить техническую версию", "actor": "wedding-couple", "target": "camera-pendant", "trigger": "scene-choice", "resolution": "manual", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "footage-authorized", "value": true, "log": "Пара разрешает сохранить только техническую версию записи."}]},
+        {"id": "refuse-footage", "name": "Запретить сохранение записи", "actor": "wedding-couple", "target": "camera-pendant", "trigger": "scene-choice", "resolution": "manual", "check": null, "effects": [{"type": "set-flag", "target": "campaign", "flag": "footage-authorized", "value": false, "log": "Личные фрагменты нужно вернуть паре или удалить."}]}
+      ]
+    },
+    {
+      "sceneId": "final-choice",
+      "mode": "plan-selection",
+      "plans": [
+        {"id": "standard", "availableWhen": {"all": [{"flag": "groom-voice-key", "equals": true}, {"flag": "bride-voice-key", "equals": true}, {"flag": "couple-trust", "equals": true}]}, "effect": {"type": "set-flag", "target": "campaign", "flag": "final-plan-standard", "value": true, "log": "Бой начинается со штатного плана."}},
+        {"id": "director", "availableWhen": {"all": [{"flag": "pendant-connected", "equals": true}, {"flag": "control-log-restored", "equals": true}, {"counter": "time-pressure", "lte": 4}]}, "effect": {"type": "set-flag", "target": "campaign", "flag": "final-plan-director", "value": true, "log": "Бой начинается с режиссёрского плана."}},
+        {"id": "physical", "availableWhen": {"always": true}, "effect": {"type": "set-flag", "target": "campaign", "flag": "final-plan-physical", "value": true, "log": "Бой начинается с физического отключения."}}
+      ]
+    },
+    {
+      "sceneId": "last-take-boss",
+      "mode": "mandatory-boss",
+      "encounterRef": "last-take-module"
+    },
+    {
+      "sceneId": "wedding-epilogue",
+      "mode": "ending",
+      "automaticEffects": [{"type": "modify-ending", "target": "campaign-ending", "value": "wedding", "log": "Последний контур закрыт штатным голосовым сбросом."}]
+    },
+    {
+      "sceneId": "director-epilogue",
+      "mode": "ending",
+      "automaticEffects": [{"type": "modify-ending", "target": "campaign-ending", "value": "director", "log": "Последний контур закрыт режиссёрским монтажом."}]
+    },
+    {
+      "sceneId": "shutdown-epilogue",
+      "mode": "ending",
+      "automaticEffects": [{"type": "modify-ending", "target": "campaign-ending", "value": "shutdown", "log": "Последний контур разрушен физически или аварийно."}]
+    }
+  ],
+  "encounters": [
+    {
+      "id": "hotel-vip-guards",
+      "sceneIds": ["hotel-gallery-pussy", "hotel-vip-guards", "pussy-guards-fight"],
+      "kind": "group",
+      "count": 2,
+      "stats": {"hpEach": 24, "ac": 14, "initiative": 2},
+      "combatants": [
+        {"id": "hotel-vip-guard-a", "name": "Страж I"},
+        {"id": "hotel-vip-guard-b", "name": "Страж II"}
+      ],
+      "actions": [
+        {"id": "ceremonial-halberd", "name": "Жезл усмирения", "actor": "active-hotel-vip-guard", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 5, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d8+3", "log": "Активный страж проводит сдерживающий удар и не добивает цель при 0 HP."}]}
+      ],
+      "weakness": {"check": {"anyStat": ["intelligence", "dexterity"], "dc": 12}, "effect": "Зеркальный строй разорван; AC 11 до конца боя."},
+      "defeatEffects": [
+        {"type": "set-flag", "target": "campaign", "flag": "pussy-guards-defeated", "value": true, "log": "Стражи опускают оружие."},
+        {"type": "set-flag", "target": "campaign", "flag": "archive-key-recovered", "value": true, "log": "Pussy отдаёт ключ после поражения охраны."},
+        {"type": "reveal-clue", "target": "party", "value": "egorik-nastya-service-door", "log": "Pussy раскрывает всё, что помнит, но не предлагает поручение."}
+      ]
+    },
+    {
+      "id": "rail-prop-kraken",
+      "sceneIds": ["hotel-gallery", "rail-kraken-fight"],
+      "kind": "elite",
+      "count": 1,
+      "stats": {"hp": 38, "ac": 13, "initiative": 1},
+      "actions": [
+        {"id": "plywood-maw", "name": "Фанерная пасть", "actor": "rail-prop-kraken", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 5, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d8+3", "log": "Кракен кусает и отталкивает цель на 2 метра."}]},
+        {"id": "rail-charge", "name": "Рельсовый разгон", "actor": "rail-prop-kraken", "target": "heroes-on-telegraphed-line", "trigger": "next-turn", "resolution": "automatic", "check": {"stat": "dexterity", "dc": 12}, "effects": [{"type": "damage", "target": "failed-heroes", "value": "1d8+3", "log": "Цели на красной линии получают урон."}, {"type": "add-condition", "target": "failed-heroes", "condition": "prone", "duration": "until-movement-spent", "log": "Провалившие проверку падают."}]}
+      ],
+      "weakness": {"check": {"anyStat": ["strength", "intelligence"], "dc": 12}, "effect": "Обездвижен; AC 10 до конца боя."},
+      "defeatEffects": [{"type": "set-flag", "target": "campaign", "flag": "rail-kraken-disabled", "value": true, "log": "Проход и архив освобождены."}, {"type": "set-location-state", "target": "hotel-gallery", "value": "kraken-defeated-in-combat", "log": "Поверженная декорация сломана и лежит на рельсе."}]
+    },
+    {
+      "id": "bottomless-bar-taps",
+      "sceneIds": ["bar-tap-fight"],
+      "kind": "minion-group",
+      "count": 3,
+      "unitStats": {"hp": 12, "ac": 11, "initiative": 2},
+      "actions": [
+        {"id": "hose-to-face", "name": "Шлангом в щи", "actor": "one-bar-tap", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 4, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d6+2", "log": "Кран бьёт струёй."}]},
+        {"id": "order-for-everyone", "name": "Заказ на всех", "actor": "charging-bar-tap", "target": "heroes-near-bar", "trigger": "next-turn", "resolution": "automatic", "check": {"stat": "dexterity", "dc": 12}, "effects": [{"type": "damage", "target": "failed-heroes", "value": "1d6+2", "log": "Общий коктейль накрывает бар."}, {"type": "add-condition", "target": "failed-heroes", "condition": "blinded", "duration": "until-start-of-next-turn", "log": "Коктейль временно ослепляет."}]}
+      ],
+      "weakness": {"resolution": "automatic", "action": "Отсоединить подписанный цветной шланг действием; соответствующий кран отключается."},
+      "defeatEffects": [{"type": "set-flag", "target": "campaign", "flag": "bar-power-key", "value": true, "log": "Ключ питания бара добыт."}, {"type": "set-flag", "target": "campaign", "flag": "bar-module-active", "value": false, "log": "Барный модуль отключён."}]
+    },
+    {
+      "id": "dressing-room-mirror-doubles",
+      "sceneIds": ["artists-dressing-room", "dressing-room-double-fight"],
+      "kind": "minion-group",
+      "count": 3,
+      "unitStats": {"hp": 14, "ac": 12, "initiative": 2},
+      "actions": [
+        {"id": "repeat-encore", "name": "Повтори на бис", "actor": "one-mirror-double", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 4, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d6+2", "log": "Дублёр копирует позу последнего атаковавшего героя."}]}
+      ],
+      "specialRules": [
+        "Атаки героя по копирующему его дублёру идут с помехой.",
+        "Союзник сбивает ракурс попаданием или Ловкостью/Харизмой DC 12; AC дублёра становится 10 до начала его следующего хода.",
+        "Выход за спину или поворот прожектора действием снимает копирование без броска."
+      ],
+      "defeatEffects": [{"type": "set-flag", "target": "campaign", "flag": "dressing-doubles-disabled", "value": true, "log": "Дублёры отключены."}, {"type": "set-flag", "target": "campaign", "flag": "stage-rehearsal-cue", "value": true, "log": "Satyr даёт репетиционную команду."}]
+    },
+    {
+      "id": "universal-advice-algorithm",
+      "sceneIds": ["show-18-pavilion"],
+      "kind": "minion-group",
+      "count": 3,
+      "unitIds": ["clickbait-mask", "shame-mask", "one-size-fits-all-mask"],
+      "unitStats": {"hp": 15, "ac": 12, "initiative": 3},
+      "actions": [
+        {"id": "urgent-conclusion", "name": "Срочный вывод", "actor": "clickbait-mask", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 4, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d6+2", "log": "Кликбейт бьёт вспышкой заголовка и сдвигает цель на 2 метра к прожектору."}]},
+        {"id": "everyone-is-watching", "name": "Все смотрят", "actor": "shame-mask", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"stat": "wisdom", "dc": 12}, "effects": [{"type": "add-condition", "target": "failed-hero", "condition": "shamed", "duration": "until-next-roll", "log": "Стыд даёт -2 к следующей атаке или проверке."}]},
+        {"id": "role-for-everyone", "name": "Роль подходит всем", "actor": "one-size-fits-all-mask", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"stat": "wisdom", "dc": 12}, "effects": [{"type": "add-condition", "target": "failed-hero", "condition": "assigned-role", "duration": "until-next-action", "log": "Рецепт навязывает герою готовую роль без запрета выбора действия."}]}
+      ],
+      "firstRound": "Три маски выбирают трёх разных героев; повторно выбирать одну цель можно только со второго раунда.",
+      "weakness": "Три успешных противоречия или два успешных вмешательства в телесуфлёр отключают группу независимо от HP.",
+      "defeatEffects": [{"type": "set-flag", "target": "campaign", "flag": "show-18-complete", "value": true, "log": "Эфир освобождён от Алгоритма."}, {"type": "transfer-item", "target": "party", "itemId": "red-button-18-plus", "quantity": 1, "log": "Олва выдаёт награду."}]
+    },
+    {
+      "id": "confidentiality-corp-de-ballet",
+      "sceneIds": ["groom-tunnel", "corp-de-ballet-fight"],
+      "kind": "standard-pair",
+      "count": 2,
+      "unitStats": {"hp": 24, "ac": 14, "initiative": 2},
+      "actions": [
+        {"id": "curtain-applause", "name": "Аплодисменты кулисами", "actor": "one-guard", "target": "one-hero", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 5, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d8+2", "log": "Кулисы ударяют и отталкивают цель на 2 метра."}]}
+      ],
+      "weakness": {"check": {"anyStat": ["strength", "intelligence"], "dc": 12}, "effect": "Один охранник обездвижен и теряет отталкивание."},
+      "defeatEffects": [{"type": "set-flag", "target": "campaign", "flag": "corp-de-ballet-disabled", "value": true, "log": "Комната жениха открыта."}]
+    },
+    {
+      "id": "last-take-module",
+      "sceneIds": ["last-take-boss"],
+      "kind": "boss",
+      "count": 1,
+      "stats": {"hp": 125, "ac": 15, "initiative": 4},
+      "segmentedHp": [85, 45, 0],
+      "overflowDamageCarries": false,
+      "actions": [
+        {"id": "stage-volley", "name": "Сценический залп", "actor": "last-take-module", "target": "two-different-heroes", "trigger": "action", "resolution": "automatic", "check": {"attackBonus": 6, "vs": "ac", "attacks": 2}, "effects": [{"type": "damage", "target": "each-hit-hero", "value": "1d8+3", "log": "Модуль делает две атаки по разным целям."}]},
+        {"id": "moving-scenery", "name": "Декорации хотят продолжения", "actor": "last-take-module", "target": "one-hero", "trigger": "phase-2-action", "resolution": "automatic", "check": {"attackBonus": 6, "vs": "ac"}, "effects": [{"type": "damage", "target": "one-hero", "value": "1d10+3", "log": "Декорация бьёт цель."}, {"type": "set-location-state", "target": "one-hero", "value": "pushed-2m", "duration": "immediate", "unlessFlag": {"stage-module-active": false}, "log": "Активная сцена отталкивает цель."}]},
+        {"id": "golovach-dragon-fire", "name": "Драконье пламя Головача", "actor": "last-take-module", "target": "all-heroes", "trigger": "one-round-after-telegraph", "resolution": "automatic", "check": {"stat": "dexterity", "dc": 13, "success": "half-damage"}, "effects": [{"type": "damage", "target": "all-heroes", "value": "2d6+3", "log": "Пламя наносит полный урон при провале и половину при успехе."}]}
+      ],
+      "phaseRules": [
+        {"phase": 1, "hp": "125-86", "name": "Гроза после вечеринки", "rule": "Один Сценический залп делает две атаки по разным героям. Если bar-module-active=true, один раз Ловкость DC 12 против prone; bar-power-key отменяет пену."},
+        {"phase": 2, "hp": "85-46", "name": "Декорации хотят продолжения", "rule": "Одна движущаяся декорация и один залп по другой цели. При stage-module-active=false AC становится 13 и отталкивание отключено."},
+        {"phase": 3, "hp": "45-0", "name": "Драконье пламя Головача", "rule": "Пламя заряжается один раунд с видимой линией; разрыв канала до залпа отменяет атаку."}
+      ],
+      "channelAction": {
+        "id": "counter-active-channel",
+        "name": "Закрыть объявленный канал",
+        "actor": "party-hero",
+        "target": "active-channel",
+        "trigger": "action",
+        "resolution": "manual",
+        "check": {"appropriateStat": true, "dc": 12},
+        "effects": [{"type": "set-location-state", "target": "next-channel-attack", "value": "cancelled", "duration": "current-round", "log": "Подходящее действие отменяет следующую атаку активного канала."}]
+      },
+      "phaseCompletionPlans": [
+        {"id": "standard", "condition": {"flag": "couple-trust", "equals": true}, "check": {"appropriateStat": true, "dc": 12}, "effect": "Один герой удерживает канал, пара даёт голос; текущая фаза закрывается."},
+        {"id": "director", "condition": {"all": [{"flag": "pendant-connected", "equals": true}, {"flag": "control-log-restored", "equals": true}, {"counter": "time-pressure", "lte": 4}]}, "check": {"stat": "intelligence", "dcByPhase": [12, 12, 15], "phase3DcIfPrepared": 12}, "effect": "Текущая фаза переписывается; провал вызывает немедленную реакцию, но разрешает повтор."},
+        {"id": "physical", "condition": {"always": true}, "check": null, "effect": "Текущий сегмент закрывается при достижении следующего порога HP."}
+      ],
+      "defeatFallback": {
+        "condition": {"allHeroesDown": true},
+        "resolution": "manual",
+        "effects": [
+          {"type": "modify-ending", "target": "campaign-ending", "value": "shutdown", "log": "Партия приходит в себя у аварийного рубильника и завершает историю худшим эпилогом."},
+          {"type": "set-flag", "target": "campaign", "flag": "final-physical-shutdown", "value": true, "log": "Физическое отключение остаётся доступным после поражения."}
+        ]
+      }
+    }
+  ],
+  "npcBehaviors": [
+    {
+      "characterId": "rail-prop-kraken",
+      "sceneIds": ["rail-kraken-fight"],
+      "priorities": [
+        "Сначала показать красную линию и начать разгон.",
+        "Выбирать линию, задевающую больше героев, но всегда оставлять видимый безопасный участок.",
+        "После заклинивания рельса атаковать ближайшего героя Фанерной пастью."
+      ],
+      "targeting": "Герои на рельсе или возле аварийного рычага; цель при 0 HP игнорируется.",
+      "retreat": "При 0 HP или потере питания складывается и возвращается на стартовую отметку."
+    },
+    {
+      "characterId": "bottomless-bar-tap",
+      "sceneIds": ["bar-tap-fight"],
+      "priorities": [
+        "Один кран заряжает Заказ на всех.",
+        "Два остальных атакуют героев, приближающихся к цветным шлангам.",
+        "После отключения заряжающего крана другой кран может начать общий заказ только в следующем раунде."
+      ],
+      "targeting": "Разные доступные герои; не направлять все три обычные атаки в одну цель в первом раунде.",
+      "retreat": "Отсоединённый или уничтоженный кран запечатывает линию и больше не действует."
+    },
+    {
+      "characterId": "dressing-room-mirror-doubles",
+      "sceneIds": ["dressing-room-double-fight"],
+      "priorities": [
+        "Каждый дублёр выбирает отдельного героя и копирует его позу.",
+        "Удерживать три зоны: райдер, зеркало маршрутов и выход Satyr.",
+        "После сломанного ракурса сменить копируемого героя в следующем ходу."
+      ],
+      "targeting": "Последний герой, взаимодействовавший с охраняемой зоной; герои при 0 HP игнорируются.",
+      "retreat": "Правильная финальная поза, команда Satyr или 0 HP складывает маску на грудь и выключает дублёра."
+    },
+    {
+      "characterId": "confidentiality-corp-de-ballet",
+      "sceneIds": ["corp-de-ballet-fight"],
+      "priorities": [
+        "Перед первой атакой показать текущую позу допуска.",
+        "Один охранник закрывает проход, второй отталкивает героя от двери.",
+        "Не атаковать героя, который тратит действие на правильно повторённую позу."
+      ],
+      "targeting": "Ближайший к двери герой, не выполняющий хореографию; цели при 0 HP игнорируются.",
+      "retreat": "Три правильные позы, аварийный противовес или 0 HP открывают кулисы и выключают пару."
+    },
+    {
+      "characterId": "olga-vasilenko",
+      "sceneIds": ["show-18-pavilion"],
+      "priorities": [
+        "Скрыть личный ответ гостя от камер.",
+        "Снять shamed или assigned-role с одного героя.",
+        "Подсказать противоречие, не засчитывая успех за партию."
+      ],
+      "supportAction": {
+        "id": "olga-restore-boundary",
+        "name": "Вернуть безопасные границы",
+        "actor": "olga-vasilenko",
+        "target": "one-hero",
+        "trigger": "action",
+        "resolution": "manual",
+        "check": null,
+        "uses": {"scope": "battle", "max": 1},
+        "effects": [
+          {"type": "remove-condition", "target": "one-hero", "condition": "shamed-or-assigned-role", "log": "Олва возвращает разговору безопасные границы."}
+        ]
+      },
+      "retreat": "Не покидает павильон раньше героев, но аварийно обрывает эфир после общего решения отступить."
+    },
+    {
+      "characterId": "universal-advice-algorithm",
+      "sceneIds": ["show-18-pavilion"],
+      "priorities": [
+        "В первом раунде назначить роли трём разным героям.",
+        "Стыдом атаковать героя с наибольшим бонусом к следующей заявленной проверке.",
+        "Кликбейтом оттеснять героя от телесуфлёра.",
+        "Не повторять одну и ту же цель всеми тремя масками в одном раунде."
+      ],
+      "retreat": "Отключается при 0 HP всех масок, трёх противоречиях или двух технических успехах."
+    },
+    {
+      "characterId": "last-take-module",
+      "sceneIds": ["last-take-boss"],
+      "priorities": [
+        "Всегда заранее объявлять активный канал.",
+        "Выбирать разные цели для двух атак.",
+        "При попытке закрыть фазу реагировать окружением, а не скрытым уроном.",
+        "После порога HP немедленно сменить фазу без переноса лишнего урона."
+      ],
+      "targeting": "Сначала герой у активного канала, затем герой с наибольшим текущим HP; не добивать героя при 0 HP.",
+      "retreat": "Не отступает; после общего поражения партии открывает аварийный физический рубильник ценой худшего эпилога."
+    }
+  ],
+  "heroContributions": [
+    {"characterId": "bubsilda", "capabilities": ["documentary", "royal-will"], "campaignRole": "Открывает повторяемые слабости и поддерживает проверки против стыда и давления."},
+    {"characterId": "linda", "capabilities": ["magic-whisper", "tiny-size", "flight"], "campaignRole": "Проникает к механизмам и отдаёт простые команды магическим системам."},
+    {"characterId": "lambert", "capabilities": ["tech-genius", "hacker-pulse", "tools"], "campaignRole": "Закрывает технические маршруты, телесуфлёр и режиссёрский план."},
+    {"characterId": "golovach-lena", "capabilities": ["video-surveillance", "name-story", "camera-pendant"], "campaignRole": "Восстанавливает записи, принимает ответственность и отзывает собственную огненную линию."},
+    {"characterId": "thorin-pukoshchit", "capabilities": ["helping-stick", "needle-in-haystack", "seven-job-bag"], "campaignRole": "Находит вентиль, стопор, кабель или другой простой предмет и помогает обычным гостям."}
+  ],
+  "endingModifiers": [
+    {"id": "authorized-footage", "condition": {"flag": "footage-authorized", "equals": true}, "effect": {"type": "modify-ending", "target": "recording-fate", "value": "authorized-technical-cut", "log": "Техническая версия сохраняется с согласия пары."}},
+    {"id": "private-footage", "condition": {"flag": "footage-authorized", "equals": false}, "effect": {"type": "modify-ending", "target": "recording-fate", "value": "returned-or-erased", "log": "Личные фрагменты возвращены паре или удалены."}},
+    {"id": "red-button-unused", "condition": {"itemCharge": {"itemId": "red-button-18-plus", "gte": 1}}, "effect": {"type": "modify-ending", "target": "olva-callback", "value": "button-kept", "log": "Неиспользованная Красная кнопка остаётся у героев как сувенир без восстановления заряда."}},
+    {"id": "family-womanizer-ending", "condition": {"flag": "womanizer-given-to-polina", "equals": true}, "effect": {"type": "modify-ending", "target": "family-wing-fate", "value": "independent-evening-no-marriage-decision", "log": "Полина довольна самостоятельным вечером, Стас остаётся в баре; решения о браке в этом прохождении не было."}},
+    {"id": "family-stas-ending", "condition": {"flag": "stas-marriage-ended", "equals": true}, "effect": {"type": "modify-ending", "target": "family-wing-fate", "value": "marriage-ended-stas-free", "log": "Стас празднует первое самостоятельное решение, Полина строит новый план без него."}},
+    {"id": "family-polina-ending", "condition": {"flag": "polina-family-plan", "equals": true}, "effect": {"type": "modify-ending", "target": "family-wing-fate", "value": "mutual-family-plan", "log": "Супруги добровольно продолжают семейный план; на двери появляется табличка «НЕ БЕСПОКОИТЬ»."}}
+  ]
+}

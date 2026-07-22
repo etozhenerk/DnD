@@ -1,0 +1,160 @@
+{
+  "campaignId": "penisuela",
+  "title": "Мальчишник конца света",
+  "currentStage": "galleryGameplayImplemented",
+  "nextSkill": "verify-dnd-campaign-release",
+  "pipelineNote": "После визуальной приёмки пробуждения и поиска пользователь потребовал вернуть утверждённую вариативность сюжетного графа. Гостиничная галерея теперь исполняет условия дверей, поиск предмета, диалоговые проверки, fail-forward и три исхода встречи с рельсовым кракеном через журнал событий.",
+  "artifacts": {
+    "concept": {
+      "path": "concept.md",
+      "skill": "define-dnd-campaign-concept",
+      "status": "approved",
+      "revisionNote": "Таверненный конверт сохраняет пять браслетов и письмо. После поездки браслеты уже надеты на героях, поэтому в доставленном конверте сцены пробуждения остаётся только письмо о сути путешествия. Сценическое полотенце удалено."
+    },
+    "outline": {
+      "path": "outline.md",
+      "skill": "outline-dnd-campaign",
+      "status": "approved",
+      "revisionNote": "В таверненном прологе Крайнеплот видит пять браслетов и письмо. В hotel-overload браслеты уже на героях, а в доставленном конверте осталось только письмо. В hotel-gallery Алексис после освобождения выдаёт жетон закрытого бара; полотенце удалено. Структура сюжетного графа не изменилась."
+    },
+    "storyGraph": {
+      "path": "story-graph.json",
+      "readablePath": "story-graph.md",
+      "skill": "design-dnd-story-graph",
+      "status": "approved",
+      "revisionNote": "Стартовый узел сохраняет название «Пять браслетов без имён» и утверждённую таверненную сцену. Резервная улика позднего маршрута теперь жетон закрытого бара от Алексис вместо полотенца. Узлы и переходы не изменились."
+    },
+    "cast": {
+      "path": "cast.md",
+      "skills": [
+        "create-dnd-npc",
+        "create-dnd-enemy"
+      ],
+      "status": "approved",
+      "revisionNote": "Pussy, Алексис и Рельсовый кракен разведены по последовательным моментам одной сцены hotel-gallery. Алексис после освобождения и успокоения вручает жетон закрытого бара и ведёт героев туда; сценическое полотенце удалено из маршрута."
+    },
+    "script": {
+      "path": "script.md",
+      "skill": "write-dnd-scene-script",
+      "status": "draft",
+      "revisionNote": "Пролог расширен до девяти кадров; отдельный редактор вычитывает связный read-aloud по 2–3 предложения без изменения сюжетных фактов и перехода к hotel-overload."
+    },
+    "dialogue": {
+      "path": "dialogue.json",
+      "readablePath": "dialogue.md",
+      "skill": "write-dnd-dialogue",
+      "status": "approved",
+      "revisionNote": "Реплика Крайнеплота снова привязана к пяти браслетам таверненного пролога; Алексис вместе с подсказкой вручает жетон закрытого бара."
+    },
+    "gameplay": {
+      "path": "gameplay.json",
+      "readablePath": "gameplay-notes.md",
+      "skill": "design-dnd-gameplay",
+      "status": "approved",
+      "balanceStatus": "provisional",
+      "revisitAfter": "hero-abilities-rebalance",
+      "revisionNote": "Добавлен сюжетный предмет closed-bar-token. Действие calm-alexis передаёт его партии вместе с маршрутом к закрытому бару; боевые параметры и баланс не менялись."
+    },
+    "campaignReview": {
+      "path": "review.md",
+      "skill": "review-dnd-campaign",
+      "status": "approved",
+      "verdict": "approved-for-art-planning",
+      "reason": "Пользователь явно утвердил повторную редакторскую приёмку сообщением «ок»."
+    },
+    "artPlan": {
+      "path": "art-plan.json",
+      "skill": "plan-dnd-campaign-art",
+      "status": "approved",
+      "reason": "Пользователь утвердил исходную раскадровку сообщением «погнали», delta-добавление отдельного кадра Алексис — сообщением «давай уберем рассогласование и начнем генерацию арта с алексис», а восемь кадров видеоперехода — сообщением «кадры окаю».",
+      "revisionNote": "Добавлена утверждённая волна video-bridge из восьми широкоформатных опорных кадров: пять вручений браслетов, корабль, вход в отель и вечеринка. Письмо и его текст полностью запрещены во всех восьми кадрах; narration и титры относятся только к возможному отдельному экрану перед видео."
+    },
+    "artReview": {
+      "paths": [
+        "art-review-round-1.json",
+        "art-review-round-2.json",
+        "art-review-round-3.json",
+        "art-review-round-4.json",
+        "art-review-round-5.json",
+        "art-review-round-6.json",
+        "art-review-round-7.json",
+        "art-review-round-8.json",
+        "art-review-round-9.json",
+        "art-review-round-10.json",
+        "art-review-round-11.json",
+        "art-review-round-12.json",
+        "art-review-round-13.json",
+        "art-review-round-14.json",
+        "art-review-round-15.json",
+        "art-review-round-16.json",
+        "art-review-round-17.json",
+        "art-review-round-18.json",
+        "art-review-round-19.json",
+        "art-review-round-20.json",
+        "art-review-round-21.json"
+      ],
+      "skill": "review-dnd-campaign-art",
+      "status": "resolved",
+      "reason": "Пользователь утвердил универсальную пергаментную подложку сообщением «ок»; раунд 21 закрыт, ожидающих решений по артам пролога нет."
+    },
+    "publishedAssets": {
+      "repoPath": "assets/concepts/manifest.json",
+      "skill": "publish-dnd-campaign-assets",
+      "status": "published",
+      "revisionNote": "Помимо ранее утверждённых ассетов опубликованы девять финальных слайдов таверненного пролога и универсальная прозрачная пергаментная подложка легенды. Все файлы зарегистрированы в manifest без перекодирования утверждённых PNG."
+    },
+    "videoPlan": {
+      "path": "video-plan.json",
+      "readablePath": "video-production.md",
+      "skill": "prepare-dnd-scene-video",
+      "status": "draft",
+      "readiness": "blocked",
+      "reason": "Восемь Veo 3 image-to-video промптов готовы, но script.md остаётся draft, а утверждённые first-frame PNG ещё не опубликованы в manifest."
+    },
+    "implementationPlan": {
+      "path": "implementation-plan.md",
+      "skill": "plan-dnd-campaign-implementation",
+      "status": "approved",
+      "scope": "Первый срез пролога и Delta 2 реализованы. Delta 3 добавляет исполняемую гостиничную галерею с ветвлениями, проверками, диалогами и встречей.",
+      "revisionNote": "После линейной версии пользователь прямо потребовал использовать утверждённый граф. Delta 3 фиксирует двери, альтернативные маршруты, влияние предметов, убеждение Алексиса и варианты боя с кракеном."
+    },
+    "sessionPreviewContent": {
+      "path": "content/campaigns/penisuela-session-preview.json",
+      "readablePath": "content/campaigns/penisuela-session-preview-guide.md",
+      "skill": "publish-dnd-campaign",
+      "status": "published",
+      "scope": "Публичные экраны hotel-overload и hotel-overload-search без DC, скрытой правды, флагов, счётчиков и будущих исходов.",
+      "revisionNote": "Предметы перенесены из экрана пробуждения в отдельную сцену осмотра; полные подсказки открываются только из инвентаря. Презентационные состояния галереи больше не содержат линейных exit-переходов."
+    },
+    "galleryGameplayContent": {
+      "path": "content/campaigns/penisuela-gallery-gameplay.json",
+      "readablePath": "content/campaigns/penisuela-session-preview-guide.md",
+      "skills": [
+        "model-dnd-game-session",
+        "implement-dnd-rules-engine",
+        "implement-dnd-npc-behavior",
+        "implement-dnd-dialogue-console"
+      ],
+      "status": "published",
+      "scope": "Публичные условия трёх направлений, скрытая панель исходов Pussy, поиск скипетра, убеждение Алексиса и встреча с рельсовым кракеном.",
+      "revisionNote": "Лестница к паланкину доступна до квеста, но действие со скипетром появляется только после поручения Pussy. На общем экране персонаж сначала остаётся незнакомцем; после живого знакомства мастер отдельным действием открывает имя и постоянную кнопку лора с утверждённым артом. Дальнейший диалог ведётся по шпаргалке, а социальные исходы Pussy работают по fail-forward."
+    },
+    "gallerySessionRuntime": {
+      "path": "src/entities/campaign-session/model/gallerySession.ts",
+      "skill": "implement-dnd-campaign-ui",
+      "status": "implemented",
+      "scope": "Событийная модель, проверки, физический и цифровой d20, инициатива, HP, решение NPC, override мастера, undo, reset и localStorage recovery."
+    }
+  },
+  "pendingStages": [
+    "remainingArt",
+    "heroAbilitiesRebalance",
+    "encounterBalanceRefresh",
+    "implementationPlan",
+    "publishedContent",
+    "campaignUi",
+    "gmConsole",
+    "releaseVerification",
+    "worldIntegrity"
+  ]
+}

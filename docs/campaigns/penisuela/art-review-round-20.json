@@ -1,0 +1,31 @@
+{
+  "campaignId": "penisuela",
+  "round": 20,
+  "status": "resolved-by-user",
+  "userDecision": "отклоняй, погнали собирать интерфейс",
+  "items": [
+    {
+      "id": "penisuela-ui-core-combat-glyph-atlas",
+      "decision": "reject",
+      "reason": "Отдельные пиктограммы действия, перемещения, d20, цели и урона не нужны для первого рабочего интерфейса; смысл передаётся текстом, числами и CSS-маркерами.",
+      "draftRetention": "Черновики остаются только в art-drafts/technical-ui и не публикуются в manifest."
+    },
+    {
+      "id": "penisuela-ui-condition-glyph-atlas",
+      "decision": "reject",
+      "reason": "Нельзя заранее раздувать MVP состояниями, которых нет в текущем пути до Алексис; фактически возникшее состояние будет показано текстовой меткой и CSS-акцентом.",
+      "draftRetention": "Черновики остаются только в art-drafts/technical-ui и не публикуются в manifest."
+    },
+    {
+      "id": "penisuela-ui-quest-glyph-atlas",
+      "decision": "defer-out-of-mvp",
+      "reason": "Типы сюжетных блоков достаточно обозначать русскими заголовками и компоновкой."
+    },
+    {
+      "id": "penisuela-ui-gm-glyph-atlas",
+      "decision": "defer-out-of-mvp",
+      "reason": "Для действий мастера нужны понятные подписанные кнопки и доступные состояния, а не ещё один растровый набор."
+    }
+  ],
+  "result": "Техническая генерация для MVP завершена. Следующий этап — план и сборка интерфейса на основе уже опубликованных рамок, жетонов, сюжетных кадров и предметов."
+}

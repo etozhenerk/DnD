@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 9,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "rejectedVariants": [
+    {
+      "assetId": "penisuela-scene-closed-bar",
+      "variant": "art-drafts/closed-bar-v1.png",
+      "userDecision": "rejected",
+      "reason": "Прохор был подвешен слишком высоко, а кадр не работал как разводящая сцена выбора между двумя зонами."
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-stas",
+      "variant": "art-drafts/closed-bar-stas-v1.png",
+      "userDecision": "revision-requested",
+      "reason": "Третий кран ошибочно повторял зелёный цвет вместо янтарного."
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-prokhor",
+      "variant": "art-drafts/closed-bar-prokhor-v1.png",
+      "userDecision": "revision-requested",
+      "reason": "Лицо Прохора не совпадало с утверждённым каноническим портретом."
+    }
+  ],
+  "items": [
+    {
+      "assetId": "penisuela-scene-closed-bar",
+      "variant": "art-drafts/closed-bar-establishing-v2.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/closed-bar.png.",
+      "notes": [
+        "Стас и Прохор находятся на противоположных сторонах большого кадра, а свободный центральный проход читается как выбор направления.",
+        "Шезлонг Прохора расположен почти у пола; нижняя кромка, узкий световой зазор и тень видны одновременно.",
+        "У стойки ровно три крана с красным, зелёным и янтарным напитками.",
+        "Клубная труппа остаётся далёкими нечитаемыми силуэтами; Полины, Олвы, героев, UI и спойлерного текста нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-stas",
+      "variant": "art-drafts/closed-bar-stas-v2.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/closed-bar-stas.png.",
+      "notes": [
+        "Порядок трёх напитков исправлен на красный, зелёный и янтарный; четвёртого крана нет.",
+        "Стас узнаваем, держит одну кружку двумя руками и не превращён в карикатуру.",
+        "Кадр сохраняет его барную зону, центральный проход и дальний клубный фон."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-prokhor",
+      "variant": "art-drafts/closed-bar-prokhor-v2.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor.png.",
+      "notes": [
+        "Лицо, причёска, эльфийские уши, улыбка и прищур восстановлены по каноническому портрету Прохора.",
+        "Поза, одежда, реквизит и отдельная лаунж-зона сохранены.",
+        "Шезлонг целиком виден почти у пола вместе с узким световым зазором, тенью и напольным столиком."
+      ]
+    }
+  ]
+}

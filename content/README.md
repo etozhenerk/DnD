@@ -11,6 +11,9 @@
 - `world-map.json` — карта, семь кликабельных сюжетных регионов, объединяющих восемь земель, и связи с кампаниями.
 - `campaigns/nor-il-skald.json` — завершённая северная кампания, локации, NPC, враги и летопись.
 - `campaigns/linda-small.json` — завершённая кампания Вьетимы и острова Линда Смолл.
+- `campaigns/*-preview.json` — публичные превью будущих кампаний, не переводящие регион или кампанию в статус готовых.
+- `campaigns/*-session-preview.json` — минимальные публичные данные первого игрового экрана будущей кампании без правил, секретов мастера и публикации всей кампании.
+- `campaigns/*-gallery-gameplay.json` — публичный исполняемый срез утверждённых проверок, диалогов, дверей и встречи гостиничной галереи.
 - `campaigns/*-guide.md` — синхронные человекочитаемые сценарии и итоги для мастера.
 
 ## Типовой шаблон сущностей
@@ -72,6 +75,53 @@ id, locationId, title, type, readAloud, objective
 choices[]: label, check, success, failure
 encounterId, rewards[], clues[], nextSceneIds[]
 ```
+
+### Публичное превью кампании
+
+```text
+version, id, campaignId, regionId, title, eyebrow, status
+slides[]: id, order, image, alt, text
+slides[].speaker: kind, label, characterId
+```
+
+`status` публичного превью принимает значение `preview`. Превью хранится отдельно от полной кампании и не заполняет `world-map.json.campaignId`. `slides[].order` начинается с 1 и идёт без пропусков, `image` ссылается на утверждённый файл из `assets/concepts/manifest.json`, а `alt` описывает значимое действие кадра без спойлеров. `speaker.kind` принимает `narrator` или `character`; `characterId` обязателен только для персонажа и ссылается на стабильный `id` из `characters.json`.
+
+### Публичный первый экран игровой сессии
+
+```text
+version, id, campaignId, regionId, status, initialSceneId
+party[]: characterId, label, token
+scenes[]:
+  id, title, eyebrow, background, alt, readAloud, roomLegend
+  backgroundLayout?: cover | portrait
+  introActionLabel?: string
+  inspectables[]: id, label, image?, icon?, visualKind?, locationHint, summary, revealText, useText, order, inventoryOrder?, hotspotPosition?
+  exit: label, nextSceneId, availableAfter[], presentation?
+```
+
+`status` принимает значение `preview`. Такой файл позволяет собирать первый публичный игровой экран до публикации полной кампании и не заполняет `world-map.json.campaignId`. Он хранит только наблюдаемые игроками факты: вступительный текст, состав партии, утверждённые арты, предметы для осмотра и подготовленный идентификатор следующей сцены. DC, проверки, скрытая правда, последствия выбора, флаги, счётчики и секреты мастера остаются в полном JSON кампании и игровом движке.
+
+`party[].characterId` ссылается на стабильный `id` в `characters.json`. `background`, `token`, `image` и `icon` ссылаются на канонические записи `assets/concepts/manifest.json`. `backgroundLayout: portrait` сохраняет утверждённый вертикальный арт целиком на фоне затемнённой копии. Необязательный `scenes[].roomLegend` продолжает `readAloud` одним цельным художественным описанием осматриваемой комнаты: в нём естественно соединяются расположение находок, наблюдаемые детали и их значение для дальнейшего пути без списков и технических терминов. `introActionLabel` заменяет стандартную подпись первого сюжетного действия. `inspectables[].locationHint` хранит точное расположение объекта для доступной подписи точки поиска, `summary` подробно описывает внешний вид, `revealText` хранит найденные сведения, а `useText` завершает раскрытие предмета естественным выводом героев без формальных игровых эффектов. Для утверждённого code-native изображения вместо `image` и `icon` используется `visualKind`; `hotspotPosition` при необходимости задаёт координаты `x` и `y` точки находки в процентах от сцены. `inspectables[].order` начинается с 1 и идёт без пропусков внутри сцены, а необязательный `inventoryOrder` закрепляет предмет за общей ячейкой сквозного инвентаря кампании. `exit.availableAfter[]` содержит `id` объектов этой же сцены, которые требуется раскрыть до появления выхода. `exit.presentation: control` показывает сюжетный переход как подписанное действие; без него выход остаётся интерактивной дверью сцены. `exit.nextSceneId` фиксирует стабильный `id` следующей сцены. Для последнего опубликованного экрана и презентационных состояний, чьи переходы управляются отдельным игровым графом, `exit` равен `null`.
+
+### Игровой срез гостиничной галереи
+
+```text
+version, id, campaignId, sceneId, initialView
+doors[]: id, label, view, status, actionLabel, description, availableDescription?, lockedDescription?, requiresAllFlags[]?, requiresAnyFlag[]?
+dialogues.*: speaker, opening, lore? { title, art, alt, paragraphs[] }, help?, threat?, reward?, success?, pressure?, search?
+narration: initial, archiveWithKey, passageOpen
+dialogues: публичные реплики NPC по утверждённым условиям
+checks[]: id, label, stats[], dc, eligibleHeroIds[]?, dcModifiers[]? { flag, delta }, automaticSuccessAbilityId?, advantageAbilityId?, successText, failureText
+combatActions[]: id, encounterIds[], characterId, source, name, description, target, resolution, effects[], uses { scope, max }
+encounters[]: id, name, hp, ac, initiative, attack, weakness, heroAttacks[], startText?, victoryText?
+encounters[].units[]?: id, name, token?, hp?, maxHp?, ac?, initiative?, attack?
+```
+
+Файл содержит только наблюдаемые игроками варианты и формальные эффекты опубликованного среза. Броски применяются через сессионную модель событий; компоненты не меняют флаги, HP, инвентарь или счётчики напрямую. `eligibleHeroIds` ограничивает проверку указанными героями, а `dcModifiers` декларативно меняет сложность по уже установленным флагам. Обязательная улика работает по принципу fail-forward: провал может добавить осложнение, но не уничтожает путь дальше. `requiresAllFlags` и `requiresAnyFlag` определяют состояние дверей, а сюжетные предметы участвуют в этих условиях или имеют явно указанное более позднее применение. Клик по направлению раскрывает соответствующую легенду мастера; переход выполняется отдельным действием `actionLabel`, если условие входа выполнено. `narration` хранит произносимые мастером варианты легенды галереи: интерфейс выбирает их по состоянию сцеы, но не показывает игрокам подписи дверей, флаги или техническую сводку условий. `encounters[]` позволяет одному срезу запускать разные бои из разных сюжетных веток; активный `encounterId` хранится в сессионном событии. `combatActions[]` связывает применимые в конкретной встрече навыки и предметы с явной целью, автоматическим эффектом и лимитом использований; интерфейс показывает только действия активного героя, а движок расходует их и передаёт ход через журнал событий.
+
+HUD и движок боя читают встречу декларативно и не зависят от конкретной сцены. Общие `hp`, `ac`, `initiative` и `attack` служат значениями по умолчанию для всех противников встречи. Необязательные поля внутри `units[]` переопределяют их для отдельного противника. Без override-полей старый формат остаётся полностью совместимым.
+
+После победы универсальный боевой слой показывает модальное окно `Victory` и использует `encounters[].victoryText` как короткий публичный итог встречи. Подтверждение модалки не выбирает следующую сцену самостоятельно: сценовый адаптер закрывает HUD и переводит игру в подготовленное послебоевое состояние.
 
 ### Исторический состав партии
 

@@ -1,0 +1,195 @@
+.overlay {
+  --combat-dock-bottom: 0.7rem;
+  --combat-dock-height: 13.25rem;
+  --combat-dock-left: 25.25rem;
+  --combat-dock-right: 15.4rem;
+  --combat-dock-max-width: 65rem;
+  --combat-log-right: 0.8rem;
+  --combat-log-top: 7.8rem;
+  --combat-log-width: 14.5rem;
+  color: var(--color-parchment-light);
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+}
+
+.header {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.title {
+  background: var(--gradient-combat-label);
+  left: 0.8rem;
+  min-width: 0;
+  padding: 0.45rem 0.65rem;
+  pointer-events: auto;
+  position: absolute;
+  top: 0.55rem;
+  width: 14.5rem;
+}
+
+.title span {
+  color: var(--color-combat-threat-soft);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title h1 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 1.45vw, 1.42rem);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0.1rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock {
+  bottom: var(--combat-dock-bottom);
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: var(--combat-dock-height);
+  height: auto;
+  justify-content: center;
+  left: var(--combat-dock-left);
+  margin-inline: auto;
+  max-width: var(--combat-dock-max-width);
+  min-width: 0;
+  padding: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: var(--combat-dock-right);
+  width: auto;
+}
+
+.leftColumn {
+  bottom: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  height: 13.25rem;
+  justify-content: stretch;
+  left: 0.8rem;
+  min-height: 0;
+  pointer-events: auto;
+  position: absolute;
+  width: 24rem;
+}
+
+.dockMain {
+  align-items: stretch;
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  min-width: 0;
+}
+
+.masterControl {
+  left: 0.8rem;
+  pointer-events: auto;
+  position: absolute;
+  top: 5.4rem;
+}
+
+.masterControl > button,
+.masterMenu button {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-brass-light);
+  cursor: pointer;
+  font-family: var(--font-display);
+}
+
+.masterControl > button {
+  font-size: 0.8rem;
+  padding: 0.45rem 0.65rem;
+}
+
+.masterMenu {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  display: grid;
+  gap: 0.35rem;
+  left: 0;
+  padding: 0.45rem;
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  width: 12.5rem;
+}
+
+.masterMenu button {
+  font-size: 0.76rem;
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+
+.masterControl button:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1500px) {
+  .overlay {
+    --combat-dock-height: 12rem;
+    --combat-dock-left: 15.75rem;
+    --combat-dock-max-width: none;
+  }
+
+  .dock {
+    margin-inline: 0;
+    width: auto;
+  }
+
+  .dockMain { grid-template-columns: minmax(0, 1fr) 17rem; }
+  .leftColumn { height: 12rem; width: 14.5rem; }
+}
+
+@media (max-width: 1100px) {
+  .overlay {
+    --combat-dock-bottom: 0.55rem;
+    --combat-dock-height: 9.5rem;
+    --combat-dock-left: 14.4rem;
+    --combat-dock-right: 14.05rem;
+    --combat-log-right: 0.55rem;
+    --combat-log-top: 7.2rem;
+    --combat-log-width: 13.5rem;
+  }
+
+  .title {
+    left: 0.55rem;
+    padding: 0.35rem 0.5rem;
+    top: 0.4rem;
+    width: 12rem;
+  }
+
+  .title h1 { font-size: 0.98rem; }
+
+  .dock {
+    gap: 0.35rem;
+    width: auto;
+  }
+
+  .dockMain { display: contents; }
+
+  .masterControl { left: 0.55rem; top: 4.9rem; }
+
+  .leftColumn {
+    bottom: 0.55rem;
+    height: 9.5rem;
+    left: 0.55rem;
+    width: 13.5rem;
+  }
+
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .overlay { display: none; }
+}

@@ -4,6 +4,16 @@ import {RouteFallback} from './ui/RouteFallback/RouteFallback';
 
 const router = createBrowserRouter([
   {
+    path: 'campaign/penisuela/prologue',
+    HydrateFallback: RouteFallback,
+    lazy: async () => ({Component: (await import('../pages/campaign-preview/ui/CampaignPreviewPage/CampaignPreviewPage')).CampaignPreviewPage}),
+  },
+  {
+    path: 'campaign/penisuela/play/:sceneId',
+    HydrateFallback: RouteFallback,
+    lazy: async () => ({Component: (await import('../pages/campaign-play/ui/CampaignPlayPage/CampaignPlayPage')).CampaignPlayPage}),
+  },
+  {
     element: <AppLayout />,
     HydrateFallback: RouteFallback,
     children: [

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 8,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-gallery-kraken",
+      "variant": "art-drafts/rail-kraken-active-linda-hatch-v5.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken.png.",
+      "notes": [
+        "Кракен, холл, камера и красная линия сохранены относительно предыдущего активного варианта.",
+        "Панели Ламберта, Торина и Бубсильды удалены.",
+        "Оставлен один небольшой закрытый сервисный люк для уменьшившейся Линды и общий частично скрытый стоп.",
+        "Героев, UI, текста и лишних объектов нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-hotel-gallery-kraken-defeated",
+      "variant": "art-drafts/rail-kraken-defeated-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-defeated.png.",
+      "notes": [
+        "В кадре показан только поверженный кракен без героев и интерфейса.",
+        "Боевой исход читается по заваленному корпусу, погасшим глазам, порванным швам, сломанным рёбрам и хаотично лежащим щупальцам.",
+        "Повреждение выглядит как поломка сценической декорации без крови, мяса и хоррора."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-hotel-gallery-kraken-linda-disabled",
+      "variant": "art-drafts/rail-kraken-linda-disabled-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-linda-disabled.png.",
+      "notes": [
+        "Кракен остаётся целым и вертикальным, что ясно отличает отключение Линдой от победы в бою.",
+        "Открытый маленький люк, погасший привод и слабая фейская пыльца объясняют способ отключения без изображения Линды.",
+        "Глаза и красная линия погашены; боевых повреждений, героев, UI и текста нет."
+      ]
+    }
+  ]
+}

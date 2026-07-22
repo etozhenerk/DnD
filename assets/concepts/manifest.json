@@ -86,9 +86,155 @@
     {"id": "linda-small-red-fairy-warrior", "path": "assets/concepts/campaigns/linda-small/enemies/red-fairy-warrior.webp", "status": "canonical", "purpose": "Красная фея-воительница."},
     {"id": "linda-small-magic-guard-bush", "path": "assets/concepts/campaigns/linda-small/enemies/magic-guard-bush.webp", "status": "canonical", "purpose": "Магический страж-куст."},
     {"id": "linda-small-stroganessa", "path": "assets/concepts/campaigns/linda-small/enemies/stroganessa.webp", "status": "canonical", "purpose": "Строганесса, финальный босс кампании."},
-    {"id": "penisuela-final-teaser", "path": "assets/concepts/campaigns/penisuela/key-art/teaser.png", "status": "canonical", "purpose": "Вертикальный тизер кампании с пятью героями, мастером и тремя сюжетными гостями."}
+    {"id": "penisuela-party-bubsilda", "path": "assets/concepts/campaigns/penisuela/party/bubsilda.webp", "status": "canonical", "purpose": "Летний кампанийный портрет Бубсильды на Пенисуэле."},
+    {"id": "penisuela-party-linda", "path": "assets/concepts/campaigns/penisuela/party/linda.webp", "status": "canonical", "purpose": "Летний кампанийный портрет Линды на Пенисуэле."},
+    {"id": "penisuela-party-lambert", "path": "assets/concepts/campaigns/penisuela/party/lambert.webp", "status": "canonical", "purpose": "Летний кампанийный портрет Ламберта на Пенисуэле."},
+    {"id": "penisuela-party-golovach-lena", "path": "assets/concepts/campaigns/penisuela/party/golovach-lena.webp", "status": "canonical", "purpose": "Летний кампанийный портрет Головача Лены с кинонаградой."},
+    {"id": "penisuela-party-thorin-pukoshchit", "path": "assets/concepts/campaigns/penisuela/party/thorin-pukoshchit.webp", "status": "canonical", "purpose": "Летний кампанийный портрет Торина Пукощита."},
+    {"id": "penisuela-party-lord-krayneplot", "path": "assets/concepts/campaigns/penisuela/party/lord-krayneplot.webp", "status": "canonical", "purpose": "Таверненный портрет Лорда Крайнеплота с приглашением на остров."},
+    {"id": "penisuela-npc-pussy-sultan", "path": "assets/concepts/campaigns/penisuela/npcs/pussy-sultan.webp", "status": "canonical", "purpose": "Pussy Sultan у перевёрнутого паланкина в гостинице."},
+    {"id": "penisuela-npc-pussy-sultan-throne-lore", "path": "assets/concepts/campaigns/penisuela/npcs/pussy-sultan-throne-lore.png", "status": "canonical", "purpose": "Pussy Sultan сидит на золотом троне; чистый горизонтальный арт для постоянной карточки лора."},
+    {"id": "penisuela-enemy-hotel-vip-guards", "path": "assets/concepts/campaigns/penisuela/enemies/hotel-vip-guards-with-sultan.png", "status": "canonical", "purpose": "Двое стражей VIP-крыла перекрывают выход из люкса, пока Pussy Sultan наблюдает с трона."},
+    {"id": "penisuela-scene-pussy-after-guards-defeated", "path": "assets/concepts/campaigns/penisuela/scenes/pussy-after-guards-defeated.png", "status": "canonical", "purpose": "Послебоевая сцена с поверженной охраной и испуганным Pussy Sultan."},
+    {"id": "penisuela-ui-token-hotel-vip-guard", "path": "assets/concepts/campaigns/penisuela/ui/enemy-tokens/hotel-vip-guard.png", "status": "canonical", "purpose": "Квадратный портрет стража для инициативы и выбора цели в бою."},
+    {"id": "penisuela-npc-archive-linfea", "path": "assets/concepts/campaigns/penisuela/npcs/archive-linfea.webp", "status": "canonical", "purpose": "Взрослая фея Линфея, контролирующая гостиничный архив."},
+    {"id": "penisuela-npc-eternal-all-inclusive", "path": "assets/concepts/campaigns/penisuela/npcs/eternal-all-inclusive.webp", "status": "canonical", "purpose": "Солнечный высший эльф вечного олл-инклюзива."},
+    {"id": "penisuela-npc-bungalow-consultant-linfea", "path": "assets/concepts/campaigns/penisuela/npcs/bungalow-consultant-linfea.webp", "status": "canonical", "purpose": "Фея Линфея — консультант семейного крыла бунгало."},
+    {"id": "penisuela-npc-celebrity-decoy-satyr", "path": "assets/concepts/campaigns/penisuela/npcs/celebrity-decoy-satyr.webp", "status": "canonical", "purpose": "Сценический сатир-дублёр в артистической гримёрке."},
+    {"id": "penisuela-npc-anonymous-elf-artist", "path": "assets/concepts/campaigns/penisuela/npcs/anonymous-elf-artist.webp", "status": "canonical", "purpose": "Анонимный эльфийский артист до раскрытия роли жениха."},
+    {"id": "penisuela-npc-ceremony-linfea", "path": "assets/concepts/campaigns/penisuela/npcs/ceremony-linfea.webp", "status": "canonical", "purpose": "Фея Линфея в церемониальном платье на вилле."},
+    {"id": "penisuela-npc-false-groom-guest", "path": "assets/concepts/campaigns/penisuela/npcs/false-groom-guest.webp", "status": "canonical", "purpose": "Невысокий гость-полурослик, ошибочно принятый за жениха."},
+    {"id": "penisuela-npc-guest-organizer", "path": "assets/concepts/campaigns/penisuela/npcs/guest-organizer.webp", "status": "canonical", "purpose": "Гостья-гномка с игровыми жетонами и конкурсным реквизитом."},
+    {"id": "penisuela-npc-bungalow-spouse-a", "path": "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-a.webp", "status": "canonical", "purpose": "Дварф с кружкой у закрытого курортного бара."},
+    {"id": "penisuela-npc-bungalow-spouse-b", "path": "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-b.webp", "status": "canonical", "purpose": "Высшая эльфийка с семейным планом в бунгало."},
+    {"id": "penisuela-final-teaser", "path": "assets/concepts/campaigns/penisuela/key-art/teaser.png", "status": "canonical", "purpose": "Вертикальный тизер кампании с пятью героями, мастером и тремя сюжетными гостями."},
+    {"id": "penisuela-scene-tavern-invitation", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png", "status": "canonical", "purpose": "Слайд 1 пролога: обычный вечер Лорда Крайнеплота за столом таверны."},
+    {"id": "penisuela-scene-tavern-visitor-notices", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-02.png", "status": "canonical", "purpose": "Слайд 2 пролога: неизвестный посетитель замечает реплику Лорда."},
+    {"id": "penisuela-scene-tavern-visitor-approaches", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-03.png", "status": "canonical", "purpose": "Слайд 3 пролога: посетитель направляется к столу с чёрным конвертом."},
+    {"id": "penisuela-scene-tavern-envelope-handoff", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-04.png", "status": "canonical", "purpose": "Слайд 4 пролога: незнакомец лично передаёт Лорду конверт."},
+    {"id": "penisuela-scene-tavern-lord-examines-envelope", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-05.png", "status": "canonical", "purpose": "Слайд 5 пролога: Лорд рассматривает печать, пока незнакомец уходит."},
+    {"id": "penisuela-scene-tavern-envelope-closeup-sealed", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-06.png", "status": "canonical", "purpose": "Слайд 6 пролога: запечатанный чёрный конверт в руках Лорда."},
+    {"id": "penisuela-scene-tavern-envelope-closeup-open", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png", "status": "canonical", "purpose": "Слайд 7 пролога: внутри конверта видны пять золотых пропусков и край письма."},
+    {"id": "penisuela-scene-tavern-five-bracelets-decision", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png", "status": "canonical", "purpose": "Слайд 8 пролога: Лорд загружает приглашение в спинной люк Кострюльки."},
+    {"id": "penisuela-scene-kostryulka-flight", "path": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-09.png", "status": "canonical", "purpose": "Слайд 9 пролога: Кострюлька взлетает, пока Лорд спиной к зрителю возвращается в таверну."},
+    {"id": "penisuela-scene-hotel-overload", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-overload.png", "status": "canonical", "purpose": "Утреннее пробуждение пяти героев в разгромленном люксе с переносным режиссёрским пультом."},
+    {"id": "penisuela-scene-hotel-overload-empty-reverse", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png", "status": "canonical", "purpose": "Пустой разгромленный люкс с обратного ракурса от балкона к двери выхода в гостиничный холл."},
+    {"id": "penisuela-scene-hotel-gallery", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery.png", "status": "canonical", "purpose": "Чистый гостиничный холл с двумя последовательными дверями и пустым латунным рельсом до появления Рельсового кракена."},
+    {"id": "penisuela-scene-vip-prop-room", "path": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room.png", "status": "canonical", "purpose": "VIP-реквизиторская с опрокинутым паланкином и зажатым под ним золотым скипетром-микрофоном Pussy Sultan."},
+    {"id": "penisuela-scene-pussy-sultan-before-microphone-returned", "path": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-before-microphone-returned.png", "status": "canonical", "purpose": "Pussy Sultan в VIP-номере до возвращения скипетра-микрофона; обе руки пусты."},
+    {"id": "penisuela-scene-pussy-sultan-microphone-returned", "path": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-microphone-returned.png", "status": "canonical", "purpose": "Pussy Sultan в VIP-номере после возвращения золотого скипетра-микрофона."},
+    {"id": "penisuela-scene-hotel-archive-alexis", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-archive-alexis.png", "status": "canonical", "purpose": "Освобождённый Алексис выходит через только что открытую дверь гостиничного архива с найденными документами."},
+    {"id": "penisuela-scene-hotel-gallery-kraken", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken.png", "status": "canonical", "purpose": "Активный Рельсовый кракен в гостиничном холле с маленьким сервисным люком для уменьшившейся Линды."},
+    {"id": "penisuela-scene-hotel-gallery-kraken-defeated", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-defeated.png", "status": "canonical", "purpose": "Сломанная сценическая декорация Рельсового кракена после победы в бою."},
+    {"id": "penisuela-scene-hotel-gallery-kraken-linda-disabled", "path": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-linda-disabled.png", "status": "canonical", "purpose": "Целый Рельсовый кракен после штатного отключения Линдой через открытый сервисный люк."},
+    {"id": "penisuela-scene-closed-bar", "path": "assets/concepts/campaigns/penisuela/scenes/closed-bar.png", "status": "canonical", "purpose": "Общий разводящий план закрытого бара с отдельными зонами Стаса и Прохора."},
+    {"id": "penisuela-scene-closed-bar-stas", "path": "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas.png", "status": "canonical", "purpose": "Диалоговый план Стаса у трёх цветных кранов закрытого бара."},
+    {"id": "penisuela-scene-closed-bar-prokhor", "path": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor.png", "status": "canonical", "purpose": "Диалоговый план Прохора Оллинклюзива в низкой лаунж-зоне закрытого бара."},
+    {"id": "penisuela-item-journey-letter", "path": "assets/concepts/campaigns/penisuela/items/journey-letter.png", "status": "canonical", "purpose": "Доставленный в гостиничный люкс конверт с единственным письмом о сути путешествия."},
+    {"id": "penisuela-item-pussy-sultan-golden-scepter-microphone", "path": "assets/concepts/campaigns/penisuela/items/pussy-sultan-golden-scepter-microphone.png", "status": "canonical", "purpose": "Золотой скипетр-микрофон Pussy Sultan, найденный под паланкином в VIP-реквизиторской."},
+    {"id": "penisuela-item-anonymous-bracelets", "path": "assets/concepts/campaigns/penisuela/items/anonymous-bracelets.png", "status": "canonical", "purpose": "Пять анонимных золотых пропусков, уже надетых на героях при пробуждении."},
+    {"id": "penisuela-item-overload-console", "path": "assets/concepts/campaigns/penisuela/items/overload-console.png", "status": "canonical", "purpose": "Переносной режиссёрский пульт с таймером перегрузки и тремя путями отключения."},
+    {"id": "penisuela-item-camera-pendant", "path": "assets/concepts/campaigns/penisuela/items/camera-pendant.png", "status": "canonical", "purpose": "Магический кулон-журнал с повреждённой камерой и каналом к режиссёрскому пульту."},
+    {"id": "penisuela-clue-egorik-recording", "path": "assets/concepts/campaigns/penisuela/items/egorik-recording-clue-v2.png", "status": "canonical", "purpose": "Повреждённый стоп-кадр без лиц: руки, пять браслетов, чёрный конверт и служебная дверь дают улики на Егорика и Настасью, не раскрывая их внешность."},
+    {"id": "penisuela-item-closed-bar-token", "path": "assets/concepts/campaigns/penisuela/items/closed-bar-token.png", "status": "canonical", "purpose": "Жетон закрытого бара, который Алексис вручает героям после освобождения."}
   ],
   "ui": [
+    {
+      "id": "penisuela-ui-victory-wordmark",
+      "path": "assets/concepts/campaigns/penisuela/ui/victory-wordmark.png",
+      "status": "canonical",
+      "purpose": "Золотая надпись VICTORY для универсальной модалки результата боя."
+    },
+    {
+      "id": "penisuela-ui-universal-panel-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/universal-panel-frame.png",
+      "status": "canonical",
+      "purpose": "Масштабируемая прозрачная рамка панелей интерактивного квеста Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-frame-atlas",
+      "path": "assets/concepts/campaigns/penisuela/ui/token-frame-atlas.png",
+      "status": "canonical",
+      "purpose": "Прозрачный атлас круговых рамок героя и врага для боя и очереди ходов."
+    },
+    {
+      "id": "penisuela-ui-quest-shell-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/quest-shell-frame.png",
+      "status": "canonical",
+      "purpose": "Прозрачный внешний контур полноэкранного интерактивного квеста Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-dialogue-panel-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/dialogue-panel-frame.png",
+      "status": "canonical",
+      "purpose": "Прозрачная нижняя панель диалога с зонами портрета, имени и реплики."
+    },
+    {
+      "id": "penisuela-ui-gm-drawer-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/gm-drawer-frame.png",
+      "status": "canonical",
+      "purpose": "Прозрачная вертикальная рамка закрытой панели мастера с механическим замком приватного режима."
+    },
+    {
+      "id": "penisuela-ui-initiative-rail-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/initiative-rail-frame.png",
+      "status": "canonical",
+      "purpose": "Прозрачная масштабируемая направляющая очереди ходов без фиксированных слотов."
+    },
+    {
+      "id": "penisuela-ui-combatant-card-frame",
+      "path": "assets/concepts/campaigns/penisuela/ui/combatant-card-frame.png",
+      "status": "canonical",
+      "purpose": "Прозрачная нейтральная карточка выбранного героя или врага для боевого интерфейса."
+    },
+    {
+      "id": "penisuela-ui-preview-legend-parchment",
+      "path": "assets/concepts/campaigns/penisuela/ui/preview-legend-parchment.png",
+      "status": "canonical",
+      "purpose": "Универсальная прозрачная пергаментная подложка под текст мастера в прологе Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-bubsilda",
+      "path": "assets/concepts/campaigns/penisuela/ui/hero-tokens/bubsilda.png",
+      "status": "canonical",
+      "purpose": "Круговая иконка Бубсильды для интерактивного прохождения Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-linda",
+      "path": "assets/concepts/campaigns/penisuela/ui/hero-tokens/linda.png",
+      "status": "canonical",
+      "purpose": "Круговая иконка Линды для интерактивного прохождения Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-lambert",
+      "path": "assets/concepts/campaigns/penisuela/ui/hero-tokens/lambert.png",
+      "status": "canonical",
+      "purpose": "Круговая иконка Ламберта для интерактивного прохождения Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-golovach-lena",
+      "path": "assets/concepts/campaigns/penisuela/ui/hero-tokens/golovach-lena.png",
+      "status": "canonical",
+      "purpose": "Круговая иконка Головача Лены для интерактивного прохождения Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-token-thorin-pukoshchit",
+      "path": "assets/concepts/campaigns/penisuela/ui/hero-tokens/thorin-pukoshchit.png",
+      "status": "canonical",
+      "purpose": "Круговая иконка Торина Пукощита II для интерактивного прохождения Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-inventory-bag-icon",
+      "path": "assets/concepts/campaigns/penisuela/ui/inventory-bag-icon.png",
+      "status": "canonical",
+      "purpose": "Прозрачная иконка походной сумки для открытия инвентаря Пенисуэлы."
+    },
+    {
+      "id": "penisuela-ui-inventory-panel",
+      "path": "assets/concepts/campaigns/penisuela/ui/inventory-panel-alpha-v2.png",
+      "status": "canonical",
+      "purpose": "Вертикальная рамка инвентаря Пенисуэлы с восемью пустыми ячейками для найденных предметов."
+    },
     {"id": "hero-book-bookmark", "path": "assets/concepts/ui/hero-book-bookmark.png", "status": "reference", "purpose": "Кликабельная закладка выбора героя для книжного разворота."},
     {"id": "hero-bookmark-avatar-bubsilda", "path": "assets/concepts/characters/bookmarks/bubsilda-bookmark.png", "status": "reference", "purpose": "Аватар Бубсильды для закладки книги героев."},
     {"id": "hero-bookmark-avatar-linda", "path": "assets/concepts/characters/bookmarks/linda-bookmark.png", "status": "reference", "purpose": "Аватар Линды для закладки книги героев."},
@@ -100,7 +246,14 @@
     {"id": "hero-book-arrow-right", "path": "assets/concepts/ui/hero-book-arrow-right.png", "status": "reference", "purpose": "Книжная стрелка перелистывания героя вправо."},
     {"id": "hero-book-icon-hp", "path": "assets/concepts/ui/hero-book-icon-hp.png", "status": "reference", "purpose": "Иконка HP для книжной карточки героя."},
     {"id": "hero-book-icon-ac", "path": "assets/concepts/ui/hero-book-icon-ac.png", "status": "reference", "purpose": "Иконка защиты для книжной карточки героя."},
-    {"id": "hero-book-icon-attack", "path": "assets/concepts/ui/hero-book-icon-attack.png", "status": "reference", "purpose": "Иконка основной атаки для книжной карточки героя."}
+    {"id": "hero-book-icon-attack", "path": "assets/concepts/ui/hero-book-icon-attack.png", "status": "reference", "purpose": "Иконка основной атаки для книжной карточки героя."},
+    {"id": "penisuela-icon-journey-letter", "path": "assets/concepts/campaigns/penisuela/items/icons/journey-letter.png", "status": "canonical", "purpose": "Инвентарная иконка письма о путешествии."},
+    {"id": "penisuela-icon-pussy-sultan-golden-scepter-microphone", "path": "assets/concepts/campaigns/penisuela/items/icons/pussy-sultan-golden-scepter-microphone.png", "status": "canonical", "purpose": "Иконка золотого скипетра-микрофона Pussy Sultan для интерактивной сцены VIP-реквизиторской."},
+    {"id": "penisuela-icon-anonymous-bracelets", "path": "assets/concepts/campaigns/penisuela/items/icons/anonymous-bracelets.png", "status": "canonical", "purpose": "Инвентарная иконка комплекта из пяти анонимных браслетов."},
+    {"id": "penisuela-icon-overload-console", "path": "assets/concepts/campaigns/penisuela/items/icons/overload-console.png", "status": "canonical", "purpose": "Инвентарная иконка переносного режиссёрского пульта."},
+    {"id": "penisuela-icon-camera-pendant", "path": "assets/concepts/campaigns/penisuela/items/icons/camera-pendant.png", "status": "canonical", "purpose": "Инвентарная иконка кулона-журнала."},
+    {"id": "penisuela-icon-egorik-recording", "path": "assets/concepts/campaigns/penisuela/items/icons/egorik-recording.png", "status": "canonical", "purpose": "Инвентарная иконка повреждённой записи первой улики."},
+    {"id": "penisuela-icon-closed-bar-token", "path": "assets/concepts/campaigns/penisuela/items/icons/closed-bar-token.png", "status": "canonical", "purpose": "Инвентарная иконка жетона закрытого бара от Алексис."}
   ],
   "world": [
     {"id": "world-map", "path": "assets/concepts/world/world-map.webp", "status": "reference", "purpose": "Карта главного экрана с питахайями на Великом Древе."}

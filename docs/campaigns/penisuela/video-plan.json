@@ -1,0 +1,503 @@
+{
+  "campaignId": "penisuela",
+  "version": 1,
+  "status": "draft",
+  "readiness": "blocked",
+  "defaults": {
+    "aspectRatio": "16:9",
+    "masterResolution": "1920x1080",
+    "fps": 24,
+    "visualPromptLanguage": "en",
+    "spokenLanguage": "ru",
+    "burnedInText": false
+  },
+  "sequences": [
+    {
+      "id": "penisuela-invitation-to-hotel-video",
+      "type": "trailer",
+      "purpose": "Музыкальный видеопереход от раздачи пяти браслетов к прибытию на Пенисуэлу, входу в отель и последней ясной памяти о вечеринке перед hotel-overload.",
+      "audience": "players",
+      "sourceSceneIds": ["tavern-invitation", "hotel-overload"],
+      "targetDurationSeconds": 45,
+      "spoilerBoundary": "Разрешены браслеты, путь, отель и безопасная вечеринка; письмо, утренние улики, авария, жених, невеста и личности организаторов не показываются.",
+      "musicFirst": true,
+      "shots": [
+        {
+          "id": "penisuela-video-shot-01-bubsilda",
+          "order": 1,
+          "purpose": "Показать, что Бубсильда получила золотой браслет от Кострюльки.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; keep face, bracelet and Kostrulka inside the central 70 percent",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-bubsilda-v1",
+            "path": "art-drafts/video-bridge/bubsilda-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Очень медленный наезд. Бубсильда один раз чуть приподнимает запястье с браслетом и переводит на него взгляд; Кострюлька спокойно наклоняет голову. Снег, волосы и край плаща двигаются едва заметно.",
+          "subjectMotion": "Bubsilda slowly raises the bracelet wrist a few centimeters and looks at it once; Kostrulka makes one small natural head tilt.",
+          "cameraMotion": "Very slow controlled dolly-in, no pan, no orbit, no cut.",
+          "environmentMotion": "Sparse snow drift, subtle hair and cloak movement, faint cold breath.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a very slow controlled dolly-in. Bubsilda slowly raises the wrist with the gold bracelet a few centimeters and looks at it once, then holds still; Kostrulka makes one small natural pigeon head tilt. Sparse snow drifts across the scene, with restrained movement in Bubsilda's hair and cloak and a faint trace of cold breath. Preserve the exact approved face, snowy outfit, body proportions, single non-glowing gold bracelet, Kostrulka's living pigeon anatomy and integrated white-graphite cargo capsule, environment geometry, lighting and painterly fantasy realism. Natural minimal motion, stable anatomy, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact approved Bubsilda identity and snowy outfit",
+            "one non-glowing gold bracelet",
+            "canonical living Kostrulka with integrated capsule",
+            "cold cinematic lighting and composition"
+          ],
+          "avoid": [
+            "identity drift or facial redesign",
+            "extra fingers, arms, bracelets or pigeons",
+            "bracelet magic, glow or activation",
+            "robotic pigeon, wheels, armor or external harness",
+            "letter, envelope, readable text, subtitles, logo or watermark",
+            "camera cuts, sudden zoom or large body movement"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Image-to-video; keep motion strength low and preserve the reference as the exact first frame. Generate without spoken dialogue."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet snowy mountain air, soft winter wind, very distant ice movement, seamless ambience, no voices.",
+            "sfxPromptEn": "Soft metal bracelet clasp and one quiet pigeon coo.",
+            "musicCue": "00:00 hook: one delicate bell tone over a soft low string pulse."
+          },
+          "transitionIn": "hard-cut-from-prologue",
+          "transitionOut": "match-cut-on-gold-bracelet",
+          "continuityIn": ["The invitation letter remains off-screen."],
+          "continuityOut": ["The single gold bracelet is visible and inactive; the next shot repeats the gold color accent."],
+          "acceptance": [
+            "Bubsilda's face and snowy outfit do not change",
+            "the wrist moves once without hand deformation",
+            "Kostrulka remains a normal pigeon with the canonical capsule",
+            "no letter, text or magical activation appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-02-linda",
+          "order": 2,
+          "purpose": "Показать Линду, принявшую браслет в освобождённом Линдасмолл.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; preserve face, both wing sets, hands, bracelet and throne contact",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-linda-v4",
+            "path": "art-drafts/video-bridge/linda-bracelet-v4.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Медленный наезд слева. Линда одним маленьким движением заканчивает застёгивать браслет и спокойно поворачивает глаза к Кострюльке, не меняя позы. Листья, цветы, волосы и шесть крыльев мягко реагируют на тёплый ветер.",
+          "subjectMotion": "Linda completes the bracelet clasp with one small finger movement and shifts her gaze toward Kostrulka without standing up.",
+          "cameraMotion": "Slow short dolly-in from the existing angle, no orbit, no cut.",
+          "environmentMotion": "Gentle leaf and flower movement, subtle hair motion, very small natural shimmer across all six wings.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Make a slow short dolly-in from the existing angle. Linda completes the gold bracelet clasp with one small controlled finger movement and shifts only her gaze toward Kostrulka, remaining naturally seated and physically grounded in the root throne. A warm breeze moves a few leaves, flowers and loose hair strands; all six iridescent wings remain attached on both sides and show only a restrained natural shimmer. Preserve Linda's exact base-canonical face, pastel summer dress, body proportions, six-wing anatomy, single non-glowing bracelet, throne geometry, Kostrulka design, warm liberated Linda Small atmosphere and painterly fantasy realism. No cuts, no speech, no text, no identity or costume drift.",
+          "mustPreserve": [
+            "Linda's exact base-canonical face",
+            "six bilateral wings and pastel summer dress",
+            "physical contact with the root throne",
+            "one inactive gold bracelet and canonical Kostrulka"
+          ],
+          "avoid": [
+            "generic or redesigned Linda face",
+            "missing, duplicated or detached wings",
+            "floating body, clipping into throne or changing pose",
+            "extra fingers, bracelets or birds",
+            "bracelet glow, letter, envelope, text, subtitles, logo or watermark",
+            "camera orbit, cut or aggressive wing flapping"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Use low motion strength; face and wing preservation are more important than movement amplitude."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Warm enchanted garden ambience, soft leaves, distant tropical birds and quiet flowing water, no voices.",
+            "sfxPromptEn": "Very soft bracelet clasp, faint wing membrane shimmer and a quiet pigeon step on wood.",
+            "musicCue": "00:05: add warm harp harmonics while the low pulse continues."
+          },
+          "transitionIn": "match-cut-on-gold-bracelet",
+          "transitionOut": "match-cut-on-hand-checking-clasp",
+          "continuityIn": ["One inactive gold bracelet is the repeated visual anchor."],
+          "continuityOut": ["Linda's hands settle; the next shot begins with Lambert's hands already near his clasp."],
+          "acceptance": [
+            "Linda remains recognizably identical to the approved base portrait",
+            "all six wings remain present on both sides without clipping",
+            "only one small clasp movement occurs",
+            "no new prop, text or magic appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-03-lambert",
+          "order": 3,
+          "purpose": "Показать техническую реакцию Ламберта на браслет.",
+          "durationSeconds": 5,
+          "framing": "medium-close",
+          "safeArea": "center-safe; keep both hands, face, bracelet and Kostrulka visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-lambert-v3",
+            "path": "art-drafts/video-bridge/lambert-bracelet-v3.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно скользит вдоль верстака. Ламберт один раз нажимает большим пальцем на застёжку и прекращает проверку. Кострюлька переступает одной лапой; пыль в солнечном луче и мелкие подвесы мастерской едва движутся.",
+          "subjectMotion": "Lambert presses the bracelet clasp once with his right thumb and then relaxes both hands; Kostrulka makes one small step.",
+          "cameraMotion": "Slow controlled lateral slide along the workbench, no push-in, no cut.",
+          "environmentMotion": "Subtle dust motes in sunlight, slight movement in one hanging workshop element.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Perform a slow controlled lateral camera slide along the workbench. Lambert presses the bracelet clasp once with his right thumb, verifies it, and relaxes both hands without crossing or twisting his wrists; Kostrulka makes one small natural step on the bench. Only subtle dust motes and one light hanging workshop element move in the background. Preserve Lambert's exact approved face, glasses, dark hair, summer outfit, normal two-hand anatomy, single non-glowing bracelet, canonical living pigeon with integrated capsule, workbench geometry, White Castle workshop lighting and painterly fantasy realism. Minimal precise motion, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "Lambert's exact face, glasses and outfit",
+            "two anatomically correct hands and straight wrists",
+            "one inactive bracelet",
+            "canonical Kostrulka and workshop geometry"
+          ],
+          "avoid": [
+            "broken, crossed or fused wrists",
+            "extra fingers, tools, interfaces or bracelets",
+            "face, glasses or hairstyle drift",
+            "robotic or redesigned pigeon",
+            "letter, text, subtitles, logo or watermark",
+            "camera cut, fast pan or dramatic zoom"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Hands are the risk area; reject any generation with wrist or finger deformation."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet bright fantasy workshop, distant metal ticking, soft room tone and light wind through an open window, no voices.",
+            "sfxPromptEn": "One tiny metal clasp click, a soft leather sleeve movement and one pigeon footstep on wood.",
+            "musicCue": "00:10: introduce a restrained clockwork pluck under the harp pattern."
+          },
+          "transitionIn": "match-cut-on-hand-checking-clasp",
+          "transitionOut": "cut-on-wrist-turn",
+          "continuityIn": ["The bracelet remains a simple physical object with no glow."],
+          "continuityOut": ["Lambert's hands settle before cutting to Golovach raising a wrist."],
+          "acceptance": [
+            "both wrists and all visible fingers remain anatomically correct",
+            "the clasp is tested exactly once",
+            "Lambert and Kostrulka retain their approved designs",
+            "no interface, letter or glow appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-04-golovach",
+          "order": 4,
+          "purpose": "Показать спокойный интерес Головача к браслету до начала поездки.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; preserve face, horns, bracelet, pendant and chair contact",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-golovach-lena-v1",
+            "path": "art-drafts/video-bridge/golovach-lena-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Медленный наезд. Головач один раз поворачивает запястье, рассматривая браслет, и едва заметно улыбается. Кострюлька моргает; ткань павильона и листья двигаются на тёплом ветру. Кулон не активируется.",
+          "subjectMotion": "Golovach Lena rotates the bracelet wrist once and settles into a restrained smile; Kostrulka blinks once.",
+          "cameraMotion": "Slow controlled dolly-in, no pan, no orbit, no cut.",
+          "environmentMotion": "Gentle pavilion fabric and leaf movement, subtle daylight shift, no magical effects.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a slow controlled dolly-in. Golovach Lena rotates the wrist with the gold bracelet once to inspect it, then holds still with a restrained interested smile; Kostrulka blinks once. A warm breeze gently moves pavilion fabric and nearby leaves. Preserve Golovach's exact approved youthful face, horn geometry, black scale pattern, summer gear, completely tailless anatomy, inactive pendant, single non-glowing bracelet, chair contact, canonical Kostrulka and calm daytime pavilion. Natural restrained motion, painterly cinematic fantasy realism, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact Golovach face, horns and black scale pattern",
+            "canonically no tail",
+            "inactive pendant and one inactive bracelet",
+            "canonical Kostrulka and calm pavilion"
+          ],
+          "avoid": [
+            "tail or tail-shaped belt, rope or shadow",
+            "face, horn, gender or scale-pattern drift",
+            "red beam, pendant glow, interface or film award",
+            "extra fingers, bracelets, pigeons or characters",
+            "letter, text, subtitles, logo or watermark",
+            "camera cut, orbit or exaggerated expression"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep expression change extremely small to protect facial identity and scale pattern."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet tropical production pavilion in daylight, soft fabric movement, leaves and distant island birds, no voices.",
+            "sfxPromptEn": "Soft leather creak from the chair, one quiet metal bracelet movement and a pigeon blink-and-step rustle.",
+            "musicCue": "00:15: add a low playful bass note and keep the clockwork rhythm restrained."
+          },
+          "transitionIn": "cut-on-wrist-turn",
+          "transitionOut": "match-cut-on-bracelet-and-bag-handle",
+          "continuityIn": ["Bracelet remains inactive; no future emergency system is visible."],
+          "continuityOut": ["The wrist settles before cutting to Thorin preparing to leave."],
+          "acceptance": [
+            "Golovach's face, horns and scales stay unchanged",
+            "no tail appears in any frame",
+            "the wrist rotates once without deformation",
+            "the pendant stays completely inactive"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-05-thorin",
+          "order": 5,
+          "purpose": "Закончить серию вручений решением Торина отправиться в путь.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; keep face, bracelet, bag handle, hands and Kostrulka visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-thorin-pukoshchit-v1",
+            "path": "art-drafts/video-bridge/thorin-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно отъезжает. Торин одним уверенным движением берётся за ручку закрытой сумки и слегка выпрямляется, готовясь идти. Кострюлька спокойно наблюдает; тёплый ветер двигает рубашку и пыль двора.",
+          "subjectMotion": "Thorin closes his hand around the handle of the closed travel bag and straightens slightly, then holds.",
+          "cameraMotion": "Slow controlled dolly-out, no pan, no cut.",
+          "environmentMotion": "Warm breeze in shirt fabric, sparse sunlit dust, tiny natural pigeon movement.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a slow controlled dolly-out. Thorin closes one hand firmly around the handle of the single closed travel bag and straightens slightly as if ready to depart, then holds still; Kostrulka watches with one small natural head movement. Warm air moves the rolled shirt sleeves and a little sunlit dust across the fortress loading yard. Preserve Thorin's exact approved bald bearded face, light shirt, dark leather vest, body proportions, anatomically correct hands, single non-glowing bracelet, fully closed bag, canonical Kostrulka, Desert Lands environment and painterly fantasy realism. Do not reveal the bag contents. No cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact Thorin identity and summer outfit",
+            "one inactive bracelet and one closed travel bag",
+            "normal hands and wrists",
+            "canonical Kostrulka and Desert Lands setting"
+          ],
+          "avoid": [
+            "opening the bag or revealing any object",
+            "extra bags, hands, fingers, bracelets or characters",
+            "broken wrist or changing grip geometry",
+            "face, beard, clothing or body-size drift",
+            "letter, envelope, text, subtitles, logo or watermark",
+            "camera cut, fast pullback or heroic action pose"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep the hand action small; use the dolly-out to create the sense of departure."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Warm sandstone fortress yard, distant wind and soft cargo-yard room tone, no voices.",
+            "sfxPromptEn": "Leather bag handle tightens, fabric shifts and one quiet pigeon coo.",
+            "musicCue": "00:20: the rhythm opens into a rising travel motif; first soft frame drum enters."
+          },
+          "transitionIn": "match-cut-on-bracelet-and-bag-handle",
+          "transitionOut": "hard-cut-on-music-rise-to-wide-ship",
+          "continuityIn": ["The fifth bracelet is accepted; the bag remains closed."],
+          "continuityOut": ["Thorin is ready to leave; the next shot reveals the journey already underway."],
+          "acceptance": [
+            "Thorin's face and proportions remain unchanged",
+            "the hand closes on the handle once without deformation",
+            "the bag never opens",
+            "no letter, clue or extra prop appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-06-ship",
+          "order": 6,
+          "purpose": "Показать путь пятерых героев к Пенисуэле.",
+          "durationSeconds": 7,
+          "framing": "wide aerial rear three-quarter",
+          "safeArea": "full-frame geography lock; keep complete hull, five heroes and island visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-ship-to-island-v5",
+            "path": "art-drafts/video-bridge/ship-to-penisuela-v5.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера семь секунд плавно сопровождает корабль сзади и немного сверху, едва приближаясь к острову. Судно уверенно идёт вперёд, вода расходится вдоль одного корпуса, паруса и снасти реагируют на ветер. Пятеро героев остаются на своих местах, только слегка двигаются вместе с качкой.",
+          "subjectMotion": "The single wooden schooner advances steadily toward Penisuela; exactly five heroes remain naturally positioned on deck with minimal balance adjustments.",
+          "cameraMotion": "Smooth stabilized aerial chase, slightly forward and downward, no orbit, no cut.",
+          "environmentMotion": "Physically coherent wake, gentle hull roll, filled sails, moving rigging, sun sparkle and waterfall mist.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous seven-second cinematic image-to-video shot. Create a smooth stabilized aerial chase from the existing high rear three-quarter angle, moving slightly forward and downward as the ship approaches Penisuela. The one believable wooden monohull schooner travels steadily forward; turquoise water parts coherently along both sides of the hull and forms a natural wake, while cream sails fill with wind and simple rigging responds with restrained physical motion. Exactly five approved summer heroes remain naturally positioned on deck and make only tiny balance adjustments with the ship's gentle roll. Preserve the complete single-hull geometry, two-mast layout, island towers and waterfalls, exact five-person count, Linda's bilateral wings, Golovach's tailless anatomy, clothing colors, warm late-afternoon light and painterly cinematic fantasy realism. No cuts, no dialogue, no text, no new people or structures.",
+          "mustPreserve": [
+            "one coherent monohull ship with no side platform",
+            "exactly five heroes in approved summer silhouettes",
+            "Linda's wings on both sides and Golovach without a tail",
+            "approved Penisuela towers, waterfalls and warm light"
+          ],
+          "avoid": [
+            "second hull, barge, pontoon, side deck or warped ship anatomy",
+            "extra or missing heroes, crew or duplicated body parts",
+            "face or costume redesign",
+            "tail on Golovach or missing wing side on Linda",
+            "storm, collision, giant waves, modern engine or cruise ship",
+            "letter, text, subtitles, sail lettering, logo or watermark",
+            "camera cut, fast orbit or sudden island morphing"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "runway-gen-4.5",
+            "notes": "Veo 3 is preferred for water, sail and large-environment physics. Reject any hull mutation immediately."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Open tropical sea, steady wind in canvas sails, wooden hull creaks and gentle water wake, no voices.",
+            "sfxPromptEn": "One broad sail flap settles into tension; water hisses along the hull.",
+            "musicCue": "00:25 build: strings widen, frame drum becomes steady and a bright travel theme enters."
+          },
+          "transitionIn": "hard-cut-on-music-rise-to-wide-ship",
+          "transitionOut": "match-cut-on-forward-motion-through-open-doors",
+          "continuityIn": ["All five heroes are now in their approved summer outfits, including Bubsilda."],
+          "continuityOut": ["The group is moving toward its destination; sunset direction and warm palette continue into the hotel entrance."],
+          "acceptance": [
+            "the hull remains one stable believable ship for all seven seconds",
+            "exactly five heroes remain visible on deck",
+            "water, sails and wake move coherently",
+            "the island does not morph and no new structure appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-07-hotel-arrival",
+          "order": 7,
+          "purpose": "Показать, как пятеро героев впервые входят в отель Пенисуэлы.",
+          "durationSeconds": 6,
+          "framing": "wide rear group shot",
+          "safeArea": "center-safe; keep all five full silhouettes, Linda's wings and doorway edges visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-hotel-arrival-v2",
+            "path": "art-drafts/video-bridge/hotel-arrival-v2.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно следует снаружи за пятёркой. Все делают два естественных шага через порог в тёплое лобби; Торин несёт закрытую сумку, остальные ничего не достают. Крылья, одежда, растения, лампы и отражения двигаются мягко и согласованно.",
+          "subjectMotion": "Exactly five heroes take two natural synchronized-but-not-identical steps through the doorway into the lobby; Thorin carries one closed bag.",
+          "cameraMotion": "Slow stabilized follow-in from behind, no overtaking, no pan, no cut.",
+          "environmentMotion": "Soft cloth and hair movement, slight wing flex, plant leaves and lamp flames, stable floor reflections.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous six-second cinematic image-to-video shot. The camera makes a slow stabilized follow-in from outside, staying behind the group as exactly five heroes take two natural, slightly staggered steps across the threshold and deeper into the pristine warm hotel lobby. Thorin carries the same single closed leather bag; no one opens or removes anything. Hair, summer fabrics and tropical leaves move gently, Linda's complete bilateral wings flex only slightly without flapping or clipping, lamp flames flicker and the glossy floor reflections remain physically stable. Preserve every approved back-view identity, exact five-person count, Golovach's tailless anatomy, doorway geometry, black-and-gold architecture, clean pre-party condition, sunset light from behind camera and painterly cinematic fantasy realism. No cuts, no visible faces, no dialogue, no text or new characters.",
+          "mustPreserve": [
+            "exactly five approved summer back-view identities",
+            "Linda's complete bilateral wings and Golovach without a tail",
+            "one closed travel bag",
+            "pristine black-and-gold hotel geometry"
+          ],
+          "avoid": [
+            "missing, duplicated or turning heroes",
+            "visible or regenerated faces",
+            "tail on Golovach, missing wings or wing-door clipping",
+            "sliding feet, fused legs or unstable floor reflections",
+            "staff, concierge, guests, debris, mattress or morning clues",
+            "letter, envelope, sign, text, subtitles, logo or watermark",
+            "camera overtaking the group, cut or reverse direction"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep the camera behind the group; reject any generation that reveals or redesigns faces."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Open tropical hotel entrance at sunset, soft night insects outside, warm quiet lobby room tone inside, no voices.",
+            "sfxPromptEn": "Five sets of soft footsteps cross from stone to polished marble; one leather bag creaks gently.",
+            "musicCue": "00:32 turn: percussion softens, warm brass and harp resolve into the hotel interior."
+          },
+          "transitionIn": "match-cut-on-forward-motion-through-open-doors",
+          "transitionOut": "warm-light-dissolve-to-night-party",
+          "continuityIn": ["The same five summer outfits and closed bag carry over from the ship."],
+          "continuityOut": ["The group is fully inside the hotel; warm gold light becomes the night-party lantern palette."],
+          "acceptance": [
+            "all five heroes make two stable forward steps into the hotel",
+            "faces remain hidden and identities stay readable from behind",
+            "Linda's wings and Golovach's tailless anatomy remain canonical",
+            "the lobby stays pristine and no clue or NPC appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-08-party",
+          "order": 8,
+          "purpose": "Закончить переход последней ясной памятью о безопасной вечеринке и уйти в темноту перед пробуждением.",
+          "durationSeconds": 7,
+          "framing": "medium-wide group",
+          "safeArea": "face-safe center band; keep all five faces, Linda's wings and table visible until final foreground occlusion",
+          "sourceArt": {
+            "assetId": "penisuela-video-first-night-party-v4",
+            "path": "art-drafts/video-bridge/first-night-party-v4.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Очень медленный наезд. Ламберт и Головач один раз мягко соприкасаются бокалами и удерживают их; остальные сохраняют естественные спокойные улыбки и едва двигаются в ритме музыки. В последнюю секунду передний бокал поднимается к объективу и полностью закрывает кадр тёмно-бордовым размытием.",
+          "subjectMotion": "Lambert and Golovach gently touch their glasses once and hold; the other three heroes make only minimal natural party movements.",
+          "cameraMotion": "Very slow controlled dolly-in; no orbit and no cut; final lens occlusion comes from the existing foreground goblet.",
+          "environmentMotion": "Subtle confetti drift, lantern flicker, light sea breeze in hair, fabric and Linda's wings; foreground goblet rises during the final second.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous seven-second cinematic image-to-video shot. Apply a very slow controlled dolly-in while preserving all five approved faces. Lambert and Golovach gently bring their existing glasses together for one small toast, make one clean contact, and hold; Bubsilda, Linda and Thorin keep restrained recognizable expressions and only minimal natural breathing and rhythm movement. Confetti drifts slowly, lanterns flicker, and a light sea breeze moves hair, fabric and Linda's complete bilateral wings without flapping. Golovach remains completely tailless. During the final second, the existing out-of-focus foreground goblet rises close to the lens until it fills the frame with a soft dark burgundy blur, creating a continuous natural blackout with no hard cut. Preserve exact facial identities, outfits, hands, glasses, table, intact night terrace, warm gold-coral-turquoise palette and painterly cinematic realism. No dialogue, no text, no new people, no clues, no face or anatomy drift.",
+          "mustPreserve": [
+            "all five exact approved faces, especially base-canonical Linda",
+            "Linda's complete bilateral wings and Golovach without a tail",
+            "existing hands, glasses, table and intact terrace",
+            "natural foreground-goblet path to blackout"
+          ],
+          "avoid": [
+            "face averaging, redesign, age or gender drift",
+            "wide distorted laughter or lip movement resembling speech",
+            "extra fingers, arms, glasses, people or duplicated heroes",
+            "tail on Golovach, missing or detached Linda wings",
+            "spilled drinks, destruction, morning clues, film award, console or red beam",
+            "letter, envelope, text, subtitles, logo or watermark",
+            "camera orbit, cut, sudden zoom or early full-frame occlusion"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Highest-risk shot. Keep motion very low; faces and hands matter more than lively choreography. Generate the blackout inside the clip only if identities remain stable."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Elegant tropical terrace party at night, soft distant music crowd bed without intelligible voices, sea breeze, lanterns and glasses.",
+            "sfxPromptEn": "One clean glass clink at the center, soft confetti rustle and a close muffled whoosh as the foreground goblet covers the lens.",
+            "musicCue": "00:38 climax and stop: full warm theme for four seconds, then rapid low-pass and reverb tail into silence as the lens becomes dark."
+          },
+          "transitionIn": "warm-light-dissolve-to-night-party",
+          "transitionOut": "foreground-occlusion-to-black-then-hard-cut-to-hotel-overload",
+          "continuityIn": ["The same five summer identities are now at the first-night party."],
+          "continuityOut": ["The frame ends fully dark; the application may cut from black to the approved hotel-overload morning scene."],
+          "acceptance": [
+            "all five faces remain identical to the approved still for the full shot",
+            "the toast happens once without hand or glass deformation",
+            "Linda retains wings on both sides and Golovach remains tailless",
+            "the foreground goblet creates a clean final blackout without revealing any future clue"
+          ],
+          "status": "planned"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": "Рассказчик и диалоги отсутствуют. Возможный отдельный текстовый экран перед видео не входит в эту последовательность.",
+        "musicPromptEn": "Instrumental cinematic fantasy travel montage, 45 seconds, warm intimate opening with bell and harp, gradual clockwork pulse through five bracelet portraits, wider strings and soft frame drums for the sea voyage, elegant golden turn at the hotel entrance, joyful tropical-fantasy climax at the party, abrupt low-pass memory collapse into silence, no vocals, no recognizable melody.",
+        "musicLicenseRequirement": "commercial application and promotional video use",
+        "mixNotesRu": "Музыка ведёт монтаж. Ambience держать примерно на 12–16 dB ниже музыки; синхронные щелчки браслетов, вода, шаги и финальный звон бокалов выводить коротко поверх музыкальных акцентов. Встроенный звук Veo использовать только как черновой референс."
+      },
+      "delivery": {
+        "masterFile": "penisuela-invitation-to-hotel-master.mov",
+        "webFiles": ["penisuela-invitation-to-hotel.mp4", "penisuela-invitation-to-hotel.webm"],
+        "posterFile": "penisuela-invitation-to-hotel-poster.webp",
+        "captionsFile": null,
+        "loop": false
+      }
+    }
+  ],
+  "blockedInputs": [
+    "docs/campaigns/penisuela/script.md имеет статус draft в workflow.json; видеопереход пока утверждён только через art-plan и решения пользователя.",
+    "Восемь утверждённых исходных PNG находятся в art-drafts/video-bridge и ещё не опубликованы через publish-dnd-campaign-assets в assets/concepts/manifest.json."
+  ],
+  "assumptions": [
+    "Пользователь будет загружать каждый утверждённый PNG в Veo 3 как first-frame image-to-video reference.",
+    "В видео нет рассказчика, реплик, титров и читаемого текста.",
+    "Бубсильда показана в снежном образе только при получении браслета; на корабле, в отеле и на вечеринке она уже в утверждённом летнем образе.",
+    "Головач Лена канонически не имеет хвоста; у Линды во всех групповых кадрах полный двусторонний комплект из шести крыльев.",
+    "Финальный звук и музыка будут собраны отдельно на монтаже, а не приняты напрямую из Veo 3."
+  ]
+}

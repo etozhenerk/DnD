@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 11,
+  "skill": "review-dnd-campaign-art",
+  "status": "revision-requested",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-archive-alexis",
+      "variant": "conversation-preview-v1",
+      "verdict": "regenerate",
+      "userDecision": "revision-requested",
+      "corrections": [
+        "сохранить шесть крыльев — их сокращение не требовалось",
+        "показать сам момент освобождения Алексис у архивной двери",
+        "поставить камеру со стороны гостиничного холла",
+        "убрать стол или стойку между камерой и Алексис"
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-hotel-archive-alexis",
+      "variant": "art-drafts/hotel-archive-alexis-v2.png",
+      "verdict": "regenerate",
+      "userDecision": "rejected",
+      "corrections": [
+        "вернуть третью пару крыльев из первого варианта",
+        "полностью перестроить сцену вокруг только что открытой двери и выхода Алексис из архива",
+        "не повторять позирование за столом"
+      ]
+    }
+  ]
+}

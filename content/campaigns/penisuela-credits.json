@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "title": "Мальчишник конца света",
+  "partyCharacterIds": [
+    "bubsilda",
+    "linda",
+    "lambert",
+    "golovach-lena",
+    "thorin-pukoshchit"
+  ],
+  "cast": [
+    {
+      "id": "lord-krayneplot",
+      "characterName": "Лорд Крайнеплот"
+    },
+    {
+      "id": "kostryulka",
+      "characterName": "Кострюлька"
+    },
+    {
+      "id": "style-sphinx",
+      "characterName": "Алексис Великолепный",
+      "prototypeName": "Алексей Жидковский"
+    },
+    {
+      "id": "pussy-sultan",
+      "characterName": "Pussy Sultan",
+      "prototypeName": "Марат SQWOZ BAB"
+    },
+    {
+      "id": "bungalow-spouse-a",
+      "characterName": "Станис",
+      "prototypeName": "Стас"
+    },
+    {
+      "id": "bungalow-spouse-b",
+      "characterName": "Полинетта",
+      "prototypeName": "Полина"
+    },
+    {
+      "id": "olga-vasilenko",
+      "characterName": "Леди Оливия",
+      "prototypeName": "Ольга Василенко"
+    },
+    {
+      "id": "egorik",
+      "characterName": "Егорик",
+      "prototypeName": "Егорик"
+    },
+    {
+      "id": "nastya",
+      "characterName": "Настасья",
+      "prototypeName": "Настя"
+    },
+    {
+      "id": "egor-kreed",
+      "characterName": "Kreed",
+      "prototypeName": "Егор Крид"
+    },
+    {
+      "id": "igor-sinyak",
+      "characterName": "Angel",
+      "prototypeName": "Игорь Синяк"
+    },
+    {
+      "id": "graywise",
+      "characterName": "Grey Wiese",
+      "prototypeName": "Сергей Григорьев-Апполонов"
+    },
+    {
+      "id": "andrey-apollonov-junior",
+      "characterName": "Лорд Нетак",
+      "prototypeName": "Андрей Григорьев-Апполонов"
+    }
+  ],
+  "aiModels": [
+    {
+      "id": "gpt-5-6-sol",
+      "name": "GPT-5.6 Sol"
+    },
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra"
+    },
+    {
+      "id": "veo-3-1",
+      "name": "Veo 3.1"
+    },
+    {
+      "id": "grok-video",
+      "name": "Grok Video"
+    },
+    {
+      "id": "seedance-2-0",
+      "name": "Seedance 2.0"
+    }
+  ],
+  "photos": [
+    {
+      "id": "credits-lena-pitch",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-lena-pitch.png",
+      "alt": "Нетак в облике кинорежиссёра горячо уговаривает Головача Лену на затею у бассейна; Лена слушает с бокалом в руке.",
+      "caption": "Лен, за такое трезвым «Оскар» не дают.",
+      "creditIds": [
+        "golovach-lena"
+      ]
+    },
+    {
+      "id": "credits-lambert-pool",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-lambert-pool.png",
+      "alt": "Ламберт поёт в микрофон на рояле посреди бассейна, вокруг брызги шампанского и плавающая мебель.",
+      "caption": "Просили что-нибудь из «Титаника».",
+      "creditIds": [
+        "lambert"
+      ]
+    },
+    {
+      "id": "credits-bubsilda-rink",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-bubsilda-rink.png",
+      "alt": "Бубсильда с коктейлем скользит по замёрзшему танцполу среди падающих стульев и испорченного банкета.",
+      "caption": "Лёд в бокал, Бубсильда. В БОКАЛ.",
+      "creditIds": [
+        "bubsilda"
+      ]
+    },
+    {
+      "id": "credits-linda-cork",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-linda-cork.png",
+      "alt": "Линда с расправленными крыльями скачет верхом на пробке, вылетевшей из огромной бутылки шампанского.",
+      "caption": "Просила открыть. Не просила запускать.",
+      "creditIds": [
+        "linda"
+      ]
+    },
+    {
+      "id": "credits-thorin-race",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-thorin-race.png",
+      "alt": "Торин с кружкой мчится на сервировочной тележке через вестибюль в волне пены, среди летящих блюд и торта.",
+      "caption": "Мини-бар кончился. Едем за большим.",
+      "creditIds": [
+        "thorin-pukoshchit"
+      ]
+    },
+    {
+      "id": "credits-pussy-sultan-party",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-pussy-sultan-party.png",
+      "alt": "Pussy Sultan и три взрослые девушки плывут на золотом диване через затопленный люкс, смеясь и разливая шампанское.",
+      "caption": "Девочки, я же обещал, что будет мокро.",
+      "creditIds": [
+        "pussy-sultan"
+      ]
+    },
+    {
+      "id": "credits-alexis-luxury",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-alexis-luxury.png",
+      "alt": "Алексис Великолепный роскошно отдыхает на шезлонге над разгромленным банкетом, пока его обмахивают веером.",
+      "caption": "Мальчики, катастрофу потом. Сейчас мне жарко.",
+      "creditIds": [
+        "style-sphinx"
+      ]
+    },
+    {
+      "id": "credits-olivia-terrace",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-olivia-terrace.png",
+      "alt": "Леди Оливия в аккуратном костюме спокойно отдыхает с бокалом на вечерней террасе, за её спиной видны прозрачные крылья.",
+      "caption": "Завтра эти люди оплатят мне ещё один отпуск.",
+      "creditIds": [
+        "olga-vasilenko"
+      ]
+    },
+    {
+      "id": "credits-stas-polina-door",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-stas-polina-door.png",
+      "alt": "Станис с кружкой рвётся к шумной вечеринке у бассейна, а Полинетта удерживает его за рукав в дверях бунгало.",
+      "caption": "Проверку «Я на пять минут» завалил.",
+      "creditIds": [
+        "bungalow-spouse-a",
+        "bungalow-spouse-b"
+      ]
+    },
+    {
+      "id": "credits-bubsilda-swan",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-bubsilda-swan.png",
+      "alt": "Бубсильда с бокалом восседает в огромном ледяном лебеде; служащие пытаются растопить замёрзший банкет.",
+      "caption": "Все замёрзли. Ей заебись.",
+      "creditIds": [
+        "bubsilda"
+      ]
+    },
+    {
+      "id": "credits-linda-jungle",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-linda-jungle.png",
+      "alt": "Линда празднует за фруктовым диджейским пультом: бар зарос джунглями, а ожившая питахайя держит бутылку.",
+      "caption": "Линда, мохито — это не заклинание.",
+      "creditIds": [
+        "linda"
+      ]
+    },
+    {
+      "id": "credits-lena-oscar",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-lena-oscar.png",
+      "alt": "Нетак в обычном облике вручает золотую статуэтку сильно пьяному Головачу Лене, который его не узнаёт; курорт вокруг разгромлен.",
+      "caption": "Спасибо, мужик. А это открывашка?",
+      "creditIds": [
+        "golovach-lena"
+      ]
+    },
+    {
+      "id": "credits-lambert-lift",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-lambert-lift.png",
+      "alt": "Ламберт сидит в забитом мебелью лифте с люстрой на голове; коза жуёт его рубашку.",
+      "caption": "Козу не выгонять. Она с нами с вечера.",
+      "creditIds": [
+        "lambert"
+      ]
+    },
+    {
+      "id": "credits-thorin-checkout",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-thorin-checkout.png",
+      "alt": "Торин с полотенцем на голове стоит у стойки выезда: служащий разворачивает счёт через весь разгромленный вестибюль.",
+      "caption": "Это счёт за номер или я купил отель?",
+      "creditIds": [
+        "thorin-pukoshchit"
+      ]
+    },
+    {
+      "id": "credits-egorik-sidelines",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-egorik-sidelines.png",
+      "alt": "Егорик спокойно сидит в кресле в стороне от шумной вечеринки у бассейна.",
+      "caption": "Утром удалять было нечего.",
+      "creditIds": [
+        "egorik"
+      ]
+    },
+    {
+      "id": "credits-nastasya-contest",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-nastasya-contest.png",
+      "alt": "Настасья с микрофоном руководит конкурсом лимбо, пока гости пытаются пройти под низкой планкой с бокалами.",
+      "caption": "Трезвые тоже участвуют. Не выёбываемся.",
+      "creditIds": [
+        "nastya"
+      ]
+    },
+    {
+      "id": "credits-kreed-mirror",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-kreed-mirror.png",
+      "alt": "Kreed посылает поцелуй своему отражению в большом зеркале, игнорируя гостя, который предлагает тост.",
+      "caption": "Попросил познакомить его с тем красавчиком.",
+      "creditIds": [
+        "egor-kreed"
+      ]
+    },
+    {
+      "id": "credits-angel-grey-vlog",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-angel-grey-vlog.png",
+      "alt": "Angel в чёрном вечернем платье и Grey Wiese в белом кружевном наряде обозревают разгромленный стол с тортом; отдельный оператор снимает их на видеокамеру.",
+      "caption": "Вот это суперфинал! Все в хлам, торт в мясо — мы счастливы. С праздником!",
+      "creditIds": [
+        "igor-sinyak",
+        "graywise"
+      ]
+    },
+    {
+      "id": "credits-netak-scheming",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-netak-scheming.png",
+      "alt": "Лорд Нетак стоит в тени у колонны и замышляет пакость; Головач Лена виден далеко у бара и не замечает его.",
+      "caption": "План был так себе. Зато Лена уже выпил.",
+      "creditIds": [
+        "andrey-apollonov-junior"
+      ]
+    },
+    {
+      "id": "credits-game-master-tavern",
+      "source": "assets/concepts/campaigns/penisuela/credits/credits-game-master-tavern.png",
+      "alt": "Лорд Крайнеплот сидит за столом в тёплой таверне и нежно гладит по голове голубя Кострюльку с закрытым курьерским отсеком на спине.",
+      "caption": "Мы всего лишь разослали приглашения.",
+      "creditIds": [
+        "lord-krayneplot",
+        "kostryulka"
+      ]
+    }
+  ],
+  "closingText": "Спасибо за эту историю",
+  "entries": [
+    {
+      "sceneId": "wedding-epilogue",
+      "requiredFlags": [
+        "grey-wiese-reward-received"
+      ]
+    },
+    {
+      "sceneId": "bad-ending-magical-prison",
+      "requiredFlags": []
+    }
+  ],
+  "music": {
+    "id": "credits-step-breath",
+    "title": "Grey Wiese — Je reviens te chercher",
+    "source": "assets/concepts/campaigns/penisuela/music/credits-je-reviens-te-chercher.mp3",
+    "volume": 0.5
+  },
+  "gameMasterIds": [
+    "lord-krayneplot",
+    "kostryulka"
+  ],
+  "postCreditsVideo": {
+    "id": "post-credits-dragon",
+    "title": "Ещё один дракон",
+    "source": "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4",
+    "volume": 1,
+    "delayMs": 2000
+  }
+}

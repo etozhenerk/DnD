@@ -1,0 +1,772 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "status": "draft",
+  "asOf": "2026-09-17",
+  "scope": "Производная мастерская схема текущей игры с боевыми точками. Не заменяет канонические сценарии и правила; подписи переходов описывают условия, не исполняют их.",
+  "basedOn": {
+    "outlinePath": "outline.md",
+    "outlineStatus": "approved",
+    "graphPath": "story-graph.json",
+    "canonicalPaths": [
+      "content/campaigns/penisuela-gallery-gameplay.json",
+      "content/campaigns/penisuela-session-preview.json",
+      "content/campaigns/penisuela-olva-quest.json"
+    ],
+    "gateImplementationPaths": [
+      "src/entities/campaign-session/model/hotelBarAccess.ts",
+      "src/widgets/campaign-scene/ui/HotelGalleryAdventure/HotelGalleryAdventure.tsx",
+      "src/widgets/campaign-scene/ui/ClosedBarAdventure/ClosedBarAdventure.tsx"
+    ]
+  },
+  "cycleNote": "Изображены существующие возвраты гостиничного хаба, музыкальные попытки и утверждённый автором цикл бунгало → бар за Станисом → бунгало. Новые игровые циклы не добавлены.",
+  "durationNote": "expectedMinutes перенесены из утверждённого графа один раз на сгруппированную сцену. Внутренние ракурсы и боевые маркеры имеют 0 добавочных минут; общий старый бюджет боя Нетака отнесён к первой фазе. Вывод валидатора не оценивает длительность боёв или повторных проходов.",
+  "wrongTrackCount": 11,
+  "nodes": [
+    {
+      "id": "morning",
+      "title": "Похмельное утро · поиск пульта и зацепки «Егор»",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "hotel-overload"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "",
+          "displayChapter": 1
+        }
+      ],
+      "start": true
+    },
+    {
+      "id": "gallery",
+      "title": "Гостиничная галерея · три направления",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "hotel-gallery"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "alexis",
+          "label": "Левая дверь",
+          "displayChapter": 1
+        },
+        {
+          "to": "audience",
+          "label": "Золотая дверь",
+          "displayChapter": 1
+        },
+        {
+          "to": "bar-entry-fight",
+          "label": "Нет полного допуска; пройти силой",
+          "displayChapter": 1
+        },
+        {
+          "to": "bar",
+          "label": "2 разрешения Алексиса + 3 жетона Pussy Sultan",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "alexis",
+      "title": "Алексис · собрать наряд → 2 разрешения в бар",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "sourceSceneIds": [
+        "alexis-room",
+        "alexis-room-after-pussy"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "Вернуться с разрешениями",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "audience",
+      "title": "Аудиенция Pussy Sultan",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "pussy-audience"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "prop-room",
+          "label": "Доверие заслужено; принять поручение",
+          "displayChapter": 1
+        },
+        {
+          "to": "intimidation",
+          "label": "В доверии отказано",
+          "displayChapter": 1
+        },
+        {
+          "to": "gallery",
+          "label": "Можно уйти и вернуться",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "intimidation",
+      "title": "После отказа в доверии · запугивание",
+      "type": "scene",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "pussy-audience"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "Успех → 3 жетона, квест закрыт",
+          "displayChapter": 1
+        },
+        {
+          "to": "vip-fight",
+          "label": "Провал → вызвана охрана",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "prop-room",
+      "title": "Реквизиторская · достать скипетр",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "pussy-prop-room"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "scepter-return",
+          "label": "Успешно освободить скипетр",
+          "displayChapter": 1
+        },
+        {
+          "to": "carriers-fight",
+          "label": "Провал силовой проверки Лены",
+          "displayChapter": 1
+        },
+        {
+          "to": "audience",
+          "label": "Можно отложить поручение",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "vip-fight",
+      "title": "VIP-стража Pussy Sultan",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "pussy-audience"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "Победа → 3 жетона, квест закрыт",
+          "displayChapter": 1
+        }
+      ],
+      "combatPoint": 1,
+      "encounterId": "hotel-vip-guards",
+      "enemyCount": 3,
+      "enemyHp": 22,
+      "enemyAc": 12,
+      "allowCycle": true
+    },
+    {
+      "id": "carriers-fight",
+      "title": "Заводные носильщики",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "pussy-prop-room"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "scepter-return",
+          "label": "Победа; забрать скипетр",
+          "displayChapter": 1
+        }
+      ],
+      "combatPoint": 2,
+      "encounterId": "prop-room-winding-carriers",
+      "enemyCount": 3,
+      "enemyHp": 18,
+      "enemyAc": 11,
+      "allowCycle": true
+    },
+    {
+      "id": "scepter-return",
+      "title": "Вернуть скипетр → 3 жетона; Вуманайзер зависит от исхода",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "pussy-scepter-return"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "Награда и возврат в хаб",
+          "displayChapter": 1
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "bar-entry-fight",
+      "title": "Рунические стражи · вход в бар",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "hotel-gallery"
+      ],
+      "chapter": 1,
+      "transitions": [
+        {
+          "to": "gallery",
+          "label": "После боя пропуска всё ещё нужны",
+          "displayChapter": 1
+        }
+      ],
+      "combatPoint": 3,
+      "encounterId": "hotel-bar-arcane-guards",
+      "enemyCount": 3,
+      "enemyHp": 26,
+      "enemyAc": 13,
+      "allowCycle": true
+    },
+    {
+      "id": "bar",
+      "title": "Закрытый бар",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "stas",
+          "label": "Разговор у стойки",
+          "displayChapter": 2
+        },
+        {
+          "to": "music",
+          "label": "Подойти к танцорам",
+          "displayChapter": 2
+        },
+        {
+          "to": "bar-exit-fight",
+          "label": "Нет 5 пропусков; попытаться открыть проход",
+          "displayChapter": 2
+        },
+        {
+          "to": "bungalows",
+          "label": "1 пропуск Станиса + 4 от труппы",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "stas",
+      "title": "Станис · 1 пропуск; позже пригласить к Оливии",
+      "type": "scene",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bar",
+          "label": "Пропуск; после просьбы Оливии — согласие прийти",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "music",
+      "title": "Музыкальный пульт · выбрать трек",
+      "type": "scene",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "wrong-track-fight",
+          "label": "Новый неверный трек",
+          "displayChapter": 2
+        },
+        {
+          "to": "first-track-fight",
+          "label": "Верный трек без предыдущих ошибок",
+          "displayChapter": 2
+        },
+        {
+          "to": "dancers-freed",
+          "label": "Верный трек после ошибки → без новой волны",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "wrong-track-fight",
+      "title": "Бит-стражи · неверный трек",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "music",
+          "label": "После боя пробовать другой трек",
+          "displayChapter": 2
+        }
+      ],
+      "combatPoint": 4,
+      "encounterId": "club-beat-guards",
+      "enemyCount": 4,
+      "enemyHp": 28,
+      "enemyAc": 14,
+      "allowCycle": true
+    },
+    {
+      "id": "first-track-fight",
+      "title": "Бит-стражи · верный трек с первой попытки",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "dancers-freed",
+          "label": "Завершить бой",
+          "displayChapter": 2
+        }
+      ],
+      "combatPoint": 4,
+      "encounterId": "club-beat-guards",
+      "enemyCount": 4,
+      "enemyHp": 28,
+      "enemyAc": 14,
+      "allowCycle": true
+    },
+    {
+      "id": "dancers-freed",
+      "title": "Танцоры освобождены · 4 пропуска",
+      "type": "scene",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bar",
+          "label": "Вернуться в общий зал",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "bar-exit-fight",
+      "title": "Рунические стражи · выход к бунгало",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "closed-bar"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bar",
+          "label": "После боя пропуска всё ещё нужны",
+          "displayChapter": 2
+        }
+      ],
+      "combatPoint": 5,
+      "encounterId": "hotel-bar-arcane-guards",
+      "enemyCount": 3,
+      "enemyHp": 26,
+      "enemyAc": 13,
+      "allowCycle": true
+    },
+    {
+      "id": "bungalows",
+      "title": "Развилка гостевых бунгало",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "guest-bungalows"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bar",
+          "label": "Шаг назад · в том числе за Станисом",
+          "displayChapter": 2
+        },
+        {
+          "to": "olivia",
+          "label": "Левое бунгало",
+          "displayChapter": 2
+        },
+        {
+          "to": "egorik-fight",
+          "label": "Правое бунгало · с ключами Оливии",
+          "displayChapter": 3
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "olivia",
+      "title": "Леди Оливия · просьба о консультации",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "bungalow-courtyard"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bungalows",
+          "label": "Принять просьбу; вернуться в бар за Станисом",
+          "displayChapter": 2
+        },
+        {
+          "to": "keys-only",
+          "label": "Отказаться от помощи",
+          "displayChapter": 2
+        },
+        {
+          "to": "evidence-table",
+          "label": "Вернуться со Станисом",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "evidence-table",
+      "title": "Стол доказательств · решить судьбу пары",
+      "type": "scene",
+      "expectedMinutes": 25,
+      "sourceSceneIds": [
+        "olva-date-rehearsal"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "rest-reward",
+          "label": "Любой завершённый исход → забрать награду",
+          "displayChapter": 2
+        },
+        {
+          "to": "bungalows",
+          "label": "Выйти с любого этапа; продолжить позже",
+          "displayChapter": 2
+        }
+      ],
+      "optional": true,
+      "allowCycle": true
+    },
+    {
+      "id": "rest-reward",
+      "title": "Получение отдыха · ключи + «Право на тайм-аут»",
+      "type": "reward",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "olva-date-rehearsal"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bungalows",
+          "label": "Отдохнуть вне боя или сохранить карточку",
+          "displayChapter": 2
+        }
+      ],
+      "rewardItemId": "olva-timeout",
+      "optional": true,
+      "allowCycle": true
+    },
+    {
+      "id": "keys-only",
+      "title": "Отказ от консультации · только ключи",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "olva-passes-handoff"
+      ],
+      "chapter": 2,
+      "transitions": [
+        {
+          "to": "bungalows",
+          "label": "Доступ к Егорику; карточки отдыха нет",
+          "displayChapter": 2
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "egorik-fight",
+      "title": "Призванные стражи · бунгало Егорика",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "egorik-bungalow-reveal"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "egorik-reveal",
+          "label": "Завершение боя и разговор",
+          "displayChapter": 3
+        }
+      ],
+      "combatPoint": 6,
+      "encounterId": "egorik-bungalow-guards",
+      "enemyCount": 3,
+      "enemyHp": 38,
+      "enemyAc": 14
+    },
+    {
+      "id": "egorik-reveal",
+      "title": "Егорик и Настасья · это организаторы, жених — Kreed",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "sourceSceneIds": [
+        "egorik-bungalow-reveal"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "tunnel",
+          "label": "",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "tunnel",
+      "title": "Тоннель · испытания особенностей героев",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "sourceSceneIds": [
+        "groom-tunnel"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "kreed",
+          "label": "Пройти испытания",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "kreed",
+      "title": "Укрытие Kreed · разговор с настоящим женихом",
+      "type": "scene",
+      "expectedMinutes": 8,
+      "sourceSceneIds": [
+        "groom-preparation-room",
+        "kreed-disclosure"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "villa-door",
+          "label": "",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "villa-door",
+      "title": "Вилла · доверие Grey Wiese; помощь Kreed при провале",
+      "type": "scene",
+      "expectedMinutes": 8,
+      "sourceSceneIds": [
+        "post-kreed-route",
+        "graywise-door-trust"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "angel",
+          "label": "Получить доверие и открыть дверь",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "angel",
+      "title": "Спальня · невеста Angel; распаковка",
+      "type": "scene",
+      "expectedMinutes": 8,
+      "sourceSceneIds": [
+        "bedroom-reveal",
+        "igor-unboxing"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "breach",
+          "label": "",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "breach",
+      "title": "Пролом стены · появление Нетака → перенос на арену",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "andrey-villa-breach"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "netak-elf-fight",
+          "label": "",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "netak-elf-fight",
+      "title": "Лорд Нетак · тёмный эльф; пленники в колбах",
+      "type": "combat",
+      "expectedMinutes": 30,
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "netak-dragon-fight",
+          "label": "Победа → превращение, без отдыха",
+          "displayChapter": 3
+        },
+        {
+          "to": "bad-ending",
+          "label": "Поражение",
+          "displayChapter": 3
+        }
+      ],
+      "combatPoint": 7,
+      "encounterId": "andrey-dark-elf",
+      "enemyCount": 1,
+      "enemyHp": 176,
+      "enemyAc": 16
+    },
+    {
+      "id": "netak-dragon-fight",
+      "title": "Лорд Нетак · дракон",
+      "type": "combat",
+      "expectedMinutes": 0,
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "voice-reset",
+          "label": "Победа",
+          "displayChapter": 3
+        },
+        {
+          "to": "bad-ending",
+          "label": "Поражение",
+          "displayChapter": 3
+        }
+      ],
+      "combatPoint": 8,
+      "encounterId": "andrey-dragon",
+      "enemyCount": 1,
+      "enemyHp": 176,
+      "enemyAc": 16
+    },
+    {
+      "id": "voice-reset",
+      "title": "Разрушенная вилла · голоса Kreed и Angel отключают механизм",
+      "type": "scene",
+      "expectedMinutes": 8,
+      "sourceSceneIds": [
+        "villa-after-andrey",
+        "couple-voice-reset"
+      ],
+      "chapter": 3,
+      "transitions": [
+        {
+          "to": "wedding",
+          "label": "",
+          "displayChapter": 3
+        }
+      ]
+    },
+    {
+      "id": "wedding",
+      "title": "Свадьба · награда Grey Wiese",
+      "type": "ending",
+      "expectedMinutes": 4,
+      "sourceSceneIds": [
+        "wedding-epilogue"
+      ],
+      "chapter": 3,
+      "transitions": [],
+      "ending": true
+    },
+    {
+      "id": "bad-ending",
+      "title": "Поражение · вилла → свадьба Нетака → магическая тюрьма",
+      "type": "ending",
+      "expectedMinutes": 12,
+      "sourceSceneIds": [
+        "bad-ending-villa",
+        "bad-ending-netak-wedding",
+        "bad-ending-magical-prison"
+      ],
+      "chapter": 3,
+      "transitions": [],
+      "ending": true
+    }
+  ]
+}

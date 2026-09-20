@@ -1,0 +1,42 @@
+{
+  "campaignId": "penisuela",
+  "round": 38,
+  "date": "2026-09-03",
+  "status": "completed-user-approved",
+  "auditType": "twelve-asset-outfit-expansion-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Добавить в примерочную Алексис по четыре новых головных убора, верха и низа в тех же пропорциях, включая смешные и абсурдные ложные варианты, и сразу встроить их в сцену.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/campaigns/penisuela/scenes/alexis-outfit-builder.png",
+    "src/widgets/campaign-scene/ui/AlexisOutfitBuilder/AlexisOutfitBuilder.module.css"
+  ],
+  "reviewItems": [
+    {"assetId": "jewel-regent-circlet-accent", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/jewel-regent-circlet-accent.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "tea-for-one-fascinator-accent", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/tea-for-one-fascinator-accent.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "portable-chandelier-accent", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/portable-chandelier-accent.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "archive-turban-accent", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/archive-turban-accent.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "night-concierge-jacket-top", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/night-concierge-jacket-top.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "champagne-cuirass-top", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/champagne-cuirass-top.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "amethyst-knot-top", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/amethyst-knot-top.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "ruby-room-service-top", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/ruby-room-service-top.png", "verdict": "accept", "size": "1024x1024", "alpha": true},
+    {"assetId": "late-checkout-trousers-bottom", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/late-checkout-trousers-bottom.png", "verdict": "accept", "size": "1024x1536", "alpha": true},
+    {"assetId": "black-orchid-pannier-bottom", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/black-orchid-pannier-bottom.png", "verdict": "accept", "size": "1024x1536", "alpha": true},
+    {"assetId": "out-of-line-culottes-bottom", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/out-of-line-culottes-bottom.png", "verdict": "accept", "size": "1024x1536", "alpha": true},
+    {"assetId": "dessert-trolley-skirt-bottom", "path": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/dessert-trolley-skirt-bottom.png", "verdict": "accept", "size": "1024x1536", "alpha": true}
+  ],
+  "checks": [
+    "Все двенадцать PNG имеют настоящий alpha-канал и не содержат манекен, тело, текст, логотип или водяной знак.",
+    "QA-композиты используют точную текущую CSS-регистрацию на утверждённом манекене; ось, плечи, высокая талия и уровень обуви совпадают.",
+    "После runtime-проверки брюки позднего выезда и кюлоты пересобраны из прозрачных квадратных оригиналов только пропорциональным масштабированием и безопасным кропом пустых боковых полей; вертикальное растяжение удалено.",
+    "Корона-люстра уменьшена до 68% с верхней точкой трансформации, поэтому её нижний край не заходит на плечи.",
+    "Новые setId уникальны и не образуют дополнительный правильный комплект.",
+    "Кандидаты опубликованы после прямой команды пользователя сразу добавить их в сцену."
+  ],
+  "approval": {
+    "required": false,
+    "received": true,
+    "userApproval": "сразу добавляй в сцену",
+    "nextAction": "runtime-verification"
+  }
+}

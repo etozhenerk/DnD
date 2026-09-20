@@ -1,0 +1,40 @@
+.token {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-width: 4.5rem;
+  position: relative;
+}
+
+.token img {
+  --hero-token-scale: 1;
+  filter: drop-shadow(0 0.55rem 0.75rem var(--color-black-alpha-58));
+  height: clamp(3.6rem, 5.8vw, 5.1rem);
+  object-fit: contain;
+  transition: filter 180ms ease, transform 180ms ease;
+  transform: scale(var(--hero-token-scale));
+  width: clamp(3.6rem, 5.8vw, 5.1rem);
+}
+
+.token figcaption {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(0.56rem, 0.75vw, 0.72rem);
+  line-height: 1.1;
+  margin-top: -0.15rem;
+  max-width: 6.5rem;
+  text-align: center;
+  text-shadow: var(--shadow-title);
+}
+
+.token:hover img {
+  filter: drop-shadow(0 0.65rem 0.9rem var(--color-black-alpha-74)) brightness(1.08);
+  transform: translateY(-0.15rem) scale(var(--hero-token-scale));
+}
+
+.token img[data-hero-id="bubsilda"] { --hero-token-scale: 1.05; }
+.token img[data-hero-id="linda"] { --hero-token-scale: 0.84; }
+.token img[data-hero-id="lambert"] { --hero-token-scale: 1.08; }
+.token img[data-hero-id="golovach-lena"] { --hero-token-scale: 1.12; }
+.token img[data-hero-id="thorin-pukoshchit"] { --hero-token-scale: 1.12; }

@@ -1,0 +1,273 @@
+.overlay {
+  --combat-dock-height: clamp(14.5rem, 24vh, 16rem);
+  --combat-edge: clamp(0.55rem, 0.85vw, 0.9rem);
+  --combat-font-text: clamp(0.78rem, 0.72vw, 0.92rem);
+  --combat-font-title: clamp(1.02rem, 1.08vw, 1.34rem);
+  --combat-log-width: clamp(19rem, 20vw, 23rem);
+  --combat-party-width: clamp(16.5rem, 17vw, 19rem);
+  --combat-target-width: clamp(18rem, 18.5vw, 21rem);
+  color: var(--color-parchment-light);
+  font-size: var(--combat-font-text);
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 30;
+}
+
+.overlay::before {
+  background: var(--gradient-preview-vignette);
+  content: '';
+  inset: 0;
+  opacity: 0.08;
+  pointer-events: none;
+  position: absolute;
+}
+
+.header {
+  animation: combat-hud-enter-top 680ms cubic-bezier(0.18, 0.9, 0.28, 1.08) both;
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.title {
+  background: var(--gradient-combat-label);
+  border-left: 0.2rem solid var(--color-gold);
+  border-radius: 0 1rem 1rem 0;
+  left: var(--combat-edge);
+  min-width: 0;
+  padding: 0.45rem 0.85rem;
+  pointer-events: auto;
+  position: absolute;
+  top: var(--combat-edge);
+  width: clamp(13rem, 16vw, 19rem);
+}
+
+.title span {
+  color: var(--color-combat-threat-soft);
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title h1 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: var(--combat-font-title);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0.08rem 0 0;
+  overflow-wrap: break-word;
+  text-shadow: var(--shadow-title);
+  white-space: normal;
+}
+
+.leftColumn {
+  animation: combat-hud-enter-left 760ms 80ms cubic-bezier(0.18, 0.9, 0.28, 1.08) both;
+  bottom: calc(var(--combat-dock-height) + var(--combat-edge) + 0.6rem);
+  display: flex;
+  flex-direction: column;
+  left: var(--combat-edge);
+  min-height: 0;
+  pointer-events: auto;
+  position: absolute;
+  top: 6.6rem;
+  width: var(--combat-target-width);
+}
+
+.rightColumn {
+  animation: combat-hud-enter-right 760ms 140ms cubic-bezier(0.18, 0.9, 0.28, 1.08) both;
+  bottom: var(--combat-edge);
+  display: grid;
+  gap: 0.5rem;
+  grid-template-rows: minmax(0, 1fr) auto;
+  min-height: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: var(--combat-edge);
+  top: clamp(8.5rem, 15vh, 10rem);
+  width: var(--combat-party-width);
+}
+
+.dock {
+  animation: combat-hud-enter-bottom 820ms 180ms cubic-bezier(0.18, 0.9, 0.28, 1.08) both;
+  bottom: var(--combat-edge);
+  height: auto;
+  left: var(--combat-edge);
+  min-height: var(--combat-dock-height);
+  pointer-events: none;
+  position: absolute;
+  right: var(--combat-edge);
+}
+
+.dockMain {
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 7.6rem minmax(7.6rem, auto);
+  min-height: var(--combat-dock-height);
+  margin-inline: auto;
+  min-width: 0;
+  position: relative;
+}
+
+.reactionAction {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  border-radius: 999px;
+  bottom: 0.2rem;
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  padding: 0.5rem 0.9rem;
+  pointer-events: auto;
+  position: absolute;
+  right: 0.2rem;
+  z-index: 5;
+}
+
+.reactionAction:hover {
+  border-color: var(--color-ice-bright);
+}
+
+.reactionAction:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@keyframes combat-hud-enter-top {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate3d(0, 0.35rem, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes combat-hud-enter-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(calc(-100% - 2rem), 0, 0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate3d(0.35rem, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes combat-hud-enter-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(calc(100% + 2rem), 0, 0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate3d(-0.35rem, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes combat-hud-enter-bottom {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, calc(100% + 2rem), 0);
+  }
+
+  72% {
+    opacity: 1;
+    transform: translate3d(0, -0.35rem, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 1500px) {
+  .overlay {
+    --combat-dock-height: 14.35rem;
+    --combat-log-width: 18rem;
+    --combat-party-width: 15.5rem;
+    --combat-target-width: 18rem;
+  }
+
+  .dockMain {
+    grid-template-rows: 6.95rem minmax(7.4rem, auto);
+  }
+
+  .leftColumn {
+    top: 6.25rem;
+  }
+
+  .rightColumn {
+    top: 8.6rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .overlay {
+    --combat-dock-height: 13.4rem;
+    --combat-font-text: 0.74rem;
+    --combat-font-title: 0.96rem;
+    --combat-log-width: 16rem;
+    --combat-party-width: 13.75rem;
+    --combat-target-width: 17rem;
+  }
+
+  .title {
+    padding-block: 0.38rem;
+    width: 12.5rem;
+  }
+
+  .dockMain {
+    grid-template-rows: 6.4rem minmax(7rem, auto);
+  }
+
+  .leftColumn {
+    top: 5.8rem;
+  }
+
+  .rightColumn {
+    top: 8.2rem;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .overlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .leftColumn,
+  .rightColumn,
+  .dock {
+    animation-delay: 0ms;
+    animation-duration: 1ms;
+  }
+}

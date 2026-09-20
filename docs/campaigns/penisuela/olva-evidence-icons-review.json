@@ -1,0 +1,241 @@
+{
+  "date": "2026-09-20",
+  "verdict": "accept",
+  "userApproval": "pending",
+  "generator": "built-in image_gen",
+  "generationCount": 6,
+  "reviewSheet": "docs/campaigns/penisuela/art-drafts/olva-evidence-icons-review.html",
+  "visualReview": "Все шесть оригинальных результатов просмотрены. Различимые силуэты, единая палитра пергамента, бордового, тёмной бирюзы и золота; без текста, людей и спойлеров. Символы отражают тему улики, не добавляя новых событий.",
+  "technicalProcessing": "Нет. Файлы скопированы без изменения пикселей; альфа проверена чтением PNG, фон не вырезался.",
+  "technicalChecks": [
+    {
+      "evidenceId": "silent-treatment",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-silent-treatment-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparentPercent": 57.6,
+      "solidPercent": 41.5,
+      "dominantAlpha": [
+        [
+          0,
+          905056
+        ],
+        [
+          253,
+          534415
+        ],
+        [
+          252,
+          102545
+        ],
+        [
+          1,
+          5395
+        ],
+        [
+          251,
+          5318
+        ]
+      ],
+      "sha256": "465eaf4b3c164cef09876ecfefcbdce225c16d294efbfa77a467eada07e63fd9"
+    },
+    {
+      "evidenceId": "private-letter",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-private-letter-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparentPercent": 50.3,
+      "solidPercent": 48.6,
+      "dominantAlpha": [
+        [
+          0,
+          791539
+        ],
+        [
+          253,
+          659840
+        ],
+        [
+          252,
+          86486
+        ],
+        [
+          251,
+          6882
+        ],
+        [
+          1,
+          6590
+        ]
+      ],
+      "sha256": "a38c18a80ebeb09d1fe2dbc52281305a135aa6a8b01a183be625e66f1b8097cd"
+    },
+    {
+      "evidenceId": "desire-note",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-desire-note-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparentPercent": 56.8,
+      "solidPercent": 42.2,
+      "dominantAlpha": [
+        [
+          0,
+          893403
+        ],
+        [
+          253,
+          491906
+        ],
+        [
+          252,
+          155596
+        ],
+        [
+          251,
+          7274
+        ],
+        [
+          1,
+          5115
+        ]
+      ],
+      "sha256": "dd16d1b07b5a72df63cc84149bf33c4e545b92b55859ecf9d030f62f09b39a2d"
+    },
+    {
+      "evidenceId": "chore-roster",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-chore-roster-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "transparentPercent": 37.7,
+      "solidPercent": 60.3,
+      "dominantAlpha": [
+        [
+          0,
+          593203
+        ],
+        [
+          253,
+          507322
+        ],
+        [
+          252,
+          396680
+        ],
+        [
+          251,
+          26599
+        ],
+        [
+          1,
+          10929
+        ]
+      ],
+      "sha256": "dee6adff7f06f211ef5a69797a721f2f9c11bbd1a1b88864c3d2206c42484886"
+    },
+    {
+      "evidenceId": "job-offer",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-job-offer-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparentPercent": 66.4,
+      "solidPercent": 32.6,
+      "dominantAlpha": [
+        [
+          0,
+          1043836
+        ],
+        [
+          253,
+          423552
+        ],
+        [
+          252,
+          66555
+        ],
+        [
+          251,
+          9094
+        ],
+        [
+          1,
+          4747
+        ]
+      ],
+      "sha256": "e6032afd3d859fabd58a7be52a9bbc71fc55ef3ca07a094f6500db0bf91a36f6"
+    },
+    {
+      "evidenceId": "dance-lesson",
+      "path": "docs/campaigns/penisuela/art-drafts/olva-evidence-dance-lesson-v1.png",
+      "width": 1254,
+      "height": 1254,
+      "alpha": "native RGBA",
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "transparentPercent": 58.4,
+      "solidPercent": 40.3,
+      "dominantAlpha": [
+        [
+          0,
+          918440
+        ],
+        [
+          253,
+          545283
+        ],
+        [
+          252,
+          65002
+        ],
+        [
+          251,
+          8725
+        ],
+        [
+          1,
+          7336
+        ]
+      ],
+      "sha256": "3c08cbcc32e69cf2b594e978d60ee2731271357724d3d6a8592568ab3bc24853"
+    }
+  ],
+  "runtimeStatus": "Поддержка обычной иконки подготовлена и прошла typecheck/build и серверный рендер. Арты не подключены до утверждения пользователя; в runtime остаются прежние силуэты."
+}

@@ -1,0 +1,65 @@
+{
+  "campaignId": "penisuela",
+  "round": 26,
+  "status": "approved-under-explicit-feedback-and-user-delegation",
+  "userDirection": "Не повторять одну позу Оливии на всех артах и использовать доступный качественный портрет лица.",
+  "items": [
+    {
+      "assetId": "penisuela-scene-guest-bungalows-choice",
+      "variant": "art-drafts/guest-bungalows-choice-v5.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/guest-bungalows-choice.webp",
+      "checks": [
+        "Оливия обычного взрослого роста проверяет купол ладонью, оборачивается к Полинетте и не повторяет стойку с планшетом.",
+        "Лицо сверено с отдельным портретом; костюм и крылья сохранены по кампанийной версии.",
+        "В кадре ровно Полинетта и Оливия, один пустой стул и две половины пропуска; Вуманайзера и рук героев нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-stas",
+      "variant": "art-drafts/couples-session-stas-v3.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/couples-session-stas.webp",
+      "checks": [
+        "Оливия идёт вдоль границы иллюзии и раздвигает световой шов; рук в карманах, папки и статичной стойки нет.",
+        "Станис смотрит в бесконечную анфиладу к выходу, кружка остаётся нетронутой, один стул пуст.",
+        "В кадре только Станис и Оливия; свадебных подсказок и интимных предметов нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-polina",
+      "variant": "art-drafts/couples-session-polina-v2.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/couples-session-polina.webp",
+      "checks": [
+        "Оливия в движении разводит золотые линии плана в сторону живого Станиса и не повторяет позы соседних кадров.",
+        "Полинетта, пустая колыбель, закрытая папка и уплощённый Станис на семейном портрете сохранены.",
+        "Лицо Оливии узнаваемо по отдельному портрету; ребёнка, беременности и свадебных подсказок нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-choice",
+      "variant": "art-drafts/couples-session-choice-v1.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/couples-session-choice.webp",
+      "checks": [
+        "Станис и Полинетта равны по масштабу, свету и расстоянию от центра; ни один исход визуально не объявлен правильным.",
+        "На столе одна кружка, одна закрытая папка, чистый лист и ровно две карты рубашкой к зрителю.",
+        "Оливия сидит в стороне на низком подоконнике, слушает пару и физически выходит из линии решения."
+      ]
+    },
+    {
+      "assetId": "penisuela-enemy-universal-advice-algorithm",
+      "variant": "art-drafts/show-18-pavilion-v2.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/show-18-pavilion.webp",
+      "checks": [
+        "В студии ровно три разные фарфоровые маски и ровно один живой персонаж — Оливия.",
+        "Оливия в широком выпаде обеими руками удерживает выгнутый экран; волосы и крылья показывают давление лучей.",
+        "Красная кнопка остаётся в закрытом футляре; эротизации, читаемого текста, героев и свадебных подсказок нет."
+      ]
+    }
+  ],
+  "technicalProcessing": "Все пять RGB PNG 1672×941 приведены к 1536×864 WebP без дополнительных художественных изменений.",
+  "result": "Прямое замечание пользователя стало правилом серии: лицо Оливии берётся из отдельного портрета, а поза и жест заново проектируются под действие каждого кадра."
+}

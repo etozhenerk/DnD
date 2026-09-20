@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 2,
+  "skill": "review-dnd-campaign-art",
+  "status": "partial-revision-requested",
+  "items": [
+    {
+      "assetId": "penisuela-npc-style-sphinx",
+      "variant": "art-drafts/zhidkovsky-sphinx-v2.png",
+      "verdict": "regenerate",
+      "corrections": ["не использовать старое тело сфинкса", "строить лицо, волосы, шею-гриву и львиный корпус одной анатомией", "устранить отдельную человеческую голову на зверином туловище"]
+    },
+    {
+      "assetId": "penisuela-npc-celebrity-decoy-satyr",
+      "variant": "art-drafts/satyr-v2.png",
+      "verdict": "regenerate",
+      "corrections": ["не использовать старое тело сатира", "строить лицо, торс, таз и козлиные ноги одной фигурой", "согласовать масштаб головы, плечи и длину конечностей"]
+    },
+    {
+      "assetId": "penisuela-npc-igor-sinyak",
+      "variant": "art-drafts/igor-sinyak-linfea-v2.png",
+      "verdict": "regenerate",
+      "corrections": ["использовать лицевой и полноразмерный референсы вместе", "сохранить полное мужское телосложение с массивным корпусом и полными конечностями", "строить лицо, тело, костюм и крылья с нуля как единую взрослую фею Линфею"]
+    }
+  ]
+}

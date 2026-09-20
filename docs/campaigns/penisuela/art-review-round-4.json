@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 4,
+  "skill": "review-dnd-campaign-art",
+  "status": "revision-requested",
+  "items": [
+    {
+      "assetId": "penisuela-npc-egorik-private",
+      "variant": "art-drafts/egorik-halfling-v2.png",
+      "verdict": "regenerate",
+      "corrections": [
+        "увеличить рост до примерно 150 см",
+        "сохранить естественные взрослые пропорции головы, шеи и конечностей",
+        "оставить расу полурослика через умеренно компактный корпус, тонкие уши и лишь слегка увеличенные ступни"
+      ]
+    },
+    {
+      "assetId": "penisuela-npc-nastya-private",
+      "variant": "art-drafts/nastya-gnome-v2.png",
+      "verdict": "regenerate",
+      "corrections": [
+        "увеличить рост до примерно 150 см",
+        "полностью перестроить лицо, челюсть, шею и тело как единую анатомию",
+        "согласовать тон кожи, направление света, резкость и масштаб головы с телом"
+      ]
+    }
+  ]
+}

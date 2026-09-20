@@ -96,4 +96,4 @@ concept -> outline -> story-graph -> cast -> script
 
 ## Финальная проверка
 
-После публикации применять `$maintain-dnd-world`, затем `$verify-dnd-campaign-release`. Визуальную и интерактивную проверку выполнять во встроенном браузере Codex. Не запускать standalone Playwright без отдельного разрешения пользователя.
+После публикации применять `$test-dnd-gameplay-scenarios`, затем `$maintain-dnd-world` и только после этого `$verify-dnd-campaign-release`. Результаты сценарных тестов и release verification регистрировать отдельными артефактами в `workflow.json`; после успешной проверки записывать `retrospective.md`. Визуальную и интерактивную проверку выполнять во встроенном браузере Codex. Не запускать standalone Playwright без отдельного разрешения пользователя.

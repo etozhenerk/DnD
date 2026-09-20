@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 3,
+  "skill": "review-dnd-campaign-art",
+  "status": "revision-requested",
+  "items": [
+    {
+      "assetId": "penisuela-npc-style-sphinx",
+      "variant": "art-drafts/zhidkovsky-sphinx-v3.png",
+      "verdict": "regenerate",
+      "corrections": [
+        "полностью отказаться от расы сфинкса",
+        "пересобрать персонажа с нуля как взрослую фею Линфею с четырьмя крыльями",
+        "сохранить узнаваемое лицо, но соединить голову, шею, тело, волосы, одежду и крылья в цельную анатомию"
+      ]
+    },
+    {
+      "assetId": "penisuela-npc-igor-sinyak",
+      "variant": "art-drafts/igor-sinyak-linfea-v3.png",
+      "verdict": "regenerate",
+      "corrections": [
+        "заменить костюм на полноценное роскошное церемониальное платье",
+        "сохранить полное взрослое мужское телосложение с массивным корпусом и полными конечностями",
+        "строить лицо, тело, платье и четыре крыла с нуля как единую взрослую фею Линфею"
+      ]
+    }
+  ]
+}

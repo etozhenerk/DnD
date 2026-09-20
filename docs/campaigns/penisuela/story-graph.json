@@ -1,0 +1,464 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "status": "approved",
+  "basedOn": {
+    "outlinePath": "outline.md",
+    "outlineStatus": "approved"
+  },
+  "recommendedDurationMinutes": {
+    "min": 150,
+    "max": 240
+  },
+  "scope": "Порядок сюжетных открытий текущей кампании, включая необязательный квест Оливии. Внутренние проверки, бои и возвраты описаны каноническими storyScenes/UI и раскрыты в combat-story-graph.json/md.",
+  "deferredSceneIds": [],
+  "legacySceneIds": [
+    "restore-control-log",
+    "responsible-control-log",
+    "wedding-reminder",
+    "wedding-reminder-resolution",
+    "igor-orientation",
+    "igor-consent-decisions",
+    "early-physical-assault",
+    "doom-five-cable-junction",
+    "final-choice",
+    "last-take-emergency-action",
+    "post-crisis-orientation-wedding",
+    "post-crisis-orientation-director",
+    "post-crisis-orientation-shutdown",
+    "post-crisis-orientation-evacuation",
+    "post-crisis-publication-wedding",
+    "post-crisis-publication-director",
+    "post-crisis-publication-shutdown",
+    "post-crisis-publication-evacuation",
+    "director-epilogue",
+    "shutdown-epilogue",
+    "evacuation-epilogue",
+    "couples-session-entry",
+    "couples-session-stas",
+    "couples-session-polina",
+    "olva-relationship-review",
+    "show-18-pavilion",
+    "couples-session-plan",
+    "couples-session-choice"
+  ],
+  "criticalClues": [
+    {
+      "id": "egorik-lead",
+      "sourceSceneIds": [
+        "hotel-overload",
+        "pussy-audience",
+        "closed-bar"
+      ]
+    },
+    {
+      "id": "groom-location",
+      "sourceSceneIds": [
+        "egorik-bungalow-reveal",
+        "groom-preparation-room"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "tavern-invitation",
+      "title": "Пять приглашений",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "invitation-to-hotel-video",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "start": true
+    },
+    {
+      "id": "invitation-to-hotel-video",
+      "title": "Мальчишник и утро без памяти",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "hotel-overload",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "hotel-overload",
+      "title": "Похмельное утро",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "hotel-gallery",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "hotel-gallery",
+      "title": "Гостиничная галерея",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "alexis-room",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "alexis-room",
+      "title": "Комната Алексиса: образ 10/10 для конца света",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "transitions": [
+        {
+          "to": "pussy-audience",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "pussy-audience",
+      "title": "Pussy Sultan: аудиенция без регалии",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "pussy-prop-room",
+          "label": "Продолжить сюжет"
+        },
+        {
+          "to": "closed-bar",
+          "label": "Жетоны получены альтернативным исходом; Вуманайзер не получен"
+        }
+      ]
+    },
+    {
+      "id": "pussy-prop-room",
+      "title": "Реквизиторская: скипетр под паланкином",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "pussy-scepter-return",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "pussy-scepter-return",
+      "title": "Возвращение золотого скипетра Pussy Sultan",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "closed-bar",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "closed-bar",
+      "title": "Закрытый бар: застывший танец",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "transitions": [
+        {
+          "to": "guest-bungalows",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "guest-bungalows",
+      "title": "Развилка гостевых бунгало",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bungalow-courtyard",
+          "label": "Продолжить сюжет"
+        },
+        {
+          "to": "closed-bar",
+          "label": "Вернуться в бар за Станисом"
+        },
+        {
+          "to": "egorik-bungalow-reveal",
+          "label": "Пройти к Егорику с ключами",
+          "condition": {
+            "flag": "olva-bungalow-access-issued",
+            "equals": true
+          }
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "bungalow-courtyard",
+      "title": "Леди Оливия — наставница чувственных искусств",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "guest-bungalows",
+          "label": "Взяться найти мужа Полинетты",
+          "effects": [
+            {
+              "type": "set-flag",
+              "flag": "olva-quest-accepted",
+              "value": true
+            }
+          ]
+        },
+        {
+          "to": "olva-date-rehearsal",
+          "label": "Начать консультацию со Станисом",
+          "condition": {
+            "any": [
+              {
+                "flag": "olva-stas-recruited",
+                "equals": true
+              },
+              {
+                "flag": "olva-table-opened",
+                "equals": true
+              },
+              {
+                "flag": "olva-table-complete",
+                "equals": true
+              }
+            ]
+          }
+        },
+        {
+          "to": "olva-passes-handoff",
+          "label": "Получить ключи без консультации"
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "olva-passes-handoff",
+      "title": "Пропуск без условий",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "egorik-bungalow-reveal",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "egorik-bungalow-reveal",
+      "title": "Бунгало Егорика",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "transitions": [
+        {
+          "to": "groom-tunnel",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "groom-tunnel",
+      "title": "Служебный тоннель под сценой",
+      "type": "scene",
+      "expectedMinutes": 12,
+      "transitions": [
+        {
+          "to": "groom-preparation-room",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "groom-preparation-room",
+      "title": "Укрытие Kreed",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "kreed-disclosure",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "kreed-disclosure",
+      "title": "Основной жених",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "post-kreed-route",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "post-kreed-route",
+      "title": "У роскошной виллы",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "graywise-door-trust",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "graywise-door-trust",
+      "title": "У закрытой двери",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bedroom-reveal",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "bedroom-reveal",
+      "title": "Внутренняя дверь спальни",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "igor-unboxing",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "igor-unboxing",
+      "title": "Распаковка после конца света",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "andrey-villa-breach",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "andrey-villa-breach",
+      "title": "Взрыв в доме Grey Wiese",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "last-take-boss",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "last-take-boss",
+      "title": "Арена лорда Нетака",
+      "type": "combat",
+      "expectedMinutes": 30,
+      "transitions": [
+        {
+          "to": "villa-after-andrey",
+          "label": "Победа в двух фазах"
+        },
+        {
+          "to": "bad-ending-villa",
+          "label": "Поражение в любой фазе"
+        }
+      ]
+    },
+    {
+      "id": "villa-after-andrey",
+      "title": "Возвращение к вилле",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "couple-voice-reset",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "couple-voice-reset",
+      "title": "Два голоса",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "wedding-epilogue",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "wedding-epilogue",
+      "title": "Частная церемония после конца света",
+      "type": "ending",
+      "expectedMinutes": 4,
+      "transitions": [],
+      "ending": true
+    },
+    {
+      "id": "bad-ending-villa",
+      "title": "Свадьба пошла не так",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bad-ending-netak-wedding",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "bad-ending-netak-wedding",
+      "title": "Свадьба лорда Нетака",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bad-ending-magical-prison",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "bad-ending-magical-prison",
+      "title": "За магической решёткой",
+      "type": "ending",
+      "expectedMinutes": 4,
+      "transitions": [],
+      "ending": true
+    },
+    {
+      "id": "olva-date-rehearsal",
+      "title": "Двое в номере, не считая хотелок",
+      "type": "scene",
+      "expectedMinutes": 25,
+      "transitions": [
+        {
+          "to": "guest-bungalows",
+          "label": "Вернуться с любого этапа; пропуск остаётся"
+        }
+      ],
+      "optional": true,
+      "allowCycle": true
+    }
+  ]
+}

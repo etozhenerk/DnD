@@ -1,0 +1,2116 @@
+{
+  "campaignId": "penisuela",
+  "title": "Мальчишник конца света",
+  "currentStage": "local-campaign-verified",
+  "nextSkill": null,
+  "pipelineNote": "14 сентября 2026 автор поручил исправить два сбоя, ослабить врагов примерно на 20%, рассчитывать максимум на 1–2 ошибки и актуализировать документацию. Текущие проверки: 38/38, обе сборки и ссылки. Руническая охрана сохранена по явному решению автора. Статус не означает повторный полный браузерный прогон или deployment.",
+  "artifacts": {
+    "concept": {
+      "path": "concept.md",
+      "skill": "define-dnd-campaign-concept",
+      "status": "approved",
+      "scope": "Действующая авторская редакция 8 сентября и последующие канонические уточнения. Старые численные отчёты и выводы удалённого сюжета находятся в архиве workflow.",
+      "updatedAt": "2026-09-14",
+      "validationNote": "Текущая техническая проекция сверена по storyTruth и тестам активного интерфейса; новый художественный вердикт не присваивается."
+    },
+    "outline": {
+      "path": "outline.md",
+      "skill": "outline-dnd-campaign",
+      "status": "approved",
+      "scope": "Действующая авторская редакция 8 сентября и последующие канонические уточнения. Старые численные отчёты и выводы удалённого сюжета находятся в архиве workflow.",
+      "updatedAt": "2026-09-14",
+      "validationNote": "Текущая техническая проекция сверена по storyTruth и тестам активного интерфейса; новый художественный вердикт не присваивается."
+    },
+    "cast": {
+      "path": "cast.md",
+      "skills": [
+        "create-dnd-npc",
+        "create-dnd-enemy"
+      ],
+      "status": "approved",
+      "scope": "Действующая авторская редакция 8 сентября и последующие канонические уточнения. Старые численные отчёты и выводы удалённого сюжета находятся в архиве workflow.",
+      "updatedAt": "2026-09-14",
+      "validationNote": "Текущая техническая проекция сверена по storyTruth и тестам активного интерфейса; новый художественный вердикт не присваивается."
+    },
+    "storyGraph": {
+      "path": "story-graph.json",
+      "readablePath": "story-graph.md",
+      "skill": "design-dnd-story-graph",
+      "status": "approved",
+      "scope": "Порядок сюжетных открытий текущей редакции; внутренние бои и возвраты раскрыты в combat-story-graph.",
+      "updatedAt": "2026-09-14",
+      "validationNote": "Graph valid: 29 nodes, 1 starts, 2 endings, routes 142-158m. Временные веса исторические, не прогноз полного прохождения."
+    },
+    "script": {
+      "path": "script.md",
+      "skill": "write-dnd-scene-script",
+      "status": "published",
+      "scope": "Точный рабочий сценарий текущего канона, 12 песен, полный отдых и HP от 14 сентября.",
+      "updatedAt": "2026-09-14",
+      "validationNote": "После первого заголовка побайтно совпадает с каноническим guide; current release validator passed."
+    },
+    "dialogue": {
+      "path": "dialogue.json",
+      "readablePath": "dialogue.md",
+      "canonicalPath": "content/campaigns/penisuela-dialogue.json",
+      "skill": "write-dnd-dialogue",
+      "status": "published",
+      "scope": "Канонический банк содержит исторические записи; активная проекция исключает старые сцены и персонажей.",
+      "updatedAt": "2026-09-14",
+      "presetCount": 103,
+      "voiceCount": 21,
+      "activePresetCount": 47,
+      "validationNote": "Рабочий JSON точно равен каноническому; все 47 активных пресетов имеют действующие контексты."
+    },
+    "gameplay": {
+      "path": "gameplay.json",
+      "readablePath": "gameplay-notes.md",
+      "skill": "design-dnd-gameplay",
+      "status": "published",
+      "scope": "Текущие сцены, встречи, музыкальные волны и правила; HP семи действующих встреч снижены примерно на 20%.",
+      "updatedAt": "2026-09-14",
+      "balanceStatus": "simulated-one-and-two-mistakes",
+      "activeSceneCount": 28,
+      "sourceStorySceneCount": 56,
+      "encounterCount": 10,
+      "activeEncounterCount": 7,
+      "validationNote": "Exact gameplay mirror and current references passed; balance-review.md содержит результаты по каждому герою."
+    },
+    "campaignReview": {
+      "path": "review.md",
+      "skill": "review-dnd-campaign",
+      "status": "verified-scoped",
+      "scope": "Техническая актуализация редакторского статуса; не новое художественное утверждение.",
+      "updatedAt": "2026-09-14",
+      "reviewDate": "2026-09-14",
+      "validationNote": "Квест Оливии реализован, старые URL недоступны; прежние ready-for-approval записи относятся к своим литературным редакциям.",
+      "technicalBlockingIssueCount": 0
+    },
+    "publishedAssets": {
+      "repoPath": "assets/concepts/manifest.json",
+      "skill": "publish-dnd-campaign-assets",
+      "status": "published",
+      "scope": "Используемые runtime файлы существуют; прежние пользовательские утверждения и публикации ассетов сохранены.",
+      "updatedAt": "2026-09-14",
+      "referencedFileCount": 216,
+      "essentialRemainingAssets": 0,
+      "validationNote": "Проверены файлы, зарегистрированные пути и сохранность пяти иконок. Новая визуальная приёмка не проводилась."
+    },
+    "sessionPreviewContent": {
+      "path": "content/campaigns/penisuela-session-preview.json",
+      "readablePath": "content/campaigns/penisuela-session-preview-guide.md",
+      "skill": "publish-dnd-campaign",
+      "status": "published",
+      "scope": "28 действующих экранов плюс поиск, шесть блоков и пять героев; исторические сцены исключены из UI.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "galleryGameplayContent": {
+      "path": "content/campaigns/penisuela-gallery-gameplay.json",
+      "readablePath": "content/campaigns/penisuela-session-preview-guide.md",
+      "skill": "publish-dnd-campaign",
+      "status": "published",
+      "scope": "Текущий исполняемый канон, включая квест Оливии, полный отдых, 12 песен, навыки и две фазы Нетака.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "gallerySessionRuntime": {
+      "path": "src/entities/campaign-session/model/gallerySession.ts",
+      "skill": "model-dnd-game-session",
+      "status": "published",
+      "scope": "События, ресурсы, ручные решения мастера, контрольные точки, отмена и восстановление.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "closedBarRuntime": {
+      "path": "src/widgets/campaign-scene/ui/ClosedBarAdventure/ClosedBarAdventure.tsx",
+      "skill": "implement-dnd-campaign-ui",
+      "status": "published",
+      "scope": "Станис, музыкальный пульт, 11 неверных вариантов, повторные волны и отдельный выход по пяти пропускам.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "guestBungalowsRuntime": {
+      "path": "src/widgets/campaign-scene/ui/GuestBungalowsAdventure/GuestBungalowsAdventure.tsx",
+      "skill": "implement-dnd-campaign-ui",
+      "status": "published",
+      "scope": "Развилка, доступ Оливии и возвращение в бар за Станисом.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "lateStoryRuntime": {
+      "path": "src/widgets/campaign-scene/ui/LateStoryAdventure/LateStoryAdventure.tsx",
+      "skill": "implement-dnd-campaign-ui",
+      "status": "published",
+      "scope": "Действующие сюжетные действия и переходы; прежние Show18 и ранний штурм скрыты.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "rulesEngine": {
+      "path": "src/entities/combat/model/combatRules.ts",
+      "skill": "implement-dnd-rules-engine",
+      "status": "published",
+      "scope": "Домашняя d20-система; общий бой, состояния и ресурсы.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "npcBehavior": {
+      "path": "src/entities/combat/model/npcBehavior.ts",
+      "skill": "implement-dnd-npc-behavior",
+      "status": "published",
+      "scope": "Подсказки действий и целей; ход выполняет мастер.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "dialogueConsole": {
+      "path": "src/widgets/campaign-scene/ui/GameMasterConsole/DialoguePresetConsole.tsx",
+      "skill": "implement-dnd-dialogue-console",
+      "status": "published",
+      "scope": "Выбираемые мастером реплики с фильтрацией текущего сюжета.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "gmConsole": {
+      "path": "src/widgets/campaign-scene/ui/GameMasterConsole/GameMasterConsole.tsx",
+      "skill": "implement-dnd-gm-console",
+      "status": "published",
+      "scope": "Общие проверки, параметры, инвентарь, журнал и отмена.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "firstPlayableBuild": {
+      "path": "src/pages/campaign-play/ui/CampaignPlayPage/CampaignPlayPage.tsx",
+      "skill": "implement-dnd-campaign-ui",
+      "status": "published",
+      "scope": "Полный текущий локальный маршрут кампании, а не старый 49-сценовый MVP.",
+      "updatedAt": "2026-09-14",
+      "verification": "38/38 regression suites; current-release validator; TypeScript and both builds passed. Browser coverage remains scoped to dated QA."
+    },
+    "canonicalCampaignBundle": {
+      "skill": "publish-dnd-campaign",
+      "parts": [
+        "content/campaigns/penisuela-session-preview.json",
+        "content/campaigns/penisuela-gallery-gameplay.json",
+        "content/campaigns/penisuela-dialogue.json",
+        "content/campaigns/penisuela-final-boss.json",
+        "content/campaigns/penisuela-session-preview-guide.md",
+        "content/campaigns/penisuela-olva-quest.json",
+        "content/campaigns/penisuela-credits.json",
+        "content/campaigns/penisuela-credits-guide.md"
+      ],
+      "status": "published",
+      "scope": "Составной канон текущей кампании. penisuela-final-boss.json внутри bundle сохранён только для прежнего движка; действующий босс — gallery-gameplay.bossSequence.",
+      "updatedAt": "2026-09-15",
+      "compatibilityParts": [
+        "content/campaigns/penisuela-final-boss.json"
+      ]
+    },
+    "gameplayScenarios": {
+      "path": "gameplay-scenarios.md",
+      "skill": "test-dnd-gameplay-scenarios",
+      "status": "verified-scoped",
+      "scope": "Автоматическая регрессия текущих механик и сохранённого совместимого движка.",
+      "updatedAt": "2026-09-14",
+      "suiteCount": 38,
+      "passedSuiteCount": 38,
+      "verification": "npm run test:regression: 38/38 suites passed."
+    },
+    "releaseVerification": {
+      "path": "release-verification.md",
+      "skill": "verify-dnd-campaign-release",
+      "status": "verified-scoped",
+      "scope": "Автоматические проверки текущей версии пройдены. Полный повторный браузерный sweep не выполнялся.",
+      "updatedAt": "2026-09-14",
+      "automatedStatus": "passed",
+      "browserStatus": "previous-scoped-reports-only",
+      "targetedChecks": [
+        {
+          "path": "qa/campaign-regression-2026-09-09.md",
+          "status": "historical-scoped-pass"
+        },
+        {
+          "path": "qa/balance-rest-2026-09-11.md",
+          "status": "historical-scoped-pass"
+        },
+        {
+          "path": "qa/mob-action-icons-2026-09-11.md",
+          "status": "historical-scoped-pass"
+        },
+        {
+          "path": "qa/dance-media-and-gratitude-2026-09-11.md",
+          "status": "historical-scoped-pass"
+        },
+        {
+          "id": "dance-tracks-2026-09-14",
+          "path": "qa/dance-tracks-2026-09-14.md",
+          "status": "passed-scoped",
+          "scope": "Четыре локальных MP3 добавлены как 13–16; правильный ответ шестой. Целевые тесты, ссылки, typecheck и обе сборки успешны. Без браузерной проверки по указанию пользователя."
+        }
+      ]
+    },
+    "retrospective": {
+      "path": "retrospective.md",
+      "skill": "create-dnd-campaign",
+      "status": "verified-scoped",
+      "scope": "Текущие факты, завершённые работы и ограничения; версия 24 августа перенесена в архив.",
+      "updatedAt": "2026-09-14"
+    },
+    "balanceReview": {
+      "path": "balance-review.md",
+      "skill": "test-dnd-gameplay-scenarios",
+      "status": "verified-scoped",
+      "scope": "Снижение HP примерно на 20%; накопление потерь и расходов за весь путь с 1–2 ошибками; основные ветки, разовая охрана, Егорик до отдыха и полный финал.",
+      "updatedAt": "2026-09-14",
+      "data": [
+        "balance-normal-2026-09-14.json",
+        "balance-master-random-2026-09-14.json",
+        "balance-basic-2026-09-14.json"
+      ]
+    },
+    "ordinaryMobActionIcons": {
+      "path": "art-drafts/mob-skills/README.md",
+      "skill": "generate-dnd-campaign-art",
+      "status": "runtime-integrated",
+      "scope": "Пять утверждённых иконок текущих действий рядовых врагов подключены через artwork в данных, общий список навыков и панель броска. Проверены все 16 исполнителей, production UI на 1024 и 1280 px.",
+      "review": "art-review.md",
+      "prompts": "art-drafts/mob-skills/prompts.json",
+      "preview": "art-drafts/mob-skills/review.html",
+      "qa": "qa/mob-action-icons-2026-09-11.md"
+    },
+    "combatStoryMap": {
+      "path": "combat-story-graph.json",
+      "readablePath": "combat-story-graph.md",
+      "skill": "design-dnd-story-graph",
+      "status": "draft",
+      "scope": "Производная мастерская схема: 34 узла, 52 перехода, все 28 активных сцен, восемь боевых точек. HP синхронизированы 14 сентября.",
+      "verification": "Structural graph validation and canonical encounter references passed."
+    },
+    "andreyBossRuntime": {
+      "path": "src/widgets/campaign-scene/ui/AndreyBossAdventure/AndreyBossAdventure.tsx",
+      "skill": "implement-dnd-rules-engine",
+      "status": "published",
+      "scope": "Две последовательные фазы, колбы и помощь гостей, навыки обеих фаз, хороший и плохой финалы.",
+      "verification": "Current regression suites passed on 176 HP per phase."
+    }
+  },
+  "releaseScope": {
+    "status": "automated-checks-passed",
+    "includes": [
+      "28-active-scenes-and-search",
+      "six-checkpoints",
+      "five-heroes",
+      "seven-active-encounters",
+      "two-netak-phases",
+      "two-endings",
+      "olivia-quest-and-full-rest",
+      "twelve-dance-tracks",
+      "gm-console-and-local-session",
+      "approved-runtime-assets"
+    ],
+    "verification": "38/38 regression suites; normal and Pages builds; canonical references and exact mirrors passed.",
+    "currentTechnicalBlockers": [],
+    "limitations": [
+      "Новый полный браузерный прогон не выполнялся; сведения о прежних целевых проверках находятся в release-verification.md.",
+      "Крупные чанки Vite остаются техническим долгом."
+    ],
+    "publication": "not-requested"
+  },
+  "authorFinaleRevision20260907": {
+    "status": "author-directed-revision-recorded",
+    "concept": "docs/campaigns/penisuela/concept.md",
+    "scope": [
+      "обмен сертификата Алексиса на сумку Игоря для Торина и автоматический скин",
+      "взрыв дома и появление Андрея как главного босса",
+      "организатор хаоса — Андрей; Лена обманут фальшивым Оскаром; проектор необходим для запуска"
+    ],
+    "dependentStatus": "stale-in-affected-scope",
+    "affectedArtifacts": [
+      "outline",
+      "story-graph",
+      "cast",
+      "script",
+      "dialogue",
+      "gameplay",
+      "review",
+      "finale-art-plan",
+      "implementation-plan",
+      "canonicalCampaignBundle",
+      "final-boss-runtime",
+      "releaseVerification"
+    ],
+    "preservedScope": "Пройденный маршрут до спальни и утверждённые арты не отменены. Драфт распаковки совместим с новой развязкой.",
+    "notImplemented": [
+      "обмен и скин",
+      "взрыв дома",
+      "новый босс и развязка"
+    ]
+  },
+  "andreyBossDraft20260907": {
+    "status": "draft",
+    "characterBrief": "docs/campaigns/penisuela/andrey-boss-draft.md",
+    "artPlanKey": "andreyVillaBreachArtPlan",
+    "generatedArt": "art-drafts/andrey-dark-elf-v4.png",
+    "runtimeConnected": false,
+    "validation": "Проверены ссылки на существующих героев, предметы и целевую сцену. Числа и личные контрмеры — черновой баланс без игрового прогона. Canonical content не менялся.",
+    "pending": [
+      "выбор внешности босса",
+      "личная причина срыва свадьбы",
+      "утверждение боевого профиля",
+      "миграция графа и старого финала",
+      "обмен сертификата и скин сумки"
+    ]
+  },
+  "andreyArenaRevision20260907": {
+    "status": "art-generated-awaiting-selection",
+    "approved": [
+      "две фазы",
+      "перенос в новое пространство",
+      "Игорь, Grey Wiese и Крид в магических клетках"
+    ],
+    "artPlanKey": "andreyArenaHostagesArtPlan",
+    "runtimeConnected": false,
+    "staleScope": [
+      "локация боя в спальне",
+      "действия свободных NPC в бою",
+      "эвакуация свободными NPC при поражении"
+    ],
+    "preserved": [
+      "утверждённый Андрей v4",
+      "утверждённый Игорь v2",
+      "обмен сертификата перед переносом"
+    ]
+  },
+  "andreyPhaseTwo20260907": {
+    "status": "automatic-battles-connected",
+    "phaseOneApprovedArt": "art-drafts/andrey-arena-hostages-v4.png",
+    "runtimeConnected": true,
+    "deferredByUser": "Колбы как атакуемые объекты без хода; освобождённый NPC помогает одним временным ходом в очереди. Реализацию отложить.",
+    "canonicalNote": "Две боевые встречи с автоматическим переходом по победе, ролик пока отсутствует по решению автора. При добавлении source второй бой ждёт video-ended/skip. Ручных переключателей нет.",
+    "phaseTwoApprovedArt": "art-drafts/andrey-phase-two-monster-v1.png",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/andrey-boss-sequence-2026-09-07.md",
+      "status": "targeted-checks-passed-global-tests-have-preexisting-blockers",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "villaFinaleConnection20260907": {
+    "status": "runtime-connected-targeted-qa-passed",
+    "runtimeConnected": true,
+    "approvedSources": [
+      "igor-unboxing-birkin-v2",
+      "andrey-dark-elf-v4"
+    ],
+    "implemented": [
+      "optional atomic certificate exchange and bag appearance",
+      "villa explosion and confession",
+      "teleport and automatic first battle"
+    ],
+    "canonicalScenes": [
+      "igor-unboxing",
+      "andrey-villa-breach",
+      "last-take-boss"
+    ],
+    "deferred": [
+      "transformation video",
+      "new epilogue and full legacy graph reconciliation"
+    ],
+    "qa": "docs/campaigns/penisuela/qa/villa-finale-2026-09-07.md"
+  },
+  "birkinButtonSkin20260907": {
+    "status": "connected",
+    "approvedByUser": true,
+    "canonicalAsset": "assets/concepts/campaigns/penisuela/ui/inventory-birkin-skin.png",
+    "scope": "Скин верхней сумки во всех игровых сценах, без нового предмета; сохранение и отмена через флаг thorin-birkin-received.",
+    "releaseVerification": "docs/campaigns/penisuela/qa/birkin-button-skin-2026-09-07.md"
+  },
+  "hostageCombatTokensPublication20260907": {
+    "status": "approved-assets-published",
+    "userApproval": "окаю",
+    "artPlanKey": "hostageCombatTokens20260907",
+    "publishedAssets": [
+      "assets/concepts/campaigns/penisuela/ui/ally-tokens/igor.png",
+      "assets/concepts/campaigns/penisuela/ui/enemy-tokens/igor-prison.png",
+      "assets/concepts/campaigns/penisuela/ui/ally-tokens/grey-wiese.png",
+      "assets/concepts/campaigns/penisuela/ui/enemy-tokens/grey-wiese-prison.png",
+      "assets/concepts/campaigns/penisuela/ui/ally-tokens/kreed.png",
+      "assets/concepts/campaigns/penisuela/ui/enemy-tokens/kreed-prison.png"
+    ],
+    "runtimeConnected": true,
+    "releaseVerification": "docs/campaigns/penisuela/qa/hostage-combat-2026-09-08.md"
+  },
+  "hostageCombatImplementation20260908": {
+    "status": "implemented-and-verified",
+    "userApproval": "го",
+    "encounterId": "andrey-dark-elf",
+    "canonicalGameplay": "content/campaigns/penisuela-gallery-gameplay.json",
+    "releaseVerification": "docs/campaigns/penisuela/qa/hostage-combat-2026-09-08.md",
+    "openItems": [
+      "Полный игровой прогон баланса финала",
+      "Видео превращения — отложено автором",
+      "Новый эпилог и сверка legacy-графа"
+    ]
+  },
+  "happyEndingRevision20260908": {
+    "status": "implemented-and-verified",
+    "userApproval": "Новая последовательность финала и уточнение: устройство для голосов Крида и Синяка.",
+    "artPlanKey": "happyEndingRevision20260908",
+    "supersedes": "Предложенная ассистентом сцена отключения проектора Леной отвергнута. После смерти Андрея — вилла, совместный голосовой сброс, свадьба.",
+    "staleDependents": [
+      "Прежние post-crisis orientation/publication переходы главного маршрута",
+      "Старый свадебный арт и текст эпилога"
+    ],
+    "runtimeConnected": true,
+    "videoPlan": {
+      "status": "published",
+      "path": "docs/campaigns/penisuela/video-plan.json",
+      "sequenceId": "penisuela-andrey-death-six-second-video",
+      "videoGenerated": true,
+      "blockedInputs": []
+    },
+    "next": "Ролик гибели получен и подключён; текущая версия на 6 секунд зарегистрирована в dragonDeathSixSeconds20260916.",
+    "publishedAssets": [
+      "assets/concepts/campaigns/penisuela/scenes/villa-after-andrey.png",
+      "assets/concepts/campaigns/penisuela/scenes/couple-voice-reset.png",
+      "assets/concepts/campaigns/penisuela/scenes/happy-altar.png"
+    ],
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/happy-ending-2026-09-08.md",
+      "status": "passed",
+      "scope": "Счастливый финал и регрессия скина сумки; настоящее видео ещё не создано.",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "andreyVideoFrames20260908": {
+    "status": "both-videos-connected-and-verified",
+    "artPlanKey": "andreyVideoFrames20260908",
+    "userRequest": "Три арта: начало и конец превращения, один кадр гибели; два промпта.",
+    "videoPlan": {
+      "path": "docs/campaigns/penisuela/video-plan.json",
+      "status": "draft",
+      "sequenceIds": [
+        "penisuela-andrey-transformation-video",
+        "penisuela-andrey-death-video"
+      ],
+      "targets": {
+        "transformation": "seedance-2.5",
+        "death": "grok-imagine-video"
+      }
+    },
+    "outputDirectory": "art-drafts/andrey-video",
+    "videoGenerated": true,
+    "next": "Превращение подключено; ролик гибели заменён шестисекундной версией, см. dragonDeathSixSeconds20260916.",
+    "currentFrames": [
+      "art-drafts/andrey-video/01-transformation-start-v2.png",
+      "art-drafts/andrey-video/02-transformation-end.png",
+      "art-drafts/andrey-video/03-death-start-v2.png"
+    ],
+    "package": "art-drafts/andrey-video/andrey-video-seedance-grok.zip",
+    "transformationVideo": {
+      "status": "connected-and-verified",
+      "path": "assets/concepts/campaigns/penisuela/scene-videos/andrey-transformation.mp4"
+    },
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/andrey-transformation-video-2026-09-08.md",
+      "status": "passed",
+      "scope": "Подключение ролика превращения, не полная приёмка кампании.",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "deathVideo": {
+      "status": "superseded",
+      "path": "assets/concepts/campaigns/penisuela/scene-videos/andrey-death.mp4",
+      "releaseVerification": {
+        "path": "docs/campaigns/penisuela/qa/andrey-death-video-2026-09-08.md",
+        "status": "passed",
+        "scope": "Подключение ролика гибели и переход на виллу.",
+        "targetedChecks": [
+          {
+            "id": "guest-skills-2026-09-09",
+            "path": "qa/guest-skills-2026-09-09.md",
+            "status": "passed",
+            "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+          },
+          {
+            "id": "grey-wiese-video-2026-09-09",
+            "path": "qa/grey-wiese-video-2026-09-09.md",
+            "status": "passed",
+            "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+          },
+          {
+            "id": "kreed-video-and-icons-2026-09-09",
+            "path": "qa/kreed-video-and-icons-2026-09-09.md",
+            "status": "passed",
+            "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+          }
+        ]
+      },
+      "supersededBy": "dragonDeathSixSeconds20260916",
+      "archivePath": "art-drafts/andrey-video/death-6s/previous-death-8s.mp4"
+    }
+  },
+  "finaleFullPlaythrough20260908": {
+    "status": "passed-for-final-sequence",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/finale-full-playthrough-2026-09-08.md",
+      "status": "passed",
+      "scope": "От подарка Игоря до свадьбы, включая три колбы и оба видео.",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "fixed": [
+      "video-ended joins the defeating command for atomic undo"
+    ],
+    "browserViewports": [
+      "1280x800",
+      "1024x768"
+    ],
+    "sessionRestored": true,
+    "openOutsideScope": [
+      "Outdated hotel door expectation in navigation regressions",
+      "Removed rail-prop-kraken fixture in generic runtime suite"
+    ],
+    "fullCampaignReleaseApproved": false
+  },
+  "npcNames20260908": {
+    "status": "implemented-and-verified",
+    "names": {
+      "igor-sinyak": "Angel",
+      "egor-kreed": "Kreed",
+      "andrey-apollonov-junior": "лорд Нетак"
+    },
+    "stableIdsPreserved": true,
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/npc-names-2026-09-08.md",
+      "status": "passed",
+      "scope": "Имена NPC, данные и отображение; не полный релиз кампании.",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "villaBreachEmpty20260908": {
+    "status": "implemented-and-verified",
+    "authority": "Автор прямо запросил создание и вставку варианта без персонажа перед существующим артом.",
+    "art": "assets/concepts/campaigns/penisuela/scenes/villa-breach-empty.png",
+    "prompt": "art-drafts/villa-breach-empty-v1.prompt.txt",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/villa-breach-empty-2026-09-08.md",
+      "status": "passed",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "sceneId": "andrey-villa-breach",
+    "actionId": "show-andrey-appearance"
+  },
+  "badEnding20260908": {
+    "status": "implemented-verified",
+    "concept": {
+      "path": "docs/campaigns/penisuela/concept.md",
+      "status": "approved",
+      "section": "Авторская плохая концовка: «Свадьба пошла не так» — 8 сентября 2026"
+    },
+    "replaces": "Unapproved Eternal Bachelor Party draft and planned lord-defeat evacuation branch",
+    "dependentArtifacts": {
+      "outline": "implemented",
+      "storyGraph": "implemented",
+      "script": "implemented",
+      "gameplay": "implemented",
+      "artPlan": "implemented",
+      "runtime": "implemented"
+    },
+    "openDecisions": [],
+    "authority": "Автор задал сорванную свадьбу, закрытие реалити Angel, активацию механизма с Angel и Kreed, свадьбу лорда с похожим на Kreed посторонним мужчиной, тёмный остров и магическую темницу для Angel, Kreed и Grey Wiese.",
+    "approval": "Автор: «окаю го делать»",
+    "outline": {
+      "path": "docs/campaigns/penisuela/outline.md",
+      "status": "approved",
+      "section": "Плохой финал: присвоенная свадьба — 8 сентября 2026"
+    },
+    "heroFate": "Автор утвердил возврат живых героев на разрушенную виллу; остров захвачен, на экранах чужая свадьба.",
+    "artCandidates": [
+      "art-drafts/bad-ending/netak-wedding-v1.png",
+      "art-drafts/bad-ending/magical-prison-v4.png"
+    ],
+    "generationTool": "imagegen built-in",
+    "prisonRevision": "v4 утверждён автором: «вот это хорошо»",
+    "prisonArt": {
+      "path": "art-drafts/bad-ending/magical-prison-v4.png",
+      "status": "approved"
+    },
+    "publishedAssets": [
+      "assets/concepts/campaigns/penisuela/scenes/bad-ending-netak-wedding.png",
+      "assets/concepts/campaigns/penisuela/scenes/bad-ending-magical-prison.png"
+    ],
+    "releaseVerification": {
+      "path": "qa/netak-bad-ending-2026-09-08.md",
+      "status": "passed-scoped",
+      "checks": [
+        "netak-bad-ending",
+        "andrey-boss-sequence",
+        "villa-finale",
+        "hostage-combat",
+        "playable-bridge-764",
+        "typecheck",
+        "build",
+        "build:pages",
+        "browser-first-phase-defeat-reload-undo",
+        "art-1024-1280"
+      ],
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "greyWieseReward20260908": {
+    "status": "implemented",
+    "canonicalRef": "content/party-rewards.json",
+    "grantActionId": "receive-grey-wiese-perfume",
+    "releaseVerification": {
+      "path": "qa/grey-wiese-reward-2026-09-08.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "storySync20260908": {
+    "status": "implemented",
+    "authority": "Прямой полный пересказ автора и просьба синхронизировать файлы",
+    "canonicalTruth": "content/campaigns/penisuela-gallery-gameplay.json#storyTruth",
+    "historyPath": "docs/campaigns/penisuela/history/2026-09-08-before-story-sync",
+    "olvaQuest": "deferred",
+    "releaseVerification": {
+      "path": "qa/story-sync-2026-09-08.md",
+      "status": "passed-scoped",
+      "limitations": [
+        "Полная релизная приёмка не проводилась",
+        "Старый монолитный runtime-тест требует переноса удалённых встреч; текущие сценарии проверены отдельными тестами",
+        "Квест Оливии отложен"
+      ],
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "currentAuthority": "maintenance20260914; канон — content/campaigns/penisuela-*.json, текущие отчёты — artifacts. Более ранние датированные записи — история своих ревизий.",
+  "activeInterface20260908": {
+    "status": "implemented",
+    "authority": "Проверить отсутствие связей интерфейса со старыми сценами",
+    "activeSceneCount": 27,
+    "redirectCount": 38,
+    "dialoguePresetCount": 43,
+    "olvaQuest": "deferred",
+    "releaseVerification": {
+      "path": "qa/active-interface-2026-09-08.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "unusedUrlsRemoval20260908": {
+    "status": "implemented",
+    "authority": "Удалить все неиспользуемые URL текущей игры без перенаправлений",
+    "removedRedirectCount": 38,
+    "activeSceneCount": 27,
+    "releaseVerification": {
+      "path": "qa/unused-game-urls-2026-09-08.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "olvaQuestOutline20260908": {
+    "status": "draft",
+    "path": "outline.md#квест-оливии",
+    "skill": "outline-dnd-campaign",
+    "authority": "Автор попросил заново смоделировать комедийный квест пары и применение необязательного Вуманайзера",
+    "scope": "Только отложенный квест Оливии; действующая игра не меняется",
+    "dependentArtifacts": "Старые граф, сцены, реплики, механики и арты квеста требуют пересборки; остальные артефакты кампании не затронуты"
+  },
+  "olvaQuestImplementation20260908": {
+    "status": "superseded-by-evidence-table",
+    "authority": "Полностью собрать квест, самостоятельно генерировать арты и элементы; без дополнительных остановок по этапам",
+    "sceneId": "olva-date-rehearsal",
+    "canonicalData": "content/campaigns/penisuela-olva-quest.json",
+    "guide": "content/campaigns/penisuela-session-preview-guide.md",
+    "supersedes": [
+      "olvaQuestOutline20260908",
+      "отложенный статус квеста в предыдущих отчётах"
+    ],
+    "releaseVerification": {
+      "path": "qa/olva-quest-2026-09-08.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "assets": [
+      "assets/concepts/campaigns/penisuela/scenes/olva-date-room.png",
+      "assets/concepts/campaigns/penisuela/scenes/olva-date-reaction.png",
+      "assets/concepts/campaigns/penisuela/scenes/olva-date-gift.png",
+      "assets/concepts/campaigns/penisuela/scenes/olva-date-resolution.png",
+      "assets/concepts/campaigns/penisuela/ui/olva-date-props.png"
+    ],
+    "tests": {
+      "paths": 12,
+      "bridgeChecks": 838,
+      "browser": "1280×800 и 1024×768; отдельный origin для тестового сохранения",
+      "build": "passed",
+      "pagesBuild": "passed"
+    }
+  },
+  "olvaEvidenceTable20260908": {
+    "status": "implemented",
+    "authority": "Автор утвердил стол доказательств и голосование, попросил реализовать; прямоугольный стол заменён овальным по исходному арту.",
+    "supersedes": [
+      "olvaQuestImplementation20260908",
+      "olvaQuestOutline20260908"
+    ],
+    "canonicalData": "content/campaigns/penisuela-olva-quest.json",
+    "assets": [
+      "assets/concepts/campaigns/penisuela/scenes/olva-date-room.png",
+      "assets/concepts/campaigns/penisuela/scenes/olva-evidence-table-oval.png"
+    ],
+    "releaseVerification": {
+      "path": "qa/olva-evidence-table-2026-09-08.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "olvaEvidenceRevision20260909": {
+    "status": "implemented",
+    "authority": "Автор поручил исправить перенос, осмотр, влияние Вуманайзера, арты исходов и выход; затем попросил продолжить.",
+    "releaseVerification": {
+      "path": "qa/olva-evidence-revision-2026-09-09.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "canonicalData": "content/campaigns/penisuela-olva-quest.json",
+    "visualApproval": "Производные кадры подключены по поручению самостоятельной сборки; отдельная оценка автором качества ещё не получена."
+  },
+  "olvaCoupleFate20260909": {
+    "status": "implemented",
+    "authority": "Автор поручил оформить стол и предметы, заменить решения вечера судьбой пары и открывать компромис Вуманайзером.",
+    "supersedes": [
+      "olvaEvidenceRevision20260909"
+    ],
+    "canonicalData": "content/campaigns/penisuela-olva-quest.json",
+    "releaseVerification": {
+      "path": "qa/olva-couple-fate-2026-09-09.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "assets": "Три существующих кадра исходов; портреты — отображение фрагментов утверждённого общего арта без изменения исходного изображения.",
+    "evidenceExpansion": "Автор поручил больше улик с доводами за обе стороны: реализовано десять обычных и условный Вуманайзер с осмотром. Открытие третьего исхода перенесено на переход к голосованию.",
+    "navigationAndDocumentFixes": "Один reducer навигации, повторный переход сразу к голосам, постоянные размеры страниц, авторские почерки и картинки предметов, новый прозрачный Вуманайзер; все выходы в guest-bungalows."
+  },
+  "campaignRegression20260909": {
+    "status": "implemented",
+    "authority": "Автор поручил регресс всей текущей кампании и точное восстановление блоков, отдельно указал застрявшее решение танцоров; внешние страницы исключил.",
+    "releaseVerification": {
+      "path": "qa/campaign-regression-2026-09-09.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    },
+    "canonicalData": "content/campaigns/penisuela-session-preview.json",
+    "migration": "Старые журналы принимаются; при отсутствии снимков состояние начала блока восстанавливается по журналу. Историческая UI-раскладка до появления снимков недоступна."
+  },
+  "crownNavigation20260909": {
+    "status": "implemented",
+    "authority": "Автор остановил большую GM-панель и потребовал две постоянные кнопки во всей игре: в начало сцены и шаг назад; остальные только для действий текущей сцены.",
+    "releaseVerification": {
+      "path": "qa/crown-navigation-2026-09-09.md",
+      "status": "passed-scoped",
+      "targetedChecks": [
+        {
+          "id": "guest-skills-2026-09-09",
+          "path": "qa/guest-skills-2026-09-09.md",
+          "status": "passed",
+          "scope": "Три навыка освобождённых союзников, Angel video ×2, отражение, общий d6 лечения, гарантированный крит, undo/save/phase cleanup. Browser: ручные броски, 1024/1280 px. Цифровой d6 в браузере не проверен: общий 3D roller недоступен в тестовом сеансе."
+        },
+        {
+          "id": "grey-wiese-video-2026-09-09",
+          "path": "qa/grey-wiese-video-2026-09-09.md",
+          "status": "passed",
+          "scope": "Пользовательский ролик Grey Wiese: цифровой d6, playbackRate=2, завершение, пропуск и undo без повторного лечения. Build/typecheck/pages и ссылки на ассеты."
+        },
+        {
+          "id": "kreed-video-and-icons-2026-09-09",
+          "path": "qa/kreed-video-and-icons-2026-09-09.md",
+          "status": "passed",
+          "scope": "Проверен ролик Kreed ×2, возврат, гарантированный крит, undo и пропуск. Три иконки сгенерированы как неутверждённые драфты."
+        }
+      ]
+    }
+  },
+  "netakPhaseOneSkills20260910": {
+    "status": "implemented",
+    "releaseVerification": {
+      "status": "passed-targeted-checks",
+      "report": "docs/campaigns/penisuela/qa/netak-phase-one-skills-2026-09-10.md",
+      "scope": "Three approved phase-one skills and icons, targeted combat and browser regression; not whole-campaign release approval"
+    }
+  },
+  "netakPhaseOneSkillVideoPrompts20260910": {
+    "videoPlan": {
+      "status": "draft",
+      "path": "docs/campaigns/penisuela/video-plan.json",
+      "sequences": [
+        "netak-assistants-skill",
+        "netak-mirrors-skill",
+        "netak-toxic-skill"
+      ]
+    },
+    "videoProduction": "docs/campaigns/penisuela/video-production.md",
+    "generatedVideos": true
+  },
+  "netakAssistantsVideo20260910": {
+    "status": "runtime-integrated",
+    "releaseVerification": {
+      "status": "passed-targeted-checks",
+      "report": "docs/campaigns/penisuela/qa/netak-assistants-video-2026-09-10.md"
+    }
+  },
+  "netakMirrorsVideo20260910": {
+    "status": "runtime-integrated",
+    "releaseVerification": {
+      "status": "passed-targeted-checks",
+      "report": "docs/campaigns/penisuela/qa/netak-mirrors-video-2026-09-10.md"
+    }
+  },
+  "netakToxicVideo20260910": {
+    "status": "runtime-integrated",
+    "releaseVerification": {
+      "status": "passed-targeted-checks",
+      "report": "docs/campaigns/penisuela/qa/netak-toxic-video-2026-09-10.md"
+    }
+  },
+  "netakPhaseTwoSkills20260910": {
+    "status": "implemented",
+    "artPlan": "docs/campaigns/penisuela/art-plan.json#netakDragonSkills20260910",
+    "releaseVerification": {
+      "status": "passed-targeted-checks",
+      "report": "docs/campaigns/penisuela/qa/netak-phase-two-skills-2026-09-10.md",
+      "scope": "Three phase-two skills and icons, combat regression and in-app browser; no whole-campaign release claim."
+    }
+  },
+  "netakRetakeVideoPrompt20260910": {
+    "stage": "videoPlan",
+    "status": "draft",
+    "sequenceId": "netak-retake-skill",
+    "target": "grok",
+    "note": "First skill frame selected by user; six-second prompt delivered. No video generated or integrated."
+  },
+  "netakRetakeVideo20260910": {
+    "status": "runtime-integrated",
+    "revision": 2,
+    "actionId": "netak-retake",
+    "videoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-retake.mp4",
+    "posterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-retake-poster.png",
+    "sha256": "d2b793d10e01037f5826f07284204eb35cf756d120e2bbd66635d954790a6255",
+    "playbackRate": 2,
+    "report": "docs/campaigns/penisuela/qa/netak-retake-video-2026-09-10.md"
+  },
+  "netakFiredVideoPrompt20260910": {
+    "stage": "videoPlan",
+    "status": "draft",
+    "sequenceId": "netak-fired-skill",
+    "target": "grok",
+    "note": "User continued to the second dragon skill. Six-second prompt and existing clean frame delivered; video not generated."
+  },
+  "netakFiredVideo20260910": {
+    "status": "runtime-integrated",
+    "actionId": "netak-fired",
+    "videoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-fired.mp4",
+    "posterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-fired-poster.png",
+    "sha256": "e8b40355bd3e19af0471db4b852f75b78bc4ded25d75354b0a007723d5089b42",
+    "playbackRate": 2,
+    "report": "docs/campaigns/penisuela/qa/netak-fired-video-2026-09-10.md"
+  },
+  "netakMainCharacterVideoPrompt20260910": {
+    "stage": "videoPlan",
+    "status": "draft",
+    "sequenceId": "netak-main-character-skill",
+    "target": "grok",
+    "note": "User continued to third dragon skill. Six-second prompt and clean frame delivered; video not generated."
+  },
+  "netakMainCharacterVideo20260910": {
+    "status": "runtime-integrated",
+    "actionId": "netak-main-character",
+    "videoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-main-character.mp4",
+    "posterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-main-character-poster.png",
+    "sha256": "02a0b00f611db7ff67c08184768105a3d7e77fbeca56511c438a5c7e3b25070d",
+    "playbackRate": 2,
+    "report": "docs/campaigns/penisuela/qa/netak-main-character-video-2026-09-10.md"
+  },
+  "sceneNarrationEditorial20260911": {
+    "status": "applied",
+    "review": "ready-for-approval",
+    "scope": "28 active scenes, search screen, narration variants and resolved states; slide preface untouched",
+    "report": "docs/campaigns/penisuela/qa/narration-editorial-2026-09-11.md",
+    "readingCopy": "docs/campaigns/penisuela/narration-review-2026-09-11.md",
+    "newCanonicalFacts": [],
+    "mechanicsChanged": false
+  },
+  "olvaStasRecruitment20260911": {
+    "status": "implemented-and-verified",
+    "authorRequest": "Оливия ждёт отсутствующего мужа Полинетты; герои возвращаются в бар, убеждают Станиса участвовать и приводят на консультацию.",
+    "releaseVerification": "qa/olva-stas-recruitment-2026-09-11.md",
+    "tests": [
+      "scripts/test-olva-recruitment.mjs",
+      "scripts/test-olva-quest.mjs",
+      "scripts/test-scene-checkpoints.mjs"
+    ],
+    "newCanon": [
+      "Оливия не знает, где Станис, и ждёт его перед началом консультации.",
+      "Станис боится одностороннего суда; успешное убеждение или обещание выслушать его сторону даёт согласие."
+    ],
+    "compatibility": "Начатые и завершённые столы не требуют повторного поиска; ключи к Егорику не заменяют согласие Станиса."
+  },
+  "narrationWithoutDialogue20260911": {
+    "status": "implemented-and-verified",
+    "authorRule": "В описаниях сцен только литературная вводная рассказчика; диалоги и прямые подсказки запрещены. Предисловие со слайдами не менять.",
+    "releaseVerification": "qa/narration-without-dialogue-2026-09-11.md",
+    "readingCopy": "narration-review-2026-09-11.md",
+    "test": "scripts/test-penisuela-narration.mjs",
+    "newCanonFacts": []
+  },
+  "castNames20260911": {
+    "status": "implemented-and-verified",
+    "approvedNames": [
+      "Леди Оливия, наставница чувственных искусств",
+      "Станис",
+      "Полинетта"
+    ],
+    "releaseVerification": "qa/olivia-stanis-polinetta-names-2026-09-11.md",
+    "compatibility": "Стабильные ID, флаги, маршруты и пути ассетов сохранены."
+  },
+  "olvaEvidencePhotos20260911": {
+    "status": "implemented",
+    "releaseVerification": "qa/olva-evidence-photos-2026-09-11.md",
+    "approvedAssets": [
+      "olva-fishing-photo",
+      "olva-campus-photo"
+    ],
+    "newCanon": [
+      "Станис и Полинетта иногда вместе ездят на рыбалку и с нежностью вспоминают эти дни.",
+      "Станис прокомментировал взрослых студенток у университета; улика поднимает спор о личных границах и уважении."
+    ],
+    "mechanics": "12 основных улик и дополнительный Вуманайзер. Распределение не голосует за героев; награды и исходы прежние."
+  },
+  "danceConsoleRefresh20260911": {
+    "status": "implemented-and-verified",
+    "releaseVerification": "qa/dance-console-refresh-2026-09-11.md",
+    "scope": "Визуальная переработка существующего DanceTrackConsole, без изменения правил выбора песен и боя.",
+    "media": "Аудиофайлы дорожек и видео петли в канонических данных пока отсутствуют."
+  },
+  "restEnemyBalance20260911": {
+    "status": "implemented-and-checked",
+    "request": "Полный отдых, баланс HP/AC по всем боям до отдыха с учётом каждого героя; врагами управляет мастер; новые навыки простые и одинаковые у похожих врагов.",
+    "report": "balance-review.md",
+    "qa": "qa/balance-rest-2026-09-11.md",
+    "implementation": [
+      "content/campaigns/penisuela-gallery-gameplay.json",
+      "content/campaigns/penisuela-olva-quest.json",
+      "src/entities/campaign-session/model/olvaRest.ts"
+    ],
+    "publication": "not-requested"
+  },
+  "historicalPlanningReferences": {
+    "artPlan": {
+      "path": "art-plan.json",
+      "archive": "history/2026-09-14-before-tuning/workflow.json#artifacts/artPlan",
+      "scope": "Исторический план/журнал прежних этапов. Текущие реализованные файлы и готовность описаны в artifacts; старые blockers не являются списком незавершённых работ текущей кампании."
+    },
+    "artReview": {
+      "path": null,
+      "archive": "history/2026-09-14-before-tuning/workflow.json#artifacts/artReview",
+      "scope": "Исторический план/журнал прежних этапов. Текущие реализованные файлы и готовность описаны в artifacts; старые blockers не являются списком незавершённых работ текущей кампании."
+    },
+    "videoPlan": {
+      "path": "video-plan.json",
+      "archive": "history/2026-09-14-before-tuning/workflow.json#artifacts/videoPlan",
+      "scope": "Исторический план/журнал прежних этапов. Текущие реализованные файлы и готовность описаны в artifacts; старые blockers не являются списком незавершённых работ текущей кампании."
+    },
+    "implementationPlan": {
+      "path": "implementation-plan.md",
+      "archive": "history/2026-09-14-before-tuning/workflow.json#artifacts/implementationPlan",
+      "scope": "Исторический план/журнал прежних этапов. Текущие реализованные файлы и готовность описаны в artifacts; старые blockers не являются списком незавершённых работ текущей кампании."
+    }
+  },
+  "compatibilityRuntimeReferences": {
+    "artistsDressingRoomRuntime": {
+      "path": "src/widgets/campaign-scene/ui/ArtistsDressingRoomAdventure/ArtistsDressingRoomAdventure.tsx",
+      "scope": "Архивный компонент, не используется в текущем сюжете; сохранён для истории и совместимых тестов."
+    },
+    "finalBossRuntime": {
+      "path": "src/widgets/campaign-scene/ui/FinalBossAdventure/FinalBossAdventure.tsx",
+      "scope": "Архивный компонент, не используется в текущем сюжете; сохранён для истории и совместимых тестов."
+    }
+  },
+  "maintenance20260914": {
+    "status": "implemented-and-verified",
+    "authority": "Пользователь: исправить пункты 1 и 4, ослабить врагов примерно на 20%, ожидать максимум 1–2 ошибки; руническую охрану оставить.",
+    "previousWorkflow": "history/2026-09-14-before-tuning/workflow.json",
+    "report": "release-verification.md",
+    "balanceReport": "balance-review.md",
+    "activeSceneCount": 28,
+    "searchSceneCount": 1,
+    "checkpointCount": 6,
+    "partySize": 5,
+    "encounterCount": 10,
+    "activeEncounterCount": 7,
+    "combatPointCount": 8,
+    "bossPhaseCount": 2,
+    "endingCount": 2,
+    "activePresetCount": 47,
+    "danceTrackCount": 12,
+    "wrongTrackCount": 11,
+    "expectedWrongTrackConfirmations": {
+      "min": 1,
+      "max": 2
+    },
+    "zeroMistakeRule": "Верный с первой попытки тоже даёт одну волну. Ожидание 1–2 ошибок не ограничивает интерфейс.",
+    "guardPassageRule": "Сохранено намеренно: бой не выдаёт пропуска, повторная попытка без допуска может вызвать новую охрану.",
+    "hpMultiplier": 0.8,
+    "rounding": "nearest integer; Egorik guards 56 → 45",
+    "newSkills": 0,
+    "newMedia": 0,
+    "regression": {
+      "passed": 38,
+      "total": 38
+    },
+    "build": "passed",
+    "pagesBuild": "passed",
+    "browser": "not-repeated",
+    "publication": "not-requested",
+    "newCanonicalFacts": [
+      "HP семи действующих встреч: VIP 56, носильщики 48, руны 44, бит-стражи 28, стражи Егорика 45, обе фазы Нетака по 176."
+    ]
+  },
+  "prologueMusicFrozenDancers20260914": {
+    "status": "implemented-automated-checks-passed-browser-not-run",
+    "authority": "Запрос пользователя: стартовый арт Кострюльки, подключение скачанной музыки, правка легенды танцоров. Последнее уточнение: видео пульта должно работать как прежде.",
+    "report": "docs/campaigns/penisuela/qa/prologue-music-frozen-dancers-2026-09-14.md",
+    "artStatus": "generated-awaiting-user-review",
+    "musicStatus": "six-local-tracks-in-shared-netak-playlist-phase-order-provisional",
+    "dancers": "frozen-until-correct-song-text-only-video-preview-preserved",
+    "remaining": [
+      "При необходимости распределить плейлист Нетака по фазам.",
+      "Живая проверка воспроизведения звука."
+    ],
+    "checks": {
+      "typecheck": "passed",
+      "build": "passed",
+      "regression": "39 suites passed, including two targeted reruns",
+      "browser": "not run"
+    }
+  },
+  "prologueIntro20260914": {
+    "status": "implemented-automated-checks-passed-browser-blocked",
+    "authority": "Запрос пользователя: вставить переданную заставку после пролога, затем чёрный экран с коротким текстом на 5 секунд и открыть номер.",
+    "videoId": "penisuela-video-prologue-intro",
+    "nextSceneId": "hotel-overload",
+    "titleCard": {
+      "text": "На следующее утро",
+      "durationMs": 5000
+    },
+    "releaseVerification": {
+      "status": "targeted-checks-passed-browser-blocked-existing-guide-mismatch",
+      "report": "docs/campaigns/penisuela/qa/prologue-intro-2026-09-14.md",
+      "scope": "Переход из пролога в номер; не является приёмкой всей кампании."
+    }
+  },
+  "credits20260915": {
+    "status": "implemented-art-approved-automated-checks-passed-browser-waived",
+    "authority": "Автор запросил титры после обеих концовок, подтвердил прототипы и модели, затем попросил 2–3 кадра пьянки с каждым игровым героем и исключениями Pussy Sultan, Алексис и Нетак. Затем автор утвердил кадры Леди Оливии и Станиса с Полинеттой и поручил переписать подписи ко всем фотографиям. Автор поручил привязать фотографии к именам изображённых героев; добавлены явные creditIds и группировка.",
+    "data": "content/campaigns/penisuela-credits.json",
+    "guide": "content/campaigns/penisuela-credits-guide.md",
+    "artPlan": "docs/campaigns/penisuela/credits-art-plan.json",
+    "plannedPhotoCount": 20,
+    "partySize": 5,
+    "releaseVerification": {
+      "status": "targeted-automated-checks-passed-browser-waived-by-user",
+      "report": "docs/campaigns/penisuela/qa/credits-ending-pause-2026-09-16.md",
+      "scope": "Только титры, без приёмки всей кампании.",
+      "previousReport": "docs/campaigns/penisuela/qa/credits-postlude-video-2026-09-16.md",
+      "browserDecision": "Заверши без браузера"
+    },
+    "photoCount": 20,
+    "artReview": "docs/campaigns/penisuela/credits-art-review.json",
+    "publication": "not-requested",
+    "presentation": "character-bound-polaroid-roll",
+    "additionalArtReview": "docs/campaigns/penisuela/credits-art-review-extras.json",
+    "remainingCastArt": {
+      "status": "published",
+      "count": 5,
+      "characterCount": 6,
+      "artPlan": "docs/campaigns/penisuela/credits-art-plan.json",
+      "draftDirectory": "art-drafts/credits/remaining-cast-v1",
+      "userApproval": "approved",
+      "review": "docs/campaigns/penisuela/credits-art-review-remaining-cast.json",
+      "album": "art-drafts/credits/remaining-cast-v1/Новые кадры.md",
+      "publishedCount": 5,
+      "pendingCount": 0,
+      "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+      "revisedVlogApprovalMessage": "четко"
+    },
+    "music20260916": {
+      "status": "implemented-automated-checks-passed-browser-waived",
+      "trackId": "credits-step-breath",
+      "title": "Animal ДжаZ — Шаг вдох (Remastered)",
+      "durationSeconds": 252.36,
+      "volume": 0.5,
+      "authority": "Скачанную музыку включить на титрах; после проверки автор попросил убрать все кнопки и прекратить самопроизвольное выключение музыки.",
+      "behavior": "Однократное воспроизведение песни без loop и без повторного запуска завершённого трека. Старт в действии завершения истории; один плеер сохраняется при переходе и StrictMode. По окончании ленты музыка останавливается, строка благодарности остаётся 2 секунды, затем видео со своим звуком и чёрный экран.",
+      "controls": "none",
+      "browserVerification": "waived-again-by-user-2026-09-16",
+      "directUrlLimitation": "Без предшествующего взаимодействия браузер может запретить audible autoplay; настройками приложения это ограничение не отменяется."
+    },
+    "gameMasterArt20260916": {
+      "status": "published",
+      "assetId": "credits-game-master-tavern",
+      "userApproval": "approved",
+      "approvalMessage": "окаю кадр с крайнеплотом, добавляй ег ов титры",
+      "review": "docs/campaigns/penisuela/credits-art-review-game-master.json",
+      "heading": "Мастер игры"
+    },
+    "endingRevision20260916": {
+      "status": "implemented-automated-checks-passed-browser-waived",
+      "authority": "музыка не должна повторно включаться в конце; строка со спасибо на пару секунд, после этого ролик",
+      "closingHoldMs": 2000,
+      "musicLoop": false,
+      "afterVideo": "black-screen"
+    }
+  },
+  "postCreditsDragon20260916": {
+    "status": "video-connected-automated-checks-passed-browser-waived",
+    "authority": "Запрос автора: сгенерировать первый кадр и промпт Grok на 8 секунд; точная реплика дана автором.",
+    "artPlan": "docs/campaigns/penisuela/art-plan.json",
+    "artReview": "docs/campaigns/penisuela/post-credits-dragon-art-review.json",
+    "firstFrame": "art-drafts/post-credits-dragon/first-frame-v1.png",
+    "videoPlan": {
+      "path": "docs/campaigns/penisuela/video-plan.json",
+      "sequenceId": "penisuela-post-credits-dragon",
+      "status": "published"
+    },
+    "production": "docs/campaigns/penisuela/video-production.md",
+    "prompt": "art-drafts/post-credits-dragon/grok-8s.txt",
+    "userApproval": "provided-by-user",
+    "runtimeConnected": true,
+    "verification": "docs/campaigns/penisuela/qa/credits-ending-pause-2026-09-16.md",
+    "musicRevision20260916": {
+      "status": "source-audio-preserved",
+      "authority": "в видео с драконом должна быть еще грозная музыка",
+      "music": "Грозная оркестровая партитура, приглушённая под точной русской репликой; финальный низкий медный аккорд."
+    },
+    "approvalMessage": "ролик в загрузках",
+    "video": "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4",
+    "durationSeconds": 10.041667
+  },
+  "dragonDeathSixSeconds20260916": {
+    "status": "connected-and-technically-verified",
+    "authority": "давай теперь кадр смерти дракона и промпт на 6 секунд",
+    "firstFrame": "art-drafts/andrey-video/death-6s/first-frame.png",
+    "sourceArt": "art-drafts/andrey-video/03-death-start-v2.png",
+    "sourceArtApproval": "вторая версия норм",
+    "sourceArtSha256": "2d4ba4f2ebd7b9cc5c7991ed257a642e00713f41dd4026ebdfb9fcb173fbd798",
+    "imageGenerationPerformed": false,
+    "prompt": "art-drafts/andrey-video/death-6s/grok-6s.txt",
+    "videoPlan": {
+      "path": "docs/campaigns/penisuela/video-plan.json",
+      "sequenceId": "penisuela-andrey-death-six-second-video",
+      "status": "published",
+      "readiness": "ready"
+    },
+    "durationSeconds": 6,
+    "runtimeConnected": true,
+    "publicationAuthority": "последнее в загрузках",
+    "runtimePath": "assets/concepts/campaigns/penisuela/scene-videos/andrey-death.mp4",
+    "actualDurationSeconds": 6.041667,
+    "sha256": "be1902d70a20ba86b3c6e4fcea24070a184906cdbc74d81fe4933edf54b6b458",
+    "sourceFile": "grok-video-f7faeec0-2492-45c2-ab1c-e348a64ecdfb.mp4",
+    "previousVideoArchive": "art-drafts/andrey-video/death-6s/previous-death-8s.mp4",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/andrey-death-6s-2026-09-16.md",
+      "status": "passed-technical-browser-waived",
+      "browser": "waived-by-user",
+      "scope": "Замена ролика смерти дракона; исходные H.264/AAC, 1×, событие завершения и возврат на виллу."
+    }
+  },
+  "sceneMusic20260916": {
+    "status": "implemented-automated-checks-passed-browser-waived",
+    "authority": "Скачанная музыка распределяется по сценам на усмотрение ассистента; Каменный шёпот строго в коридоре к Kreed; фоновая музыка по кругу.",
+    "schema": "soundtrack.scenes: Record<sceneId, string[]>; encounter > combat in battle; scene > exploration outside battle.",
+    "tracks": [
+      {
+        "trackId": "stone-whisper",
+        "sourceFile": "kamennyy-shyopot-128-2797d5.mp3",
+        "runtimePath": "assets/concepts/campaigns/penisuela/audio/soundtrack/stone-whisper.mp3",
+        "sha256": "31606c91ddfa4f73fd338f459667333b538db8607e7b5f2ac137921748685c6d",
+        "sceneIds": [
+          "groom-tunnel"
+        ]
+      },
+      {
+        "trackId": "golden-coin-bazaar",
+        "sourceFile": "bazar-zolotykh-monet-134-6bce70.mp3",
+        "runtimePath": "assets/concepts/campaigns/penisuela/audio/soundtrack/golden-coin-bazaar.mp3",
+        "sha256": "3ed46b3efbc2b14fd6e6af0fdc353b92c714ec9319ab10ad8e74c21b0cf76ec4",
+        "sceneIds": [
+          "alexis-room",
+          "alexis-room-after-pussy",
+          "pussy-audience",
+          "pussy-prop-room",
+          "pussy-scepter-return",
+          "igor-unboxing"
+        ]
+      },
+      {
+        "trackId": "wanderers-honey-song",
+        "sourceFile": "medovyy-napev-strannikov-121-d0f448.mp3",
+        "runtimePath": "assets/concepts/campaigns/penisuela/audio/soundtrack/wanderers-honey-song.mp3",
+        "sha256": "c9a28f18c28aaa6730e7410e4c339108a115041b6c28d603b262a1cb7d9fcca4",
+        "sceneIds": [
+          "hotel-gallery",
+          "closed-bar",
+          "guest-bungalows",
+          "bungalow-courtyard",
+          "olva-passes-handoff",
+          "olva-date-rehearsal",
+          "post-kreed-route",
+          "wedding-epilogue"
+        ]
+      },
+      {
+        "trackId": "calm-before-storm",
+        "sourceFile": "zatishe-pered-shtormom-167-39b15e.mp3",
+        "runtimePath": "assets/concepts/campaigns/penisuela/audio/soundtrack/calm-before-storm.mp3",
+        "sha256": "17dab9fd290ed3c5ba8f57aa07c25b0b59a1025b99c359632375ef9f1f5cefe1",
+        "sceneIds": [
+          "hotel-overload",
+          "egorik-bungalow-reveal",
+          "groom-preparation-room",
+          "kreed-disclosure",
+          "graywise-door-trust",
+          "bedroom-reveal",
+          "andrey-villa-breach",
+          "last-take-boss",
+          "villa-after-andrey",
+          "couple-voice-reset",
+          "bad-ending-villa",
+          "bad-ending-netak-wedding",
+          "bad-ending-magical-prison"
+        ]
+      }
+    ],
+    "ordinaryCombatTrackIds": [
+      "netak-ambush",
+      "netak-goblin-gorge"
+    ],
+    "bossPlaylistChanged": false,
+    "creditsLoopChanged": false,
+    "continuity": "Одинаковый плейлист сохраняет текущую композицию и позицию; один трек через native loop, несколько — по кругу. Foreground audio/video приостанавливает фон.",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/scene-music-2026-09-16.md",
+      "status": "passed-technical-browser-waived",
+      "browser": "waived-by-user",
+      "checks": [
+        "soundtrack-routing",
+        "soundtrack-player-lifecycle",
+        "dance-player-regression",
+        "credits-music",
+        "credits-music-handoff",
+        "campaign-credits",
+        "json-and-manifest-references",
+        "source-audio-decode-and-sha256",
+        "typecheck",
+        "build",
+        "build:pages",
+        "pages-audio-paths-and-sha256"
+      ]
+    },
+    "supersedingAdjustments": [
+      "hallBarMusic20260916"
+    ]
+  },
+  "prologueStoneWallsMusic20260916": {
+    "status": "implemented-automated-checks-passed-browser-waived",
+    "authority": "Шепот каменных стен — в пролог; как только откроется последняя сцена, плавно убавить музыку в 0.",
+    "sourceFile": "shepot-kamennykh-sten-127-5a7a9c.mp3",
+    "runtimePath": "assets/concepts/campaigns/penisuela/audio/soundtrack/prologue-stone-walls-whisper.mp3",
+    "sha256": "33793d2f7a702ccf52df4af0b56e05a23f0d6799d9940e6f4dd0642bea904d23",
+    "durationSeconds": 179.519979,
+    "loop": true,
+    "volume": 0.3,
+    "fadeOutMs": 3000,
+    "fadeOnSlideId": "penisuela-scene-kostryulka-flight",
+    "assumption": "Автор не задал длительность затухания; выбрано 3 секунды.",
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/prologue-music-fade-2026-09-16.md",
+      "status": "passed-technical-browser-waived",
+      "browser": "waived-by-user",
+      "checks": [
+        "preview-music-playback",
+        "canonical-preview-guide-parity",
+        "json-and-unique-ids",
+        "audio-decode-and-sha256",
+        "typecheck",
+        "build",
+        "build:pages",
+        "pages-audio-url-and-sha256"
+      ]
+    }
+  },
+  "hallBarMusic20260916": {
+    "status": "implemented-automated-checks-passed-browser-waived",
+    "authority": "В холле одна музыка при переходах между комнатами; в баре тишина до освобождения танцоров.",
+    "hallSceneIds": [
+      "hotel-gallery",
+      "alexis-room",
+      "alexis-room-after-pussy",
+      "pussy-audience",
+      "pussy-prop-room",
+      "pussy-scepter-return"
+    ],
+    "hallTrackId": "wanderers-honey-song",
+    "barSceneId": "closed-bar",
+    "barRequiredFlag": "dance-troupe-freed",
+    "barGateAppliesToCombat": true,
+    "puzzleSongsUnchanged": true,
+    "releaseVerification": {
+      "path": "docs/campaigns/penisuela/qa/hall-bar-music-2026-09-16.md",
+      "status": "passed-technical-browser-waived",
+      "browser": "waived-by-user"
+    }
+  },
+  "sultanIntimidationDice20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "Пользователь запросил исправление текста, арт после успешного запугивания и принял кадр: «Да, добавляй в игру». Исправление сбоя кубика продолжает предыдущий запрос.",
+    "canonicalAsset": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-intimidated-standing.png",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/sultan-intimidation-dice-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "skills": [
+      "plan-dnd-campaign-art",
+      "generate-dnd-campaign-art",
+      "imagegen",
+      "review-dnd-campaign-art",
+      "publish-dnd-campaign-assets",
+      "publish-dnd-campaign",
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ]
+  },
+  "guardBattleModals20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "Прямой запрос пользователя: литературная модалка провала запугивания с кнопкой «Принять бой», убрать уход из окна бара без ключей.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/guard-battle-modals-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "newFacts": [
+      "Провал запугивания призывает стражу и открывает обязательное подтверждение; бой начинается по кнопке.",
+      "Спуск в бар без полного комплекта пропусков оставляет только принятие боя."
+    ]
+  },
+  "skillMediaTransitions20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "Пользователь запросил сначала анимацию успеха/неудачи, затем видео навыка и плавные переходы музыки между навыком и боем.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/skill-media-transitions-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ]
+  },
+  "stasOlvaNavigationMusic20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "Пользователь сообщил об отсутствии окна пропуска Станиса, выхода от Оливии и одинаковой музыке сцен; распределение существующей музыки ранее поручено на усмотрение исполнителя.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/stas-olva-navigation-music-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "newStoryFacts": []
+  },
+  "combatAudit20260916": {
+    "status": "implemented-combat-verified-with-existing-release-blockers",
+    "authority": "Прямой запрос пользователя: дебаг боя, падение, помеха, все эффекты и навыки, инициатива и видео только в конце хода после всех бросков.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/combat-audit-2026-09-16.md",
+      "terminalChecks": "typecheck/build/build:pages PASS; combat tests PASS; full regression 52/55, three pre-existing guide-sync failures",
+      "browserChecks": "in-app browser: summon bite/save/disadvantage, prone/get-up/advantage, Lena multi-target fire through final video, reload; 1024 and 1280 px"
+    },
+    "skills": [
+      "test-dnd-gameplay-scenarios",
+      "implement-dnd-rules-engine",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": false
+  },
+  "musicBlockContinuity20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "Пользователь явно объединил экраны пробуждения, галереи, бара и бунгало и потребовал непрерывную музыку без повторного старта внутри сцены.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/music-block-continuity-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "regression": "До исправления воспроизведён сброс source в undefined при временном unmount экрана; после исправления источник, позиция и play/pause сохраняются при задержанном переходе.",
+    "musicBlocks": [
+      "morning",
+      "hall",
+      "bar",
+      "bungalows"
+    ],
+    "newStoryFacts": [],
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ]
+  },
+  "bunkerVillaMusic20260916": {
+    "status": "implemented-terminal-verified",
+    "authority": "После требования непрерывной музыки целых сцен пользователь уточнил покрытие бункера и виллы.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/bunker-villa-music-2026-09-16.md",
+      "terminalChecks": "passed",
+      "browserChecks": "not-run-user-request"
+    },
+    "musicBlocks": [
+      "morning",
+      "hall",
+      "bar",
+      "bungalows",
+      "bunker",
+      "villa"
+    ],
+    "sceneExceptions": [
+      "groom-tunnel"
+    ],
+    "newStoryFacts": [],
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ]
+  },
+  "playthroughDebug20260916": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Пользователь запросил дебаг веток Пенисуэлы, явные переходы после NPC и исправление цикла победы/награды после GM-обнуления HP; отдельно подтвердил, что шаг назад отменяет последнее действие, включая переход.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/playthrough-debug-2026-09-16.md",
+      "terminalChecks": "56/56 regression suites PASS; typecheck/build/build:pages PASS; diff check PASS",
+      "browserChecks": "Built-in Codex browser: GM victory over all three VIP guards, reward and exit without loop; pickup/transition/reload/repeated undo; checkpoint navigation; explicit exit and Kreed transition; 1024×768 and 1280×800; no console errors",
+      "scope": "Changed gameplay flows. Detailed coverage and untested unrelated checklist items are recorded in the report."
+    },
+    "skills": [
+      "test-dnd-gameplay-scenarios",
+      "implement-dnd-gm-console",
+      "implement-dnd-campaign-ui",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": false,
+    "published": false
+  },
+  "combatEffectAnimations20260916": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Пользователь уточнил: нужны разовые анимации после наложения боевого эффекта, затем значок и подпись; пассивки не должны постоянно двигаться. Дополнительно сообщил о некликабельном журнале боя.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/combat-effect-animations-2026-09-16.md",
+      "terminalChecks": "57/57 regression suites PASS; typecheck/build/build:pages PASS",
+      "browserChecks": "Built-in Codex browser: 1024×768 and 1280×800; real emergency landing application → finite animation → four static prone badges; journal opens during animation and via keyboard; Escape and focus return; 34 active previews stop; no console errors or horizontal overflow",
+      "scope": "Finite effect feedback and journal interaction. Detailed coverage and limits are recorded in the report."
+    },
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": false,
+    "published": false
+  },
+  "clickableEffectsAndProne20260916": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Пользователь запросил описание бафа/дебафа по клику на подпись и явно подтвердил изменение падения: преимущество всем атакам, подъём без штрафа.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/clickable-effects-and-prone-2026-09-16.md",
+      "terminalChecks": "57/57 regression suites PASS; typecheck/build/build:pages PASS; canonical JSON and reference/mirror checks PASS",
+      "browserChecks": "Built-in Codex browser, 1024×768 and 1280×800: enemy and locked-ally effect descriptions, unchanged selected target, keyboard, focus return, positive buff, Lambert ranged advantage, journal and existing skill help; no console errors or horizontal overflow",
+      "scope": "Effect descriptions, prone rules and historical status compatibility. Other routes were not re-tested."
+    },
+    "balanceVerification": "Five canonical heroes; 100 normal-policy trials each for carriers, dragon and full campaign; 100/100 victories in each; no stat rebalancing.",
+    "newStoryFacts": [],
+    "ruleChanges": [
+      "Prone grants advantage to all incoming attacks until the target turn starts.",
+      "Standing up is automatic and free. Legacy movement-spent statuses no longer apply or block abilities."
+    ],
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "design-dnd-gameplay",
+      "implement-dnd-rules-engine",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "published": false
+  },
+  "manualThorinHelp20260916": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Пользователь попросил добавлять прибавку Выручалочки руками вместо автоматического срабатывания.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/manual-thorin-help-2026-09-16.md",
+      "terminalChecks": "58/58 regression suites PASS; typecheck/build/build:pages PASS; canonical JSON, references and mirrors PASS",
+      "browserChecks": "Built-in Codex browser, 1024×768 and 1280×800: manual AC help and refusal, exact outcome preview, shared charge, reload, undo, journal; Thorin book; no console errors or horizontal overflow",
+      "scope": "Manual choice of the existing +2 reaction. Saving throws and rerolls verified with real commands/reducer/journal. Detailed limits in report."
+    },
+    "ruleChanges": [
+      "Thorin assistance requires an explicit manual choice after the roll; no automatic application or resource spending."
+    ],
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": false,
+    "skills": [
+      "design-dnd-gameplay",
+      "implement-dnd-rules-engine",
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "published": false
+  },
+  "actionCostAndLimits20260917": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Автор потребовал завершать ход после прежних дополнительных активных навыков, оставив изменение размера; затем отдельно сохранил полёт. Также запросил видимые лимиты и последствия применения.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/action-cost-and-limits-2026-09-17.md",
+      "terminalChecks": "59/59 regression suites PASS; typecheck/build/build:pages PASS; JSON, mirrors and references PASS",
+      "browserChecks": "Built-in Codex browser 1024×768 and 1280×800: action cost, scope and counters; Grandaxin final healing and turn advance; spent skill preview; Ice Heart campaign charge and turn advance; flight + size retain Linda turn; hero book; no console errors or horizontal overflow",
+      "scope": "Four action-cost changes and common skill/resource UI. Detailed coverage limits in report."
+    },
+    "ruleChanges": [
+      "Grandaxin, Creative Crisis, Work Until Pulse Drops and Ice Heart finish the turn after all rolls.",
+      "Linda flight and size change retain the action, each once per own turn."
+    ],
+    "balanceVerification": "Five heroes, 100 normal-policy runs each for carriers, dragon and full campaign: 100/100 victories each; no numeric rebalance.",
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": false,
+    "skills": [
+      "design-dnd-gameplay",
+      "implement-dnd-rules-engine",
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "published": false
+  },
+  "enemySkillsAndBalance20260917": {
+    "status": "implemented-scenario-and-browser-verified",
+    "authority": "Автор запросил регресс боя, отдельный выбор атаки и навыка врагов, нарастающую сложность с учётом избегания лишних боёв и мотивацию использовать паузу. Дополнительно потребовал полное HP и восстановление всех навыков и предметов.",
+    "releaseVerification": {
+      "report": "docs/campaigns/penisuela/qa/enemy-skills-and-balance-2026-09-17.md",
+      "terminalChecks": "60/60 regression suites PASS; typecheck/build/build:pages PASS; JSON, references, gameplay/script mirrors, combat graph and diff checks PASS",
+      "browserChecks": "Built-in browser 1024×768 and 1280×800: ordinary attack vs skill, NPC selection, trip, five cold saves, resistances and manual Thorin help, reload mid-save, fire dice/burning/video, effect descriptions and journal, full-rest/reload/undo, route smoke. No console errors or horizontal overflow in checked layouts.",
+      "scope": "Combat routes simulated using production commands/reducer; listed interactions exercised through browser. Full narrative dialogue walkthrough not repeated. Legacy story-state validator targets removed scenes; see report."
+    },
+    "balanceVerification": {
+      "artifact": "docs/campaigns/penisuela/qa/enemy-skills-and-balance-2026-09-17.json",
+      "trialsPerCaseAndPolicy": 1000,
+      "configurations": 28,
+      "partySize": 5,
+      "totalHp": 183,
+      "smartMinimalPreBossMeanHp": 82.876,
+      "smartMinimalNoRestVictory": 0.721,
+      "smartMinimalRestBeforeBossVictory": 0.99,
+      "assumptions": "Deterministic normal, smart and resourceful policies; no optional manual d8 rests/location overrides; one or two music mistakes. Not an optimal-play proof."
+    },
+    "ruleChanges": [
+      "Four enemy groups receive separate active skills with one use per enemy per battle; normal attacks no longer trigger these effects automatically.",
+      "Early enemies use 18/11, 22/12 and 26/13 HP/AC; Egorik guards 38/14 with cold AOE. Netak normal damage 2d6+3; toxic cloud 3d6 and dragon cold 3d6+2.",
+      "Cold saving-throw damage respects cold resistance, dragonborn armour and heat reactions; UI shows reduced damage and heat bonus.",
+      "Timeout restores full current maximum HP, ALL hero ability scopes including campaign and all owned item charges. The card is consumed once outside combat; missing items are not recreated."
+    ],
+    "newStoryFacts": [],
+    "gameplayNumbersChanged": true,
+    "skills": [
+      "design-dnd-gameplay",
+      "create-dnd-enemy",
+      "implement-dnd-rules-engine",
+      "implement-dnd-npc-behavior",
+      "implement-dnd-campaign-ui",
+      "test-dnd-gameplay-scenarios",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "published": false
+  },
+  "egorikVoiceArt20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": "окаю вставляй",
+    "scope": "Утверждённый арт проверки голосов Егорика и Настасьи, существующий журнал и ракурсы.",
+    "artPlan": "egorik-voice-test-art-plan.json",
+    "artReview": "egorik-voice-test-art-review.json",
+    "releaseVerification": {
+      "report": "qa/egorik-voice-art-2026-09-20.md",
+      "terminalChecks": "Egorik scenario, typecheck, build, build:pages, JSON and scoped content links/sync PASS.",
+      "browserChecks": "Не выполнены: инструменты встроенного браузера недоступны; отдельное разрешение на standalone отсутствует."
+    }
+  },
+  "groomEntranceAndChecks20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": [
+      "окаю",
+      "внутри прохода на все возможные варианты надо сделать небольшие проверки"
+    ],
+    "scope": "Внешний вход с кликабельной дверью и восемь лёгких внутренних проверок; совместимый журнал.",
+    "artPlan": "groom-entrance-art-plan.json",
+    "artReview": "groom-entrance-art-review.json",
+    "releaseVerification": {
+      "report": "qa/groom-entrance-and-checks-2026-09-20.md",
+      "terminalChecks": "Eight checks; 96 tunnel branches; enter/undo/reload/old saves; 966 bridge assertions; JSON and scoped sync; typecheck/build/build:pages PASS.",
+      "browserChecks": "Не выполнены: встроенный браузер недоступен."
+    }
+  },
+  "graywiseTour20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": [
+      "окаю",
+      "арт с дверью зря убрал; он следующий после арта с квартирой"
+    ],
+    "scope": "Утверждённый v5 и три последовательных кадра: рум-тур, закрытая дверь, спальня.",
+    "artPlan": "graywise-tour-art-plan.json",
+    "artReview": "graywise-tour-art-review.json",
+    "releaseVerification": {
+      "report": "qa/graywise-tour-2026-09-20.md",
+      "terminalChecks": "61/61 regression suites, typecheck/build/build:pages, content mirrors, IDs, links and metadata PASS.",
+      "browserChecks": "Не выполнены: инструмент управления встроенным браузером недоступен."
+    }
+  },
+  "netakTransitionsAndCritical20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": [
+      "Первая победа, модалка, Нетак на колене, кнопка второй фазы, превращение",
+      "Критический урон ×2",
+      "Музыка между фазами та же боевая",
+      "модалка победы — анимация смерти — анимация портала — разрушенная вилла",
+      "арт с мёртвым драконом в момент портала"
+    ],
+    "scope": "Оба подтверждения победы, управляемое превращение, портал после смерти над последним кадром, сохранение музыки, полный крит ×2 и широкая кнопка автоматической атаки.",
+    "skills": [
+      "design-dnd-gameplay",
+      "implement-dnd-rules-engine",
+      "implement-dnd-campaign-ui",
+      "publish-dnd-campaign-assets",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "releaseVerification": {
+      "report": "qa/netak-transitions-and-critical-2026-09-20.md",
+      "terminalChecks": "61/61 regression suites; typecheck/build/build:pages; five-hero simulation 1200 runs; JSON, references, exact mirrors, image metadata PASS.",
+      "browserChecks": "Не выполнены: инструмент управления встроенным браузером недоступен."
+    },
+    "published": false
+  },
+  "creditsMusicAndSpeed20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": [
+      "я новую песню в загрузки скачал, давай ее в титры поставим",
+      "еще быстрее давай х2"
+    ],
+    "trackId": "credits-step-breath",
+    "title": "Grey Wiese — Je reviens te chercher",
+    "source": "assets/concepts/campaigns/penisuela/music/credits-je-reviens-te-chercher.mp3",
+    "durationSeconds": 137.9036,
+    "volume": 0.5,
+    "scrollSpeedPxPerSecond": 70,
+    "speedMultiplierFromOriginal": 2,
+    "releaseVerification": {
+      "report": "qa/netak-transitions-and-critical-2026-09-20.md",
+      "terminalChecks": "Credits content, roll, shared media handoff and music checks PASS; MP3 full decode and exact-copy hash PASS.",
+      "browserChecks": "Не выполнены: управление встроенным браузером недоступно."
+    },
+    "published": false
+  },
+  "creditsReturnToBook20260920": {
+    "status": "implemented-terminal-verified-browser-pending",
+    "authority": "после сцены после титров возвращай нас на страницу пенисуэлы в книге",
+    "scope": "Завершение послетитрового ролика обеих концовок возвращает на /region/penisuela через React Router replace.",
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "releaseVerification": {
+      "report": "qa/credits-return-to-book-2026-09-20.md",
+      "terminalChecks": "Real page/widget/playback flow in existing component harness; credits roll and media handoff tests; typecheck/build/build:pages; region reference and diff checks PASS.",
+      "browserChecks": "Не выполнены: управление встроенным браузером недоступно."
+    },
+    "published": false
+  },
+  "luckCoins20260920": {
+    "status": "implemented-verified",
+    "authority": [
+      "внебоевые критические удачи дают монетку на переброс без учёта в интерфейсе",
+      "картинку монетки сгенерируй",
+      "о оливии очень далеко, надо поближе",
+      "Да, вставляй"
+    ],
+    "scope": "Натуральная 20 вне боя и первая успешная приёмка наряда Алексиса показывают монету удачи; отдельный утверждённый арт; ручной переброс без счётчика и инвентаря.",
+    "skills": [
+      "design-dnd-gameplay",
+      "implement-dnd-campaign-ui",
+      "plan-dnd-campaign-art",
+      "generate-dnd-campaign-art",
+      "imagegen",
+      "review-dnd-campaign-art",
+      "publish-dnd-campaign-assets",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "releaseVerification": {
+      "report": "qa/luck-coins-2026-09-20.md",
+      "terminalChecks": "62/62 regression suites; typecheck/build/build:pages; JSON, mirror and reference checks PASS.",
+      "browserChecks": "Built-in browser: confirmed natural 20, critical effect then reward, reload, keyboard, 1024/1280/mobile without horizontal overflow, actual Alexis outfit acceptance and modal stacking; console clean."
+    },
+    "published": false
+  },
+  "completedChronicle20260920": {
+    "status": "implemented-verified",
+    "authority": [
+      "Финальная страница Пенисуэлы в стиле предыдущих кампаний; старт внизу",
+      "Счастливый финал",
+      "Полнее история и больше видео",
+      "Зафиксировать Birkin и духи",
+      "Видео с автозапуском без звука",
+      "Пуш всех накопленных изменений кампании"
+    ],
+    "scope": "20 эпизодов завершённой истории, 15 бесшумных клипов, две подтверждённые награды, переход к прологу внизу.",
+    "skills": [
+      "implement-dnd-campaign-ui",
+      "verify-dnd-campaign-release",
+      "maintain-dnd-world"
+    ],
+    "releaseVerification": {
+      "report": "qa/completed-chronicle-2026-09-20.md",
+      "terminalChecks": "62/62 regression suites; typecheck/build/build:pages; JSON, IDs, links, published assets and guide consistency PASS.",
+      "browserChecks": "Chronicle at 1280/1024/mobile; automatic muted videos; bottom start link; routes; fresh console clean. Full campaign playthrough not repeated; see report."
+    },
+    "published": false
+  }
+}

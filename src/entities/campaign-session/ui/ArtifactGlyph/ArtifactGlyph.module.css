@@ -1,0 +1,184 @@
+.glyph {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.glyph::before {
+  background: var(--gradient-session-scene-shade);
+  border: 1px solid var(--color-brass-alpha-38);
+  border-radius: 50%;
+  content: '';
+  height: 72%;
+  position: absolute;
+  width: 72%;
+}
+
+.caseBody,
+.caseLid {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  box-shadow: var(--shadow-session-control);
+  position: absolute;
+}
+
+.caseBody {
+  align-items: center;
+  border-radius: 0.35rem 0.35rem 0.65rem 0.65rem;
+  display: flex;
+  height: 35%;
+  justify-content: center;
+  top: 43%;
+  transform: perspective(8rem) rotateX(-5deg) rotateZ(-4deg);
+  width: 56%;
+}
+
+.caseLid {
+  border-radius: 0.65rem 0.65rem 0.25rem 0.25rem;
+  height: 18%;
+  top: 30%;
+  transform: perspective(8rem) rotateX(8deg) rotateZ(-4deg);
+  width: 57%;
+}
+
+.crest {
+  color: var(--color-wine);
+  font-family: var(--font-display);
+  font-size: 0.7em;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-shadow: var(--shadow-title);
+}
+
+.clasp {
+  background: var(--color-wine);
+  border: 1px solid var(--color-gold-light);
+  bottom: -8%;
+  height: 22%;
+  position: absolute;
+  width: 13%;
+}
+
+.certificatePaper {
+  align-items: center;
+  background: var(--gradient-parchment);
+  border: 0.08em solid var(--color-gold-dark);
+  box-shadow: var(--shadow-session-control);
+  display: flex;
+  flex-direction: column;
+  height: 58%;
+  justify-content: center;
+  padding: 7% 9%;
+  position: relative;
+  transform: rotate(-4deg);
+  width: 66%;
+}
+
+.certificatePaper::before {
+  border: 0.04em solid var(--color-gold);
+  content: '';
+  inset: 5%;
+  pointer-events: none;
+  position: absolute;
+}
+
+.certificateMonogram {
+  color: var(--color-wine);
+  font-family: var(--font-display);
+  font-size: 1em;
+  line-height: 1;
+}
+
+.certificateLine {
+  background: var(--color-ink-brown);
+  height: 0.035em;
+  margin-top: 0.12em;
+  opacity: var(--opacity-38);
+  width: 64%;
+}
+
+.certificateSeal {
+  align-items: center;
+  background: var(--color-wine);
+  border: 0.035em solid var(--color-gold-light);
+  border-radius: 50%;
+  bottom: 4%;
+  color: var(--color-gold-light);
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 0.22em;
+  height: 0.95em;
+  justify-content: center;
+  position: absolute;
+  right: 8%;
+  width: 0.95em;
+}
+
+.passCard {
+  align-items: center;
+  background: var(--gradient-gold);
+  border: 0.07em solid var(--color-gold-light);
+  border-radius: 0.18em;
+  box-shadow: var(--shadow-session-control);
+  display: flex;
+  flex-direction: column;
+  height: 54%;
+  justify-content: center;
+  padding: 7% 10%;
+  position: relative;
+  transform: rotate(4deg);
+  width: 42%;
+}
+
+.passCard::after {
+  border: 0.035em solid var(--color-wine);
+  content: '';
+  inset: 8%;
+  opacity: var(--opacity-62);
+  position: absolute;
+}
+
+.passHole {
+  background: var(--color-ink-dark);
+  border: 0.035em solid var(--color-gold-light);
+  border-radius: 50%;
+  height: 0.28em;
+  position: absolute;
+  top: 8%;
+  width: 0.28em;
+}
+
+.passMonogram {
+  color: var(--color-wine);
+  font-family: var(--font-display);
+  font-size: 0.8em;
+  font-weight: 800;
+  line-height: 1;
+  text-shadow: var(--shadow-title);
+}
+
+.passLine {
+  background: var(--color-wine);
+  height: 0.035em;
+  margin-top: 0.1em;
+  opacity: var(--opacity-62);
+  width: 72%;
+}
+
+.icon {
+  font-size: 1.1rem;
+}
+
+.art {
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+}
+
+.art::before {
+  box-shadow: var(--shadow-session-panel);
+}
+
+.perfume { width: 100%; height: 100%; color: var(--color-gold-light); position: relative; font-family: var(--font-display); }

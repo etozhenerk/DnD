@@ -1,0 +1,1089 @@
+{
+  "version": 5,
+  "totalHp": 183,
+  "trials": 500,
+  "enemyPolicy": "suggested",
+  "skillRound": 1,
+  "engine": "production commands + applyGalleryEvent",
+  "encounterStats": {
+    "club-beat-guards": {
+      "hp": 28,
+      "ac": 14
+    },
+    "hotel-vip-guards": {
+      "hp": 56,
+      "ac": 14
+    },
+    "prop-room-winding-carriers": {
+      "hp": 48,
+      "ac": 14
+    },
+    "dressing-room-mirror-doubles": {
+      "hp": 14,
+      "ac": 12
+    },
+    "universal-advice-algorithm": {
+      "hp": 15,
+      "ac": 12
+    },
+    "confidentiality-corp-de-ballet": {
+      "hp": 24,
+      "ac": 14
+    },
+    "hotel-bar-arcane-guards": {
+      "hp": 44,
+      "ac": 14
+    },
+    "egorik-bungalow-guards": {
+      "hp": 45,
+      "ac": 14
+    },
+    "andrey-dark-elf": {
+      "hp": 176,
+      "ac": 16
+    },
+    "andrey-dragon": {
+      "hp": 176,
+      "ac": 16
+    }
+  },
+  "assumptions": [
+    "Author expects at most one or two wrong-track confirmations; a correct answer after a mistake adds no further wave.",
+    "No optional d8 rests or automatic location-resource refills between fights; battle resources recover through the actual engine.",
+    "Normal healing below 40% individual HP; cautious below 50%; tactical below 60%.",
+    "Normal controls/AOE; Linda uses flight, tiny form and protective wind; bonus skills; campaign summons saved for boss.",
+    "Enemy targets: suggested; skills are available from round 1; boss skills follow the listed order.",
+    "No forced healing or HP adjustment to reach the target."
+  ],
+  "cases": {
+    "story-quest-before-rest": {
+      "basic": {
+        "trials": 500,
+        "victory": 0.962,
+        "targetBand": 0.224,
+        "allHeroesAtLeast30": 0.046,
+        "allHeroesInTargetBand": 0.002,
+        "hp": {
+          "mean": 44.922,
+          "p10": 13,
+          "median": 45,
+          "p90": 75
+        },
+        "heroes": {
+          "bubsilda": {
+            "maxHp": 38,
+            "hp": {
+              "mean": 8.28,
+              "p10": 0,
+              "median": 8,
+              "p90": 17
+            },
+            "atLeast30": 0.308,
+            "targetBand": 0.148,
+            "down": 0.202,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "linda": {
+            "maxHp": 35,
+            "hp": {
+              "mean": 6.146,
+              "p10": 0,
+              "median": 5,
+              "p90": 15
+            },
+            "atLeast30": 0.282,
+            "targetBand": 0.176,
+            "down": 0.236,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "lambert": {
+            "maxHp": 30,
+            "hp": {
+              "mean": 8.202,
+              "p10": 0,
+              "median": 8,
+              "p90": 16
+            },
+            "atLeast30": 0.484,
+            "targetBand": 0.246,
+            "down": 0.164,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "golovach-lena": {
+            "maxHp": 42,
+            "hp": {
+              "mean": 11.16,
+              "p10": 1,
+              "median": 11,
+              "p90": 21
+            },
+            "atLeast30": 0.416,
+            "targetBand": 0.21,
+            "down": 0.092,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "thorin-pukoshchit": {
+            "maxHp": 38,
+            "hp": {
+              "mean": 11.134,
+              "p10": 0,
+              "median": 11,
+              "p90": 20
+            },
+            "atLeast30": 0.476,
+            "targetBand": 0.198,
+            "down": 0.116,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          }
+        },
+        "rounds": 13,
+        "down": 0.5,
+        "timeouts": 0,
+        "route": {
+          "id": "story-quest-before-rest",
+          "encounters": [
+            "prop-room-winding-carriers",
+            "club-beat-guards"
+          ]
+        },
+        "checkpoints": [
+          {
+            "encounterId": "prop-room-winding-carriers",
+            "reached": 1,
+            "trials": 500,
+            "victory": 1,
+            "targetBand": 0,
+            "allHeroesAtLeast30": 0.682,
+            "allHeroesInTargetBand": 0,
+            "hp": {
+              "mean": 141.31,
+              "p10": 123,
+              "median": 141,
+              "p90": 158
+            },
+            "heroes": {
+              "bubsilda": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 23.972,
+                  "p10": 11,
+                  "median": 24,
+                  "p90": 35
+                },
+                "atLeast30": 0.894,
+                "targetBand": 0.072,
+                "down": 0.014,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "linda": {
+                "maxHp": 35,
+                "hp": {
+                  "mean": 19.322,
+                  "p10": 6,
+                  "median": 21,
+                  "p90": 30
+                },
+                "atLeast30": 0.804,
+                "targetBand": 0.094,
+                "down": 0.006,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "lambert": {
+                "maxHp": 30,
+                "hp": {
+                  "mean": 30,
+                  "p10": 30,
+                  "median": 30,
+                  "p90": 30
+                },
+                "atLeast30": 1,
+                "targetBand": 0,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "golovach-lena": {
+                "maxHp": 42,
+                "hp": {
+                  "mean": 30.088,
+                  "p10": 19,
+                  "median": 31,
+                  "p90": 42
+                },
+                "atLeast30": 0.966,
+                "targetBand": 0.038,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "thorin-pukoshchit": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 37.928,
+                  "p10": 38,
+                  "median": 38,
+                  "p90": 38
+                },
+                "atLeast30": 1,
+                "targetBand": 0,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              }
+            },
+            "rounds": 7,
+            "down": 0.02,
+            "timeouts": 0,
+            "healingCharges": {
+              "healing-pollen": 3,
+              "buldak-noodles": 2,
+              "pitahaya": 3,
+              "sleep-scroll": 1
+            }
+          },
+          {
+            "encounterId": "club-beat-guards",
+            "reached": 1,
+            "trials": 500,
+            "victory": 0.962,
+            "targetBand": 0.224,
+            "allHeroesAtLeast30": 0.046,
+            "allHeroesInTargetBand": 0.002,
+            "hp": {
+              "mean": 44.922,
+              "p10": 13,
+              "median": 45,
+              "p90": 75
+            },
+            "heroes": {
+              "bubsilda": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 8.28,
+                  "p10": 0,
+                  "median": 8,
+                  "p90": 17
+                },
+                "atLeast30": 0.308,
+                "targetBand": 0.148,
+                "down": 0.202,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "linda": {
+                "maxHp": 35,
+                "hp": {
+                  "mean": 6.146,
+                  "p10": 0,
+                  "median": 5,
+                  "p90": 15
+                },
+                "atLeast30": 0.282,
+                "targetBand": 0.176,
+                "down": 0.236,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "lambert": {
+                "maxHp": 30,
+                "hp": {
+                  "mean": 8.202,
+                  "p10": 0,
+                  "median": 8,
+                  "p90": 16
+                },
+                "atLeast30": 0.484,
+                "targetBand": 0.246,
+                "down": 0.164,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "golovach-lena": {
+                "maxHp": 42,
+                "hp": {
+                  "mean": 11.16,
+                  "p10": 1,
+                  "median": 11,
+                  "p90": 21
+                },
+                "atLeast30": 0.416,
+                "targetBand": 0.21,
+                "down": 0.092,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "thorin-pukoshchit": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 11.134,
+                  "p10": 0,
+                  "median": 11,
+                  "p90": 20
+                },
+                "atLeast30": 0.476,
+                "targetBand": 0.198,
+                "down": 0.116,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              }
+            },
+            "rounds": 6,
+            "down": 0.5,
+            "timeouts": 0,
+            "healingCharges": {
+              "healing-pollen": 3,
+              "buldak-noodles": 2,
+              "pitahaya": 3,
+              "sleep-scroll": 1
+            }
+          }
+        ]
+      }
+    },
+    "quest-two-mistakes": {
+      "basic": {
+        "trials": 500,
+        "victory": 0.042,
+        "targetBand": 0,
+        "allHeroesAtLeast30": 0,
+        "allHeroesInTargetBand": 0,
+        "hp": {
+          "mean": 0.466,
+          "p10": 0,
+          "median": 0,
+          "p90": 0
+        },
+        "heroes": {
+          "bubsilda": {
+            "maxHp": 38,
+            "hp": {
+              "mean": 0.086,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "atLeast30": 0,
+            "targetBand": 0,
+            "down": 0.972,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "linda": {
+            "maxHp": 35,
+            "hp": {
+              "mean": 0.054,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "atLeast30": 0,
+            "targetBand": 0,
+            "down": 0.97,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "lambert": {
+            "maxHp": 30,
+            "hp": {
+              "mean": 0.076,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "atLeast30": 0.002,
+            "targetBand": 0.002,
+            "down": 0.982,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "golovach-lena": {
+            "maxHp": 42,
+            "hp": {
+              "mean": 0.124,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "atLeast30": 0,
+            "targetBand": 0,
+            "down": 0.97,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          },
+          "thorin-pukoshchit": {
+            "maxHp": 38,
+            "hp": {
+              "mean": 0.126,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "atLeast30": 0,
+            "targetBand": 0,
+            "down": 0.974,
+            "itemUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "limitedAbilityUses": {
+              "mean": 0,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            }
+          }
+        },
+        "rounds": 15,
+        "down": 0.996,
+        "timeouts": 0,
+        "route": {
+          "id": "quest-two-mistakes",
+          "encounters": [
+            "prop-room-winding-carriers",
+            "club-beat-guards",
+            "club-beat-guards"
+          ]
+        },
+        "checkpoints": [
+          {
+            "encounterId": "prop-room-winding-carriers",
+            "reached": 1,
+            "trials": 500,
+            "victory": 1,
+            "targetBand": 0,
+            "allHeroesAtLeast30": 0.682,
+            "allHeroesInTargetBand": 0,
+            "hp": {
+              "mean": 141.31,
+              "p10": 123,
+              "median": 141,
+              "p90": 158
+            },
+            "heroes": {
+              "bubsilda": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 23.972,
+                  "p10": 11,
+                  "median": 24,
+                  "p90": 35
+                },
+                "atLeast30": 0.894,
+                "targetBand": 0.072,
+                "down": 0.014,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "linda": {
+                "maxHp": 35,
+                "hp": {
+                  "mean": 19.322,
+                  "p10": 6,
+                  "median": 21,
+                  "p90": 30
+                },
+                "atLeast30": 0.804,
+                "targetBand": 0.094,
+                "down": 0.006,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "lambert": {
+                "maxHp": 30,
+                "hp": {
+                  "mean": 30,
+                  "p10": 30,
+                  "median": 30,
+                  "p90": 30
+                },
+                "atLeast30": 1,
+                "targetBand": 0,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "golovach-lena": {
+                "maxHp": 42,
+                "hp": {
+                  "mean": 30.088,
+                  "p10": 19,
+                  "median": 31,
+                  "p90": 42
+                },
+                "atLeast30": 0.966,
+                "targetBand": 0.038,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "thorin-pukoshchit": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 37.928,
+                  "p10": 38,
+                  "median": 38,
+                  "p90": 38
+                },
+                "atLeast30": 1,
+                "targetBand": 0,
+                "down": 0,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              }
+            },
+            "rounds": 7,
+            "down": 0.02,
+            "timeouts": 0,
+            "healingCharges": {
+              "healing-pollen": 3,
+              "buldak-noodles": 2,
+              "pitahaya": 3,
+              "sleep-scroll": 1
+            }
+          },
+          {
+            "encounterId": "club-beat-guards",
+            "reached": 1,
+            "trials": 500,
+            "victory": 0.962,
+            "targetBand": 0.224,
+            "allHeroesAtLeast30": 0.046,
+            "allHeroesInTargetBand": 0.002,
+            "hp": {
+              "mean": 44.922,
+              "p10": 13,
+              "median": 45,
+              "p90": 75
+            },
+            "heroes": {
+              "bubsilda": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 8.28,
+                  "p10": 0,
+                  "median": 8,
+                  "p90": 17
+                },
+                "atLeast30": 0.308,
+                "targetBand": 0.148,
+                "down": 0.202,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "linda": {
+                "maxHp": 35,
+                "hp": {
+                  "mean": 6.146,
+                  "p10": 0,
+                  "median": 5,
+                  "p90": 15
+                },
+                "atLeast30": 0.282,
+                "targetBand": 0.176,
+                "down": 0.236,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "lambert": {
+                "maxHp": 30,
+                "hp": {
+                  "mean": 8.202,
+                  "p10": 0,
+                  "median": 8,
+                  "p90": 16
+                },
+                "atLeast30": 0.484,
+                "targetBand": 0.246,
+                "down": 0.164,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "golovach-lena": {
+                "maxHp": 42,
+                "hp": {
+                  "mean": 11.16,
+                  "p10": 1,
+                  "median": 11,
+                  "p90": 21
+                },
+                "atLeast30": 0.416,
+                "targetBand": 0.21,
+                "down": 0.092,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "thorin-pukoshchit": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 11.134,
+                  "p10": 0,
+                  "median": 11,
+                  "p90": 20
+                },
+                "atLeast30": 0.476,
+                "targetBand": 0.198,
+                "down": 0.116,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              }
+            },
+            "rounds": 6,
+            "down": 0.5,
+            "timeouts": 0,
+            "healingCharges": {
+              "healing-pollen": 3,
+              "buldak-noodles": 2,
+              "pitahaya": 3,
+              "sleep-scroll": 1
+            }
+          },
+          {
+            "encounterId": "club-beat-guards",
+            "reached": 0.962,
+            "trials": 481,
+            "victory": 0.04365904365904366,
+            "targetBand": 0,
+            "allHeroesAtLeast30": 0,
+            "allHeroesInTargetBand": 0,
+            "hp": {
+              "mean": 0.48440748440748443,
+              "p10": 0,
+              "median": 0,
+              "p90": 0
+            },
+            "heroes": {
+              "bubsilda": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 0.0893970893970894,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "atLeast30": 0,
+                "targetBand": 0,
+                "down": 0.9708939708939709,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "linda": {
+                "maxHp": 35,
+                "hp": {
+                  "mean": 0.056133056133056136,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "atLeast30": 0,
+                "targetBand": 0,
+                "down": 0.9688149688149689,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "lambert": {
+                "maxHp": 30,
+                "hp": {
+                  "mean": 0.079002079002079,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "atLeast30": 0.002079002079002079,
+                "targetBand": 0.002079002079002079,
+                "down": 0.9812889812889813,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "golovach-lena": {
+                "maxHp": 42,
+                "hp": {
+                  "mean": 0.1288981288981289,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "atLeast30": 0,
+                "targetBand": 0,
+                "down": 0.9688149688149689,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              },
+              "thorin-pukoshchit": {
+                "maxHp": 38,
+                "hp": {
+                  "mean": 0.13097713097713098,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "atLeast30": 0,
+                "targetBand": 0,
+                "down": 0.972972972972973,
+                "itemUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                },
+                "limitedAbilityUses": {
+                  "mean": 0,
+                  "p10": 0,
+                  "median": 0,
+                  "p90": 0
+                }
+              }
+            },
+            "rounds": 2,
+            "down": 0.9958419958419958,
+            "timeouts": 0,
+            "healingCharges": {
+              "healing-pollen": 3,
+              "buldak-noodles": 2,
+              "pitahaya": 3,
+              "sleep-scroll": 1
+            }
+          }
+        ]
+      }
+    }
+  }
+}

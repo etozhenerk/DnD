@@ -1,8 +1,44 @@
 :root {
+  --opacity-action-disabled: 0.4;
+  --dance-screen-off: #000;
+  --dance-rose: #ffb8f5;
+  --dance-cyan: #a8f1ff;
+  --dance-amber: #ffc0ad;
+  --gradient-dance-shell: linear-gradient(145deg,#ffe2a0,#a77a3d 8%,#33251b 23%,#cc9e59 49%,#40291d 74%,#f7d899);
+  --gradient-dance-interior: radial-gradient(ellipse at 0 100%,#18323c88,transparent 50%),radial-gradient(ellipse at 100% 0,#551c4588,transparent 50%),linear-gradient(135deg,#19151c,#08090e 55%,#24151e);
+  --gradient-dance-rose: radial-gradient(ellipse at 30% 70%,#b62bca,#571766 60%,#220f35);
+  --gradient-dance-cyan: radial-gradient(ellipse at 30% 70%,#167cba,#173769 60%,#101c3a);
+  --gradient-dance-amber: radial-gradient(ellipse at 30% 70%,#cf5270,#6f244d 60%,#30112e);
+  --gradient-dance-wave: repeating-linear-gradient(0deg,transparent 0 4px,#ffffff08 4px 5px);
+  --gradient-dance-glass: linear-gradient(135deg,#ffffff24,transparent 42%,#ffffff05 75%,transparent);
+  --gradient-dance-monitor-rim: linear-gradient(140deg,#f3dca1,#b08760 16%,#eeb5ff 40%,#163d50 65%,#90ecff 82%,#b09353);
+  --gradient-dance-knob: radial-gradient(circle,#301939 0 39%,#965ec0 41%,#ffc7ff 44%,#a343cc 49%,#33203d 53%,#b39460 57%,#17121b 61%,#48324a 67%,#17111f 70%);
+  --gradient-dance-launch: linear-gradient(135deg,#663654,#2a182b 55%,#382336);
+  --shadow-dance-console: 0 2rem 4rem #000c,0 0 3rem #f359c538,inset 0 1px #fff0caaa,inset 0 -5px #1f122c,0 8px 0 #372419;
+  --shadow-dance-monitor: 0 0 1.5rem #6dcfff25,inset 0 0 0 1px #f3dcad44;
+  --shadow-dance-rose-light: 0 0 1.5rem #ec52df65;
+  --shadow-dance-cyan-light: 0 0 1.5rem #3dc9ff60;
+  --shadow-dance-amber-light: 0 0 1.5rem #ff708c65;
+  --shadow-dance-inset: inset 0 0 0 1px #ffffff19,inset 0 -4px 0 #00000065,0 .3rem .7rem #0007;
+  --shadow-dance-symbol: 0 0 .65rem #ffe0ffbb;
+  --shadow-dance-bolt: inset 0 1px 1px #ffe8aa,0 1px 3px #000c;
+  --color-doom-flare: #ffe3a2;
+  --shadow-doom-ignition: 0 0 1.2rem rgba(255, 146, 68, .85), 0 0 3rem rgba(172, 32, 65, .6);
+  --gradient-netak-portal-veil: radial-gradient(ellipse at center, #241238 0%, #10091e 55%, #03090e 100%);
+  --gradient-netak-portal-ring: conic-gradient(from 30deg, #301449, #bb72ef 15%, #542483 30%, #d2abff 44%, #411962 59%, #9161d0 74%, #301449);
+  --gradient-netak-portal-mask: radial-gradient(circle, transparent 51%, black 57%, black 62%, transparent 70%);
+  --gradient-netak-portal-core: radial-gradient(circle, #03090e 30%, #190a2d 66%, #8e54bb 96%);
+  --shadow-netak-portal: 0 0 5vmax #8049ac, 0 0 10vmax rgba(103, 44, 157, .6);
+
+  --color-credits-photo-paper: #fffdf7;
+  --shadow-credits-photo: 0 0.8rem 2rem var(--color-black-alpha-58), 0 0 0 1px var(--color-white-alpha-18);
+  --font-credits-photo-caption: 'Caveat', cursive;
+
   --font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: Luminari, "Apple Chancery", Georgia, "Times New Roman", serif;
 
   --color-transparent: transparent;
+  --color-black: #000000;
   --color-white: #ffffff;
   --color-ink: #eaf4f7;
   --color-ink-muted: #9cadb5;
@@ -54,6 +90,18 @@
   --color-parchment-alpha-72: rgba(226, 205, 166, 0.72);
   --color-sky-alpha-88: rgba(222, 240, 247, 0.88);
   --color-wine-alpha-32: rgba(127, 23, 55, 0.32);
+  --color-wine-alpha-58: rgba(127, 23, 55, 0.58);
+  --color-combat-threat: #d25959;
+  --color-combat-threat-soft: #f2a27f;
+  --color-combat-threat-glow: rgba(210, 89, 89, 0.58);
+  --color-combat-damage-bright: #ff5757;
+  --color-combat-damage-surface: rgba(93, 4, 18, 0.94);
+  --color-combat-damage-glow: rgba(255, 52, 52, 0.88);
+  --color-combat-heal-bright: #7dff9f;
+  --color-combat-heal-surface: rgba(4, 67, 31, 0.94);
+  --color-combat-heal-glow: rgba(74, 255, 126, 0.82);
+  --color-combat-success-surface: rgba(110, 177, 138, 0.12);
+  --color-combat-success-border: rgba(110, 177, 138, 0.58);
   --color-roadmap-heading: #f1eee7;
   --color-roadmap-copy-strong: #d9e1e3;
   --color-roadmap-copy: #aebbc0;
@@ -68,6 +116,19 @@
   --color-roadmap-line: rgba(202, 217, 222, 0.13);
   --color-roadmap-line-strong: rgba(216, 182, 108, 0.38);
   --color-roadmap-code: rgba(3, 9, 14, 0.62);
+  --color-preview-control: rgba(3, 9, 14, 0.62);
+  --color-preview-control-hover: rgba(3, 9, 14, 0.86);
+
+  --opacity-none: 0;
+  --opacity-38: 0.38;
+  --opacity-45: 0.45;
+  --opacity-46: 0.46;
+  --opacity-48: 0.48;
+  --opacity-50: 0.5;
+  --opacity-68: 0.68;
+  --opacity-72: 0.72;
+  --opacity-78: 0.78;
+  --opacity-full: 1;
 
   --gradient-night: radial-gradient(circle at 50% 18%, var(--color-night-soft), var(--color-night) 58%, var(--color-night-deep));
   --gradient-frost: linear-gradient(135deg, var(--color-ice-bright), var(--color-ice-steel) 45%, var(--color-silver-dark));
@@ -100,10 +161,45 @@
   --gradient-roadmap-background: radial-gradient(circle at 10% 0%, var(--color-night-soft), var(--color-transparent) 38%), linear-gradient(145deg, var(--color-night-deep), var(--color-night));
   --gradient-roadmap-paper: linear-gradient(145deg, var(--color-night-soft), var(--color-night-deep));
   --gradient-roadmap-selected: linear-gradient(135deg, var(--color-gold-alpha-12), var(--color-ice-alpha-08));
+  --gradient-preview-stage: radial-gradient(circle at center, var(--color-night-soft), var(--color-night-deep));
+  --gradient-preview-ambient: radial-gradient(circle at 50% 42%, var(--color-transparent) 14%, var(--color-black-alpha-42) 58%, var(--color-night-deep) 100%), linear-gradient(180deg, var(--color-black-alpha-58), var(--color-transparent) 36%, var(--color-black-alpha-74));
+  --gradient-preview-vignette: linear-gradient(90deg, var(--color-black-alpha-42), var(--color-transparent) 20%, var(--color-transparent) 80%, var(--color-black-alpha-42));
+  --gradient-preview-header: linear-gradient(180deg, var(--color-black-alpha-74), var(--color-transparent));
+  --gradient-preview-caption: linear-gradient(180deg, var(--color-transparent), var(--color-black-alpha-74) 38%, var(--color-night-deep));
+  --gradient-session-scene-shade: linear-gradient(180deg, var(--color-black-alpha-58), var(--color-transparent) 24%, var(--color-transparent) 62%, var(--color-black-alpha-58));
+  --gradient-session-dock: linear-gradient(180deg, var(--color-black-alpha-58), var(--color-black-alpha-74)), var(--gradient-wood);
+  --gradient-session-panel: radial-gradient(circle at 28% 35%, var(--color-night-soft), var(--color-night-deep) 68%);
+  --gradient-session-story: linear-gradient(90deg, var(--color-black-alpha-74), var(--color-preview-control), var(--color-black-alpha-74));
+  --gradient-session-dice-glow: radial-gradient(circle at 50% 48%, var(--color-gold-alpha-32), var(--color-black-alpha-58) 34%, var(--color-black-alpha-74) 68%, var(--color-transparent) 100%);
+  --gradient-session-dice-tray: radial-gradient(circle at 50% 42%, var(--color-night-soft), var(--color-night-deep) 72%);
+  --gradient-session-door-hover: radial-gradient(ellipse at center, var(--color-gold-alpha-32), var(--color-gold-alpha-12) 48%, var(--color-transparent) 74%);
+  --opacity-combat-effect-fill: 0.45;
+  --opacity-combat-effect-barrier: 0.1;
+  --gradient-combat-effect-fire: radial-gradient(ellipse at 50% 90%, var(--color-combat-threat-glow), var(--color-transparent) 68%);
+  --gradient-combat-effect-veil: linear-gradient(180deg, var(--color-transparent) 25%, var(--color-black-alpha-74) 45%, var(--color-black-alpha-74) 60%, var(--color-transparent) 80%);
+  --gradient-combat-health: linear-gradient(90deg, var(--color-wine), var(--color-combat-threat-soft));
+  --gradient-combat-health-ring: conic-gradient(var(--color-combat-threat-soft) var(--health-percent), var(--color-black-alpha-58) 0);
+  --gradient-combat-label: linear-gradient(90deg, var(--color-black-alpha-74), var(--color-black-alpha-42), var(--color-transparent));
+  --gradient-combat-dock: linear-gradient(180deg, var(--color-black-alpha-58), var(--color-black-alpha-74));
+  --gradient-combat-enemy-backplate: linear-gradient(90deg, var(--color-wine-alpha-58), var(--color-wine-alpha-32) 70%, var(--color-transparent));
+  --gradient-combat-hero-backplate: linear-gradient(90deg, var(--color-gold-alpha-32), var(--color-wine-alpha-32) 58%, var(--color-transparent));
+  --gradient-combat-active-card: linear-gradient(112deg, var(--color-gold-alpha-32), var(--color-wine-alpha-58) 52%, var(--color-black-alpha-58));
+  --gradient-combat-action-panel: linear-gradient(112deg, var(--color-black-alpha-58), var(--color-wine-alpha-58) 50%, var(--color-black-alpha-58));
+  --gradient-combat-damage-feedback: linear-gradient(135deg, var(--color-combat-damage-surface), var(--color-wine-dark));
+  --gradient-combat-heal-feedback: linear-gradient(135deg, var(--color-combat-heal-surface), var(--color-night-deep));
+  --gradient-critical-success-vignette: radial-gradient(circle at 50% 44%, var(--color-gold-alpha-32), var(--color-ice-alpha-14) 22%, var(--color-black-alpha-42) 58%, var(--color-black-alpha-74) 100%);
+  --gradient-critical-failure-vignette: radial-gradient(circle at 50% 44%, var(--color-wine-alpha-58), var(--color-black-alpha-42) 42%, var(--color-black-alpha-74) 100%);
+  --gradient-critical-success-flash: radial-gradient(circle, var(--color-white-alpha-18), var(--color-gold-alpha-62) 16%, var(--color-ice-alpha-24) 34%, var(--color-transparent) 68%);
+  --gradient-critical-failure-flash: radial-gradient(circle, var(--color-white-alpha-10), var(--color-combat-damage-glow) 14%, var(--color-wine-alpha-58) 34%, var(--color-transparent) 68%);
+  --gradient-critical-success-rays: repeating-conic-gradient(from 0deg, var(--color-gold-alpha-32) 0deg 1deg, var(--color-transparent) 1deg 15deg);
+  --gradient-critical-failure-rays: repeating-conic-gradient(from 7deg, var(--color-wine-alpha-58) 0deg 1deg, var(--color-transparent) 1deg 18deg);
+  --gradient-critical-success-banner: linear-gradient(90deg, var(--color-transparent), var(--color-black-alpha-74) 18%, var(--color-night-soft) 50%, var(--color-black-alpha-74) 82%, var(--color-transparent));
+  --gradient-critical-failure-banner: linear-gradient(90deg, var(--color-transparent), var(--color-black-alpha-74) 18%, var(--color-wine-dark) 50%, var(--color-black-alpha-74) 82%, var(--color-transparent));
 
   --shadow-map: 0 28px 70px var(--color-black-alpha-58);
   --shadow-book: 0 28px 75px var(--color-black-alpha-42);
   --shadow-soft: 0 16px 44px var(--color-black-alpha-24);
+  --shadow-inventory-item-hover: inset 0 0 0 1px var(--color-gold-alpha-62), inset 0 0 12px var(--color-gold-alpha-32);
   --shadow-inset-ice: inset 0 0 0 1px var(--color-white-alpha-18), inset 0 0 24px var(--color-ice-alpha-14);
   --shadow-inset-paper: inset 0 0 52px var(--color-black-alpha-14);
   --shadow-atlas: 0 24px 70px var(--color-black-alpha-74), 0 0 38px var(--color-gold-alpha-12);
@@ -113,4 +209,62 @@
   --shadow-roadmap: 0 24px 70px var(--color-black-alpha-42);
   --shadow-roadmap-selected: inset 3px 0 var(--color-roadmap-accent);
   --shadow-roadmap-completed: inset 3px 0 var(--color-roadmap-status), 0 0 24px var(--color-roadmap-status-alpha-12);
+  --shadow-preview-control: 0 12px 32px var(--color-black-alpha-42), inset 0 0 0 1px var(--color-white-alpha-05);
+  --shadow-session-item: 0 0.75rem 1.4rem var(--color-black-alpha-58), 0 0 1.2rem var(--color-gold-alpha-12);
+  --shadow-session-dock: 0 1rem 2.6rem var(--color-black-alpha-74), inset 0 0 1.2rem var(--color-black-alpha-42);
+  --shadow-session-panel: 0 2rem 6rem var(--color-black-alpha-74);
+  --shadow-session-control: 0 0.7rem 1.8rem var(--color-black-alpha-58), inset 0 0 0 1px var(--color-gold-alpha-32);
+  --shadow-session-story: 0 1.25rem 3.6rem var(--color-black-alpha-74);
+  --shadow-session-hotspot: 0 0 0 0.4rem var(--color-black-alpha-24), 0 0 1.4rem var(--color-gold-alpha-62);
+  --shadow-session-door: inset 0 0 2rem var(--color-gold-alpha-32), 0 0 1.5rem var(--color-gold-alpha-12);
+  --shadow-session-brass-outline: inset 0 0 0 1px var(--color-brass-alpha-62);
+  --shadow-session-dice-tray: 0 2rem 6rem var(--color-black-alpha-74), inset 0 0 0 0.5rem var(--color-night-deep), inset 0 0 0 0.56rem var(--color-gold-alpha-62), inset 0 0 4rem var(--color-black-alpha-58), 0 0 2rem var(--color-gold-alpha-32);
+  --shadow-combat-target-selected: inset 0 0 0 1px var(--color-gold-alpha-62), 0 0 1rem var(--color-combat-threat-glow);
+  --shadow-combat-dock: 0 0.8rem 2.4rem var(--color-black-alpha-58), inset 0 1px var(--color-brass-alpha-12);
+  --shadow-combat-damage-feedback: 0 0 0.35rem var(--color-white-alpha-18), 0 0 1.4rem var(--color-combat-damage-glow), 0 0.7rem 1.4rem var(--color-black-alpha-74);
+  --shadow-combat-heal-feedback: 0 0 0.35rem var(--color-white-alpha-18), 0 0 1.4rem var(--color-combat-heal-glow), 0 0.7rem 1.4rem var(--color-black-alpha-74);
+  --filter-session-gold-glow: drop-shadow(0 0 0.55rem var(--color-gold-alpha-62));
+  --filter-critical-success: drop-shadow(0 0 0.3rem var(--color-gold-light)) drop-shadow(0 0 1.6rem var(--color-gold-alpha-62));
+  --filter-critical-failure: drop-shadow(0 0 0.3rem var(--color-combat-damage-bright)) drop-shadow(0 0 1.6rem var(--color-combat-damage-glow));
 }
+
+:root {
+  --olva-paper: #e2cea6;
+  --olva-photo-paper: #f7f5ed;
+  --olva-paper-edge: #91704a;
+  --olva-ink: #352519;
+  --olva-phone: #162b31;
+  --olva-phone-edge: #806b47;
+  --olva-teal: #214b46;
+  --olva-wine: #402127;
+  --olva-piece-shadow: 0 .3rem .6rem #00000080;
+  --olva-lift-shadow: 0 .8rem 1.4rem #000000a6;
+}
+
+:root {
+  --olva-object-shadow: drop-shadow(0 5px 3px var(--color-black-alpha-74));
+}
+
+:root {
+  --olva-fate-teal-gradient: linear-gradient(135deg, #24473e, #122f2b 70%, #203c34);
+  --olva-fate-wine-gradient: linear-gradient(140deg, #522e34, #321b25 75%, #492a30);
+  --olva-fate-neutral-gradient: linear-gradient(130deg, #4d3727, #2f241b 80%);
+  --olva-fate-paper-gradient: linear-gradient(110deg, #f0e1ba, #e0cda2 75%, #d6bc8b);
+  --olva-fate-ribbon-gradient: linear-gradient(0deg, #897044, #d8be83 55%, #9b7743);
+  --olva-fate-button-gradient: linear-gradient(0deg, #191d18, #35372b);
+  --olva-fate-label-gradient: linear-gradient(0deg, #302a20, #4d402b);
+  --olva-medallion-shadow: 0 0 0 3px #443325, 0 0 0 4px #a98b59, 0 5px 10px #0008;
+  --olva-mat-shadow: inset 0 0 0 5px #0002, inset 0 0 22px #0005, 0 8px 14px #0007;
+  --olva-neutral-shadow: inset 0 0 30px #0006;
+  --olva-object-paper-shadow: 3px 8px 1px #261a1240, 6px 18px 25px #0008;
+  --olva-barcode: repeating-linear-gradient(90deg, #352519 0 2px, transparent 2px 3px, #352519 3px 4px, transparent 4px 7px);
+  --olva-calendar-paper: repeating-linear-gradient(0deg, #e9d9b0 0 2.3rem, #c1aa7d 2.3rem calc(2.3rem + 1px));
+}
+
+:root {
+  --font-olva-stas: 'Caveat', cursive;
+  --font-olva-polina: 'Marck Script', cursive;
+  --font-olva-escort: 'Bad Script', cursive;
+}
+
+:root {--font-olva-sultan: 'Marck Script', cursive;}

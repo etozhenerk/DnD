@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 6,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-final-teaser-key-art",
+      "variant": "assets/concepts/campaigns/penisuela/key-art/teaser.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "notes": [
+        "Утверждён состав из девяти персонажей: пять героев, мастер, Ольга Василенко, Алексей Жидковский и Pussy Sultan.",
+        "Утверждены заголовок «Penisuela» и подзаголовок «Разрушительный мальчишник на райском острове».",
+        "Тизер принят как канонический арт кампании без Егора Крида и Игоря Синяка."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.button {
+  position:absolute;z-index:14;left:clamp(1rem,2vw,2rem);bottom:clamp(8.5rem,18vh,10rem);
+  padding:.68rem .95rem;border:1px solid var(--color-brass-alpha-62);
+  background:var(--gradient-session-dock);box-shadow:var(--shadow-session-control);
+  color:var(--color-gold-light);cursor:pointer;
+  font:400 clamp(.85rem,1.1vw,1rem) var(--font-display);
+}
+.button:hover {background:var(--gradient-gold);color:var(--color-ink-dark);}
+.button:focus-visible {outline:2px solid var(--color-ice-bright);outline-offset:2px;}

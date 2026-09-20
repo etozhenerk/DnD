@@ -1,0 +1,37 @@
+{
+  "campaignId": "penisuela",
+  "round": 28,
+  "status": "approved-under-user-delegation",
+  "items": [
+    {
+      "assetId": "penisuela-scene-groom-tunnel",
+      "variant": "art-drafts/groom-tunnel-v1.png",
+      "verdict": "accept-after-technical-processing",
+      "userDecision": "approved-by-explicit-full-campaign-delegation",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/groom-tunnel.webp",
+      "checks": [
+        "Центральный безопасный проход свободен и ясно подсвечен.",
+        "Два симметричных механизма-кулисы показывают одну повторяемую позу допуска латунными рычагами.",
+        "Красные аварийные противовесы видны над проходом, дальняя голосовая дверь остаётся закрытой.",
+        "В кадре нет людей, обычных вооружённых охранников, текста, рук зрителя или свадебного спойлера.",
+        "Нижняя зона достаточно спокойна для игрового интерфейса."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-groom-preparation-room",
+      "variant": "art-drafts/groom-preparation-room-v1.png",
+      "verdict": "accept-after-technical-processing",
+      "userDecision": "approved-by-explicit-full-campaign-delegation",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/groom-preparation-room.webp",
+      "checks": [
+        "В кадре ровно один живой персонаж — узнаваемый Крид в утверждённом эльфийском образе и повреждённом чёрно-золотом костюме.",
+        "Естественная поза у микрофона не выглядит персонажным lineup и сохраняет момент приватной репетиции.",
+        "Сотни абстрактных световых дорожек, зелёный индикатор и подземная консоль журнала поддерживают раскрытие голосового ключа без читаемого текста.",
+        "Игорь, Егорик, Оливия, герои, публичная церемония, логотипы и руки зрителя отсутствуют.",
+        "Нижняя зона достаточно спокойна для игрового интерфейса."
+      ]
+    }
+  ],
+  "technicalProcessing": "Два RGB PNG 1672×941 приведены к 1536×864 WebP без художественных изменений.",
+  "result": "Опубликованы первые два кадра позднего маршрута: хореографический тоннель и раскрытие настоящего жениха."
+}

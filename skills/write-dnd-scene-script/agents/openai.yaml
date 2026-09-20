@@ -1,4 +1,4 @@
 interface:
-  display_name: "Сценарий сцен"
-  short_description: "Написать сцены для мастера"
-  default_prompt: "Используй $write-dnd-scene-script для выполнения этого этапа кампании."
+  display_name: "Литературные D&D-сцены"
+  short_description: "Писать живые легенды, улики и письма для игры"
+  default_prompt: "Используй $write-dnd-scene-script, чтобы превратить факты сцены в цельную литературную прозу для мастера и игроков, не добавляя новых фактов канона."

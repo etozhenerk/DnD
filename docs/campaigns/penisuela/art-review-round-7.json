@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 7,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-overload",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/hotel-overload.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x941 перенесён в канонический путь.",
+      "notes": [
+        "Утверждён большой общий план богатого тропического люкса.",
+        "Пять героев разнесены по ширине и глубине кадра и не образуют групповой портрет.",
+        "Головач спит, а режиссёрский пульт показан как маленькое переносное устройство на его груди.",
+        "Кадр явно принят пользователем сообщением «вот это пойдет»."
+      ]
+    }
+  ]
+}

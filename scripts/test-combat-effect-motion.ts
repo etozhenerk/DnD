@@ -1,0 +1,53 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createElement} from 'react';
+import {renderToStaticMarkup} from 'react-dom/server';
+import {combatConditionVisuals, combatEffectVisuals, combatStatusVisuals} from '../src/entities/combat/model/combatEffectVisuals';
+import {penisuelaGalleryGameplay as definition, penisuelaGalleryHeroes as heroes} from '../src/entities/campaign-session/model/data';
+import {createCombatState} from '../src/entities/combat/model/combatRules';
+import type {CombatStatusKind} from '../src/entities/combat/model/types';
+import {createCombatArenaView} from '../src/features/run-combat/model/createCombatArenaView';
+import {getCombatEffectTransitions} from '../src/widgets/campaign-scene/model/combatEffectTransitions';
+import {CombatEffectMotion} from '../src/widgets/campaign-scene/ui/CombatArena/CombatEffectMotion';
+import {CombatEffectGlyph} from '../src/widgets/campaign-scene/ui/CombatArena/CombatEffectGlyph';
+import type {CombatEffectVisualId} from '../src/entities/combat/model/combatEffectVisuals';
+import {combatEffectPreview} from '../src/widgets/combat-sandbox/model/combatEffectPreview';
+
+const encounter=definition.encounters[0];
+const combat=createCombatState(encounter,[heroes[0].id,...(encounter.units?.map(u=>u.id)??[encounter.id])],definition);
+combat.conditions[heroes[0].id]=Object.keys(combatConditionVisuals) as (keyof typeof combatConditionVisuals)[];
+combat.stances[heroes[0].id]=['airborne','tiny'];
+combat.statuses=Object.keys(combatStatusVisuals).map(kind=>({id:kind,kind:kind as CombatStatusKind,sourceActorId:heroes[0].id,targetId:heroes[0].id,charges:2,amount:3}));
+combat.acModifiers=[{id:'ac',sourceActorId:heroes[0].id,targetIds:[heroes[0].id],amount:2,expiresAtTurnStartOf:heroes[0].id}];
+combat.attackModifiers=[{id:'atk',sourceActorId:heroes[0].id,targetIds:[heroes[0].id],amount:2,consumeOnAttack:true}];
+const view=createCombatArenaView({actions:definition.combatActions,combat,encounter,fallbackEnemyToken:'',heroes,heroHp:Object.fromEntries(heroes.map(h=>[h.id,h.maxHp])),inventoryState:{},resourceUses:{},heroTokens:{},participantConditions:{[heroes[0].id]:['shamed','assigned-role','frightened','frozen','inspired']}})!;
+const effects=view.party.find(p=>p.id===heroes[0].id)!.effects!;
+assert.ok(effects.length>40);
+for(const effect of effects) assert.ok(effect.visual&&combatEffectVisuals[effect.visual],`${effect.id} has a semantic visual`);
+// All glyphs remain available; only applied combat effects receive an animation cue.
+const css=readFileSync('src/widgets/campaign-scene/ui/CombatArena/CombatEffectMotion.module.css','utf8');
+for(const [id,recipe] of Object.entries(combatEffectVisuals)) {
+  assert.ok(recipe.path.length>15,id);
+  assert.ok(css.includes(`[data-motion='${recipe.motion}']`),id);
+  assert.match(renderToStaticMarkup(createElement(CombatEffectGlyph,{visual:id as CombatEffectVisualId})),/<path/);
+  const effect=combatEffectPreview.find(e=>e.visual===id);if(!effect)continue;
+  const html=renderToStaticMarkup(createElement(CombatEffectMotion,{cue:{key:1,effect},children:createElement('img',{src:'/token.png',alt:''})}));
+  assert.ok(html.includes(`data-effect="${id}"`));assert.ok(html.includes(`data-motion="${recipe.motion}"`));
+}
+const prone=combatEffectPreview.find(e=>e.id==='prone')!;
+const flame=combatEffectPreview.find(e=>e.id==='burning')!;
+assert.equal(getCombatEffectTransitions([], [prone])[0].phase,'applied');
+assert.deepEqual(getCombatEffectTransitions([prone],[{...prone}]),[],'ordinary render does not replay an application');
+assert.deepEqual(getCombatEffectTransitions([flame],[{...flame,shortLabel:'Горит · 2 урона'}]),[],'counter update does not replay');
+assert.deepEqual(getCombatEffectTransitions([prone],[]),[],'expiry does not animate');
+assert.deepEqual(getCombatEffectTransitions([{...flame,passive:true}],[]),[],'passive consumption stays quiet');
+assert.deepEqual(getCombatEffectTransitions([], [{...flame,passive:true}]),[],'passive readiness is quiet');
+const html=renderToStaticMarkup(createElement(CombatEffectMotion,{cue:{key:1,effect:prone},children:'жетон'}));
+assert.match(html,/data-posture="prone"/);
+const cleared=renderToStaticMarkup(createElement(CombatEffectMotion,{children:'жетон'}));
+assert.match(cleared,/data-posture="standing"/);assert.doesNotMatch(cleared,/data-effect="prone"/);
+assert.match(css,/@media \(prefers-reduced-motion: reduce\)/);
+assert.doesNotMatch(css,/#(?:[0-9a-f]{3})\b|rgba?\(/i);
+assert.doesNotMatch(css,/infinite/);
+assert.equal(combatEffectPreview.some(e=>['cold-resistance','northern-ward','heat-reactor','bubis-balance'].includes(e.id)),false);
+console.log('PASS: glyph coverage, finite application clips only; no passive/expiry/counter replay, no idle layer, no infinite CSS animation.');

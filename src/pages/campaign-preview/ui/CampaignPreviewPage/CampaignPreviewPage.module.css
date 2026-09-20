@@ -1,0 +1,6 @@
+.page {
+  background: var(--color-night-deep);
+  height: 100dvh;
+  overflow: hidden;
+  width: 100%;
+}

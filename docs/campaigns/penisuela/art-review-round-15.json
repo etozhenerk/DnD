@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 15,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "userDecision": "Пользователь утвердил оба технических стилевых якоря сообщением «ок го дальше».",
+  "items": [
+    {
+      "assetId": "penisuela-ui-universal-panel-frame",
+      "variant": "art-drafts/technical-ui/universal-panel-frame-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Хромакей удалён до пользовательской приёмки; утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.",
+      "notes": ["Прозрачный центр, прямые растягиваемые грани и свободные области пригодны для девятисегментной раскладки."]
+    },
+    {
+      "assetId": "penisuela-ui-token-frame-atlas",
+      "variant": "art-drafts/technical-ui/token-frame-atlas-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Хромакей удалён до пользовательской приёмки; утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.",
+      "notes": ["Геройская и вражеская рамки различаются силуэтом; NPC-рамка отсутствует по прямому решению пользователя."]
+    }
+  ]
+}

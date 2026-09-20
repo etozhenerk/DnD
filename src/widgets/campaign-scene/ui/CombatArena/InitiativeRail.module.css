@@ -1,0 +1,286 @@
+.rail {
+  --initiative-token-size: clamp(2.35rem, calc(5.75rem - var(--initiative-count) * 0.2625rem), 3.65rem);
+  height: 7.6rem;
+  left: 0;
+  margin-inline: auto;
+  min-width: 0;
+  pointer-events: auto;
+  position: absolute;
+  right: 0;
+  top: 0.45rem;
+  width: 44rem;
+}
+
+.arcCrop {
+  height: 7.9rem;
+  left: -1.5rem;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: calc(100% + 3rem);
+}
+
+.arc {
+  height: auto;
+  left: 0;
+  max-width: none;
+  pointer-events: none;
+  position: absolute;
+  top: -3.4rem;
+  width: 100%;
+}
+
+.list {
+  align-items: start;
+  display: grid;
+  gap: clamp(0.2rem, 0.65vw, 0.7rem);
+  grid-template-columns: repeat(var(--initiative-count), minmax(0, 1fr));
+  height: 100%;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  width: min(calc(var(--initiative-count) * 4.25rem), calc(100% - 7rem));
+}
+
+.participant {
+  --portrait-scale: 1;
+  --portrait-shift-y: 0%;
+  align-items: center;
+  color: var(--color-brass-muted);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: var(--combat-font-text);
+  gap: 0.1rem;
+  min-width: 0;
+  position: relative;
+  transform: translateY(var(--initiative-offset));
+  width: 100%;
+}
+
+.participant.active {
+  z-index: 5;
+}
+
+.token {
+  display: block;
+  filter: drop-shadow(0 0.3rem 0.45rem var(--color-black-alpha-74));
+  height: var(--initiative-token-size);
+  position: relative;
+  transition: filter 160ms ease, transform 160ms ease;
+  width: var(--initiative-token-size);
+}
+
+.portraitViewport {
+  border-radius: 50%;
+  height: calc(var(--initiative-token-size) * 0.78);
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--initiative-token-size) * 0.78);
+}
+
+.portrait {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(var(--portrait-shift-y)) scale(var(--portrait-scale));
+  transform-origin: center;
+  width: 100%;
+}
+
+.frame {
+  height: var(--initiative-token-size);
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: var(--initiative-token-size);
+}
+
+.frame img {
+  height: 100%;
+  max-width: none;
+  position: absolute;
+  top: 0;
+  width: 300%;
+}
+
+.participant[data-faction='hero'] .frame img {
+  left: -25%;
+}
+
+.participant[data-faction='enemy'] .frame img {
+  left: -175%;
+}
+
+.active .token {
+  filter: drop-shadow(0 0 0.42rem var(--color-gold-alpha-62)) drop-shadow(0 0 0.8rem var(--color-gold-alpha-32));
+  transform: scale(1.08);
+}
+
+.active .token::after {
+  border: 0.08rem solid var(--color-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0.5rem var(--color-gold-alpha-62);
+  content: '';
+  inset: -0.12rem;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.participant.active .portraitViewport {
+  box-shadow: 0 0 0 0.08rem var(--color-gold-alpha-62), 0 0 0 0.16rem var(--color-gold);
+}
+
+.active .frame,
+.active .portrait {
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.participant[data-effect-tone='positive'] .portraitViewport {
+  box-shadow: 0 0 0 0.12rem var(--color-combat-heal-bright), 0 0 0.7rem var(--color-combat-heal-glow);
+}
+
+.participant[data-effect-tone='negative'] .portraitViewport {
+  box-shadow: 0 0 0 0.12rem var(--color-combat-damage-bright), 0 0 0.8rem var(--color-combat-damage-glow);
+}
+
+.downed {
+  opacity: 0.46;
+}
+
+.willSkip .token {
+  filter: grayscale(0.35) drop-shadow(0 0 0.65rem var(--color-combat-threat-glow));
+  opacity: 0.72;
+}
+
+.active.willSkip .token {
+  filter: grayscale(0.2) drop-shadow(0 0 0.42rem var(--color-gold-alpha-62)) drop-shadow(0 0 0.8rem var(--color-gold-alpha-32));
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.downedMark {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-wine);
+  border-radius: 50%;
+  color: var(--color-parchment-light);
+  display: flex;
+  font-family: var(--font-body);
+  font-size: var(--combat-font-title);
+  height: 1.45rem;
+  justify-content: center;
+  position: absolute;
+  right: -0.1rem;
+  top: -0.1rem;
+  width: 1.45rem;
+  z-index: 2;
+}
+
+.effectBadge {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-62);
+  border-radius: 999px;
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 0.08rem;
+  max-width: 7.2rem;
+  overflow: hidden;
+  padding: 0.18rem 0.42rem;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 4;
+}
+
+.effectBadge[data-tone='positive'] {
+  background: var(--color-combat-heal-surface);
+  border-color: var(--color-combat-heal-bright);
+  box-shadow: 0 0 0.65rem var(--color-combat-heal-glow);
+  color: var(--color-combat-heal-bright);
+}
+
+.effectBadge[data-tone='negative'] {
+  background: var(--color-combat-damage-surface);
+  border-color: var(--color-combat-damage-bright);
+  box-shadow: 0 0 0.65rem var(--color-combat-damage-glow);
+  color: var(--color-parchment-light);
+}
+
+.participantIndex {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-62);
+  border-radius: 50%;
+  bottom: -0.05rem;
+  color: var(--color-gold-light);
+  display: flex;
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  height: 1.1rem;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: -0.05rem;
+  width: 1.1rem;
+  z-index: 2;
+}
+
+@media (max-width: 1500px) {
+  .rail {
+    --initiative-token-size: clamp(2.1rem, calc(4.95rem - var(--initiative-count) * 0.225rem), 3.15rem);
+    height: 6.9rem;
+    top: 3.55rem;
+    width: 37rem;
+  }
+
+  .arcCrop {
+    height: 7rem;
+  }
+
+  .arc {
+    top: -3rem;
+  }
+
+  .list {
+    width: min(calc(var(--initiative-count) * 3.7rem), calc(100% - 6rem));
+  }
+
+}
+
+@media (max-width: 1100px) {
+  .rail {
+    --initiative-token-size: clamp(1.95rem, calc(4.35rem - var(--initiative-count) * 0.2rem), 2.75rem);
+    top: 4.1rem;
+    width: 31rem;
+  }
+
+  .arcCrop {
+    height: 6rem;
+  }
+
+  .arc {
+    top: -2.6rem;
+  }
+
+  .list {
+    gap: 0.1rem;
+    width: min(calc(var(--initiative-count) * 3.25rem), calc(100% - 5rem));
+  }
+
+  .participant {
+    width: 100%;
+  }
+
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 16,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "userDecision": "Пользователь утвердил все пять круговых иконок героев сообщением «окаю».",
+  "items": [
+    {"assetId": "penisuela-ui-token-bubsilda", "variant": "art-drafts/technical-ui/hero-token-bubsilda-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены узнаваемое лицо, эльфийская раса и летний образ Бубсильды."]},
+    {"assetId": "penisuela-ui-token-linda", "variant": "art-drafts/technical-ui/hero-token-linda-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены узнаваемое лицо, раса Линфея, крылья и летний образ Линды."]},
+    {"assetId": "penisuela-ui-token-lambert", "variant": "art-drafts/technical-ui/hero-token-lambert-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены узнаваемое лицо, очки, человеческая раса и летний образ Ламберта."]},
+    {"assetId": "penisuela-ui-token-golovach-lena", "variant": "art-drafts/technical-ui/hero-token-golovach-lena-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены узнаваемое лицо, рога, огненная чешуя и летний образ Головача Лены."]},
+    {"assetId": "penisuela-ui-token-thorin-pukoshchit", "variant": "art-drafts/technical-ui/hero-token-thorin-pukoshchit-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены узнаваемое лицо, дворфийская подача и летний образ Торина Пукощита II."]}
+  ]
+}

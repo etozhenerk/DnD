@@ -1,0 +1,38 @@
+{
+  "campaignId": "penisuela",
+  "round": 43,
+  "date": "2026-09-04",
+  "status": "completed-user-approved",
+  "auditType": "closed-bar-bungalow-passage-guards-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Сделать отдельный боевой арт только прохода к бунгало со стражей, без всего бара.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/campaigns/penisuela/scenes/closed-bar-v7.png",
+    "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-arcane-guards.png",
+    "assets/concepts/campaigns/penisuela/ui/enemy-tokens/hotel-arcane-guard.png",
+    "art-drafts/closed-bar-bungalow-guards-v1.png"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-scene-closed-bar-bungalow-guards",
+      "path": "art-drafts/closed-bar-bungalow-guards-v1.png",
+      "verdict": "accept",
+      "size": "1584x993",
+      "alpha": false
+    }
+  ],
+  "checks": [
+    "В кадре показан только крупный проход к бунгало, без общего плана бара, Станиса, танцоров, сцены и барной стойки.",
+    "Перед проходом стоят ровно три чёрно-золотых рунических стража доступа с красным свечением и закрытыми шлемами.",
+    "Различимы один бордовый канат, две латунные стойки и один считыватель с красным экраном.",
+    "Все три стража полностью видны как отдельные боевые цели; четвёртого стража и бирюзовых Бит-стражей нет.",
+    "Текст, интерфейс, логотипы и водяной знак отсутствуют."
+  ],
+  "approval": {
+    "required": true,
+    "received": true,
+    "userApproval": "ок",
+    "nextAction": "Кадр опубликован в канонические ассеты и подключается к общему CombatEncounterHud закрытого бара."
+  }
+}

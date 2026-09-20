@@ -11,10 +11,21 @@
     "dev": "vite",
     "build": "npm run typecheck && vite build",
     "build:pages": "npm run typecheck && vite build --mode github-pages",
+    "balance:penisuela": "node scripts/simulate-penisuela-balance.mjs",
+    "validate:penisuela-playable": "node scripts/validate-penisuela-playable-bridge.mjs",
+    "test:final-boss": "node scripts/test-final-boss-rules.mjs",
+    "test:npc": "node --experimental-strip-types scripts/test-npc-behavior.ts",
+    "test:penisuela": "npm run validate:penisuela-playable && npm run test:penisuela-navigation && node scripts/test-penisuela-runtime.mjs",
+    "test:penisuela-navigation": "node scripts/test-penisuela-navigation-regressions.mjs",
+    "test:prop-room": "node --experimental-strip-types scripts/test-prop-room-mechanics.ts",
+    "test:pussy-audience": "node scripts/run-typescript-test.mjs scripts/test-pussy-audience-mechanics.ts",
+    "test:session": "node scripts/run-typescript-test.mjs scripts/test-session-rules.ts",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json --pretty false && tsc --noEmit -p tsconfig.node.json --pretty false"
+    "typecheck": "tsc --noEmit -p tsconfig.app.json --pretty false && tsc --noEmit -p tsconfig.node.json --pretty false",
+    "test:regression": "node scripts/test-penisuela-regression.mjs"
   },
   "dependencies": {
+    "@3d-dice/dice-box": "^1.1.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.18.1"

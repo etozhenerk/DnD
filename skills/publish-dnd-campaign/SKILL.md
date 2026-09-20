@@ -14,8 +14,10 @@ description: Publish an approved campaign workflow into canonical repository con
 ## Порядок
 
 1. При изменении структуры сначала описать поля в `content/README.md`.
-2. Создать или обновить `content/campaigns/<campaign-id>.json`.
-3. Создать синхронный `content/campaigns/<campaign-id>-guide.md`.
+2. Опубликовать кампанию одним из двух способов:
+   - монолит: `content/campaigns/<campaign-id>.json`;
+   - составной bundle: несколько `content/campaigns/<campaign-id>-*.json`, если границы частей описаны в `content/README.md` и все части зарегистрированы одной записью `canonicalCampaignBundle` в `workflow.json`.
+3. Создать синхронный русский гайд: монолитный `content/campaigns/<campaign-id>-guide.md` либо один зарегистрированный в `canonicalCampaignBundle` гайд составного bundle. Не создавать второй набор данных с дублирующими фактами.
 4. Подключить campaign `id` к региону в `content/world-map.json` только когда данные готовы.
 5. Перенести публичный текст и секреты мастера в разные поля.
 6. Перенести диалоговые пресеты, эффекты, NPC behavior, граф, флаги, счётчики и инвентарь без исполняемого JavaScript.
@@ -24,7 +26,7 @@ description: Publish an approved campaign workflow into canonical repository con
 
 ## Проверка
 
-Запустить `jq empty`, проверить уникальность `id`, ссылки графа, персонажей, локаций, встреч, врагов, реплик и ассетов. Сверить JSON и гайд.
+Запустить `jq empty`, проверить уникальность `id`, ссылки графа, персонажей, локаций, встреч, врагов, реплик и ассетов. Сверить весь монолит или все части составного bundle с гайдом и убедиться, что `workflow.json` перечисляет каждую часть.
 
 ## Результат
 

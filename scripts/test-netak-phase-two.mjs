@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import {createServer} from 'vite';
+const server = await createServer({appType:'custom',logLevel:'silent',server:{middlewareMode:true}});
+try {
+  const load = p => server.ssrLoadModule(p);
+  const {penisuelaGalleryGameplay:definition,penisuelaGalleryHeroes:heroes} = await load('/src/entities/campaign-session/model/data.ts');
+  const {replayGalleryEvents:replay} = await load('/src/entities/campaign-session/model/gallerySession.ts');
+  const journal = await load('/src/entities/campaign-session/model/gallerySessionJournal.ts');
+  const rules = await load('/src/entities/combat/model/combatRules.ts');
+  const cmd = await load('/src/features/run-combat/model/combatCommands.ts');
+  const {createCombatArenaView:view} = await load('/src/features/run-combat/model/createCombatArenaView.ts');
+  const encounter = definition.encounters.find(e => e.id === 'andrey-dragon');
+  let serial = 0, log = [];
+  const apply = events => {assert.ok(events,'Command must be valid'); const commandId=`c-${++serial}`; log.push(...events.map(e=>({...e,id:`e-${++serial}`,commandId,sceneScopeId:'last-take-boss'})));};
+  const state = () => replay(log,definition);
+  const snapshot = () => JSON.stringify({combat:state().combat,hp:state().heroHp,uses:state().resourceUses});
+  const ctx = () => ({...state(),definition,heroes});
+  const active = () => state().combat.initiativeOrder[state().combat.turnIndex];
+  const nextTo = id => {for(let n=0; active()!==id && n<30;n++)apply([{type:'turn-advanced'}]); assert.equal(active(),id);};
+  const start = () => {log=[journal.createGallerySessionStartedEvent({definition,heroes,existingInventory:[],eventId:'seed',commandId:'seed'})]; apply([{type:'combat-started',encounterId:encounter.id,initiativeOrder:[encounter.id,...heroes.map(h=>h.id)]}]);};
+  const select = id => apply(cmd.createSelectCombatActionCommand(ctx(),id));
+  const use = (id,roll) => {select(id);apply(cmd.createUseCombatActionCommand(ctx(),id,undefined,roll));};
+  const persisted = () => {const expectation={campaignId:definition.campaignId,definitionId:definition.id,definitionVersion:definition.version};const raw=journal.createStoredGallerySessionEnvelope(log,expectation);assert.ok(raw);const result=journal.parseStoredGallerySessionEnvelope(JSON.parse(JSON.stringify(raw)),expectation);assert.equal(result.ok,true,JSON.stringify(result));assert.deepEqual(JSON.parse(JSON.stringify(replay(result.events,definition))),JSON.parse(JSON.stringify(state())));};
+  const undo = () => apply([{type:'action-corrected',correctedCommandId:log.at(-1).commandId}]);
+  const arena = () => view({...ctx(),encounter,actions:definition.combatActions,heroTokens:{},fallbackEnemyToken:'',requestedEnemyTargetId:encounter.id,requestedHeroTargetId:'linda'});
+  start(); assert.equal(arena().actions.length,3);
+  select('netak-fired');
+  for(const roll of [undefined,0,2,19,2.5,NaN])assert.equal(cmd.createUseCombatActionCommand(ctx(),'netak-fired',undefined,roll),null);
+  const beforeBreath=snapshot();
+  apply(cmd.createUseCombatActionCommand(ctx(),'netak-fired',undefined,12));
+  assert.equal(state().combat.pendingSavingThrow,null);
+  for(const h of heroes) assert.equal(state().heroHp[h.id],h.maxHp-(h.id==='bubsilda'?7:h.id==='golovach-lena'?13:14));
+  assert.equal(state().combat.statuses.find(s=>s.kind==='heat-charge').amount,2);
+  assert.ok(state().combat.statuses.some(s=>s.kind==='tech-recalculation'));
+  assert.ok(state().combat.statuses.some(s=>s.kind==='helping-reaction'));
+  persisted();undo();assert.equal(snapshot(),beforeBreath);
+  apply(cmd.createUseCombatActionCommand(ctx(),'netak-fired',undefined,12));nextTo(encounter.id);assert.equal(cmd.createSelectCombatActionCommand(ctx(),'netak-fired'),null);
+  start();apply([{type:'combat-damage-resolved',targetId:'linda',amount:34,text:'Test'}]);use('netak-fired',12);assert.equal(state().heroHp.linda,1);assert.ok(!state().combat.statuses.some(s=>s.kind==='survival-instinct'));persisted();
+  // Tail uses the standard attack and damage pipeline, then a hero save.
+  start();select('netak-retake');assert.equal(arena().active.attackName,'Переснимаем!');apply(cmd.createEnemyAttackCommand(ctx(),'bubsilda',20));assert.equal(state().combat.pendingAttack.damageExpression,'1d8+3');assert.equal(state().combat.pendingAttack.critical,true);
+  apply(cmd.createApplyCombatDamageCommand(ctx(),2).events);assert.equal(state().combat.pendingSavingThrow.stat,'strength');persisted();apply(cmd.createResolveCombatSavingThrowCommand(ctx(),1));assert.ok(!(state().combat.conditions.bubsilda??[]).includes('prone'));assert.ok(state().combat.statuses.some(s=>s.kind==='attack-advantage'&&s.targetId==='bubsilda'));
+  start();select('netak-retake');apply(cmd.createEnemyAttackCommand(ctx(),'linda',10));apply(cmd.createApplyCombatDamageCommand(ctx(),1).events);apply(cmd.createResolveCombatSavingThrowCommand(ctx(),1));nextTo('linda');assert.ok(!state().combat.conditions.linda.includes('prone'));assert.ok(!state().combat.statuses.some(s=>s.kind==='movement-spent'));assert.ok(cmd.createSelectCombatActionCommand(ctx(),'linda-flight'));persisted();apply([{type:'turn-advanced'}]);assert.ok(!state().combat.statuses.some(s=>s.kind==='movement-spent'&&s.targetId==='linda'));
+  start();select('netak-retake');apply([{type:'combat-stance-changed',participantId:'linda',stance:'airborne',active:true,text:'Test flight'}]);assert.equal(arena().attackRollMode,'disadvantage');apply(cmd.createEnemyAttackCommand(ctx(),'linda',1));assert.equal(state().combat.pendingAttack,null);assert.equal(state().combat.pendingSavingThrow,null);nextTo(encounter.id);assert.equal(cmd.createSelectCombatActionCommand(ctx(),'netak-retake'),null);
+  // Crown is a temporary AC increase and a single saved retaliation roll.
+  start();use('netak-main-character',5);assert.equal(rules.getCombatEnemyAc(state().combat,encounter.id),encounter.ac+2);assert.equal(arena().enemyTargets.find(e=>e.id===encounter.id).ac,encounter.ac+2);persisted();
+  const actor=active(),hp=state().heroHp[actor];apply(cmd.createHeroAttackCommand(ctx(),actor,encounter.id,20));assert.equal(state().combat.pendingAttack.targetAc,encounter.ac+2);
+  const beforeHit=snapshot();apply(cmd.createApplyCombatDamageCommand(ctx(),2).events);assert.equal(state().heroHp[actor],hp-5);assert.equal(rules.getCombatEnemyAc(state().combat,encounter.id),encounter.ac);persisted();undo();assert.equal(snapshot(),beforeHit);apply(cmd.createApplyCombatDamageCommand(ctx(),2).events);
+  const actor2=active(),hp2=state().heroHp[actor2];apply(cmd.createHeroAttackCommand(ctx(),actor2,encounter.id,20));apply(cmd.createApplyCombatDamageCommand(ctx(),2).events);assert.equal(state().heroHp[actor2],hp2);
+  start();use('netak-main-character',6);apply(cmd.createHeroAttackCommand(ctx(),active(),encounter.id,1));assert.equal(rules.getCombatEnemyAc(state().combat,encounter.id),encounter.ac+2);nextTo(encounter.id);assert.equal(rules.getCombatEnemyAc(state().combat,encounter.id),encounter.ac);assert.equal(cmd.createSelectCombatActionCommand(ctx(),'netak-main-character'),null);
+  console.log('PASS: phase-two breath without saves, cold resistance/armour/heat/survival, tail critical/miss/knockdown/immunity/flight/movement, crown AC/retaliation/expiration, usage, undo and persistence.');
+} finally {await server.close();}

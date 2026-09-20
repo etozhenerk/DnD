@@ -497,6 +497,68 @@
   .primaryAttack p { display: none; }
 }
 
+@media (min-width: 761px) and (max-height: 850px) {
+  .bookInner {
+    bottom: 15.6%;
+    top: 16.4%;
+  }
+
+  .identityPage {
+    gap: 0.36rem;
+    grid-template-rows: minmax(0, 0.58fr) minmax(0, 1fr);
+    padding-bottom: 4%;
+  }
+
+  .identityCopy h2 {
+    font-size: 1.82rem;
+    margin-block: 0.2rem 0.14rem;
+  }
+
+  .heroSummary,
+  .stats {
+    margin-top: 0.24rem;
+  }
+
+  .story {
+    font-size: 0.55rem;
+    line-height: 1.2;
+    margin-top: 0.32rem;
+    padding-top: 0.32rem;
+  }
+
+  .motivation {
+    margin-top: 0.3rem;
+    padding-left: 0.52rem;
+  }
+
+  .motivation span {
+    font-size: 0.52rem;
+  }
+
+  .motivation p {
+    font-size: 0.5rem;
+    line-height: 1.18;
+    margin-top: 0.1rem;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1080px) and (max-height: 850px) {
+  .identityPage {
+    grid-template-rows: minmax(0, 0.5fr) minmax(0, 1fr);
+    padding-bottom: 2%;
+  }
+
+  .story {
+    font-size: 0.5rem;
+    line-height: 1.16;
+  }
+
+  .motivation p {
+    font-size: 0.46rem;
+    line-height: 1.14;
+  }
+}
+
 @media (max-width: 860px) {
   .stage { padding-top: 2.35rem; }
   .bookmarks { left: 50%; top: -1.2rem; width: 70%; }
@@ -505,7 +567,7 @@
   .next { right: -1rem; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-height: 600px) and (orientation: landscape) {
   .legends {
     display: block;
     height: auto;

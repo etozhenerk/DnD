@@ -1,0 +1,73 @@
+{
+  "campaignId": "penisuela",
+  "date": "2026-09-09",
+  "authority": "Пользователь поручил сгенерировать иконки всех предметов кампании без иконок. Шесть отдельных генераций; личное снаряжение исключено.",
+  "mode": "built-in-imagegen",
+  "items": [
+    {
+      "id": "alexis-fashion-expert-certificate",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: stylized-concept. Asset type: square fantasy RPG inventory icon, 1024x1024. Premium dark fairytale painterly product rendering matching antique gold inventory UI. One clearly readable centered object filling 72% of canvas, entire silhouette inside generous 12% margins. Deep nearly black muted teal background, subtle soft vignette. Warm gold light, crisp clean edges and broad simple material details legible at 80 pixels. NO people, no hands, no room, no extra objects, no border frame, no tiny noisy ornament, no visual artifacts, no watermarks. A thick ivory parchment fashion certificate, slightly angled, fine elegant gold edging and a large dark wine-red wax seal with A monogram. Two soft ribbon tails. Main calligraphy only 'ALEXIS'. Remaining document has tasteful faint decorative lines, no other legible text.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/alexis-fashion-expert-certificate-v1.png"
+    },
+    {
+      "id": "stas-bungalow-pass",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: stylized-concept. Asset type: square fantasy RPG inventory icon, 1024x1024. Premium dark fairytale painterly product rendering matching antique gold inventory UI. One clearly readable centered object filling 72% of canvas, entire silhouette inside generous 12% margins. Deep nearly black muted teal background, subtle soft vignette. Warm gold light, crisp clean edges and broad simple material details legible at 80 pixels. NO people, no hands, no room, no extra objects, no border frame, no tiny noisy ornament, no visual artifacts, no watermarks. ONE worn luxurious ivory guest access card in three-quarter view, wide horizontal card with beveled antique gold corners, small tropical palm emblem and one large embossed letter B, discreet old wine stain on bottom corner. No lanyard, no names, no extra lettering.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/stas-bungalow-pass-v1.png"
+    },
+    {
+      "id": "troupe-bungalow-passes",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: stylized-concept. Asset type: square fantasy RPG inventory icon, 1024x1024. Premium dark fairytale painterly product rendering matching antique gold inventory UI. One clearly readable centered object filling 72% of canvas, entire silhouette inside generous 12% margins. Deep nearly black muted teal background, subtle soft vignette. Warm gold light, crisp clean edges and broad simple material details legible at 80 pixels. NO people, no hands, no room, no extra objects, no border frame, no tiny noisy ornament, no visual artifacts, no watermarks. Exactly FOUR elegant matching guest access cards fanned neatly, fully separated visible top corners making the count of four obvious. Ivory with warm gold edges, restrained burgundy accents and an engraved palm emblem. A large gold B on foremost card. No lanyards or extra lettering.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/troupe-bungalow-passes-v1.png"
+    },
+    {
+      "id": "guest-bungalow-pass",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: stylized-concept. Asset type: square fantasy RPG inventory icon, 1024x1024. Premium dark fairytale painterly product rendering matching antique gold inventory UI. One clearly readable centered object filling 72% of canvas, entire silhouette inside generous 12% margins. Deep nearly black muted teal background, subtle soft vignette. Warm gold light, crisp clean edges and broad simple material details legible at 80 pixels. NO people, no hands, no room, no extra objects, no border frame, no tiny noisy ornament, no visual artifacts, no watermarks. ONE special luxurious GOLD guest access card with clean rounded corners, mint-green central enamel inset and sculpted gold KEY emblem. Distinct from ivory general guest passes. Refined minimal elven detail, no names, no text, no chains.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/guest-bungalow-pass-v1.png"
+    },
+    {
+      "id": "grey-wiese-reputation-perfume",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: product-mockup.\nCreate a NEW design from scratch, square fantasy RPG inventory icon of an absurdly expensive couture perfume by Grey Wiese. This should look like the centerpiece of a royal private perfume collection, confident maximalist luxury with exquisite refined execution.\nOne complete bottle centered on near-black muted teal studio backdrop, generous 10% margins. Tall elegant architectural silhouette with gently tapered shoulders, thick flawless smoked midnight crystal, champagne amber perfume visible inside, polished gold base and narrow gold neck. The cap is a sculptural golden crown formed from two elegant sweeping elven wings, beautifully proportioned. On the bottle front a HUGE bespoke intertwined GW gold heraldic monogram in raised metal, with tasteful symmetrical gold flourishes and small crown above. Under the monogram an ivory-black inset label with exact text \"GREY WIESE\" in sophisticated widely spaced high-contrast serif capitals. Make this branding deliberate, crisp, central and exceptionally flamboyant. Monogram fills half the bottle front and is legible in small thumbnail.\nPremium cinematic product illustration, clean realistic glass optics, controlled warm gold rim lights, luxurious restrained deep shadows, polished surfaces, exceptionally clean edges and coherent geometry. Nearly frontal slight three-quarter view; whole object visible. Readable at 80px as a fantasy game item. No people, hands, package, flowers, props, room, watermarks, image frame, tiny noisy patterns, glitter noise, melted ornament or broken letters. Do not make a squat chunky green gemstone potion bottle.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/grey-wiese-reputation-perfume-v2.png"
+    },
+    {
+      "id": "olva-timeout",
+      "type": "item",
+      "status": "implemented",
+      "prompt": "Use case: stylized-concept. Asset type: square fantasy RPG inventory icon, 1024x1024. Premium dark fairytale painterly product rendering matching antique gold inventory UI. One clearly readable centered object filling 72% of canvas, entire silhouette inside generous 12% margins. Deep nearly black muted teal background, subtle soft vignette. Warm gold light, crisp clean edges and broad simple material details legible at 80 pixels. NO people, no hands, no room, no extra objects, no border frame, no tiny noisy ornament, no visual artifacts, no watermarks. A thick elegant ivory card with restrained antique gold edging and burgundy wax seal bearing an O monogram. At center large gold pause symbol II, below it neatly written Cyrillic 'ТАЙМ-АУТ'. Card in a slight three-quarter angle. Distinct clean shape, no other text or loose props.",
+      "format": "1024x1024",
+      "transparency": false,
+      "usage": "Общая сумка кампании и просмотр предмета",
+      "path": "assets/concepts/campaigns/penisuela/items/icons/olva-timeout-v1.png"
+    }
+  ],
+  "status": "implemented",
+  "review": {
+    "date": "2026-09-09",
+    "result": "Все шесть изображений просмотрены: чистые края и цельные объекты, без заметных дефектов. Новых персонажей или фактов лора нет."
+  }
+}

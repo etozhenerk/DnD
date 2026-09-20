@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "id": "penisuela-prologue-preview",
+  "campaignId": "penisuela",
+  "regionId": "penisuela",
+  "title": "Пять браслетов без имён",
+  "eyebrow": "Пролог путешествия",
+  "status": "preview",
+  "outro": {
+    "video": {
+      "id": "penisuela-video-prologue-intro",
+      "title": "Заставка Пенисуэлы",
+      "source": "assets/concepts/campaigns/penisuela/scene-videos/prologue-intro.mp4"
+    },
+    "titleCard": {
+      "text": "На следующее утро",
+      "durationMs": 5000
+    },
+    "nextSceneId": "hotel-overload"
+  },
+  "slides": [
+    {
+      "id": "penisuela-scene-tavern-invitation",
+      "order": 1,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png",
+      "alt": "Лорд Крайнеплот поднимает кружку за обычным столом шумной таверны.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "В таверне Москвина вечер давно дошёл до той стадии, когда чужие подвиги становятся своими воспоминаниями. Лорд Крайнеплот как раз уверял собеседников, что любое дело решаемо. «У меня там свои люди», — сказал он, и мир решил проверить это немедленно."
+    },
+    {
+      "id": "penisuela-scene-tavern-visitor-notices",
+      "order": 2,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-02.png",
+      "alt": "Неизвестный посетитель за соседним столом обращает внимание на Лорда Крайнеплота.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Обычно такие слова растворялись в шуме и никого ни к чему не обязывали. На этот раз они нашли слушателя. Незнакомец за соседним столом смотрел на Лорда так, будто услышал не хвастовство, а пароль."
+    },
+    {
+      "id": "penisuela-scene-tavern-visitor-approaches",
+      "order": 3,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-03.png",
+      "alt": "Незнакомец с чёрным конвертом идёт через таверну к столу Лорда.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Разговор за столом оборвался прежде, чем незнакомец успел приблизиться. В его руке был чёрный конверт с золотой печатью — вещь, которая сама по себе требовала внимания и обещала неприятности. Крайнеплот встретил его взглядом человека, привыкшего сначала ввязываться, а потом уточнять условия."
+    },
+    {
+      "id": "penisuela-scene-tavern-envelope-handoff",
+      "order": 4,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-04.png",
+      "alt": "Незнакомец молча передаёт Лорду толстый чёрный конверт.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Передача заняла меньше времени, чем заказ кружки: ни имени, ни объяснений, ни просьбы о тайне. Только чёрный конверт с золотой печатью. Внутри — пять пригласительных на мальчишник. Обычно приглашения становятся опасными после согласия. С этим неприятности начались ещё до того, как его успели прочитать."
+    },
+    {
+      "id": "penisuela-scene-tavern-lord-examines-envelope",
+      "order": 5,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-05.png",
+      "alt": "Лорд рассматривает печать на конверте, пока незнакомец уходит.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Когда Лорд поднял глаза, спрашивать уже было некого. Ответы, видимо, в доставку не входили. Золотая печать не несла ни герба, ни имени — только спокойную уверенность того, кто заранее знал: конверт всё равно откроют."
+    },
+    {
+      "id": "penisuela-scene-tavern-envelope-closeup-sealed",
+      "order": 6,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-06.png",
+      "alt": "Запечатанный чёрный конверт лежит в руках Лорда Крайнеплота.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "За столом стало тихо. Даже завсегдатаи понимали: если послание приходит без имени, вопрос уже не в том, открывать ли его, а в том, кто потом будет платить за последствия. Золотая печать продержалась ещё несколько секунд."
+    },
+    {
+      "id": "penisuela-scene-tavern-envelope-closeup-open",
+      "order": 7,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png",
+      "alt": "Во вскрытом конверте видны пять золотых пропусков и край письма.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Пять пригласительных звали героев на Пенисуэлу: дорога оплачена, мальчишник закрытый, бар бездонный. От них требовалось лишь хорошо провести время; впереди обещали щедрую благодарность. Пять золотых браслетов служили пропусками. Имя жениха составители оставили при себе."
+    },
+    {
+      "id": "penisuela-scene-tavern-five-bracelets-decision",
+      "order": 8,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png",
+      "alt": "Лорд загружает приглашение в спинной люк голубя-курьера Кострюльки.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Пять мест. И у Крайнеплота нашлось ровно пять человек, которых можно отправить на тайный мальчишник со словами «если что — помогите» и почти не считать это безответственным. Выбирал он недолго. Кострюльку напутствовал ещё короче: «Доставь им. Лично»."
+    },
+    {
+      "id": "penisuela-scene-kostryulka-flight",
+      "order": 9,
+      "image": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-09.png",
+      "alt": "Кострюлька взлетает с закрытым грузовым люком, пока Лорд Крайнеплот спиной к зрителю возвращается в таверну.",
+      "speaker": {
+        "kind": "narrator",
+        "label": "Рассказчик"
+      },
+      "text": "Так закончился совершенно обычный вечер в таверне Москвина. Кострюлька унёс пять пригласительных героям, Лорд вернулся к своей кружке, а где-то впереди уже ждала Пенисуэла. Пока ещё это звучало как отдых."
+    }
+  ],
+  "music": {
+    "id": "penisuela-music-prologue-stone-walls-whisper",
+    "title": "Шёпот каменных стен",
+    "source": "assets/concepts/campaigns/penisuela/audio/soundtrack/prologue-stone-walls-whisper.mp3",
+    "volume": 0.3,
+    "fadeOutMs": 3000
+  }
+}

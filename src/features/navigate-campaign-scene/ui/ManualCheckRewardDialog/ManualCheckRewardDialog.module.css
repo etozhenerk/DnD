@@ -1,0 +1,47 @@
+.reward {
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  text-align: center;
+}
+
+.coin {
+  width: min(100%, 34dvh, 18rem);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: var(--shadow-session-item);
+  animation: arrival 650ms ease-out both;
+}
+
+.reward p {
+  margin: 0;
+  line-height: 1.5;
+  max-width: 36rem;
+}
+
+.description {color: var(--color-gold-light);}
+
+.reward button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+}
+
+.reward button:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 3px;
+}
+
+@keyframes arrival {
+  from {transform: scale(0.65) rotate(-15deg);}
+  to {transform: scale(1) rotate(0);}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coin {animation: none;}
+}

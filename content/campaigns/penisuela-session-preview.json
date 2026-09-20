@@ -1,0 +1,1500 @@
+{
+  "version": 12,
+  "id": "penisuela-session-preview",
+  "campaignId": "penisuela",
+  "regionId": "penisuela",
+  "status": "ready",
+  "initialSceneId": "hotel-overload",
+  "party": [
+    {
+      "characterId": "bubsilda",
+      "label": "Бубсильда",
+      "token": "assets/concepts/campaigns/penisuela/ui/hero-tokens/bubsilda.png"
+    },
+    {
+      "characterId": "linda",
+      "label": "Линда",
+      "token": "assets/concepts/campaigns/penisuela/ui/hero-tokens/linda.png"
+    },
+    {
+      "characterId": "lambert",
+      "label": "Ламберт",
+      "token": "assets/concepts/campaigns/penisuela/ui/hero-tokens/lambert.png"
+    },
+    {
+      "characterId": "golovach-lena",
+      "label": "Головач Лена",
+      "token": "assets/concepts/campaigns/penisuela/ui/hero-tokens/golovach-lena.png"
+    },
+    {
+      "characterId": "thorin-pukoshchit",
+      "label": "Торин Пукощит II",
+      "token": "assets/concepts/campaigns/penisuela/ui/hero-tokens/thorin-pukoshchit.png"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hotel-overload",
+      "title": "Похмельное утро",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-awakening.png",
+      "alt": "Пятеро героев приходят в себя после бурной ночи в сухом разгромленном гостиничном люксе; Головач Лена продолжает спать на диване.",
+      "readAloud": "Утро приходит без стука. Свет режет глаза, воздух хранит запах выдохшегося шампанского. Вчера здесь явно умели веселиться; сегодня даже роскошь выглядит помятой. Из целого дня в памяти не осталось ничего, кроме тяжести в голове. Сон Лены пока крепче этого мира.",
+      "roomLegend": "В тишине номера вчерашний праздник кажется чужим. Он оставил после себя беспорядок, тяжёлый воздух и неловкое чувство, что самое важное случилось как раз там, где теперь провал в памяти.",
+      "introActionLabel": "Осмотреть номер и пульт",
+      "inspectables": [
+        {
+          "id": "overload-console",
+          "label": "Режиссёрский пульт",
+          "image": "assets/concepts/campaigns/penisuela/items/overload-console.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/overload-console.png",
+          "locationHint": "На сухом ковре перед центральным столом, среди пустых бокалов и цветов.",
+          "summary": "Чёрно-золотой пульт тёплый на ощупь. Пять огней на корпусе пока не горят; экран требует внимания, будто ждал вашего пробуждения.",
+          "revealText": "На экране появляется предупреждение: «КОНЕЦ СВЕТА ЗАПУЩЕН. ДЛЯ ПРЕДОТВРАЩЕНИЯ КАТАСТРОФЫ АКТИВИРУЙТЕ МЕХАНИЗМ ДВУМЯ ГОЛОСАМИ: ЖЕНИХА И НЕВЕСТЫ». Ни одного имени. Под надписью пульсирует стрелка.",
+          "useText": "Стрелка поворачивается к выходу из номера. На повреждённой записи рядом сохранились рука с браслетом и обрывок имени: «Егор». Можно начать с него.",
+          "order": 1
+        },
+        {
+          "id": "journey-letter",
+          "label": "Письмо-приглашение",
+          "image": "assets/concepts/campaigns/penisuela/items/journey-letter.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/journey-letter.png",
+          "locationHint": "На маленьком круглом столике слева, рядом с диваном.",
+          "summary": "Один из пяти пригласительных, которые Лорд Крайнеплот переслал вашей компании. Имени отправителя на нём нет.",
+          "revealText": "Вы приглашены на Пенисуэлу — на закрытый мальчишник перед свадьбой. Пять гостей, пять золотых браслетов. Дорога и проживание оплачены, бар открыт до последнего гостя. Имена узнаете на месте.\n\nПригласительные передайте Лорду Крайнеплоту: он знает, кому их доставить.\n\nДо встречи на празднике. Подписи не будет.",
+          "useText": "Крайнеплот получил пять таких пригласительных и отправил их вам. Вчера вы добрались до мальчишника. Всё, что было дальше, провалилось из памяти.",
+          "order": 2
+        },
+        {
+          "id": "anonymous-bracelets",
+          "label": "Золотые браслеты",
+          "image": "assets/concepts/campaigns/penisuela/items/anonymous-bracelets.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/anonymous-bracelets.png",
+          "locationHint": "Пять браслетов небрежно разбросаны по правому дивану.",
+          "summary": "Пять одинаковых золотых браслетов лежат на сухой обивке, будто их сняли и бросили в спешке. На них нет ни имён, ни гербов — только герб отеля и метка гостевого пропуска.",
+          "revealText": "Обычные гостиничные браслеты-пропуска. Такие открывают двери и проходы по всему отелю: достаточно поднести один к считывателю.",
+          "useText": "Браслеты открывают гостиничные замки. Но дверь номера выпустит вас только после того, как вы заберёте и режиссёрский пульт.",
+          "order": 3
+        },
+        {
+          "id": "egorik-recording",
+          "label": "Повреждённая запись",
+          "image": "assets/concepts/campaigns/penisuela/items/egorik-recording-clue-v2.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/egorik-recording.png",
+          "locationHint": "На узкой консоли справа от центральной двери; красный индикатор заметен среди тёмного дерева.",
+          "summary": "Пластина хранит несколько секунд ночной записи. Звука нет, лица скрыты помехами.",
+          "revealText": "У служебной двери рука с подвеской «E» передаёт чёрный конверт человеку в зелёном рукаве с золотыми браслетами.",
+          "useText": "Подсказка: подвеска «E» — единственная зацепка, по которой можно найти участника передачи.",
+          "order": 4
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "hotel-gallery",
+      "title": "Гостиничная галерея",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery.png",
+      "alt": "Чёрно-золотая гостиничная галерея с двумя дверями номеров и лестницей вниз к освещённому бару, перекрытой стойкой доступа.",
+      "readAloud": "В прохладе мраморного холла вчерашний разгул кажется почти неправдоподобным. Где-то за дверями ещё спорят о прекрасном, и чужое возмущение звучит куда бодрее утренних голосов. Снизу тянется приглушённая музыка.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "alexis-room",
+      "title": "Комната Алексиса: образ 10/10 для конца света",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/alexis-fitting-room.png",
+      "alt": "Алексис стоит в роскошной примерочной рядом с пустым манекеном перед магическим зеркалом.",
+      "readAloud": "Даже конец света меркнет перед маленькой катастрофой чужого вкуса. В комнате Алексиса роскошь соседствует с раздражением, и утро обещает быть мучительно долгим. Среди всего этого великолепия чувствуется какая-то нелепая, упрямая неправильность.",
+      "interactionViews": [
+        {
+          "id": "outfit-builder",
+          "background": "assets/concepts/campaigns/penisuela/scenes/alexis-outfit-builder.png",
+          "alt": "Пустой манекен справа и магическая панель с шестью пустыми ячейками выбора вещей слева.",
+          "outfitBuilder": {
+            "pageSize": 2,
+            "categories": [
+              {
+                "id": "top",
+                "label": "Верх",
+                "options": [
+                  {
+                    "id": "night-concierge-jacket-top",
+                    "setId": "decoy-night-concierge-jacket",
+                    "label": "Жакет ночного консьержа",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/night-concierge-jacket-top.png",
+                    "alt": "Чёрный бархатный двубортный жакет с жемчужными лацканами и изумрудным кантом."
+                  },
+                  {
+                    "id": "volume-over-substance-top",
+                    "setId": "volume-over-substance",
+                    "label": "Архитектурный корсет",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-top.png",
+                    "alt": "Золотисто-изумрудный скульптурный корсет."
+                  },
+                  {
+                    "id": "ruby-room-service-top",
+                    "setId": "decoy-ruby-room-service",
+                    "label": "Мундир рум-сервиса",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/ruby-room-service-top.png",
+                    "alt": "Рубиновый корсет-жакет с чёрным кантом и золотыми шнуровыми застёжками."
+                  },
+                  {
+                    "id": "fashion-emergency-service-top",
+                    "setId": "fashion-emergency-service",
+                    "label": "Техно-анорак",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-top.png",
+                    "alt": "Изумрудный укороченный анорак с коралловыми ремнями."
+                  },
+                  {
+                    "id": "champagne-cuirass-top",
+                    "setId": "decoy-champagne-cuirass",
+                    "label": "Кираса шампанского",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/champagne-cuirass-top.png",
+                    "alt": "Жемчужный скульптурный лиф в золотой клетке с коралловыми кристаллами."
+                  },
+                  {
+                    "id": "suite-service-afterparty-top",
+                    "setId": "suite-service-afterparty",
+                    "label": "Шёлковая рубашка",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-top.png",
+                    "alt": "Жемчужно-белая шёлковая рубашка с чёрным кантом."
+                  },
+                  {
+                    "id": "amethyst-knot-top",
+                    "setId": "decoy-amethyst-knot",
+                    "label": "Аметистовый узел",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/amethyst-knot-top.png",
+                    "alt": "Аметистовая блуза с жемчужным и чёрным рукавами и золотой застёжкой."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-top",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Драпированный топ",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-top.png",
+                    "alt": "Чёрно-лиловый асимметричный драпированный топ."
+                  }
+                ]
+              },
+              {
+                "id": "bottom",
+                "label": "Низ",
+                "options": [
+                  {
+                    "id": "fashion-emergency-service-bottom",
+                    "setId": "fashion-emergency-service",
+                    "label": "Бермуды и сапоги",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-bottom.png",
+                    "alt": "Бордовые бермуды и высокие чёрно-золотые сапоги."
+                  },
+                  {
+                    "id": "black-orchid-pannier-bottom",
+                    "setId": "decoy-black-orchid-pannier",
+                    "label": "Панье чёрной орхидеи",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/black-orchid-pannier-bottom.png",
+                    "alt": "Чёрная скульптурная юбка-тюльпан с аметистовыми складками и золотыми ботильонами."
+                  },
+                  {
+                    "id": "suite-service-afterparty-bottom",
+                    "setId": "suite-service-afterparty",
+                    "label": "Шёлковые брюки",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-bottom.png",
+                    "alt": "Чёрные широкие шёлковые брюки с золотыми мюлями."
+                  },
+                  {
+                    "id": "dessert-trolley-skirt-bottom",
+                    "setId": "decoy-dessert-trolley-skirt",
+                    "label": "Юбка десертной тележки",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/dessert-trolley-skirt-bottom.png",
+                    "alt": "Кораллово-жемчужная многоярусная юбка на золотом каркасе с золотыми туфлями."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-bottom",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Брюки с накидкой",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-bottom.png",
+                    "alt": "Тёмно-красные брюки с чёрной асимметричной накидкой."
+                  },
+                  {
+                    "id": "out-of-line-culottes-bottom",
+                    "setId": "decoy-out-of-line-culottes",
+                    "label": "Кюлоты вне очереди",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/out-of-line-culottes-bottom.png",
+                    "alt": "Бордовые кюлоты с чёрными клапанами, золотыми пряжками и жемчужно-чёрными сапогами."
+                  },
+                  {
+                    "id": "volume-over-substance-bottom",
+                    "setId": "volume-over-substance",
+                    "label": "Коралловая юбка",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-bottom.png",
+                    "alt": "Объёмная коралловая юбка-баллон с золотыми ботильонами."
+                  },
+                  {
+                    "id": "late-checkout-trousers-bottom",
+                    "setId": "decoy-late-checkout-trousers",
+                    "label": "Брюки позднего выезда",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/late-checkout-trousers-bottom.png",
+                    "alt": "Жемчужные брюки-палаццо с чёрными панелями, изумрудным лампасом и золотыми мюлями."
+                  }
+                ]
+              },
+              {
+                "id": "accent",
+                "label": "Акцент",
+                "options": [
+                  {
+                    "id": "portable-chandelier-accent",
+                    "setId": "decoy-portable-chandelier",
+                    "label": "Люстра личного пользования",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/portable-chandelier-accent.png",
+                    "alt": "Трёхъярусная золотая корона-люстра с аметистовыми и коралловыми подвесками."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-accent",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Шляпа с вуалью",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-accent.png",
+                    "alt": "Широкополая чёрная шляпа с короткой золотой вуалью."
+                  },
+                  {
+                    "id": "volume-over-substance-accent",
+                    "setId": "volume-over-substance",
+                    "label": "Драгоценный ореол",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-accent.png",
+                    "alt": "Золотой головной ореол с крупными цветными камнями."
+                  },
+                  {
+                    "id": "archive-turban-accent",
+                    "setId": "decoy-archive-turban",
+                    "label": "Архивный тюрбан",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/archive-turban-accent.png",
+                    "alt": "Жемчужный тюрбан с чёрными лентами, сапфировой брошью и золотыми цепочками."
+                  },
+                  {
+                    "id": "suite-service-afterparty-accent",
+                    "setId": "suite-service-afterparty",
+                    "label": "Изумрудный платок",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-accent.png",
+                    "alt": "Изумрудный шёлковый платок-капюшон."
+                  },
+                  {
+                    "id": "jewel-regent-circlet-accent",
+                    "setId": "decoy-jewel-regent-circlet",
+                    "label": "Диадема распорядителя бала",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/jewel-regent-circlet-accent.png",
+                    "alt": "Чёрная бархатная диадема с изумрудными кабошонами и золотыми лучами."
+                  },
+                  {
+                    "id": "fashion-emergency-service-accent",
+                    "setId": "fashion-emergency-service",
+                    "label": "Дымчатый визор",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-accent.png",
+                    "alt": "Дымчатый панорамный визор с золотой отделкой."
+                  },
+                  {
+                    "id": "tea-for-one-fascinator-accent",
+                    "setId": "decoy-tea-for-one-fascinator",
+                    "label": "Чайная шляпка «На одного»",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/tea-for-one-fascinator-accent.png",
+                    "alt": "Жемчужная чашка на чёрном блюдце с рубиновым кристаллом и золотой ручкой."
+                  }
+                ]
+              }
+            ]
+          },
+          "readAloud": "В отражении чувствуется чужая прихоть. Красота здесь упрямо не желает складываться в целое, будто у самой комнаты сегодня дурной вкус. Алексис молчит с таким страданием, что спорить с ним уже необязательно."
+        }
+      ],
+      "inspectables": [
+        {
+          "id": "alexis-fashion-expert-certificate",
+          "label": "Сертификат экспертов моды",
+          "visualKind": "alexis-fashion-certificate",
+          "locationHint": "Алексис Великолепный вручает сертификат только после отличной оценки собранного наряда.",
+          "summary": "Торжественный сертификат на плотном пергаменте с винной печатью и золотой подписью ALEXIS.",
+          "revealText": "ALEXIS — Алексис Великолепный — настоящим подтверждает: предъявители этого сертификата являются экспертами моды и вправе выносить стилевые вердикты даже во время конца света.",
+          "useText": "Сертификат подтверждает отличную оценку наряда и остаётся памятной наградой партии; автоматических проверок или сюжетного пропуска он не даёт.",
+          "order": 1,
+          "inventoryOrder": 7,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/alexis-fashion-expert-certificate-v1.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/alexis-fashion-expert-certificate-v1.png"
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "pussy-audience",
+      "title": "Pussy Sultan: аудиенция без регалии",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-before-microphone-returned.png",
+      "alt": "Pussy Sultan с пустыми руками стоит в чёрно-золотом VIP-номере; за его плечом открыт проход в реквизиторскую.",
+      "readAloud": "У здешней роскоши тяжёлый нрав: даже утренний свет кажется частью придворного церемониала. Pussy Sultan явно не считает ваше появление достаточным поводом для радости. Его молчание выдержано с безупречным вкусом и стоит подозрительно дорого.",
+      "inspectables": [],
+      "exit": null,
+      "interactionViews": [
+        {
+          "id": "intimidated",
+          "background": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-intimidated-standing.png",
+          "alt": "Испуганный Pussy Sultan стоит с поднятыми ладонями перед пустым креслом в том же чёрно-золотом номере.",
+          "readAloud": "Роскошь вокруг не стала скромнее, зато спеси в комнате заметно поубавилось. Pussy Sultan больше не пытается казаться хозяином положения. В наступившей тишине даже золото поблёскивает как-то виновато."
+        }
+      ]
+    },
+    {
+      "id": "pussy-prop-room",
+      "title": "Реквизиторская: скипетр под паланкином",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room.png",
+      "alt": "Чёрно-золотая VIP-реквизиторская с проходом обратно в номер Pussy Sultan; ручной скипетр-микрофон зажат под рамой паланкина.",
+      "readAloud": "Здесь заканчивается придворный блеск и начинается его изнанка. В полумраке золото выглядит тусклее, а тишину время от времени нарушает натужный скрип. После вчерашнего величие явно держится на честном слове.",
+      "introActionLabel": "Освободить скипетр",
+      "interactionViews": [
+        {
+          "id": "force-only",
+          "background": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-force-only.png",
+          "alt": "Сервисный механизм паланкина заклинен; в комнате остаётся только силовой способ поднять раму.",
+          "readAloud": "В глубине механизма что-то хрустнуло, и скрип сменился тяжёлым молчанием. Вся эта позолоченная роскошь вдруг ощутимо прибавила в весе."
+        },
+        {
+          "id": "carriers-awakened",
+          "background": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers.png",
+          "alt": "Три заводных носильщика с фарфоровыми лицами пробудились вокруг паланкина и закрыли путь к скипетру.",
+          "readAloud": "Тишина отвечает сухим фарфоровым стуком. У придворного великолепия обнаруживаются собственные защитники — безмолвные и совершенно негостеприимные."
+        },
+        {
+          "id": "carriers-defeated",
+          "background": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers-defeated.png",
+          "alt": "Три обездвиженных носильщика лежат вокруг паланкина; их шесты приподняли раму и открыли доступ к скипетру.",
+          "readAloud": "Фарфоровый стук смолк. Паланкин больше не давит всей своей тяжестью, и в реквизиторской впервые становится тихо без угрозы."
+        }
+      ],
+      "inspectables": [
+        {
+          "id": "pussy-sultan-golden-scepter-microphone",
+          "label": "Золотой скипетр-микрофон",
+          "image": "assets/concepts/campaigns/penisuela/items/pussy-sultan-golden-scepter-microphone.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/pussy-sultan-golden-scepter-microphone.png",
+          "locationHint": "Под нижней рамой паланкина; после боя шесты носильщиков удерживают её как рычаги.",
+          "summary": "Ручной золотой микрофон длиной примерно с предплечье заканчивается капсулой в оправе из рубинов. На гарде переплетены две буквы — «П» и «С», а металл сохранил тепло ладони, хотя ночь давно закончилась.",
+          "revealText": "Стоит поднять скипетр, как под полом протяжно отзывается медный рельс. Где-то внизу один за другим щёлкают стопоры, будто гостиница заметила пропажу и теперь пересчитывает собственный реквизит.",
+          "useText": "Это регалия Pussy Sultan и обещанный ключ к его благодарности. Пока скипетр у вас, он занимает место в инвентаре; вернуть его хозяину получится только после спуска с верхней галереи.",
+          "order": 1,
+          "inventoryOrder": 5,
+          "hotspotPosition": {
+            "x": 49,
+            "y": 77
+          }
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "pussy-scepter-return",
+      "title": "Возвращение золотого скипетра Pussy Sultan",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-microphone-returned.png",
+      "alt": "Pussy Sultan держит возвращённый золотой скипетр-микрофон в разгромленном чёрно-золотом номере; награда ещё не передана героям.",
+      "readAloud": "К придворной роскоши возвращается прежняя уверенность. Утреннее раздражение уступает благодушию, редкому и потому особенно ценному. Даже воздух в покоях Pussy Sultan будто становится щедрее.",
+      "introActionLabel": "Выслушать предложение награды",
+      "inspectables": [
+        {
+          "id": "pussy-sultan-bar-passes",
+          "label": "Три жетона Pussy Sultan в бар",
+          "image": "assets/concepts/campaigns/penisuela/items/closed-bar-token.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/closed-bar-token.png",
+          "locationHint": "Pussy Sultan вручает три жетона после возвращения скипетра, успешного запугивания или победы над VIP-стражниками.",
+          "summary": "Три одинаковых золотых жетона с гербом закрытого бара сложены веером.",
+          "revealText": "Pussy Sultan отсчитывает ровно три жетона. Вместе с двумя пропусками Алексиса они дают доступ всей группе к закрытому бару независимо от того, были получены за поручение или на враждебной ветке.",
+          "useText": "Три жетона добавляются в общий инвентарь. Для прохода всей партии нужны также два пропуска Алексиса.",
+          "order": 1,
+          "inventoryOrder": 5
+        },
+        {
+          "id": "pussy-sultan-womanizer",
+          "label": "Вуманайзер Pussy Sultan",
+          "image": "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png",
+          "icon": "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png",
+          "locationHint": "Среди наград, которые Pussy Sultan вручает после возвращения скипетра.",
+          "summary": "Воздушно-волновой стимулятор в тяжёлом золотом корпусе украшен бордовыми вставками, барочным орнаментом и рубиновой кнопкой. Круглая насадка не оставляет пространства для дипломатических трактовок назначения.",
+          "revealText": "Pussy Sultan называет подарок Вуманайзером и инструментом независимого роскошного отдыха. Инструкцию он не прилагает: по его мнению, настоящий королевский предмет обязан быть интуитивно понятным.",
+          "useText": "Вуманайзер добавляется в общий инвентарь и позднее может изменить линию Оливии, Станиса и Полинетты.",
+          "order": 2,
+          "inventoryOrder": 6
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "alexis-room-after-pussy",
+      "title": "Комната Алексиса после аудиенции Pussy Sultan",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/alexis-fitting-room.png",
+      "alt": "Алексис стоит в роскошной примерочной рядом с пустым манекеном перед магическим зеркалом.",
+      "readAloud": "Даже конец света меркнет перед маленькой катастрофой чужого вкуса. В комнате Алексиса роскошь соседствует с раздражением, и утро обещает быть мучительно долгим. Среди всего этого великолепия чувствуется какая-то нелепая, упрямая неправильность.",
+      "interactionViews": [
+        {
+          "id": "outfit-builder",
+          "background": "assets/concepts/campaigns/penisuela/scenes/alexis-outfit-builder.png",
+          "alt": "Пустой манекен справа и магическая панель с шестью пустыми ячейками выбора вещей слева.",
+          "outfitBuilder": {
+            "pageSize": 2,
+            "categories": [
+              {
+                "id": "top",
+                "label": "Верх",
+                "options": [
+                  {
+                    "id": "night-concierge-jacket-top",
+                    "setId": "decoy-night-concierge-jacket",
+                    "label": "Жакет ночного консьержа",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/night-concierge-jacket-top.png",
+                    "alt": "Чёрный бархатный двубортный жакет с жемчужными лацканами и изумрудным кантом."
+                  },
+                  {
+                    "id": "volume-over-substance-top",
+                    "setId": "volume-over-substance",
+                    "label": "Архитектурный корсет",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-top.png",
+                    "alt": "Золотисто-изумрудный скульптурный корсет."
+                  },
+                  {
+                    "id": "ruby-room-service-top",
+                    "setId": "decoy-ruby-room-service",
+                    "label": "Мундир рум-сервиса",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/ruby-room-service-top.png",
+                    "alt": "Рубиновый корсет-жакет с чёрным кантом и золотыми шнуровыми застёжками."
+                  },
+                  {
+                    "id": "fashion-emergency-service-top",
+                    "setId": "fashion-emergency-service",
+                    "label": "Техно-анорак",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-top.png",
+                    "alt": "Изумрудный укороченный анорак с коралловыми ремнями."
+                  },
+                  {
+                    "id": "champagne-cuirass-top",
+                    "setId": "decoy-champagne-cuirass",
+                    "label": "Кираса шампанского",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/champagne-cuirass-top.png",
+                    "alt": "Жемчужный скульптурный лиф в золотой клетке с коралловыми кристаллами."
+                  },
+                  {
+                    "id": "suite-service-afterparty-top",
+                    "setId": "suite-service-afterparty",
+                    "label": "Шёлковая рубашка",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-top.png",
+                    "alt": "Жемчужно-белая шёлковая рубашка с чёрным кантом."
+                  },
+                  {
+                    "id": "amethyst-knot-top",
+                    "setId": "decoy-amethyst-knot",
+                    "label": "Аметистовый узел",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/amethyst-knot-top.png",
+                    "alt": "Аметистовая блуза с жемчужным и чёрным рукавами и золотой застёжкой."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-top",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Драпированный топ",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-top.png",
+                    "alt": "Чёрно-лиловый асимметричный драпированный топ."
+                  }
+                ]
+              },
+              {
+                "id": "bottom",
+                "label": "Низ",
+                "options": [
+                  {
+                    "id": "fashion-emergency-service-bottom",
+                    "setId": "fashion-emergency-service",
+                    "label": "Бермуды и сапоги",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-bottom.png",
+                    "alt": "Бордовые бермуды и высокие чёрно-золотые сапоги."
+                  },
+                  {
+                    "id": "black-orchid-pannier-bottom",
+                    "setId": "decoy-black-orchid-pannier",
+                    "label": "Панье чёрной орхидеи",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/black-orchid-pannier-bottom.png",
+                    "alt": "Чёрная скульптурная юбка-тюльпан с аметистовыми складками и золотыми ботильонами."
+                  },
+                  {
+                    "id": "suite-service-afterparty-bottom",
+                    "setId": "suite-service-afterparty",
+                    "label": "Шёлковые брюки",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-bottom.png",
+                    "alt": "Чёрные широкие шёлковые брюки с золотыми мюлями."
+                  },
+                  {
+                    "id": "dessert-trolley-skirt-bottom",
+                    "setId": "decoy-dessert-trolley-skirt",
+                    "label": "Юбка десертной тележки",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/dessert-trolley-skirt-bottom.png",
+                    "alt": "Кораллово-жемчужная многоярусная юбка на золотом каркасе с золотыми туфлями."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-bottom",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Брюки с накидкой",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-bottom.png",
+                    "alt": "Тёмно-красные брюки с чёрной асимметричной накидкой."
+                  },
+                  {
+                    "id": "out-of-line-culottes-bottom",
+                    "setId": "decoy-out-of-line-culottes",
+                    "label": "Кюлоты вне очереди",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/out-of-line-culottes-bottom.png",
+                    "alt": "Бордовые кюлоты с чёрными клапанами, золотыми пряжками и жемчужно-чёрными сапогами."
+                  },
+                  {
+                    "id": "volume-over-substance-bottom",
+                    "setId": "volume-over-substance",
+                    "label": "Коралловая юбка",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-bottom.png",
+                    "alt": "Объёмная коралловая юбка-баллон с золотыми ботильонами."
+                  },
+                  {
+                    "id": "late-checkout-trousers-bottom",
+                    "setId": "decoy-late-checkout-trousers",
+                    "label": "Брюки позднего выезда",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/late-checkout-trousers-bottom.png",
+                    "alt": "Жемчужные брюки-палаццо с чёрными панелями, изумрудным лампасом и золотыми мюлями."
+                  }
+                ]
+              },
+              {
+                "id": "accent",
+                "label": "Акцент",
+                "options": [
+                  {
+                    "id": "portable-chandelier-accent",
+                    "setId": "decoy-portable-chandelier",
+                    "label": "Люстра личного пользования",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/portable-chandelier-accent.png",
+                    "alt": "Трёхъярусная золотая корона-люстра с аметистовыми и коралловыми подвесками."
+                  },
+                  {
+                    "id": "mourning-for-good-taste-accent",
+                    "setId": "mourning-for-good-taste",
+                    "label": "Шляпа с вуалью",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/mourning-for-good-taste-accent.png",
+                    "alt": "Широкополая чёрная шляпа с короткой золотой вуалью."
+                  },
+                  {
+                    "id": "volume-over-substance-accent",
+                    "setId": "volume-over-substance",
+                    "label": "Драгоценный ореол",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/volume-over-substance-accent.png",
+                    "alt": "Золотой головной ореол с крупными цветными камнями."
+                  },
+                  {
+                    "id": "archive-turban-accent",
+                    "setId": "decoy-archive-turban",
+                    "label": "Архивный тюрбан",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/archive-turban-accent.png",
+                    "alt": "Жемчужный тюрбан с чёрными лентами, сапфировой брошью и золотыми цепочками."
+                  },
+                  {
+                    "id": "suite-service-afterparty-accent",
+                    "setId": "suite-service-afterparty",
+                    "label": "Изумрудный платок",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/suite-service-afterparty-accent.png",
+                    "alt": "Изумрудный шёлковый платок-капюшон."
+                  },
+                  {
+                    "id": "jewel-regent-circlet-accent",
+                    "setId": "decoy-jewel-regent-circlet",
+                    "label": "Диадема распорядителя бала",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/jewel-regent-circlet-accent.png",
+                    "alt": "Чёрная бархатная диадема с изумрудными кабошонами и золотыми лучами."
+                  },
+                  {
+                    "id": "fashion-emergency-service-accent",
+                    "setId": "fashion-emergency-service",
+                    "label": "Дымчатый визор",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/fashion-emergency-service-accent.png",
+                    "alt": "Дымчатый панорамный визор с золотой отделкой."
+                  },
+                  {
+                    "id": "tea-for-one-fascinator-accent",
+                    "setId": "decoy-tea-for-one-fascinator",
+                    "label": "Чайная шляпка «На одного»",
+                    "image": "assets/concepts/campaigns/penisuela/ui/alexis-outfits/tea-for-one-fascinator-accent.png",
+                    "alt": "Жемчужная чашка на чёрном блюдце с рубиновым кристаллом и золотой ручкой."
+                  }
+                ]
+              }
+            ]
+          },
+          "readAloud": "В отражении чувствуется чужая прихоть. Красота здесь упрямо не желает складываться в целое, будто у самой комнаты сегодня дурной вкус. Алексис молчит с таким страданием, что спорить с ним уже необязательно."
+        }
+      ],
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "closed-bar",
+      "title": "Закрытый бар: застывший танец",
+      "eyebrow": "Акт I · Отель",
+      "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-v7.png",
+      "alt": "Светлый закрытый бар: слева Станис с кружкой пива, в глубине пятеро застывших танцоров WOK, а справа канат и красный считыватель перекрывают проход к гостевым бунгало.",
+      "readAloud": "В баре всё ещё длится вчерашний вечер, только веселье из него давно ушло. У стойки кто-то негромко сетует на жизнь. В глубине под тёплым светом застыла танцевальная труппа. В этой неподвижности есть что-то тревожное: утро наступило, а танец так и не смог продолжиться.",
+      "interactionViews": [
+        {
+          "id": "stas",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas-v2.png",
+          "alt": "Уставший и грустный полный Станис один сидит у стойки в бордовой рубашке, бежевой футболке и длинных джинсовых шортах, держа кружку обычного светлого пива.",
+          "readAloud": "У барной стойки утро тянется медленнее, чем во всём остальном отеле. Пиво давно выдохлось, а обида Станиса на жизнь — ещё нет. В его усталости есть что-то упрямое, словно даже собственное несчастье он не собирается никому уступать."
+        },
+        {
+          "id": "dancers",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-dancers.png",
+          "alt": "Пятеро танцоров WOK в чёрной одежде, ярких перчатках и туфлях на каблуках застыли посреди танца перед розово-фиолетовым неоновым треугольником. Справа стоит электронный музыкальный пульт.",
+          "readAloud": "Вблизи становится ясно: на сцене никто не танцует. Заклятие остановило артистов посреди номера и не даёт им пошевелиться. Под праздничным светом эта неподвижность кажется особенно мучительной."
+        },
+        {
+          "id": "dancers-freed",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-dancers-gratitude.png",
+          "alt": "Пятеро освобождённых танцоров WOK в чёрной одежде, ярких перчатках и туфлях на каблуках благодарят героев поклоном и воздушным поцелуем. Центральный танцор протягивает четыре пропуска; позади сияет неоновый треугольник и кружится золотое конфетти.",
+          "readAloud": "Сцена снова полна жизни. Под тёплым светом скованность сменяется смехом, а недавняя неподвижность кажется дурным сном. В этой щедрой, немного шальной радости благодарность чувствуется без лишних слов."
+        },
+        {
+          "id": "stas-invited",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas-v2.png",
+          "alt": "Уставший и грустный полный Станис один сидит у стойки в бордовой рубашке, бежевой футболке и длинных джинсовых шортах, держа кружку обычного светлого пива.",
+          "readAloud": "Уныние у барной стойки уступает настороженности. За привычным раздражением Станиса проступает тревога, которую уже не удаётся спрятать в утренней хмурости. Курортный шум кажется отсюда особенно далёким."
+        },
+        {
+          "id": "stas-hesitates",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas-v2.png",
+          "alt": "Уставший и грустный полный Станис один сидит у стойки в бордовой рубашке, бежевой футболке и длинных джинсовых шортах, держа кружку обычного светлого пива.",
+          "readAloud": "У барной стойки повисло тяжёлое молчание. Раздражение иссякло быстрее, чем недоверие. Под ним осталась усталость человека, который заранее ждёт очередной ссоры."
+        },
+        {
+          "id": "stas-agreed",
+          "background": "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas-v2.png",
+          "alt": "Уставший и грустный полный Станис один сидит у стойки в бордовой рубашке, бежевой футболке и длинных джинсовых шортах, держа кружку обычного светлого пива.",
+          "readAloud": "Воздух у стойки будто стал легче. Упрямая хмурость понемногу отступает, оставляя место осторожной решимости. Утро наконец перестаёт казаться бесконечным."
+        }
+      ],
+      "inspectables": [
+        {
+          "id": "stas-bungalow-pass",
+          "label": "Пропуск Станиса",
+          "visualKind": "bungalow-pass",
+          "locationHint": "Станис у барной стойки",
+          "summary": "Один пропуск, который Станис отдал героям вместе с направлением к Егорику.",
+          "revealText": "Один пропуск, который Станис отдал героям вместе с направлением к Егорику.",
+          "useText": "Пропуска действуют у считывателя выхода из бара в район гостевых бунгало. Всей группе нужно пять.",
+          "order": 1,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/stas-bungalow-pass-v1.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/stas-bungalow-pass-v1.png"
+        },
+        {
+          "id": "troupe-bungalow-passes",
+          "label": "Четыре пропуска танцоров",
+          "visualKind": "bungalow-pass",
+          "locationHint": "Освобождённая труппа vogue",
+          "summary": "Четыре гостевых пропуска — благодарность артистов за снятое заклятие.",
+          "revealText": "Четыре гостевых пропуска — благодарность артистов за снятое заклятие.",
+          "useText": "Пропуска действуют у считывателя выхода из бара в район гостевых бунгало. Всей группе нужно пять.",
+          "order": 2,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/troupe-bungalow-passes-v1.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/troupe-bungalow-passes-v1.png"
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "guest-bungalows",
+      "title": "Развилка гостевых бунгало",
+      "eyebrow": "После бара · Гостевое крыло",
+      "background": "assets/concepts/campaigns/penisuela/scenes/bungalows-two-paths.png",
+      "alt": "Развилка к двум бунгало: слева открыт путь к Оливии, справа проход к Егорику перекрыт красно-золотым барьером со считывателем.",
+      "readAloud": "Курортная дорожка раздваивается среди притихшей зелени. Здесь обещали покой и уединение, но из домов доносится слишком много чужого беспокойства. В этой утренней неразберихе встреча с Оливией кажется почти обнадёживающей.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "olva-passes-handoff",
+      "title": "Пропуск без условий",
+      "eyebrow": "Гостевые бунгало · Решение Оливии",
+      "background": "assets/concepts/campaigns/penisuela/scenes/olva-quest-declined-passes.png",
+      "alt": "Оливия спокойно протягивает героям пять одинаковых золотых пропусков у своего бунгало после их отказа от необязательной просьбы.",
+      "readAloud": "В утренней суете неожиданно находится место простой любезности. Оливия не пытается задержать гостей, и от этого её спокойствие кажется ещё теплее. За порогом снова шумит беспокойный курорт.",
+      "inspectables": [
+        {
+          "id": "guest-bungalow-pass",
+          "label": "Ключ-карта к бунгало Егорика",
+          "visualKind": "bungalow-pass",
+          "locationHint": "Золотая ключ-карта с эмблемой ключа в руках Оливии.",
+          "summary": "Золотая ключ-карта к правому бунгало. Одного ключа хватает на всю группу.",
+          "revealText": "Печать разрешает всей группе пройти к Егорику.",
+          "useText": "Открывает правую дорожку на развилке; не заменяет пять пропусков из бара.",
+          "order": 1,
+          "inventoryOrder": 8,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/guest-bungalow-pass-v1.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/guest-bungalow-pass-v1.png"
+        }
+      ],
+      "exit": null
+    },
+    {
+      "id": "egorik-bungalow-reveal",
+      "title": "Бунгало Егорика",
+      "eyebrow": "Акт II · Гостевые бунгало",
+      "background": "assets/concepts/campaigns/penisuela/scenes/egorik-bungalow-summoned-guards.png",
+      "alt": "Три чёрно-золотых рунических стража ломают стены и мебель бунгало; Егорик и Настасья укрываются за перевёрнутым столом.",
+      "readAloud": "Треск дерева заглушает всё остальное. Уют бунгало распадается под ударами чужой магии; в воздухе пахнет пылью и страхом. Между вспышками мелькают тёмные силуэты, и каждая короткая передышка кажется последней.",
+      "inspectables": [],
+      "exit": null,
+      "backgroundLayout": "contain",
+      "interactionViews": [
+        {
+          "id": "combat",
+          "background": "assets/concepts/campaigns/penisuela/scenes/egorik-bungalow-summoned-guards-combat.png",
+          "alt": "Те же три рунических стража развернулись к вошедшим героям и атакуют мечами; пара остаётся за укрытием.",
+          "readAloud": "Вспышки рвут пыльный полумрак. За треском дерева уже трудно различить отдельные звуки; весь дом превратился в гулкую ловушку. Кажется, ещё немного — и стены не выдержат."
+        },
+        {
+          "id": "conversation",
+          "background": "assets/concepts/campaigns/penisuela/scenes/egorik-bungalow-conversation.png",
+          "alt": "После боя Егорик и Настасья стоят у перевёрнутого стола в повреждённом бунгало.",
+          "readAloud": "После грохота тишина кажется ненастоящей. Пыль оседает на остатках домашнего уюта, а облегчение ещё не успело вытеснить испуг. Здесь слишком многое испорчено, чтобы сразу нашлись нужные слова."
+        },
+        {
+          "id": "voices",
+          "background": "assets/concepts/campaigns/penisuela/scenes/egorik-nastasia-voice-test.png",
+          "alt": "Егорик и Настасья наклоняются к двум приёмникам чёрно-золотого пульта и произносят слова; индикатор светится красным.",
+          "readAloud": "Слова затихают, но облегчение не приходит. По стенам пробегает тревожный красный отсвет, и усталое бунгало снова содрогается."
+        },
+        {
+          "id": "bracelet",
+          "background": "assets/concepts/campaigns/penisuela/scenes/egorik-bracelet-truth-closeup.png",
+          "alt": "Крупный план запястья Егорика с замкнутым тёмным шнуром и золотой подвеской Е.",
+          "readAloud": "В золотом блеске отзывается смутно знакомое воспоминание. На миг шум разрушенного дома отступает, оставляя лишь странное ощущение близкого узнавания."
+        }
+      ]
+    },
+    {
+      "id": "bungalow-courtyard",
+      "title": "Леди Оливия — наставница чувственных искусств",
+      "eyebrow": "Гостевые бунгало · Разговор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/bungalow-courtyard.png",
+      "alt": "Оливия стоит одна у открытого крыльца своего бунгало и разговаривает с подошедшими героями; пропусков в кадре ещё нет.",
+      "readAloud": "У бунгало царит неловкое затишье, слишком напряжённое для беззаботного утра. Чужая семейная жизнь уже успела утомить Оливию, хотя день едва начался. В этой неподвижности чувствуется затянувшееся ожидание.",
+      "inspectables": [],
+      "exit": null,
+      "interactionViews": [
+        {
+          "id": "waiting-for-stas",
+          "background": "assets/concepts/campaigns/penisuela/scenes/bungalow-courtyard.png",
+          "alt": "Оливия стоит одна у открытого крыльца своего бунгало и разговаривает с подошедшими героями; пропусков в кадре ещё нет.",
+          "readAloud": "Ожидание у бунгало затянулось. Курортный шум проходит мимо, не нарушая здешней неловкой тишины. В терпении Оливии пока хватает места и усталости, и сдержанному сочувствию."
+        },
+        {
+          "id": "stas-ready",
+          "background": "assets/concepts/campaigns/penisuela/scenes/bungalow-courtyard.png",
+          "alt": "Оливия стоит одна у открытого крыльца своего бунгало и разговаривает с подошедшими героями; пропусков в кадре ещё нет.",
+          "readAloud": "Затянувшееся ожидание наконец кончилось. У порога стало теснее и чуть спокойнее, хотя неловкость никуда не исчезла. За гостеприимством Оливии чувствуется осторожная надежда на мирный разговор."
+        }
+      ]
+    },
+    {
+      "id": "couples-session-entry",
+      "title": "Оливия, Станис и Полинетта: пакет знает лучше",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/guest-bungalows-choice.webp",
+      "alt": "Сценический кадр «Оливия, Станис и Полинетта: пакет знает лучше» без скрытых служебных сведений.",
+      "readAloud": "Между бунгало стоит диван со Станисом и Полинеттой, а над ними без остановки печатает браслетный принтер. Оливия поворачивает к ним доску: «Сначала отделим сказанное от того, что пакет успел придумать».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "couples-session-stas",
+      "title": "Присутствие не равно согласию",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couples-session-stas.webp",
+      "alt": "Сценический кадр «Присутствие не равно согласию» без скрытых служебных сведений.",
+      "readAloud": "Перед Станисом лежат две взаимоисключающие карточки, а его «как хотите» уже размножилось на семи формах согласия. Оливия оставляет ему чистую страницу: «Семь разных “да” из этого не получаются».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "couples-session-polina",
+      "title": "Факт, интерпретация и фантазия автоматики",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couples-session-polina.webp",
+      "alt": "Сценический кадр «Факт, интерпретация и фантазия автоматики» без скрытых служебных сведений.",
+      "readAloud": "Оливия делит доску на «ФАКТ», «ИНТЕРПРЕТАЦИЮ» и «ДОПИСАЛА СИСТЕМА». Квитанции и карточки пакета спорят между собой. «Покажите, где здесь событие; всё остальное пусть назовёт себя догадкой».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "olva-relationship-review",
+      "title": "По одному неудобному вопросу каждому",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couples-session-polina.webp",
+      "alt": "Сценический кадр «По одному неудобному вопросу каждому» без скрытых служебных сведений.",
+      "readAloud": "Оливия убирает лишние карточки и оставляет по одному вопросу Станису и Полинетте. Принтер пытается подсунуть общий ответ, но она разворачивает его к стене. «Один человек — один ответ».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "show-18-pavilion",
+      "title": "Show18: пакет знает лучше",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/show-18-pavilion.webp",
+      "alt": "Сценический кадр «Show18: пакет знает лучше» без скрытых служебных сведений.",
+      "readAloud": "Соседний павильон начинает вращаться под сценическим дождём. С потолка спускаются маски Станиса и Полинетты, собранные из чужих догадок. Первая улыбается на каждое слово, вторая не может повернуть голову из-за расписаний.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "couples-session-plan",
+      "title": "Что сегодня",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couples-session-choice.webp",
+      "alt": "Сценический кадр «Что сегодня» без скрытых служебных сведений.",
+      "readAloud": "После последней маски на доске остаётся строка: «СЕГОДНЯ МЫ…». Между Станисом и Полинеттой лежат маркер и простая кнопка «НЕ СЕЙЧАС».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "couples-session-choice",
+      "title": "Условный выбор судьбы Вуманайзера",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couples-session-choice.webp",
+      "alt": "Сценический кадр «Условный выбор судьбы Вуманайзера» без скрытых служебных сведений.",
+      "readAloud": "Оливия кладёт футляр с Вуманайзером перед Полинеттой. Рядом остаются три понятных места для вещи, а принтер наконец молчит. «План уже принят; теперь решаем только судьбу предмета».",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "groom-tunnel",
+      "title": "Служебный тоннель под сценой",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/groom-tunnel-blocked.png",
+      "alt": "Декорации перекрывают путь к Kreed.",
+      "readAloud": "Под сценой праздник звучит глухо, словно его засыпали землёй. В тесноте что-то мерно скрипит, тяжело вздыхает и снова приходит в движение. Покой здесь только обещают: сам коридор будто не рад незваным гостям.",
+      "inspectables": [],
+      "exit": null,
+      "backgroundLayout": "contain",
+      "interactionViews": [
+        {
+          "id": "exterior",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-hideout-entrance.png",
+          "alt": "Закрытая деревянная дверь с латунной ручкой ведёт под сцену; к ней спускается каменная дорожка среди тропической зелени.",
+          "readAloud": "За сценой праздничная роскошь уступает сыроватой тишине. Тёплый морской ветер задерживается снаружи, словно ему тоже не хочется спускаться в чужое укрытие."
+        },
+        {
+          "id": "main-open",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-tunnel-main-open.png",
+          "alt": "Бубсильда остановила толкающие панели.",
+          "readAloud": "Скрип наконец стихает. В неподвижности коридор кажется почти безобидным, хотя тишина за ним пока ничего не обещает."
+        },
+        {
+          "id": "door",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-door-before-linda.png",
+          "alt": "Закрытая дверь целиком перед действием Линды.",
+          "readAloud": "За дверью сохраняется слабое тепло, совсем не похожее на сырой холод прохода. Но на близость чужого убежища она отвечает глухим молчанием."
+        },
+        {
+          "id": "linda-flight",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-door-linda-flight.png",
+          "alt": "Уменьшенная Линда пролетает между прутьями.",
+          "readAloud": "За дверью едва слышно возится Линда. После короткой тишины раздаётся долгожданный щелчок. Чужое убежище оказывается чуть менее неприступным, чем хотелось его хозяину."
+        },
+        {
+          "id": "prop-jam",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-prop-jam.png",
+          "alt": "Тележка с реквизитом перекрывает тамбур.",
+          "readAloud": "Дальше пахнет деревом и осевшей пылью. Теснота кажется нарочно устроенной, а в глухом поскрипывании слышится упрямство. Кто-то очень хотел остаться здесь в одиночестве."
+        },
+        {
+          "id": "cleared",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-prop-jam-cleared.png",
+          "alt": "Тележка отодвинута, проход свободен.",
+          "readAloud": "Последний скрип затихает. Проход больше не спорит с каждым шагом; из глубины убежища тянет прохладой и настороженной тишиной."
+        }
+      ]
+    },
+    {
+      "id": "groom-preparation-room",
+      "title": "Укрытие Kreed",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/groom-hideout.png",
+      "alt": "Настороженный эльф Kreed выглядывает из-за колонны просторного бункера.",
+      "readAloud": "После тесного прохода здешняя тишина кажется огромной. Приглушённый свет смягчает суровость убежища, но не тревогу его хозяина. Чужой испуг здесь ещё не успел остыть.",
+      "inspectables": [],
+      "exit": null,
+      "interactionViews": [
+        {
+          "id": "noisy-arrival",
+          "background": "assets/concepts/campaigns/penisuela/scenes/groom-hideout.png",
+          "alt": "Настороженный эльф Kreed выглядывает из-за колонны просторного бункера.",
+          "readAloud": "Грохот ещё бродит под сводами. Внезапно нарушенный покой кажется хрупким, а страх хозяина убежища — почти осязаемым. Тишина возвращается сюда медленно и неохотно."
+        }
+      ]
+    },
+    {
+      "id": "kreed-disclosure",
+      "title": "Основной жених",
+      "eyebrow": "Акт III · Общий двор",
+      "background": "assets/concepts/campaigns/penisuela/scenes/groom-hideout.png",
+      "alt": "Kreed у колонны бункера разговаривает с вошедшими.",
+      "readAloud": "За толстыми стенами опасность кажется далёкой, почти неправдоподобной. Тишина понемногу теряет свою настороженность. Только недавний испуг всё ещё мешает этому убежищу стать уютным.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-kreed-route",
+      "title": "У роскошной виллы",
+      "eyebrow": "Акт IV · После признания",
+      "background": "assets/concepts/campaigns/penisuela/scenes/private-villa-approach.png",
+      "alt": "Роскошная тропическая вилла с мраморной дорожкой к парадной двери.",
+      "readAloud": "За поворотом открывается безмятежная роскошь, странно неуместная среди бедствий острова. Мрамор хранит солнечное тепло, зелень неподвижна, и весь дом дышит дорогим покоем. В этой безупречности есть что-то озадачивающее.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "restore-control-log",
+      "title": "Худшие девяносто секунд",
+      "eyebrow": "Акт IV · После признания",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «Худшие девяносто секунд» без скрытых служебных сведений.",
+      "readAloud": "Кулон разворачивает в воздухе рваную запись аварии. Под красивыми кадрами проступают сухие служебные строки, а внизу мерцает почти незаметное имя автора.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "responsible-control-log",
+      "title": "Не шедевр, а доказательство",
+      "eyebrow": "Акт IV · После признания",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «Не шедевр, а доказательство» без скрытых служебных сведений.",
+      "readAloud": "Помехи отступают, открывая последовательность команд. За каждой строкой стоит имя Головача Лены, а красивый трейлер рассыпается на обычный журнал действий.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "graywise-door-trust",
+      "title": "У закрытой двери",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/private-villa-door.png",
+      "alt": "Закрытая двустворчатая дверь с золотыми узорами в мраморном портале.",
+      "readAloud": "У порога виллы шум острова словно теряет силу. За дверью царит чужой, тщательно оберегаемый покой. Ожидание тянется дольше, чем хотелось бы, и безупречная тишина постепенно становится почти неприветливой.",
+      "inspectables": [],
+      "exit": null,
+      "interactionViews": [
+        {
+          "id": "trusted-open",
+          "background": "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png",
+          "alt": "Эльф Grey Wiese в чёрном платье встречает гостей у открытой двери.",
+          "readAloud": "Тихий щелчок нарушает затянувшееся молчание. Из дома веет прохладой и дорогими ароматами. Порог больше не кажется границей чужого мира."
+        },
+        {
+          "id": "party-failed",
+          "background": "assets/concepts/campaigns/penisuela/scenes/private-villa-door.png",
+          "alt": "Закрытая двустворчатая дверь с золотыми узорами в мраморном портале.",
+          "readAloud": "За дверью по-прежнему тихо. У этой тишины теперь совсем иной оттенок: холодный и недоверчивый. Даже приветливый свет виллы кажется рассчитанным на кого-то другого."
+        },
+        {
+          "id": "egor-trusted-open",
+          "background": "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png",
+          "alt": "Эльф Grey Wiese открывает дверь, узнав Kreed.",
+          "readAloud": "Настороженность у порога понемногу рассеивается. Дом открывается навстречу гостям, впуская их в свой бережно хранимый покой. Утренний шум остаётся снаружи."
+        },
+        {
+          "id": "escorted-open",
+          "background": "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png",
+          "alt": "Эльф Grey Wiese впускает гостей под личным сопровождением.",
+          "readAloud": "Дом принимает гостей с холодной учтивостью. За роскошью чувствуется настороженность, и каждый звук кажется здесь чуть громче, чем должен. Чужой покой пока не стал общим."
+        }
+      ]
+    },
+    {
+      "id": "bedroom-reveal",
+      "title": "Внутренняя дверь спальни",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/graywise-villa-tour.png",
+      "alt": "Grey Wiese в чёрном платье рассказывает об интерьере виллы; справа за ним видна закрытая дверь спальни.",
+      "readAloud": "За порогом тревожное утро кажется далёким и почти неправдоподобным. В этом ухоженном покое легко забыть, зачем вы пришли.",
+      "inspectables": [],
+      "exit": null,
+      "interactionViews": [
+        {
+          "id": "bedroom-closed",
+          "background": "assets/concepts/campaigns/penisuela/scenes/bedroom-door-closed.png",
+          "alt": "Grey Wiese просит тишины перед закрытой внутренней дверью спальни.",
+          "readAloud": "Внутри удивительно тихо. Здесь ещё берегут остатки сна, будто утро можно ненадолго отложить. Даже тревоги острова доходят сюда вполголоса."
+        },
+        {
+          "id": "bedroom-open",
+          "background": "assets/concepts/campaigns/penisuela/scenes/bedroom-live-reveal.png",
+          "alt": "Angel спит под одеялом в роскошной спальне среди подарков и следов мальчишника.",
+          "readAloud": "В спальне ещё догорает вчерашний праздник. Сон Angel мирен и совершенно несоразмерен бедствиям острова. Среди подарочной суеты и помятой роскоши время будто решило ненадолго остановиться."
+        }
+      ],
+      "backgroundLayout": "contain"
+    },
+    {
+      "id": "igor-unboxing",
+      "title": "Распаковка после конца света",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/igor-unboxing-birkin.png",
+      "alt": "Angel в розовой пижаме сидит на кровати с изумрудной сумкой и золотой застёжкой среди распакованных подарков.",
+      "readAloud": "Шелест подарочной бумаги понемногу возвращает утру смысл. В спальне ещё чувствуется вчерашний разгул, но его уже теснит удовольствие от красивых вещей. За стенами мир может подождать ещё немного.",
+      "inspectables": [],
+      "exit": null,
+      "backgroundLayout": "contain",
+      "interactionViews": [
+        {
+          "id": "bag-exchanged",
+          "background": "assets/concepts/campaigns/penisuela/scenes/igor-unboxing-birkin.png",
+          "alt": "Angel в розовой пижаме сидит на кровати с изумрудной сумкой и золотой застёжкой среди распакованных подарков.",
+          "readAloud": "В спальне заметно потеплело. Удовольствие от удачного подарка смешалось с редким чувством полного взаимопонимания. Даже вчерашняя усталость на время отступила перед торжеством хорошего вкуса."
+        }
+      ]
+    },
+    {
+      "id": "wedding-reminder",
+      "title": "О свадьбе вспоминают герои",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «О свадьбе вспоминают герои» без скрытых служебных сведений.",
+      "readAloud": "Распаковка заканчивается, но кольцевая лампа так и не загорается. Angel смотрит с коробки на ваши браслеты и ждёт объяснений.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "wedding-reminder-resolution",
+      "title": "Цена ответа игроков",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «Цена ответа игроков» без скрытых служебных сведений.",
+      "readAloud": "Комната на секунду стихает. Angel смотрит на вас, а аварийный свет за шторами меняет ритм.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "igor-orientation",
+      "title": "Что сейчас происходит",
+      "eyebrow": "Акт V · Закрытый номер",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «Что сейчас происходит» без скрытых служебных сведений.",
+      "readAloud": "Grey Wiese закрывает объектив, Kreed отводит браслет от пульта, а на столе появляется вода. Angel внимательно слушает объяснение и пытается своими словами собрать происходящее.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "igor-consent-decisions",
+      "title": "Два отдельных ответа каждого",
+      "eyebrow": "Акт VI · Последний дубль",
+      "background": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "alt": "Сценический кадр «Два отдельных ответа каждого» без скрытых служебных сведений.",
+      "readAloud": "Пульт открывает две отдельные карточки вместо одной большой кнопки согласия. Первая касается живых голосов, вторая — существующей записи и её технического использования. На каждой Kreed и Angel отвечают отдельно.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "early-physical-assault",
+      "title": "Ранний штурм распределённой сети",
+      "eyebrow": "Акт VI · Последний дубль",
+      "background": "assets/concepts/campaigns/penisuela/scenes/groom-tunnel.webp",
+      "alt": "Сценический кадр «Ранний штурм распределённой сети» без скрытых служебных сведений.",
+      "readAloud": "Разорванный кабель на миг гасит остров, но свет тут же вспыхивает под ногами. Из пола поднимаются силовые рёбра алтаря, а на карте остаётся одна раскалённая линия под сцену.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "doom-five-cable-junction",
+      "title": "Кабельный путь принудительного физического маршрута",
+      "eyebrow": "Акт VI · Последний дубль",
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-one.webp",
+      "alt": "Сценический кадр «Кабельный путь принудительного физического маршрута» без скрытых служебных сведений.",
+      "readAloud": "Под прозрачным стеклом проступает один раскалённый кабель. Он исчезает за дверью комнаты подготовки основного жениха, пока белый разряд ползёт по стенам.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "final-choice",
+      "title": "Точка необратимости",
+      "eyebrow": "Акт VI · Последний дубль",
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-one.webp",
+      "alt": "Сценический кадр «Точка необратимости» без скрытых служебных сведений.",
+      "readAloud": "Перед алтарём пульт оставляет только доступные сейчас способы остановить последний дубль. За спиной гаснут дальние маршруты; впереди ждёт ядро сцены.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "last-take-boss",
+      "title": "Арена лорда Нетака",
+      "eyebrow": "Акт VI · лорд Нетак",
+      "background": "assets/concepts/campaigns/penisuela/scenes/andrey-arena-hostages.png",
+      "alt": "Лорд Нетак — тёмный эльф на обсидиановой арене; Angel, Grey Wiese и Kreed в трёх магических колбах за его спиной.",
+      "readAloud": "Вилла исчезает в фиолетовом сиянии. Чужое небо давит багровой тьмой, и каждый звук отзывается далёким эхом. Здесь всё подчинено воле Нетака, даже тишина перед его словами. Сквозь магическую преграду доносятся знакомые голоса; до Angel, Grey Wiese и Kreed теперь будто целая пропасть.",
+      "inspectables": [],
+      "exit": null,
+      "backgroundLayout": "contain",
+      "interactionViews": [
+        {
+          "id": "andrey-kneeling",
+          "background": "assets/concepts/campaigns/penisuela/scenes/andrey-kneeling.png",
+          "alt": "Лорд Нетак стоит на одном колене на обсидиановой арене, опираясь ладонью на пол.",
+          "readAloud": "Гул арены стихает, оставляя после себя звенящую пустоту. Облегчение ещё не успевает стать уверенностью: в этой тишине слишком много сдерживаемой ярости."
+        },
+        {
+          "id": "andrey-monster",
+          "background": "assets/concepts/campaigns/penisuela/scenes/andrey-phase-two-monster.png",
+          "alt": "Вторая фаза лорда Нетака: огромное крылатое чудовище с чёрной чешуёй и фиолетовым свечением на тёмной арене.",
+          "readAloud": "Ликование обрывается слишком рано. В гулкой тьме рождается чужое дыхание — тяжёлое, раскалённое злобой. От прежнего лорда в чудовище осталось самое узнаваемое: уверенность, что весь мир обязан ему уступить."
+        },
+        {
+          "id": "andrey-dead",
+          "background": "assets/concepts/campaigns/penisuela/scenes/andrey-dragon-dead.png",
+          "alt": "Поверженный дракон лежит на обсидиановой арене после гибели лорда Нетака."
+        }
+      ]
+    },
+    {
+      "id": "last-take-emergency-action",
+      "title": "Последнее действие остаётся за игроком",
+      "eyebrow": "Акт VI · Последний дубль",
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-three.webp",
+      "alt": "Сценический кадр «Последнее действие остаётся за игроком» без скрытых служебных сведений.",
+      "readAloud": "Последний дубль зависает на одном белом кадре. В падающей силовой дуге на миг открывается безопасный разрыв, а у партии остаётся одно физическое действие.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-orientation-wedding",
+      "title": "Ясность после кризиса",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-wedding.webp",
+      "alt": "Сценический кадр «Ясность после кризиса» без скрытых служебных сведений.",
+      "readAloud": "Разряд погас, но монитор ничего не показывает сам. На паузе замерли два браслета, два ответа и закрытый список зрителей.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-orientation-director",
+      "title": "Ясность после кризиса",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-director.webp",
+      "alt": "Сценический кадр «Ясность после кризиса» без скрытых служебных сведений.",
+      "readAloud": "Остров спасён, а технический монтаж остаётся на паузе. Рядом с двадцатью пятью секундами записи перечислены семь будущих зрителей закрытого разбора.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-orientation-shutdown",
+      "title": "Ясность после кризиса",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Ясность после кризиса» без скрытых служебных сведений.",
+      "readAloud": "На мониторе узел глохнет, алтарь темнеет, а двое людей уходят со сцены. Под кадром указан возможный утренний показ в лобби курорта.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-orientation-evacuation",
+      "title": "Ясность после кризиса",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Ясность после кризиса» без скрытых служебных сведений.",
+      "readAloud": "В лазарете уцелел переносной экран с двенадцатью секундами эвакуации. Рядом указан закрытый разбор для спасателей и выведенных с курорта гостей.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-publication-wedding",
+      "title": "Что останется в записи",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-wedding.webp",
+      "alt": "Сценический кадр «Что останется в записи» без скрытых служебных сведений.",
+      "readAloud": "Монитор показывает восемнадцать секунд с двумя ответами и погасшим алтарём. Аудитория — только приглашённые по одноразовой ссылке; под записью ждут два отдельных ответа.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-publication-director",
+      "title": "Что останется в записи",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-director.webp",
+      "alt": "Сценический кадр «Что останется в записи» без скрытых служебных сведений.",
+      "readAloud": "Техническая запись длится двадцать пять секунд и заканчивается вместе с необходимостью. На экране названы семь зрителей закрытого разбора и два отдельных поля ответа.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-publication-shutdown",
+      "title": "Что останется в записи",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Что останется в записи» без скрытых служебных сведений.",
+      "readAloud": "Камера показывает четырнадцать секунд без приближения и скрытой дорожки звука. Показ ограничен лобби курорта, а под схемой ждут два отдельных ответа.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "post-crisis-publication-evacuation",
+      "title": "Что останется в записи",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Что останется в записи» без скрытых служебных сведений.",
+      "readAloud": "Треснувший экран показывает двенадцать секунд эвакуации без музыки и повторов. Увидеть их смогут только эвакуированные и спасатели на закрытом разборе в лазарете.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "villa-after-andrey",
+      "title": "Возвращение к вилле",
+      "eyebrow": "Финал · После победы",
+      "background": "assets/concepts/campaigns/penisuela/scenes/villa-after-andrey.png",
+      "backgroundLayout": "contain",
+      "alt": "Разрушенное крыло роскошной виллы, бассейн и вечерний свет.",
+      "readAloud": "Чужое небо гаснет, и вместо ледяного эха арены возвращается запах пыли. Вилла встречает вас тишиной после разрушения. Angel, Grey Wiese и Kreed снова рядом. Только неровное гудение из глубины дома всё ещё мешает поверить, что худшее позади.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "couple-voice-reset",
+      "title": "Два голоса",
+      "eyebrow": "Финал · Голосовой сброс",
+      "background": "assets/concepts/campaigns/penisuela/scenes/couple-voice-reset.png",
+      "backgroundLayout": "contain",
+      "alt": "Angel и Kreed держатся за руки и вместе поддерживают устройство с двумя голосовыми приёмниками.",
+      "readAloud": "После пережитого тишина между Angel и Kreed больше не кажется пустой. В ней есть усталость и осторожная надежда, которой сегодня слишком часто приходилось ошибаться. Гудение механизма всё ещё тревожит воздух.",
+      "interactionViews": [
+        {
+          "id": "voices-accepted",
+          "background": "assets/concepts/campaigns/penisuela/scenes/couple-voice-reset.png",
+          "alt": "Два голоса завершили сброс механизма; Angel и Kreed держатся за руки.",
+          "readAloud": "Гудение обрывается, оставляя после себя непривычную пустоту. Впервые за этот день тишина ничего не требует взамен. Сквозь оседающую тревогу проступают обыкновенные звуки живого острова."
+        }
+      ],
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "wedding-epilogue",
+      "title": "Частная церемония после конца света",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/happy-altar.png",
+      "alt": "Свадьба Angel в светлом платье и Kreed в костюме; рядом празднично одетые пять героев и Grey Wiese.",
+      "readAloud": "Музыка возвращается на террасу, и на этот раз никто не заставляет её повторяться. Праздничный шёлк шуршит вперемешку со смехом; сквозь усталость всё настойчивее пробивается радость. Над островом наконец наступает вечер, которого здесь так долго ждали.",
+      "inspectables": [
+        {
+          "id": "grey-wiese-reputation-perfume",
+          "label": "Духи Grey Wiese «Безупречная репутация»",
+          "visualKind": "grey-wiese-perfume",
+          "locationHint": "Подарок Grey Wiese после церемонии",
+          "summary": "Тёмный гранёный флакон с золотой крышкой и монограммой GW — личная благодарность Grey Wiese за спасённую свадьбу.",
+          "revealText": "Grey Wiese сам прислал пригласительные и благодарит героев за спасение свадьбы.",
+          "useText": "Общий предмет партии. Один заряд автоматически проходит одну внебоевую проверку Харизмы без броска. Три заряда на кампанию; сохраняется для следующих кампаний.",
+          "order": 1,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/grey-wiese-reputation-perfume-v2.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/grey-wiese-reputation-perfume-v2.png"
+        }
+      ],
+      "exit": null,
+      "backgroundLayout": "contain",
+      "interactionViews": [
+        {
+          "id": "grey-wiese-thanks",
+          "background": "assets/concepts/campaigns/penisuela/scenes/happy-altar.png",
+          "alt": "Свадьба Angel в светлом платье и Kreed в костюме; рядом празднично одетые пять героев и Grey Wiese.",
+          "readAloud": "Свадебный шум понемногу стихает. Благодарность ощущается в редком спокойствии этого вечера, в тёплой близости и тонком аромате дорогих духов. Теперь у праздника есть время стать счастливым воспоминанием."
+        }
+      ]
+    },
+    {
+      "id": "director-epilogue",
+      "title": "Ответственный последний монтаж",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-director.webp",
+      "alt": "Сценический кадр «Ответственный последний монтаж» без скрытых служебных сведений.",
+      "readAloud": "Подписанный журнал проводит разряд по безопасной линии. Декорации замирают вдали от людей, музыка находит последнюю долю, а алтарь остывает.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "shutdown-epilogue",
+      "title": "Сцена обесточена",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Сцена обесточена» без скрытых служебных сведений.",
+      "readAloud": "Последний силовой узел глохнет, и остров перестаёт разыгрывать конец света. Люди выходят через удержанные проходы, а Kreed и Angel вместе покидают погасшую сцену.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "evacuation-epilogue",
+      "title": "Эвакуация под финальный счёт",
+      "eyebrow": "Эпилог · После кризиса",
+      "background": "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp",
+      "alt": "Сценический кадр «Эвакуация под финальный счёт» без скрытых служебных сведений.",
+      "readAloud": "Коридор остаётся открытым, пока последние люди выходят из повреждённой сцены. Kreed и Angel покидают её как спасённые гости, а не исполнители обязательного финала.",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "andrey-villa-breach",
+      "title": "Взрыв в доме Grey Wiese",
+      "eyebrow": "Акт VI · Разрушенная спальня",
+      "background": "assets/concepts/campaigns/penisuela/scenes/villa-breach-empty.png",
+      "backgroundLayout": "contain",
+      "alt": "Разрушенная роскошная спальня без персонажей: кровать и подарки слева, обломки на ковре и большой пролом на террасу справа.",
+      "readAloud": "Взрыв обрывает разговор на полуслове. Дом содрогается, воздух горчит штукатуркой, и на миг весь мир тонет в пыли. Туда, где ещё мгновение назад был покой, врывается шум острова. Последние обломки падают уже в пугающей тишине.",
+      "interactionViews": [
+        {
+          "id": "andrey-appearance",
+          "background": "assets/concepts/campaigns/penisuela/scenes/andrey-villa-breach.png",
+          "alt": "Лорд Нетак, тёмный эльф в чёрном костюме, стоит среди обломков стены роскошной спальни.",
+          "readAloud": "Пыль ещё висит в воздухе, но её беспокойство меркнет перед чужим спокойствием. Появление Нетака наполняет разрушенный дом тяжёлой уверенностью. Он чувствует себя здесь слишком свободно."
+        },
+        {
+          "id": "andrey-confession",
+          "background": "assets/concepts/campaigns/penisuela/scenes/andrey-villa-breach.png",
+          "alt": "Лорд Нетак смотрит на героев среди обломков спальни.",
+          "readAloud": "Над разрушенной виллой сгущается предчувствие беды. Торжество Нетака становится почти осязаемым, и в неподвижном воздухе уже чувствуется чужая воля. Остатки домашнего тепла быстро гаснут."
+        }
+      ],
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "bad-ending-villa",
+      "title": "Свадьба пошла не так",
+      "eyebrow": "Плохой финал · Возвращение",
+      "background": "assets/concepts/campaigns/penisuela/scenes/villa-after-andrey.png",
+      "alt": "Разрушенная вилла, к которой лорд Нетак вернул побеждённых героев.",
+      "readAloud": "Среди обломков виллы медленно оседает пыль. Привычные звуки острова глохнут под чужой тьмой, и недавний праздник кажется чужим воспоминанием. Рядом стало непривычно пусто.",
+      "backgroundLayout": "contain",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "bad-ending-netak-wedding",
+      "title": "Свадьба лорда Нетака",
+      "eyebrow": "Плохой финал · Прямой эфир",
+      "background": "assets/concepts/campaigns/penisuela/scenes/bad-ending-netak-wedding.png",
+      "alt": "Лорд Нетак снимает свою свадьбу с посторонним взрослым мужчиной, похожим на Kreed; остров охвачен тёмной магией.",
+      "readAloud": "Чужая свадьба продолжается с безупречной торжественностью. В её старательном блеске есть что-то мучительно фальшивое, как в знакомой мелодии с подменёнными нотами. Над островом царит послушная тьма.",
+      "backgroundLayout": "contain",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "bad-ending-magical-prison",
+      "title": "За магической решёткой",
+      "eyebrow": "Плохой финал · Эпилог",
+      "background": "assets/concepts/campaigns/penisuela/scenes/bad-ending-magical-prison.png",
+      "alt": "Angel, Kreed и Grey Wiese в серой одежде узников в мрачной каменной тюрьме с решёткой и магическими печатями.",
+      "readAloud": "Здесь не слышно свадебной музыки. Сырой камень возвращает каждое слово долгим эхом, а чужая магия терпеливо сторожит тишину. Для Angel, Kreed и Grey Wiese весь остров сжался до одной камеры. По ту сторону стен продолжается праздник, в котором для них больше нет места.",
+      "backgroundLayout": "contain",
+      "inspectables": [],
+      "exit": null
+    },
+    {
+      "id": "olva-date-rehearsal",
+      "title": "Вместе или врозь",
+      "eyebrow": "Бунгало · Консультация Оливии",
+      "background": "assets/concepts/campaigns/penisuela/scenes/olva-date-room.png",
+      "backgroundLayout": "contain",
+      "alt": "Станис и Полинетта на диване, Оливия в кресле за столом в тропическом бунгало.",
+      "readAloud": "В этом доме у каждого своя версия счастливой жизни, и чужая в неё упорно не помещается. Курортный уют только подчёркивает напряжение между Станисом и Полинеттой. За столом повисла та особенная тишина, в которой давно накопилось слишком много невысказанного.",
+      "inspectables": [
+        {
+          "id": "olva-timeout",
+          "label": "Карточка отдыха «Тайм-аут»",
+          "visualKind": "olva-timeout",
+          "locationHint": "Оливия вручает её после решения судьбы Станиса и Полинетты.",
+          "summary": "Плотная карточка с золотым знаком паузы и личной печатью Оливии. На ней написано «Тайм-аут».",
+          "revealText": "На обороте — приглашение остановиться в спокойном месте и восстановить силы всей группой. Ниже подпись Оливии: «Один сеанс. Без обсуждения бывших».",
+          "useText": "Один раз за кампанию вне боя: полностью восстанавливает HP всех героев и заряды всех имеющихся предметов, включая кампанийные. Все навыки восстанавливаются до полного числа использований, включая «раз за кампанию». Отданные предметы не возвращаются. Нажмите «Восстановить группу»: эффект применяется без бросков, карточка исчезает. «Шаг назад» отменяет лечение, восстановление навыков и зарядов, расход карточки.",
+          "order": 1,
+          "icon": "assets/concepts/campaigns/penisuela/items/icons/olva-timeout-v1.png",
+          "image": "assets/concepts/campaigns/penisuela/items/icons/olva-timeout-v1.png"
+        }
+      ],
+      "exit": null
+    }
+  ],
+  "sceneBlocks": [
+    {
+      "id": "morning",
+      "title": "Похмельное утро",
+      "entrySceneId": "hotel-overload",
+      "sceneIds": [
+        "hotel-overload",
+        "hotel-overload-search"
+      ]
+    },
+    {
+      "id": "hall",
+      "title": "Холл гостиницы",
+      "entrySceneId": "hotel-gallery",
+      "sceneIds": [
+        "hotel-gallery",
+        "alexis-room",
+        "pussy-audience",
+        "pussy-prop-room",
+        "pussy-scepter-return",
+        "alexis-room-after-pussy"
+      ]
+    },
+    {
+      "id": "bar",
+      "title": "Бар",
+      "entrySceneId": "closed-bar",
+      "sceneIds": [
+        "closed-bar"
+      ]
+    },
+    {
+      "id": "bungalows",
+      "title": "Развилка бунгало",
+      "entrySceneId": "guest-bungalows",
+      "sceneIds": [
+        "guest-bungalows",
+        "olva-passes-handoff",
+        "egorik-bungalow-reveal",
+        "bungalow-courtyard",
+        "olva-date-rehearsal"
+      ]
+    },
+    {
+      "id": "bunker",
+      "title": "Бункер Creed",
+      "entrySceneId": "groom-tunnel",
+      "sceneIds": [
+        "groom-tunnel",
+        "groom-preparation-room",
+        "kreed-disclosure",
+        "post-kreed-route"
+      ]
+    },
+    {
+      "id": "villa",
+      "title": "Вилла",
+      "entrySceneId": "graywise-door-trust",
+      "sceneIds": [
+        "graywise-door-trust",
+        "bedroom-reveal",
+        "igor-unboxing",
+        "andrey-villa-breach",
+        "last-take-boss",
+        "villa-after-andrey",
+        "couple-voice-reset",
+        "wedding-epilogue",
+        "bad-ending-villa",
+        "bad-ending-netak-wedding",
+        "bad-ending-magical-prison"
+      ]
+    }
+  ]
+}

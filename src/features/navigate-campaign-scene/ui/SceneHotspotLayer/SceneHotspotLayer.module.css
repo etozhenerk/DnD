@@ -1,0 +1,80 @@
+.layer {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 10;
+}
+
+.hotspot {
+  align-items: center;
+  background: var(--color-transparent);
+  border: 0;
+  border-radius: 50%;
+  color: var(--color-gold-light);
+  cursor: pointer;
+  display: flex;
+  height: var(--scene-hotspot-height);
+  justify-content: center;
+  left: var(--scene-hotspot-left);
+  padding: 0;
+  pointer-events: auto;
+  position: absolute;
+  top: var(--scene-hotspot-top);
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  text-decoration: none;
+  width: var(--scene-hotspot-width);
+}
+
+.hotspot::before {
+  background: var(--gradient-session-door-hover);
+  border-radius: 50%;
+  content: '';
+  filter: blur(0.55rem);
+  inset: 8%;
+  opacity: var(--opacity-none);
+  position: absolute;
+  transition: opacity 160ms ease;
+}
+
+.hotspot[data-hotspot-presentation='object']::before {
+  border-radius: 0;
+  clip-path: polygon(
+    43% 0%, 57% 0%, 60% 8%, 69% 13%, 76% 29%, 68% 45%,
+    65% 61%, 61% 100%, 51% 100%, 49% 66%, 47% 100%, 37% 100%,
+    34% 61%, 31% 45%, 24% 29%, 31% 13%, 40% 8%
+  );
+  filter: blur(0.34rem) brightness(1.35);
+  inset: 0;
+}
+
+.hotspot[data-hotspot-presentation='soft-object']::before {
+  border-radius: 42% 58% 46% 54%;
+  filter: blur(1.65rem) brightness(1.28);
+  inset: 7% 24%;
+  transform: scale(0.86, 1.02);
+}
+
+.label {
+  display: none;
+}
+
+.hotspot:hover,
+.hotspot:focus-visible {
+  background: var(--color-transparent);
+  box-shadow: none;
+  outline: none;
+}
+
+.hotspot:hover::before,
+.hotspot:focus-visible::before {
+  opacity: var(--opacity-full);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot,
+  .hotspot::before,
+  .label {
+    animation: none;
+    transition: none;
+  }
+}

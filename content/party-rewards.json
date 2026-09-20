@@ -1,0 +1,15 @@
+[
+  {
+    "id": "grey-wiese-reputation-perfume",
+    "name": "Духи Grey Wiese «Безупречная репутация»",
+    "description": "Тёмный гранёный флакон с золотой крышкой и монограммой GW — личная благодарность Grey Wiese за спасённую свадьбу.",
+    "effect": "Общий предмет партии. Один заряд автоматически проходит одну внебоевую проверку Харизмы без броска. Три заряда на кампанию; сохраняется для следующих кампаний.",
+    "uses": {
+      "scope": "campaign",
+      "max": 3
+    },
+    "automaticCheckStat": "charisma",
+    "carryToNextCampaign": true,
+    "visualKind": "grey-wiese-perfume"
+  }
+]

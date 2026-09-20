@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 19,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "userDecision": "Пользователь утвердил рамку очереди ходов и карточку выбранного участника сообщением «ок».",
+  "items": [
+    {"assetId": "penisuela-ui-initiative-rail-frame", "variant": "art-drafts/technical-ui/initiative-rail-frame-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Непрерывная направляющая не фиксирует число участников; жетоны и активное состояние добавляются кодом."]},
+    {"assetId": "penisuela-ui-combatant-card-frame", "variant": "art-drafts/technical-ui/combatant-card-frame-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Карточка сохраняет отдельные пустые зоны под жетон, имя, три характеристики, действия и состояния без встроенных данных."]}
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "id": "penisuela-scene-groom-hideout-entrance-v1-review",
+  "date": "2026-09-20",
+  "skill": "review-dnd-campaign-art",
+  "assetId": "penisuela-scene-groom-hideout-entrance",
+  "draftPath": "docs/campaigns/penisuela/art-drafts/groom-hideout-entrance-v1.png",
+  "verdict": "accept",
+  "userApproval": "approved",
+  "technical": {
+    "width": 1672,
+    "height": 941,
+    "format": "png",
+    "bitDepth": 8,
+    "pngColorType": 2,
+    "sha256": "2dda00006653bfd0f895d9e6519df23c9bd4707dac23506543f644877070d987",
+    "copiedWithoutPixelProcessing": true
+  },
+  "checks": [
+    "Один внешний вход под поднятой сценой; каменное основание, тёмное резное дерево и латунь совпадают с визуальным языком курорта.",
+    "Закрытая дверь занимает крупную область справа от центра, ручка и полный контур хорошо различимы.",
+    "Нижняя часть оставлена под рассказчика; дверь и ручка расположены выше неё.",
+    "Подход к порогу открыт; нет дополнительного замка, магического барьера, персонажей или врагов.",
+    "Kreed и внутреннее убежище не показаны; новый кадр не раскрывает следующую встречу.",
+    "Нет читаемых надписей, HUD, кнопок или водяных знаков.",
+    "PNG 1672×941, непрозрачный фон, без программной обработки пикселей."
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/groom-hideout-entrance.png",
+    "manifestChanged": true,
+    "runtimeConnected": true
+  },
+  "integrationNotes": "Подключён ракурс exterior перед entry и общий SceneHotspotLayer. Вход, отмена, восстановление и совместимость с внутренним прогрессом проверены автоматически. Визуальные клики при 1024/1280 px ожидают доступного встроенного браузера.",
+  "approvalInstruction": "окаю"
+}

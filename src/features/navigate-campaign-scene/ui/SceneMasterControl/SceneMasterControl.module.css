@@ -1,0 +1,222 @@
+.control {
+  left: 1.1rem;
+  position: absolute;
+  top: 4.9rem;
+  z-index: 96;
+}
+
+.trigger {
+  align-items: center;
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-control);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  display: flex;
+  height: 3.2rem;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  width: 3.2rem;
+}
+
+.trigger svg {
+  fill: none;
+  height: 1.75rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  width: 1.75rem;
+}
+
+.trigger::after {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-brass-light);
+  content: attr(data-label);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  left: calc(100% + 0.55rem);
+  opacity: var(--opacity-none);
+  padding: 0.35rem 0.5rem;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 160ms ease;
+  white-space: nowrap;
+}
+
+.trigger:hover::after,
+.trigger:focus-visible::after {
+  opacity: var(--opacity-full);
+}
+
+.trigger:hover {
+  border-color: var(--color-gold-light);
+  color: var(--color-parchment-light);
+  filter: brightness(1.12);
+}
+
+.menu {
+  background: var(--gradient-session-panel);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.85rem;
+  left: 0;
+  padding: 1rem;
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  width: min(19rem, calc(100vw - 2.2rem));
+}
+
+.menuWithContent {
+  max-height: calc(100dvh - 9rem);
+  overflow: auto;
+  width: min(34rem, calc(100vw - 2.2rem));
+}
+
+.heading {
+  border-bottom: 1px solid var(--color-brass-alpha-38);
+  display: grid;
+  gap: 0.2rem;
+  padding: 0 0.2rem 0.75rem;
+}
+
+.heading span,
+.storyActions > span {
+  color: var(--color-brass-muted);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.heading strong {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.primaryActions,
+.storyActions {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.primaryActions button,
+.primaryActions a,
+.storyActions button,
+.storyActions a {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  gap: 0.55rem;
+  justify-content: flex-start;
+  padding: 0.62rem 0.7rem;
+  text-align: left;
+  text-decoration: none;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  width: 100%;
+}
+
+.primaryActions button:hover,
+.primaryActions a:hover,
+.storyActions button:hover,
+.storyActions a:hover {
+  background: var(--gradient-gold);
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-session-control);
+  color: var(--color-ink-dark);
+}
+
+.actionIcon {
+  color: currentColor;
+  display: inline-grid;
+  flex: 0 0 1rem;
+  place-items: center;
+}
+
+.storyActions {
+  border-top: 1px solid var(--color-brass-alpha-38);
+  padding-top: 0.75rem;
+}
+
+.storyActions > span {
+  margin: 0 0.2rem 0.15rem;
+}
+
+.actionCopy {
+  display: grid;
+  gap: 0.16rem;
+}
+
+.actionCopy strong {
+  color: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.actionCopy small {
+  color: var(--color-brass-muted);
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+
+.storyActions button:hover .actionCopy small,
+.storyActions button:focus-visible .actionCopy small {
+  color: currentColor;
+}
+
+.masterContent {
+  border-top: 1px solid var(--color-brass-alpha-38);
+  padding-top: 0.75rem;
+}
+
+.primaryActions button:disabled,
+.storyActions button:disabled {
+  cursor: default;
+  opacity: var(--opacity-38);
+}
+
+.trigger:focus-visible,
+.primaryActions button:focus-visible,
+.primaryActions a:focus-visible,
+.storyActions button:focus-visible,
+.storyActions a:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .control {
+    left: 0.65rem;
+    top: 4.5rem;
+  }
+}
+
+.musicVolume {
+  display: grid;
+  gap: 0.5rem;
+  font: inherit;
+  color: inherit;
+}
+
+.musicVolume input {
+  width: 100%;
+  accent-color: var(--color-gold);
+}
+
+.musicVolume input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

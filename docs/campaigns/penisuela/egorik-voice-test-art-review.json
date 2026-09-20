@@ -1,0 +1,35 @@
+{
+  "id": "penisuela-scene-egorik-nastasia-voice-test-v1-review",
+  "date": "2026-09-20",
+  "skill": "review-dnd-campaign-art",
+  "assetId": "penisuela-scene-egorik-nastasia-voice-test",
+  "draftPath": "docs/campaigns/penisuela/art-drafts/egorik-nastasia-voice-test-v1.png",
+  "verdict": "accept",
+  "userApproval": "approved",
+  "technical": {
+    "format": "png",
+    "width": 1672,
+    "height": 941,
+    "bitDepth": 8,
+    "pngColorType": 2,
+    "sha256": "a9e67c4031c5d3844ad3034f71516e6b277e22dfd51260d923f42fa5b428f314",
+    "copiedWithoutPixelProcessing": true
+  },
+  "checks": [
+    "Узнаваемые взрослые облики, волосы и костюмы пары сохранены по утверждённым сцене и портретам.",
+    "Оба наклонены к отдельным приёмникам общего пульта; открытые рты и взгляд на устройство показывают произнесение слов.",
+    "Чёрно-золотой пульт сохраняет центральный красный круг, два овальных приёмника и три нижних символа; пара держит его руками.",
+    "Красная реакция устройства соответствует неудаче проверки голосов; это не сцена отключения механизма.",
+    "Тот же разрушенный резной интерьер, перевёрнутая мебель, пальмы и тёплый свет; лишних людей, стражей и воды нет.",
+    "Лица и пульт находятся выше нижней зоны рассказчика; нижняя часть содержит одежду и фон без точек взаимодействия.",
+    "Нет читаемого текста, надписей на браслете, новых сюжетных раскрытий, водяных знаков и интерфейса."
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/egorik-nastasia-voice-test.png",
+    "manifestChanged": true,
+    "runtimeConnected": true
+  },
+  "notes": "Третий огонь механики продолжает показывать существующая шкала Doom; декоративная шкала на изображении не заменяет игровой индикатор.",
+  "approvalInstruction": "окаю вставляй"
+}

@@ -1,6 +1,6 @@
 ---
 name: prepare-dnd-scene-video
-description: Prepare generation-ready video production packs from approved D&D campaign scenes and approved art. Use when turning a scene, trailer concept, ending, character reveal, combat beat, or ambient location into a shot list, image-to-video prompts for Kling, Veo, or Runway, continuity constraints, Russian narration and dialogue cues, ElevenLabs music and SFX briefs, and DaVinci delivery specifications without generating or editing the video itself.
+description: Prepare generation-ready video production packs from approved D&D campaign scenes and approved art. Use when turning a scene, trailer concept, ending, character reveal, combat beat, or ambient location into a shot list, copy-paste image-to-video prompts for Kling, Veo 3/3.1, or Runway, continuity constraints, Russian narration and dialogue cues, ElevenLabs music and SFX briefs, and DaVinci delivery specifications without generating or editing the video itself.
 ---
 
 # Подготовка видео сцен
@@ -13,7 +13,8 @@ description: Prepare generation-ready video production packs from approved D&D c
 2. Для реплик прочитать утверждённые `dialogue.json` и `dialogue.md`; для механического события — `gameplay.json` и правила.
 3. Прочитать утверждённый `art-plan.json`, вердикты арт-проверки, `assets/concepts/manifest.json` и просмотреть каждый используемый арт.
 4. Полностью прочитать `references/video-production-pack.md` перед записью результата.
-5. Остановиться, если обязательная сцена или визуальный источник имеет статус `draft` или `stale`. По явному запросу разрешён только исследовательский черновик с `readiness: "blocked"` и перечисленными недостающими входами.
+5. Если primary target — Veo 3 или Veo 3.1, дополнительно полностью прочитать `references/veo3-prompting.md` и проверить текущую официальную документацию выбранной поверхности.
+6. Остановиться, если обязательная сцена или визуальный источник имеет статус `draft` или `stale`. По явному запросу разрешён только исследовательский черновик с `readiness: "blocked"` и перечисленными недостающими входами.
 
 Не считать новый ракурс, костюм, состояние локации, внешность существа или исход события каноническим. Если нужного визуального состояния нет, вернуть запрос `$plan-dnd-campaign-art`, а не додумывать его в видеопромпте.
 
@@ -43,8 +44,9 @@ description: Prepare generation-ready video production packs from approved D&D c
 
 ## Маршрутизация инструментов
 
-- Предлагать Kling как основной target для image-to-video, удержания персонажа, первого и последнего кадра и управляемого движения.
-- Предлагать Veo или Runway Gen-4.5 для панорам, сложной физики, масштабных событий и резервного варианта. Учитывать фактическую доступность сервиса пользователю.
+- Явно выбранный пользователем видеосервис всегда является primary target. Не заменять указанный Veo 3 на Kling или Runway из-за собственных предпочтений; fallback предлагать отдельно.
+- Если target не задан, предлагать Kling для особенно строгого удержания персонажа и управляемого image-to-video; Veo 3/3.1 — для панорам, сложной физики, первого/последнего кадра и синхронного звука; Runway — для контролируемого движения камеры и резервных прогонов.
+- Для Veo записывать точную доступную пользователю поверхность и версию: например, Flow, Gemini, Vertex AI или другой официальный интерфейс. Не предполагать, что все режимы и параметры одинаковы во всех поверхностях; проверить их перед подготовкой copy-paste prompt.
 - Писать общий визуальный промпт и только затем короткую адаптацию под выбранный target. Не привязывать смысл кадра к одной модели.
 - Планировать русскую речь, музыку, ambience и SFX отдельными дорожками для ElevenLabs или другого выбранного аудиосервиса.
 - Планировать монтаж, титры, цвет и финальное сведение в DaVinci Resolve.
@@ -64,6 +66,7 @@ description: Prepare generation-ready video production packs from approved D&D c
 - исходный арт, первый и при необходимости последний кадр;
 - русский режиссёрский бриф;
 - английский production prompt;
+- финальный `targetPromptEn`, готовый для вставки в выбранный интерфейс, и отдельный `negativePromptEn`, если интерфейс его поддерживает;
 - обязательные признаки и запреты;
 - движение субъекта, среды и камеры;
 - target-модель и fallback;
@@ -71,6 +74,8 @@ description: Prepare generation-ready video production packs from approved D&D c
 - переход, continuity handoff и критерии приёмки.
 
 В `video-production.md` показать порядок генерации, список загружаемых референсов без личных исходников, ожидаемое число финальных кадров, разумный бюджет итераций и монтажный порядок.
+
+Если пользователь запросил один клип или промпт для одной сцены, не раздувать его до полного трейлера. Создать одну последовательность подходящего типа, вернуть пользователю один окончательный copy-paste prompt вместе с настройками target, списком загружаемых артов и краткими критериями приёмки.
 
 ## Проверка
 

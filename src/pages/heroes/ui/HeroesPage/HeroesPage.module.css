@@ -52,7 +52,7 @@
 .atmosphere span:nth-child(2) { height: 26rem; right: -13rem; top: 5%; width: 26rem; }
 .atmosphere span:nth-child(3) { bottom: -15rem; height: 26rem; left: calc(50% - 13rem); width: 26rem; }
 
-@media (max-width: 760px) {
+@media (max-width: 760px), (max-height: 600px) and (orientation: landscape) {
   .page {
     display: block;
     min-height: 100dvh;

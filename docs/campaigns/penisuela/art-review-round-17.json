@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 17,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "userDecision": "Пользователь утвердил рамку полноэкранного квеста и нижнюю панель диалога сообщением «супер, окаю, дальше».",
+  "items": [
+    {"assetId": "penisuela-ui-quest-shell-frame", "variant": "art-drafts/technical-ui/quest-shell-frame-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Центр свободен под сюжетную сцену; декор остаётся на внешнем контуре и не содержит текста или навигации."]},
+    {"assetId": "penisuela-ui-dialogue-panel-frame", "variant": "art-drafts/technical-ui/dialogue-panel-frame-v1.png", "verdict": "accept", "userDecision": "approved", "technicalProcessing": "Утверждённый прозрачный PNG опубликован без дальнейшего перекодирования.", "notes": ["Сохранены отдельные прозрачные зоны под портрет, имя и реплику; встроенных портретов, текста и кнопок нет."]}
+  ]
+}

@@ -1,0 +1,332 @@
+.outfitLayer {
+  height: max(100dvh, calc(100vw * 941 / 1672));
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: max(100vw, calc(100dvh * 1672 / 941));
+  z-index: 5;
+}
+
+.mannequin {
+  height: 78%;
+  left: 64.07%;
+  pointer-events: none;
+  position: absolute;
+  top: 10.5%;
+  width: 13.009%;
+}
+
+.outfitLayer[data-mode='room'] .mannequin {
+  height: 71.6482%;
+  left: 44.9615%;
+  top: 11.6859%;
+  width: 11.6052%;
+}
+
+.outfitLayer .garment[data-option='fashion-emergency-service-bottom'] {
+  transform: scaleX(0.78);
+  transform-origin: top center;
+}
+
+.outfitLayer .garment[data-option='suite-service-afterparty-top'] {
+  top: 4%;
+}
+
+.outfitLayer .garment[data-option='fashion-emergency-service-top'] {
+  top: 1%;
+}
+
+.outfitLayer .garment[data-option='mourning-for-good-taste-top'] {
+  top: 3%;
+  transform: scale(0.78);
+}
+
+.outfitLayer .garment[data-option='fashion-emergency-service-accent'] {
+  top: 2%;
+  transform: translateY(-18%) scale(0.45);
+}
+
+.outfitLayer .garment[data-option='volume-over-substance-accent'] {
+  transform: translateY(-20%) scale(0.45);
+}
+
+.outfitLayer .garment[data-option='suite-service-afterparty-accent'] {
+  transform: scale(0.55);
+}
+
+.outfitLayer .garment[data-option='mourning-for-good-taste-accent'] {
+  transform: scale(0.6);
+}
+
+.outfitLayer .garment:is(
+  [data-option='night-concierge-jacket-top'],
+  [data-option='champagne-cuirass-top'],
+  [data-option='amethyst-knot-top'],
+  [data-option='ruby-room-service-top']
+) {
+  top: 3%;
+}
+
+.outfitLayer .garment:is(
+  [data-option='late-checkout-trousers-bottom'],
+  [data-option='black-orchid-pannier-bottom'],
+  [data-option='out-of-line-culottes-bottom'],
+  [data-option='dessert-trolley-skirt-bottom']
+) {
+  top: 31%;
+}
+
+.outfitLayer .garment[data-option='jewel-regent-circlet-accent'] {
+  top: -3%;
+}
+
+.outfitLayer .garment[data-option='tea-for-one-fascinator-accent'] {
+  top: -4%;
+  transform: translateX(-3%);
+}
+
+.outfitLayer .garment[data-option='portable-chandelier-accent'] {
+  top: -4%;
+  transform: scale(0.68);
+  transform-origin: top center;
+}
+
+.outfitLayer .garment[data-option='archive-turban-accent'] {
+  top: 0;
+}
+
+.garment {
+  filter: drop-shadow(0 0.35rem 0.55rem var(--color-black-alpha-74));
+  inset: 0;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+  position: absolute;
+}
+
+.garment[data-category='bottom'] {
+  bottom: auto;
+  height: 69%;
+  left: -25%;
+  max-width: none;
+  min-width: 150%;
+  object-position: center top;
+  right: auto;
+  top: 31%;
+  width: 150%;
+  z-index: 1;
+}
+
+.garment[data-category='top'] {
+  height: 52%;
+  left: -10%;
+  top: 11%;
+  width: 120%;
+  z-index: 2;
+}
+
+.garment[data-category='accent'] {
+  height: 29%;
+  left: -20%;
+  top: -3%;
+  width: 140%;
+  z-index: 3;
+}
+
+.selectionSummary {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.carousel {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.carouselRow {
+  height: 19.873%;
+  left: 17.254%;
+  pointer-events: none;
+  position: absolute;
+  width: 35.797%;
+}
+
+.carouselRow[data-category='top'] {
+  top: 35.175%;
+}
+
+.carouselRow[data-category='bottom'] {
+  height: 19.766%;
+  top: 57.811%;
+}
+
+.carouselRow[data-category='accent'] {
+  height: 19.979%;
+  top: 12.434%;
+}
+
+.rowOptions {
+  animation: carousel-forward 320ms cubic-bezier(0.22, 0.72, 0.24, 1);
+  display: grid;
+  gap: 6.804%;
+  grid-template-columns: 46.393% 46.804%;
+  height: 100%;
+  left: 3.93%;
+  pointer-events: auto;
+  position: absolute;
+  top: 0;
+  width: 81.03%;
+}
+
+.rowOptions[data-direction='backward'] {
+  animation-name: carousel-backward;
+}
+
+.option {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 5%;
+  position: relative;
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.option img {
+  filter: drop-shadow(0 0.28rem 0.32rem var(--color-black-alpha-74));
+  height: 100%;
+  object-fit: contain;
+  transition: filter 180ms ease, transform 180ms ease;
+  width: 100%;
+}
+
+.emptyOption {
+  align-items: center;
+  color: var(--color-brass-muted);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  gap: 0.28rem;
+  justify-content: center;
+}
+
+.emptyOption b {
+  color: var(--color-gold-light);
+  font-size: clamp(1.45rem, 2.3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 0.8;
+}
+
+.emptyOption small {
+  font-size: clamp(0.52rem, 0.68vw, 0.66rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.option:hover,
+.option:focus-visible,
+.option[data-selected] {
+  filter: brightness(1.14);
+}
+
+.option:hover img,
+.option:focus-visible img,
+.option[data-selected] img {
+  filter: drop-shadow(0 0 0.7rem var(--color-gold-alpha-62));
+  transform: scale(1.045);
+}
+
+.previous:focus-visible,
+.next:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.previous,
+.next {
+  align-items: center;
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.2vw, 2.4rem);
+  height: clamp(2.25rem, 4.4vw, 3.4rem);
+  justify-content: center;
+  padding: 0 0 0.12em;
+  pointer-events: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  transition: background 160ms ease, color 160ms ease, opacity 160ms ease;
+  width: clamp(2.25rem, 4.4vw, 3.4rem);
+}
+
+.previous {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.previous:hover:not(:disabled),
+.next:hover:not(:disabled) {
+  background: var(--gradient-gold);
+  color: var(--color-ink-dark);
+}
+
+.previous span,
+.next span {
+  display: inline-block;
+  transform: rotate(-45deg);
+}
+
+@keyframes carousel-forward {
+  from {
+    opacity: 0;
+    transform: translateX(4%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes carousel-backward {
+  from {
+    opacity: 0;
+    transform: translateX(-4%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rowOptions {
+    animation: none;
+  }
+
+  .option,
+  .option img {
+    transition: none;
+  }
+}

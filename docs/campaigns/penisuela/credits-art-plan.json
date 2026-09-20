@@ -1,0 +1,925 @@
+{
+  "campaignId": "penisuela",
+  "version": 2,
+  "scope": "20 approved fictional photographs grouped by credited character names, including the Game Master section.",
+  "authority": "По 2 кадра пьянки на каждого из пяти игровых героев; исключения Pussy Sultan с девушками, роскошный отдых Алексиса, Нетак. На первом кадре Нетак-Тарантино уговаривает Лену. По последнему уточнению автора на втором обычный Нетак вручает Оскар очень пьяному Лене, который его не узнаёт. Дополнительно автор запросил спокойный кадр Леди Оливии и Станиса, которого Полинетта не пускает на вечеринку; оба кадра утверждены сообщением «окаю».",
+  "plannedGenerations": 21,
+  "previousBatch": {
+    "status": "rejected",
+    "reason": "User requested outrageous drunken chaos; declined polite party and extra NPC selfie.",
+    "assets": [
+      "credits-karaoke",
+      "credits-dessert",
+      "credits-selfie"
+    ]
+  },
+  "assets": [
+    {
+      "id": "credits-lena-pitch",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "golovach-lena",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/golovach-lena.webp"
+      ],
+      "caption": "Лен, за такое трезвым «Оскар» не дают.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Golovach Lena is the MALE dragonborn from the reference, short black hair, two dark horns, black facial scales, black leather armor and orange glowing cracks on his forearms. Second principal character: the fictional shapeshifter Lord Netak has transformed completely into the recognizable adult film director Quentin Tarantino: high forehead, receding short dark hair, long angular face, prominent chin, expressive eyebrows, rumpled black suit and open white shirt. CRUCIAL DIRECTION: TARANTINO is energetically PERSUADING LENA, NEVER vice versa. Tarantino leans toward Lena, talking fast, gesturing grandly with one hand toward the pool and demonstrating an absurd stunt with a champagne bottle and miniature carriage on a sticky bar table. Lena sits opposite with a drink, skeptically leaning back, one eyebrow raised, NOT explaining or pitching. Behind Tarantino stands a ridiculous improvised film setup: hotel luggage ramp aimed at a golden swan fountain, huge confetti cannon, adults wearing lampshades cheering. Two clearly readable main faces in the foreground. This is the BEFORE shot of a two-photo comedy story; resort still mostly intact.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-lena-pitch.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-lena-pitch.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "golovach-lena"
+      ]
+    },
+    {
+      "id": "credits-lambert-pool",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "lambert",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/lambert.webp"
+      ],
+      "caption": "Просили что-нибудь из «Титаника».",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Lambert, exact reference adult man with shoulder-length dark hair, rectangular glasses, black shirt and leather harness, drunkenly performs a huge rock-star scream into a brass microphone standing on top of a white grand piano FLOATING in the hotel pool. His outfit is wet and disheveled, glass still on. The piano lid has a ridiculous champagne-bucket ice sculpture on it, one boot planted dramatically. Chaos: splashing champagne, feather cushions and empty bottles floating everywhere, a deck chair halfway in the pool, adult guests in party clothes cheering from a toppled brass luggage cart at the pool edge. Mid-action wide candid snapshot, Lambert dominates frame and recognizable face is visible. No other named heroes.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-lambert-pool.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-lambert-pool.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "lambert"
+      ]
+    },
+    {
+      "id": "credits-bubsilda-rink",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "bubsilda",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/bubsilda.webp"
+      ],
+      "caption": "Лёд в бокал, Бубсильда. В БОКАЛ.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Bubsilda, the exact adult elf woman from the reference with pointed ears, brown hair, silver circlet, teal tunic and red sash, drunkenly slides across a luxury ballroom she has accidentally frozen into a chaotic indoor ICE RINK. She raises a huge cocktail glass victoriously with a crazed laughing expression, arms thrown wide, shoes skidding and skirt tangled with party ribbons. A row of ornate banquet chairs is crashing like dominoes behind her, adult guests with drinks slipping and laughing without injuries, champagne fountain frozen sideways, cakes sliding across mirror-smooth ice, torn garlands and overturned ice buckets. Dynamic wide flash photograph with visible face, the disastrous scale obvious.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-bubsilda-rink.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-bubsilda-rink.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "bubsilda"
+      ]
+    },
+    {
+      "id": "credits-linda-cork",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "linda",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/linda.webp"
+      ],
+      "caption": "Просила открыть. Не просила запускать.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Linda is the recognizable ADULT brunette fairy woman from reference, pastel pink-green flowing dress, leafy circlet, four delicate translucent wings, anatomically adult with exact adult face. Here she is fairy-sized about 40 cm tall. She rides astride a comically giant champagne CORK blasting out of an enormous uncorked bottle over the banquet like a rodeo rider, fully clothed, one arm raised holding a tiny drink, laughing wildly; her wings spread stabilize her flight. The cork dominates the foreground so her adult face stays detailed and recognizable. Champagne foam erupts behind her, tablecloth flies with it, glasses and party streamers tumble, adult partygoers duck laughing in background. Outrageous magical drunk-party chaos, no children, not a cute children's fairy tale.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-linda-cork.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-linda-cork.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "linda"
+      ]
+    },
+    {
+      "id": "credits-thorin-race",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "thorin-pukoshchit",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/thorin-pukoshchit.webp"
+      ],
+      "caption": "Мини-бар кончился. Едем за большим.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Thorin Pukoshchit II, exact adult bald bearded man from reference with leather waistcoat and rolled linen sleeves, standard adult proportions, is drunkenly riding a brass room-service TROLLEY like a chariot through the ornate hotel lobby. One hand clutches the trolley rail and the other raises a beer tankard, broad wild grin and clear recognizable face. A massive wave of champagne-bath FOAM pours out from a burst decorative fountain and pushes the cart; a towering wedding-size party cake tips over his shoulder, lobsters and silver cloches fly, a palm pot topples, adult guests flee laughing with drinks. Wide flash snapshot frozen in spectacular chaotic motion. No other named heroes.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-thorin-race.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-thorin-race.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "thorin-pukoshchit"
+      ]
+    },
+    {
+      "id": "credits-pussy-sultan-party",
+      "type": "ending",
+      "status": "approved",
+      "heroId": null,
+      "characterId": "pussy-sultan",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/npcs/pussy-sultan.webp"
+      ],
+      "caption": "Девочки, я же обещал, что будет мокро.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Pussy Sultan is the exact recognizable adult blond man in the reference, short bleached hair, thin moustache and pointed goatee, black sunglasses, emerald-gold embroidered robe and trousers. He is partying with THREE glamorous ADULT WOMEN in elegant colorful fully clothed evening dresses, all laughing and raising champagne glasses, non-sexual group party. Their enormous ornate gilded velvet SOFA is absurdly floating across a luxury hotel SUITE FLOODED knee-deep by a wrecked jacuzzi. Pussy Sultan lounges in the center holding a magnum bottle like a king, one woman paddles the sofa with a gold serving tray, another shakes a bottle spraying foam, the third holds a huge feather fan. Floating shoes, lampshades, fruit and pillows, overflowing hot tub, a toppled dinner table, burst champagne bottles and confetti everywhere. Faces large enough to read, candid chaotic comedy snapshot, no sexual touching or nudity.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-pussy-sultan-party.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-pussy-sultan-party.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "pussy-sultan"
+      ]
+    },
+    {
+      "id": "credits-alexis-luxury",
+      "type": "ending",
+      "status": "approved",
+      "heroId": null,
+      "characterId": "style-sphinx",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/npcs/alexis-lore-card.png"
+      ],
+      "caption": "Мальчики, катастрофу потом. Сейчас мне жарко.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. The LEFT character in the reference is Alexis the Magnificent, a glamorous ADULT MALE fairy, exact recognizable elegant face, long straight brown hair, makeup, broad translucent iridescent wings, flowing dark emerald couture drapery. Ignore the entire text panel of the reference. Alexis is exquisitely relaxed on a gilded chaise lounge placed absurdly on top of a huge ornate dining table while the whole ballroom has become a drunken catastrophe. Wearing emerald silk, gold jewelry, cucumber spa patches pushed up to forehead so his face is clear, holding a crystal champagne coupe, serene imperious expression. Adult tuxedoed attendants fan him and hold a silver tray of tiny canapes while knee-deep in foam. Around his elevated oasis: collapsed chocolate fountain, lampshade stuck on a palm, banquet wreckage, soaked feathers, overturned chairs, party streamers hanging from the huge chandelier. The absurd contrast between his excessive luxurious relaxation and total chaos must be unmistakable. Wide camera-flash candid photograph, no reference text panel.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-alexis-luxury.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-alexis-luxury.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "style-sphinx"
+      ]
+    },
+    {
+      "id": "credits-bubsilda-swan",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "bubsilda",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/bubsilda.webp"
+      ],
+      "caption": "Все замёрзли. Ей заебись.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. After the drunken ice magic disaster, Bubsilda the exact adult elf woman with brown hair, pointed ears, silver circlet, teal outfit and red sash sits imperiously in the hollow back of an ENORMOUS ice-sculpture SWAN that takes up a wrecked banquet table. She is awake, visibly tipsy, laughing with drink raised and legs draped over the icy rim, absurd frozen throne. Huge icicles hang from the table, a champagne tower has frozen at a crooked angle, half of the ballroom behind is glazed with frost and toppled banquet furniture. Two anonymous adult hotel attendants try uselessly to thaw the enormous swan with tiny warm towels and little steam nozzles, one holding a bucket that is already a solid ice block. Her exact face is clear and large. Ridiculous post-party disaster, candid flash image, no injuries.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-bubsilda-swan.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-bubsilda-swan.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "bubsilda"
+      ]
+    },
+    {
+      "id": "credits-linda-jungle",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "linda",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/linda.webp"
+      ],
+      "caption": "Линда, мохито — это не заклинание.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Linda, exact recognizable ADULT brunette fairy with adult proportions, leafy circlet, iridescent wings and pink-green long dress, now normal adult height for a clear portrait, drunkenly stands on the luxury bar counter as a triumphant DJ using two gigantic tropical fruit halves as turntables. She has accidentally turned the ENTIRE indoor nightclub into an uncontrollable jungle with sparkling magical pollen. Huge vines wrap chandeliers, palm trunks erupt through champagne buckets, enormous dragonfruits squash plush booths, the dancefloor is a swamp of cocktail foam and leaves. An animated enormous dragonfruit with silly tiny vine arms offers her a champagne bottle. Linda laughs and waves her fruit-tipped wand, drink in other hand. Anonymous adult guests in fancy party clothes half swallowed by harmless foliage laugh in astonishment. Chaotic adult bachelor-party aftermath, not children's fantasy, no named NPCs.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-linda-jungle.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-linda-jungle.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "linda"
+      ]
+    },
+    {
+      "id": "credits-lena-oscar",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "golovach-lena",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/golovach-lena.webp",
+        "assets/concepts/campaigns/penisuela/ui/enemy-tokens/netak-dark-elf.png"
+      ],
+      "caption": "Спасибо, мужик. А это открывашка?",
+      "prompt": "Use case: illustration-story. Create ONE 16:9 landscape cinematic photoreal fantasy bachelor-party end-credits photograph. Both supplied images are approved FICTIONAL CHARACTER IDENTITY REFERENCES, not edit targets. Image 1 is Golovach Lena, an ADULT MALE dragonborn with short black hair, dark curved horns, black facial and body scales, black leather armor and orange glowing forearm markings. Image 2 is Lord Netak in HIS ORDINARY DARK-ELF FORM: light skin, short light-brown blond hair, pointed elf ears, smug recognizable face, high-collared dark brocade outfit. Use these exact fictional faces and fantasy features. Scene: Netak is standing on the RIGHT, composed and self-satisfied, actively HANDING a golden OSCAR-STYLE STATUETTE to Lena on the LEFT. Lena is extremely visibly DRUNK: slumped sideways against the bar, unsteady bent knees, tilted head, half-closed unfocused eyes, flushed cheeks, dazed lopsided delighted smile and open mouth; he stares only at the gold statuette, completely failing to recognize who is giving it to him. He clutches a half-empty beer glass in his left hand while fumbling to receive the award with his right. Netak remains clearly recognizable to the viewer; Lena's cheerful obliviousness is the joke. Presenter's hand on statue upper body, recipient's hand under the black base make direction unmistakable. Behind them lies a catastrophically wrecked opulent tropical resort: toppled golden carriage in the foam-filled pool, enormous swan fountain collapsed across the banquet table, chandelier in the water, destroyed champagne tower, ripped garlands, floating cushions, adult guests in disheveled party outfits reacting to the mess. Direct candid camera flash, medium-wide off-balance spontaneous framing, amber and teal night lighting, detailed realistic skin and materials, two faces and Oscar in crisp foreground focus, outrageous drunken slapstick aftermath. All adults fully clothed, no nudity, no sexual acts, no violence or injuries, no gore. No text, caption, watermark, collage, border or UI. One single coherent photo.",
+      "generationError": {
+        "category": "public-figure",
+        "stage": "input",
+        "requestId": "3da31b13-f25d-4bc6-ae16-9dda03ba82cf"
+      },
+      "authority": "Пользователь выбрал обычного Нетака: вручает Оскар сильно пьяному Лене, который не узнаёт Нетака.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-lena-oscar.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-lena-oscar.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "golovach-lena"
+      ]
+    },
+    {
+      "id": "credits-lambert-lift",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "lambert",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/lambert.webp"
+      ],
+      "caption": "Козу не выгонять. Она с нами с вечера.",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Dawn after the wild party. Exact recognizable adult Lambert with shoulder-length dark hair, rectangular glasses, black disheveled shirt and leather harness sits on the floor inside an ornate hotel ELEVATOR, awake with a hilariously baffled hungover expression. A LIVE GOAT wearing three gold party necklaces stands next to him and chews a strip of his shirt hem. Lambert is wearing a small unplugged crystal chandelier on his head as an absurd crown, holds a half-empty beer tankard, has confetti in his hair. The open elevator is crammed with an overturned sofa, a giant decorative pink flamingo, champagne bottles and a curtain rail stuck across the doors. He looks toward the flash camera as if he cannot explain any of this. Messy chaotic flash photograph, safe live goat, fully clothed adult.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-lambert-lift.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-lambert-lift.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "lambert"
+      ]
+    },
+    {
+      "id": "credits-thorin-checkout",
+      "type": "ending",
+      "status": "approved",
+      "heroId": "thorin-pukoshchit",
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "references": [
+        "assets/concepts/campaigns/penisuela/party/thorin-pukoshchit.webp"
+      ],
+      "caption": "Это счёт за номер или я купил отель?",
+      "prompt": "Use case: illustration-story. Generate ONE new 16:9 landscape cinematic photorealistic fantasy bachelor-party snapshot for game end credits. The provided art is an IDENTITY REFERENCE, not an edit target. Preserve the exact adult face, age, body and fantasy features. A wildly drunken disastrous night at an opulent tropical fantasy resort, outrageous escalating slapstick and candid end-credit-photo energy reminiscent of The Hangover, but an original scene, no copied movie frame. Messy direct camera flash, tilted spontaneous framing, realistic skin, spilled drinks, dramatic amber and teal night lighting. The image must instantly read as outrageous chaos, not a tasteful polite party. All people are adults and fully clothed, no sexual acts or nudity, no serious injuries or gore. Do not add other named campaign characters. No captions, letters, watermark, borders, collage, interface or split panels. Dawn after a catastrophically drunken night. Thorin the exact adult bald bearded man in leather waistcoat and wrinkled rolled-sleeve linen shirt stands at the hotel RECEPTION trying to check out, wearing a lopsided folded white towel as a crown and holding a beer tankard as if this were normal. He has a hilariously stunned exhausted expression while an anonymous adult uniformed clerk unfurls an IMPOSSIBLY LONG BILL: a wide blank parchment scroll pours over the counter in huge loops and runs across the wrecked lobby all the way into the background pool. No legible writing on it. Thorin's trolley is stacked with mysteriously stolen room-service objects: giant vase, chandelier, silver seafood tray and flamingo statue. Behind him broken banquet furniture, champagne foam, abandoned shoes and a sofa in the fountain. Wide candid flash photo; exact face clearly recognizable. No other named heroes.",
+      "draftPath": "art-drafts/credits/chaos-v2/credits-thorin-checkout.png",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-thorin-checkout.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "thorin-pukoshchit"
+      ]
+    },
+    {
+      "id": "credits-olivia-terrace",
+      "characterIds": [
+        "olga-vasilenko"
+      ],
+      "caption": "Завтра эти люди оплатят мне ещё один отпуск.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/scenes/olva-date-room.png"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape candid cinematic fantasy resort photograph for game end credits. The input artworks are identity references, not edit targets. Preserve the exact recognizable adult faces, body types, hair, fantasy features and characteristic outfits from the references. Real photographic skin texture, natural fabric, spontaneous snapshot composition, subtle on-camera flash, warm lantern light and teal tropical evening. All subjects are adults. No captions, letters, watermark, white borders, collage, panels or interface. The Polaroid frame will be added by the game UI, so fill the entire image with the photograph. Reference image: use ONLY the woman on the RIGHT as Lady Olivia: adult woman with long voluminous wavy dark hair, warm face, delicate large transparent intricately veined fairy wings, tasteful tailored burnt-orange trouser suit with teal and gold embroidered trim and teal top. Do not include the man or the short-haired woman from the reference. Primary request: a more respectable, elegant party souvenir photograph of Lady Olivia. She calmly sits in a carved lounge chair on a luxurious tropical hotel terrace with palm trees, a dark sea and twinkling lights behind her, holding one champagne coupe at a relaxed height, giving the camera a small knowing amused smile. Her suit is neat, fully worn and modest, elegant posture, wings intact clearly visible behind her. Small table with a candle and a neatly folded napkin. Party lights softly blurred in the distant resort garden, but her corner is peaceful and dignified. She is composed, not visibly intoxicated. A believable candid holiday photo taken by a friend, not a fashion advertising pose. Medium-wide framing with face clear and recognizable, enough terrace atmosphere.",
+      "type": "ending",
+      "status": "approved",
+      "heroId": null,
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/extras-v1/credits-olivia-terrace.png",
+      "realPersonReference": {
+        "sourceMode": "public-figure",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по уже утверждённым фэнтезийным артам; исходная личная фотография не используется и не сохраняется.",
+        "preserve": [
+          "Утверждённые взрослые лица и телосложение",
+          "Причёски, одежда и расовые признаки"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Изменение утверждённой внешности",
+          "Несогласованная карикатура"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "6211af987e0d3e6a8f29603602484e7b1bf47a66f17c70321fbbe298940ca6c6",
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-olivia-terrace.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "olga-vasilenko"
+      ]
+    },
+    {
+      "id": "credits-stas-polina-door",
+      "characterIds": [
+        "bungalow-spouse-a",
+        "bungalow-spouse-b"
+      ],
+      "caption": "Проверку «Я на пять минут» завалил.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-a.webp",
+        "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-b.webp"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape candid cinematic fantasy resort photograph for game end credits. The input artworks are identity references, not edit targets. Preserve the exact recognizable adult faces, body types, hair, fantasy features and characteristic outfits from the references. Real photographic skin texture, natural fabric, spontaneous snapshot composition, subtle on-camera flash, warm lantern light and teal tropical evening. All subjects are adults. No captions, letters, watermark, white borders, collage, panels or interface. The Polaroid frame will be added by the game UI, so fill the entire image with the photograph. Reference 1 is Stanis, an adult stocky man with short tousled brown hair, burgundy patterned open short-sleeve shirt over a beige T-shirt, teal knee-length shorts and sandals. Reference 2 is his wife Polinetta, an adult slim elf woman with short brown bob, clear-framed glasses, pointed ears, teal dress with gold botanical embroidery, rust-colored belt and cream shawl. Preserve both identities. Primary request: a funny readable domestic moment at their tropical bungalow doorway: Stanis REALLY wants to go join the roaring party, but his wife won't let him. Camera outside the open bungalow looking diagonally across the doorway toward a nearby festive pool courtyard. Stanis is halfway through the doorway, leaning eagerly toward the courtyard, one hand pointing pleadingly at the party, the other holding his beer mug; hopeful desperate puppy-eyed grin, mouth caught mid 'just five minutes'. Behind him, firmly planted in the doorway, Polinetta gently but decisively holds the BACK of his burgundy shirt sleeve near the upper arm, preventing his next step; her other hand on her hip, raised eyebrow and calm absolutely-not expression directed at him. Show the sleeve pulled taut and their connected gesture very clearly. Warm comic disagreement without aggression or violence. Both faces visible in three-quarter profile, full adult proportions. In the near background across the path, adult anonymous guests are dancing wildly in a bright pool party, champagne foam and confetti catching the lights, some wearing silly lampshades, enough visible revelry to explain his yearning. Natural flash snapshot captured by another guest passing by. No other named characters. No text or speech bubbles.",
+      "type": "ending",
+      "status": "approved",
+      "heroId": null,
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/extras-v1/credits-stas-polina-door.png",
+      "realPersonReference": {
+        "sourceMode": "private-photo",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по уже утверждённым фэнтезийным артам; исходная личная фотография не используется и не сохраняется.",
+        "preserve": [
+          "Утверждённые взрослые лица и телосложение",
+          "Причёски, одежда и расовые признаки"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Изменение утверждённой внешности",
+          "Несогласованная карикатура"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "19efe0ca7ef8e4fdef58ffe2e4dd94e8f30922a91eb85bb36443622cd168a1e1",
+      "runtimePath": "assets/concepts/campaigns/penisuela/credits/credits-stas-polina-door.png",
+      "technicalProcessing": "PNG copied byte-for-byte; full original quality preserved.",
+      "creditIds": [
+        "bungalow-spouse-a",
+        "bungalow-spouse-b"
+      ]
+    },
+    {
+      "id": "credits-egorik-sidelines",
+      "creditIds": [
+        "egorik"
+      ],
+      "caption": "Утром удалять было нечего.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/npcs/false-groom-guest.webp"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape cinematic candid photograph for fantasy game end credits. Use the supplied approved fantasy character art strictly as identity references, not edit targets. Preserve exact recognizable adult faces, body types, hair, fantasy features and characteristic clothing. This is a fictional late-night resort party souvenir photo, warm amber lanterns, teal tropical night, realistic skin and fabric texture, spontaneous slightly tilted framing and direct camera flash. Original humorous scene with believable physical staging. All people are adults and fully clothed. No nudity, sexual acts, injuries or gore. No lettering, captions, logos, watermark, white borders, collage or interface. Fill the whole frame with the photograph; the game adds a Polaroid frame. Main subject Egorik is the adult man from the reference, short side-swept light brown hair, clean-shaven face, navy open-collar short-sleeved linen shirt, beige cropped trousers, rust-red sash, gold bracelet. He simply sits quietly OFF TO THE SIDE of the party in a low wicker chair at the edge of a tropical terrace, relaxed posture, hands resting naturally, a glass on the small table next to him, faintly bemused withdrawn expression. He is not performing, organizing, posing for a selfie or doing a stunt. He looks toward the distant party without joining it. Composition: Egorik prominently in foreground with recognizable face, separated by several metres of empty terrace from a lively blurry pool party in background with adult dancing guests, confetti and a tipped parasol. The joke is how completely undisturbed and uninvolved he is while everything happens elsewhere. Keep his corner peaceful. No other named characters.",
+      "type": "ending",
+      "status": "canonical",
+      "heroId": null,
+      "characterIds": [
+        "egorik"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/remaining-cast-v1/credits-egorik-sidelines.png",
+      "realPersonReference": {
+        "sourceMode": "private-photo",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по утверждённым фэнтезийным артам; исходные личные фотографии не используются и не сохраняются.",
+        "preserve": [
+          "Утверждённые взрослые лица, причёски и телосложение",
+          "Одежда и фэнтезийные признаки из референсов"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Несогласованная карикатура",
+          "Подмена лиц или расовых признаков"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "2e5e0d3224c56ab971c957897360fe377a0dcb28e586ee8618232c84d6450b72",
+      "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+      "approvalDate": "2026-09-15",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-egorik-sidelines.png"
+    },
+    {
+      "id": "credits-nastasya-contest",
+      "creditIds": [
+        "nastya"
+      ],
+      "caption": "Трезвые тоже участвуют. Не выёбываемся.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/npcs/guest-organizer.webp"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape cinematic candid photograph for fantasy game end credits. Use the supplied approved fantasy character art strictly as identity references, not edit targets. Preserve exact recognizable adult faces, body types, hair, fantasy features and characteristic clothing. This is a fictional late-night resort party souvenir photo, warm amber lanterns, teal tropical night, realistic skin and fabric texture, spontaneous slightly tilted framing and direct camera flash. Original humorous scene with believable physical staging. All people are adults and fully clothed. No nudity, sexual acts, injuries or gore. No lettering, captions, logos, watermark, white borders, collage or interface. Fill the whole frame with the photograph; the game adds a Polaroid frame. Main subject Nastasya is the exact adult fantasy woman from the reference, shoulder-length light brown hair, pointed ears, teal wrap blouse with gold trim, flowing rust-red skirt and a belt of ornamental tokens. She is the party ORGANIZER enthusiastically directing a hilariously chaotic LIMBO CONTEST on the pool terrace, not competing herself. She stands prominently beside the limbo bar, brass handheld microphone in one hand, the other decisively pointing to the next contestant, laughing with confident no-excuses energy. Two anonymous adult guests in rumpled formal party clothes try absurdly hard to bend backwards beneath a very low horizontal limbo pole, carefully refusing to spill their cocktails; cheering adults behind them. Clearly staged visible horizontal pole with supports, readable organizer role and her face the central focus. Confetti, abandoned shoes, party ribbons and champagne buckets add messy night-party energy. No other named characters, no injuries.",
+      "type": "ending",
+      "status": "canonical",
+      "heroId": null,
+      "characterIds": [
+        "nastya"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/remaining-cast-v1/credits-nastasya-contest.png",
+      "realPersonReference": {
+        "sourceMode": "private-photo",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по утверждённым фэнтезийным артам; исходные личные фотографии не используются и не сохраняются.",
+        "preserve": [
+          "Утверждённые взрослые лица, причёски и телосложение",
+          "Одежда и фэнтезийные признаки из референсов"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Несогласованная карикатура",
+          "Подмена лиц или расовых признаков"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "1e816ac6e793dc49b0ca4b540fd77379dab3b86c0bf3b0fd9a6708e2cd5ba45e",
+      "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+      "approvalDate": "2026-09-15",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-nastasya-contest.png"
+    },
+    {
+      "id": "credits-kreed-mirror",
+      "creditIds": [
+        "egor-kreed"
+      ],
+      "caption": "Попросил познакомить его с тем красавчиком.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/scenes/groom-hideout.png"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape cinematic candid photograph for fantasy game end credits. Use the supplied approved fantasy character art strictly as identity references, not edit targets. Preserve exact recognizable adult faces, body types, hair, fantasy features and characteristic clothing. This is a fictional late-night resort party souvenir photo, warm amber lanterns, teal tropical night, realistic skin and fabric texture, spontaneous slightly tilted framing and direct camera flash. Original humorous scene with believable physical staging. All people are adults and fully clothed. No nudity, sexual acts, injuries or gore. No lettering, captions, logos, watermark, white borders, collage or interface. Fill the whole frame with the photograph; the game adds a Polaroid frame. Main subject Kreed is the exact adult male elf from the reference, medium-length wavy dirty-blond hair, light stubble, pointed ears, black tailored outfit with delicate gold branch embroidery. Make a SUPER CRINGEWORTHY comic snapshot of him obsessively admiring HIMSELF while everyone else parties. He has dragged a huge ornate freestanding gilded full-length mirror right next to the pool bar. Leaning very close to his own reflection, he gazes into his reflected eyes with ridiculous romantic self-admiration and puckers his lips to blow HIMSELF a kiss, one hand carefully fixing a strand of his hair. Both the real face and its physically correct mirror reflection must be recognizable and match exactly. An anonymous adult guest beside him holds out a champagne glass for a toast and is completely ignored, looking baffled. Background wild party with confetti and overturned chairs out of focus. Medium-wide candid flash shot showing enough of the mirror to make it unmistakable that the admired person is his own reflection, not another character. Only one Kreed plus his reflection. Keep him fully dressed; joke is vain self-absorption, not sexuality.",
+      "type": "ending",
+      "status": "canonical",
+      "heroId": null,
+      "characterIds": [
+        "egor-kreed"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/remaining-cast-v1/credits-kreed-mirror.png",
+      "realPersonReference": {
+        "sourceMode": "public-figure",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по утверждённым фэнтезийным артам; исходные личные фотографии не используются и не сохраняются.",
+        "preserve": [
+          "Утверждённые взрослые лица, причёски и телосложение",
+          "Одежда и фэнтезийные признаки из референсов"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Несогласованная карикатура",
+          "Подмена лиц или расовых признаков"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "ee8a2cefc66c04175d94f624cc88dbef080bb86d95ba0c0b09f61bd8b4ad6beb",
+      "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+      "approvalDate": "2026-09-15",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-kreed-mirror.png"
+    },
+    {
+      "id": "credits-angel-grey-vlog",
+      "creditIds": [
+        "igor-sinyak",
+        "graywise"
+      ],
+      "caption": "Вот это суперфинал! Все в хлам, торт в мясо — мы счастливы. С праздником!",
+      "references": [
+        "assets/concepts/campaigns/penisuela/ui/ally-tokens/igor.png",
+        "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new landscape 16:9 candid flash photograph for a fictional fantasy-game end-credits party album. The game will add the Polaroid border and caption, so full bleed photograph only, no lettering, watermarks, collage or borders.\n\nInput 1 is the approved fantasy Angel portrait: use for adult full-cheeked face, lips, plus-size body and translucent fairy wings ONLY. Input 2 is the approved fantasy Grey Wiese portrait: use for adult male facial identity, slim body and pointed elf ears ONLY. This request deliberately CHANGES BOTH characters' clothing and styling; do not copy the pink pajama shirt, old black draped outfit or old hairstyles.\n\nStyling based on visually inspected public fashion photographs:\nAngel (Igor Sinyak public evening look): a BLACK SEQUIN EVENING GOWN with a fitted structured off-shoulder neckline, bare shoulders, substantial elegant bodice and long skirt; long dangling crystal earrings; bold winged eyeliner and lipstick; SHORT DARK BRUNETTE hair styled away from the forehead in a glossy sculpted side-swept wave, softly curled back around the ears. Preserve the full face and plus-size body, no slimming. Small translucent fairy wings still visibly belong to him. This is a finished evening dress, not sleepwear or lingerie.\nGrey Wiese (Sergey's white lace concert styling photographed for The Blueprint): a voluminous high-neck WHITE LACE MINI TUNIC DRESS, layered scalloped lace tiers and dramatic wide layered sleeves, opaque lining throughout torso and hips, white lace tights and tall glossy WHITE thigh-high heeled BOOTS. Straight shoulder-length-to-collarbone BLOND hair with darker roots, neat center part, both face-framing sides smooth and groomed; visible pointed elf ears. Preserve the recognizable mature male face. This white lace outfit must be visually distinct from his previous black clothes.\nAbsolutely no suit, blazer, tuxedo, bow tie or pajama outfit on either host.\n\nAction: Angel and Grey are HOSTS recording a funny serious-faced food-and-luxury REVIEW of a wrecked wedding dessert table. Both stand together and animatedly address the CAMERA OF A SEPARATE CAMERAMAN. Angel uses an open presenting palm toward the absurd table; Grey displays a small dessert plate while explaining to the operator's lens. Their hands do not hold any recording equipment. They maintain composed presenter energy despite the ridiculous mess.\nThe adult cameraman is CLEARLY VISIBLE at the left foreground from a three-quarter rear/side angle, holding a professional video camera with a top microphone and small light aimed toward the duo. He occupies no more than one fifth of frame. Camera lens, cameraman hands and the direction of filming are unmistakable. We see both hosts' faces almost frontally from beside the operator; three-quarter/full-body framing shows the dress silhouettes and Grey's boots. No selfie stick, no smartphones, no selfie composition.\n\nBehind/beside the hosts, a crooked half-demolished tiered cake, an inflatable pool flamingo wearing a party ribbon on the buffet, scattered canapes, overturned champagne bucket and confetti. In the background anonymous adult guests celebrate on a tropical resort terrace. Night, amber lanterns and cool pool lights, lively absurd party atmosphere, realistic skin, true fabric/sequin/lace texture, natural hands, authentic candid photo with subtle grain and direct flash, not illustration, not painterly, not 3D render. All characters are adults, fully clothed, no nudity or sexual acts. Keep both main faces sharp and easily recognizable.",
+      "type": "ending",
+      "status": "canonical",
+      "heroId": null,
+      "characterIds": [
+        "igor-sinyak",
+        "graywise"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/remaining-cast-v1/credits-angel-grey-vlog-v2.png",
+      "realPersonReference": {
+        "sourceMode": "public-figure",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Лица и фэнтезийные признаки — утвержденные игровые арты; новые наряды и прически — публичные фотографии из fashionSources, просмотренные в браузере. Исходные личные фото не используются.",
+        "preserve": [
+          "Утвержденные взрослые лица, телосложение и фэнтезийные признаки"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Несогласованная карикатура",
+          "Подмена лиц или расовых признаков"
+        ],
+        "stylingChange": "Новые праздничные наряды и прически по просмотренным публичным фотографиям; без пиджаков и смокингов."
+      },
+      "iterations": [
+        {
+          "id": "credits-angel-grey-vlog",
+          "creditIds": [
+            "igor-sinyak",
+            "graywise"
+          ],
+          "caption": "Удалим утром. Если вспомним пароль.",
+          "references": [
+            "assets/concepts/campaigns/penisuela/ui/ally-tokens/igor.png",
+            "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png"
+          ],
+          "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape cinematic candid photograph for fantasy game end credits. Use the supplied approved fantasy character art strictly as identity references, not edit targets. Preserve exact recognizable adult faces, body types, hair, fantasy features and characteristic clothing. This is a fictional late-night resort party souvenir photo, warm amber lanterns, teal tropical night, realistic skin and fabric texture, spontaneous slightly tilted framing and direct camera flash. Original humorous scene with believable physical staging. All people are adults and fully clothed. No nudity, sexual acts, injuries or gore. No lettering, captions, logos, watermark, white borders, collage or interface. Fill the whole frame with the photograph; the game adds a Polaroid frame. TWO main adult characters shooting a lively joint video BLOG at the disastrous resort party. Reference 1 is Angel: preserve exact full-cheeked adult face, long wavy blond hair with dark roots, voluptuous body, pale pink satin pajama outfit and delicate transparent fairy wings. Reference 2 is Grey Wiese: preserve exact adult male face, long straight pale-blond hair, pointed elf ears, silver earring, long elegant black draped outfit with silver waist clasp. Do not swap identities or features. Angel holds a modern smartphone on a short selfie stick pointed at BOTH of them; Grey Wiese leans into the recording frame with an animated amused commentary gesture toward the chaos behind them. Both are smiling and chatting expressively to the smartphone lens, clearly filming a vlog rather than posing for the photographer. Photograph them from a three-quarter angle so we see both faces, the back or edge of the phone and the selfie stick. They are joyfully absorbed in making content while behind them anonymous adult guests dance in a shallow flooded banquet area with champagne foam and a toppled palm pot. Clear central duo, a little confetti tangled in hair and clothing. All clothing intact, no suggestive poses. No readable phone screen or fake text.",
+          "type": "ending",
+          "status": "rejected",
+          "heroId": null,
+          "characterIds": [
+            "igor-sinyak",
+            "graywise"
+          ],
+          "sceneIds": [
+            "wedding-epilogue",
+            "bad-ending-magical-prison"
+          ],
+          "format": "16:9 landscape opaque",
+          "userApproval": "rejected",
+          "draftPath": "art-drafts/credits/remaining-cast-v1/credits-angel-grey-vlog.png",
+          "realPersonReference": {
+            "sourceMode": "public-figure",
+            "personalityBasis": "user-description",
+            "likeness": "recognizable",
+            "transformation": "light",
+            "referenceRequiredAtGeneration": false,
+            "referenceBasis": "Производный кадр по утверждённым фэнтезийным артам; исходные личные фотографии не используются и не сохраняются.",
+            "preserve": [
+              "Утверждённые взрослые лица, причёски и телосложение",
+              "Одежда и фэнтезийные признаки из референсов"
+            ],
+            "avoid": [
+              "Личные метаданные источника",
+              "Несогласованная карикатура",
+              "Подмена лиц или расовых признаков"
+            ]
+          },
+          "dimensions": {
+            "width": 1672,
+            "height": 941
+          },
+          "sha256": "2e19ac4f3bfe74b3cf982b439fa4918bc845702d568fe45a7b3e7311316528f8",
+          "version": 1,
+          "reason": "Селфи вместо отдельного оператора; спальня вместо праздничных нарядов; прически требуют исправления по реальным фотографиям."
+        }
+      ],
+      "version": 2,
+      "fashionSources": [
+        {
+          "person": "Игорь Синяк",
+          "page": "https://radio1.ru/news/shou-biznes/igor-sinyak-posle-ogrableniya-vivez-iz-kvartiri-v-parizhe-ostavshiesya-sumki-i-ukrasheniya/",
+          "image": "https://multi-admin.ru/mediabank_blog/11/337484/fab700c8c6c062d9bb3673fbba151bd1_337484.jpg",
+          "observed": "Черное платье с пайетками и открытыми плечами, длинные серьги, короткая темная укладка назад волной."
+        },
+        {
+          "person": "Grey Wiese",
+          "page": "https://theblueprint.ru/fashion/lichnost/grigorev-apollonov-concert",
+          "image": "https://theblueprint.ru/upload/39805/vms/b3b5d7b2c0e2d940f6152fd766f2bec1_small.jpg",
+          "observed": "Объемная белая кружевная блуза-туника с ярусами, белые ботфорты, прямые светлые волосы с темными корнями и центральным пробором."
+        }
+      ],
+      "approvalMessage": "четко",
+      "approvalDate": "2026-09-15",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-angel-grey-vlog.png",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "f95f4fd2f44841cc4e6a3ba9ceef18256cccacd4d9b6bd3d9d6738792ddd0104"
+    },
+    {
+      "id": "credits-netak-scheming",
+      "creditIds": [
+        "andrey-apollonov-junior"
+      ],
+      "caption": "План был так себе. Зато Лена уже выпил.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/scenes/andrey-villa-breach.png",
+        "assets/concepts/campaigns/penisuela/party/golovach-lena.webp"
+      ],
+      "prompt": "Use case: photorealistic-natural. Generate ONE new 16:9 landscape cinematic candid photograph for fantasy game end credits. Use the supplied approved fantasy character art strictly as identity references, not edit targets. Preserve exact recognizable adult faces, body types, hair, fantasy features and characteristic clothing. This is a fictional late-night resort party souvenir photo, warm amber lanterns, teal tropical night, realistic skin and fabric texture, spontaneous slightly tilted framing and direct camera flash. Original humorous scene with believable physical staging. All people are adults and fully clothed. No nudity, sexual acts, injuries or gore. No lettering, captions, logos, watermark, white borders, collage or interface. Fill the whole frame with the photograph; the game adds a Polaroid frame. Main subject Lord Netak is the ordinary adult dark-elf character from reference 1, preserve exact face, short tousled brown hair, pointed ears, black velvet formal long coat with ornate silver clasps. He is standing OFF TO THE SIDE of the festive resort terrace in the shadow of a carved column, watching the party and clearly scheming how to ruin everything: sly restrained half-smile, narrowed thoughtful eyes looking across the terrace, one hand touching his chin, the other holding a drink untouched. His recognizable face is the dominant foreground focus, framed as a candid caught-in-the-act snapshot. FAR IN THE DISTANCE at the brightly lit pool bar, include Golovach Lena from reference 2 as a much smaller secondary figure: adult MALE dragonborn, short black hair, two black horns, black facial scales and dark armor, orange glowing cracks on his forearms. Lena is relaxed with a drink, laughing with anonymous adult party guests, completely unaware he is being watched. Preserve the direction: NETAK is observing and plotting; LENA does not notice him and does not plot. Do not bring Lena into the foreground. Readable depth and visual eyeline connecting Netak to distant Lena. Warm party lights contrast with the dim corner; no sinister violence, no weapons, no readable text. Netak remains his normal fantasy appearance from reference 1.",
+      "type": "ending",
+      "status": "canonical",
+      "heroId": null,
+      "characterIds": [
+        "andrey-apollonov-junior"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "format": "16:9 landscape opaque",
+      "userApproval": "approved",
+      "draftPath": "art-drafts/credits/remaining-cast-v1/credits-netak-scheming.png",
+      "realPersonReference": {
+        "sourceMode": "public-figure",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Производный кадр по утверждённым фэнтезийным артам; исходные личные фотографии не используются и не сохраняются.",
+        "preserve": [
+          "Утверждённые взрослые лица, причёски и телосложение",
+          "Одежда и фэнтезийные признаки из референсов"
+        ],
+        "avoid": [
+          "Личные метаданные источника",
+          "Несогласованная карикатура",
+          "Подмена лиц или расовых признаков"
+        ]
+      },
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "8e11c4174303227fad0a1b327ef026172c714eecfefd05005d4d679fc08f6fbb",
+      "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+      "approvalDate": "2026-09-15",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-netak-scheming.png"
+    },
+    {
+      "id": "credits-game-master-tavern",
+      "type": "ending",
+      "status": "canonical",
+      "userApproval": "approved",
+      "creditIds": [
+        "lord-krayneplot",
+        "kostryulka"
+      ],
+      "characterIds": [
+        "lord-krayneplot",
+        "kostryulka"
+      ],
+      "sceneIds": [
+        "wedding-epilogue",
+        "bad-ending-magical-prison"
+      ],
+      "caption": "Мы всего лишь разослали приглашения.",
+      "references": [
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png"
+      ],
+      "draftPath": "art-drafts/credits/game-master-v1/credits-game-master-tavern.png",
+      "format": "16:9 landscape opaque",
+      "prompt": "Use case: photorealistic-natural. Create ONE new 16:9 landscape candid photograph for the end credits of a fantasy role-playing game. Full bleed image only; the application will add a Polaroid frame and handwritten caption. No text or borders in the image.\nReference 1 establishes the EXACT Lord Krayneplot identity and tavern: adult male elf, recognizable face, pointed ears, long chestnut hair with intricate braids, dark green embroidered elven armor with gold leaf details and leather bracers. Reference 2 establishes the EXACT pigeon Kostryulka with his organic light ivory-and-graphite delivery compartment integrated into the back, natural gray pigeon body, iridescent green-violet neck, two ordinary wings and normal bird feet. Keep both designs intact; do not turn the bird into a pot, mammal, toy, giant bird or standalone robot. Keep the back compartment closed.\nScene: a warm candlelit medieval tavern at the end of the evening. Lord Krayneplot sits comfortably at a worn wooden table, with a metal mug nearby. Kostryulka is calmly perched on the table immediately beside him. The Lord gently PETS THE TOP OF THE PIGEON'S HEAD with the fingertips of ONE relaxed hand. This affectionate contact is the single clear main action. He looks at the bird with a small pleased, conspiratorial smile, relaxed shoulders. The pigeon settles happily into the touch, eyes softly narrowed, head slightly tilted toward his fingers. Do not cover the face of the bird or grasp its neck; fingers gently contact only the top/back of the head, natural anatomy.\nMedium-close three-quarter composition showing the Lord's face clearly, his upper body, the entire pigeon with closed delivery compartment, and their hand/head contact. Both are the clear focal subjects; no foreground strangers and no extra named characters. The tavern fireplace, timber beams, distant empty chairs and softly blurred candles provide a cozy setting. Low-key warm amber candlelight balanced by subtle photographic fill so faces and feathers read clearly. Cinematic believable photography with real skin, cloth, metal and feather texture, mild candid flash quality consistent with a fantasy party-photo album; no painterly brushwork, illustration or game interface. Light affectionate humor, a quiet satisfied pair after an outrageous adventure. Preserve exact recognizable approved fantasy identity, no caricature, no injury, no logos or watermark.",
+      "realPersonReference": {
+        "sourceMode": "private-photo",
+        "personalityBasis": "user-description",
+        "likeness": "recognizable",
+        "transformation": "light",
+        "referenceRequiredAtGeneration": false,
+        "referenceBasis": "Только утверждённые фэнтезийные сцены; исходные личные фотографии не используются.",
+        "preserve": [
+          "Лицо, эльфийские уши, длинные каштановые косы и зеленая броня Лорда.",
+          "Кострюлька — живой голубь со встроенным курьерским отсеком."
+        ],
+        "avoid": [
+          "Личные данные источника",
+          "Несогласованная карикатура",
+          "Изменение расовых признаков"
+        ]
+      },
+      "approvalMessage": "окаю кадр с крайнеплотом, добавляй ег ов титры",
+      "approvalDate": "2026-09-16",
+      "path": "assets/concepts/campaigns/penisuela/credits/credits-game-master-tavern.png",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "7f1c650903132085b4940fb87e57ca72bc5d959b18db38bf603485c9ce75c29c"
+    }
+  ],
+  "generationAttempts": 22,
+  "successfulImages": 21,
+  "failedAttempts": 1,
+  "userApproval": {
+    "status": "approved",
+    "message": "все подходит, все окаю",
+    "date": "2026-09-15",
+    "assetIds": [
+      "credits-lena-pitch",
+      "credits-lambert-pool",
+      "credits-bubsilda-rink",
+      "credits-linda-cork",
+      "credits-thorin-race",
+      "credits-pussy-sultan-party",
+      "credits-alexis-luxury",
+      "credits-bubsilda-swan",
+      "credits-linda-jungle",
+      "credits-lena-oscar",
+      "credits-lambert-lift",
+      "credits-thorin-checkout"
+    ]
+  },
+  "presentation": "Все 20 утверждённых кадров идут в общей полароидной ленте рядом с именами через creditIds. Пять героев получают по два фото; Станис и Полинетта, Angel и Grey Wiese — по общему блоку; остальные кадры привязаны к своим персонажам. Модели ИИ остаются текстовыми. Лорд Крайнеплот и Кострюлька представлены общим фото под отдельным заголовком «Мастер игры».",
+  "additionalBatch20260915": {
+    "status": "approved",
+    "plannedGenerations": 2,
+    "briefApproval": "нужен еще кадр с оливией, уже поприличнее; и со стасом и полиной, где он очень хочется пойти на веселье, но жена его не пускает",
+    "userApproval": "approved",
+    "assetIds": [
+      "credits-olivia-terrace",
+      "credits-stas-polina-door"
+    ],
+    "generationAttempts": 2,
+    "successfulImages": 2,
+    "failedAttempts": 0,
+    "review": "docs/campaigns/penisuela/credits-art-review-extras.json",
+    "plannedPlacement": {
+      "status": "superseded-by-character-grouping",
+      "reason": "Автор попросил ставить фотографии рядом с именами изображённых персонажей.",
+      "creditIds": {
+        "credits-olivia-terrace": [
+          "olga-vasilenko"
+        ],
+        "credits-stas-polina-door": [
+          "bungalow-spouse-a",
+          "bungalow-spouse-b"
+        ]
+      }
+    },
+    "approvalMessage": "окаю",
+    "approvalDate": "2026-09-15"
+  },
+  "captionRevision": {
+    "date": "2026-09-15",
+    "authority": "подписи еще поправь везде на фотках, они не смешные",
+    "status": "implemented",
+    "count": 14,
+    "source": "content/campaigns/penisuela-credits.json"
+  },
+  "remainingCastBatch20260915": {
+    "status": "approved",
+    "plannedGenerations": 6,
+    "generationAttempts": 6,
+    "userApproval": "approved",
+    "assetIds": [
+      "credits-egorik-sidelines",
+      "credits-nastasya-contest",
+      "credits-kreed-mirror",
+      "credits-angel-grey-vlog",
+      "credits-netak-scheming"
+    ],
+    "authority": "Егорик сидит в стороне; Настасья организует конкурс; Kreed постоянно любуется собой в зеркале; Angel и Grey Wiese вместе снимают блог; Нетак замышляет пакость, вдалеке виден Лена.",
+    "successfulImages": 6,
+    "failedAttempts": 0,
+    "review": "docs/campaigns/penisuela/credits-art-review-remaining-cast.json",
+    "approvedAssetIds": [
+      "credits-egorik-sidelines",
+      "credits-nastasya-contest",
+      "credits-kreed-mirror",
+      "credits-angel-grey-vlog",
+      "credits-netak-scheming"
+    ],
+    "pendingAssetIds": [],
+    "approvalMessage": "окаю все, кроме кадра с синяком и сергеем",
+    "revisedVlogApprovalMessage": "четко",
+    "revisedVlogApprovalDate": "2026-09-15"
+  },
+  "captionFinaleRevision20260916": {
+    "authority": "Подпись должна звучать как радостный суперфинал конкурса.",
+    "assetId": "credits-angel-grey-vlog",
+    "caption": "Вот это суперфинал! Все в хлам, торт в мясо — мы счастливы. С праздником!"
+  },
+  "gameMasterBatch20260916": {
+    "status": "published",
+    "generationAuthority": "Прямой запрос автора: общий таверненный кадр Лорда, который гладит Кострюльку; отдельный заголовок «Мастер игры».",
+    "assetIds": [
+      "credits-game-master-tavern"
+    ],
+    "plannedGenerations": 1,
+    "userApproval": "approved",
+    "approvalMessage": "окаю кадр с крайнеплотом, добавляй ег ов титры",
+    "approvalDate": "2026-09-16",
+    "generationAttempts": 1,
+    "successfulImages": 1,
+    "failedAttempts": 0,
+    "review": "docs/campaigns/penisuela/credits-art-review-game-master.json"
+  }
+}

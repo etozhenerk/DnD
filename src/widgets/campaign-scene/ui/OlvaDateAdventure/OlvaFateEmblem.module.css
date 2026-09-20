@@ -1,0 +1,2 @@
+.emblem {display:block;width:100%;height:100%;fill:none;stroke:var(--color-gold-light);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;filter:var(--olva-object-shadow);}
+.inner {stroke:var(--olva-paper-edge);stroke-dasharray:1 4;}

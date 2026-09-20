@@ -1,6 +1,6 @@
 ---
 name: write-dnd-scene-script
-description: Write run-ready Russian-language Game Master scenes from an approved story graph and cast. Use when producing read-aloud text, public situation, secret truth, scene goal, approaches, checks, complications, state changes, transitions, variants, clues, rewards, or scene-specific GM guidance.
+description: Write and revise run-ready Russian-language D&D scene prose from an approved story graph and cast. Use for spoken room legends, read-aloud narration, item and clue descriptions, letters and recordings, public situations, secret truth, scene goals, approaches, checks, complications, state changes, transitions, variants, rewards, or scene-specific GM guidance. Apply especially when existing player-facing copy sounds technical, list-like, explanatory, or detached from the fantasy interface.
 ---
 
 # Сценарий сцен для мастера
@@ -28,9 +28,27 @@ description: Write run-ready Russian-language Game Master scenes from an approve
 11. Варианты состояния сцены, если нужны.
 12. Необходимые арты и публичные материалы без их генерации.
 
+## Литературный режим
+
+Для любого текста, который увидят игроки или произнесёт мастер, обязательно прочитать [references/literary-player-prose.md](references/literary-player-prose.md) и выполнить описанный там проход.
+
+Писать легенду комнаты как один непрерывный маршрут взгляда по пространству. Показывать расположение улик через предметы, свет, звук, запах и движение, а их значение — через происходящее с ними последствие. Не превращать легенду в перечень находок или пересказ структуры квеста.
+
+Писать описание предмета тремя связанными движениями: первое впечатление, открывающаяся деталь, естественный вывод героев. Не приклеивать к художественному тексту справку «зачем нужен предмет»; делать назначение понятным из самой сцены.
+
+Для писем и записей сохранять самостоятельный голос автора или носителя. Не пересказывать письмо снаружи, если игроки могут прочитать его целиком.
+
+Отделять художественный слой от формальных механик. DC, число использований, флаги, счётчики, условия перехода и точные эффекты держать в полях мастера, но не маскировать их под литературный абзац.
+
 ## Ограничения
 
-Не писать за игроков решения или реплики. Не дублировать полные диалоговые банки. Художественное описание отделять от формальных эффектов.
+Не писать за игроков решения или реплики. Не дублировать полные диалоговые банки. Не раскрывать секрет мастера в публичном тексте. Не добавлять новый канонический факт ради красивой фразы. Художественное описание отделять от формальных эффектов.
+
+## Самопроверка
+
+Прочитать каждый публичный абзац вслух. Переписать предложение, если оно похоже на интерфейсную подсказку, отчёт тестировщика, описание поля JSON или запись в журнале заданий. Удалить финальную фразу, если она лишь повторяет уже показанное в форме списка.
+
+Проверить, что после чтения игроки без служебных слов понимают: где находится важное, что изменилось при осмотре и какое действие естественно попробовать дальше.
 
 ## Контрольная точка
 

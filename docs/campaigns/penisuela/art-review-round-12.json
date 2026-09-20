@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 12,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "items": [
+    {
+      "assetId": "penisuela-scene-hotel-archive-alexis",
+      "variant": "art-drafts/hotel-archive-alexis-v3.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходный PNG 1672x940 перенесён в канонический путь assets/concepts/campaigns/penisuela/scenes/hotel-archive-alexis.png.",
+      "notes": [
+        "Камера находится в гостиничном холле, а Алексис выходит через только что открытую дверь архива.",
+        "Все шесть крыльев сохранены как три естественные пары.",
+        "Стол или стойка между камерой и Алексис отсутствуют.",
+        "Герои, свадебные роли, читаемый текст, враги и новые спойлеры не показаны."
+      ]
+    }
+  ]
+}

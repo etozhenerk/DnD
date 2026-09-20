@@ -1,0 +1,251 @@
+.card {
+  align-content: end;
+  align-items: center;
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.35rem 0.45rem;
+  grid-template-columns: 6.4rem minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
+  min-width: 0;
+  padding: 0.25rem 0.25rem 0.35rem;
+  position: relative;
+}
+
+.details {
+  align-content: center;
+  align-self: end;
+  background: var(--gradient-combat-active-card);
+  border: 1px solid var(--color-gold-alpha-62);
+  border-radius: 1.2rem 2.8rem 2.8rem 1.2rem;
+  box-shadow: var(--shadow-combat-dock);
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.38rem;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-height: 6.15rem;
+  min-width: 0;
+  padding: 0.62rem 0.75rem 0.55rem 6.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card[data-faction='enemy'] .details {
+  background: var(--gradient-combat-enemy-backplate);
+  border-color: var(--color-combat-threat-glow);
+}
+
+.portraitWrap {
+  align-self: end;
+  grid-column: 1;
+  grid-row: 1;
+  height: 6.35rem;
+  position: relative;
+  transform: scale(0.88);
+  width: 6.35rem;
+  z-index: 2;
+}
+
+.portraitViewport {
+  border-radius: 50%;
+  height: 5rem;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
+}
+
+.portrait {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(var(--portrait-shift-y, 0%)) scale(var(--portrait-scale, 1));
+  transform-origin: center;
+  width: 100%;
+}
+
+.tokenFrame {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+}
+
+.tokenFrame img {
+  height: 100%;
+  max-width: none;
+  position: absolute;
+  top: 0;
+  width: 300%;
+}
+
+.portraitWrap[data-faction='hero'] .tokenFrame img {
+  left: -25%;
+}
+
+.portraitWrap[data-faction='enemy'] .tokenFrame img {
+  left: -175%;
+}
+
+.identity {
+  align-self: end;
+  box-sizing: border-box;
+  min-width: 0;
+  padding-right: 2.35rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+
+.turnLabel {
+  color: var(--color-brass-muted);
+  display: block;
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 4;
+}
+
+.effects li {
+  display: flex;
+  min-width: 0;
+}
+
+.identity h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: var(--combat-font-title);
+  font-weight: 500;
+  line-height: 1.05;
+  margin: 0.08rem 0 0;
+  overflow-wrap: break-word;
+  text-shadow: var(--shadow-title);
+  white-space: normal;
+}
+
+.identity p {
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  line-height: 1.14;
+  margin: 0.16rem 0 0;
+  overflow-wrap: break-word;
+  text-shadow: var(--shadow-title);
+  white-space: normal;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+  margin: 0;
+  min-width: 0;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+}
+
+.stats div {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  border-radius: 999px;
+  display: flex;
+  gap: 0.15rem;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-width: max-content;
+  padding: 0.22rem 0.48rem;
+}
+
+.stats dt {
+  align-items: center;
+  color: var(--color-transparent);
+  display: flex;
+  flex: 0 0 0.9rem;
+  font-size: var(--combat-font-text);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0.9rem;
+}
+
+.stats dt img {
+  display: block;
+  flex: 0 0 auto;
+  height: 0.9rem;
+  object-fit: contain;
+  width: 0.9rem;
+}
+
+.stats dd {
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  margin: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 1500px) {
+  .card {
+    grid-template-columns: 5.4rem minmax(0, 1fr);
+  }
+
+  .portraitWrap {
+    height: 5.3rem;
+    width: 5.3rem;
+  }
+
+  .portraitViewport {
+    height: 4.15rem;
+    width: 4.15rem;
+  }
+
+  .details {
+    min-height: 5.25rem;
+    padding-left: 5.15rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .card {
+    grid-template-columns: 4.7rem minmax(0, 1fr);
+    padding-inline: 0.1rem;
+  }
+
+  .portraitWrap {
+    height: 4.65rem;
+    width: 4.65rem;
+  }
+
+  .portraitViewport {
+    height: 3.65rem;
+    width: 3.65rem;
+  }
+
+  .details {
+    min-height: 4.65rem;
+    padding-left: 4.55rem;
+  }
+
+  .stats div {
+    padding-inline: 0.36rem;
+  }
+}

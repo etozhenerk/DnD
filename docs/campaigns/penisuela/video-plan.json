@@ -1,0 +1,1819 @@
+{
+  "campaignId": "penisuela",
+  "version": 1,
+  "status": "draft",
+  "readiness": "blocked",
+  "releaseScope": "deferred-nonblocking",
+  "executionStatus": "deferred",
+  "defaults": {
+    "aspectRatio": "16:9",
+    "masterResolution": "1920x1080",
+    "fps": 24,
+    "visualPromptLanguage": "en",
+    "spokenLanguage": "ru",
+    "burnedInText": false
+  },
+  "sequences": [
+    {
+      "id": "penisuela-invitation-to-hotel-video",
+      "type": "trailer",
+      "purpose": "Музыкальный видеопереход от раздачи пяти браслетов к прибытию на Пенисуэлу, входу в отель и последней ясной памяти о вечеринке перед hotel-overload.",
+      "audience": "players",
+      "sourceSceneIds": [
+        "tavern-invitation",
+        "hotel-overload"
+      ],
+      "targetDurationSeconds": 45,
+      "spoilerBoundary": "Разрешены браслеты, путь, отель и безопасная вечеринка; письмо, утренние улики, авария, жених, невеста и личности организаторов не показываются.",
+      "musicFirst": true,
+      "shots": [
+        {
+          "id": "penisuela-video-shot-01-bubsilda",
+          "order": 1,
+          "purpose": "Показать, что Бубсильда получила золотой браслет от Кострюльки.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; keep face, bracelet and Kostrulka inside the central 70 percent",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-bubsilda-v1",
+            "path": "art-drafts/video-bridge/bubsilda-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Очень медленный наезд. Бубсильда один раз чуть приподнимает запястье с браслетом и переводит на него взгляд; Кострюлька спокойно наклоняет голову. Снег, волосы и край плаща двигаются едва заметно.",
+          "subjectMotion": "Bubsilda slowly raises the bracelet wrist a few centimeters and looks at it once; Kostrulka makes one small natural head tilt.",
+          "cameraMotion": "Very slow controlled dolly-in, no pan, no orbit, no cut.",
+          "environmentMotion": "Sparse snow drift, subtle hair and cloak movement, faint cold breath.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a very slow controlled dolly-in. Bubsilda slowly raises the wrist with the gold bracelet a few centimeters and looks at it once, then holds still; Kostrulka makes one small natural pigeon head tilt. Sparse snow drifts across the scene, with restrained movement in Bubsilda's hair and cloak and a faint trace of cold breath. Preserve the exact approved face, snowy outfit, body proportions, single non-glowing gold bracelet, Kostrulka's living pigeon anatomy and integrated white-graphite cargo capsule, environment geometry, lighting and painterly fantasy realism. Natural minimal motion, stable anatomy, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact approved Bubsilda identity and snowy outfit",
+            "one non-glowing gold bracelet",
+            "canonical living Kostrulka with integrated capsule",
+            "cold cinematic lighting and composition"
+          ],
+          "avoid": [
+            "identity drift or facial redesign",
+            "extra fingers, arms, bracelets or pigeons",
+            "bracelet magic, glow or activation",
+            "robotic pigeon, wheels, armor or external harness",
+            "letter, envelope, readable text, subtitles, logo or watermark",
+            "camera cuts, sudden zoom or large body movement"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Image-to-video; keep motion strength low and preserve the reference as the exact first frame. Generate without spoken dialogue."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet snowy mountain air, soft winter wind, very distant ice movement, seamless ambience, no voices.",
+            "sfxPromptEn": "Soft metal bracelet clasp and one quiet pigeon coo.",
+            "musicCue": "00:00 hook: one delicate bell tone over a soft low string pulse."
+          },
+          "transitionIn": "hard-cut-from-prologue",
+          "transitionOut": "match-cut-on-gold-bracelet",
+          "continuityIn": [
+            "The invitation letter remains off-screen."
+          ],
+          "continuityOut": [
+            "The single gold bracelet is visible and inactive; the next shot repeats the gold color accent."
+          ],
+          "acceptance": [
+            "Bubsilda's face and snowy outfit do not change",
+            "the wrist moves once without hand deformation",
+            "Kostrulka remains a normal pigeon with the canonical capsule",
+            "no letter, text or magical activation appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-02-linda",
+          "order": 2,
+          "purpose": "Показать Линду, принявшую браслет в освобождённом Линдасмолл.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; preserve face, both wing sets, hands, bracelet and throne contact",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-linda-v4",
+            "path": "art-drafts/video-bridge/linda-bracelet-v4.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Медленный наезд слева. Линда одним маленьким движением заканчивает застёгивать браслет и спокойно поворачивает глаза к Кострюльке, не меняя позы. Листья, цветы, волосы и шесть крыльев мягко реагируют на тёплый ветер.",
+          "subjectMotion": "Linda completes the bracelet clasp with one small finger movement and shifts her gaze toward Kostrulka without standing up.",
+          "cameraMotion": "Slow short dolly-in from the existing angle, no orbit, no cut.",
+          "environmentMotion": "Gentle leaf and flower movement, subtle hair motion, very small natural shimmer across all six wings.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Make a slow short dolly-in from the existing angle. Linda completes the gold bracelet clasp with one small controlled finger movement and shifts only her gaze toward Kostrulka, remaining naturally seated and physically grounded in the root throne. A warm breeze moves a few leaves, flowers and loose hair strands; all six iridescent wings remain attached on both sides and show only a restrained natural shimmer. Preserve Linda's exact base-canonical face, pastel summer dress, body proportions, six-wing anatomy, single non-glowing bracelet, throne geometry, Kostrulka design, warm liberated Linda Small atmosphere and painterly fantasy realism. No cuts, no speech, no text, no identity or costume drift.",
+          "mustPreserve": [
+            "Linda's exact base-canonical face",
+            "six bilateral wings and pastel summer dress",
+            "physical contact with the root throne",
+            "one inactive gold bracelet and canonical Kostrulka"
+          ],
+          "avoid": [
+            "generic or redesigned Linda face",
+            "missing, duplicated or detached wings",
+            "floating body, clipping into throne or changing pose",
+            "extra fingers, bracelets or birds",
+            "bracelet glow, letter, envelope, text, subtitles, logo or watermark",
+            "camera orbit, cut or aggressive wing flapping"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Use low motion strength; face and wing preservation are more important than movement amplitude."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Warm enchanted garden ambience, soft leaves, distant tropical birds and quiet flowing water, no voices.",
+            "sfxPromptEn": "Very soft bracelet clasp, faint wing membrane shimmer and a quiet pigeon step on wood.",
+            "musicCue": "00:05: add warm harp harmonics while the low pulse continues."
+          },
+          "transitionIn": "match-cut-on-gold-bracelet",
+          "transitionOut": "match-cut-on-hand-checking-clasp",
+          "continuityIn": [
+            "One inactive gold bracelet is the repeated visual anchor."
+          ],
+          "continuityOut": [
+            "Linda's hands settle; the next shot begins with Lambert's hands already near his clasp."
+          ],
+          "acceptance": [
+            "Linda remains recognizably identical to the approved base portrait",
+            "all six wings remain present on both sides without clipping",
+            "only one small clasp movement occurs",
+            "no new prop, text or magic appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-03-lambert",
+          "order": 3,
+          "purpose": "Показать техническую реакцию Ламберта на браслет.",
+          "durationSeconds": 5,
+          "framing": "medium-close",
+          "safeArea": "center-safe; keep both hands, face, bracelet and Kostrulka visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-lambert-v3",
+            "path": "art-drafts/video-bridge/lambert-bracelet-v3.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно скользит вдоль верстака. Ламберт один раз нажимает большим пальцем на застёжку и прекращает проверку. Кострюлька переступает одной лапой; пыль в солнечном луче и мелкие подвесы мастерской едва движутся.",
+          "subjectMotion": "Lambert presses the bracelet clasp once with his right thumb and then relaxes both hands; Kostrulka makes one small step.",
+          "cameraMotion": "Slow controlled lateral slide along the workbench, no push-in, no cut.",
+          "environmentMotion": "Subtle dust motes in sunlight, slight movement in one hanging workshop element.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Perform a slow controlled lateral camera slide along the workbench. Lambert presses the bracelet clasp once with his right thumb, verifies it, and relaxes both hands without crossing or twisting his wrists; Kostrulka makes one small natural step on the bench. Only subtle dust motes and one light hanging workshop element move in the background. Preserve Lambert's exact approved face, glasses, dark hair, summer outfit, normal two-hand anatomy, single non-glowing bracelet, canonical living pigeon with integrated capsule, workbench geometry, White Castle workshop lighting and painterly fantasy realism. Minimal precise motion, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "Lambert's exact face, glasses and outfit",
+            "two anatomically correct hands and straight wrists",
+            "one inactive bracelet",
+            "canonical Kostrulka and workshop geometry"
+          ],
+          "avoid": [
+            "broken, crossed or fused wrists",
+            "extra fingers, tools, interfaces or bracelets",
+            "face, glasses or hairstyle drift",
+            "robotic or redesigned pigeon",
+            "letter, text, subtitles, logo or watermark",
+            "camera cut, fast pan or dramatic zoom"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Hands are the risk area; reject any generation with wrist or finger deformation."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet bright fantasy workshop, distant metal ticking, soft room tone and light wind through an open window, no voices.",
+            "sfxPromptEn": "One tiny metal clasp click, a soft leather sleeve movement and one pigeon footstep on wood.",
+            "musicCue": "00:10: introduce a restrained clockwork pluck under the harp pattern."
+          },
+          "transitionIn": "match-cut-on-hand-checking-clasp",
+          "transitionOut": "cut-on-wrist-turn",
+          "continuityIn": [
+            "The bracelet remains a simple physical object with no glow."
+          ],
+          "continuityOut": [
+            "Lambert's hands settle before cutting to Golovach raising a wrist."
+          ],
+          "acceptance": [
+            "both wrists and all visible fingers remain anatomically correct",
+            "the clasp is tested exactly once",
+            "Lambert and Kostrulka retain their approved designs",
+            "no interface, letter or glow appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-04-golovach",
+          "order": 4,
+          "purpose": "Показать спокойный интерес Головача к браслету до начала поездки.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; preserve face, horns, bracelet, pendant and chair contact",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-golovach-lena-v1",
+            "path": "art-drafts/video-bridge/golovach-lena-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Медленный наезд. Головач один раз поворачивает запястье, рассматривая браслет, и едва заметно улыбается. Кострюлька моргает; ткань павильона и листья двигаются на тёплом ветру. Кулон не активируется.",
+          "subjectMotion": "Golovach Lena rotates the bracelet wrist once and settles into a restrained smile; Kostrulka blinks once.",
+          "cameraMotion": "Slow controlled dolly-in, no pan, no orbit, no cut.",
+          "environmentMotion": "Gentle pavilion fabric and leaf movement, subtle daylight shift, no magical effects.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a slow controlled dolly-in. Golovach Lena rotates the wrist with the gold bracelet once to inspect it, then holds still with a restrained interested smile; Kostrulka blinks once. A warm breeze gently moves pavilion fabric and nearby leaves. Preserve Golovach's exact approved youthful face, horn geometry, black scale pattern, summer gear, completely tailless anatomy, inactive pendant, single non-glowing bracelet, chair contact, canonical Kostrulka and calm daytime pavilion. Natural restrained motion, painterly cinematic fantasy realism, no cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact Golovach face, horns and black scale pattern",
+            "canonically no tail",
+            "inactive pendant and one inactive bracelet",
+            "canonical Kostrulka and calm pavilion"
+          ],
+          "avoid": [
+            "tail or tail-shaped belt, rope or shadow",
+            "face, horn, gender or scale-pattern drift",
+            "red beam, pendant glow, interface or film award",
+            "extra fingers, bracelets, pigeons or characters",
+            "letter, text, subtitles, logo or watermark",
+            "camera cut, orbit or exaggerated expression"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep expression change extremely small to protect facial identity and scale pattern."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Quiet tropical production pavilion in daylight, soft fabric movement, leaves and distant island birds, no voices.",
+            "sfxPromptEn": "Soft leather creak from the chair, one quiet metal bracelet movement and a pigeon blink-and-step rustle.",
+            "musicCue": "00:15: add a low playful bass note and keep the clockwork rhythm restrained."
+          },
+          "transitionIn": "cut-on-wrist-turn",
+          "transitionOut": "match-cut-on-bracelet-and-bag-handle",
+          "continuityIn": [
+            "Bracelet remains inactive; no future emergency system is visible."
+          ],
+          "continuityOut": [
+            "The wrist settles before cutting to Thorin preparing to leave."
+          ],
+          "acceptance": [
+            "Golovach's face, horns and scales stay unchanged",
+            "no tail appears in any frame",
+            "the wrist rotates once without deformation",
+            "the pendant stays completely inactive"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-05-thorin",
+          "order": 5,
+          "purpose": "Закончить серию вручений решением Торина отправиться в путь.",
+          "durationSeconds": 5,
+          "framing": "medium",
+          "safeArea": "center-safe; keep face, bracelet, bag handle, hands and Kostrulka visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-bracelet-thorin-pukoshchit-v1",
+            "path": "art-drafts/video-bridge/thorin-bracelet-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно отъезжает. Торин одним уверенным движением берётся за ручку закрытой сумки и слегка выпрямляется, готовясь идти. Кострюлька спокойно наблюдает; тёплый ветер двигает рубашку и пыль двора.",
+          "subjectMotion": "Thorin closes his hand around the handle of the closed travel bag and straightens slightly, then holds.",
+          "cameraMotion": "Slow controlled dolly-out, no pan, no cut.",
+          "environmentMotion": "Warm breeze in shirt fabric, sparse sunlit dust, tiny natural pigeon movement.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous five-second cinematic image-to-video shot. Apply a slow controlled dolly-out. Thorin closes one hand firmly around the handle of the single closed travel bag and straightens slightly as if ready to depart, then holds still; Kostrulka watches with one small natural head movement. Warm air moves the rolled shirt sleeves and a little sunlit dust across the fortress loading yard. Preserve Thorin's exact approved bald bearded face, light shirt, dark leather vest, body proportions, anatomically correct hands, single non-glowing bracelet, fully closed bag, canonical Kostrulka, Desert Lands environment and painterly fantasy realism. Do not reveal the bag contents. No cuts, no dialogue, no text.",
+          "mustPreserve": [
+            "exact Thorin identity and summer outfit",
+            "one inactive bracelet and one closed travel bag",
+            "normal hands and wrists",
+            "canonical Kostrulka and Desert Lands setting"
+          ],
+          "avoid": [
+            "opening the bag or revealing any object",
+            "extra bags, hands, fingers, bracelets or characters",
+            "broken wrist or changing grip geometry",
+            "face, beard, clothing or body-size drift",
+            "letter, envelope, text, subtitles, logo or watermark",
+            "camera cut, fast pullback or heroic action pose"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep the hand action small; use the dolly-out to create the sense of departure."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Warm sandstone fortress yard, distant wind and soft cargo-yard room tone, no voices.",
+            "sfxPromptEn": "Leather bag handle tightens, fabric shifts and one quiet pigeon coo.",
+            "musicCue": "00:20: the rhythm opens into a rising travel motif; first soft frame drum enters."
+          },
+          "transitionIn": "match-cut-on-bracelet-and-bag-handle",
+          "transitionOut": "hard-cut-on-music-rise-to-wide-ship",
+          "continuityIn": [
+            "The fifth bracelet is accepted; the bag remains closed."
+          ],
+          "continuityOut": [
+            "Thorin is ready to leave; the next shot reveals the journey already underway."
+          ],
+          "acceptance": [
+            "Thorin's face and proportions remain unchanged",
+            "the hand closes on the handle once without deformation",
+            "the bag never opens",
+            "no letter, clue or extra prop appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-06-ship",
+          "order": 6,
+          "purpose": "Показать путь пятерых героев к Пенисуэле.",
+          "durationSeconds": 7,
+          "framing": "wide aerial rear three-quarter",
+          "safeArea": "full-frame geography lock; keep complete hull, five heroes and island visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-ship-to-island-v5",
+            "path": "art-drafts/video-bridge/ship-to-penisuela-v5.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера семь секунд плавно сопровождает корабль сзади и немного сверху, едва приближаясь к острову. Судно уверенно идёт вперёд, вода расходится вдоль одного корпуса, паруса и снасти реагируют на ветер. Пятеро героев остаются на своих местах, только слегка двигаются вместе с качкой.",
+          "subjectMotion": "The single wooden schooner advances steadily toward Penisuela; exactly five heroes remain naturally positioned on deck with minimal balance adjustments.",
+          "cameraMotion": "Smooth stabilized aerial chase, slightly forward and downward, no orbit, no cut.",
+          "environmentMotion": "Physically coherent wake, gentle hull roll, filled sails, moving rigging, sun sparkle and waterfall mist.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous seven-second cinematic image-to-video shot. Create a smooth stabilized aerial chase from the existing high rear three-quarter angle, moving slightly forward and downward as the ship approaches Penisuela. The one believable wooden monohull schooner travels steadily forward; turquoise water parts coherently along both sides of the hull and forms a natural wake, while cream sails fill with wind and simple rigging responds with restrained physical motion. Exactly five approved summer heroes remain naturally positioned on deck and make only tiny balance adjustments with the ship's gentle roll. Preserve the complete single-hull geometry, two-mast layout, island towers and waterfalls, exact five-person count, Linda's bilateral wings, Golovach's tailless anatomy, clothing colors, warm late-afternoon light and painterly cinematic fantasy realism. No cuts, no dialogue, no text, no new people or structures.",
+          "mustPreserve": [
+            "one coherent monohull ship with no side platform",
+            "exactly five heroes in approved summer silhouettes",
+            "Linda's wings on both sides and Golovach without a tail",
+            "approved Penisuela towers, waterfalls and warm light"
+          ],
+          "avoid": [
+            "second hull, barge, pontoon, side deck or warped ship anatomy",
+            "extra or missing heroes, crew or duplicated body parts",
+            "face or costume redesign",
+            "tail on Golovach or missing wing side on Linda",
+            "storm, collision, giant waves, modern engine or cruise ship",
+            "letter, text, subtitles, sail lettering, logo or watermark",
+            "camera cut, fast orbit or sudden island morphing"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "runway-gen-4.5",
+            "notes": "Veo 3 is preferred for water, sail and large-environment physics. Reject any hull mutation immediately."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Open tropical sea, steady wind in canvas sails, wooden hull creaks and gentle water wake, no voices.",
+            "sfxPromptEn": "One broad sail flap settles into tension; water hisses along the hull.",
+            "musicCue": "00:25 build: strings widen, frame drum becomes steady and a bright travel theme enters."
+          },
+          "transitionIn": "hard-cut-on-music-rise-to-wide-ship",
+          "transitionOut": "match-cut-on-forward-motion-through-open-doors",
+          "continuityIn": [
+            "All five heroes are now in their approved summer outfits, including Bubsilda."
+          ],
+          "continuityOut": [
+            "The group is moving toward its destination; sunset direction and warm palette continue into the hotel entrance."
+          ],
+          "acceptance": [
+            "the hull remains one stable believable ship for all seven seconds",
+            "exactly five heroes remain visible on deck",
+            "water, sails and wake move coherently",
+            "the island does not morph and no new structure appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-07-hotel-arrival",
+          "order": 7,
+          "purpose": "Показать, как пятеро героев впервые входят в отель Пенисуэлы.",
+          "durationSeconds": 6,
+          "framing": "wide rear group shot",
+          "safeArea": "center-safe; keep all five full silhouettes, Linda's wings and doorway edges visible",
+          "sourceArt": {
+            "assetId": "penisuela-video-hotel-arrival-v2",
+            "path": "art-drafts/video-bridge/hotel-arrival-v2.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Камера медленно следует снаружи за пятёркой. Все делают два естественных шага через порог в тёплое лобби; Торин несёт закрытую сумку, остальные ничего не достают. Крылья, одежда, растения, лампы и отражения двигаются мягко и согласованно.",
+          "subjectMotion": "Exactly five heroes take two natural synchronized-but-not-identical steps through the doorway into the lobby; Thorin carries one closed bag.",
+          "cameraMotion": "Slow stabilized follow-in from behind, no overtaking, no pan, no cut.",
+          "environmentMotion": "Soft cloth and hair movement, slight wing flex, plant leaves and lamp flames, stable floor reflections.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous six-second cinematic image-to-video shot. The camera makes a slow stabilized follow-in from outside, staying behind the group as exactly five heroes take two natural, slightly staggered steps across the threshold and deeper into the pristine warm hotel lobby. Thorin carries the same single closed leather bag; no one opens or removes anything. Hair, summer fabrics and tropical leaves move gently, Linda's complete bilateral wings flex only slightly without flapping or clipping, lamp flames flicker and the glossy floor reflections remain physically stable. Preserve every approved back-view identity, exact five-person count, Golovach's tailless anatomy, doorway geometry, black-and-gold architecture, clean pre-party condition, sunset light from behind camera and painterly cinematic fantasy realism. No cuts, no visible faces, no dialogue, no text or new characters.",
+          "mustPreserve": [
+            "exactly five approved summer back-view identities",
+            "Linda's complete bilateral wings and Golovach without a tail",
+            "one closed travel bag",
+            "pristine black-and-gold hotel geometry"
+          ],
+          "avoid": [
+            "missing, duplicated or turning heroes",
+            "visible or regenerated faces",
+            "tail on Golovach, missing wings or wing-door clipping",
+            "sliding feet, fused legs or unstable floor reflections",
+            "staff, concierge, guests, debris, mattress or morning clues",
+            "letter, envelope, sign, text, subtitles, logo or watermark",
+            "camera overtaking the group, cut or reverse direction"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Keep the camera behind the group; reject any generation that reveals or redesigns faces."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Open tropical hotel entrance at sunset, soft night insects outside, warm quiet lobby room tone inside, no voices.",
+            "sfxPromptEn": "Five sets of soft footsteps cross from stone to polished marble; one leather bag creaks gently.",
+            "musicCue": "00:32 turn: percussion softens, warm brass and harp resolve into the hotel interior."
+          },
+          "transitionIn": "match-cut-on-forward-motion-through-open-doors",
+          "transitionOut": "warm-light-dissolve-to-night-party",
+          "continuityIn": [
+            "The same five summer outfits and closed bag carry over from the ship."
+          ],
+          "continuityOut": [
+            "The group is fully inside the hotel; warm gold light becomes the night-party lantern palette."
+          ],
+          "acceptance": [
+            "all five heroes make two stable forward steps into the hotel",
+            "faces remain hidden and identities stay readable from behind",
+            "Linda's wings and Golovach's tailless anatomy remain canonical",
+            "the lobby stays pristine and no clue or NPC appears"
+          ],
+          "status": "planned"
+        },
+        {
+          "id": "penisuela-video-shot-08-party",
+          "order": 8,
+          "purpose": "Закончить переход последней ясной памятью о безопасной вечеринке и уйти в темноту перед пробуждением.",
+          "durationSeconds": 7,
+          "framing": "medium-wide group",
+          "safeArea": "face-safe center band; keep all five faces, Linda's wings and table visible until final foreground occlusion",
+          "sourceArt": {
+            "assetId": "penisuela-video-first-night-party-v4",
+            "path": "art-drafts/video-bridge/first-night-party-v4.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Очень медленный наезд. Ламберт и Головач один раз мягко соприкасаются бокалами и удерживают их; остальные сохраняют естественные спокойные улыбки и едва двигаются в ритме музыки. В последнюю секунду передний бокал поднимается к объективу и полностью закрывает кадр тёмно-бордовым размытием.",
+          "subjectMotion": "Lambert and Golovach gently touch their glasses once and hold; the other three heroes make only minimal natural party movements.",
+          "cameraMotion": "Very slow controlled dolly-in; no orbit and no cut; final lens occlusion comes from the existing foreground goblet.",
+          "environmentMotion": "Subtle confetti drift, lantern flicker, light sea breeze in hair, fabric and Linda's wings; foreground goblet rises during the final second.",
+          "promptEn": "Use the uploaded approved image as the exact first frame of one continuous seven-second cinematic image-to-video shot. Apply a very slow controlled dolly-in while preserving all five approved faces. Lambert and Golovach gently bring their existing glasses together for one small toast, make one clean contact, and hold; Bubsilda, Linda and Thorin keep restrained recognizable expressions and only minimal natural breathing and rhythm movement. Confetti drifts slowly, lanterns flicker, and a light sea breeze moves hair, fabric and Linda's complete bilateral wings without flapping. Golovach remains completely tailless. During the final second, the existing out-of-focus foreground goblet rises close to the lens until it fills the frame with a soft dark burgundy blur, creating a continuous natural blackout with no hard cut. Preserve exact facial identities, outfits, hands, glasses, table, intact night terrace, warm gold-coral-turquoise palette and painterly cinematic realism. No dialogue, no text, no new people, no clues, no face or anatomy drift.",
+          "mustPreserve": [
+            "all five exact approved faces, especially base-canonical Linda",
+            "Linda's complete bilateral wings and Golovach without a tail",
+            "existing hands, glasses, table and intact terrace",
+            "natural foreground-goblet path to blackout"
+          ],
+          "avoid": [
+            "face averaging, redesign, age or gender drift",
+            "wide distorted laughter or lip movement resembling speech",
+            "extra fingers, arms, glasses, people or duplicated heroes",
+            "tail on Golovach, missing or detached Linda wings",
+            "spilled drinks, destruction, morning clues, film award, console or red beam",
+            "letter, envelope, text, subtitles, logo or watermark",
+            "camera orbit, cut, sudden zoom or early full-frame occlusion"
+          ],
+          "target": {
+            "primary": "veo-3",
+            "fallback": "kling",
+            "notes": "Highest-risk shot. Keep motion very low; faces and hands matter more than lively choreography. Generate the blackout inside the clip only if identities remain stable."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Elegant tropical terrace party at night, soft distant music crowd bed without intelligible voices, sea breeze, lanterns and glasses.",
+            "sfxPromptEn": "One clean glass clink at the center, soft confetti rustle and a close muffled whoosh as the foreground goblet covers the lens.",
+            "musicCue": "00:38 climax and stop: full warm theme for four seconds, then rapid low-pass and reverb tail into silence as the lens becomes dark."
+          },
+          "transitionIn": "warm-light-dissolve-to-night-party",
+          "transitionOut": "foreground-occlusion-to-black-then-hard-cut-to-hotel-overload",
+          "continuityIn": [
+            "The same five summer identities are now at the first-night party."
+          ],
+          "continuityOut": [
+            "The frame ends fully dark; the application may cut from black to the approved hotel-overload morning scene."
+          ],
+          "acceptance": [
+            "all five faces remain identical to the approved still for the full shot",
+            "the toast happens once without hand or glass deformation",
+            "Linda retains wings on both sides and Golovach remains tailless",
+            "the foreground goblet creates a clean final blackout without revealing any future clue"
+          ],
+          "status": "planned"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": "Рассказчик и диалоги отсутствуют. Возможный отдельный текстовый экран перед видео не входит в эту последовательность.",
+        "musicPromptEn": "Instrumental cinematic fantasy travel montage, 45 seconds, warm intimate opening with bell and harp, gradual clockwork pulse through five bracelet portraits, wider strings and soft frame drums for the sea voyage, elegant golden turn at the hotel entrance, joyful tropical-fantasy climax at the party, abrupt low-pass memory collapse into silence, no vocals, no recognizable melody.",
+        "musicLicenseRequirement": "commercial application and promotional video use",
+        "mixNotesRu": "Музыка ведёт монтаж. Ambience держать примерно на 12–16 dB ниже музыки; синхронные щелчки браслетов, вода, шаги и финальный звон бокалов выводить коротко поверх музыкальных акцентов. Встроенный звук Veo использовать только как черновой референс."
+      },
+      "delivery": {
+        "masterFile": "penisuela-invitation-to-hotel-master.mov",
+        "webFiles": [
+          "penisuela-invitation-to-hotel.mp4",
+          "penisuela-invitation-to-hotel.webm"
+        ],
+        "posterFile": "penisuela-invitation-to-hotel-poster.webp",
+        "captionsFile": null,
+        "loop": false
+      }
+    },
+    {
+      "id": "penisuela-andrey-death-video",
+      "type": "transition",
+      "status": "superseded",
+      "readiness": "superseded",
+      "blockedInputs": [],
+      "purpose": "После победы над andrey-dragon и перед возвращением на виллу.",
+      "audience": "players",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "targetDurationSeconds": 8,
+      "spoilerBoundary": "После победы разрешено показать смерть Андрея. Свадьба в ролик не входит.",
+      "musicFirst": false,
+      "shots": [
+        {
+          "id": "andrey-death-shot-01",
+          "order": 1,
+          "purpose": "Однозначная гибель Андрея после победы над второй фазой.",
+          "durationSeconds": 8,
+          "framing": "wide low frontal",
+          "safeArea": "Голова, грудь и опорные лапы читаются; кадр сохраняет существующее обрезание концов крыльев, без титров.",
+          "sourceArt": {
+            "assetId": "andrey-death-start",
+            "path": "art-drafts/andrey-video/03-death-start-v2.png",
+            "role": "first-frame",
+            "status": "approved"
+          },
+          "endFrame": null,
+          "directionRu": "0–2 с: ядро перегружается, последний спазм и предсмертный рёв. 2–3 с: одна вспышка разрыва ядра, ударная волна по пыли; глаза резко гаснут. 3–6 с: тело теряет опору и тяжело падает. 6–8 с: полная неподвижность и оседающий пепел.",
+          "subjectMotion": "One sudden magical-core rupture kills the dragon; its body collapses with uncontrolled dead weight and remains motionless.",
+          "cameraMotion": "Locked low frontal camera; no movement.",
+          "environmentMotion": "One violet-white flash and ground-level dust shockwave; dust and sparse ash settle after impact.",
+          "promptEn": "Animate the supplied image into one continuous 8-second cinematic dark-fantasy death scene. Fixed low frontal camera. This is a sudden, irreversible death, never resting or falling asleep.\n\n0–2 seconds: The violet core in the dragon's chest becomes violently unstable. Bright cracks spread across its chest armor. Its body stiffens in one final spasm, its wings pull taut, and its jaws open in a brief agonized death roar.\n\n2–3 seconds: The core ruptures in ONE concentrated violet-white flash. A shockwave sweeps dust across the obsidian floor. Small fragments of magical energy turn to ash. Both eyes go completely dark as the roar abruptly cuts off.\n\n3–6 seconds: Its legs buckle suddenly. The enormous body crashes onto the stone with uncontrolled dead weight. Its chest hits first, then its head drops heavily onto the floor. Its wings fall limp and its tail lands last. The impact throws up dust and loose stone. No controlled lowering, careful folding or gentle resting pose.\n\n6–8 seconds: Hold on the lifeless body. Its jaw hangs slack, its wings lie limp, its chest and eyes remain extinguished. No breathing, blinking, twitching or returning glow. Only dust and sparse ash settle.\n\nPreserve the exact dragon, horns, four limbs, two wings, tail and arena. Keep the body intact and anatomically coherent. One clear magical rupture, one heavy collapse. Stable scales and solid silhouettes; no texture flickering or continuous particle storm. No resurrection, humanoid transformation, new characters, blood, gore, camera movement, cuts, text or watermark.\n\nSound: rising cracked magical hum, one death roar cut off by a sharp magical rupture, a massive stone impact, falling debris, then near-silence. No speech or music.",
+          "targetPromptEn": "Animate the supplied image into one continuous 8-second cinematic dark-fantasy death scene. Fixed low frontal camera. This is a sudden, irreversible death, never resting or falling asleep.\n\n0–2 seconds: The violet core in the dragon's chest becomes violently unstable. Bright cracks spread across its chest armor. Its body stiffens in one final spasm, its wings pull taut, and its jaws open in a brief agonized death roar.\n\n2–3 seconds: The core ruptures in ONE concentrated violet-white flash. A shockwave sweeps dust across the obsidian floor. Small fragments of magical energy turn to ash. Both eyes go completely dark as the roar abruptly cuts off.\n\n3–6 seconds: Its legs buckle suddenly. The enormous body crashes onto the stone with uncontrolled dead weight. Its chest hits first, then its head drops heavily onto the floor. Its wings fall limp and its tail lands last. The impact throws up dust and loose stone. No controlled lowering, careful folding or gentle resting pose.\n\n6–8 seconds: Hold on the lifeless body. Its jaw hangs slack, its wings lie limp, its chest and eyes remain extinguished. No breathing, blinking, twitching or returning glow. Only dust and sparse ash settle.\n\nPreserve the exact dragon, horns, four limbs, two wings, tail and arena. Keep the body intact and anatomically coherent. One clear magical rupture, one heavy collapse. Stable scales and solid silhouettes; no texture flickering or continuous particle storm. No resurrection, humanoid transformation, new characters, blood, gore, camera movement, cuts, text or watermark.\n\nSound: rising cracked magical hum, one death roar cut off by a sharp magical rupture, a massive stone impact, falling debris, then near-silence. No speech or music.",
+          "negativePromptEn": "new attack, resurrection, humanoid transformation, extra limbs, melted anatomy, duplicate wings, new characters, prisons, gore, blood, text, subtitles, watermarks, camera cuts",
+          "mustPreserve": [
+            "Approved dragon identity and size",
+            "Obsidian arena geometry",
+            "One continuous collapse"
+          ],
+          "avoid": [
+            "Ролик между фазами вместо финальной смерти",
+            "Новый противник",
+            "Смена человеческой внешности",
+            "Склейка в генерации"
+          ],
+          "target": {
+            "primary": "grok-imagine-video",
+            "fallback": null,
+            "surface": null,
+            "mode": "image-to-video",
+            "durationSeconds": 8,
+            "aspectRatio": "16:9",
+            "audioMode": "generated-sfx-with-post-production-review",
+            "notes": "Пользователь выбрал Grok для второго ролика. Один утверждённый стартовый кадр. Промпт описывает движение и сохранение референса, ограничения встроены. Конкретная версия и интерфейс не заданы; 8 секунд — целевая длительность, сверить доступный переключатель в UI.",
+            "model": null,
+            "resolution": null,
+            "verifiedSources": [
+              "https://docs.x.ai/developers/model-capabilities/video/image-to-video"
+            ],
+            "verifiedOn": "2026-09-08"
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Deep wind over a vast empty stone arena, subsiding into stillness.",
+            "sfxPromptEn": "Rising cracked magical hum, death roar cut off by a magical rupture, massive stone impact, debris, near-silence.",
+            "musicCue": "Один низкий удар на падение, затем затихание."
+          },
+          "transitionIn": "Продолжение утверждённого боевого кадра после 0 HP дракона.",
+          "transitionOut": "На монтаже короткое затемнение 6–8 кадров, затем утверждённый арт разрушенной виллы. Сам ролик заканчивается видимым мёртвым драконом.",
+          "continuityIn": [
+            "Кадр продолжает вид и анатомию утверждённого дракона, но показывает потерю сил после боя."
+          ],
+          "continuityOut": [
+            "Андрей мёртв; следующая сцена — возвращение в разрушенную виллу."
+          ],
+          "acceptance": [
+            "Смерть читается через падение и неподвижность",
+            "Свечение полностью гаснет",
+            "Масса дракона и крылья физически правдоподобны",
+            "Никаких дополнительных персонажей"
+          ],
+          "status": "draft"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": null,
+        "musicPromptEn": "A single low cinematic impact with fading dark strings; no vocals.",
+        "musicLicenseRequirement": "Лицензия должна разрешать использование внутри игры; аудио пока не выбрано.",
+        "mixNotesRu": "Удар падения главный; магический гул затихает до перехода на виллу."
+      },
+      "delivery": {
+        "masterFile": "andrey-death-master.mov",
+        "webFiles": [
+          "andrey-death.mp4"
+        ],
+        "posterFile": "03-death-start-v2.png",
+        "captionsFile": null,
+        "loop": false
+      },
+      "executionStatus": {
+        "videoReceived": true,
+        "runtimeConnected": false,
+        "runtimePath": "assets/concepts/campaigns/penisuela/scene-videos/andrey-death.mp4",
+        "durationSeconds": 8.041667,
+        "codec": "h264",
+        "audioCodec": "aac",
+        "resolution": "1264x720",
+        "fps": 24,
+        "technicalProcessing": "Stream copy H.264/AAC with faststart; embedded MJPEG thumbnail and metadata omitted; timing and audiovisual streams unchanged.",
+        "verification": "Historical 8-second version only: passed: real playback at 1x, natural end navigates to villa-after-andrey, no console errors",
+        "archivePath": "art-drafts/andrey-video/death-6s/previous-death-8s.mp4",
+        "sha256": "1ff8ed761c9e1de6b163ae22d1271d33aca958954282f0be5a26dedb4188c876"
+      },
+      "supersededBy": "penisuela-andrey-death-six-second-video"
+    },
+    {
+      "id": "penisuela-andrey-transformation-video",
+      "type": "transition",
+      "status": "draft",
+      "readiness": "blocked",
+      "blockedInputs": [
+        "Кадры v2 утверждены автором; регистрация новых кадров в manifest ещё не выполнена."
+      ],
+      "purpose": "После победы над первой фазой Андрея, перед новым боем с драконом.",
+      "audience": "players",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "targetDurationSeconds": 8,
+      "spoilerBoundary": "Дракон раскрывается только после победы над первой фазой.",
+      "musicFirst": false,
+      "shots": [
+        {
+          "id": "andrey-transformation-shot-01",
+          "order": 1,
+          "purpose": "Непрерывное превращение одного эльфа в утверждённого дракона.",
+          "durationSeconds": 8,
+          "framing": "wide low frontal, locked camera",
+          "safeArea": "Без титров; лицо в начальном кадре, силуэт дракона в конечном.",
+          "sourceArt": {
+            "assetId": "andrey-transformation-start",
+            "path": "art-drafts/andrey-video/01-transformation-start-v2.png",
+            "role": "first-frame",
+            "status": "approved"
+          },
+          "endFrame": {
+            "assetId": "penisuela-scene-andrey-phase-two-monster",
+            "path": "assets/concepts/campaigns/penisuela/scenes/andrey-phase-two-monster.png",
+            "role": "last-frame",
+            "status": "approved"
+          },
+          "directionRu": "0–2 с: Андрей на колене напрягается, фиолетовая магия нарастает. 2–6 с: одно тело вырастает в дракона, дым частично скрывает изменение анатомии. 6–7 с: дракон занимает точную позу конечного арта. 7–8 с: неподвижное удержание для стыка с боем. Камера закреплена.",
+          "subjectMotion": "One continuous dark-elf-to-dragon transformation, followed by settling into the exact supplied last frame.",
+          "cameraMotion": "Locked camera, fixed arena axis; no movement.",
+          "environmentMotion": "Restrained violet glow and a compact veil of vapor build and clear; sparse particles, stable arena.",
+          "promptEn": "A single continuous 8-second cinematic transformation shot. Use the supplied START image as the exact first frame and the supplied END image as the exact final composition. Keep the camera locked on the same frontal arena axis, with no pan, orbit or zoom. The defeated dark elf is kneeling on the obsidian floor. During seconds 0–2, violet energy builds beneath his coat and he strains upward. During seconds 2–6, his ONE body transforms and grows into the enormous black armored dragon shown in the end frame: his arms become the two massive clawed forelimbs, his legs become the two hind legs, his head elongates into the horned dragon skull, and two wings unfold from his back. Dense violet vapor briefly conceals the changing anatomy while the silhouette remains one continuous creature; the coat dissolves into dark magical particles. During seconds 6–7, the dragon plants its claws and settles into the exact final battle pose. Hold the matching end-frame composition motionless for the final second. Preserve the end reference's exact dragon design, horn arrangement, limb count, wings, tail, scale, violet chest fissures, lighting and arena perspective. Keep the arch, eclipse and distant towers stable. No cut, no separate dragon appearing beside the elf, no extra limbs, no hostages or prisons entering the shot, no blood, no text or watermark. Sound: rising magical rumble, deep transformation impacts, wing rush, one short low roar that fades before the final hold. No speech or music.",
+          "targetPromptEn": "One continuous 8-second dark-fantasy shot. The supplied first frame is the kneeling dark elf; the supplied last frame is the completed dragon and the required final composition. Fixed low frontal camera, constant lens, no camera movement or cuts.\n\n0–2 seconds: The kneeling elf braces against the stone and strains upward. His face remains recognizable. A restrained violet glow grows beneath his coat.\n2–6 seconds: His single body grows and transforms into the black armored dragon in the last frame. His arms become the two clawed forelimbs, his legs become the two hind legs, his head becomes the horned dragon head, and two wings unfold from his back. A compact veil of violet vapor briefly covers the changing anatomy, then clears. The transformation has weight and continuous motion; the dragon emerges from the same body and position.\n6–7 seconds: The dragon settles into the precise pose, scale and framing of the last frame. Match its head, horns, limbs, wings, tail, violet chest light and arena lighting to that image.\n7–8 seconds: Hold the last-frame composition still, ready to cut directly to the identical battle artwork.\n\nPreserve the obsidian arena, arch, eclipse and towers. Keep surfaces stable and clearly defined: natural facial detail, coherent armor plates, restrained glow, sparse vapor. No texture crawling, glitter, particle storm, duplicated creature, additional limbs, new characters, cages, camera shake, text, subtitles or watermark.\nAudio: rising low magical rumble, heavy transformation sounds, wings unfolding and one brief deep roar, fading before the final hold. No dialogue, narration or music.",
+          "negativePromptEn": "separate dragon, duplicate body, extra limbs, face replacement before transformation, incoherent anatomy, camera movement, cuts, new people, prisons, blood, text, watermark",
+          "mustPreserve": [
+            "Approved Andrey identity before transformation",
+            "Exact canonical dragon design and end-frame composition",
+            "Single continuous subject",
+            "Stable arena axis and geometry"
+          ],
+          "avoid": [
+            "Separate second creature",
+            "Camera orbit or cut",
+            "New hostage outcome"
+          ],
+          "target": {
+            "primary": "seedance-2.5",
+            "fallback": null,
+            "surface": null,
+            "mode": "first-and-last-frame-to-video",
+            "durationSeconds": 8,
+            "aspectRatio": "16:9",
+            "audioMode": "generated-sfx-with-post-production-review",
+            "notes": "Seedance 2.5 выбран пользователем. Конкретный интерфейс не указан. Первый ролик: режим first/last frame, второй: first frame. Ограничения встроены в основной промпт; отдельное negative-поле не требуется. 720p — подтверждённый режим BytePlus LAS; параметры другой поверхности сверить в её UI.",
+            "model": "Seedance 2.5",
+            "resolution": "720p",
+            "verifiedSources": [
+              "https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5",
+              "https://docs.byteplus.com/en/docs/byteplus_las/video_gen_enhanced"
+            ],
+            "verifiedOn": "2026-09-08"
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Low wind across obsidian arena.",
+            "sfxPromptEn": "Rising violet magical rumble, heavy transformation impacts, wings unfurl, one short low dragon roar fading into stillness.",
+            "musicCue": null
+          },
+          "transitionIn": "Смена ракурса после добивающего удара первой фазы; старт на эльфе, стоящем на колене.",
+          "transitionOut": "Match cut с конечного кадра на тот же утверждённый арт второго боя; без dissolve.",
+          "continuityIn": [
+            "Колбы и персонажи остаются за границей кадра; здесь не показывается их освобождение."
+          ],
+          "continuityOut": [
+            "Вся последняя секунда совпадает по композиции с арт-фоном второй фазы."
+          ],
+          "acceptance": [
+            "Один персонаж превращается, не возникает второй дракон",
+            "Не меняется лицо эльфа до начала трансформации",
+            "Финальные рога, крылья, лапы, хвост и поза совпадают с каноном",
+            "Последняя секунда неподвижна"
+          ],
+          "status": "draft"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": null,
+        "musicPromptEn": null,
+        "musicLicenseRequirement": "Музыка не запрашивается; использовать оригинальные или лицензированные SFX.",
+        "mixNotesRu": "Нарастание магии, трансформация и короткий рык; звук затухает до финального статичного удержания."
+      },
+      "delivery": {
+        "masterFile": "andrey-transformation-master.mov",
+        "webFiles": [
+          "andrey-transformation.mp4"
+        ],
+        "posterFile": "01-transformation-start-v2.png",
+        "captionsFile": null,
+        "loop": false
+      },
+      "executionStatus": {
+        "videoReceived": true,
+        "runtimeConnected": true,
+        "runtimePath": "assets/concepts/campaigns/penisuela/scene-videos/andrey-transformation.mp4",
+        "durationSeconds": 8.064,
+        "codec": "h264",
+        "audioCodec": "aac",
+        "resolution": "1918x1080",
+        "fps": 24,
+        "technicalProcessing": "HEVC → H.264 CRF 18, yuv420p, faststart; AAC copied; no edits to timing or framing.",
+        "verification": "passed: browser playback 1x, natural ended starts dragon 45 HP round 1; no console errors"
+      }
+    },
+    {
+      "id": "penisuela-olva-rest-spa-video",
+      "type": "transition",
+      "purpose": "Ролик после «Принять» в карточке отдыха общей сумки",
+      "audience": "players",
+      "sourceSceneIds": [
+        "olva-date-rehearsal"
+      ],
+      "triggerItemId": "olva-timeout",
+      "availableFrom": "Любая текущая внебоевая сцена с общей сумкой",
+      "targetDurationSeconds": 6,
+      "spoilerBoundary": "Только отдых героев, без сюжетных открытий",
+      "musicFirst": false,
+      "status": "draft",
+      "readiness": "ready-for-approval",
+      "blockedInputs": [],
+      "shots": [
+        {
+          "id": "olva-rest-spa-shot-01",
+          "order": 1,
+          "purpose": "Живая спокойная передышка пяти героев после применения награды Оливии",
+          "durationSeconds": 6,
+          "framing": "wide",
+          "safeArea": "Все герои и мопсики внутри кадра; без текста и интерфейса",
+          "sourceArt": {
+            "assetId": "penisuela-olva-rest-spa",
+            "path": "assets/concepts/campaigns/penisuela/scenes/olva-rest-spa.png",
+            "role": "first-frame",
+            "status": "approved"
+          },
+          "endFrame": null,
+          "directionRu": "Различные позы сохраняются: массаж Бубсильде лёжа, Торин в воде, Линда и Ламберт у чайной стойки, Лена на тёплой каменной скамье. Только небольшие естественные движения.",
+          "subjectMotion": "Gentle shoulder massage and towel dabbing; restrained unsynchronized breathing and brief glances.",
+          "cameraMotion": "Very slow subtle push-in, all characters remain visible.",
+          "environmentMotion": "Gentle pool ripples and slight curtain breeze.",
+          "promptEn": "Animate the uploaded image as one continuous 6-second cinematic shot, 16:9. Preserve the exact composition, all five faces, body builds, racial anatomy and three small pug attendants. The camera makes a very slow subtle push-in while keeping every character visible.\n\nThe pug gently kneads Bubsilda's shoulders as she lies face down on the massage table; she breathes slowly against her pillow. Thorin rests almost horizontally in the warm pool, his head supported, and exhales calmly. Keep his normal rounded ears. Linda stands beside Lambert at the tea counter. They exchange a brief warm glance and a restrained smile without changing their poses or spilling their cups. The small pug at the counter sniffs toward the teapot. Lena remains lying on his side on the heated stone bench, his head supported by his scaled hand; the pug beside him gently dabs his forearm with the folded towel.\n\nKeep Linda's exact face and translucent wings, Lambert's glasses and long hair, and Lena's dark scales across his entire exposed body, horns, claws and subtle ember fissures. Never turn Lena into a human. Gentle water ripples and a slight curtain breeze, natural unsynchronized breathing and blinking. No standing up, changing positions, face morphing, extra limbs, warped hands, new objects, sliding furniture, cuts, text or subtitles. Quiet water sounds and soft pug snuffling; no dialogue.",
+          "targetPromptEn": "Animate the uploaded image as one continuous 6-second cinematic shot, 16:9. Preserve the exact composition, all five faces, body builds, racial anatomy and three small pug attendants. The camera makes a very slow subtle push-in while keeping every character visible.\n\nThe pug gently kneads Bubsilda's shoulders as she lies face down on the massage table; she breathes slowly against her pillow. Thorin rests almost horizontally in the warm pool, his head supported, and exhales calmly. Keep his normal rounded ears. Linda stands beside Lambert at the tea counter. They exchange a brief warm glance and a restrained smile without changing their poses or spilling their cups. The small pug at the counter sniffs toward the teapot. Lena remains lying on his side on the heated stone bench, his head supported by his scaled hand; the pug beside him gently dabs his forearm with the folded towel.\n\nKeep Linda's exact face and translucent wings, Lambert's glasses and long hair, and Lena's dark scales across his entire exposed body, horns, claws and subtle ember fissures. Never turn Lena into a human. Gentle water ripples and a slight curtain breeze, natural unsynchronized breathing and blinking. No standing up, changing positions, face morphing, extra limbs, warped hands, new objects, sliding furniture, cuts, text or subtitles. Quiet water sounds and soft pug snuffling; no dialogue.",
+          "negativePromptEn": "identity drift, human skin on dragonborn, extra limbs, warped hands, sliding furniture, water on dry terrace, new objects, cuts, text",
+          "mustPreserve": [
+            "Лица и телосложения всех пятерых",
+            "Линда стоит рядом с Ламбертом у стойки",
+            "Лена полностью чешуйчатый драконорождённый",
+            "У Торина обычные округлые уши",
+            "Разные позы и три маленьких мопсика"
+          ],
+          "avoid": [
+            "смена расы",
+            "подмена лица",
+            "перестановка мебели",
+            "сломанные конечности",
+            "текст и UI"
+          ],
+          "target": {
+            "primary": "grok",
+            "fallback": null,
+            "surface": "Grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9",
+            "notes": "Один загруженный исходный арт; запреты включены в основной промпт. Конкретная версия сервиса не предполагается."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Soft pool water and quiet tropical spa ambience.",
+            "sfxPromptEn": "Faint friendly pug snuffling.",
+            "musicCue": null
+          },
+          "transitionIn": "После подтверждения карточки отдыха; будущая интеграция после получения видео",
+          "transitionOut": "Возврат к текущей игровой сцене с уже применённым лечением",
+          "continuityIn": [
+            "Команда отдыхает, предмет уже подтверждён"
+          ],
+          "continuityOut": [
+            "Те же герои и расовая анатомия, спокойное окончание"
+          ],
+          "acceptance": [
+            "Сходство лиц сохраняется",
+            "Драконья анатомия Лены не меняется",
+            "Торин без эльфийских ушей",
+            "Положение тел и мебели не меняется",
+            "Ровно 6 секунд, без склеек и артефактов"
+          ],
+          "status": "delivered",
+          "runtimeVideo": "assets/concepts/campaigns/penisuela/scene-videos/olva-rest-spa.mp4"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": null,
+        "musicPromptEn": null,
+        "musicLicenseRequirement": null,
+        "mixNotesRu": "Тихая вода и мопсики; без реплик и музыки."
+      },
+      "delivery": {
+        "webFiles": [
+          "olva-rest-spa.mp4"
+        ],
+        "posterFile": "olva-rest-spa-poster.webp",
+        "loop": false
+      },
+      "executionStatus": "runtime-integrated",
+      "runtimeVideo": "assets/concepts/campaigns/penisuela/scene-videos/olva-rest-spa.mp4",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "angel-fat-trap-skill",
+      "type": "transition",
+      "readiness": "ready-for-approval",
+      "status": "runtime-integrated",
+      "durationSeconds": 6.041667,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "sourceSceneId": "last-take-boss",
+      "actionId": "angel-fat-trap",
+      "target": {
+        "primary": "grok",
+        "mode": "image-to-video"
+      },
+      "sourceArt": "art-drafts/guest-skills/angel-full-body-first-frame-v6.png",
+      "runtimeSource": "assets/concepts/campaigns/penisuela/skill-videos/angel-fat-trap.mp4",
+      "poster": "assets/concepts/campaigns/penisuela/skill-videos/angel-fat-trap-poster.png",
+      "approval": "User supplied the latest Downloads video for integration",
+      "briefRu": "Angel промакивает лицо, бросает салфетку к ногам Нетака; она расплывается лужей и обволакивает его коконом.",
+      "runtimeTrigger": "После подтверждения навыка освобождённого Angel, один раз; повторное открытие сохранения не проигрывает ролик."
+    },
+    {
+      "id": "grey-wiese-high-note-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "blockedInputs": [],
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "actionId": "grey-wiese-high-note",
+      "shots": [
+        {
+          "id": "grey-wiese-high-note-shot-01",
+          "durationSeconds": 6,
+          "sourceArt": {
+            "path": "art-drafts/guest-skills/grey-wiese-first-frame-v1.png",
+            "role": "first-frame"
+          },
+          "directionRu": "Поправляет платье и выразительно поёт протяжную высокую ноту с открытым ртом. От голоса расходятся крупные жемчужно-золотые волны.",
+          "cameraMotion": "Locked camera",
+          "subjectMotion": "Quick gown adjustment, sustained open-mouth singing, composed finish.",
+          "environmentMotion": "Translucent sound waves, fluttering hair and cloth.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video"
+          },
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second fantasy spell shot. Locked camera, same framing. The image is the STARTING pose only: the character must visibly move and SING.\n\n0–1 second: Grey Wiese gives the fabric at his waist one quick elegant tug, releases it, straightens his upper body and lifts his chin slightly.\n\n1–5 seconds: he opens his mouth clearly, lowers his jaw naturally and SINGS one powerful sustained high operatic “AAAA”. Show unmistakable vocal performance: open vowel-shaped mouth, engaged cheeks and throat, focused eyes, chest supporting the note. His hands open slightly away from his hips as the note swells. A bright pearly-gold vibration appears immediately in front of his singing mouth and expands into broad translucent concentric SOUND WAVES. Each wave travels outward through the surrounding air toward the camera and across the empty arena, growing larger than his body. Warm shimmering light washes over the obsidian floor and fills the right side of the frame. His hair and gown flutter gently with the spreading resonance.\n\n5–6 seconds: he finishes the note, closes his mouth and lowers his hands with a satisfied expression. The last luminous wave continues outward and fades.\n\nPreserve the exact face, hair, elven ears, black gown, silver brooch and body proportions. Keep the eyes and mouth visible through the translucent light. The sound originates from his voice, not his hands. Audio: a clear sustained operatic vowel with ringing magical resonance. No dialogue, fire, laser beam, new characters, cuts, subtitles or text.",
+          "acceptance": [
+            "Видимое пение вместо одного дыхания",
+            "Волны начинаются вместе с голосом",
+            "Сохранены лицо, одежда и пропорции"
+          ]
+        }
+      ],
+      "approval": "Пользователь передал готовый ролик для подключения",
+      "runtimeSource": "assets/concepts/campaigns/penisuela/skill-videos/grey-wiese-high-note.mp4",
+      "poster": "assets/concepts/campaigns/penisuela/skill-videos/grey-wiese-high-note-poster.png",
+      "durationSeconds": 6.041667,
+      "displayDurationSeconds": 3.0208335
+    },
+    {
+      "id": "kreed-syuda-blin-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "blockedInputs": [],
+      "actionId": "kreed-chat-clip-it",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "shots": [
+        {
+          "id": "kreed-syuda-blin-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "medium, hips upward",
+          "sourceArt": {
+            "path": "art-drafts/guest-skills/kreed-first-frame-v2.png",
+            "role": "first-frame"
+          },
+          "directionRu": "Кричит «СЮДА, БЛИН!», один раз хлопает ладонями, трясёт правым сжатым кулаком у плеча три раза и нелепо переигрывает радость. Без указующего жеста.",
+          "subjectMotion": "Shout, one clap, three short celebratory fist pumps, exaggerated fake joyful grin.",
+          "cameraMotion": "Locked camera",
+          "environmentMotion": "Subtle hair and coat movement",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video"
+          },
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second shot. Fixed camera and framing. Kreed performs a deliberately FAKE, wildly OVERACTED celebration for an audience. Exaggerate his acting, not his anatomy.\n\n0–1.5 seconds: his eyebrows shoot up, eyes widen and he opens his mouth to loudly shout in Russian: “СЮДА, БЛИН!” He leans forward with absurdly excessive enthusiasm, as if trying much too hard to convince everyone he is thrilled. Clearly synchronize his mouth with the words.\n\n1.5–2.5 seconds: he brings his two open palms together for ONE loud clap at chest height, then immediately separates them. Show the palms meeting and separating cleanly.\n\n2.5–5 seconds: he curls his RIGHT hand into a fist and raises it beside his shoulder. With his elbow bent, he pumps that fist up and down three times in short emphatic celebratory motions. His shoulders bounce along; he wears an excessively broad, obviously performed grin and gives enthusiastic little nods. His left hand lowers beside his body. The mood is ridiculous overacted JOY.\n\n5–6 seconds: he holds the fist by his shoulder and freezes in a painfully smug, triumphant grin, still playing to the camera.\n\nPreserve his exact face, hairstyle, beard, elven ears, costume and natural adult proportions. Keep both hands in frame. No pointing, punches, aggression, dancing, new people, camera cuts, text or subtitles. Audio: the single Russian shout, one crisp clap and quiet arena ambience.",
+          "audio": {
+            "dialogueCueRu": "СЮДА, БЛИН!",
+            "ambiencePromptEn": "Quiet ominous arena ambience",
+            "narrationRu": null
+          },
+          "mustPreserve": [
+            "Утверждённое лицо и комплекция",
+            "Средние волнистые каштановые волосы, борода, эльфийские уши",
+            "Чёрный костюм с золотой вышивкой"
+          ],
+          "avoid": [
+            "Указующий жест",
+            "Агрессивные удары",
+            "Спокойная естественная реакция",
+            "Деформация лица и кистей"
+          ],
+          "acceptance": [
+            "Сходство с Кридом по фото",
+            "Слышен и виден возглас",
+            "Один хлопок с разделением ладоней",
+            "Три коротких взмаха кулаком у плеча",
+            "Нарочитое переигрывание радости без агрессии"
+          ],
+          "status": "draft"
+        }
+      ],
+      "approval": "User supplied finished video for integration",
+      "runtimeSource": "assets/concepts/campaigns/penisuela/skill-videos/kreed-syuda-blin.mp4",
+      "poster": "assets/concepts/campaigns/penisuela/skill-videos/kreed-syuda-blin-poster.png",
+      "durationSeconds": 6.041667
+    },
+    {
+      "id": "netak-assistants-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Призыв ассистентов",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-assistants",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "audience": "players",
+      "shots": [
+        {
+          "id": "netak-assistants-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "16:9 fixed shot",
+          "safeArea": "Face unobstructed; effects inside the frame",
+          "sourceArt": {
+            "path": "art-drafts/netak-skills/netak-assistants-first-frame-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Щелчок пальцев; тень разделяется и поднимает двух ассистентов по бокам.",
+          "subjectMotion": "One finger snap; two shadows rise into hooded servants.",
+          "cameraMotion": "Locked camera",
+          "environmentMotion": "Subtle cloth movement; only the described spell",
+          "promptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Keep the camera locked and preserve the exact face, pointed ears, black coat, body proportions and arena.\n\n0–1 second: Netak makes ONE clearly visible, dismissive finger snap with his raised hand. His thumb and middle finger separate sharply. His other hand stays relaxed.\n1–4 seconds: immediately after the snap, his shadow splits into two dark streams along the floor, one to each side. Each stream swells upward from the ground and forms ONE adult-sized hooded shadow servant. Their feet remain grounded while their bodies materialize upward. Exactly TWO servants, opaque black robes, empty dark hoods, subtle violet edges; no machinery, armour or copies of Netak's face.\n4–6 seconds: both servants finish forming beside him and turn toward the camera, ready to obey. Netak lowers his hand with bored arrogance.\n\nShow the snap and the complete summoning. No cuts, zoom, dialogue, text, extra limbs or additional creatures.",
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Keep the camera locked and preserve the exact face, pointed ears, black coat, body proportions and arena.\n\n0–1 second: Netak makes ONE clearly visible, dismissive finger snap with his raised hand. His thumb and middle finger separate sharply. His other hand stays relaxed.\n1–4 seconds: immediately after the snap, his shadow splits into two dark streams along the floor, one to each side. Each stream swells upward from the ground and forms ONE adult-sized hooded shadow servant. Their feet remain grounded while their bodies materialize upward. Exactly TWO servants, opaque black robes, empty dark hoods, subtle violet edges; no machinery, armour or copies of Netak's face.\n4–6 seconds: both servants finish forming beside him and turn toward the camera, ready to obey. Netak lowers his hand with bored arrogance.\n\nShow the snap and the complete summoning. No cuts, zoom, dialogue, text, extra limbs or additional creatures.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "exact approved Netak face",
+            "pointed elf ears",
+            "black brocade coat",
+            "adult proportions",
+            "obsidian arena"
+          ],
+          "avoid": [
+            "cuts",
+            "text",
+            "identity drift",
+            "extra limbs"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "sfxPromptEn": "Spell effects matching the visible gesture; no speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "Spell has not started"
+          ],
+          "continuityOut": [
+            "Spell visibly completed"
+          ],
+          "acceptance": [
+            "single readable initiating gesture",
+            "visible spell result by six seconds",
+            "no identity or costume drift"
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-assistants.mp4"
+        ],
+        "loop": false
+      },
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-assistants.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-assistants-poster.png",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "netak-mirrors-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Издевательские зеркала",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-mirrors",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3,
+      "audience": "players",
+      "shots": [
+        {
+          "id": "netak-mirrors-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "16:9 fixed shot",
+          "safeArea": "Face unobstructed; effects inside the frame",
+          "sourceArt": {
+            "path": "art-drafts/netak-skills/netak-mirrors-first-frame-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "В начале зеркал нет. Жест Нетака выпускает две фиолетовые искры: они обводят овалы, по световым контурам вырастают рамы, затем стекло заполняет их от краёв к центру. Только после вспышки в мутном стекле проявляются безликие тёмные силуэты и искажаются волной.",
+          "subjectMotion": "One outward gesture launches two sparks that trace oval loops, build solid frames and fill them with glass; only then do anonymous silhouettes appear.",
+          "cameraMotion": "Locked camera",
+          "environmentMotion": "Bright violet trails, magical particles and a sealing pulse during construction; subtle cloth movement.",
+          "promptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Locked camera. Preserve Netak's exact face, pointed ears, black costume, body proportions and the arena.\n\nThe main action is the visible magical CONSTRUCTION of two mirrors from empty air. At the beginning, there are NO mirrors, frames or glass beside Netak.\n\n0–1 second: Netak smoothly spreads his hands outward. Two bright violet sparks shoot from his palms and stop in the empty space on either side of him.\n1–2 seconds: each spark traces a tall oval loop in the air, leaving a brilliant violet trail and a shower of small magical particles. The centres remain empty; the arena is still visible through both loops.\n2–3 seconds: solid ornate mirror frames grow along the glowing loops. Cloudy silver glass spreads from each frame's edges toward its centre, visibly replacing the view through the opening. A brief violet pulse seals both newly created mirrors. They face the camera and leave Netak clearly visible between them.\n3–5 seconds: only now, an indistinct charcoal silhouette develops beneath each cloudy surface, like a reflection through thick frosted glass. Each is a soft opaque head-and-shoulders contour with a continuous dark lower shape, without visible facial or bodily detail. A magical ripple stretches and compresses the silhouettes like funhouse reflections. The frames remain rigid.\n5–6 seconds: violet energy continues to flicker around the frames. The reflections remain blurred while Netak gives a small smug smile.\n\nKeep the spell's bright violet light and particles clearly visible throughout the mirror construction. The mirrors must assemble progressively on screen, never appear already complete or merely fade in. Exactly two mirrors. Reflections stay anonymous opaque shapes with no face, skin, anatomical detail, age or gender; they never resolve into people or creatures. No figures emerging from the glass, distortion of Netak, camera movement, cuts, dialogue or text.",
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Locked camera. Preserve Netak's exact face, pointed ears, black costume, body proportions and the arena.\n\nThe main action is the visible magical CONSTRUCTION of two mirrors from empty air. At the beginning, there are NO mirrors, frames or glass beside Netak.\n\n0–1 second: Netak smoothly spreads his hands outward. Two bright violet sparks shoot from his palms and stop in the empty space on either side of him.\n1–2 seconds: each spark traces a tall oval loop in the air, leaving a brilliant violet trail and a shower of small magical particles. The centres remain empty; the arena is still visible through both loops.\n2–3 seconds: solid ornate mirror frames grow along the glowing loops. Cloudy silver glass spreads from each frame's edges toward its centre, visibly replacing the view through the opening. A brief violet pulse seals both newly created mirrors. They face the camera and leave Netak clearly visible between them.\n3–5 seconds: only now, an indistinct charcoal silhouette develops beneath each cloudy surface, like a reflection through thick frosted glass. Each is a soft opaque head-and-shoulders contour with a continuous dark lower shape, without visible facial or bodily detail. A magical ripple stretches and compresses the silhouettes like funhouse reflections. The frames remain rigid.\n5–6 seconds: violet energy continues to flicker around the frames. The reflections remain blurred while Netak gives a small smug smile.\n\nKeep the spell's bright violet light and particles clearly visible throughout the mirror construction. The mirrors must assemble progressively on screen, never appear already complete or merely fade in. Exactly two mirrors. Reflections stay anonymous opaque shapes with no face, skin, anatomical detail, age or gender; they never resolve into people or creatures. No figures emerging from the glass, distortion of Netak, camera movement, cuts, dialogue or text.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "exact approved Netak face",
+            "pointed elf ears",
+            "black brocade coat",
+            "adult proportions",
+            "obsidian arena"
+          ],
+          "avoid": [
+            "cuts",
+            "text",
+            "identity drift",
+            "extra limbs"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "sfxPromptEn": "Spell effects matching the visible gesture; no speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "Spell has not started"
+          ],
+          "continuityOut": [
+            "Spell visibly completed"
+          ],
+          "acceptance": [
+            "single readable initiating gesture",
+            "visible spell result by six seconds",
+            "no identity or costume drift",
+            "Reflections remain indistinct opaque silhouettes without faces, skin, anatomy, age or gender.",
+            "Both mirrors visibly assemble from empty air: sparks, glowing oval outlines, frames, then glass; reflections appear afterwards."
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-mirrors.mp4"
+        ],
+        "loop": false
+      },
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-mirrors.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-mirrors-poster.png",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "netak-toxic-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Ядовитый туман",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-toxic",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3,
+      "audience": "players",
+      "shots": [
+        {
+          "id": "netak-toxic-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "16:9 fixed shot",
+          "safeArea": "Face unobstructed; effects inside the frame",
+          "sourceArt": {
+            "path": "art-drafts/netak-skills/netak-toxic-first-frame-v1.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Брезгливый взмах ладони выпускает из пальцев плотный ядовитый туман, который накрывает передний план.",
+          "subjectMotion": "One dismissive fanning sweep emits a floor-hugging poison wave.",
+          "cameraMotion": "Locked camera",
+          "environmentMotion": "Subtle cloth movement; only the described spell",
+          "promptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Keep the camera locked. Preserve Netak's exact facial identity, pointed ears, black coat and body proportions.\n\n0–1.5 seconds: Netak wrinkles his nose in disdain and makes ONE broad, clearly visible fanning sweep with his raised hand, moving it away from his face and down toward the open foreground.\n1.5–4 seconds: the moving palm and fingertips RELEASE a thick emerald-green poisonous vapour. A continuous stream pours from the hand, curls downward, strikes the floor and spreads rapidly outward toward the camera as a broad, dense, rolling wave. The cloud is visibly produced by HIS HAND, not his mouth or the background.\n4–6 seconds: the toxic wave fills the foreground and lower half of the frame. Netak remains standing behind it, his face visible above the smoke, and calmly lowers his hand.\n\nThe smoke must visibly travel and spread, not remain a faint aura. No fire, vomiting, walking, new characters, cuts, zoom, dialogue or text.",
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second cinematic shot. Keep the camera locked. Preserve Netak's exact facial identity, pointed ears, black coat and body proportions.\n\n0–1.5 seconds: Netak wrinkles his nose in disdain and makes ONE broad, clearly visible fanning sweep with his raised hand, moving it away from his face and down toward the open foreground.\n1.5–4 seconds: the moving palm and fingertips RELEASE a thick emerald-green poisonous vapour. A continuous stream pours from the hand, curls downward, strikes the floor and spreads rapidly outward toward the camera as a broad, dense, rolling wave. The cloud is visibly produced by HIS HAND, not his mouth or the background.\n4–6 seconds: the toxic wave fills the foreground and lower half of the frame. Netak remains standing behind it, his face visible above the smoke, and calmly lowers his hand.\n\nThe smoke must visibly travel and spread, not remain a faint aura. No fire, vomiting, walking, new characters, cuts, zoom, dialogue or text.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "exact approved Netak face",
+            "pointed elf ears",
+            "black brocade coat",
+            "adult proportions",
+            "obsidian arena"
+          ],
+          "avoid": [
+            "cuts",
+            "text",
+            "identity drift",
+            "extra limbs"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "sfxPromptEn": "Spell effects matching the visible gesture; no speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "Spell has not started"
+          ],
+          "continuityOut": [
+            "Spell visibly completed"
+          ],
+          "acceptance": [
+            "single readable initiating gesture",
+            "visible spell result by six seconds",
+            "no identity or costume drift"
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-toxic.mp4"
+        ],
+        "loop": false
+      },
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-toxic.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-toxic-poster.png",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "netak-retake-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Переснимаем! — один низкий размашистый удар хвостом",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-retake",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "audience": "players",
+      "sourceSelection": "User requested this first skill image and prompt after reviewing the three generated frames.",
+      "shots": [
+        {
+          "id": "netak-retake-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "wide 16:9",
+          "safeArea": "Tail sweep through open foreground; camera holds full body.",
+          "sourceArt": {
+            "path": "art-drafts/netak-dragon-skills/netak-retake-first-frame-v4.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Один удар хвостом через согласованный поворот таза и корпуса; хвост следует цельной плавной дугой без хлёсткого излома.",
+          "subjectMotion": "One tail sweep carried by a controlled quarter-turn of hips and torso.",
+          "cameraMotion": "Locked wide camera",
+          "environmentMotion": "Loose grit follows the tail; dust settles.",
+          "promptEn": "Animate the uploaded image into one continuous 6-second shot. Keep the camera fixed and wide.\n\nThe dragon performs ONE heavy tail sweep. Treat the tail as a thick muscular continuation of its spine, with stable length, thickness and connected armour plates.\n\n0–2 seconds: the dragon shifts its weight onto its hind legs and slightly turns its hips to prepare the strike. The tail follows the pelvis naturally, retaining its broad curve from the reference image.\n\n2–4 seconds: the dragon pivots its hind feet and rotates its hips and torso together through a controlled quarter-turn. This body rotation carries the ENTIRE tail in one broad, low sweep from screen right to screen left. The thick base leads; the middle and tip follow together with only slight natural flex. Keep the tail at a consistent distance from the camera, beside the dragon rather than sweeping close to the lens. A little loose dust rises beneath its path.\n\n4–6 seconds: the dragon stops its rotation and braces its feet. The tail decelerates with the body and settles behind it. No second swing.\n\nPrioritize coherent anatomy over speed or dramatic motion. The tail root must remain attached behind the pelvis. Maintain one continuous, gently curved silhouette from base to tip throughout the movement.\n\nNo whip-like snapping, sharp bends, kinks, stretching, shrinking, folding, coiling, tail duplication, detached segments, tail passing through the body, full-body spinning or extreme foreshortening. No camera movement, cuts, new characters, spells or text. Preserve the dragon’s appearance and the original arena.",
+          "targetPromptEn": "Animate the uploaded image into one continuous 6-second shot. Keep the camera fixed and wide.\n\nThe dragon performs ONE heavy tail sweep. Treat the tail as a thick muscular continuation of its spine, with stable length, thickness and connected armour plates.\n\n0–2 seconds: the dragon shifts its weight onto its hind legs and slightly turns its hips to prepare the strike. The tail follows the pelvis naturally, retaining its broad curve from the reference image.\n\n2–4 seconds: the dragon pivots its hind feet and rotates its hips and torso together through a controlled quarter-turn. This body rotation carries the ENTIRE tail in one broad, low sweep from screen right to screen left. The thick base leads; the middle and tip follow together with only slight natural flex. Keep the tail at a consistent distance from the camera, beside the dragon rather than sweeping close to the lens. A little loose dust rises beneath its path.\n\n4–6 seconds: the dragon stops its rotation and braces its feet. The tail decelerates with the body and settles behind it. No second swing.\n\nPrioritize coherent anatomy over speed or dramatic motion. The tail root must remain attached behind the pelvis. Maintain one continuous, gently curved silhouette from base to tip throughout the movement.\n\nNo whip-like snapping, sharp bends, kinks, stretching, shrinking, folding, coiling, tail duplication, detached segments, tail passing through the body, full-body spinning or extreme foreshortening. No camera movement, cuts, new characters, spells or text. Preserve the dragon’s appearance and the original arena.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "Reference dragon anatomy and identity",
+            "Single tail attached to pelvis",
+            "Obsidian arena and violet lighting"
+          ],
+          "avoid": [
+            "Full spin",
+            "Repeated strike",
+            "Extra limbs or tails",
+            "Cuts",
+            "Text"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Low distant storm rumble.",
+            "sfxPromptEn": "Heavy claw scrape, a single deep tail whoosh and scattering grit. No speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "Tail pulled back on screen right"
+          ],
+          "continuityOut": [
+            "One completed tail strike; balanced stance"
+          ],
+          "acceptance": [
+            "One visible right-to-left physical tail sweep",
+            "Tail remains attached without stretching or duplication",
+            "Action reads at double playback speed"
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-retake.mp4"
+        ],
+        "loop": false
+      },
+      "productionBudget": "One final clip; allow 3–5 attempts, inspect tail attachment and direction.",
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-retake.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-retake-poster.png",
+      "actualDurationSeconds": 6.041667,
+      "revision": 2
+    },
+    {
+      "id": "netak-fired-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Вы все уволены — ледяное дыхание дракона",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-fired",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "audience": "players",
+      "shots": [
+        {
+          "id": "netak-fired-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "wide 16:9",
+          "safeArea": "Keep dragon head visible above the foreground breath cone.",
+          "sourceArt": {
+            "path": "art-drafts/netak-dragon-skills/netak-fired-first-frame-v3.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Дракон вдыхает, раскрывает пасть и выпускает один мощный поток фиолетового ледяного пламени к левому переднему плану. Пол покрывается инеем.",
+          "subjectMotion": "One sustained freezing exhalation from the mouth.",
+          "cameraMotion": "Locked wide camera",
+          "environmentMotion": "Frost spreads across stone beneath the breath cone; cold mist settles.",
+          "promptEn": "Animate the uploaded image as the exact first frame of one continuous 6-second cinematic shot. Keep the camera fixed.\n\n0–1.5 seconds: the dragon braces all four feet, draws its neck slightly back and takes a deep breath. Pale violet-white light builds INSIDE its throat. Its lower jaw opens naturally while the upper skull and horns retain their shape.\n\n1.5–4.5 seconds: the dragon thrusts its head slightly forward and releases ONE powerful sustained blast of freezing violet-white breath directly FROM ITS OPEN MOUTH toward the empty lower-left foreground. A bright, dense stream remains visibly connected to the mouth, widening into a broad turbulent cone as it travels away. Cold flame-like tongues and wind-driven ice crystals rush outward. Where the blast touches the stone, a white frost front races across the floor toward the camera. The bright breath lights the dragon’s jaw, chest and nearby stone. Keep its head visible above the spreading cloud.\n\n4.5–6 seconds: the breath stops at the mouth. The last part of the blast continues forward and disperses, revealing a frozen floor covered in frost and low drifting cold mist. The dragon lowers its head into a threatening stance.\n\nPreserve the exact dragon design, proportions, horns, wings, limbs, tail and arena. The blast must visibly originate inside the mouth and travel outward, never appear spontaneously on the floor. Powerful sustained exhalation, not merely breathing or roaring. No orange fire, smoke from nostrils, laser beam, new characters, anatomical distortion, camera cuts, zoom, slow motion, dialogue or text.",
+          "targetPromptEn": "Animate the uploaded image as the exact first frame of one continuous 6-second cinematic shot. Keep the camera fixed.\n\n0–1.5 seconds: the dragon braces all four feet, draws its neck slightly back and takes a deep breath. Pale violet-white light builds INSIDE its throat. Its lower jaw opens naturally while the upper skull and horns retain their shape.\n\n1.5–4.5 seconds: the dragon thrusts its head slightly forward and releases ONE powerful sustained blast of freezing violet-white breath directly FROM ITS OPEN MOUTH toward the empty lower-left foreground. A bright, dense stream remains visibly connected to the mouth, widening into a broad turbulent cone as it travels away. Cold flame-like tongues and wind-driven ice crystals rush outward. Where the blast touches the stone, a white frost front races across the floor toward the camera. The bright breath lights the dragon’s jaw, chest and nearby stone. Keep its head visible above the spreading cloud.\n\n4.5–6 seconds: the breath stops at the mouth. The last part of the blast continues forward and disperses, revealing a frozen floor covered in frost and low drifting cold mist. The dragon lowers its head into a threatening stance.\n\nPreserve the exact dragon design, proportions, horns, wings, limbs, tail and arena. The blast must visibly originate inside the mouth and travel outward, never appear spontaneously on the floor. Powerful sustained exhalation, not merely breathing or roaring. No orange fire, smoke from nostrils, laser beam, new characters, anatomical distortion, camera cuts, zoom, slow motion, dialogue or text.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "Reference dragon anatomy and identity",
+            "Single tail attached to pelvis",
+            "Obsidian arena and violet lighting"
+          ],
+          "avoid": [
+            "Orange fire",
+            "Laser beam",
+            "Spontaneous cloud",
+            "Jaw distortion",
+            "Cuts",
+            "Text"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Low distant storm rumble.",
+            "sfxPromptEn": "Deep inhalation, one forceful sustained icy blast, crystalline frost crackle. No speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "Mouth almost closed; no breath yet"
+          ],
+          "continuityOut": [
+            "Breath finished; foreground floor frosted"
+          ],
+          "acceptance": [
+            "Visible continuous mouth-originating blast",
+            "Cold effect and spreading frost",
+            "Stable skull and jaw anatomy",
+            "Readable at double speed"
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-fired.mp4"
+        ],
+        "loop": false
+      },
+      "productionBudget": "One final clip; 3–5 attempts, prioritize a visible mouth-originating cone and stable jaw anatomy.",
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-fired.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-fired-poster.png",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "netak-main-character-skill",
+      "type": "transition",
+      "status": "runtime-integrated",
+      "readiness": "ready-for-approval",
+      "purpose": "Главный здесь я — создание защитной короны вокруг дракона",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "actionId": "netak-main-character",
+      "targetDurationSeconds": 6,
+      "playbackRate": 2,
+      "displayDurationSeconds": 3.0208335,
+      "audience": "players",
+      "shots": [
+        {
+          "id": "netak-main-character-shot-01",
+          "order": 1,
+          "durationSeconds": 6,
+          "framing": "wide 16:9",
+          "safeArea": "Face stays visible above the transparent front rim; full body retained.",
+          "sourceArt": {
+            "path": "art-drafts/netak-dragon-skills/netak-main-character-first-frame-v3.png",
+            "role": "first-frame"
+          },
+          "endFrame": null,
+          "directionRu": "Дракон поднимает передние лапы. Магия собирает вокруг его тела крупные фиолетовые пластины в защитную корону. Корона смыкается и остаётся целой.",
+          "subjectMotion": "One commanding rise of both foreclaws creates a crown-shaped crystal barrier.",
+          "cameraMotion": "Locked wide camera",
+          "environmentMotion": "Large violet plates materialize and align; restrained reflected glow on stone.",
+          "promptEn": "Animate the uploaded image as the exact first frame of one continuous 6-second cinematic shot. Keep the camera fixed and preserve the full-body composition.\n\n0–1.5 seconds: the dragon slowly raises both foreclaws from its sides to chest height, turning the palms outward in a commanding gesture. Its chin lifts arrogantly. Its feet remain planted and its wings stay still. Violet light gathers between the claws.\n\n1.5–4 seconds: the light streams outward and condenses into several LARGE translucent violet crystal plates suspended in the air around the dragon, clearly separated from its skin. The plates slide into alignment along a broad horizontal oval surrounding its body. Their pointed upper edges form the tall teeth of ONE enormous crown-shaped defensive barrier. Show the plates visibly forming and joining into this crown, rather than a finished shield suddenly appearing. The front plates remain transparent enough to see the dragon through them. Keep its face unobstructed above the front rim.\n\n4–6 seconds: the final gap closes with one bright violet pulse. The completed crystal crown remains stable around the dragon. It lowers its claws slightly and holds a proud, dominant pose inside the intact barrier. Soft violet light reflects on the dark stone floor.\n\nThe crown surrounds and protects the BODY; it is not a small crown worn on the head. Preserve the exact dragon anatomy, face, horns, black scales, wings, tail and arena. Large clean crystal surfaces, clear silhouettes and controlled glow. No incoming attack, breaking shield, explosion, flying debris, tiny swirling shards, metal cage bars, body transformation, new characters, camera movement, cuts, dialogue or text.",
+          "targetPromptEn": "Animate the uploaded image as the exact first frame of one continuous 6-second cinematic shot. Keep the camera fixed and preserve the full-body composition.\n\n0–1.5 seconds: the dragon slowly raises both foreclaws from its sides to chest height, turning the palms outward in a commanding gesture. Its chin lifts arrogantly. Its feet remain planted and its wings stay still. Violet light gathers between the claws.\n\n1.5–4 seconds: the light streams outward and condenses into several LARGE translucent violet crystal plates suspended in the air around the dragon, clearly separated from its skin. The plates slide into alignment along a broad horizontal oval surrounding its body. Their pointed upper edges form the tall teeth of ONE enormous crown-shaped defensive barrier. Show the plates visibly forming and joining into this crown, rather than a finished shield suddenly appearing. The front plates remain transparent enough to see the dragon through them. Keep its face unobstructed above the front rim.\n\n4–6 seconds: the final gap closes with one bright violet pulse. The completed crystal crown remains stable around the dragon. It lowers its claws slightly and holds a proud, dominant pose inside the intact barrier. Soft violet light reflects on the dark stone floor.\n\nThe crown surrounds and protects the BODY; it is not a small crown worn on the head. Preserve the exact dragon anatomy, face, horns, black scales, wings, tail and arena. Large clean crystal surfaces, clear silhouettes and controlled glow. No incoming attack, breaking shield, explosion, flying debris, tiny swirling shards, metal cage bars, body transformation, new characters, camera movement, cuts, dialogue or text.",
+          "target": {
+            "primary": "grok",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9"
+          },
+          "mustPreserve": [
+            "Reference dragon anatomy and identity",
+            "Single tail attached to pelvis",
+            "Obsidian arena and violet lighting"
+          ],
+          "avoid": [
+            "Small crown worn on head",
+            "Metal cage",
+            "Incoming attack",
+            "Shield destruction",
+            "Body transformation",
+            "Cuts",
+            "Text"
+          ],
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Low distant storm rumble.",
+            "sfxPromptEn": "Low rising magical resonance, deep crystal tones as plates align, one resonant closing pulse. No speech.",
+            "musicCue": "No required music"
+          },
+          "transitionIn": "cut from combat",
+          "transitionOut": "cut back to combat",
+          "continuityIn": [
+            "No barrier; foreclaws at sides"
+          ],
+          "continuityOut": [
+            "Completed intact defensive crown around body"
+          ],
+          "acceptance": [
+            "Visible creation and assembly of large plates",
+            "Barrier surrounds body rather than sits on head",
+            "Face remains visible and dragon anatomy stable",
+            "Shield stays intact at the end",
+            "Action reads at double speed"
+          ],
+          "status": "runtime-integrated"
+        }
+      ],
+      "delivery": {
+        "webFiles": [
+          "netak-main-character.mp4"
+        ],
+        "loop": false
+      },
+      "productionBudget": "One final clip; 3–5 attempts. Prioritize visible plate assembly, transparent front and stable anatomy.",
+      "runtimeVideoPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-main-character.mp4",
+      "runtimePosterPath": "assets/concepts/campaigns/penisuela/skill-videos/netak-main-character-poster.png",
+      "actualDurationSeconds": 6.041667
+    },
+    {
+      "id": "penisuela-post-credits-dragon",
+      "type": "transition",
+      "status": "published",
+      "readiness": "ready",
+      "blockedInputs": [],
+      "purpose": "Послетитровая сцена по прямому запросу автора 16 сентября 2026: рука касается умершего дракона и неизвестный угрожает прекратить убийства драконов.",
+      "audience": "players",
+      "sourceSceneIds": [
+        "last-take-boss",
+        "wedding-epilogue"
+      ],
+      "targetDurationSeconds": 8,
+      "spoilerBoundary": "Только после титров: погибший дракон и угроза неизвестного. Личность и принадлежность говорящего не задаются.",
+      "musicFirst": false,
+      "authority": "Запрос автора: сгенерировать первый кадр и промпт Grok на 8 секунд; точная реплика дана автором. Уточнение автора: «в видео с драконом должна быть еще грозная музыка».",
+      "shots": [
+        {
+          "id": "post-credits-dragon-shot-01",
+          "order": 1,
+          "purpose": "После титров — угроза неизвестного, который обнаружил убитого дракона.",
+          "durationSeconds": 8,
+          "framing": "low medium-close three-quarter head shot",
+          "safeArea": "Голова дракона слева и в центре, свободный вход руки справа; подписи не генерируются.",
+          "sourceArt": {
+            "assetId": "post-credits-dragon-first-frame",
+            "path": "art-drafts/post-credits-dragon/first-frame-v1.png",
+            "role": "first-frame",
+            "status": "generated-awaiting-user-approval"
+          },
+          "endFrame": null,
+          "directionRu": "0–1 с — неподвижный мёртвый дракон. 1–2,2 с — одна рука в простой чёрной перчатке входит справа и касается лба. 2,2–7,3 с — грозная реплика неизвестного за кадром. 7,3–8 с — неподвижное прикосновение и грозный низкий медный аккорд.",
+          "subjectMotion": "One hand enters from off-screen, touches the dead dragon once and remains resting on the brow.",
+          "cameraMotion": "Locked camera, no cut or zoom.",
+          "environmentMotion": "Sparse slowly drifting ash; no storm surge or magic.",
+          "promptEn": "Animate the uploaded image as the exact first frame of one continuous 8-second cinematic dark-fantasy post-credits shot, 16:9. Locked low camera; no cuts or zoom.\n\n0.0–1.0 s: Hold on the dead dragon's head resting on the obsidian floor. Only a trace of ash drifts through the air.\n\n1.0–2.2 s: ONE human-sized right hand in a plain worn black leather glove, with a dark sleeve, slowly enters from the right edge. The forearm remains connected beyond the frame. The hand reaches the dragon's brow above the closed eye, gently makes contact once, then rests there. Five natural fingers, correct scale and solid contact with the scales. The visitor's face and body stay completely off screen.\n\n2.2–7.3 s: The hand stays on the dragon. The unseen visitor speaks ONCE in Russian, in a deep, resonant, menacing male voice, with controlled anger and clear natural diction. Complete the entire line before 7.3 seconds. Say exactly:\n\"Они убили еще одного дракона, этому надо положить конец\"\n\n7.3–8.0 s: Hold the touch as the ominous score rises into one dark low-brass sting. End on this image.\n\nThe voice comes from the unseen visitor, never from the dragon. The dragon is DEAD throughout: no breathing, blinking, twitching, mouth movement, glowing eyes or resurrection. Preserve the supplied dragon design, head position, scales, horns, collapsed body, obsidian arena, violet lighting and composition. No magic from the hand, no added characters, rings or symbols, no blood, no subtitles, text, logo or watermark.\n\nAudio: a threatening dark orchestral score starts immediately: deep sustained low strings, an ominous bass drone and restrained low brass, slow and heavy. At the hand contact around 2.2 seconds, add one deep muted percussion pulse. During the Russian line, lower the music clearly beneath the voice so EVERY WORD remains intelligible; the voice is deep and menacing, controlled rather than shouted or whispered. After the final word at 7.3 seconds, let the score rise into one foreboding low-brass sting through 8.0 seconds. Faint cold wind and one quiet leather-on-scale contact remain underneath. No choir, singing, lyrics, narrator, extra words or other voices. Keep the whole soundtrack within exactly 8 seconds.",
+          "targetPromptEn": "Animate the uploaded image as the exact first frame of one continuous 8-second cinematic dark-fantasy post-credits shot, 16:9. Locked low camera; no cuts or zoom.\n\n0.0–1.0 s: Hold on the dead dragon's head resting on the obsidian floor. Only a trace of ash drifts through the air.\n\n1.0–2.2 s: ONE human-sized right hand in a plain worn black leather glove, with a dark sleeve, slowly enters from the right edge. The forearm remains connected beyond the frame. The hand reaches the dragon's brow above the closed eye, gently makes contact once, then rests there. Five natural fingers, correct scale and solid contact with the scales. The visitor's face and body stay completely off screen.\n\n2.2–7.3 s: The hand stays on the dragon. The unseen visitor speaks ONCE in Russian, in a deep, resonant, menacing male voice, with controlled anger and clear natural diction. Complete the entire line before 7.3 seconds. Say exactly:\n\"Они убили еще одного дракона, этому надо положить конец\"\n\n7.3–8.0 s: Hold the touch as the ominous score rises into one dark low-brass sting. End on this image.\n\nThe voice comes from the unseen visitor, never from the dragon. The dragon is DEAD throughout: no breathing, blinking, twitching, mouth movement, glowing eyes or resurrection. Preserve the supplied dragon design, head position, scales, horns, collapsed body, obsidian arena, violet lighting and composition. No magic from the hand, no added characters, rings or symbols, no blood, no subtitles, text, logo or watermark.\n\nAudio: a threatening dark orchestral score starts immediately: deep sustained low strings, an ominous bass drone and restrained low brass, slow and heavy. At the hand contact around 2.2 seconds, add one deep muted percussion pulse. During the Russian line, lower the music clearly beneath the voice so EVERY WORD remains intelligible; the voice is deep and menacing, controlled rather than shouted or whispered. After the final word at 7.3 seconds, let the score rise into one foreboding low-brass sting through 8.0 seconds. Faint cold wind and one quiet leather-on-scale contact remain underneath. No choir, singing, lyrics, narrator, extra words or other voices. Keep the whole soundtrack within exactly 8 seconds.",
+          "negativePromptEn": "resurrection, blinking, breathing, jaw movement, glowing eyes, speaking dragon, extra fingers, detached arm, visible visitor face, identity reveal, magic, cuts, subtitles, text, choir, singing, lyrics, music overpowering speech",
+          "mustPreserve": [
+            "Approved dragon appearance and obsidian arena from the existing death clip",
+            "New first-frame framing and inert head position",
+            "Exact Russian dialogue and unseen speaker",
+            "One continuous shot, one entering hand and one touch"
+          ],
+          "avoid": [
+            "Воскрешение дракона",
+            "Раскрытие личности говорящего",
+            "Реплика из пасти дракона",
+            "Дополнительные слова или субтитры"
+          ],
+          "target": {
+            "primary": "grok-imagine-video",
+            "fallback": null,
+            "surface": "user-selected Grok interface",
+            "model": null,
+            "mode": "image-to-video",
+            "durationSeconds": 8,
+            "aspectRatio": "16:9",
+            "resolution": null,
+            "audioMode": "generated-russian-dialogue-music-and-sfx",
+            "verifiedSources": [
+              "https://docs.x.ai/developers/model-capabilities/video/image-to-video"
+            ],
+            "verifiedOn": "2026-09-16",
+            "notes": "Загрузить first-frame-v1.png. Цель — 8 секунд. Точная версия и доступные переключатели интерфейса пользователя не заданы; API-документация подтверждает режим image-to-video, но не подменяет настройки его UI."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "dialogueRu": "Они убили еще одного дракона, этому надо положить конец",
+            "speaker": "Неизвестный за кадром",
+            "voiceBriefRu": "Низкий грозный мужской голос, сдержанный гнев, отчётливая русская речь; оригинальный голос без имитации реального человека.",
+            "ambiencePromptEn": "Faint cold wind across an empty stone arena.",
+            "sfxPromptEn": "A single quiet leather glove contact against heavy dragon scales.",
+            "musicCue": "С первого кадра грозная оркестровая музыка: низкие струнные, басовый гул и сдержанная медь. На касании — глухой удар; под репликой музыка тише голоса; после последнего слова в 7,3 с — угрожающий низкий медный аккорд до конца восьмой секунды."
+          },
+          "transitionIn": "После конца ленты музыка останавливается, строка «Спасибо за эту историю» остаётся на чёрном экране 2 секунды, затем автоматически начинается авторский ролик целиком.",
+          "transitionOut": "На монтаже чёрный экран после завершения восьми секунд.",
+          "continuityIn": [
+            "Дракон уже мёртв, глаза и ядро погасли; это тот же Нетак из andrey-death.mp4.",
+            "Первый кадр до появления руки."
+          ],
+          "continuityOut": [
+            "Рука остаётся на лбу, дракон не оживает, личность посетителя скрыта."
+          ],
+          "acceptance": [
+            "Реплика произнесена целиком, точно и по-русски один раз, до 7,3 с.",
+            "Лицо и тело посетителя ни разу не видны; рука нормально соединена с предплечьем за границей кадра.",
+            "Пять пальцев и правдоподобное касание без проникновения в чешую.",
+            "Дракон мёртв и неподвижен весь ролик.",
+            "Камера и внешний вид сохраняются, текст не возникает.",
+            "Грозная музыка слышна с первого кадра, не перекрывает ни одного слова и усиливается после окончания реплики; пения и хора нет."
+          ],
+          "status": "published",
+          "receivedVideo": "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": null,
+        "speakerVoiceBriefRu": "Низкий грозный мужской голос, сдержанный гнев, отчётливая русская речь; оригинальный голос без имитации реального человека.",
+        "musicPromptEn": "Menacing slow dark orchestral score: sustained low strings, deep bass drone and restrained low brass. One muted deep percussion pulse at 2.2 seconds; duck clearly under dialogue from 2.2 to 7.3 seconds; finish with a threatening low-brass sting from 7.3 to 8.0 seconds. No choir, vocals or lyrics.",
+        "mixNotesRu": "Речь на первом плане, грозная музыка приглушена под каждым словом. Ветер и касание тихие. После реплики музыка усиливается до конца восьмой секунды. Песня титров заканчивается до начала клипа; внутри клипа отдельная партитура."
+      },
+      "delivery": {
+        "masterFile": "post-credits-dragon-master.mov",
+        "webFiles": [
+          "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4"
+        ],
+        "posterFile": "first-frame-v1.png",
+        "captionsFile": null,
+        "loop": false
+      },
+      "executionStatus": {
+        "firstFrameGenerated": true,
+        "videoReceived": true,
+        "runtimeConnected": true
+      },
+      "assumptions": [
+        "Визуальный референс дракона взят из победной ветки. Готовый авторский ролик подключён как общий послетитровый тизер после обеих концовок; флаги и результат выбранной ветки не меняются.",
+        "Личность посетителя скрыта; простая черная перчатка и рукав — постановочный вариант, не новый именованный персонаж."
+      ],
+      "runtimeSource": "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4",
+      "receivedVideo": {
+        "authority": "ролик в загрузках",
+        "date": "2026-09-16",
+        "sourceFileName": "grok-video-f4b88a21-5c66-4b7e-96e6-2c2ab481d90a.mp4",
+        "path": "assets/concepts/campaigns/penisuela/scene-videos/post-credits-dragon.mp4",
+        "sha256": "95ef725daf1b256a3ff4a4358f0cde9b87bab11bc3b0525691325e6cc900a769",
+        "durationSeconds": 10.041667,
+        "width": 1264,
+        "height": 720,
+        "videoCodec": "h264",
+        "frameRate": 24,
+        "audioCodec": "aac",
+        "audioSampleRate": 48000,
+        "audioChannels": 2,
+        "byteIdenticalCopy": true,
+        "playbackRate": 1,
+        "loop": false,
+        "note": "Полученный авторский файл длится около 10 секунд вместо плановых 8; воспроизводится целиком без обрезки и ускорения."
+      },
+      "runtimePlacement": {
+        "after": "credits-roll",
+        "endingSceneIds": [
+          "wedding-epilogue",
+          "bad-ending-magical-prison"
+        ],
+        "delayMs": 2000,
+        "afterVideo": "black-screen",
+        "changesCampaignState": false,
+        "authority": "Ранее автор запросил общий ролик после титров; теперь передал готовый файл для подключения. Автор уточнил: музыка без повтора, строка «Спасибо» на пару секунд перед роликом.",
+        "hold": "closing-text"
+      }
+    },
+    {
+      "id": "penisuela-andrey-death-six-second-video",
+      "type": "transition",
+      "status": "published",
+      "readiness": "ready",
+      "blockedInputs": [],
+      "purpose": "Новый production pack на 6 секунд по просьбе автора; используется уже утверждённый стартовый кадр смерти.",
+      "audience": "players",
+      "sourceSceneIds": [
+        "last-take-boss"
+      ],
+      "targetDurationSeconds": 6,
+      "spoilerBoundary": "Только после победы над драконом; его окончательная гибель.",
+      "musicFirst": false,
+      "authority": "давай теперь кадр смерти дракона и промпт на 6 секунд",
+      "shots": [
+        {
+          "id": "andrey-death-six-second-shot-01",
+          "order": 1,
+          "purpose": "Шестисекундный вариант однозначной гибели дракона после победы над второй фазой.",
+          "durationSeconds": 6,
+          "framing": "wide low frontal, locked camera",
+          "safeArea": "Голова, грудь и опорные лапы остаются читаемыми; без встроенного текста.",
+          "sourceArt": {
+            "assetId": "andrey-death-start",
+            "path": "art-drafts/andrey-video/death-6s/first-frame.png",
+            "originalApprovedPath": "art-drafts/andrey-video/03-death-start-v2.png",
+            "role": "first-frame",
+            "status": "approved"
+          },
+          "endFrame": null,
+          "directionRu": "0–1,2 с — последний спазм и короткий предсмертный рёв; 1,2–1,6 с — единственная вспышка ядра, глаза гаснут; 1,6–4,5 с — тяжёлое падение груди и головы, обмякшие крылья; 4,5–6 с — полная неподвижность и оседающая пыль.",
+          "subjectMotion": "One final spasm followed by sudden magical-core failure, one heavy collapse and a lifeless hold.",
+          "cameraMotion": "Locked low frontal camera, no cuts or movement.",
+          "environmentMotion": "One restrained burst of floor dust and sparse settling ash.",
+          "promptEn": "Animate the uploaded image as the exact first frame of ONE continuous 6-second cinematic dark-fantasy death shot, 16:9. Locked low frontal camera, constant framing, no cuts or zoom.\n\n0.0–1.2 seconds: The exhausted dragon stiffens in one final involuntary spasm and releases a short dying roar. The violet energy in its chest briefly swells once.\n\n1.2–1.6 seconds: The chest core ruptures in ONE brief concentrated violet flash. Both eyes and the chest glow go completely dark. The roar cuts off abruptly. Keep the physical body intact.\n\n1.6–4.5 seconds: Its forelegs suddenly buckle. The enormous chest crashes onto the obsidian floor, then the head strikes the stone heavily. The wings fall limp and the tail settles last. Show uncontrolled dead weight and a low burst of dust, not careful lowering or a sleeping pose. Keep the head visible in the frame.\n\n4.5–6.0 seconds: Hold on the lifeless body. No breathing, blinking, twitching, jaw movement or returning glow. Only dust and sparse ash settle.\n\nPreserve the exact dragon, horn arrangement, layered black scales, four legs, two wings, tail, arena, arch, eclipse and lighting from the first frame. One creature, one collapse, stable anatomy and surfaces. No resurrection, transformation, disintegration, new attack, people, hands, blood, gore, camera movement, subtitles, text, logo or watermark.\n\nAudio: a short deep dying roar, one sharp magical crack, a massive heavy impact and falling stone debris. A restrained ominous low-string drone builds during the first second, with one low orchestral hit on the collapse, fading into near-silence for the final hold. No dialogue, narration, lyrics or choir. Fit the complete action and sound within exactly 6 seconds.",
+          "targetPromptEn": "Animate the uploaded image as the exact first frame of ONE continuous 6-second cinematic dark-fantasy death shot, 16:9. Locked low frontal camera, constant framing, no cuts or zoom.\n\n0.0–1.2 seconds: The exhausted dragon stiffens in one final involuntary spasm and releases a short dying roar. The violet energy in its chest briefly swells once.\n\n1.2–1.6 seconds: The chest core ruptures in ONE brief concentrated violet flash. Both eyes and the chest glow go completely dark. The roar cuts off abruptly. Keep the physical body intact.\n\n1.6–4.5 seconds: Its forelegs suddenly buckle. The enormous chest crashes onto the obsidian floor, then the head strikes the stone heavily. The wings fall limp and the tail settles last. Show uncontrolled dead weight and a low burst of dust, not careful lowering or a sleeping pose. Keep the head visible in the frame.\n\n4.5–6.0 seconds: Hold on the lifeless body. No breathing, blinking, twitching, jaw movement or returning glow. Only dust and sparse ash settle.\n\nPreserve the exact dragon, horn arrangement, layered black scales, four legs, two wings, tail, arena, arch, eclipse and lighting from the first frame. One creature, one collapse, stable anatomy and surfaces. No resurrection, transformation, disintegration, new attack, people, hands, blood, gore, camera movement, subtitles, text, logo or watermark.\n\nAudio: a short deep dying roar, one sharp magical crack, a massive heavy impact and falling stone debris. A restrained ominous low-string drone builds during the first second, with one low orchestral hit on the collapse, fading into near-silence for the final hold. No dialogue, narration, lyrics or choir. Fit the complete action and sound within exactly 6 seconds.",
+          "negativePromptEn": "resting pose, controlled lying down, breathing after collapse, blinking, resurrection, extra limbs, body disintegration, new attack, visitors, hands, blood, gore, camera movement, cuts, text, watermark",
+          "mustPreserve": [
+            "Exact approved dragon anatomy and identity",
+            "Original arena, arch and eclipse",
+            "Visible head through the collapse",
+            "Entire body remains dead and intact at the end"
+          ],
+          "avoid": [
+            "Плавное укладывание спать вместо смерти",
+            "Дыхание и свечение после падения",
+            "Чужая рука из отдельного послетитрового ролика",
+            "Изменение ракурса или анатомии"
+          ],
+          "target": {
+            "primary": "grok-imagine-video",
+            "fallback": null,
+            "surface": "user-selected Grok interface",
+            "model": null,
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9",
+            "resolution": null,
+            "audioMode": "generated-sfx-and-music",
+            "notes": "Продолжение работы в Grok по контексту; точная модель и интерфейс пользователем не уточнялись. Загрузить first-frame.png, целевая длительность — 6 секунд."
+          },
+          "audio": {
+            "narrationRu": null,
+            "dialogueCueIds": [],
+            "ambiencePromptEn": "Low wind across an obsidian arena, sparse ash settling.",
+            "sfxPromptEn": "Short deep dying roar cut off by one magical crack; massive chest and head impact, falling stone debris.",
+            "musicCue": "Тихий грозный низкий струнный гул, один оркестровый акцент на падении, затухание к финальной неподвижности."
+          },
+          "transitionIn": "После победы над второй фазой; прямой переход на утверждённый стартовый кадр.",
+          "transitionOut": "После полной неподвижности — существующее возвращение на разрушенную виллу.",
+          "continuityIn": [
+            "Дракон уже побеждён, но ещё удерживается на лапах.",
+            "Тот же облик и арена, что во второй фазе."
+          ],
+          "continuityOut": [
+            "Дракон мёртв, глаза и ядро погасли.",
+            "Клип с рукой остаётся отдельной послетитровой сценой."
+          ],
+          "acceptance": [
+            "Ровно 6 секунд, один неподвижный план.",
+            "Тяжёлое падение, а не плавное укладывание.",
+            "Последние 1,5 секунды тело полностью неподвижно.",
+            "Анатомия и облик сохраняются; тело не исчезает.",
+            "Нет реплик, текста и посторонних персонажей."
+          ],
+          "status": "published"
+        }
+      ],
+      "audioPlan": {
+        "narratorVoiceBriefRu": null,
+        "musicPromptEn": "Restrained ominous low strings for the first second, one low orchestral impact on the collapse, fade into near-silence for the last 1.5 seconds. No vocals.",
+        "mixNotesRu": "Рёв, разрыв магического ядра и удар тела впереди; музыка поддерживает тяжесть, не забивает SFX."
+      },
+      "delivery": {
+        "masterFile": "andrey-death-6s-master.mov",
+        "webFiles": [
+          "assets/concepts/campaigns/penisuela/scene-videos/andrey-death.mp4"
+        ],
+        "posterFile": "first-frame.png",
+        "captionsFile": null,
+        "loop": false
+      },
+      "executionStatus": {
+        "firstFrameReused": true,
+        "imageGenerationPerformed": false,
+        "videoReceived": true,
+        "runtimeConnected": true,
+        "runtimePath": "assets/concepts/campaigns/penisuela/scene-videos/andrey-death.mp4",
+        "sourceFile": "grok-video-f7faeec0-2492-45c2-ab1c-e348a64ecdfb.mp4",
+        "durationSeconds": 6.041667,
+        "codec": "h264",
+        "audioCodec": "aac",
+        "resolution": "1264x720",
+        "fps": 24,
+        "sha256": "be1902d70a20ba86b3c6e4fcea24070a184906cdbc74d81fe4933edf54b6b458",
+        "bytes": 6321339,
+        "technicalProcessing": "Byte-for-byte copy; original timing, video, audio and embedded thumbnail preserved.",
+        "verificationReport": "docs/campaigns/penisuela/qa/andrey-death-6s-2026-09-16.md",
+        "visualReview": "Start, middle and final frames inspected. The dragon collapses; violet eye glow remains in the final frame, unlike the production prompt. User-supplied clip preserved unchanged.",
+        "audioReview": "AAC stereo 48 kHz decodes successfully; non-silent (mean -15.3 dB, peak -3.2 dB). Listening and browser playback not performed.",
+        "verification": "PASS: source hash, complete decoding, boss-sequence regression, typecheck/build/build:pages and /DnD/ asset path. Browser playback and listening not performed."
+      },
+      "productionEstimate": {
+        "finalClips": 1,
+        "externalGenerationAttempts": "3–5",
+        "risk": "Тяжесть падения и сохранение анатомии крыльев."
+      },
+      "assumptions": [
+        "Grok выбран по текущему контексту.",
+        "Стартовый кадр повторно используется без изменения; новая генерация изображения не нужна.",
+        "Добавлен сдержанный грозный музыкальный акцент с учётом прежнего пожелания автора к драконьему видео."
+      ],
+      "publicationAuthority": "последнее в загрузках"
+    }
+  ],
+  "blockedInputs": [
+    "Восемь sourceArt first-frame существуют только в art-drafts/video-bridge и не опубликованы в assets/concepts/manifest.json; перед внешним production run их нужно отдельно утвердить и опубликовать либо заменить manifest-ассетами.",
+    "Внешняя генерация Veo/Kling, лицензированная музыка, монтаж и экспорт не входят в текущий статический release и требуют отдельного решения о возобновлении видеопроизводства."
+  ],
+  "assumptions": [
+    "Если внешнее производство будет возобновлено, пользователь загрузит каждый утверждённый локальный PNG в Veo 3 как first-frame image-to-video reference; эти файлы не являются зависимостью статического приложения.",
+    "В исходных немых видеопереходах нет рассказчика, реплик, титров и читаемого текста. Послетитровая последовательность penisuela-post-credits-dragon содержит отдельно запрошенную автором русскую реплику.",
+    "Бубсильда показана в снежном образе только при получении браслета; на корабле, в отеле и на вечеринке она уже в утверждённом летнем образе.",
+    "Головач Лена канонически не имеет хвоста; у Линды во всех групповых кадрах полный двусторонний комплект из шести крыльев.",
+    "Финальный звук и музыка будут собраны отдельно на монтаже, а не приняты напрямую из Veo 3."
+  ],
+  "storySync20260908": {
+    "authority": "content/campaigns/penisuela-gallery-gameplay.json.storyTruth",
+    "status": "approved-assets-retained",
+    "note": "Планы сохраняют историю производства ассетов. Упоминания прежних трёх фаз, старых финалов, штрафного Doom и прежней выдачи пропусков не являются текущим сценарием. Сюжетная редакция: outline.md; текущие сцены и назначение ассетов: content/campaigns/penisuela-session-preview.json. Новая генерация не требуется."
+  }
+}

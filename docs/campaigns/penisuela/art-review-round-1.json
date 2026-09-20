@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 1,
+  "skill": "review-dnd-campaign-art",
+  "status": "revision-requested",
+  "globalIssue": "Лицо, расовая анатомия, тело, костюм и свет воспринимаются как отдельные слои вместо единого персонажа.",
+  "globalRevisionRules": [
+    "Создавать новый цельный портрет, а не накладывать лицо на заранее собранное тело.",
+    "Разделять роли входов: лицо и волосы, анатомия расы, стиль летней серии.",
+    "Согласовывать шею, плечи, оттенок кожи, масштаб головы, возраст, свет и перспективу.",
+    "Сохранять характер только из пользовательского описания, не выводить его из фотографии.",
+    "Не продолжать составные сцены и тизер до приёмки одиночных вариантов второго раунда."
+  ],
+  "items": [
+    {"assetId": "penisuela-party-bubsilda-summer", "variant": "art-drafts/bubsilda-summer-v1.png", "verdict": "regenerate", "corrections": ["намного более лёгкий летний образ", "открытые руки", "минимум металла", "лён, коралловый пояс и практичные сандалии вместо полноценной брони"]},
+    {"assetId": "penisuela-party-thorin-summer", "variant": "art-drafts/thorin-summer-v1.png", "verdict": "regenerate", "corrections": ["почти обычный взрослый рост", "среднее телосложение", "нормальные по толщине руки и ноги", "не делать широким или толстым"]},
+    {"assetId": "penisuela-party-golovach-lena-summer", "variant": "art-drafts/golovach-lena-summer-v1.png", "verdict": "regenerate", "corrections": ["полностью убрать раму", "Оскар — отдельная небольшая золотая кинонаграда на чёрном основании", "не добавлять картину, рамку или пустой прямоугольник"]},
+    {"assetId": "penisuela-npc-pussy-sultan", "variant": "art-drafts/pussy-sultan-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "согласовать светлые волосы, лицо, шею и сценический образ", "убрать ощущение случайного человека в костюме"]},
+    {"assetId": "penisuela-npc-style-sphinx", "variant": "art-drafts/zhidkovsky-sphinx-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "гармонично продолжить голову в сфинкса", "согласовать масштаб головы, шею, свет и цвет"]},
+    {"assetId": "penisuela-npc-eternal-all-inclusive", "variant": "art-drafts/prokhor-shalyapin-elf-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "интегрировать эльфийские уши и пропорции в исходную внешность", "не заменять лицо похожим актёром"]},
+    {"assetId": "penisuela-npc-olga-vasilenko", "variant": "art-drafts/olga-vasilenko-linfea-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "сохранить тёмные объёмные волосы", "собрать лицо, фигуру, крылья и костюм как один образ"]},
+    {"assetId": "penisuela-npc-celebrity-decoy-satyr", "variant": "art-drafts/satyr-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "согласовать рост, торс и козлиную анатомию", "не заменять внешность обобщённым сатиром"]},
+    {"assetId": "penisuela-npc-igor-sinyak", "variant": "art-drafts/igor-sinyak-linfea-v1.png", "verdict": "regenerate", "corrections": ["использовать предоставленный лицевой референс", "сохранить светлые волосы и черты лица", "интегрировать взрослую фею Линфею без эффекта приклеенных крыльев"]},
+    {"assetId": "penisuela-npc-egorik-private", "variant": "art-drafts/egorik-halfling-v1.png", "verdict": "regenerate", "corrections": ["собрать лицо и полурослую анатомию единым образом", "убрать эффект увеличенной головы", "сохранить взрослые пропорции и узнаваемость"]},
+    {"assetId": "penisuela-npc-nastya-private", "variant": "art-drafts/nastya-gnome-v1.png", "verdict": "regenerate", "corrections": ["собрать лицо и гномью анатомию единым образом", "согласовать свет и оттенок кожи", "сделать костюм частью образа, а не фотомонтажом"]},
+    {"assetId": "penisuela-npc-bungalow-spouse-a-private", "variant": "art-drafts/stas-dwarf-v1.png", "verdict": "regenerate", "corrections": ["цельная дварфийская анатомия", "сохранить узнаваемое тело без механического переноса футболки", "встроить пиво и нежелание идти домой через позу и окружение"]},
+    {"assetId": "penisuela-npc-bungalow-spouse-b-private", "variant": "art-drafts/polina-high-elf-v1.png", "verdict": "regenerate", "corrections": ["цельная высокая эльфийская анатомия", "согласовать лицо, очки, шею и причёску с костюмом", "передать расчётливость постановкой и реквизитом, а не наклеенной мимикой"]}
+  ]
+}

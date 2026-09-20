@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 import type {Campaign, CampaignPerson} from '../../../../entities/campaign/model/types';
 import {CampaignMedia} from '../../../../entities/campaign/ui/CampaignMedia/CampaignMedia';
 import type {Region} from '../../../../entities/region/model/types';
@@ -6,6 +7,7 @@ import {characters} from '../../../../entities/character/model/data';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import {getRegionArtworkViewBox} from '../../../../shared/lib/map/getRegionArtworkViewBox';
 import {JourneyBook} from '../../../journey-book/ui/JourneyBook/JourneyBook';
+import {SceneTextPanel} from '../../../../features/navigate-campaign-scene/ui/SceneTextPanel/SceneTextPanel';
 import styles from './CompletedCampaign.module.css';
 
 interface CompletedCampaignProps {
@@ -41,9 +43,6 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
   const gameMaster = campaign.gameMasterCharacterId
     ? charactersById.get(campaign.gameMasterCharacterId)
     : undefined;
-  const partyMembers = (campaign.partyAtTime ?? [])
-    .filter((member) => member.visual)
-    .map((member) => ({member, character: charactersById.get(member.characterId)}));
   const presentation = campaign.presentation;
   const statusSeal = presentation?.statusSeal ?? {primary: 'Глава', secondary: 'закрыта'};
 
@@ -58,7 +57,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
           <svg className={styles.chapterSeal} viewBox="0 0 64 64" aria-hidden="true"><RegionOrderSeal order={region.order} x={32} y={32} /></svg>
         </div>
 
-        <article className={styles.heroCopy}>
+        <SceneTextPanel className={styles.heroCopy} resetKey={campaign.id} collapsible={false}>
           <p className={styles.kicker}>Завершённая кампания</p>
           <h2>{campaign.title}</h2>
           <p className={styles.subtitle}>{campaign.subtitle}</p>
@@ -67,7 +66,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             <div className={styles.seal}><strong>{statusSeal.primary}</strong><b>{statusSeal.secondary}</b></div>
             <div><small>{chronicle?.statusLabel}</small><p>{chronicle?.finalResult}</p></div>
           </div>
-        </article>
+        </SceneTextPanel>
       </section>
 
       <section className={styles.scoreboard} aria-label="Краткие итоги завершённой кампании">
@@ -86,7 +85,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
           {chronicle?.trials.map((trial, index) => (
             <li key={trial.id}>
               <span>{index + 1}</span>
-              <div><strong>{trial.title}</strong><p>{trial.result}</p></div>
+              <SceneTextPanel resetKey={trial.id} collapsible={false}><strong>{trial.title}</strong><p>{trial.result}</p></SceneTextPanel>
             </li>
           ))}
         </ol>
@@ -102,7 +101,14 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             {illustratedLocations.map((location) => (
               <figure key={location.id}>
                 <CampaignMedia visual={location.visual!} />
-                <figcaption><span>{String(location.order).padStart(2, '0')}</span><div><strong>{location.name}</strong><p>{location.summary}</p></div></figcaption>
+                <figcaption>
+                  <span>{String(location.order).padStart(2, '0')}</span>
+                  <SceneTextPanel resetKey={location.id} collapsible={false}>
+                    <strong>{location.name}</strong>
+                    <p>{location.summary}</p>
+                    {location.story?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                  </SceneTextPanel>
+                </figcaption>
               </figure>
             ))}
           </div>
@@ -111,29 +117,41 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
 
       <JourneyBook campaign={campaign} />
 
-      {partyMembers.length > 0 && (
-        <section className={styles.party} aria-label="Герои завершённого похода">
+      {campaign.highlights && (
+        <section className={styles.artGallery} aria-label={campaign.highlights.title}>
+          <div className={styles.sectionHeading}>
+            <span>{campaign.highlights.eyebrow}</span>
+            <h2>{campaign.highlights.title}</h2>
+          </div>
+          <div className={styles.locationGallery}>
+            {campaign.highlights.entries.map((entry, index) => (
+              <figure key={entry.id}>
+                <CampaignMedia visual={entry.visual} />
+                <figcaption>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <SceneTextPanel resetKey={entry.id} collapsible={false}>
+                    <strong>{entry.title}</strong><p>{entry.description}</p>
+                  </SceneTextPanel>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {campaign.groupVisual && (
+        <section className={styles.party} aria-label="Групповой портрет завершённого похода">
           <div className={styles.sectionHeading}>
             <span>Состав экспедиции</span>
             <h2>Герои этого похода</h2>
           </div>
-          {campaign.groupVisual && (
-            <figure className={styles.groupVisual}>
-              <CampaignMedia visual={campaign.groupVisual} />
-              <figcaption>
-                <strong>{presentation?.groupTitle ?? 'Герои завершённого похода'}</strong>
-                {gameMaster && <span>{gameMaster.name} — мастер игры</span>}
-              </figcaption>
-            </figure>
-          )}
-          <div className={styles.partyGrid}>
-            {partyMembers.map(({member, character}) => (
-              <article key={member.characterId}>
-                <CampaignMedia visual={member.visual!} />
-                <div className={styles.partyCopy}><span>{character?.race ?? 'Герой'}</span><h3>{member.displayName}</h3><p>{member.note ?? character?.role}</p></div>
-              </article>
-            ))}
-          </div>
+          <figure className={styles.groupVisual}>
+            <CampaignMedia visual={campaign.groupVisual} />
+            <figcaption>
+              <strong>{presentation?.groupTitle ?? 'Герои завершённого похода'}</strong>
+              {gameMaster && <span>{gameMaster.name} — мастер игры</span>}
+            </figcaption>
+          </figure>
         </section>
       )}
 
@@ -149,7 +167,7 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
                 {person.visual
                   ? <CampaignMedia visual={person.visual} />
                   : <div className={styles.castPlaceholder} aria-hidden="true"><span>✦</span></div>}
-                <div className={styles.castCopy}><span>{getPersonLabel(person)}</span><h3>{person.name}</h3><p>{getPersonSummary(person)}</p></div>
+                <SceneTextPanel className={styles.castCopy} resetKey={person.id} collapsible={false}><span>{getPersonLabel(person)}</span><h3>{person.name}</h3><p>{getPersonSummary(person)}</p></SceneTextPanel>
               </article>
             ))}
           </div>
@@ -162,13 +180,13 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             <span>Бестиарий похода</span>
             <h2>{presentation?.castTitle ?? 'Противники кампании'}</h2>
           </div>
-          <div className={styles.castGrid}>
+          <div className={`${styles.castGrid} ${campaign.enemies.length === 2 ? styles.castPair : ''}`}>
             {campaign.enemies.map((enemy) => (
               <article key={enemy.id}>
                 {enemy.visual
                   ? <CampaignMedia visual={enemy.visual} />
                   : <div className={styles.castPlaceholder} aria-hidden="true"><span>✦</span></div>}
-                <div className={styles.castCopy}><span>{getPersonLabel(enemy)}</span><h3>{enemy.name}</h3><p>{getPersonSummary(enemy)}</p></div>
+                <SceneTextPanel className={styles.castCopy} resetKey={enemy.id} collapsible={false}><span>{getPersonLabel(enemy)}</span><h3>{enemy.name}</h3><p>{getPersonSummary(enemy)}</p></SceneTextPanel>
               </article>
             ))}
           </div>
@@ -186,13 +204,13 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             return (
               <article key={defeated.enemyId}>
                 <span aria-label={`Количество: ${defeated.count}`}>×{defeated.count}</span>
-                <div><strong>{enemy?.name}</strong><p>{defeated.outcome}</p></div>
+                <SceneTextPanel resetKey={defeated.enemyId} collapsible={false}><strong>{enemy?.name}</strong><p>{defeated.outcome}</p></SceneTextPanel>
               </article>
             );
           })}
         </div>
         <div className={styles.restored}>
-          {chronicle?.restored.map((entry) => <p key={entry.id}><strong>{entry.title}</strong><span>{entry.result}</span></p>)}
+          {chronicle?.restored.map((entry) => <SceneTextPanel key={entry.id} resetKey={entry.id} collapsible={false}><p><strong>{entry.title}</strong><span>{entry.result}</span></p></SceneTextPanel>)}
         </div>
       </section>
 
@@ -202,13 +220,34 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
             <CampaignMedia visual={campaign.ending.visual} />
           </figure>
         )}
-        <div className={styles.rewardCopy}>
+        <SceneTextPanel className={styles.rewardCopy} resetKey={campaign.id} collapsible={false}>
           <span>{chronicle?.statusLabel}</span>
           <h2>{campaign.ending.featureTitle ?? 'Финал кампании'}</h2>
           <p className={styles.final}>{chronicle?.finalResult}</p>
           <p>{campaign.ending.reward}</p>
-        </div>
+        </SceneTextPanel>
       </section>
+
+      {campaign.ending.rewards && campaign.ending.rewards.length > 0 && (
+        <section className={styles.artGallery} aria-label="Награды кампании">
+          <div className={styles.sectionHeading}>
+            <span>Память о спасённой свадьбе</span>
+            <h2>Награды похода</h2>
+          </div>
+          <div className={styles.rewardList}>
+            {campaign.ending.rewards.map((reward) => (
+              <article key={reward.id} className={styles.rewardCard}>
+                <CampaignMedia className={styles.rewardIcon} visual={reward.visual} />
+                <SceneTextPanel className={styles.castCopy} resetKey={reward.id} collapsible={false}>
+                  <span>{reward.recipient}</span>
+                  <h3>{reward.title}</h3>
+                  <p>{reward.description}</p>
+                </SceneTextPanel>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
 
       {campaign.ending.closingVisual && (
         <section className={styles.closing} aria-label="Последний сюжетный кадр кампании">
@@ -218,9 +257,25 @@ export function CompletedCampaign({campaign, region}: CompletedCampaignProps) {
           </div>
           <figure>
             <CampaignMedia visual={campaign.ending.closingVisual} />
-            {campaign.ending.closingCaption && <figcaption>{campaign.ending.closingCaption}</figcaption>}
+            {campaign.ending.closingCaption && <figcaption><SceneTextPanel resetKey={campaign.id} collapsible={false}>{campaign.ending.closingCaption}</SceneTextPanel></figcaption>}
           </figure>
         </section>
+      )}
+
+      {campaign.playableEntry && (
+        <footer className={styles.playableEntry}>
+          <div className={styles.sectionHeading}>
+            <span>Вернуться к первой странице</span>
+            <h2>У каждой легенды есть начало</h2>
+          </div>
+          <Link className={styles.startButton} to={campaign.playableEntry.to}>
+            <svg className={styles.startSeal} viewBox="0 0 64 64" aria-hidden="true">
+              <RegionOrderSeal order={region.order} x={32} y={32} />
+            </svg>
+            <span>{campaign.playableEntry.label}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        </footer>
       )}
     </div>
   );

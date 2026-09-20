@@ -1,0 +1,153 @@
+{
+  "campaignId": "penisuela",
+  "round": 34,
+  "status": "approved-under-explicit-user-delegation-and-current-visual-audit",
+  "userDirection": "Пользователь поручил автономно довести кампанию до конца; этот раунд восстанавливает отсутствовавшую трассировку уже опубликованных runtime-ассетов без изменения их изображения.",
+  "items": [
+    {
+      "assetId": "penisuela-enemy-winding-palanquin-carrier-token",
+      "variant": "assets/concepts/campaigns/penisuela/ui/enemy-tokens/winding-palanquin-carrier.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/ui/enemy-tokens/winding-palanquin-carrier.png",
+      "checks": [
+        "Фарфоровая маска, бордовая ливрея, латунный ворот и заводной ключ читаются в плотном квадратном портрете.",
+        "В кадре нет текста, крови, современного оружия, человеческой личности или лишнего реквизита.",
+        "PNG 1254×1254 непрозрачен и пригоден для круглого боевого жетона."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-vip-prop-room-carriers",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers.png",
+      "checks": [
+        "Ровно три одинаковых заводных носильщика перекрывают путь перед тем же паланкином в одной сценической геометрии.",
+        "Героев, крови, интерфейса и послебоевого состояния нет; нижняя зона остаётся пригодной для HUD.",
+        "PNG 1672×941 соответствует широкому runtime-кадру."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-vip-prop-room-carriers-defeated",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers-defeated.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers-defeated.png",
+      "checks": [
+        "Камера, свет и реквизиторская сохраняют continuity предбоевого кадра.",
+        "Три механизма безопасно разобраны, кровь и живые тела отсутствуют, а целый золотой скипетр визуально доступен.",
+        "PNG 1672×941 пригоден для бесшовной смены состояния."
+      ]
+    },
+    {
+      "assetId": "penisuela-item-pussy-sultan-archive-key",
+      "variant": "assets/concepts/campaigns/penisuela/items/pussy-sultan-archive-key.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/pussy-sultan-archive-key.png",
+      "checks": [
+        "Один барочный ключ целиком читается на чёрном бархате; золото, чёрная эмаль и рубиновая вставка соответствуют линии Pussy Sultan.",
+        "Рук, персонажей, текста, современных брелоков и дополнительных предметов нет.",
+        "Непрозрачный PNG 1024×1536 пригоден для предметной карточки и круглой ячейки."
+      ]
+    },
+    {
+      "assetId": "penisuela-item-pussy-sultan-womanizer",
+      "variant": "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png",
+      "checks": [
+        "Предмет показан отдельно и узнаваем по воздушно-волновой насадке, золотому корпусу, бордовой вставке и рубиновой кнопке.",
+        "Нет рук, частей тела, персонажей, футляра, текста, логотипов или вида от первого лица.",
+        "Непрозрачный PNG 1024×1536 соответствует предметному слоту и не присутствует на арте бунгало."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-prokhor-continuity-base-v3",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-v3.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-v3.png",
+      "checks": [
+        "Прохор узнаваем, естественно сидит на диване, а стол, терминал, телефон и интерьер задают устойчивую continuity-базу.",
+        "В кадре нет героев, новых NPC, интерфейса и свадебных спойлеров.",
+        "PNG 1672×941 оставляет свободное место для сценового UI."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-overview-v5",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/closed-bar-v5.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/closed-bar-v5.png",
+      "checks": [
+        "Станис и Прохор разведены по противоположным сторонам, труппа остаётся далёкими силуэтами, а центральный маршрут визуально свободен.",
+        "Масштаб персонажей естественный; лишних героев, текста, интерфейса и свадебных подсказок нет.",
+        "PNG 1672×941 соответствует общему интерактивному плану."
+      ]
+    },
+    {
+      "assetId": "penisuela-clue-prokhor-hotel-bill-v1",
+      "variant": "assets/concepts/campaigns/penisuela/items/prokhor-hotel-bill.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/prokhor-hotel-bill.png",
+      "checks": [
+        "Раскрытый счёт показывает только утверждённые сюжетные сведения о Прохоре, инициалах плательщицы и служебной пометке.",
+        "Имена будущих свадебных участников, логотипы, интерфейс и посторонние предметы отсутствуют.",
+        "PNG 1536×1024 читается как отдельная улика."
+      ]
+    },
+    {
+      "assetId": "penisuela-item-prokhor-payment-terminal-audit-v1",
+      "variant": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-audit.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-audit.png",
+      "checks": [
+        "Тот же чёрно-золотой терминал показывает понятный утверждённый запрос подтвердить плательщицу.",
+        "Нет брендов, персонажей, лишних предметов или преждевременного раскрытия личности.",
+        "PNG 1536×1024 сохраняет предметную геометрию серии."
+      ]
+    },
+    {
+      "assetId": "penisuela-item-prokhor-payment-terminal-standby-v2",
+      "variant": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal.png",
+      "checks": [
+        "Выключенный экран и единая геометрия терминала дают нейтральное исходное состояние.",
+        "Текста, брендов, рук и постороннего реквизита нет.",
+        "PNG 1536×1024 совпадает по ракурсу со следующими состояниями."
+      ]
+    },
+    {
+      "assetId": "penisuela-item-prokhor-payment-terminal-work-schedule-v2",
+      "variant": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-work-schedule.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-work-schedule.png",
+      "checks": [
+        "Терминал печатает один график смен, а карточка Прохора связывает расписание с нужным NPC.",
+        "Текст ограничен утверждённой уликой; логотипов, чужих имён, рук и персонажей нет.",
+        "PNG 1536×1024 сохраняет тот же ракурс и корпус терминала."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-prokhor-work-schedule-v1",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-work-schedule.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-work-schedule.png",
+      "checks": [
+        "Прохор сохраняет лицо, одежду, позу и окружение continuity-серии, но естественно замечает терминал и ленту.",
+        "В кадре нет героев, новых NPC, интерфейса и преждевременной личности плательщицы.",
+        "PNG 1672×941 пригоден для следующего сценового состояния."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-prokhor-phone-call-v1",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-phone-call.png",
+      "verdict": "accept-after-technical-processing",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-phone-call.png",
+      "checks": [
+        "Прохор держит трубку стационарного гостиничного телефона, не меняя утверждённое лицо, костюм и место.",
+        "Терминал, лента и карточка остаются частью той же причинной цепочки; новых персонажей, логотипов и свадебных спойлеров нет.",
+        "Финальный непрозрачный PNG 1672×941 не содержит временных метаданных или внешних ссылок."
+      ]
+    }
+  ],
+  "technicalProcessing": "Проверены канонические файлы в исходном разрешении: 1×1254², 2×1024×1536, 4×1536×1024 и 6×1672×941 PNG; альфа-канал не требуется и отсутствует. Изображения не изменялись в этом раунде.",
+  "result": "Тринадцать уже опубликованных runtime-ассетов получили недостающую формальную цепочку art-plan → visual review → canonicalPath → manifest. Художественное содержание и runtime-ссылки не менялись."
+}

@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "campaignId": "penisuela",
+  "reviewRound": 14,
+  "skill": "review-dnd-campaign-art",
+  "status": "approved-by-user",
+  "userDecision": "Пользователь утвердил всю предметную мини-волну сообщением «ок».",
+  "items": [
+    {
+      "assetId": "penisuela-item-journey-letter",
+      "variant": "art-drafts/items/journey-letter-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Конверт находится в hotel-overload, внутри только письмо; браслеты и жетон отсутствуют."]
+    },
+    {
+      "assetId": "penisuela-icon-journey-letter",
+      "variant": "art-drafts/items/journey-letter-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Квадратная иконка сохраняет дизайн письма и читается без текста."]
+    },
+    {
+      "assetId": "penisuela-item-anonymous-bracelets",
+      "variant": "art-drafts/items/anonymous-bracelets-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Ровно пять браслетов уже надеты на пять запястий; конверт отсутствует."]
+    },
+    {
+      "assetId": "penisuela-icon-anonymous-bracelets",
+      "variant": "art-drafts/items/anonymous-bracelets-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Ровно пять браслетов образуют единый читаемый инвентарный силуэт."]
+    },
+    {
+      "assetId": "penisuela-item-overload-console",
+      "variant": "art-drafts/items/overload-console-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Пульт остаётся переносным планшетом и показывает таймер, два голосовых канала и три пути отключения."]
+    },
+    {
+      "assetId": "penisuela-icon-overload-console",
+      "variant": "art-drafts/items/overload-console-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Компактный силуэт пульта и красный аварийный круг читаются в квадратном формате."]
+    },
+    {
+      "assetId": "penisuela-item-camera-pendant",
+      "variant": "art-drafts/items/camera-pendant-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Кулон выглядит личным магическим регистратором, а не разумным существом или большой камерой."]
+    },
+    {
+      "assetId": "penisuela-icon-camera-pendant",
+      "variant": "art-drafts/items/camera-pendant-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Линза, трещина перегрузки и чёрно-золотой корпус сохранены без текста."]
+    },
+    {
+      "assetId": "penisuela-clue-egorik-recording",
+      "variant": "art-drafts/items/egorik-recording-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей; исходные личные фотографии и пути к ним не переносились.",
+      "notes": ["Егорик и Настасья узнаваемы как вымышленные персонажи; кадр поддерживает ложную версию, но не называет свадебные роли."]
+    },
+    {
+      "assetId": "penisuela-icon-egorik-recording",
+      "variant": "art-drafts/items/egorik-recording-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Повреждённый видеокристалл, два силуэта и конверт читаются без раскрытия личностей."]
+    },
+    {
+      "assetId": "penisuela-item-closed-bar-token",
+      "variant": "art-drafts/items/closed-bar-token-art-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Жетон показан в момент передачи от Алексис и не присутствует в стартовом люксе."]
+    },
+    {
+      "assetId": "penisuela-icon-closed-bar-token",
+      "variant": "art-drafts/items/closed-bar-token-icon-v1.png",
+      "verdict": "accept",
+      "userDecision": "approved",
+      "technicalProcessing": "Без перекодирования и изменения пикселей.",
+      "notes": ["Один жетон с барным знаком и служебной меткой читается без текста."]
+    }
+  ]
+}

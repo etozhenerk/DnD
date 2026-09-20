@@ -1,0 +1,7 @@
+# Монета удачи — промпт
+
+Способ: встроенный `image_gen`, новый арт, без исходных изображений и постобработки. Пользователь утвердил вариант ответом «Да, вставляй» 20 сентября 2026.
+
+Результат: `assets/concepts/campaigns/penisuela/ui/luck-coin.png`, PNG 1254 × 1254. Вариант сохранён также в `art-drafts/luck-coin-v1.png`.
+
+Use case: stylized-concept. Asset type: a square item reward illustration for a dark fantasy tabletop RPG called Chronicles of the Eight Lands. Create a new original illustration of ONE magical gold luck coin, centered, large and clearly readable at 250px. The coin is thick ancient hand-minted gold, seen almost face-on with a subtle three-quarter angle so its ridged edge is visible. On its face: an embossed twenty-sided die surrounded by a graceful single circular returning arrow, an elegant engraved symbol of one reroll. Ornate fine medieval engraving around the rim, lightly worn but precious. Rich warm yellow gold, crisp high-relief details, cinematic amber rim light and a restrained magical golden halo with a few sparks. Deep nearly black desaturated teal background, subtle vignette, no scenery. Premium realistic painterly dark-fantasy game asset, sober and tactile, not cartoon or mobile-game plastic. Coin fully visible with 12 percent breathing room all around, approximately 75 percent of canvas height; no hand, no pile of coins, no frame, no UI, no letters, no numbers, no caption, no watermark. Square composition, 1024x1024.

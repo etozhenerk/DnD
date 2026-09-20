@@ -1,0 +1,140 @@
+.sandbox {
+  --combat-font-text: clamp(0.78rem, 0.72vw, 0.92rem);
+  --combat-font-title: clamp(1.02rem, 1.08vw, 1.34rem);
+  background: var(--color-night-deep);
+  color: var(--color-parchment-light);
+  height: 100dvh;
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.stage,
+.stage img,
+.stage div {
+  inset: 0;
+  position: absolute;
+}
+
+.stage img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.stage div {
+  background: var(--gradient-session-scene-shade);
+}
+
+.sandboxControls {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-62);
+  border-radius: 999px;
+  box-shadow: var(--shadow-session-control);
+  display: flex;
+  gap: 0.45rem;
+  max-width: calc(100vw - 30rem);
+  padding: 0.25rem;
+  position: absolute;
+  right: 0.8rem;
+  top: 0.7rem;
+  z-index: 50;
+}
+
+.sandboxControls > div {
+  display: none;
+  gap: 0.08rem;
+  min-width: 12rem;
+  padding: 0 0.45rem;
+}
+
+.sandboxControls > div span {
+  color: var(--color-brass-light);
+  font-size: var(--combat-font-text);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sandboxControls > div strong {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: var(--combat-font-title);
+  font-weight: 500;
+}
+
+.sandboxControls > select,
+.sandboxControls > button,
+.sandboxControls > a {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  border-radius: 999px;
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  justify-content: center;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.72rem;
+  text-decoration: none;
+}
+
+.sandboxControls > button:hover,
+.sandboxControls > a:hover {
+  background: var(--gradient-gold);
+  color: var(--color-ink-dark);
+}
+
+.sandboxControls > button:focus-visible,
+.sandboxControls > a:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.loading {
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  left: 50%;
+  margin: 0;
+  padding: 1rem 1.4rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+@media (max-width: 1280px) {
+  .sandboxControls {
+    max-width: calc(100vw - 20rem);
+  }
+
+  .sandboxControls > div {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sandbox {
+    --combat-font-text: 0.74rem;
+    --combat-font-title: 0.96rem;
+  }
+}
+
+@media (max-width: 900px), (orientation: portrait) {
+  .sandboxControls {
+    left: 0.5rem;
+    max-width: none;
+    right: 0.5rem;
+  }
+}
+
+.sandboxControls > select {
+  max-width: 11rem;
+  min-width: 0;
+}

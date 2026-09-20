@@ -1,0 +1,86 @@
+.modalBackdrop {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1.25rem;
+  position: fixed;
+  z-index: 80;
+}
+
+.accessModal {
+  background: var(--gradient-session-panel);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.8rem;
+  max-width: 34rem;
+  padding: clamp(1.15rem, 3vw, 2rem);
+  text-align: center;
+  width: min(100%, 34rem);
+}
+
+.accessModal h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.7vw, 2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.accessModal > p:not(.eyebrow) {
+  font-family: var(--font-display);
+  font-size: clamp(0.86rem, 1.3vw, 1rem);
+  line-height: 1.48;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  color: var(--color-brass-light);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.accessModal button {
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  justify-self: center;
+  padding: 0.62rem 0.9rem;
+  text-decoration: none;
+}
+
+.accessModal button:hover,
+.accessModal button:focus-visible {
+  background: var(--gradient-gold);
+  color: var(--color-ink-dark);
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .modalBackdrop {
+    padding: 0.75rem;
+  }
+
+  .accessModal {
+    padding: 1rem;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .accessModal {
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+  }
+}

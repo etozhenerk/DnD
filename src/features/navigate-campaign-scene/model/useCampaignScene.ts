@@ -1,6 +1,11 @@
+import partyRewards from '../../../../content/party-rewards.json';
+import {toCampaignInspectableId as inspectableId} from '../../../entities/campaign-session/model/inventoryPresentation';
+import {reconcileInventorySlots} from '../../../entities/campaign-session/model/inventorySlots';
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import type {CampaignSessionScene} from '../../../entities/campaign-session/model/types';
 import {
+  CAMPAIGN_STORAGE_RESET_EVENT,
+  type CampaignStorageResetDetail,
   readCampaignInventoryState,
   readCampaignSceneState,
   writeCampaignInventoryState,
@@ -11,9 +16,11 @@ export function useCampaignScene(
   campaignId: string,
   scene: CampaignSessionScene,
   campaignScenes: CampaignSessionScene[],
-  externalRevealedIds: string[] = [],
-  externallyManagedIds: string[] = [],
+  inventoryRevealedIds: string[] = [],
+  inventoryManagedIds: string[] = [],
 ) {
+  const externalRevealedIds = useMemo(() => inventoryRevealedIds.map(inspectableId), [inventoryRevealedIds]);
+  const externallyManagedIds = useMemo(() => inventoryManagedIds.map(inspectableId), [inventoryManagedIds]);
   const storedState = useMemo(() => readCampaignSceneState(scene.id), [scene.id]);
   const legacySceneIds = useMemo(() => campaignScenes.map((item) => item.id), [campaignScenes]);
   const storedInventoryState = useMemo(
@@ -21,7 +28,7 @@ export function useCampaignScene(
     [campaignId, legacySceneIds],
   );
   const inspectableIds = useMemo(
-    () => new Set(campaignScenes.flatMap((item) => item.inspectables.map((inspectable) => inspectable.id))),
+    () => new Set([...campaignScenes.flatMap((item) => item.inspectables.map((inspectable) => inspectable.id)), ...partyRewards.map(item => item.id)]),
     [campaignScenes],
   );
   const sceneInspectableIds = useMemo(
@@ -33,20 +40,47 @@ export function useCampaignScene(
     () => [...new Set([
       ...(storedInventoryState?.revealedInspectableIds ?? []),
       ...(storedState?.revealedInspectableIds ?? []),
-    ])].filter((id) => inspectableIds.has(id)),
+    ])].map(inspectableId).filter((id) => inspectableIds.has(id)),
   );
   const [viewedInspectableIds, setViewedInspectableIds] = useState<string[]>(
     () => [...new Set([
       ...(storedInventoryState?.viewedInspectableIds ?? []),
       ...(storedState?.viewedInspectableIds ?? []),
-    ])].filter((id) => inspectableIds.has(id)),
+    ])].map(inspectableId).filter((id) => inspectableIds.has(id)),
   );
+  const [inventorySlots, setInventorySlots] = useState<(string | null)[]>(
+    () => reconcileInventorySlots((storedInventoryState?.slots ?? []).map((id) => id ? inspectableId(id) : null), revealedInspectableIds),
+  );
+  const resolvedInventorySlots = useMemo(
+    () => reconcileInventorySlots(inventorySlots, revealedInspectableIds),
+    [inventorySlots, revealedInspectableIds],
+  );
+  useEffect(() => {
+    setInventorySlots((current) => current.length === resolvedInventorySlots.length
+      && current.every((id, index) => id === resolvedInventorySlots[index]) ? current : resolvedInventorySlots);
+  }, [resolvedInventorySlots]);
   const [selectedInspectableId, setSelectedInspectableId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleCampaignReset = (event: Event) => {
+      const resetEvent = event as CustomEvent<CampaignStorageResetDetail>;
+      if (resetEvent.detail?.campaignId !== campaignId) return;
+
+      setIntroRead(false);
+      setRevealedInspectableIds([]);
+      setInventorySlots([]);
+      setViewedInspectableIds([]);
+      setSelectedInspectableId(null);
+    };
+
+    window.addEventListener(CAMPAIGN_STORAGE_RESET_EVENT, handleCampaignReset);
+    return () => window.removeEventListener(CAMPAIGN_STORAGE_RESET_EVENT, handleCampaignReset);
+  }, [campaignId]);
 
   useEffect(() => {
     setRevealedInspectableIds((current) => {
       const managedIds = new Set(externallyManagedIds);
-      const retained = current.filter((id) => !managedIds.has(id));
+      const retained = current.filter((id) => inspectableIds.has(id) && (!managedIds.has(id) || externalRevealedIds.includes(id)));
       const next = [...new Set([
         ...retained,
         ...externalRevealedIds.filter((id) => inspectableIds.has(id)),
@@ -55,7 +89,7 @@ export function useCampaignScene(
     });
     setViewedInspectableIds((current) => {
       const next = current.filter(
-        (id) => !externallyManagedIds.includes(id) || externalRevealedIds.includes(id),
+        (id) => inspectableIds.has(id) && (!externallyManagedIds.includes(id) || externalRevealedIds.includes(id)),
       );
       return next.length === current.length ? current : next;
     });
@@ -68,10 +102,16 @@ export function useCampaignScene(
       revealedInspectableIds: revealedInspectableIds.filter((id) => sceneInspectableIds.has(id)),
       viewedInspectableIds: viewedInspectableIds.filter((id) => sceneInspectableIds.has(id)),
     });
-    writeCampaignInventoryState({campaignId, revealedInspectableIds, viewedInspectableIds});
-  }, [campaignId, introRead, revealedInspectableIds, scene.id, sceneInspectableIds, viewedInspectableIds]);
+    writeCampaignInventoryState({campaignId, revealedInspectableIds, viewedInspectableIds, slots: resolvedInventorySlots});
+  }, [campaignId, introRead, revealedInspectableIds, resolvedInventorySlots, scene.id, sceneInspectableIds, viewedInspectableIds]);
 
   const completeIntro = useCallback(() => setIntroRead(true), []);
+  const restartScene = useCallback(() => {
+    setIntroRead(false);
+    setSelectedInspectableId(null);
+    setRevealedInspectableIds((current) => current.filter((id) => !sceneInspectableIds.has(id)));
+    setViewedInspectableIds((current) => current.filter((id) => !sceneInspectableIds.has(id)));
+  }, [sceneInspectableIds]);
 
   const findInspectable = useCallback((inspectableId: string) => {
     if (!inspectableIds.has(inspectableId)) return;
@@ -92,12 +132,14 @@ export function useCampaignScene(
   );
 
   return {
+    inventorySlots: resolvedInventorySlots,
     introRead,
     revealedInspectableIds,
     viewedInspectableIds,
     selectedInspectableId,
     exitAvailable,
     completeIntro,
+    restartScene,
     findInspectable,
     openInspectable,
     closeInspectable,

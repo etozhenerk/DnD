@@ -1,7 +1,17 @@
+import {clearSceneCheckpoints} from './sceneCheckpointStorage';
 const STORAGE_VERSION = 3;
 const STORAGE_KEY_PREFIX = 'dnd:campaign-scene:';
 const INVENTORY_STORAGE_VERSION = 1;
 const INVENTORY_STORAGE_KEY_PREFIX = 'dnd:campaign-inventory:';
+const CAMPAIGN_MODULE_STORAGE_KEY_PREFIXES = [
+  'dnd:hotel-gallery-adventure:',
+];
+
+export const CAMPAIGN_STORAGE_RESET_EVENT = 'dnd:campaign-storage-reset';
+
+export interface CampaignStorageResetDetail {
+  campaignId: string;
+}
 
 export interface CampaignSceneStoredState {
   version: typeof STORAGE_VERSION;
@@ -20,6 +30,7 @@ interface RawCampaignSceneStoredState {
 }
 
 export interface CampaignInventoryStoredState {
+  slots?: (string | null)[];
   version: typeof INVENTORY_STORAGE_VERSION;
   campaignId: string;
   revealedInspectableIds: string[];
@@ -27,6 +38,7 @@ export interface CampaignInventoryStoredState {
 }
 
 interface RawCampaignInventoryStoredState {
+  slots?: unknown;
   version?: number;
   campaignId?: string;
   revealedInspectableIds?: unknown;
@@ -74,6 +86,14 @@ export function writeCampaignSceneState(state: Omit<CampaignSceneStoredState, 'v
   if (typeof window === 'undefined') return;
 
   try {
+    if (
+      !state.introRead
+      && !state.revealedInspectableIds.length
+      && !state.viewedInspectableIds.length
+    ) {
+      window.localStorage.removeItem(`${STORAGE_KEY_PREFIX}${state.sceneId}`);
+      return;
+    }
     window.localStorage.setItem(`${STORAGE_KEY_PREFIX}${state.sceneId}`, JSON.stringify({
       version: STORAGE_VERSION,
       ...state,
@@ -100,7 +120,11 @@ export function readCampaignInventoryState(
         && value.revealedInspectableIds.every((id) => typeof id === 'string')
         && Array.isArray(value.viewedInspectableIds)
         && value.viewedInspectableIds.every((id) => typeof id === 'string')
-      ) return value as CampaignInventoryStoredState;
+      ) return {
+        ...value,
+        slots: Array.isArray(value.slots) && value.slots.every((id) => id === null || typeof id === 'string')
+          ? value.slots : undefined,
+      } as CampaignInventoryStoredState;
     }
 
     const legacyStates = legacySceneIds
@@ -125,6 +149,10 @@ export function writeCampaignInventoryState(
   if (typeof window === 'undefined') return;
 
   try {
+    if (!state.revealedInspectableIds.length && !state.viewedInspectableIds.length) {
+      window.localStorage.removeItem(`${INVENTORY_STORAGE_KEY_PREFIX}${state.campaignId}`);
+      return;
+    }
     window.localStorage.setItem(`${INVENTORY_STORAGE_KEY_PREFIX}${state.campaignId}`, JSON.stringify({
       version: INVENTORY_STORAGE_VERSION,
       ...state,
@@ -132,4 +160,28 @@ export function writeCampaignInventoryState(
   } catch {
     // The scene remains playable when storage is unavailable.
   }
+}
+
+export function clearCampaignSceneAndInventoryState(
+  campaignId: string,
+  sceneIds: string[],
+): void {
+  if (typeof window === 'undefined') return;
+
+  try {
+    window.localStorage.removeItem(`${INVENTORY_STORAGE_KEY_PREFIX}${campaignId}`);
+    CAMPAIGN_MODULE_STORAGE_KEY_PREFIXES.forEach((prefix) => {
+      window.localStorage.removeItem(`${prefix}${campaignId}`);
+    });
+    [...new Set(sceneIds)].forEach((sceneId) => {
+      window.localStorage.removeItem(`${STORAGE_KEY_PREFIX}${sceneId}`);
+    });
+  } catch {
+    // Reset still clears in-memory state when storage is unavailable.
+  }
+
+  clearSceneCheckpoints(campaignId);
+  window.dispatchEvent(new CustomEvent<CampaignStorageResetDetail>(CAMPAIGN_STORAGE_RESET_EVENT, {
+    detail: {campaignId},
+  }));
 }

@@ -1,0 +1,119 @@
+.overlay {
+  background: var(--color-night-deep);
+  color: var(--color-parchment-light);
+  inset: 0;
+  overflow: hidden;
+  position: fixed;
+  z-index: 200;
+}
+
+.preload {
+  height: 1px;
+  left: -2px;
+  opacity: 0.001;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  top: -2px;
+  width: 1px;
+  z-index: -1;
+}
+
+.waiting {
+  inset: 0;
+  position: fixed;
+  z-index: 200;
+}
+
+.waiting .media {
+  visibility: hidden;
+}
+
+.media {
+  inset: 0;
+  position: absolute;
+}
+
+.media {
+  background: var(--gradient-preview-stage);
+}
+
+.media video,
+.media img,
+.emptyMedia {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.media video,
+.media img {
+  inset: 0;
+  position: absolute;
+}
+
+.activeMedia {
+  opacity: 1;
+}
+
+.preloadedMedia {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.media img {
+  object-position: center 15%;
+}
+
+.emptyMedia {
+  background: var(--gradient-preview-ambient);
+}
+
+.skip {
+  background: var(--color-black-alpha-58);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  font-family: var(--font-display);
+  padding: 0.6rem 0.85rem;
+  position: absolute;
+  right: clamp(1rem, 2vw, 2rem);
+  top: clamp(1rem, 2vw, 2rem);
+  z-index: 3;
+}
+
+.skip:hover {
+  background: var(--gradient-gold);
+  color: var(--color-ink-dark);
+}
+
+.skip:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.progress {
+  background: var(--color-black-alpha-58);
+  bottom: 0;
+  height: 0.28rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+}
+
+.progress span {
+  background: var(--gradient-gold);
+  display: block;
+  height: 100%;
+  transform: scaleX(var(--combat-skill-video-progress, 0));
+  transform-origin: left;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress span { will-change: auto; }
+}
+
+.contain video,
+.contain img {object-fit:contain;}

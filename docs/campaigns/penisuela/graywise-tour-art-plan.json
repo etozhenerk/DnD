@@ -1,0 +1,170 @@
+{
+  "id": "penisuela-scene-graywise-villa-tour",
+  "type": "scene",
+  "entityId": "graywise",
+  "sceneIds": [
+    "bedroom-reveal"
+  ],
+  "date": "2026-09-20",
+  "status": "approved",
+  "authority": {
+    "userInstruction": "дальше после проверки грей вайса надо сгенерить арт где он рассказывает про квартиру и там где-то сзади видно дверь с Игорем",
+    "generationApproved": true,
+    "variantApproval": "approved",
+    "scope": "Один кадр существующего рум-тура с Grey Wiese внутри виллы и закрытой дверью спальни на заднем плане.",
+    "revisionInstructions": [
+      "не ставь его близко в кадре; он далеко стоит и рассказывает нам",
+      "пропорции с дверью сломаны",
+      "ну и грей вайс очень далеко; начни генерацию с нуля"
+    ],
+    "approvalInstruction": "окаю",
+    "approvedVariant": "v5",
+    "integrationInstruction": "арт с дверью зря убрал; он следующий после арта с квартирой"
+  },
+  "sourceOfTruth": [
+    "content/campaigns/penisuela-gallery-gameplay.json#graywise-door-trust/continue-1-bedroom-reveal",
+    "content/campaigns/penisuela-session-preview.json#bedroom-reveal",
+    "docs/campaigns/penisuela/cast.md",
+    "docs/campaigns/penisuela/gm-handout/spoken-dialogues.md"
+  ],
+  "purpose": "Показать существующий рассказ Grey Wiese о доме после допуска и входа внутрь, до первого открытия спальни.",
+  "visible": [
+    "Grey Wiese в полный рост на среднем расстоянии, в утверждённом чёрном платье, говорит и показывает интерьер открытым жестом",
+    "Светлый мрамор, золото, гостиная и небольшой вид на бассейн",
+    "Та же закрытая дверь спальни на заднем плане отдельно от фигуры"
+  ],
+  "forbidden": [
+    "Игорь/Angel, его силуэт или отражение",
+    "Вид в спальню",
+    "Надписи с именами",
+    "Другие персонажи",
+    "Новая внешность Grey Wiese",
+    "Жест тишины вместо рассказа",
+    "UI и сгенерированный текст"
+  ],
+  "composition": "Утверждённая новая композиция v5: Grey Wiese в полный рост слева рассказывает о вилле, закрытая дверь отдельно справа чуть позади него. Лицо, жест и дверная ручка хорошо видны; нижняя зона отведена полу и мебели.",
+  "format": "png",
+  "transparency": false,
+  "targetSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "realPersonReference": {
+    "sourceMode": "public-figure",
+    "personalityBasis": "documented-public-persona",
+    "likeness": "recognizable",
+    "transformation": "light",
+    "referenceRequiredAtGeneration": false,
+    "generationReferenceMode": "approved-character-art",
+    "contract": "graywiseVillaDoorArtPlan.assets[0].realPersonReference",
+    "preserve": [
+      "Утверждённое лицо",
+      "Длинные светлые волосы",
+      "Эльфийские уши",
+      "Закрытое чёрное платье с драпировкой и серебряной брошью"
+    ],
+    "avoid": [
+      "Карикатура",
+      "Новая степень трансформации",
+      "Биографические утверждения о вымышленной сцене"
+    ]
+  },
+  "localReferences": [
+    "assets/concepts/campaigns/penisuela/scenes/graywise-door-opened.png",
+    "assets/concepts/campaigns/penisuela/scenes/bedroom-door-closed.png"
+  ],
+  "runtime": {
+    "sourceSceneId": "graywise-door-trust",
+    "sourceActionId": "continue-1-bedroom-reveal",
+    "targetSceneId": "bedroom-reveal",
+    "moment": "Рум-тур после допуска на виллу и до open-bedroom-door.",
+    "doorInteraction": "На рум-туре клик выполняет approach-bedroom-door и показывает прежний кадр bedroom-closed. Следующий клик выполняет open-bedroom-door; только тогда раскрывается Игорь/Angel и пятый огонь.",
+    "preserve": [
+      "Проверки доверия и их исходы",
+      "Существующее раскрытие спальни",
+      "Отмена и восстановление сцены"
+    ],
+    "stages": [
+      "tour",
+      "bedroom-closed",
+      "bedroom-open"
+    ],
+    "conditionFlag": "graywise-tour-finished",
+    "tourHotspot": {
+      "x": 64.5,
+      "y": 3,
+      "width": 16.7,
+      "height": 69.3
+    },
+    "closedDoorHotspot": {
+      "x": 39,
+      "y": 4,
+      "width": 27,
+      "height": 92
+    }
+  },
+  "generation": {
+    "mode": "built-in-imagegen",
+    "intent": "fresh-composition-from-approved-references",
+    "requestedGenerations": 5,
+    "status": "completed",
+    "promptPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.prompt.txt",
+    "actualGenerations": 5,
+    "startedGenerations": 6,
+    "cancelledGenerations": 1,
+    "actualSize": {
+      "width": 1672,
+      "height": 941
+    }
+  },
+  "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png",
+  "proposedCanonicalPath": "assets/concepts/campaigns/penisuela/scenes/graywise-villa-tour.png",
+  "variants": [
+    {
+      "id": "v1",
+      "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v1.png",
+      "status": "regenerate",
+      "reason": "Персонаж слишком близко."
+    },
+    {
+      "id": "v2",
+      "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v2.png",
+      "status": "regenerate",
+      "reason": "Неправильное соотношение персонажа и двери."
+    },
+    {
+      "id": "v3",
+      "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v3.png",
+      "status": "regenerate",
+      "reason": "Редакторская проверка: дверь всё ещё слишком высокая."
+    },
+    {
+      "id": "v4",
+      "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v4.png",
+      "status": "superseded",
+      "reason": "Пользователь просит начать с нуля: персонаж слишком далеко."
+    },
+    {
+      "id": "v5",
+      "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png",
+      "status": "approved",
+      "approvalInstruction": "окаю"
+    },
+    {
+      "id": "v6",
+      "status": "cancelled-before-result",
+      "reason": "Утверждён уже показанный v5."
+    }
+  ],
+  "review": {
+    "path": "docs/campaigns/penisuela/graywise-tour-art-review.json",
+    "verdict": "accept",
+    "userApproval": "approved"
+  },
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/graywise-villa-tour.png",
+    "technicalProcessing": "Копирование утверждённого PNG без изменения пикселей.",
+    "runtimeConnected": true
+  }
+}

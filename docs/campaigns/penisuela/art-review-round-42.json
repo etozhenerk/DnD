@@ -1,0 +1,46 @@
+{
+  "campaignId": "penisuela",
+  "round": 42,
+  "date": "2026-09-04",
+  "status": "completed-user-approved",
+  "auditType": "olva-five-flat-passes-correction-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Исправить четыре ключеобразные бирки на настоящие пропуска.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "art-drafts/bungalow-courtyard-conversation-v2.png",
+    "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png",
+    "assets/concepts/campaigns/penisuela/npcs/bungalow-consultant-linfea.webp",
+    "art-drafts/olva-quest-declined-passes-v2.png"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-scene-bungalow-courtyard",
+      "path": "art-drafts/bungalow-courtyard-conversation-v2.png",
+      "verdict": "accept",
+      "size": "1672x941",
+      "alpha": false,
+      "note": "Перенесён из предыдущей проверки: близкий разговорный кадр сохранён без изменений."
+    },
+    {
+      "assetId": "penisuela-scene-olva-quest-declined-passes",
+      "path": "art-drafts/olva-quest-declined-passes-v2.png",
+      "verdict": "accept",
+      "size": "1672x941",
+      "alpha": false
+    }
+  ],
+  "checks": [
+    "В руке Оливии ровно пять отдельных плоских прямоугольных золотых пропусков-карточек, по одному на каждого героя.",
+    "Все пять карточек полностью видны и легко пересчитываются; ключей, колец, шнурков, бирок, жетонов и конверта нет.",
+    "Оливия остаётся близко к камере, за ней виден открытый вход одного бунгало.",
+    "Сохранены узнаваемое лицо, кораллово-бирюзовый костюм, ровно шесть крыльев и рассветное окружение.",
+    "Другие персонажи, принимающая рука героя, текст, интерфейс и водяной знак отсутствуют."
+  ],
+  "approval": {
+    "required": true,
+    "received": true,
+    "userApproval": "добавляй все на экраны",
+    "nextAction": "Оба одобренных кадра Оливии опубликованы; подключение к каноническим данным и интерфейсу выполняется отдельным этапом publish-dnd-campaign."
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "campaignId": "penisuela",
+  "round": 35,
+  "status": "completed-current-visual-audit-under-explicit-delegation",
+  "auditTiming": "post-publication-current-state-audit",
+  "userDirection": "Пользователь поручил автономно довести кампанию до конца; этот текущий визуальный аудит восстанавливает точную трассировку тринадцати уже опубликованных ассетов и не изображает его как хронологическую допубликационную приёмку.",
+  "items": [
+    {
+      "assetId": "penisuela-enemy-hotel-vip-guards",
+      "variant": "assets/concepts/campaigns/penisuela/enemies/hotel-vip-guards-with-sultan.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/enemies/hotel-vip-guards-with-sultan.png",
+      "checks": [
+        "Ровно два взрослых стража стоят раздельно в чёрно-бирюзовой церемониальной броне с золотой отделкой и гостиничными алебардами; лишних охранников нет.",
+        "Роскошный чёрно-золотой VIP-люкс, тропический рассвет и профессиональная, а не злодейская подача совпадают с линией сцены; героев, крови, текста и интерфейса нет.",
+        "Pussy Sultan намеренно находится между стражами и теперь явно указан в visible-условиях; forbidden ограничивает только дубликаты или изменённую внешность персонажа в соответствии с canonicalPath и approvalNote."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-pussy-after-guards-defeated",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/pussy-after-guards-defeated.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/pussy-after-guards-defeated.png",
+      "checks": [
+        "Тот же люкс, рассвет, трон и одежда Pussy Sultan сохраняют прямую continuity с предбоевым кадром.",
+        "Pussy Sultan испуганно стоит в центре, а ровно два живых поверженных стража лежат раздельно слева и справа; рядом видны брошенные алебарды.",
+        "Крови, смерти, героев, лишней охраны, текста и интерфейса нет; нижняя зона остаётся пригодной для сценового UI."
+      ]
+    },
+    {
+      "assetId": "penisuela-ui-token-hotel-vip-guard",
+      "variant": "assets/concepts/campaigns/penisuela/ui/enemy-tokens/hotel-vip-guard.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/ui/enemy-tokens/hotel-vip-guard.png",
+      "checks": [
+        "Один страж показан по грудь, анфас и по центру; лицо, причёска и чёрно-бирюзовая броня с золотой отделкой совпадают с сюжетным кадром.",
+        "Тёмный нейтральный фон не мешает круговой обрезке; встроенной рамки, оружия перед лицом, текста и лишних персонажей нет.",
+        "Непрозрачный квадратный PNG 1254×1254 имеет достаточный запас вокруг головы и плеч для боевого жетона."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-vip-prop-room",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/vip-prop-room.png",
+      "checks": [
+        "Камерная чёрно-золотая реквизиторская содержит опрокинутый паланкин, костюмные чехлы на рейле, бутафорские короны, цветы и гостевой мелкий реквизит; боковая дверь связывает комнату с VIP-зоной.",
+        "Золотой скипетр-микрофон читается в нижней трети частично зажатым под паланкином и остаётся понятной целью поиска.",
+        "Людей, героев, Pussy Sultan, Алексис, кракена, текста, снега, грязного склада или разрушенной комнаты нет; богатая теснота соответствует brief."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-invitation",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png",
+      "checks": [
+        "Крайнеплот сидит за обычным столом, поднимает кружку и обращается ровно к двум безымянным завсегдатаям; неизвестный остаётся маленьким силуэтом в глубине.",
+        "Обычный тёплый вечер читается до начала интриги; конверта, реакции незнакомца, подписей, свадебной темы и зимних деталей нет.",
+        "Лицо, длинные косы и тёмно-зелёный костюм Лорда задают устойчивую identity-базу девятислайдовой последовательности."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-visitor-notices",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-02.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-02.png",
+      "checks": [
+        "Кадр построен через плечо того же неизвестного: лицо скрыто, рука замерла над столом, голова и корпус повернуты к Лорду.",
+        "Крайнеплот и два собеседника читаются в глубине при сохранённых свете и планировке таверны.",
+        "Конверт ещё не передан, угрожающей позы, нового важного персонажа, текста и свадебных символов нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-visitor-approaches",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-03.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-03.png",
+      "checks": [
+        "Неизвестный спокойно идёт по свободному проходу к столу, впервые держа низко у бедра ровно один чёрный конверт с золотой печатью.",
+        "Крайнеплот остаётся сидеть и вместе с двумя завсегдатаями замечает приближение; свет, костюмы и таверна продолжают предыдущие кадры.",
+        "Передача ещё не началась, лицо незнакомца скрыто; оружия в его руке, угрозы, текста, острова и свадебных деталей нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-envelope-handoff",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-04.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-04.png",
+      "checks": [
+        "Один толстый чёрный конверт с простой золотой печатью находится в резком центре именно в момент личной передачи из руки незнакомца в руки Лорда.",
+        "Лицо Крайнеплота различимо и сосредоточено на предмете, а лицо неизвестного полностью исключено из кадра.",
+        "Руки анатомичны и не дублируются; рукопожатия, денег, оружия, текста, имён и свадебной символики нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-lord-examines-envelope",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-05.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-05.png",
+      "checks": [
+        "Крайнеплот держит ещё запечатанный конверт и смотрит вниз на золотую печать; кружка отставлена в сторону, а выражение стало сосредоточенным без страха.",
+        "Тот же неизвестный уходит маленьким размытым силуэтом на дальнем плане, не раскрывая лица.",
+        "Конверт не открыт, браслеты не видны; прямого взгляда в камеру, текста и свадебных намёков нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-envelope-closeup-sealed",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-06.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-06.png",
+      "checks": [
+        "Ровно один закрытый чёрный конверт с простой золотой печатью естественно удерживается двумя руками Крайнеплота над тем же столом.",
+        "Ракурс через плечо, края тёмно-зелёных рукавов, свеча, кружка и тёплый свет образуют точную монтажную базу для открытого состояния.",
+        "Лица, содержимого, браслетов, записки, читаемого текста, лишних рук и второго конверта нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-envelope-closeup-open",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png",
+      "checks": [
+        "Камера, руки, стол, свеча и кружка совпадают с закрытым insert-shot; изменено только открытое состояние конверта.",
+        "Внутри веером видны ровно пять отдельных золотых пропусков и только узкий светлый край письма без текста; лишних рук, второго конверта и лиц нет.",
+        "Плоская прямоугольная форма точно сообщает пять мест, хотя как носимые браслеты пропуска читаются слабее, чем как золотые карточки; это не нарушает счёт или сюжетную функцию кадра."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-tavern-five-bracelets-decision",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png",
+      "checks": [
+        "Снаружи той же таверны Крайнеплот смотрит только на один закрытый конверт и направляет его в открытый люк на верхней части спины Кострюльки между крыльями.",
+        "Кострюлька сохраняет бытовой размер городского голубя, сидит на обычной бочке и имеет компактный бело-графитовый курьерский корпус без колёс.",
+        "Тёплый свет двери, мокрая ночная брусчатка и серьёзная подача поддерживают continuity; содержимого, пропусков, героев, текста, острова и свадебных персонажей нет."
+      ]
+    },
+    {
+      "assetId": "penisuela-scene-kostryulka-flight",
+      "variant": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-09.png",
+      "verdict": "accept",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-09.png",
+      "checks": [
+        "Кострюлька обычного голубиного размера только что оттолкнулась от той же бочки и летит вправо с полностью раскрытыми крыльями.",
+        "Спинной люк между основаниями крыльев закрыт, его шов и маленькая золотистая защёлка видны; конверт не торчит наружу.",
+        "Крайнеплот показан строго со спины и без оглядки входит в ту же освещённую таверну; лица, колёс, героев, текста, острова, рассвета и зимних деталей нет."
+      ]
+    }
+  ],
+  "resolvedMetadataObservations": [
+    "У penisuela-enemy-hotel-vip-guards устранён stale forbidden: Pussy Sultan добавлен в visible, а запрет уточнён до дубликатов или изменённой внешности персонажа.",
+    "У всех девяти tavern-invitation кадров format и targetSize синхронизированы с фактическими непрозрачными PNG: восемь 1672×941 и slide-04 1681×936."
+  ],
+  "nonBlockingObservations": [
+    "На slide-07 пять золотых пропусков визуально ближе к плоским карточкам, чем к носимым браслетам; точное количество и функция приглашения читаются, поэтому наблюдение принято без регенерации."
+  ],
+  "technicalProcessing": "Все тринадцать canonical-файлов просмотрены в original detail: один непрозрачный PNG 1254×1254, один 1681×936 и одиннадцать 1672×941. Файлы не изменялись, не перекодировались и не перемещались.",
+  "result": "Три VIP-ассета, базовая VIP-реквизиторская и девять кадров таверенного пролога получили точную текущую цепочку art-plan → round 35 visual audit → canonicalPath. Два metadata-расхождения устранены; блокирующих визуальных дефектов нет, а наблюдение по форме пяти пропусков принято без регенерации и без выдуманной допубликационной хронологии."
+}

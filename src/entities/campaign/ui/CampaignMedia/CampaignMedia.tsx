@@ -10,6 +10,7 @@ interface CampaignMediaProps {
 export function CampaignMedia({visual, className}: CampaignMediaProps) {
   const frameRef = useRef<HTMLVideoElement>(null);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const mediaStyle = visual.objectPosition ? {objectPosition: visual.objectPosition} : undefined;
 
   useEffect(() => {
     if (!('video' in visual)) return;
@@ -48,12 +49,13 @@ export function CampaignMedia({visual, className}: CampaignMediaProps) {
         poster={visual.poster ? resolveAsset(visual.poster) : undefined}
         preload="metadata"
         src={shouldLoadVideo ? resolveAsset(videoSource) : undefined}
+        style={mediaStyle}
       />
     );
   }
 
   if ('image' in visual && visual.image) {
-    return <img className={className} src={resolveAsset(visual.image)} alt={visual.alt} loading="lazy" decoding="async" />;
+    return <img className={className} src={resolveAsset(visual.image)} alt={visual.alt} loading="lazy" decoding="async" style={mediaStyle} />;
   }
 
   return null;

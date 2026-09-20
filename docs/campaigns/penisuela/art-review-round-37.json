@@ -1,0 +1,38 @@
+{
+  "campaignId": "penisuela",
+  "round": 37,
+  "date": "2026-09-01",
+  "status": "completed-user-approved",
+  "auditType": "single-asset-post-generation-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Полностью заново собрать первый похмельный кадр, не используя старую генерацию как основу, сохранить узнаваемые лица и после показа перейти к следующему кадру только по явному одобрению.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/manifest.json",
+    "пять утверждённых летних портретов героев"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-scene-hotel-overload",
+      "path": "assets/concepts/campaigns/penisuela/scenes/hotel-overload.png",
+      "verdict": "accept",
+      "userApproval": "ок го некст",
+      "checks": [
+        "Кадр создан с нуля одним проходом; предыдущий hotel-overload и промежуточные генерации не передавались как edit-target или visual reference.",
+        "В кадре ровно пять утверждённых героев; лица, основные силуэты и летние образы сохранены по отдельным портретам.",
+        "Похмельное утро и последствия праздника считываются сразу: усталые позы, пена, бокалы, цветы, кабели, перевёрнутая мебель и рассвет.",
+        "Линда имеет шесть видимых крыльев; Головач спит; переносной пульт и цветные каналы остаются визуально читаемыми.",
+        "До гостиничной галереи не раскрыты Игорь, личность невесты, Егор Крид или свадебные роли.",
+        "Файл уже имеет целевой размер 1672×941 и не требует повторного кодирования или постобработки."
+      ],
+      "scopeNote": "Принят как эмоциональный opening-shot пробуждения. Детальные inspectable-состояния номера и точные подписи остаются отдельными code-native слоями игрового экрана.",
+      "sha256": "6aaa9d88128d59793533b2420be2305e97dadb0307dca2ddf642c1e11b66285a",
+      "newGenerationCalls": 1
+    }
+  ],
+  "approval": {
+    "required": false,
+    "received": true,
+    "nextAction": "publish-and-generate-hotel-gallery-ensemble"
+  }
+}

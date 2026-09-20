@@ -1,8 +1,14 @@
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
+import {CriticalRollOverlayHost} from '../shared/ui/CriticalRollOverlay/CriticalRollOverlayHost';
 import {AppLayout} from './ui/AppLayout/AppLayout';
 import {RouteFallback} from './ui/RouteFallback/RouteFallback';
 
 const router = createBrowserRouter([
+  {
+    path: 'campaign/penisuela/credits',
+    HydrateFallback: RouteFallback,
+    lazy: async () => ({Component: (await import('../pages/campaign-credits/ui/CampaignCreditsPage/CampaignCreditsPage')).CampaignCreditsPage}),
+  },
   {
     path: 'campaign/penisuela/prologue',
     HydrateFallback: RouteFallback,
@@ -12,6 +18,11 @@ const router = createBrowserRouter([
     path: 'campaign/penisuela/play/:sceneId',
     HydrateFallback: RouteFallback,
     lazy: async () => ({Component: (await import('../pages/campaign-play/ui/CampaignPlayPage/CampaignPlayPage')).CampaignPlayPage}),
+  },
+  {
+    path: 'campaign/penisuela/combat-sandbox',
+    HydrateFallback: RouteFallback,
+    lazy: async () => ({Component: (await import('../pages/combat-sandbox/ui/CombatSandboxPage/CombatSandboxPage')).CombatSandboxPage}),
   },
   {
     element: <AppLayout />,
@@ -46,5 +57,10 @@ const router = createBrowserRouter([
 ], {basename: import.meta.env.BASE_URL});
 
 export function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <CriticalRollOverlayHost />
+    </>
+  );
 }

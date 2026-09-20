@@ -9,9 +9,11 @@ function isEditableTarget(target: EventTarget | null): boolean {
   );
 }
 
-export function useCampaignPreview(slideCount: number) {
+export function useCampaignPreview(slideCount: number, initialIndex = 0) {
   const lastIndex = Math.max(0, slideCount - 1);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(() => (
+    Math.min(Math.max(initialIndex, 0), lastIndex)
+  ));
 
   const goTo = useCallback((index: number) => {
     setCurrentIndex(Math.min(Math.max(index, 0), lastIndex));

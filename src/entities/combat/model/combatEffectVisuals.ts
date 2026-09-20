@@ -1,0 +1,55 @@
+import type {CombatConditionId, CombatStatusKind} from './types';
+
+// Code-native silhouettes and motion recipes: never infer an effect from its translated label or ID.
+export const combatEffectVisuals = {
+  prone: {motion: 'impact', path: 'M4 17h16M5 13h5l3 2h5M8 12l3-3 4 2M4 10a2 2 0 1 0 0 .1M17 5l2 3 2-3'},
+  rise: {motion: 'rise', path: 'M4 20h16M12 17V4m-4 4 4-4 4 4M7 17l-2 3m12-3 2 3'},
+  stun: {motion: 'orbit', path: 'm12 2 2.5 6 6.5.5-5 4 1.5 6.5-5.5-3.5L6.5 19 8 12.5 3 8.5 9.5 8Z'},
+  blind: {motion: 'veil', path: 'M3 12s3-6 9-6 9 6 9 6-3 6-9 6-9-6-9-6Zm6 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0M3 3l18 18'},
+  disadvantage: {motion: 'sink', path: 'M5 3h10v10H5ZM9 7h10v10H9ZM5 16v5m-3-3 3 3 3-3M13 10h2'},
+  fire: {motion: 'flame', path: 'M13 2s2 5-2 8c0-3-3-4-3-4s1 4-2 7c-5 7 9 13 13 4 2-5-2-8-2-8s0 4-3 4c3-5-1-11-1-11Z'},
+  ice: {motion: 'crystal', path: 'M12 2v20M3 7l18 10M3 17 21 7M9 4l3 3 3-3M9 20l3-3 3 3M4 10l4-1-1-4M17 19l-1-4 4-1M4 14l4 1-1 4M17 5l-1 4 4 1'},
+  poison: {motion: 'bubble', path: 'M12 2C9 7 5 11 5 15a7 7 0 0 0 14 0c0-4-4-8-7-13ZM9 14h.1M15 14h.1M9 18h6'},
+  shield: {motion: 'shield', path: 'm12 2 8 3v7c0 5-8 10-8 10S4 17 4 12V5Zm-4 9 3 3 5-6'},
+  crown: {motion: 'shield', path: 'm3 6 5 4 4-7 4 7 5-4-3 13H6ZM6 16h12'},
+  balance: {motion: 'balance', path: 'M3 18h18M12 5v13M5 8h14M5 8l-3 6h6Zm14 0-3 6h6ZM10 3h4'},
+  advantage: {motion: 'rise', path: 'M5 8h10v12H5ZM9 4h10v12H9ZM4 7V2m-3 3 3-3 3 3M13 8h2'},
+  command: {motion: 'rally', path: 'M6 22V3m0 1c5-4 8 4 14 0v10c-6 4-9-4-14 0M10 7l5 3-5 2'},
+  target: {motion: 'scan', path: 'M12 3a9 9 0 1 0 0 18 9 9 0 1 0 0-18ZM12 8a4 4 0 1 0 0 8 4 4 0 1 0 0-8ZM12 1v5m0 12v5M1 12h5m12 0h5'},
+  vitality: {motion: 'heartbeat', path: 'M12 21 3 12C-3 3 9 0 12 7c3-7 15-4 9 5ZM5 12h4l2-4 3 8 2-4h3'},
+  dive: {motion: 'dive', path: 'M5 3l8 10m-8-4 8 4-4-8M13 13l6 6m-6 0h6v-6M2 17l5 5m-3-7 5 5'},
+  resonance: {motion: 'ripple', path: 'M9 8v8m3-12v16m3-12v8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14'},
+  wind: {motion: 'vortex', path: 'M2 8h13c6 0 6-7 1-6M2 12h18c5 0 3 7-1 5M4 16h7c5 0 4 7 0 5'},
+  recalculate: {motion: 'scan', path: 'M5 3h14v18H5ZM8 6h8M8 10h2m4 0h2M8 14h2m4 0h2M8 18h2m4 0h2'},
+  confusion: {motion: 'wobble', path: 'M8 7c0-7 11-6 9 0-1 3-5 2-5 6m0 5v1M3 13l2 2-2 2M20 13l2 2-2 2'},
+  jam: {motion: 'glitch', path: 'M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m12 0h4M2 15h4m12 0h4M6 6h12v12H6ZM10 7l5 5h-5l4 5'},
+  inspire: {motion: 'rally', path: 'M9 18h6M9 21h6M8 15C0 6 10-2 16 4c6 6 0 9 0 11ZM12 1v2M2 6l2 1m16 0 2-1'},
+  damage: {motion: 'slash', path: 'm3 21 6-6m-3-3 6 6M8 14 17 3l4-1-1 4-10 10M4 4l2 3M13 21l2 1M20 12l3-1'},
+  critical: {motion: 'spark', path: 'm12 1 2 7 7-3-4 7 6 3-8 1-3 7-2-7-8 2 5-6-5-5 8 2Z'},
+  watch: {motion: 'scan', path: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Zm7 0a3 3 0 1 0 6 0 3 3 0 1 0-6 0M12 1v2m0 18v2'},
+  help: {motion: 'rally', path: 'M12 3v18M3 12h18M7 3H3v4m14-4h4v4M3 17v4h4m10 0h4v-4'},
+  heartbeat: {motion: 'heartbeat', path: 'M1 12h5l3-8 5 16 3-8h6'},
+  challenge: {motion: 'shake', path: 'm4 8 5 3-5 3M20 8l-5 3 5 3M12 2v13m0 5v1M5 20h14'},
+  breach: {motion: 'crack', path: 'm12 2 8 3v7c0 5-8 10-8 10S4 17 4 12V5Zm1 1-3 6 5 2-5 7'},
+  grease: {motion: 'slip', path: 'M12 2C9 8 5 11 5 15a7 7 0 0 0 14 0c0-4-4-7-7-13ZM2 21h20M8 15c0 2 2 3 4 3'},
+  fly: {motion: 'wings', path: 'M12 18C9 7 5 7 2 3c-1 10 4 15 10 15Zm0 0c3-11 7-11 10-15 1 10-4 15-10 15ZM6 10l6 8 6-8'},
+  shrink: {motion: 'shrink', path: 'M2 2l7 7M4 9h5V4M22 2l-7 7m0-5v5h5M2 22l7-7m-5 0h5v5m13 2-7-7m0 5v-5h5'},
+  fear: {motion: 'shake', path: 'M4 20V10a8 8 0 0 1 16 0v10l-4-3-4 3-4-3ZM8 9v3m8-3v3m-6 3h4'},
+  shame: {motion: 'sink', path: 'M3 4c5 3 13 3 18 0v8c0 6-9 10-9 10S3 18 3 12Zm3 7 3 2m9-2-3 2m-6 5c2-3 4-3 6 0'},
+  stat: {motion: 'rally', path: 'M4 20V12h4v8m2 0V8h4v12m2 0V3h4v17M2 22h20'},
+  summon: {motion: 'portal', path: 'M12 2a7 10 0 1 0 0 20 7 10 0 1 0 0-20ZM12 6a3 6 0 1 0 0 12 3 6 0 1 0 0-12M2 12h3m14 0h3'},
+  bound: {motion: 'bind', path: 'M7 3h10M9 3v6l-5 9c-1 3 17 3 16 0l-5-9V3M7 15h10'},
+} as const;
+
+export type CombatEffectVisualId = keyof typeof combatEffectVisuals;
+export const combatConditionVisuals = {prone: 'prone', stunned: 'stun', blinded: 'blind', 'attack-disadvantage': 'disadvantage'} as const satisfies Record<CombatConditionId, CombatEffectVisualId>;
+export const combatStatusVisuals = {
+  'retaliating-crown': 'crown', 'movement-spent': 'rise', 'cold-resistance': 'ice', 'dragonborn-armour': 'shield',
+  'poison-resistance': 'poison', 'northern-ward': 'ice', 'bubis-balance': 'balance', 'attack-advantage': 'advantage',
+  'guided-turn': 'command', 'studied-target': 'target', 'temporary-hp': 'shield', 'survival-instinct': 'vitality',
+  'dive-ready': 'dive', resonance: 'resonance', 'wind-guard': 'wind', 'tech-recalculation': 'recalculate',
+  confused: 'confusion', 'commanded-strike': 'command', jammed: 'jam', 'heat-reactor': 'fire', 'heat-charge': 'fire',
+  inspired: 'inspire', 'bonus-damage': 'damage', 'critical-focus': 'critical', burning: 'fire', surveilled: 'watch',
+  'helping-reaction': 'help', 'last-push': 'heartbeat', 'beast-challenge': 'challenge', 'critical-opening': 'breach',
+  'grease-trap': 'grease', 'guest-critical': 'critical',
+} as const satisfies Record<CombatStatusKind, CombatEffectVisualId>;

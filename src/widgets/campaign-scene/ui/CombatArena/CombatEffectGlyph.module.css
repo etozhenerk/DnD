@@ -1,0 +1,13 @@
+.glyph {
+  display: inline-block;
+  flex: 0 0 auto;
+  fill: none;
+  height: 1.15em;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  vertical-align: middle;
+  width: 1.15em;
+}

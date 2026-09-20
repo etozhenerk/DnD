@@ -1,6 +1,7 @@
 export interface CampaignImageVisual {
   image: string;
   alt: string;
+  objectPosition?: string;
   video?: never;
   poster?: never;
 }
@@ -9,6 +10,7 @@ export interface CampaignVideoVisual {
   video: string;
   alt: string;
   poster?: string;
+  objectPosition?: string;
   image?: never;
 }
 
@@ -34,6 +36,8 @@ export interface CampaignLocation {
   name: string;
   mapLabel: string;
   summary: string;
+  story?: string[];
+  sceneId?: string;
   visual?: CampaignVisual;
 }
 
@@ -68,6 +72,12 @@ export interface Campaign {
   groupVisual?: CampaignVisual;
   partyAtTime?: CampaignPartyMember[];
   presentation?: CampaignPresentation;
+  playableEntry?: {to: string; label: string};
+  highlights?: {
+    eyebrow: string;
+    title: string;
+    entries: {id: string; title: string; description: string; visual: CampaignVisual}[];
+  };
   completedChronicle?: {
     template: string;
     statusLabel: string;
@@ -82,11 +92,20 @@ export interface Campaign {
   };
   locations: CampaignLocation[];
   npcs?: CampaignPerson[];
-  enemies: (CampaignPerson & {tier: string; hp: number; ac: number; defeat?: string})[];
+  enemies: (CampaignPerson & {tier: string; hp?: number; ac?: number; defeat?: string})[];
   ending: {
     readAloud: string;
     epilogues: string[];
     reward: string;
+    rewards?: {
+      id: string;
+      itemId: string;
+      title: string;
+      recipient: string;
+      characterId?: string;
+      description: string;
+      visual: CampaignVisual;
+    }[];
     featureTitle?: string;
     visual?: CampaignVisual;
     closingTitle?: string;

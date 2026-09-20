@@ -1,0 +1,108 @@
+{
+  "campaignId": "penisuela",
+  "scope": "credits-remaining-cast-v1",
+  "status": "approved",
+  "verdict": "accept",
+  "userApproval": "approved",
+  "assets": [
+    {
+      "id": "credits-egorik-sidelines",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-egorik-sidelines.png",
+      "creditIds": [
+        "egorik"
+      ],
+      "verdict": "accept",
+      "userApproval": "approved",
+      "checks": [
+        "Егорик узнаваем, тихо сидит отдельно от вечеринки; он не организует и не участвует в конкурсе.",
+        "Сохранены рубашка, светлые брюки, пояс и браслет.",
+        "Просмотрен весь кадр; фотографическая подача и вечерний свет соответствуют серии.",
+        "PNG 1672×941, без встроенной рамки, надписей и водяных знаков."
+      ]
+    },
+    {
+      "id": "credits-nastasya-contest",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-nastasya-contest.png",
+      "creditIds": [
+        "nastya"
+      ],
+      "verdict": "accept",
+      "userApproval": "approved",
+      "checks": [
+        "Настасья узнаваема; руководит конкурсом лимбо с микрофоном и указующим жестом.",
+        "Взрослые гости проходят под планкой; роль ведущей считывается без подписи.",
+        "Просмотрен весь кадр; фотографическая подача и вечерний свет соответствуют серии.",
+        "PNG 1672×941, без встроенной рамки, надписей и водяных знаков."
+      ]
+    },
+    {
+      "id": "credits-kreed-mirror",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-kreed-mirror.png",
+      "creditIds": [
+        "egor-kreed"
+      ],
+      "verdict": "accept",
+      "userApproval": "approved",
+      "checks": [
+        "Kreed узнаваем, сохранены эльфийские уши, волосы и чёрно-золотая одежда.",
+        "Любуется и посылает поцелуй собственному отражению, игнорируя приглашение к тосту; отражение соответствует лицу и жесту.",
+        "Просмотрен весь кадр; фотографическая подача и вечерний свет соответствуют серии.",
+        "PNG 1672×941, без встроенной рамки, надписей и водяных знаков."
+      ]
+    },
+    {
+      "id": "credits-angel-grey-vlog",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-angel-grey-vlog-v2.png",
+      "creditIds": [
+        "igor-sinyak",
+        "graywise"
+      ],
+      "version": 2,
+      "verdict": "accept",
+      "userApproval": "approved",
+      "approvalMessage": "четко",
+      "checks": [
+        "Оператор виден отдельной фигурой слева, снимает ведущих на видеокамеру; в руках Angel и Grey Wiese нет камеры или селфи-палки.",
+        "Angel в черном платье с пайетками, открытыми плечами и длинными серьгами; темная короткая волнистая укладка по публичному фото.",
+        "Grey Wiese в белом ярусном кружевном наряде и белых ботфортах; светлые прямые волосы с пробором по публичной fashion-съемке.",
+        "Сохранены узнаваемые взрослые лица, телосложение, крылья Angel и эльфийские уши Grey Wiese.",
+        "Ведущие показывают десерт и разгромленный стол; фотографическая подача и вечерний свет согласуются с серией.",
+        "PNG 1672×941, без встроенной полароидной рамки, текста или водяного знака."
+      ]
+    },
+    {
+      "id": "credits-netak-scheming",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-netak-scheming.png",
+      "creditIds": [
+        "andrey-apollonov-junior"
+      ],
+      "verdict": "accept",
+      "userApproval": "approved",
+      "checks": [
+        "Нетак в обычном утверждённом облике стоит в тени у колонны, задумчиво наблюдает с хитрой усмешкой.",
+        "Головач Лена с рогами и светящимися предплечьями виден у бара на дальнем плане и не замечает Нетака.",
+        "Просмотрен весь кадр; фотографическая подача и вечерний свет соответствуют серии.",
+        "PNG 1672×941, без встроенной рамки, надписей и водяных знаков."
+      ]
+    }
+  ],
+  "rejectedIterations": [
+    {
+      "id": "credits-angel-grey-vlog",
+      "path": "art-drafts/credits/remaining-cast-v1/credits-angel-grey-vlog.png",
+      "creditIds": [
+        "igor-sinyak",
+        "graywise"
+      ],
+      "verdict": "regenerate",
+      "userApproval": "rejected",
+      "checks": [
+        "Angel и Grey Wiese узнаваемы по отдельным референсам; лица, волосы, одежда и расовые признаки не перепутаны.",
+        "Оба обращаются к телефону на селфи-палке; Grey Wiese показывает происходящее за спиной.",
+        "Просмотрен весь кадр; фотографическая подача и вечерний свет соответствуют серии.",
+        "PNG 1672×941, без встроенной рамки, надписей и водяных знаков."
+      ],
+      "reason": "Нужны отдельный оператор, праздничная одежда и прически по реальным образам."
+    }
+  ]
+}

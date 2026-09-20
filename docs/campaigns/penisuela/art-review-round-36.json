@@ -1,0 +1,704 @@
+{
+  "campaignId": "penisuela",
+  "round": 36,
+  "date": "2026-09-01",
+  "status": "completed-awaiting-user-approval",
+  "auditType": "full-current-story-art-revalidation",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Проверить уже созданные генерации на соответствие текущему сценарию, потому что часть изображений могла устареть.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/script.md",
+    "docs/campaigns/penisuela/story-graph.json",
+    "docs/campaigns/penisuela/cast.md",
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/manifest.json"
+  ],
+  "scope": {
+    "included": [
+      "все сюжетно значимые фоны, боевые состояния, концовки, NPC-референсы и предметные кадры Пенисуэлы",
+      "девять кадров таверенного пролога",
+      "восемь выбранных опорных кадров видеомоста",
+      "актуальность manifest- и runtime-мэппинга по отношению к текущему графу из 50 узлов"
+    ],
+    "excluded": [
+      "утверждённые карточки и характеристики героев",
+      "отдельный комплект роликов навыков героев и их постеры",
+      "чисто технические UI-рамки, жетоны и иконки, не меняющие сюжетную информацию"
+    ],
+    "exclusionReason": "Пользователь отдельно запретил перерабатывать утверждённых героев и параллельно ведёт их навыки; этот раунд проверяет только сюжетную актуальность генераций. Утверждённые портреты героев использованы как жёсткие identity references при проверке групповых кадров."
+  },
+  "executiveSummary": {
+    "verdict": "current-art-plan-underestimates-required-replacements",
+    "currentPlanMinimumBitmapCalls": 19,
+    "correctedMinimumBitmapCalls": 31,
+    "requiredDeltaCalls": 12,
+    "readyAfterArtPlanApprovalCalls": 25,
+    "privateReferenceBlockedCalls": 6,
+    "recommendedRevisionReserveCalls": 8,
+    "maximumCallsIncludingReserve": 39,
+    "privateReferenceEntities": [
+      "egorik",
+      "nastya",
+      "stas",
+      "polina"
+    ],
+    "criticalConclusion": "Пометка canonical в manifest сейчас означает историческую публикацию файла, но не его пригодность для актуального runtime. Группа current-safe-environments-and-anchors в currentRevision содержит несколько фактически устаревших изображений и должна быть пересобрана после утверждения этого аудита.",
+    "releaseBlockers": [
+      "Ни один из семи обязательных ранних environment-beats не покрыт полностью готовым актуальным кадром.",
+      "Три фазы Последнего дубля нарушают утверждённую анатомию героев.",
+      "Все три старые концовки показывают неверный образ Игоря; четвёртая концовка отсутствует.",
+      "Три из восьми кадров видеомоста не удерживают шесть крыльев Линды, а все восемь остаются неопубликованными draft-файлами без финального видео.",
+      "Runtime preview всё ещё маршрутизирует ряд снятых сцен и предметов."
+    ]
+  },
+  "reviewItems": [
+    {
+      "assetIds": [
+        "penisuela-scene-tavern-invitation",
+        "penisuela-scene-tavern-visitor-notices",
+        "penisuela-scene-tavern-visitor-approaches",
+        "penisuela-scene-tavern-envelope-handoff",
+        "penisuela-scene-tavern-lord-examines-envelope",
+        "penisuela-scene-tavern-envelope-closeup-sealed",
+        "penisuela-scene-tavern-envelope-closeup-open",
+        "penisuela-scene-tavern-five-bracelets-decision",
+        "penisuela-scene-kostryulka-flight"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-01.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-02.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-03.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-04.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-05.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-06.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-07.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png",
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-09.png"
+      ],
+      "verdict": "accept-after-technical-processing",
+      "checks": [
+        "Последовательность остаётся сюжетно актуальной: неизвестный посетитель, чёрный конверт, ровно пять пропусков и отправка Кострюльки без раскрытия заказчика или свадьбы.",
+        "slide-04 имеет 1681×936 против 1672×941 у остальных кадров; перед видео- или полноэкранным показом нужен единый crop/resize без новой генерации.",
+        "Восьмой кадр визуально показывает отправку конверта, а не отдельный выбор пятерых гостей; это допустимо только вместе с утверждённым текстом мастера."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-video-bracelet-bubsilda",
+        "penisuela-video-bracelet-lambert",
+        "penisuela-video-bracelet-golovach-lena",
+        "penisuela-video-bracelet-thorin-pukoshchit",
+        "penisuela-video-ship-to-island"
+      ],
+      "paths": [
+        "art-drafts/video-bridge/bubsilda-bracelet-v1.png",
+        "art-drafts/video-bridge/lambert-bracelet-v3.png",
+        "art-drafts/video-bridge/golovach-lena-bracelet-v1.png",
+        "art-drafts/video-bridge/thorin-bracelet-v1.png",
+        "art-drafts/video-bridge/ship-to-penisuela-v5.png"
+      ],
+      "verdict": "accept-after-technical-processing",
+      "checks": [
+        "Лица, состав, один браслет на героя и spoiler boundary соответствуют текущему немому видеомосту.",
+        "Файлы находятся только в игнорируемом art-drafts, отсутствуют в manifest и не имеют пользовательского approval текущего раунда.",
+        "После утверждения нужны публикация production-кадров и отдельная сборка ролика; новых bitmap-вызовов для этих пяти кадров не требуется."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-video-bracelet-linda",
+        "penisuela-video-hotel-arrival",
+        "penisuela-video-first-night-party"
+      ],
+      "paths": [
+        "art-drafts/video-bridge/linda-bracelet-v4.png",
+        "art-drafts/video-bridge/hotel-arrival-v2.png",
+        "art-drafts/video-bridge/first-night-party-v4.png"
+      ],
+      "verdict": "regenerate",
+      "checks": [
+        "В каждом выбранном кадре шесть крыльев Линды не читаются как три отдельные двусторонние пары; solo- и hotel-кадры явно показывают только две пары, а party-кадр не удерживает шесть раздельно читаемых корней.",
+        "Ошибка критична для анимации и continuity с утверждённым образом; crop, resize и code overlay её не исправят.",
+        "Новые кадры должны содержать exactly six separately readable wings, three bilateral pairs."
+      ],
+      "newGenerationCalls": 3
+    },
+    {
+      "assetId": "penisuela-scene-hotel-overload",
+      "path": "assets/concepts/campaigns/penisuela/scenes/hotel-overload.png",
+      "verdict": "regenerate",
+      "checks": [
+        "Красивый общий хаос и пятеро героев сохранены как reference, но текущий кадр не показывает обязательные заранее видимые способы взаимодействия.",
+        "Отсутствуют невозможный наклон и провал, узкий мокрый карниз, потолочная решётка с вентилятором и лентой, заклинивший шкаф с колокольчиком, читаемый режиссёрский пульт и подписанные кабели.",
+        "Code close-ups не заменяют физическую телеграфию опасности в основном кадре."
+      ],
+      "newGenerationCalls": 1
+    },
+    {
+      "assetId": "penisuela-scene-hotel-overload-empty-reverse",
+      "path": "assets/concepts/campaigns/penisuela/scenes/hotel-overload-empty-reverse.png",
+      "verdict": "reject",
+      "usageGate": "legacy-environment-reference-only",
+      "checks": [
+        "Плоский пустой номер не покрывает текущую investigation-hazard сцену и не должен считаться вторым готовым gameplay-фоном.",
+        "Файл можно хранить как архитектурный reference, но не маршрутизировать как достаточную сцену."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-item-overload-console",
+        "penisuela-item-camera-pendant",
+        "penisuela-item-anonymous-bracelets"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/items/overload-console.png",
+        "assets/concepts/campaigns/penisuela/items/camera-pendant.png",
+        "assets/concepts/campaigns/penisuela/items/anonymous-bracelets.png"
+      ],
+      "verdict": "accept",
+      "checks": [
+        "Пульт и кулон остаются точными inspectable bases без раннего раскрытия личности невесты.",
+        "Кадр браслетов показывает ровно пять рук и пять одинаковых островных браслетов.",
+        "Точные строки пульта и состояния должны оставаться code-native."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-item-journey-letter",
+      "path": "assets/concepts/campaigns/penisuela/items/journey-letter.png",
+      "verdict": "reject",
+      "checks": [
+        "Пиктограммы острова, бедствия и руки из воды заранее обещают катастрофу, тогда как текущий пролог продаёт обычный оплаченный мальчишник и не предупреждает о сюжете.",
+        "Текущий немой видеомост отдельно запрещает показывать письмо."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-clue-egorik-recording",
+      "path": "assets/concepts/campaigns/penisuela/items/egorik-recording-clue-v2.png",
+      "verdict": "reject",
+      "replacementPath": "assets/concepts/campaigns/penisuela/items/egorik-recording.png",
+      "checks": [
+        "Canonical v2 показывает фактическую передачу конверта женской руке и тем самым противоречит утверждённому обрыву записи до смены рук.",
+        "Старый egorik-recording.png показывает Егорика рядом с Настасьей, конверт ещё остаётся у Егорика, а получатель не раскрывается; его можно вернуть без новой генерации после технической проверки и manifest-remap."
+      ],
+      "replacementVerdict": "accept-after-technical-processing",
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-hotel-gallery",
+      "path": "assets/concepts/campaigns/penisuela/scenes/hotel-gallery.png",
+      "verdict": "accept",
+      "usageGate": "architecture-and-composition-reference-only",
+      "checks": [
+        "Архитектура и чистая нижняя зона пригодны как reference.",
+        "Файл не покрывает обязательный establishing с Алексис, Pussy Sultan, футляром Вуманайзера, архивным барабаном, балкой, решёткой и видимым маршрутом к бару."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-scene-hotel-archive-alexis",
+        "penisuela-scene-hotel-gallery-kraken",
+        "penisuela-scene-hotel-gallery-kraken-defeated",
+        "penisuela-scene-hotel-gallery-kraken-linda-disabled"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/hotel-archive-alexis.png",
+        "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken.png",
+        "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-defeated.png",
+        "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-kraken-linda-disabled.png"
+      ],
+      "verdict": "reject",
+      "usageGate": "retire-from-current-route",
+      "checks": [
+        "Текущий Алексис виден сразу в аварийном гардеробе и не является хранителем архивных бумаг.",
+        "Рельсовый кракен существует только как legacy migration; текущий единый ceremonial-court encounter использует рельсовый механизм и автоматы, а не отдельного Kraken.",
+        "currentRevision ошибочно сохраняет Kraken trio как reusable combat states."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-npc-archive-linfea",
+        "penisuela-npc-pussy-sultan",
+        "penisuela-npc-pussy-sultan-throne-lore",
+        "penisuela-item-pussy-sultan-golden-scepter-microphone",
+        "penisuela-item-pussy-sultan-womanizer"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/npcs/archive-linfea.webp",
+        "assets/concepts/campaigns/penisuela/npcs/pussy-sultan.webp",
+        "assets/concepts/campaigns/penisuela/npcs/pussy-sultan-throne-lore.png",
+        "assets/concepts/campaigns/penisuela/items/pussy-sultan-golden-scepter-microphone.png",
+        "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png"
+      ],
+      "verdict": "accept",
+      "checks": [
+        "Алексис сохраняет узнаваемость и ровно шесть крыльев; Pussy Sultan и его скипетр остаются корректными identity/item references.",
+        "Вуманайзер годится как предметный close-up, но не покрывает футляр, бархатную подушку и три возможных положения в отношенческой линии."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-item-pussy-sultan-archive-key",
+        "penisuela-scene-pussy-sultan-before-microphone-returned",
+        "penisuela-scene-pussy-sultan-microphone-returned",
+        "penisuela-enemy-hotel-vip-guards",
+        "penisuela-scene-pussy-after-guards-defeated",
+        "penisuela-scene-vip-prop-room",
+        "penisuela-scene-vip-prop-room-carriers",
+        "penisuela-scene-vip-prop-room-carriers-defeated"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/items/pussy-sultan-archive-key.png",
+        "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-before-microphone-returned.png",
+        "assets/concepts/campaigns/penisuela/scenes/pussy-sultan-suite-microphone-returned.png",
+        "assets/concepts/campaigns/penisuela/enemies/hotel-vip-guards-with-sultan.png",
+        "assets/concepts/campaigns/penisuela/scenes/pussy-after-guards-defeated.png",
+        "assets/concepts/campaigns/penisuela/scenes/vip-prop-room.png",
+        "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers.png",
+        "assets/concepts/campaigns/penisuela/scenes/vip-prop-room-carriers-defeated.png"
+      ],
+      "verdict": "reject",
+      "usageGate": "legacy-only",
+      "checks": [
+        "Private-suite, human-guard, archive-key и palanquin-carrier цепочка снята с текущего маршрута.",
+        "Нынешняя сцена происходит в общей галерее с Алексис, Pussy Sultan, механическим двором и сразу доступным архивом."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-v5",
+      "path": "assets/concepts/campaigns/penisuela/scenes/closed-bar-v5.png",
+      "verdict": "regenerate",
+      "checks": [
+        "Бар не удалён из сюжета: это обязательный current node между галереей и гримёркой.",
+        "Существующий кадр показывает Станиса, Прохора и далёкую труппу, но не телеграфирует мокрую вращающуюся сцену, four-count, обледенелый узкий поручень, малую решётку, резервную кнопку, кабели разных форм, журнал, колокольчик и открытый артистический путь.",
+        "Из-за отсутствия affordances картинка не объясняет, почему игрокам интересно вмешаться, и не поддерживает особенности героев."
+      ],
+      "newGenerationCalls": 1
+    },
+    {
+      "assetIds": [
+        "penisuela-scene-closed-bar-stas",
+        "penisuela-scene-closed-bar-prokhor-v3",
+        "penisuela-npc-eternal-all-inclusive",
+        "penisuela-item-prokhor-payment-terminal"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar-stas.png",
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-v3.png",
+        "assets/concepts/campaigns/penisuela/npcs/eternal-all-inclusive.webp",
+        "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal.png"
+      ],
+      "verdict": "accept",
+      "usageGate": "dialogue-identity-or-blank-device-reference-only",
+      "checks": [
+        "Станис остаётся пригодным опциональным dialogue beat, Прохор — identity reference, чистый терминал — code-native base.",
+        "Ни один из этих файлов сам по себе не покрывает новый бар или рекурсивную смену."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-scene-closed-bar",
+        "penisuela-scene-closed-bar-prokhor",
+        "penisuela-scene-closed-bar-prokhor-phone-call",
+        "penisuela-scene-closed-bar-prokhor-work-schedule",
+        "penisuela-item-prokhor-hotel-bill",
+        "penisuela-item-prokhor-payment-terminal-audit",
+        "penisuela-item-closed-bar-token"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar.png",
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor.png",
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-phone-call.png",
+        "assets/concepts/campaigns/penisuela/scenes/closed-bar-prokhor-work-schedule.png",
+        "assets/concepts/campaigns/penisuela/items/prokhor-hotel-bill.png",
+        "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-audit.png",
+        "assets/concepts/campaigns/penisuela/items/closed-bar-token.png"
+      ],
+      "verdict": "reject",
+      "usageGate": "retire-from-current-route",
+      "checks": [
+        "Phone/payment/payer и обязательный token-gate удалены из текущей версии.",
+        "Raster schedule содержит ненадёжный мелкий текст; новый roster и бюрократическая рекурсия должны выводиться кодом без реальных имён и финансовых намёков."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-item-prokhor-payment-terminal-work-schedule",
+      "path": "assets/concepts/campaigns/penisuela/items/prokhor-payment-terminal-work-schedule.png",
+      "verdict": "accept-after-technical-processing",
+      "usageGate": "device-state-reference-with-code-native-text",
+      "checks": [
+        "Физическое состояние терминала с лентой годится как reference первого бита.",
+        "Существующие слова и расписание нельзя использовать как финальный roster; экран, рекурсию и бейджи выводить кодом."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-artists-dressing-room",
+      "path": "assets/concepts/campaigns/penisuela/scenes/artists-dressing-room.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Существующее изображение показывает три физические золотые куклы и портал.",
+        "Текущий канон требует повреждённое зеркало с запаздывающим Сатиром и тремя разными отражениями, видимую сервисную щель, rider, запечатанный курьерский барабан и голосовой журнал как три независимые системы.",
+        "Code close-ups не исправят неверную онтологию основного изображения."
+      ],
+      "newGenerationCalls": 1
+    },
+    {
+      "assetId": "penisuela-npc-celebrity-decoy-satyr",
+      "path": "assets/concepts/campaigns/penisuela/npcs/celebrity-decoy-satyr.webp",
+      "verdict": "accept",
+      "usageGate": "identity-reference",
+      "checks": [
+        "Сатир узнаваем, безопасен и остаётся пригодной identity-базой для новой гримёрки."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-egorik-bungalow-reveal",
+      "path": "assets/concepts/campaigns/penisuela/scenes/egorik-bungalow-reveal.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Старый интерьер не показывает разорванный мостик, узкую уцелевшую балку, ледяную петлю, насос, швартовочное кольцо, оборванную верёвку, чайку-ритм и аварийный канал.",
+        "Двухшаговое спасение и способы применения особенностей героев по изображению не читаются."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetIds": [
+        "penisuela-npc-false-groom-guest",
+        "penisuela-npc-guest-organizer"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/npcs/false-groom-guest.webp",
+        "assets/concepts/campaigns/penisuela/npcs/guest-organizer.webp"
+      ],
+      "verdict": "accept",
+      "usageGate": "identity-reference-only-fresh-private-photos-still-required-for-new-scene",
+      "checks": [
+        "Существующие портреты сохраняются как continuity refs Егорика и Настасьи.",
+        "Новая совместная сцена всё равно закрыта до свежих приватных фото-референсов согласно текущему плану."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-guest-bungalows-choice",
+      "path": "assets/concepts/campaigns/penisuela/scenes/guest-bungalows-choice.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Старый кадр показывает только Оливию и Полинетту, пустой стул и отменённый privacy-купол.",
+        "Нет Станиса, Вуманайзера на бархатной подушке, доски трёх колонок и открытой арки тоннеля.",
+        "Нужен новый общий courtyard/entry establishing."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetIds": [
+        "penisuela-npc-bungalow-consultant-linfea",
+        "penisuela-npc-bungalow-spouse-a",
+        "penisuela-npc-bungalow-spouse-b",
+        "penisuela-item-pussy-sultan-womanizer"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/npcs/bungalow-consultant-linfea.webp",
+        "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-a.webp",
+        "assets/concepts/campaigns/penisuela/npcs/bungalow-spouse-b.webp",
+        "assets/concepts/campaigns/penisuela/items/pussy-sultan-womanizer.png"
+      ],
+      "verdict": "accept",
+      "usageGate": "identity-and-item-reference-only",
+      "checks": [
+        "Оливия, Станис и Полинетта сохраняют утверждённые образы; Вуманайзер остаётся немым предметом.",
+        "Для новых совместных сцен Станиса и Полинетты обязательны свежие приватные фото-референсы."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-stas",
+      "path": "assets/concepts/campaigns/penisuela/scenes/couples-session-stas.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Кадр показывает отменённый бесконечный бар и не содержит Вуманайзер, перо, семь автоматических подписей, камеру и действие Оливии.",
+        "Новый кадр должен высмеивать буквальную бюрократизацию фразы, сохраняя ответ за самим Станисом."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-polina",
+      "path": "assets/concepts/campaigns/penisuela/scenes/couples-session-polina.webp",
+      "verdict": "reject",
+      "checks": [
+        "Колыбель и семейный портрет прямо возвращают отменённую фантазию о будущем реальной пары и нарушают текущую границу юмора.",
+        "Обязательная замена должна показывать только Факт / Интерпретация / Дописала система, без ребёнка, дома или предсказания отношений."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetId": "penisuela-scene-couples-session-choice",
+      "path": "assets/concepts/campaigns/penisuela/scenes/couples-session-choice.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Старый нейтральный кадр не показывает Вуманайзер, три возможных положения футляра и принадлежность ответа конкретному человеку.",
+        "Один новый кадр может покрыть couples-session-plan и couples-session-choice, но olva-relationship-review требует отдельной мизансцены."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetId": "penisuela-enemy-universal-advice-algorithm",
+      "path": "assets/concepts/campaigns/penisuela/scenes/show-18-pavilion.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Старый кадр содержит камеры и маски, но не показывает вращающийся скользкий край, щель телесуфлёра, кабели, занавес и явно погашенную трансляцию.",
+        "В углу остаётся удалённая Красная кнопка; три маски не несут трёх различимых тезисов.",
+        "Новый кадр обязан дать привлекательный физический вызов и отдельные пути Бубсильды, Линды, Ламберта, Головача и Торина."
+      ],
+      "newGenerationCalls": 1
+    },
+    {
+      "assetId": "penisuela-scene-groom-tunnel",
+      "path": "assets/concepts/campaigns/penisuela/scenes/groom-tunnel.webp",
+      "verdict": "regenerate",
+      "checks": [
+        "Красивый коридор не содержит мокрые рельсы, узкие движущиеся балки, схему, малый канал, корни, чайку, рым, кожух и питающую линию.",
+        "Игроки не могут прочесть свои подходы по существующему изображению."
+      ],
+      "newGenerationCalls": 1
+    },
+    {
+      "assetId": "penisuela-scene-groom-preparation-room",
+      "path": "assets/concepts/campaigns/penisuela/scenes/groom-preparation-room.webp",
+      "verdict": "reject",
+      "checks": [
+        "Старый кадр строится вокруг Крида с микрофоном и предлагает отменённую голосовую механику.",
+        "Новая сцена требует петлю повторяющихся движений, четыре заранее видимых жеста, малый канал, защёлку, питающую линию и заклинивший кожух.",
+        "Изображение не должно содержать Игоря или намёк на невесту."
+      ],
+      "newGenerationCalls": 1,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetId": "penisuela-npc-anonymous-elf-artist",
+      "path": "assets/concepts/campaigns/penisuela/npcs/anonymous-elf-artist.webp",
+      "verdict": "accept",
+      "usageGate": "kreed-identity-reference-and-post-rescue-portrait",
+      "checks": [
+        "Крид узнаваем, spoiler-safe и не раскрывает Игоря."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-npc-ceremony-linfea",
+        "penisuela-scene-ceremony-villa"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/npcs/ceremony-linfea.webp",
+        "assets/concepts/campaigns/penisuela/scenes/ceremony-villa.webp"
+      ],
+      "verdict": "reject",
+      "checks": [
+        "Оба файла показывают старый женский образ невесты и не являются Игорем Синяком в утверждённой версии.",
+        "ceremony-villa как узел удалён; эти файлы нельзя prefetch, preload или использовать даже после reveal как continuity Игоря."
+      ],
+      "newGenerationCalls": 0
+    },
+    {
+      "assetIds": [
+        "penisuela-enemy-last-take-phase-one",
+        "penisuela-enemy-last-take-phase-two",
+        "penisuela-enemy-last-take-phase-three"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/last-take-phase-one.webp",
+        "assets/concepts/campaigns/penisuela/scenes/last-take-phase-two.webp",
+        "assets/concepts/campaigns/penisuela/scenes/last-take-phase-three.webp"
+      ],
+      "verdict": "regenerate",
+      "checks": [
+        "Во всех трёх кадрах у Линды различимы только четыре крыла вместо утверждённых шести.",
+        "В phase one и phase two у полностью бесхвостого Головача появляется явный органический хвост и дрейф лица/чешуи.",
+        "Арена, телеграф фаз и состав из пяти героев остаются полезными композиционными references, но технической обработки недостаточно для исправления анатомии."
+      ],
+      "newGenerationCalls": 3
+    },
+    {
+      "assetIds": [
+        "penisuela-ending-wedding",
+        "penisuela-ending-director",
+        "penisuela-ending-shutdown"
+      ],
+      "paths": [
+        "assets/concepts/campaigns/penisuela/scenes/ending-wedding.webp",
+        "assets/concepts/campaigns/penisuela/scenes/ending-director.webp",
+        "assets/concepts/campaigns/penisuela/scenes/ending-shutdown.webp"
+      ],
+      "verdict": "reject",
+      "checks": [
+        "Все три кадра показывают Крида со старой светловолосой женщиной-феей вместо Игоря.",
+        "Wedding дополнительно гарантирует необязательных союзников; shutdown физически переносит Крайнеплота и счёт на остров вопреки отдельной таверненной коде.",
+        "Все три должны быть заменены, а evacuation ending отсутствует и создаётся новым."
+      ],
+      "newGenerationCalls": 3,
+      "alreadyCountedInCurrentPlan": true
+    },
+    {
+      "assetId": "penisuela-final-teaser",
+      "path": "assets/concepts/campaigns/penisuela/key-art/teaser.png",
+      "verdict": "accept",
+      "usageGate": "spoiler-safe-preplay-teaser",
+      "checks": [
+        "Постер не показывает Игоря и не раскрывает личность невесты.",
+        "Алексис, Оливия, Pussy Sultan и пятеро героев остаются участниками текущей версии, поэтому их присутствие не является устаревшим само по себе.",
+        "Постер не отражает новые Grey Wiese/bedroom и крупную линию Станиса с Полинеттой, но это допустимо для spoiler-safe тизера и не блокирует релиз."
+      ],
+      "newGenerationCalls": 0
+    }
+  ],
+  "missingRequiredAssetsAlreadyInCurrentPlan": [
+    "penisuela-scene-hotel-gallery-ensemble",
+    "penisuela-scene-pussy-regalia-hook",
+    "penisuela-scene-groom-hypothesis",
+    "penisuela-scene-closed-bride-wing-route",
+    "penisuela-scene-graywise-door-opened",
+    "penisuela-scene-bedroom-live-reveal",
+    "penisuela-scene-bedroom-unboxing",
+    "penisuela-ui-item-thorin-seven-job-bag-upgrade",
+    "penisuela-ui-item-bubsilda-steady-horizon-brooch",
+    "penisuela-ending-evacuation"
+  ],
+  "additionalCallsMissingFromCurrentPlan": [
+    {
+      "id": "penisuela-video-bracelet-linda",
+      "reason": "Шесть крыльев Линды не удержаны."
+    },
+    {
+      "id": "penisuela-video-hotel-arrival",
+      "reason": "Линда показана с четырьмя крыльями."
+    },
+    {
+      "id": "penisuela-video-first-night-party",
+      "reason": "Три пары крыльев не читаются раздельно и ненадёжны для анимации."
+    },
+    {
+      "id": "penisuela-scene-hotel-overload",
+      "reason": "Основной кадр не показывает игровые affordances."
+    },
+    {
+      "id": "penisuela-scene-closed-bar",
+      "reason": "Бар остался в сюжете, но существующий кадр не показывает four-count hazard и пути героев."
+    },
+    {
+      "id": "penisuela-scene-artists-dressing-room",
+      "reason": "Старые физические куклы противоречат текущему зеркалу и трём независимым системам улик."
+    },
+    {
+      "id": "penisuela-scene-olva-relationship-review",
+      "reason": "Нельзя тем же кадром честно покрыть личный разбор Оливии и последующий план/выбор Вуманайзера."
+    },
+    {
+      "id": "penisuela-scene-show-18-pavilion",
+      "reason": "Существующий Show18 построен на удалённой Красной кнопке и не показывает способы вмешательства."
+    },
+    {
+      "id": "penisuela-scene-groom-tunnel",
+      "reason": "Существующий тоннель не телеграфирует игровые пути."
+    },
+    {
+      "id": "penisuela-enemy-last-take-phase-one",
+      "reason": "Четыре крыла Линды и хвост Головача."
+    },
+    {
+      "id": "penisuela-enemy-last-take-phase-two",
+      "reason": "Четыре крыла Линды и хвост Головача."
+    },
+    {
+      "id": "penisuela-enemy-last-take-phase-three",
+      "reason": "Четыре крыла Линды."
+    }
+  ],
+  "correctedChronologicalGenerationOrder": [
+    "01 penisuela-video-bracelet-linda",
+    "02 penisuela-video-hotel-arrival",
+    "03 penisuela-video-first-night-party",
+    "04 penisuela-scene-hotel-overload",
+    "05 penisuela-scene-hotel-gallery-ensemble",
+    "06 penisuela-scene-pussy-regalia-hook",
+    "07 penisuela-scene-closed-bar",
+    "08 penisuela-scene-artists-dressing-room",
+    "09 penisuela-scene-groom-hypothesis",
+    "10 penisuela-scene-egorik-bungalow-reveal",
+    "11 penisuela-scene-bungalow-courtyard",
+    "12 penisuela-scene-couples-session-stas",
+    "13 penisuela-scene-couples-session-polina",
+    "14 penisuela-scene-olva-relationship-review",
+    "15 penisuela-scene-show-18-pavilion",
+    "16 penisuela-scene-couples-session-plan-choice",
+    "17 penisuela-scene-groom-tunnel",
+    "18 penisuela-scene-groom-preparation-room-kreed-disclosure",
+    "19 penisuela-scene-closed-bride-wing-route",
+    "20 penisuela-scene-graywise-door-opened",
+    "21 penisuela-scene-bedroom-live-reveal",
+    "22 penisuela-scene-bedroom-unboxing",
+    "23 penisuela-ui-item-thorin-seven-job-bag-upgrade",
+    "24 penisuela-ui-item-bubsilda-steady-horizon-brooch",
+    "25 penisuela-enemy-last-take-phase-one",
+    "26 penisuela-enemy-last-take-phase-two",
+    "27 penisuela-enemy-last-take-phase-three",
+    "28 penisuela-ending-wedding",
+    "29 penisuela-ending-director",
+    "30 penisuela-ending-shutdown",
+    "31 penisuela-ending-evacuation"
+  ],
+  "artPlanCorrectionsRequired": [
+    "Изменить activeGenerationBatch.generationCount с 19 на 31, readyAfterApprovalCount с 14 на 25 и blockedByPrivateReferenceCount с 5 на 6.",
+    "Не считать восемь кадров видеомоста generated-approved: пять перевести в awaiting-user-approval-and-publication, три — в regenerate.",
+    "Перевести hotel-overload, closed-bar-v5, artists-dressing-room, Show18, groom-tunnel и три Last Take phases из reuse в replace/regenerate.",
+    "Разделить olva-relationship-review и couples-session-plan/choice на два разных вызова.",
+    "Удалить Kraken trio, VIP suite/guards/prop-room, hotel-archive-alexis, старые payment/token gates, ceremony-linfea и ceremony-villa из current runtime mapping; файлы можно физически сохранить как историю.",
+    "Исправить claims preservedPublishedAssets и current-safe-environments-and-anchors: исторически опубликовано не равно актуально пригодно.",
+    "Вернуть spoiler-safe egorik-recording.png как stop-frame и убрать v2 из player-facing маршрута.",
+    "Ни один portrait или asset Игоря не загружать до bedroom-reveal; старые ceremony-файлы не использовать даже после reveal."
+  ],
+  "staleIntegrationFindings": [
+    {
+      "file": "content/campaigns/penisuela-session-preview.json",
+      "severity": "blocking-for-current-runtime",
+      "finding": "Файл всё ещё содержит token/service-code gate, VIP guards, prop room, Алексис в архиве, rail Kraken, старую payment-ветку Прохора и другие legacy scenes. Это implementation/content delta, а не повод перегенерировать снятые изображения."
+    },
+    {
+      "file": "assets/concepts/manifest.json",
+      "severity": "blocking-for-safe-asset-resolution",
+      "finding": "Несколько отвергнутых или legacy-only файлов всё ещё имеют status canonical. После утверждения аудита им нужны явные legacy/retired назначения либо removal из runtime resolver без физического удаления истории."
+    },
+    {
+      "file": "docs/campaigns/penisuela/video-plan.json",
+      "severity": "blocking-for-video-playback",
+      "finding": "Production pack остаётся draft/blocked/deferred; финальные MP4/WebM/poster отсутствуют, поэтому видеомост пока может работать только через утверждённый технический fallback."
+    }
+  ],
+  "nonBlockingObservations": [
+    "Тизер остаётся spoiler-safe, хотя не рекламирует новые Grey Wiese/bedroom и расширенную линию Станиса с Полинеттой; отдельная перегенерация постера не входит в обязательные 31 вызов.",
+    "Существующие архитектурные и identity references полезны для continuity, даже когда они отвергнуты как player-facing scene coverage.",
+    "Пять сохранённых видео-кадров, таверенный пролог, clean terminal и spoiler-safe запись Егорика требуют только технической обработки/публикации, а не новых bitmap-вызовов."
+  ],
+  "approval": {
+    "userDecision": "pending",
+    "rule": "Только пользователь может утвердить этот аудит и разрешить перенос его выводов в art-plan, manifest, runtime mapping и новую генерацию.",
+    "imagesModified": false,
+    "imagesGenerated": false
+  }
+}

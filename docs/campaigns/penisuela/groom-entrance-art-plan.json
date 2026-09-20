@@ -1,0 +1,98 @@
+{
+  "id": "penisuela-scene-groom-hideout-entrance",
+  "type": "scene",
+  "date": "2026-09-20",
+  "status": "approved",
+  "sceneIds": [
+    "groom-tunnel"
+  ],
+  "entityId": "groom-tunnel",
+  "authority": {
+    "userInstruction": "при клике на кнопку идти к криду надо еще сделать арт сцены с его убежищем со стороны\nэто вход с дверью, мы туда заходим и видим уже следующий экран",
+    "generationApproved": true,
+    "variantApproval": "approved",
+    "approvalInstruction": "окаю"
+  },
+  "purpose": "Новый внешний ракурс сразу после «Идти к Kreed»; клик по видимой двери открывает прежний внутренний экран тоннеля.",
+  "narrativeScope": "Подход к служебному входу убежища под сценой. Внутренний тоннель, испытания героев, встреча и последующие раскрытия сохраняются.",
+  "visible": [
+    "Внешний служебный вход под сценой курорта",
+    "Одна закрытая хорошо различимая дверь с ручкой",
+    "Дорожка и короткий спуск ко входу",
+    "Тёмное резное дерево, каменное основание, латунь и тропическая зелень на рассвете"
+  ],
+  "forbidden": [
+    "Kreed и другие люди",
+    "Вид внутреннего убежища до входа",
+    "Вторая дверь или новый выбор пути",
+    "Кнопки, надписи, магический барьер и замки, создающие новое испытание"
+  ],
+  "composition": "Общий вид снаружи в три четверти; дверь около центра справа выше нижних 25% под рассказчика; свободный подход.",
+  "format": "png",
+  "transparency": false,
+  "targetSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "localReferences": [
+    "assets/concepts/campaigns/penisuela/scenes/bungalows-two-paths.png",
+    "assets/concepts/campaigns/penisuela/scenes/groom-tunnel-blocked.png"
+  ],
+  "realPersonReferenceRequired": false,
+  "runtime": {
+    "proposedViewId": "exterior",
+    "sourceActionId": "continue-1-bungalow-courtyard",
+    "sourceSceneId": "egorik-bungalow-reveal",
+    "nextView": "entry",
+    "interaction": "Общий SceneHotspotLayer по контуру двери, hover/focus-visible, доступная подпись «Войти в убежище».",
+    "implementationNotes": "Новый внешний вид внутри groom-tunnel перед текущим entry, без обхода существующих внутренних препятствий. Вход фиксируется в журнале; старые сохранения с внутренним прогрессом остаются на соответствующем ракурсе. Проверить отмену, восстановление и попадание в дверь при 1024/1280 px.",
+    "draftDoorHotspot": {
+      "position": {
+        "x": 63.8,
+        "y": 25.7,
+        "width": 16.1,
+        "height": 46.5
+      },
+      "coordinates": "Проценты исходного изображения, background fit contain. Предварительно по визуальному осмотру; проверка в UI после подключения."
+    },
+    "viewId": "exterior",
+    "entryActionId": "groom-tunnel-enter",
+    "entryFlag": "groom-tunnel-entered",
+    "doorHotspot": {
+      "position": {
+        "x": 63.8,
+        "y": 25.7,
+        "width": 16.1,
+        "height": 46.5
+      },
+      "fit": "contain",
+      "coordinateSystem": "Проценты исходного PNG 1672×941; подключён общий SceneHotspotLayer."
+    },
+    "verification": "Автоматические сценарии входа, отмены, сохранения и 96 комбинаций внутренних проверок пройдены; браузерная проверка недоступна."
+  },
+  "generation": {
+    "mode": "built-in-imagegen",
+    "intent": "generate-from-references",
+    "requestedGenerations": 1,
+    "status": "completed",
+    "promptPath": "docs/campaigns/penisuela/art-drafts/groom-hideout-entrance-v1.prompt.txt",
+    "actualGenerations": 1,
+    "actualSize": {
+      "width": 1672,
+      "height": 941
+    }
+  },
+  "draftPath": "docs/campaigns/penisuela/art-drafts/groom-hideout-entrance-v1.png",
+  "proposedCanonicalPath": "assets/concepts/campaigns/penisuela/scenes/groom-hideout-entrance.png",
+  "review": {
+    "path": "docs/campaigns/penisuela/groom-entrance-art-review.json",
+    "verdict": "accept",
+    "userApproval": "approved"
+  },
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/groom-hideout-entrance.png",
+    "technicalProcessing": "Побайтное копирование утверждённого PNG без изменения изображения.",
+    "runtimeConnected": true
+  }
+}

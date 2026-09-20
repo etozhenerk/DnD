@@ -1,0 +1,483 @@
+.panel {
+  bottom: clamp(4.5rem, 7vh, 5.8rem);
+  left: clamp(1rem, 4vw, 4rem);
+  position: absolute;
+  width: min(43rem, calc(100vw - 8rem));
+  max-height: min(38vh, 21rem);
+  overflow: auto;
+  padding: clamp(0.9rem, 1.5vw, 1.3rem) clamp(1.1rem, 2vw, 1.6rem);
+  color: var(--color-ink);
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-gold-alpha-32);
+  box-shadow: var(--shadow-session-story);
+  z-index: 12;
+}
+
+.eyebrow,
+.speaker,
+.actionGrid article > span,
+.resolution > span,
+.summaryPrimary > span,
+.summaryGrid article > span,
+.checkHeading span {
+  margin: 0;
+  color: var(--color-gold-light);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.panel h1 {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1;
+}
+
+.speaker {
+  margin-top: 0.55rem;
+}
+
+.readAloud {
+  max-width: 58ch;
+  margin: 0.4rem 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(0.86rem, 1.2vw, 1.02rem);
+  line-height: 1.42;
+}
+
+.storyBody,
+.epilogue,
+.resolution,
+.checkPanel {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-white-alpha-18);
+}
+
+.checkPanel {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.masterResolution,
+.masterProgress,
+.masterEpilogue {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.masterResolution > span,
+.masterProgress > strong,
+.masterEpilogue > span {
+  color: var(--color-gold-light);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.masterResolution > strong {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.masterEpilogue > strong {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+
+.masterResolution p,
+.masterProgress p,
+.masterEpilogue p {
+  color: var(--color-silver);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.masterEpilogue > div {
+  background: var(--color-black-alpha-42);
+  padding: 0.55rem 0.65rem;
+}
+
+.masterEpilogue b {
+  color: var(--color-gold-light);
+  display: block;
+  font-size: 0.72rem;
+  margin-bottom: 0.25rem;
+}
+
+.masterResolution button {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  font: inherit;
+  justify-self: start;
+  padding: 0.5rem 0.7rem;
+}
+
+.masterProgress > div {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  display: flex;
+  gap: 0.7rem;
+  justify-content: space-between;
+  padding: 0.55rem 0.65rem;
+}
+
+.masterProgress span {
+  color: var(--color-silver);
+  font-size: 0.76rem;
+}
+
+.masterProgress b {
+  color: var(--color-gold-light);
+  white-space: nowrap;
+}
+
+.masterResolution button:hover,
+.masterResolution button:focus-visible {
+  border-color: var(--color-gold-light);
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.prompt {
+  max-width: 76ch;
+  margin: 0;
+  color: var(--color-silver);
+  line-height: 1.5;
+}
+
+.actionGrid,
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.actionGrid article,
+.summaryGrid article,
+.summaryPrimary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 1rem;
+  border: 1px solid var(--color-white-alpha-18);
+  border-radius: 0.9rem;
+  background: var(--color-black-alpha-42);
+  box-shadow: var(--shadow-soft);
+}
+
+.actionGrid h2,
+.checkHeading h2 {
+  margin: 0;
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.actionGrid p,
+.summaryGrid p,
+.summaryPrimary p,
+.resolution p,
+.checkPanel p {
+  margin: 0;
+  color: var(--color-silver);
+  line-height: 1.45;
+}
+
+.actionGrid button,
+.resolution button,
+.resolution a,
+.checkPanel button,
+.checkPanel select,
+.checkPanel input {
+  min-height: 2.55rem;
+  border: 1px solid var(--color-gold-alpha-32);
+  border-radius: 0.65rem;
+  color: var(--color-ink);
+  background: var(--color-black-alpha-58);
+  font: inherit;
+}
+
+.actionGrid button,
+.resolution button,
+.resolution a,
+.checkPanel button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.65rem 0.9rem;
+  color: var(--color-ice-bright);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.actionGrid button:hover:not(:disabled),
+.resolution button:hover,
+.resolution a:hover,
+.checkPanel button:hover:not(:disabled) {
+  border-color: var(--color-gold-light);
+  background: var(--color-wine-dark);
+}
+
+.actionGrid button:focus-visible,
+.resolution button:focus-visible,
+.resolution a:focus-visible,
+.checkPanel button:focus-visible,
+.checkPanel select:focus-visible,
+.checkPanel input:focus-visible {
+  outline: 3px solid var(--color-ice);
+  outline-offset: 2px;
+}
+
+.actionGrid button:disabled,
+.checkPanel button:disabled {
+  color: var(--color-ink-muted);
+  cursor: not-allowed;
+  opacity: var(--opacity-68);
+}
+
+.actionUnavailable {
+  opacity: var(--opacity-72);
+}
+
+.resolution {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.resolution strong,
+.summaryPrimary strong {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.rollSummary,
+.advantage,
+.rollStatus,
+.challengeAttempt {
+  color: var(--color-gold-light) !important;
+  font-size: 0.9rem;
+}
+
+.challengeProgress {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1rem;
+}
+
+.challengeProgress div {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-white-alpha-18);
+  display: flex;
+  gap: 0.7rem;
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+.challengeProgress span {
+  color: var(--color-silver);
+  font-size: 0.82rem;
+}
+
+.challengeProgress strong {
+  color: var(--color-gold-light);
+  white-space: nowrap;
+}
+
+.challengeProgress p {
+  color: var(--color-combat-threat-soft);
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.checkHeading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.checkSelectors,
+.rollControls,
+.checkFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.checkSelectors label,
+.rollControls label {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 11rem;
+  color: var(--color-silver);
+  font-size: 0.86rem;
+}
+
+.checkPanel select,
+.checkPanel input {
+  padding: 0.55rem 0.7rem;
+}
+
+.checkFooter {
+  justify-content: flex-end;
+}
+
+.resourceToggle,
+.resourceActive {
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  margin-top: 0.8rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.resourceActive {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-session-brass-outline);
+  color: var(--color-gold-light);
+}
+
+.resourceToggle:focus-visible,
+.resourceActive:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.summaryPrimary {
+  margin-top: 1rem;
+}
+
+.defeatFallback {
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-gold-alpha-62);
+  box-shadow: var(--shadow-session-dock);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.75rem;
+  left: 50%;
+  max-width: 36rem;
+  padding: 1.4rem;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 4rem);
+  z-index: 42;
+}
+
+.defeatFallback span {
+  color: var(--color-gold-light);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.defeatFallback h2,
+.defeatFallback p {
+  margin: 0;
+}
+
+.defeatFallback h2 {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+}
+
+.defeatFallback p {
+  color: var(--color-silver);
+  line-height: 1.5;
+}
+
+.defeatFallback button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font: inherit;
+  justify-self: start;
+  min-height: 2.7rem;
+  padding: 0.65rem 1rem;
+}
+
+.defeatFallback button:focus-visible {
+  outline: 3px solid var(--color-ice);
+  outline-offset: 2px;
+}
+
+.show18Assist {
+  background: var(--gradient-session-panel);
+  border: 1px solid var(--color-gold-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.75rem;
+  position: absolute;
+  right: 1rem;
+  top: 5.5rem;
+  width: min(23rem, calc(100vw - 2rem));
+  z-index: 42;
+}
+
+.show18Assist > span {
+  color: var(--color-gold-light);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.show18Assist div {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.show18Assist button {
+  background: var(--gradient-wood);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+}
+
+.show18Assist button:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .panel {
+    bottom: 4.6rem;
+    left: 1rem;
+    width: calc(100vw - 2rem);
+    max-height: min(42vh, 19rem);
+  }
+
+  .actionGrid,
+  .summaryGrid,
+  .challengeProgress {
+    grid-template-columns: 1fr;
+  }
+}

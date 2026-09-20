@@ -1,0 +1,87 @@
+.backdrop {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: auto;
+  position: absolute;
+  z-index: 100;
+}
+
+.dialog {
+  align-items: center;
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-gold-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  max-width: 36rem;
+  padding: clamp(1.7rem, 4vw, 3rem) clamp(1.5rem, 5vw, 3.6rem);
+  text-align: center;
+  width: min(100%, 36rem);
+}
+
+.eyebrow {
+  color: var(--color-brass-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.dialog h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1;
+  margin: 0.55rem 0 0;
+  text-shadow: var(--shadow-title);
+}
+
+.ornament {
+  align-items: center;
+  color: var(--color-gold);
+  display: flex;
+  font-size: 0.72rem;
+  gap: 0.6rem;
+  margin: 0.9rem 0;
+  width: 100%;
+}
+
+.ornament::before,
+.ornament::after {
+  background: var(--gradient-brass-line);
+  content: '';
+  flex: 1;
+  height: 1px;
+}
+
+.summary {
+  color: var(--color-brass-light);
+  line-height: 1.5;
+  margin: 0 0 1.3rem;
+  max-width: 29rem;
+}
+
+.dialog button {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.68rem 1.4rem;
+}
+
+.dialog button:hover { filter: brightness(1.08); }
+
+.dialog button:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 3px;
+}

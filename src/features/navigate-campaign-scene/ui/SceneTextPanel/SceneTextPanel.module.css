@@ -1,0 +1,186 @@
+.panel {
+  box-sizing: border-box;
+}
+
+.panel.narration {
+  align-items: center;
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-brass-alpha-62);
+  bottom: clamp(1rem, 2.6vh, 1.8rem);
+  box-shadow: var(--shadow-session-story);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.28rem;
+  grid-template-columns: minmax(0, 1fr);
+  left: 50%;
+  max-width: 82rem;
+  min-height: 0;
+  padding: 0.68rem 1rem;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: min(92vw, calc(100vw - 6rem));
+  z-index: 12;
+}
+
+.panel.narration [data-scene-narration-copy] {
+  border-left: 0;
+  min-width: 0;
+  padding-inline: 2.35rem;
+  text-align: center;
+}
+
+.narrationCopy {
+  border-left: 2px solid var(--color-wine);
+  min-width: 0;
+  padding-left: clamp(1rem, 2vw, 1.6rem);
+}
+
+.panel.narration .narrationCopy {
+  border-left: 0;
+  padding-inline: 2.35rem;
+  text-align: center;
+}
+
+.narrator {
+  color: var(--color-brass-light);
+  font-size: clamp(0.54rem, 0.7vw, 0.65rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.narrator {
+  color: var(--color-wine);
+  margin-bottom: 0.3rem;
+}
+
+.readAloud {
+  font-family: var(--font-display);
+  font-size: clamp(0.78rem, 1.08vw, 0.98rem);
+  line-height: 1.42;
+  margin: 0;
+  max-width: 52rem;
+  text-wrap: pretty;
+}
+
+.panel.narration [data-scene-narrator] {
+  color: var(--color-gold-light);
+  font-size: clamp(0.82rem, 1vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin: 0 0 0.18rem;
+  text-transform: uppercase;
+}
+
+.panel.narration [data-scene-read-aloud] {
+  color: var(--color-parchment-light);
+  font-family: var(--font-display);
+  font-size: clamp(1.12rem, 1.55vw, 1.4rem);
+  line-height: 1.42;
+  margin: 0 auto;
+  max-width: 72rem;
+  text-wrap: pretty;
+  white-space: pre-line;
+}
+
+.collapse {
+  align-items: center;
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-brass-light);
+  cursor: pointer;
+  display: flex;
+  height: 2.1rem;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  width: 2.1rem;
+  z-index: 2;
+}
+
+.primaryAction {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  border-radius: 999px;
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  justify-self: center;
+  margin-top: 0.4rem;
+  max-width: 100%;
+  padding: 0.55rem 1.25rem;
+}
+
+.primaryAction:hover {
+  filter: brightness(1.08);
+}
+
+.primaryAction:disabled {
+  cursor: default;
+  opacity: var(--opacity-action-disabled);
+}
+
+.primaryAction:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.collapse svg,
+.restore svg {
+  fill: none;
+  height: 1.05rem;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+  width: 1.05rem;
+}
+
+.restore {
+  align-items: center;
+  background: var(--gradient-session-dock);
+  border: 1px solid var(--color-brass-alpha-62);
+  bottom: clamp(0.5rem, 1.5vh, 0.9rem);
+  box-shadow: var(--shadow-session-control);
+  color: var(--color-gold-light);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-display);
+  font-size: clamp(0.68rem, 0.86vw, 0.8rem);
+  gap: 0.45rem;
+  left: 50%;
+  padding: 0.62rem 0.85rem;
+  position: absolute;
+  transform: translateX(-50%);
+  z-index: 14;
+}
+
+.collapse:hover,
+.restore:hover {
+  background: var(--gradient-gold);
+  border-color: var(--color-gold-light);
+  color: var(--color-ink-dark);
+  filter: brightness(1.08);
+}
+
+.collapse:focus-visible,
+.restore:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .panel.narration {
+    padding-inline: 0.7rem;
+    width: calc(100vw - 2rem);
+  }
+
+  .panel.narration [data-scene-narration-copy] {
+    padding-inline: 2.1rem;
+  }
+}

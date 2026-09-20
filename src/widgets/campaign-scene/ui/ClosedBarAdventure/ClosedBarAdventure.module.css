@@ -1,0 +1,30 @@
+.routeAction {
+  background: var(--gradient-gold);
+  border: 1px solid var(--color-gold-light);
+  bottom: clamp(11.5rem, 22vh, 14rem);
+  color: var(--color-ink-dark);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(0.7rem, 0.86vw, 0.82rem);
+  font-weight: 700;
+  left: 50%;
+  padding: 0.55rem 0.78rem;
+  position: absolute;
+  text-decoration: none;
+  transform: translateX(-50%);
+  z-index: 13;
+}
+
+.routeAction:hover {
+  filter: brightness(1.08);
+}
+
+.routeAction:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 3px;
+}
+
+.routeAction:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}

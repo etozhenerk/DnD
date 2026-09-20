@@ -5,10 +5,15 @@ import type {Character} from '../../../entities/character/model/types';
 import {raceConcepts, races} from '../../../entities/race/model/data';
 import type {Race, RaceAppearance, RaceCatalogueAudit, RaceCatalogueEntry, RaceConcept} from '../../../entities/race/model/types';
 
-function toCampaignAppearance(person: CampaignPerson, campaignTitle: string, kind: 'npc' | 'enemy'): RaceAppearance {
+function toCampaignAppearance(
+  person: CampaignPerson,
+  campaignId: string,
+  campaignTitle: string,
+  kind: 'npc' | 'enemy',
+): RaceAppearance {
   const visual = person.visual;
   return {
-    id: person.id,
+    id: `${campaignId}-${person.id}`,
     name: person.name,
     kind,
     context: kind === 'npc' ? person.role : campaignTitle,
@@ -49,7 +54,7 @@ function getCampaignPeople(raceId: string, kind: 'npc' | 'enemy'): RaceAppearanc
     const people = kind === 'npc' ? campaign.npcs ?? [] : campaign.enemies;
     return people
       .filter((person) => person.raceConceptIds?.includes(raceId))
-      .map((person) => toCampaignAppearance(person, campaign.title, kind));
+      .map((person) => toCampaignAppearance(person, campaign.id, campaign.title, kind));
   });
 }
 

@@ -1,0 +1,53 @@
+.photo {
+  background: var(--color-credits-photo-paper);
+  box-shadow: var(--shadow-credits-photo);
+  color: var(--color-ink-dark);
+  justify-self: center;
+  margin: 0;
+  min-width: 0;
+  padding: clamp(0.55rem, 1.2vw, 0.9rem);
+  padding-bottom: 0.4rem;
+  width: min(100%, 28rem);
+}
+
+.print {
+  aspect-ratio: 1672 / 941;
+  background: var(--color-night-deep);
+  display: grid;
+  overflow: hidden;
+}
+
+.print img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.photo figcaption {
+  align-content: center;
+  display: grid;
+  font-family: var(--font-credits-photo-caption);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.1;
+  min-height: 4.5rem;
+  padding: 0.65rem 0.3rem;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.error { align-self: center; color: var(--color-ink); padding: 1rem; text-align: center; }
+.tiltLeft { transform: rotate(-4deg) translateY(-0.6rem); }
+.tiltRight { transform: rotate(5deg) translateY(0.8rem); }
+.tiltSmallLeft { transform: rotate(-2deg) translateY(0.6rem); }
+.tiltSmallRight { transform: rotate(3deg) translateY(-0.4rem); }
+
+@media (max-width: 700px) {
+  .photo { max-width: 27rem; }
+  .photo figcaption { font-size: clamp(1.35rem, 5vw, 1.8rem); }
+  .tiltLeft { transform: rotate(-3deg); }
+  .tiltRight { transform: rotate(3deg); }
+  .tiltSmallLeft { transform: rotate(-2deg); }
+  .tiltSmallRight { transform: rotate(2deg); }
+}

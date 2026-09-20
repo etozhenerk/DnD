@@ -1,0 +1,23 @@
+{
+  "campaignId": "penisuela",
+  "round": 29,
+  "status": "approved-under-user-delegation",
+  "items": [
+    {
+      "assetId": "penisuela-scene-ceremony-villa",
+      "variant": "art-drafts/ceremony-villa-v1.png",
+      "verdict": "accept-after-technical-processing",
+      "userDecision": "approved-by-explicit-full-campaign-delegation",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/ceremony-villa.webp",
+      "checks": [
+        "В кадре ровно два живых персонажа: узнаваемые Крид и Игорь в утверждённых эльфийском и церемониальном образах.",
+        "Крид шагает к барьеру и говорит в микрофон, Игорь движется навстречу отдельным открытым жестом; позы не повторяют портретный lineup.",
+        "Две световые голосовые линии сходятся в центре прозрачного барьера и визуально гасят стену сценического ветра.",
+        "Тихий сад, дальний неактивный алтарь и закрытый футляр записи сохраняют приватность и моральный выбор сцены.",
+        "Герои, толпа, поцелуй, читаемый текст, UI и побеждённый финальный модуль отсутствуют."
+      ]
+    }
+  ],
+  "technicalProcessing": "RGB PNG 1672×941 приведён к 1536×864 WebP без художественных изменений.",
+  "result": "Поздний маршрут полностью обеспечен фонами до точки необратимости; первая встреча пары показана тёплой и приватной."
+}

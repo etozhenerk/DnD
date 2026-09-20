@@ -31,6 +31,8 @@ description: Implement the single-screen Game Master control interface for a loc
 
 Сохранить клавиатурное управление, доступные подписи и `focus-visible`. Разместить действия в `features`, крупные блоки в `widgets`, сущности и модель ниже; не складывать движок в страницу.
 
+Все сюжетные кнопки панели мастера передавать в общий `SceneMasterControl` как `SceneMasterAction`, а полную консоль собирать через `GameMasterConsole`. Нажатие на проверяемое решение закрывает меню мастера и открывает общий `SceneCheckPanel` поверх существующего `SceneDecisionModal`; характеристику, DC и последствие провала не писать в самой кнопке. Не добавлять в `masterContent` локальные описательные карточки, сетки кнопок, селекты героев или собственные панели броска.
+
 ## Проверка
 
 Передать полные сценарии `$test-dnd-gameplay-scenarios`, затем `$verify-dnd-campaign-release`.

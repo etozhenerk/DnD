@@ -1,0 +1,167 @@
+.rollStatus {
+  color: var(--color-brass-muted);
+  line-height: 1.35;
+  min-height: 1rem;
+}
+
+.heroChoices button,
+.statChoices button,
+.rollControls button,
+.rollControls input {
+  background: var(--color-black-alpha-42);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-parchment-light);
+  font: inherit;
+}
+
+.heroChoices button,
+.statChoices button,
+.rollControls button {
+  cursor: pointer;
+}
+
+.heroChoices {
+  display: grid;
+  gap: 0.42rem;
+  grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr));
+}
+
+.heroChoices button {
+  align-items: center;
+  display: grid;
+  gap: 0.26rem;
+  justify-items: center;
+  min-width: 0;
+  padding: 0.38rem 0.28rem;
+}
+
+.heroChoices > button:only-child {
+  justify-self: center;
+  max-width: 12rem;
+  width: 100%;
+}
+
+.heroAvatarFrame {
+  align-items: center;
+  aspect-ratio: 1;
+  display: flex;
+  height: clamp(3rem, 5vw, 4.4rem);
+  justify-content: center;
+  overflow: hidden;
+  width: clamp(3rem, 5vw, 4.4rem);
+}
+
+.heroAvatarFrame img {
+  --hero-check-scale: 1;
+  --hero-check-y: 0%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transform: translateY(var(--hero-check-y)) scale(var(--hero-check-scale));
+  transform-origin: center;
+  width: 100%;
+}
+
+.heroAvatarFrame img[data-hero-id='bubsilda'] { --hero-check-scale: 1.12; --hero-check-y: 6.1%; }
+.heroAvatarFrame img[data-hero-id='linda'] { --hero-check-scale: 0.99; --hero-check-y: 1.1%; }
+.heroAvatarFrame img[data-hero-id='lambert'] { --hero-check-scale: 1.04; --hero-check-y: 3.5%; }
+.heroAvatarFrame img[data-hero-id='golovach-lena'] { --hero-check-scale: 0.97; --hero-check-y: 0.3%; }
+.heroAvatarFrame img[data-hero-id='thorin-pukoshchit'] { --hero-check-scale: 1.12; --hero-check-y: 6.7%; }
+.heroAvatarFrame img[data-hero-id='egor-kreed'] { transform: translate(-38%, 70%) scale(4); }
+
+.heroChoiceName {
+  line-height: 1.05;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heroChoices small {
+  color: var(--color-brass-muted);
+  font: inherit;
+  line-height: 1.2;
+}
+
+.statChoices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.statChoices button {
+  padding: 0.46rem 0.62rem;
+}
+
+.heroChoices .selected,
+.statChoices .selected {
+  background: var(--gradient-gold);
+  border-color: var(--color-gold-light);
+  color: var(--color-ink-dark);
+}
+
+.heroChoices .selected small {
+  color: inherit;
+}
+
+.rollControls {
+  align-items: end;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr minmax(6rem, 0.7fr) 1fr;
+}
+
+.rollControls label {
+  display: grid;
+  gap: 0.22rem;
+}
+
+.rollControls label span {
+  color: var(--color-brass-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rollControls button,
+.rollControls input {
+  min-width: 0;
+  padding: 0.5rem 0.58rem;
+}
+
+.rollControls input {
+  width: 100%;
+}
+
+.heroChoices button:hover,
+.statChoices button:hover,
+.rollControls button:hover:not(:disabled) {
+  background: var(--gradient-gold);
+  border-color: var(--color-gold-light);
+  color: var(--color-ink-dark);
+}
+
+.heroChoices button:focus-visible,
+.statChoices button:focus-visible,
+.rollControls button:focus-visible,
+.rollControls input:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 2px;
+}
+
+.rollControls button:disabled {
+  cursor: default;
+  opacity: var(--opacity-48);
+}
+
+@media (max-width: 720px) {
+  .heroChoices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rollControls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resourceControls { grid-template-columns: 1fr; }

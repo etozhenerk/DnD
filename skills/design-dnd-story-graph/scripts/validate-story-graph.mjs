@@ -63,6 +63,22 @@ for (const node of graph.nodes) {
   }
 }
 
+for (const node of graph.nodes) {
+  if (node.aliasOf === undefined) continue;
+  const target = byId.get(node.aliasOf);
+  if (!target) {
+    errors.push(`Unknown alias target ${String(node.aliasOf)} for ${node.id}`);
+    continue;
+  }
+  if (node.aliasOf === node.id) errors.push(`Node cannot alias itself: ${node.id}`);
+  if (target.aliasOf !== undefined) errors.push(`Alias chains are not allowed: ${node.id} -> ${node.aliasOf}`);
+  if (node.expectedMinutes !== target.expectedMinutes) {
+    errors.push(
+      `Alias duration mismatch ${node.id}=${node.expectedMinutes}m, ${node.aliasOf}=${target.expectedMinutes}m`
+    );
+  }
+}
+
 const reachable = new Set();
 const queue = starts.map((node) => node.id);
 while (queue.length > 0) {
@@ -102,28 +118,35 @@ for (const clue of graph.criticalClues ?? []) {
   for (const source of sources) if (!byId.has(source)) errors.push(`Unknown clue source ${source} for ${clue.id}`);
 }
 
-const routeDurations = [];
-function collectDurations(id, duration, path) {
+let routeCount = 0;
+let minDuration = Number.POSITIVE_INFINITY;
+let maxDuration = Number.NEGATIVE_INFINITY;
+function collectDurations(id, duration, path, canonicalPath) {
   if (!byId.has(id) || path.has(id)) return;
   const node = byId.get(id);
-  const nextDuration = duration + node.expectedMinutes;
+  const canonicalId = node.aliasOf ?? node.id;
+  const nextDuration = duration + (canonicalPath.has(canonicalId) ? 0 : node.expectedMinutes);
   if (node.ending) {
-    routeDurations.push(nextDuration);
+    routeCount += 1;
+    minDuration = Math.min(minDuration, nextDuration);
+    maxDuration = Math.max(maxDuration, nextDuration);
     return;
   }
   const nextPath = new Set(path);
   nextPath.add(id);
-  for (const transition of node.transitions ?? []) collectDurations(transition.to, nextDuration, nextPath);
+  const nextCanonicalPath = new Set(canonicalPath);
+  nextCanonicalPath.add(canonicalId);
+  for (const transition of node.transitions ?? []) {
+    collectDurations(transition.to, nextDuration, nextPath, nextCanonicalPath);
+  }
 }
-for (const start of starts) collectDurations(start.id, 0, new Set());
+for (const start of starts) collectDurations(start.id, 0, new Set(), new Set());
 
-if (routeDurations.length === 0) errors.push('No finite route reaches an ending');
+if (routeCount === 0) errors.push('No finite route reaches an ending');
 const recommended = graph.recommendedDurationMinutes;
-if (routeDurations.length > 0 && recommended) {
-  const min = Math.min(...routeDurations);
-  const max = Math.max(...routeDurations);
-  if (min < recommended.min) warnings.push(`Shortest route ${min}m is below recommended ${recommended.min}m`);
-  if (max > recommended.max) warnings.push(`Longest route ${max}m exceeds recommended ${recommended.max}m`);
+if (routeCount > 0 && recommended) {
+  if (minDuration < recommended.min) warnings.push(`Shortest route ${minDuration}m is below recommended ${recommended.min}m`);
+  if (maxDuration > recommended.max) warnings.push(`Longest route ${maxDuration}m exceeds recommended ${recommended.max}m`);
 }
 
 for (const warning of warnings) console.warn(`WARN: ${warning}`);
@@ -131,6 +154,6 @@ for (const error of errors) console.error(`ERROR: ${error}`);
 
 if (errors.length > 0) process.exit(1);
 
-const minDuration = routeDurations.length ? Math.min(...routeDurations) : 0;
-const maxDuration = routeDurations.length ? Math.max(...routeDurations) : 0;
-console.log(`Graph valid: ${graph.nodes.length} nodes, ${starts.length} starts, ${endings.length} endings, routes ${minDuration}-${maxDuration}m`);
+const reportedMinDuration = routeCount > 0 ? minDuration : 0;
+const reportedMaxDuration = routeCount > 0 ? maxDuration : 0;
+console.log(`Graph valid: ${graph.nodes.length} nodes, ${starts.length} starts, ${endings.length} endings, routes ${reportedMinDuration}-${reportedMaxDuration}m`);

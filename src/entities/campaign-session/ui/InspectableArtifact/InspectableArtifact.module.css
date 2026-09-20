@@ -7,6 +7,8 @@
   height: 100%;
   justify-content: center;
   min-width: 0;
+  overflow: hidden;
+  border-radius: 0.28rem;
   padding: 0;
 }
 
@@ -30,52 +32,99 @@
   width: 100%;
 }
 
+.trigger[data-artifact-id='pussy-sultan-archive-key'] .iconWrap img,
+.trigger[data-artifact-id='alexis-dressing-room-key'] .iconWrap img,
+.trigger[data-artifact-id='pussy-sultan-womanizer'] .iconWrap img {
+  mix-blend-mode: normal;
+  object-fit: contain;
+  object-position: center;
+}
+
+.trigger[data-artifact-id='pussy-sultan-archive-key'] .iconWrap img,
+.trigger[data-artifact-id='alexis-dressing-room-key'] .iconWrap img {
+  transform: scale(1.12);
+}
+
+.trigger[data-artifact-id='pussy-sultan-womanizer'] .iconWrap img {
+  transform: scale(1.18);
+}
+
 .iconWrap > :global(span) {
   height: 100%;
   width: 100%;
 }
 
-.trigger:hover .iconWrap {
+.trigger:hover .iconWrap,
+.trigger:focus-visible {
+  outline: none;
+}
+
+.trigger:focus-visible .iconWrap {
   border-color: var(--color-gold-alpha-62);
-  box-shadow: var(--shadow-session-hotspot);
-  filter: brightness(1.24) saturate(1.08);
-  transform: scale(1.06);
+  box-shadow: var(--shadow-inventory-item-hover);
+  filter: brightness(1.16) saturate(1.05);
 }
 
 .hotspot {
   align-items: center;
   background: var(--color-transparent);
   border: 0;
-  border-radius: 50%;
-  box-shadow: var(--shadow-session-hotspot);
+  border-radius: 1.4rem;
+  box-shadow: none;
   cursor: pointer;
   display: flex;
-  height: clamp(3.7rem, 5.2vw, 5.2rem);
+  height: clamp(5.5rem, 8vw, 8rem);
   justify-content: center;
   padding: 0;
-  transition: filter 160ms ease, transform 160ms ease;
-  width: clamp(3.7rem, 5.2vw, 5.2rem);
+  transition: background 160ms ease, box-shadow 160ms ease;
+  width: clamp(7rem, 10vw, 10rem);
 }
 
-.hotspot img {
-  border-radius: 50%;
-  height: 100%;
-  object-fit: contain;
-  width: 100%;
+.hotspotLabel {
+  background: var(--color-black-alpha-58);
+  border-radius: 0.35rem;
+  bottom: 0.45rem;
+  color: var(--color-parchment-light);
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.85vw, 0.82rem);
+  left: 50%;
+  max-width: 11rem;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0.25rem 0.48rem;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  text-shadow: var(--shadow-title);
+  transform: translate(-50%, 0.28rem);
+  transition: opacity 140ms ease, transform 140ms ease;
+  white-space: nowrap;
 }
 
-.hotspot > :global(span) {
-  height: 100%;
-  width: 100%;
-}
-
-.hotspot:hover {
-  filter: brightness(1.18);
-  transform: scale(1.08);
-}
-
-.trigger:focus-visible .iconWrap,
+.hotspot:hover,
 .hotspot:focus-visible {
+  background: var(--gradient-session-door-hover);
+  box-shadow: 0 0 2.2rem var(--color-gold-alpha-32);
+  outline: none;
+}
+
+.hotspot:hover .hotspotLabel,
+.hotspot:focus-visible .hotspotLabel {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.trigger:focus-visible .iconWrap {
   outline: 2px solid var(--color-ice-bright);
-  outline-offset: 3px;
+  outline-offset: -3px;
+}
+
+.trigger[data-generated-icon='true'] .iconWrap img {
+  mix-blend-mode: normal;
+  object-fit: contain;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iconWrap { transition: none; }
 }

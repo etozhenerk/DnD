@@ -1,5 +1,6 @@
-import {useEffect, useRef} from 'react';
+import type {CSSProperties} from 'react';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
+import {CombatJournalDialog} from './CombatJournalDialog';
 import type {CombatantView, CombatTargetView} from './combatTypes';
 import {combatPortraitStyle} from './combatPortraitStyle';
 import styles from './CombatPartyBar.module.css';
@@ -10,74 +11,51 @@ interface CombatPartyBarProps {
   logs: string[];
 }
 
-const statIcons = {
-  hp: 'assets/concepts/ui/hero-book-icon-hp.png',
-  ac: 'assets/concepts/ui/hero-book-icon-ac.png',
-};
-
-function splitCombatLog(message: string) {
-  const separator = message.indexOf(':');
-  if (separator > 0 && separator < 36) return {
-    actor: message.slice(0, separator),
-    detail: message.slice(separator + 1).trim(),
-  };
-  return {actor: 'Сцена', detail: message};
-}
+const hpIcon = 'assets/concepts/ui/hero-book-icon-hp.png';
+const frameAtlasPath = 'assets/concepts/campaigns/penisuela/ui/token-frame-atlas.png';
 
 export function CombatPartyBar({combatants, heroes, logs}: CombatPartyBarProps) {
-  const logRef = useRef<HTMLOListElement>(null);
-
-  useEffect(() => {
-    const log = logRef.current;
-    if (!log) return;
-    const scrollToLatest = () => { log.scrollTop = log.scrollHeight; };
-    scrollToLatest();
-    const observer = new ResizeObserver(scrollToLatest);
-    observer.observe(log);
-    return () => observer.disconnect();
-  }, [logs]);
+  const extraParticipants = Math.max(0, heroes.length - 5);
+  const partyDensityStyle = {
+    '--party-token-size': `${Math.max(2.9, 4.35 - extraParticipants * 0.36)}rem`,
+    '--party-token-size-compact': `${Math.max(2.35, 3.3 - extraParticipants * 0.22)}rem`,
+    '--party-token-size-small': `${Math.max(2.2, 3.1 - extraParticipants * 0.21)}rem`,
+  } as CSSProperties;
 
   return (
     <footer className={styles.footer} aria-label="Состояние команды и журнал боя">
-      <div className={styles.heroes} aria-label="Состояние героев">
-        {heroes.map((hero) => (
-          <span
-            className={hero.hp <= 0 ? styles.downed : ''}
-            key={hero.id}
-            style={combatPortraitStyle(hero)}
-            title={`${hero.name}: ${hero.hp}/${hero.maxHp} HP, AC ${hero.ac}`}
-          >
-            <img className={styles.heroAvatar} src={resolveAsset(hero.token)} alt="" />
-            <span className={styles.heroCopy}>
-              <strong>{hero.name}</strong>
-              <small>
-                <span><img src={resolveAsset(statIcons.hp)} alt="" /><b>{hero.hp}/{hero.maxHp}</b></span>
-                <span><img src={resolveAsset(statIcons.ac)} alt="" /><b>{hero.ac}</b></span>
-              </small>
-            </span>
-          </span>
-        ))}
-      </div>
-      <section className={styles.chat} aria-label="Журнал действий">
-        <strong>Журнал боя</strong>
-        <ol ref={logRef} aria-live="polite">
-          {logs.map((message, index) => {
-            const entry = splitCombatLog(message);
-            const actor = combatants.find((combatant) => combatant.name === entry.actor);
+      <div className={styles.partyRail} style={partyDensityStyle}>
+        <div className={styles.heroes} aria-label="Здоровье героев">
+          {heroes.map((hero) => {
+            const healthPercent = Math.max(0, Math.min(100, hero.hp / hero.maxHp * 100));
             return (
-              <li key={`${index}-${message}`} style={actor ? combatPortraitStyle(actor) : undefined} title={message}>
-                {actor ? (
-                  <img className={styles.logAvatar} src={resolveAsset(actor.token)} alt="" />
-                ) : <span className={styles.sceneMarker} aria-hidden="true">◆</span>}
-                <span className={styles.logCopy}>
-                  <b>{entry.actor}</b>
-                  <span>{entry.detail}</span>
+              <span
+                className={`${styles.hero} ${hero.hp <= 0 ? styles.downed : ''}`}
+                key={hero.id}
+                style={{
+                  ...combatPortraitStyle(hero),
+                  '--health-percent': `${healthPercent}%`,
+                } as CSSProperties}
+                title={`${hero.name}: ${hero.hp}/${hero.maxHp} HP, AC ${hero.ac}`}
+                aria-label={`${hero.name}, здоровье ${hero.hp} из ${hero.maxHp}, броня ${hero.ac}`}
+              >
+                <span className={styles.heroMedallion} aria-hidden="true">
+                  <span className={styles.heroViewport}>
+                    <img className={styles.heroAvatar} src={resolveAsset(hero.token)} alt="" />
+                  </span>
+                  <span className={styles.heroFrame}><img src={resolveAsset(frameAtlasPath)} alt="" /></span>
                 </span>
-              </li>
+                <span className={styles.heroHp} aria-hidden="true">
+                  <img src={resolveAsset(hpIcon)} alt="" />
+                  <b>{hero.hp}</b><small>/{hero.maxHp}</small>
+                </span>
+                <strong className={styles.heroName}>{hero.name}</strong>
+              </span>
             );
           })}
-        </ol>
-      </section>
+        </div>
+        <CombatJournalDialog combatants={combatants} logs={logs} />
+      </div>
     </footer>
   );
 }

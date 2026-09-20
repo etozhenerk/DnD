@@ -5,3 +5,25 @@
   font-weight: 400;
   src: local('Luminari'), url('../assets/fonts/Luminari-Regular.woff') format('woff');
 }
+
+@font-face {
+  font-display: swap;
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400 700;
+  src: url('../assets/fonts/Caveat.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Marck Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/MarckScript-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Bad Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/BadScript-Regular.ttf') format('truetype');
+}

@@ -47,6 +47,8 @@
           "cameraMotion": "Slow controlled dolly-in, no pan, no cut.",
           "environmentMotion": "Subtle fog drift, slight cloth movement, dim motes in the air.",
           "promptEn": "A single continuous six-second cinematic shot. Slow controlled dolly-in toward the approved fantasy hero. The hero slowly raises the lantern and holds still. Subtle fog drift, slight cloth movement and dim motes in the air. Preserve the exact face, costume, lantern, body proportions, environment geometry, lighting palette and painterly dark-fantasy style from the reference image. Natural restrained motion, stable composition, no cuts.",
+          "targetPromptEn": "A single continuous six-second cinematic image-to-video shot. Medium-wide composition with a slow controlled dolly-in toward the approved fantasy hero. The hero slowly raises the lantern once and holds still. Subtle fog drift, slight cloth movement and dim motes in the air. Preserve the exact face, costume, lantern, body proportions, environment geometry, lighting palette and painterly dark-fantasy style from the uploaded first frame. Natural restrained motion, stable composition, no cuts, no dialogue, no text.",
+          "negativePromptEn": "identity drift, extra limbs or fingers, costume changes, new characters, camera cuts, text, subtitles, logos, watermark, sudden zoom",
           "mustPreserve": [
             "exact approved character identity",
             "costume and prop",
@@ -62,9 +64,16 @@
             "excessive motion or sudden zoom"
           ],
           "target": {
-            "primary": "kling",
+            "primary": "veo-3.1",
             "fallback": "runway-gen-4.5",
-            "notes": "Use image-to-video and keep creativity low enough to preserve the reference."
+            "surface": "vertex-ai",
+            "model": "verify-current-veo-model-in-ui",
+            "mode": "image-to-video",
+            "durationSeconds": 6,
+            "aspectRatio": "16:9",
+            "resolution": "1080p",
+            "audioMode": "post-production",
+            "notes": "Use the approved art as the first frame and verify current model capabilities before generation."
           },
           "audio": {
             "narrationRu": null,
@@ -129,6 +138,8 @@
 
 ## Адаптация по target
 
+Явный выбор пользователя имеет приоритет над автоматической рекомендацией target. `promptEn` хранит переносимый визуальный замысел, а `targetPromptEn` — окончательную версию для выбранного сервиса. Если интерфейс поддерживает отдельное поле запретов, использовать `negativePromptEn`; иначе кратко встроить запреты в конец `targetPromptEn`.
+
 ### Kling
 
 Приоритизировать исходный арт, первый/последний кадр, сохранение персонажа и конкретное движение. Не перегружать кадр несколькими действиями. Для повторяющегося героя перечислять одни и те же identity locks в одинаковом порядке.
@@ -136,6 +147,8 @@
 ### Veo
 
 Использовать для пространства, физики, масштабного движения и сложной среды. Точно описывать последовательность событий, но сохранять один непрерывный кадр. Не полагаться на встроенный звук как на финальную русскую дорожку.
+
+Для Veo 3/3.1 обязательно прочитать `veo3-prompting.md`, записать поверхность, точную модель, режим и окончательный copy-paste блок. Если пользователь явно запросил Veo, не менять primary target на Kling.
 
 ### Runway Gen-4.5
 

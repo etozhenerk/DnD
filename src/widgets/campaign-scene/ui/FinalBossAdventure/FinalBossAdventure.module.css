@@ -1,0 +1,359 @@
+.introduction {
+  align-content: center;
+  background: var(--gradient-session-story);
+  border: 1px solid var(--color-brass-alpha-62);
+  bottom: clamp(5.4rem, 9vh, 7rem);
+  box-shadow: var(--shadow-session-story);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.8rem;
+  left: 50%;
+  max-width: 58rem;
+  padding: clamp(1.2rem, 2.2vw, 2rem);
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(76vw, calc(100vw - 10rem));
+  z-index: 20;
+}
+
+.eyebrow,
+.phasePanel > span,
+.heroConsole > span,
+.enemyConsole > span,
+.fallbackConsole > span,
+.consoleHeading span,
+.checkSelectors span {
+  color: var(--color-brass-light);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.introduction h1,
+.enemyConsole h2,
+.fallbackConsole h2,
+.consoleHeading h2 {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+}
+
+.readAloud {
+  font-family: var(--font-display);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.primaryAction,
+.introduction button,
+.heroConsole button,
+.enemyConsole button,
+.fallbackConsole button,
+.checkConsole button {
+  background: var(--gradient-wood);
+  border: 1px solid var(--color-brass-alpha-62);
+  color: var(--color-parchment-light);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.68rem 0.85rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primaryAction:hover,
+.introduction button:hover,
+.heroConsole button:hover,
+.enemyConsole button:hover,
+.fallbackConsole button:hover,
+.checkConsole button:hover {
+  border-color: var(--color-gold-light);
+  color: var(--color-gold-light);
+}
+
+.checkConsole button:disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-46);
+}
+
+.phasePanel {
+  background: var(--gradient-combat-dock);
+  border: 1px solid var(--color-brass-alpha-38);
+  box-shadow: var(--shadow-combat-dock);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.2rem;
+  left: 5rem;
+  min-width: 18rem;
+  padding: 0.55rem 0.75rem;
+  position: absolute;
+  top: 4.4rem;
+  z-index: 34;
+}
+
+.phasePanel strong {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+
+.phasePanel progress {
+  accent-color: var(--color-combat-threat);
+  height: 0.55rem;
+  width: 100%;
+}
+
+.phasePanel small {
+  color: var(--color-ink-muted);
+}
+
+.heroConsole {
+  background: var(--gradient-combat-dock);
+  border: 1px solid var(--color-brass-alpha-38);
+  box-shadow: var(--shadow-combat-dock);
+  display: flex;
+  gap: 0.45rem;
+  padding: 0.45rem;
+  position: absolute;
+  right: 1rem;
+  top: 5.5rem;
+  z-index: 34;
+}
+
+.heroConsole > span {
+  align-self: center;
+  padding-inline: 0.35rem;
+}
+
+.enemyConsole,
+.fallbackConsole {
+  background: var(--gradient-session-panel);
+  border: 1px solid var(--color-brass-alpha-62);
+  bottom: 0.7rem;
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.5rem;
+  left: 50%;
+  max-width: 47rem;
+  min-height: 12rem;
+  padding: 1rem 1.2rem;
+  position: absolute;
+  transform: translateX(-50%);
+  width: min(47rem, 54vw);
+  z-index: 38;
+}
+
+.enemyConsole p,
+.fallbackConsole p,
+.planDescription,
+.physicalPlan p,
+.dcLine,
+.diceError {
+  line-height: 1.42;
+  margin: 0;
+}
+
+.targetSelectors,
+.checkSelectors {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.explicitRollGrid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.explicitRollRow {
+  background: var(--color-black-alpha-24);
+  border: 1px solid var(--color-brass-alpha-38);
+  display: grid;
+  gap: 0.45rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0.65rem;
+}
+
+.explicitRollRow label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.explicitRollRow label span,
+.explicitRollRow small {
+  color: var(--color-ink-muted);
+}
+
+.explicitRollRow input {
+  background: var(--color-night-deep);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-parchment-light);
+  font: inherit;
+  min-width: 0;
+  padding: 0.55rem;
+}
+
+.explicitRollRow small {
+  grid-column: 1 / -1;
+  line-height: 1.35;
+}
+
+.resourceActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.resourceActions button {
+  flex: 1 1 15rem;
+}
+
+.targetSelectors label,
+.checkSelectors label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.targetSelectors select,
+.checkSelectors select,
+.checkSelectors input {
+  background: var(--color-night-deep);
+  border: 1px solid var(--color-brass-alpha-38);
+  color: var(--color-parchment-light);
+  font: inherit;
+  min-width: 0;
+  padding: 0.55rem;
+}
+
+.consoleBackdrop {
+  align-items: center;
+  background: var(--color-black-alpha-74);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 5rem 8vw 2rem;
+  position: absolute;
+  z-index: 46;
+}
+
+.checkConsole {
+  background: var(--gradient-session-panel);
+  border: 1px solid var(--color-brass-alpha-62);
+  box-shadow: var(--shadow-session-panel);
+  color: var(--color-parchment-light);
+  display: grid;
+  gap: 0.85rem;
+  max-height: calc(100dvh - 7rem);
+  max-width: 60rem;
+  overflow: auto;
+  padding: 1.2rem;
+  width: 100%;
+}
+
+.consoleHeading {
+  align-items: start;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.consoleHeading button {
+  border-radius: 50%;
+  font-size: 1.2rem;
+  height: 2.35rem;
+  line-height: 1;
+  padding: 0;
+  width: 2.35rem;
+}
+
+.planTabs {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.planTabs button {
+  display: grid;
+  gap: 0.22rem;
+  min-height: 4.3rem;
+  text-align: left;
+}
+
+.planTabs small {
+  color: var(--color-ink-muted);
+}
+
+.planTabs .planSelected {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-combat-target-selected);
+}
+
+.physicalPlan,
+.checkActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  justify-content: flex-end;
+}
+
+.physicalPlan p {
+  flex: 1 1 25rem;
+}
+
+.dcLine {
+  color: var(--color-gold-light);
+  font-weight: 700;
+}
+
+.checkActions .clearChoiceActive {
+  border-color: var(--color-gold-light);
+  box-shadow: var(--shadow-session-brass-outline);
+  color: var(--color-gold-light);
+}
+
+.diceError {
+  color: var(--color-combat-threat-soft);
+}
+
+@media (max-width: 1100px) {
+  .phasePanel {
+    min-width: 15rem;
+    left: 4.4rem;
+    top: 3.8rem;
+  }
+
+  .heroConsole {
+    right: 0.55rem;
+    top: 4.6rem;
+  }
+
+  .heroConsole > span { display: none; }
+
+  .enemyConsole,
+  .fallbackConsole {
+    bottom: 0.55rem;
+    min-height: 9.5rem;
+    padding: 0.7rem 0.9rem;
+    width: min(44rem, 57vw);
+  }
+
+  .enemyConsole p,
+  .fallbackConsole p { font-size: 0.82rem; }
+}
+
+@media (max-width: 760px) {
+  .explicitRollGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 900px) {
+  .phasePanel,
+  .heroConsole,
+  .enemyConsole,
+  .fallbackConsole,
+  .consoleBackdrop { display: none; }
+}

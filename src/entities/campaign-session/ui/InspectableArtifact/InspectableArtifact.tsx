@@ -6,14 +6,21 @@ import styles from './InspectableArtifact.module.css';
 interface InspectableArtifactProps {
   artifact: CampaignSceneInspectable;
   presentation: 'search' | 'inventory';
+  inventorySlot?: number;
   onFind?: () => void;
   onOpen: () => void;
 }
 
-export function InspectableArtifact({artifact, presentation, onFind, onOpen}: InspectableArtifactProps) {
-  const visual = artifact.visualKind
-    ? <ArtifactGlyph kind={artifact.visualKind} size="icon" />
-    : artifact.icon ? <img src={resolveAsset(artifact.icon)} alt="" /> : null;
+export function InspectableArtifact({
+  artifact,
+  presentation,
+  inventorySlot,
+  onFind,
+  onOpen,
+}: InspectableArtifactProps) {
+  const visual = artifact.icon
+    ? <img src={resolveAsset(artifact.icon)} alt="" />
+    : artifact.visualKind ? <ArtifactGlyph kind={artifact.visualKind} size="icon" /> : null;
 
   if (presentation === 'search') {
     return (
@@ -21,6 +28,7 @@ export function InspectableArtifact({artifact, presentation, onFind, onOpen}: In
         className={styles.hotspot}
         type="button"
         onClick={onFind}
+        data-artifact-id={artifact.id}
         data-order={artifact.order}
         style={artifact.hotspotPosition ? {
           left: `${artifact.hotspotPosition.x}%`,
@@ -28,7 +36,7 @@ export function InspectableArtifact({artifact, presentation, onFind, onOpen}: In
         } : undefined}
         aria-label={`Осмотреть: ${artifact.label}. ${artifact.locationHint}`}
       >
-        {visual}
+        <span className={styles.hotspotLabel} aria-hidden="true">{artifact.label}</span>
       </button>
     );
   }
@@ -38,7 +46,9 @@ export function InspectableArtifact({artifact, presentation, onFind, onOpen}: In
       className={styles.trigger}
       type="button"
       onClick={onOpen}
-      data-order={artifact.inventoryOrder ?? artifact.order}
+      data-artifact-id={artifact.id}
+      data-generated-icon={Boolean(artifact.icon && artifact.visualKind)}
+      data-order={inventorySlot ?? artifact.inventoryOrder ?? artifact.order}
       aria-haspopup="dialog"
       aria-label={`Осмотреть: ${artifact.label}`}
     >

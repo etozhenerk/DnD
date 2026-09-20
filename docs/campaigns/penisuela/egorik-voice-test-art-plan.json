@@ -1,0 +1,79 @@
+{
+  "id": "penisuela-scene-egorik-nastasia-voice-test",
+  "type": "scene",
+  "date": "2026-09-20",
+  "entityId": "egorik-bungalow-reveal",
+  "sceneIds": [
+    "egorik-bungalow-reveal"
+  ],
+  "status": "approved",
+  "authority": {
+    "userInstruction": "после того как мы просим егорика и настасью сказать слова в устройства нужен новый арт где они их говорят",
+    "scope": "Один новый вариант сцены проверки голосов на основе утверждённых артов пары и устройства.",
+    "generationApproved": true,
+    "variantApproval": "approved",
+    "approvalInstruction": "окаю вставляй"
+  },
+  "runtime": {
+    "actionId": "test-egorik-nastasia-voices",
+    "conditionFlag": "egorik-voices-tested",
+    "plannedViewId": "voices",
+    "priority": "После спасения, когда egorik-voices-tested=true и egorik-truth-revealed ещё не установлен. Крупный план bracelet имеет приоритет; после раскрытия правды и возврата к общей сцене — прежний conversation. Combat и entry остаются прежними.",
+    "plannedAsset": "assets/concepts/campaigns/penisuela/scenes/egorik-nastasia-voice-test.png",
+    "undoAndReload": "Выбор вида из текущих сюжетных флагов: отмена проверки возвращает разговор, перезагрузка сохраняет нужный вид.",
+    "viewId": "voices"
+  },
+  "purpose": "Показать произнесение слов в устройство вместо неизменного кадра разговора после сюжетного действия.",
+  "visible": [
+    "Егорик и Настасья из утверждённых артов произносят слова в два приёмника одного пульта",
+    "Разрушенное бунгало после боя",
+    "Красная реакция устройства, третья ступень перегрузки; успешного отключения нет"
+  ],
+  "forbidden": [
+    "лишние персонажи",
+    "свадебные костюмы",
+    "раскрытие настоящих жениха и невесты",
+    "надписи и встроенный HUD",
+    "новая внешность пары",
+    "отдельные современные микрофоны"
+  ],
+  "composition": "Средне-общий кадр 16:9: лица и пульт в центральной верхней части, нижние 25% свободны под рассказчика.",
+  "format": "png",
+  "transparency": false,
+  "targetSize": {
+    "width": 1672,
+    "height": 941
+  },
+  "realPersonReferenceContract": "egorikScreenArtPlan.realPersonReference",
+  "referenceRequiredAtGeneration": false,
+  "localReferences": [
+    "assets/concepts/campaigns/penisuela/scenes/egorik-bungalow-conversation.png",
+    "assets/concepts/campaigns/penisuela/items/overload-console.png",
+    "assets/concepts/campaigns/penisuela/npcs/false-groom-guest.webp",
+    "assets/concepts/campaigns/penisuela/npcs/guest-organizer.webp"
+  ],
+  "generation": {
+    "mode": "built-in-imagegen",
+    "intent": "edit",
+    "requestedGenerations": 1,
+    "status": "completed",
+    "promptPath": "docs/campaigns/penisuela/art-drafts/egorik-nastasia-voice-test-v1.prompt.txt",
+    "actualGenerations": 1,
+    "actualSize": {
+      "width": 1672,
+      "height": 941
+    }
+  },
+  "draftPath": "docs/campaigns/penisuela/art-drafts/egorik-nastasia-voice-test-v1.png",
+  "review": {
+    "path": "docs/campaigns/penisuela/egorik-voice-test-art-review.json",
+    "verdict": "accept",
+    "userApproval": "approved"
+  },
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/egorik-nastasia-voice-test.png",
+    "technicalProcessing": "Копирование утверждённого PNG без изменения пикселей.",
+    "runtimeConnected": true
+  }
+}

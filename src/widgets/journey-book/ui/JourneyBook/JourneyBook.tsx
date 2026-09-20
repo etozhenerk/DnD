@@ -1,6 +1,7 @@
 import type {CSSProperties} from 'react';
 import type {Campaign} from '../../../../entities/campaign/model/types';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
+import {SceneTextPanel} from '../../../../features/navigate-campaign-scene/ui/SceneTextPanel/SceneTextPanel';
 import styles from './JourneyBook.module.css';
 
 export function JourneyBook({campaign}: {campaign: Campaign}) {
@@ -12,14 +13,14 @@ export function JourneyBook({campaign}: {campaign: Campaign}) {
   return (
     <section className={styles.book} style={bookStyle}>
       <div className={styles.bookInner}>
-        <article className={styles.page}>
+        <SceneTextPanel className={styles.page} resetKey={campaign.id} collapsible={false}>
           <p className={styles.kicker}>Летопись похода</p>
           <h2>{chronicle?.journeyTitle ?? 'Летопись завершённого похода'}</h2>
           <div className={styles.story}>
             {(chronicle?.story ?? [campaign.summary]).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-        </article>
-        <article className={styles.page}>
+        </SceneTextPanel>
+        <SceneTextPanel className={styles.page} resetKey={campaign.id} collapsible={false}>
           <p className={styles.kicker}>Финал легенды</p>
           <h2>{chronicle?.finaleTitle ?? 'Финал легенды'}</h2>
           <p className={styles.ending}>{campaign.ending.readAloud}</p>
@@ -27,7 +28,7 @@ export function JourneyBook({campaign}: {campaign: Campaign}) {
             {campaign.ending.epilogues.map((epilogue) => <p key={epilogue}>{epilogue}</p>)}
           </div>
           <p className={styles.reward}>{campaign.ending.reward}</p>
-        </article>
+        </SceneTextPanel>
       </div>
     </section>
   );

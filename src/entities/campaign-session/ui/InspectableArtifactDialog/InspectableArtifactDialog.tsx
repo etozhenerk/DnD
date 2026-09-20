@@ -6,6 +6,7 @@ import styles from './InspectableArtifactDialog.module.css';
 
 interface InspectableArtifactDialogProps {
   artifact: CampaignSceneInspectable;
+  title?: string;
   onClose: () => void;
 }
 
@@ -83,10 +84,10 @@ function paginateLetter(
   return pages.map((page) => page.map(({kind, text}): CopyBlock => ({kind, text})));
 }
 
-export function InspectableArtifactDialog({artifact, onClose}: InspectableArtifactDialogProps) {
+export function InspectableArtifactDialog({artifact, title = artifact.label, onClose}: InspectableArtifactDialogProps) {
   const isLetter = artifact.id === 'journey-letter';
   const pages = useMemo(
-    () => isLetter ? paginateLetter(artifact, 400, 600) : paginateArtifact(artifact, true, 880),
+    () => isLetter ? paginateLetter(artifact, 400, 600) : paginateArtifact(artifact, true, 530),
     [artifact, isLetter],
   );
   const [pageIndex, setPageIndex] = useState(0);
@@ -119,15 +120,15 @@ export function InspectableArtifactDialog({artifact, onClose}: InspectableArtifa
         <button className={styles.closeIcon} type="button" onClick={onClose} aria-label="Закрыть описание" autoFocus>×</button>
         {!isLetter ? (
           <div className={styles.artworkWrap}>
-            {artifact.visualKind ? (
-              <ArtifactGlyph kind={artifact.visualKind} size="art" />
-            ) : artifact.image ? (
+            {artifact.image ? (
               <img className={styles.artwork} src={resolveAsset(artifact.image)} alt={artifact.summary} />
+            ) : artifact.visualKind ? (
+              <ArtifactGlyph kind={artifact.visualKind} size="art" />
             ) : null}
           </div>
         ) : null}
         <div className={`${styles.copy} ${isLetter ? styles.documentCopy : ''}`}>
-          <h2 id={`${artifact.id}-title`}>{artifact.label}</h2>
+          <h2 id={`${artifact.id}-title`}>{title}</h2>
           <div className={styles.page} aria-live="polite">
             {isLetter && pageIndex === 0 ? (
               <img

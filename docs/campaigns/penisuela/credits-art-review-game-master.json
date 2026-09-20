@@ -1,0 +1,28 @@
+{
+  "campaignId": "penisuela",
+  "scope": "credits-game-master-v1",
+  "status": "approved",
+  "verdict": "accept",
+  "userApproval": "окаю кадр с крайнеплотом, добавляй ег ов титры",
+  "approvalDate": "2026-09-16",
+  "assets": [
+    {
+      "id": "credits-game-master-tavern",
+      "path": "art-drafts/credits/game-master-v1/credits-game-master-tavern.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/credits/credits-game-master-tavern.png",
+      "verdict": "accept",
+      "userApproval": "approved",
+      "dimensions": {
+        "width": 1672,
+        "height": 941
+      },
+      "sha256": "7f1c650903132085b4940fb87e57ca72bc5d959b18db38bf603485c9ce75c29c",
+      "checks": [
+        "Просмотрен полный результат генератора: Лорд сидит в таверне и гладит Кострюльку по голове; контакт руки читается.",
+        "Сохранены лицо, длинные каштановые косы, эльфийские уши и зелёная броня Лорда; голубь с закрытым курьерским отсеком соответствует утверждённым сценам.",
+        "Фотографическая подача, без встроенной рамки и текста; полароидное оформление добавляет интерфейс.",
+        "Файл скопирован без обработки; опубликован после явного утверждения автора."
+      ]
+    }
+  ]
+}

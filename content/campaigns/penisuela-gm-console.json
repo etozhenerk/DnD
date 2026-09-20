@@ -1,0 +1,224 @@
+{
+  "campaignId": "penisuela",
+  "counters": {
+    "doom": {
+      "label": "Огни механизма",
+      "description": "Загораются по мере выполнения пяти сюжетных этапов. Сами по себе не означают поражение. Обычно меняются автоматически."
+    },
+    "kreed-evidence-count": {
+      "label": "Архивный счётчик улик о Kreed",
+      "description": "Остался от прежней версии поиска жениха. В текущем маршруте поиск идёт через Егорика и бункер; для прохождения этот счётчик менять не нужно."
+    },
+    "preFinalCombats": {
+      "label": "Завершённые бои до финала",
+      "description": "Служебная статистика встреч. Изменение числа не побеждает врагов и не открывает сюжетные проходы."
+    }
+  },
+  "flags": {
+    "pussy-bar-passes-issued": {
+      "label": "Жетоны Pussy Sultan выданы",
+      "description": "Для входа в бар нужны ещё два пропуска Алексиса."
+    },
+    "alexis-bar-permits-issued": {
+      "label": "Пропуска Алексиса выданы",
+      "description": "Вторая часть допуска в бар."
+    },
+    "scepter-returned": {
+      "label": "Скипетр возвращён Pussy Sultan",
+      "description": "Открывает получение награды у владельца."
+    },
+    "stas-bungalow-pass-received": {
+      "label": "Пропуск Станиса получен",
+      "description": "Один из пяти пропусков к бунгало."
+    },
+    "olva-bungalow-access-issued": {
+      "label": "Оливия разрешила пройти к Егорику",
+      "description": "Не требует завершения семейного квеста."
+    },
+    "groom-access-completed": {
+      "label": "Препятствия бункера пройдены",
+      "description": "Герои добрались до укрытия Kreed."
+    },
+    "thorin-birkin-received": {
+      "label": "Торин получил Birkin",
+      "description": "Обмен сертификата меняет внешний вид сумки, а не добавляет ещё одну сумку."
+    },
+    "andrey-boss-defeated": {
+      "label": "Лорд Нетак побеждён",
+      "description": "После второй фазы запускается видео гибели."
+    },
+    "couple-voice-reset-completed": {
+      "label": "Механизм выключен двумя голосами",
+      "description": "Angel и Kreed вместе остановили устройство."
+    },
+    "grey-wiese-reward-received": {
+      "label": "Награда Grey Wiese получена",
+      "description": "Награда сохраняется для следующих кампаний."
+    },
+    "andrey-bad-ending": {
+      "label": "Выбрана плохая концовка",
+      "description": "Поражение в финальном бою приводит к свадьбе Нетака."
+    },
+    "olva-quest-accepted": {
+      "label": "Помогаем Оливии найти Станиса",
+      "description": "После просьбы Оливии в баре появляется разговор о консультации."
+    },
+    "olva-stas-invited": {
+      "label": "Станис услышал приглашение",
+      "description": "Открывает попытку уговорить его прийти."
+    },
+    "olva-stas-persuasion-failed": {
+      "label": "Станис просит дать ему слово",
+      "description": "После неудачного убеждения можно пообещать выслушать его сторону."
+    },
+    "olva-stas-recruited": {
+      "label": "Станис согласился на консультацию",
+      "description": "Открывает вход к столу Оливии. Ключи к Егорику выдаются независимо от этого согласия."
+    },
+    "olva-table-read-fishing-photo": {
+      "label": "Осмотрена улика «Пока не клюёт»",
+      "description": "Фотографию уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-fishing-photo-stas": {
+      "label": "Пока не клюёт: В пользу Станиса",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-fishing-photo-middle": {
+      "label": "Пока не клюёт: Пока не решили",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-fishing-photo-polina": {
+      "label": "Пока не клюёт: В пользу Полинетты",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-campus-photo": {
+      "label": "Осмотрена улика «Посмотреть меню»",
+      "description": "Фотографию уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-campus-photo-stas": {
+      "label": "Посмотреть меню: В пользу Станиса",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-campus-photo-middle": {
+      "label": "Посмотреть меню: Пока не решили",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-campus-photo-polina": {
+      "label": "Посмотреть меню: В пользу Полинетты",
+      "description": "Расположение фотографии на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-silent-treatment": {
+      "label": "Осмотрена улика «Три дня «ничего»»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-silent-treatment-stas": {
+      "label": "Три дня «ничего»: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-silent-treatment-middle": {
+      "label": "Три дня «ничего»: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-silent-treatment-polina": {
+      "label": "Три дня «ничего»: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-private-letter": {
+      "label": "Осмотрена улика «Только между нами»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-private-letter-stas": {
+      "label": "Только между нами: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-private-letter-middle": {
+      "label": "Только между нами: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-private-letter-polina": {
+      "label": "Только между нами: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-desire-note": {
+      "label": "Осмотрена улика «Мужчина всегда хочет»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-desire-note-stas": {
+      "label": "Мужчина всегда хочет: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-desire-note-middle": {
+      "label": "Мужчина всегда хочет: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-desire-note-polina": {
+      "label": "Мужчина всегда хочет: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-chore-roster": {
+      "label": "Осмотрена улика «Инструкция к тряпке»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-chore-roster-stas": {
+      "label": "Инструкция к тряпке: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-chore-roster-middle": {
+      "label": "Инструкция к тряпке: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-chore-roster-polina": {
+      "label": "Инструкция к тряпке: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-job-offer": {
+      "label": "Осмотрена улика «Место женщины»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-job-offer-stas": {
+      "label": "Место женщины: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-job-offer-middle": {
+      "label": "Место женщины: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-job-offer-polina": {
+      "label": "Место женщины: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-read-dance-lesson": {
+      "label": "Осмотрена улика «Вальс под запретом»",
+      "description": "Предмет уже раскрывали на столе Оливии."
+    },
+    "olva-table-place-dance-lesson-stas": {
+      "label": "Вальс под запретом: В пользу Станиса",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-dance-lesson-middle": {
+      "label": "Вальс под запретом: Пока не решили",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "olva-table-place-dance-lesson-polina": {
+      "label": "Вальс под запретом: В пользу Полинетты",
+      "description": "Расположение улики на столе. Не заменяет голос игрока."
+    },
+    "groom-tunnel-entered": {
+      "label": "Герои вошли в тоннель под сценой",
+      "description": "Клик по наружной двери убежища. Отмена входа возвращает внешний ракурс; внутренние препятствия проходятся отдельно."
+    },
+    "graywise-tour-finished": {
+      "label": "Рум-тур завершён, герои у двери спальни",
+      "description": "Показывает прежний кадр Grey Wiese у закрытой двери. Сам по себе не раскрывает спальню и не зажигает пятый огонь."
+    },
+    "andrey-transformation-started": {
+      "label": "Запущено превращение Нетака",
+      "description": "Кнопка после первой победы нажата. Видео превращения должно завершиться или быть пропущено до старта второй фазы."
+    }
+  },
+  "relationships": {
+    "wedding-couple-trust": "Доверие Angel и Kreed",
+    "graywise-trust": "Доверие Grey Wiese",
+    "pussy-trust": "Доверие Pussy Sultan"
+  }
+}

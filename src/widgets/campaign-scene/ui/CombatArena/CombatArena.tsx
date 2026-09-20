@@ -1,45 +1,76 @@
 import {useEffect, useState} from 'react';
-import type {CombatPendingAttack} from '../../../../entities/combat/model/types';
+import type {getCombatSavingThrowPresentation} from '../../../../entities/combat/model/savingThrowPresentation';
+import type {
+  CombatPendingAttack,
+  CombatPendingSavingThrow,
+  CombatRollMode,
+} from '../../../../entities/combat/model/types';
 import {CombatActionTray} from './CombatActionTray';
-import {CombatPartyBar} from './CombatPartyBar';
+import {CombatDefeatFallbackDialog} from './CombatDefeatFallbackDialog';
+import {CombatJournalDialog} from './CombatJournalDialog';
 import {CombatRollPanel} from './CombatRollPanel';
 import {CombatTargetList} from './CombatTargetList';
 import {CombatVictoryDialog} from './CombatVictoryDialog';
 import {InitiativeRail} from './InitiativeRail';
-import type {CombatActionView, CombatantView, CombatTargetView} from './combatTypes';
+import type {
+  CombatActionView,
+  CombatArmorFeedback,
+  CombatOptionalReroll,
+  CombatHelpingReaction,
+  CombatantView,
+  CombatTargetView,
+} from './combatTypes';
 import styles from './CombatArena.module.css';
 
 interface CombatArenaProps {
+  savingThrowPresentation?: ReturnType<typeof getCombatSavingThrowPresentation>;
   actions: CombatActionView[];
   active: CombatantView;
+  armorFeedback?: CombatArmorFeedback;
+  automaticAttackLabel?: string;
+  attackRollMode: CombatRollMode;
   attackEnhancements: string[];
+  customEnemyTurn: boolean;
   diceError: boolean;
   diceReady: boolean;
+  defeatFallback?: {
+    onConfirm: () => void;
+    summary: string;
+  };
   encounterName: string;
-  equippedItemId: string;
+  enemyTargets: CombatTargetView[];
+  enemySavingThrow?: {
+    dc: number;
+    statLabel: string;
+  };
   inputMax: number;
   inputMin: number;
   inputValue: string;
   isInputValid: boolean;
   isRolling: boolean;
   logs: string[];
+  optionalReroll?: CombatOptionalReroll;
+  helpingReaction?: CombatHelpingReaction;
+  pendingReactionAction?: {
+    label: string;
+    onUse: () => void;
+  };
   onApplyAttack: () => void;
   onApplyDamage: () => void;
   onApplyUtility: () => void;
   onContinue: () => void;
   onEquipItem: (actionId: string | null) => void;
   onInputChange: (value: string) => void;
-  onReset: () => void;
   onRollAttack: () => void;
   onRollDamage: () => void;
   onRollUtility: () => void;
   onSelectAction: (actionId: string) => void;
   onSelectTarget: (targetId: string) => void;
   onSupportTargetChange: (targetId: string) => void;
-  onUndo: () => void;
   participants: CombatantView[];
   party: CombatTargetView[];
   pendingAttack: CombatPendingAttack | null;
+  pendingSavingThrow: CombatPendingSavingThrow | null;
   round: number;
   selectedActionIds: string[];
   selectedTargetId: string;
@@ -53,36 +84,45 @@ interface CombatArenaProps {
 }
 
 export function CombatArena({
+  savingThrowPresentation,
   actions,
   active,
+  armorFeedback,
+  automaticAttackLabel,
+  attackRollMode,
   attackEnhancements,
+  customEnemyTurn,
   diceError,
   diceReady,
+  defeatFallback,
   encounterName,
-  equippedItemId,
+  enemyTargets,
+  enemySavingThrow,
   inputMax,
   inputMin,
   inputValue,
   isInputValid,
   isRolling,
   logs,
+  optionalReroll,
+  helpingReaction,
+  pendingReactionAction,
   onApplyAttack,
   onApplyDamage,
   onApplyUtility,
   onContinue,
   onEquipItem,
   onInputChange,
-  onReset,
   onRollAttack,
   onRollDamage,
   onRollUtility,
   onSelectAction,
   onSelectTarget,
   onSupportTargetChange,
-  onUndo,
   participants,
   party,
   pendingAttack,
+  pendingSavingThrow,
   round,
   selectedActionIds,
   selectedTargetId,
@@ -94,71 +134,102 @@ export function CombatArena({
   victorySummary,
   victoryWordmark,
 }: CombatArenaProps) {
+  const [previewActionId, setPreviewActionId] = useState<string | null>(null);
+  const customEnemyTurnActive = customEnemyTurn
+    && active.faction === 'enemy'
+    && !pendingAttack
+    && !pendingSavingThrow;
   const selectedTarget = targets.find((target) => target.id === selectedTargetId);
-  const utilityTargets = utilityAction?.target === 'ally'
-    ? supportTargets
-    : utilityAction?.target === 'self'
-      ? party.filter((hero) => hero.id === active.id)
-      : [];
-  const visibleTargets = utilityAction ? utilityTargets : targets;
-  const visibleTargetId = utilityAction?.target === 'self' ? active.id
-    : utilityAction ? supportTargetId
-      : selectedTargetId;
-  const [masterOpen, setMasterOpen] = useState(false);
-
+  const selectedActions = actions.filter((action) => selectedActionIds.includes(action.id));
+  const previewAction = actions.find((action) => action.id === previewActionId);
+  const selectedAction = previewAction ?? selectedActions[selectedActions.length - 1];
+  const targetSide = previewAction
+    ? null
+    : utilityAction
+      ? active.faction === 'enemy'
+        ? utilityAction.target === 'self' ? 'enemies' : 'party'
+        : utilityAction.target === 'ally' || utilityAction.target === 'self' || utilityAction.target === 'all-allies'
+        ? 'party'
+        : 'enemies'
+      : selectedTarget
+        ? selectedTarget.faction === 'hero' ? 'party' : 'enemies'
+        : active.faction === 'enemy' ? 'party' : 'enemies';
+  const selectionLocked = Boolean(pendingAttack || pendingSavingThrow || optionalReroll)
+    || customEnemyTurnActive
+    || Boolean(previewAction);
+  const partyLocked = selectionLocked
+    || targetSide !== 'party'
+    || utilityAction?.target === 'self'
+    || utilityAction?.target === 'all-allies'
+    || (active.faction === 'enemy' && utilityAction?.target === 'all-enemies');
+  const enemiesLocked = selectionLocked
+    || targetSide !== 'enemies'
+    || utilityAction?.target === 'all-enemies';
+  const partySelectedId = targetSide !== 'party' ? ''
+    : utilityAction?.target === 'self' ? active.id
+      : utilityAction?.target === 'all-allies' || (active.faction === 'enemy' && utilityAction?.target === 'all-enemies') ? ''
+        : utilityAction?.target === 'ally' ? supportTargetId
+          : party.some((target) => target.id === selectedTargetId) ? selectedTargetId : '';
+  const enemySelectedId = targetSide === 'enemies'
+    && utilityAction?.target !== 'all-enemies'
+    && enemyTargets.some((target) => target.id === selectedTargetId)
+    ? selectedTargetId
+    : '';
   useEffect(() => {
-    if (!masterOpen) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setMasterOpen(false);
-    };
-    document.addEventListener('keydown', closeOnEscape);
-    return () => document.removeEventListener('keydown', closeOnEscape);
-  }, [masterOpen]);
+    setPreviewActionId(null);
+  }, [active.id]);
 
   return (
     <div className={styles.overlay} role="region" aria-label={`Бой: ${encounterName}`}>
-      <header className={styles.header}>
-        <div className={styles.title}>
-          <span>Раунд {round}</span>
-          <h1>{encounterName}</h1>
-        </div>
-        <InitiativeRail activeId={active.id} participants={participants} />
-      </header>
+      {!victory ? (
+        <>
+          <header className={styles.header}>
+            <div className={styles.title}>
+              <span>Раунд {round}</span>
+              <h1>{encounterName}</h1>
+            </div>
+            <InitiativeRail activeId={active.id} participants={participants} />
+          </header>
 
-      <div className={styles.masterControl}>
-        <button
-          type="button"
-          aria-expanded={masterOpen}
-          aria-controls="combat-master-menu"
-          onClick={() => setMasterOpen((open) => !open)}
-        >
-          Мастер
-        </button>
-        {masterOpen ? (
-          <div className={styles.masterMenu} id="combat-master-menu" role="group" aria-label="Управление мастера">
-            <button type="button" onClick={() => { onUndo(); setMasterOpen(false); }}>Отменить последний шаг</button>
-            <button type="button" onClick={() => { onReset(); setMasterOpen(false); }}>Начать бой заново</button>
-          </div>
-        ) : null}
-      </div>
+          <aside className={styles.leftColumn} aria-label="Противники">
+            <CombatTargetList
+              armorFeedback={armorFeedback}
+              heading="Противники"
+              locked={enemiesLocked}
+              onSelect={onSelectTarget}
+              selectedId={enemySelectedId}
+              side="left"
+              targets={enemyTargets}
+            />
+          </aside>
 
-      <aside className={styles.leftColumn} aria-label={utilityAction ? 'Союзники для действия' : 'Цели действия'}>
-        <CombatTargetList
-          allowDowned={Boolean(utilityAction)}
-          locked={Boolean(pendingAttack) || utilityAction?.target === 'self'}
-          onSelect={utilityAction ? onSupportTargetChange : onSelectTarget}
-          selectedId={visibleTargetId}
-          targets={visibleTargets}
-        />
-      </aside>
+          <aside className={styles.rightColumn} aria-label="Союзники и журнал боя">
+            <CombatTargetList
+              allowDowned={supportTargets.some((target) => target.hp <= 0)}
+              armorFeedback={armorFeedback}
+              heading="Союзники"
+              locked={partyLocked}
+              onSelect={utilityAction?.target === 'ally' ? onSupportTargetChange : onSelectTarget}
+              selectedId={partySelectedId}
+              selectableIds={utilityAction?.target === 'ally'
+                ? supportTargets.map((target) => target.id)
+                : undefined}
+              side="right"
+              targets={party}
+            />
+            <CombatJournalDialog combatants={participants} logs={logs} />
+          </aside>
+        </>
+      ) : null}
 
-      <CombatPartyBar combatants={participants} heroes={party} logs={logs} />
-
-      <section className={styles.dock} aria-label="Управление боем">
-        {!victory ? (
+      {!victory && !customEnemyTurnActive ? (
+        <section className={styles.dock} aria-label="Управление боем">
           <div className={styles.dockMain}>
             <CombatRollPanel
+              savingThrowPresentation={savingThrowPresentation}
               active={active}
+              automaticAttackLabel={automaticAttackLabel}
+              attackRollMode={attackRollMode}
               attackEnhancements={attackEnhancements}
               diceError={diceError}
               diceReady={diceReady}
@@ -175,25 +246,56 @@ export function CombatArena({
               onRollDamage={onRollDamage}
               onRollUtility={onRollUtility}
               pendingAttack={pendingAttack}
+              pendingSavingThrow={pendingSavingThrow}
+              optionalReroll={optionalReroll}
+              helpingReaction={helpingReaction}
+              previewOnly={Boolean(previewAction)}
+              selectedAction={selectedAction}
               selectedTarget={selectedTarget}
+              savingThrow={enemySavingThrow}
               supportTargetId={supportTargetId}
               supportTargets={supportTargets}
               utilityAction={utilityAction}
             />
-            {active.faction === 'hero' && !pendingAttack ? (
+            {pendingAttack && pendingReactionAction ? (
+              <button
+                className={styles.reactionAction}
+                type="button"
+                onClick={pendingReactionAction.onUse}
+              >
+                {pendingReactionAction.label}
+              </button>
+            ) : null}
+            {actions.length > 0 && !pendingAttack && !pendingSavingThrow && !optionalReroll ? (
               <CombatActionTray
                 actions={actions}
                 activeId={active.id}
-                activeName={active.name}
-                equippedItemId={equippedItemId}
-                onEquipItem={onEquipItem}
-                onSelectAction={onSelectAction}
+                onClearPreview={() => setPreviewActionId(null)}
+                onBasicAttack={() => {
+                  setPreviewActionId(null);
+                  const action = selectedActions.find((candidate) => candidate.activation !== 'passive');
+                  if (action) onSelectAction(action.id);
+                }}
+                onEquipItem={(actionId) => {
+                  setPreviewActionId(null);
+                  onEquipItem(actionId);
+                }}
+                onSelectAction={(actionId) => {
+                  const action = actions.find((candidate) => candidate.id === actionId);
+                  if (action?.activation === 'passive' || action?.disabled) {
+                    setPreviewActionId((current) => current === actionId ? null : actionId);
+                    return;
+                  }
+                  setPreviewActionId(null);
+                  onSelectAction(actionId);
+                }}
+                previewActionId={previewActionId}
                 selectedActionIds={selectedActionIds}
               />
             ) : null}
           </div>
-        ) : null}
-      </section>
+        </section>
+      ) : null}
 
       {victory ? (
         <CombatVictoryDialog
@@ -202,6 +304,12 @@ export function CombatArena({
           round={round}
           summary={victorySummary}
           wordmark={victoryWordmark}
+        />
+      ) : null}
+      {!victory && defeatFallback ? (
+        <CombatDefeatFallbackDialog
+          onConfirm={defeatFallback.onConfirm}
+          summary={defeatFallback.summary}
         />
       ) : null}
     </div>

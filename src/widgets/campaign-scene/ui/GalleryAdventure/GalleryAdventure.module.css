@@ -1,31 +1,3 @@
-.sessionHud {
-  background: var(--color-black-alpha-74);
-  border: 1px solid var(--color-brass-alpha-62);
-  box-sizing: border-box;
-  color: var(--color-parchment-light);
-  display: grid;
-  font-family: var(--font-display);
-  font-size: clamp(0.62rem, 0.8vw, 0.78rem);
-  gap: 0.38rem;
-  left: 1rem;
-  padding: 0.58rem;
-  position: absolute;
-  top: 5.2rem;
-  width: 11rem;
-  z-index: 14;
-}
-
-.sessionHud button {
-  background: var(--color-transparent);
-  border: 1px solid var(--color-brass-alpha-38);
-  color: var(--color-brass-light);
-  cursor: pointer;
-  font-family: inherit;
-  padding: 0.28rem 0.45rem;
-  text-align: left;
-  width: 100%;
-}
-
 .doorField {
   inset: 0;
   pointer-events: none;
@@ -37,59 +9,81 @@
   background: var(--color-transparent);
   border: 0;
   cursor: pointer;
+  overflow: visible;
   padding: 0;
   pointer-events: auto;
   position: absolute;
 }
 
 .door::before {
-  backdrop-filter: brightness(1.38) contrast(1.06);
-  background: var(--color-white-alpha-05);
-  box-shadow: inset 0 0 1.5rem var(--color-white-alpha-10);
+  background: var(--gradient-session-door-hover);
+  clip-path: polygon(10% 5%, 88% 2%, 96% 9%, 96% 100%, 4% 100%, 4% 10%);
   content: '';
   inset: 0;
-  opacity: 0;
+  filter: var(--filter-session-gold-glow);
+  opacity: var(--opacity-none);
   pointer-events: none;
   position: absolute;
-  transition: opacity 180ms ease;
+  transform: scale(0.98);
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .door[data-door='pussy-suite'] {
-  height: 51%;
-  left: 18%;
-  top: 13%;
-  width: 23%;
-}
-
-.door[data-door='pussy-suite']::before {
-  clip-path: polygon(8% 5%, 87% 5%, 98% 18%, 98% 100%, 2% 100%, 2% 17%);
+  height: 39.5%;
+  left: 23.55%;
+  top: 24.2%;
+  width: 11.85%;
 }
 
 .door[data-door='archive'] {
-  height: 43%;
-  left: 52%;
-  top: 17%;
-  width: 15%;
-}
-
-.door[data-door='archive']::before {
-  border-radius: 42% 42% 4% 4% / 16% 16% 4% 4%;
+  height: 37%;
+  left: 55.65%;
+  top: 26.4%;
+  width: 7.75%;
 }
 
 .door[data-door='prop-room-stairs'] {
-  height: 55%;
-  right: 4%;
-  top: 12%;
-  width: 25%;
+  height: 39%;
+  right: 1%;
+  top: 25.5%;
+  width: 23.6%;
 }
 
 .door[data-door='prop-room-stairs']::before {
-  clip-path: polygon(62% 0, 100% 0, 100% 100%, 0 100%, 5% 84%, 20% 68%, 35% 51%, 48% 34%);
+  background: var(--gradient-mystic-gold);
+  clip-path: polygon(
+    45% 0,
+    68% 8%,
+    86% 24%,
+    100% 53%,
+    82% 100%,
+    21% 100%,
+    0 62%,
+    9% 34%,
+    26% 12%
+  );
+  height: 62%;
+  inset: 0 auto auto 18%;
+  width: 32%;
+}
+
+.propRoomScepterField {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 11;
+}
+
+.propRoomScepterField > :global(button) {
+  pointer-events: auto;
+  position: absolute;
 }
 
 .door:hover::before,
-.door:focus-visible::before {
+.door:focus-visible::before,
+.door[aria-pressed='true']::before {
   opacity: 1;
+  transform: scale(1);
 }
 
 .legendPanel,
@@ -124,6 +118,10 @@
   font-size: clamp(0.76rem, 0.95vw, 0.92rem);
   line-height: 1.42;
   margin: 0;
+}
+
+.dialoguePanel > .sceneContinuation {
+  margin-top: 0.55rem;
 }
 
 .eyebrow {
@@ -194,55 +192,6 @@
 .dangerAction {
   background: var(--color-wine) !important;
   color: var(--color-parchment-light) !important;
-}
-
-.gmAccessButton {
-  align-items: center;
-  background: var(--gradient-session-dock);
-  border: 1px solid var(--color-brass-alpha-62);
-  box-shadow: var(--shadow-session-control);
-  color: var(--color-gold-light);
-  cursor: pointer;
-  display: flex;
-  height: 2.9rem;
-  justify-content: center;
-  left: 12.4rem;
-  padding: 0;
-  position: absolute;
-  top: 5.2rem;
-  width: 2.9rem;
-  z-index: 15;
-}
-
-.gmAccessButton svg {
-  fill: none;
-  height: 1.6rem;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-  width: 1.6rem;
-}
-
-.gmAccessButton::after {
-  background: var(--color-black-alpha-74);
-  border: 1px solid var(--color-brass-alpha-38);
-  color: var(--color-brass-light);
-  content: attr(data-label);
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  left: calc(100% + 0.55rem);
-  opacity: 0;
-  padding: 0.35rem 0.5rem;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 160ms ease;
-  white-space: nowrap;
-}
-
-.gmAccessButton:hover::after,
-.gmAccessButton:focus-visible::after {
-  opacity: 1;
 }
 
 .characterStatus {
@@ -513,7 +462,8 @@
 
 .heroChoices {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(5.25rem, 7rem));
+  justify-content: start;
 }
 
 .heroChoices button {
@@ -674,7 +624,6 @@
 .success { border-color: var(--color-ice-bright); }
 .failure { border-color: var(--color-wine); }
 
-.sessionHud button:focus-visible,
 .actions button:focus-visible,
 .actions a:focus-visible,
 .checkPanel button:focus-visible,
@@ -694,8 +643,7 @@
 
 .modalHeader > button:focus-visible,
 .gmChoices button:focus-visible,
-.gmRevealControl button:focus-visible,
-.gmAccessButton:focus-visible {
+.gmRevealControl button:focus-visible {
   outline: 2px solid var(--color-ice-bright);
   outline-offset: 2px;
 }
@@ -704,8 +652,6 @@
 @media (max-width: 1100px) {
   .legendPanel,
   .dialoguePanel { bottom: 5.1rem; width: calc(100% - 9rem); }
-  .sessionHud { left: 0.65rem; top: 4.8rem; width: 10rem; }
-  .gmAccessButton { left: 11rem; top: 4.8rem; }
 }
 
 @media (max-width: 700px) {

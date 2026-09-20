@@ -1,1147 +1,464 @@
 {
   "version": 1,
   "campaignId": "penisuela",
+  "status": "approved",
+  "basedOn": {
+    "outlinePath": "outline.md",
+    "outlineStatus": "approved"
+  },
   "recommendedDurationMinutes": {
-    "min": 275,
-    "max": 375
+    "min": 150,
+    "max": 240
   },
-  "state": {
-    "flags": [
-      "invitation-accepted",
-      "pendant-connected",
-    "recording-damaged",
-    "egorik-theory-strengthened",
-    "pussy-acquaintance-failed",
-    "pussy-acquainted",
-    "pussy-lore-revealed",
-    "pussy-trust-max",
-    "pussy-trust-refused",
-    "pussy-intimidated",
-    "pussy-key-stolen",
-    "pussy-guards-summoned",
-    "pussy-guards-defeated",
-    "pussy-path-resolved",
-    "pussy-quest-accepted",
-    "archive-key-recovered",
-      "alexis-calmed",
-      "rail-kraken-disabled",
-      "bar-order-closed",
-      "bar-power-key",
-      "bar-module-active",
-      "dressing-doubles-disabled",
-      "stage-rehearsal-cue",
-      "stage-power-key",
-      "stage-module-active",
-      "dance-troupe-allies",
-      "stas-met",
-      "stas-call-consent",
-      "womanizer-given-to-polina",
-      "family-branch-womanizer",
-      "family-branch-therapy",
-      "stas-called-to-session",
-      "stas-motivation-heard",
-      "polina-motivation-heard",
-      "stas-marriage-ended",
-      "polina-family-plan",
-      "clear-choice-confirmation",
-      "show-18-complete",
-      "corp-de-ballet-disabled",
-      "egorik-nastya-allies",
-      "groom-voice-key",
-      "control-log-restored",
-      "bride-voice-key",
-      "couple-trust",
-      "footage-authorized",
-      "final-plan-standard",
-      "final-plan-director",
-      "final-plan-physical",
-      "final-standard-reset",
-      "final-director-cut",
-      "final-physical-shutdown"
-    ],
-    "counters": [
-      "time-pressure",
-      "pre-final-combats"
-    ]
-  },
+  "scope": "Порядок сюжетных открытий текущей кампании, включая необязательный квест Оливии. Внутренние проверки, бои и возвраты описаны каноническими storyScenes/UI и раскрыты в combat-story-graph.json/md.",
+  "deferredSceneIds": [],
+  "legacySceneIds": [
+    "restore-control-log",
+    "responsible-control-log",
+    "wedding-reminder",
+    "wedding-reminder-resolution",
+    "igor-orientation",
+    "igor-consent-decisions",
+    "early-physical-assault",
+    "doom-five-cable-junction",
+    "final-choice",
+    "last-take-emergency-action",
+    "post-crisis-orientation-wedding",
+    "post-crisis-orientation-director",
+    "post-crisis-orientation-shutdown",
+    "post-crisis-orientation-evacuation",
+    "post-crisis-publication-wedding",
+    "post-crisis-publication-director",
+    "post-crisis-publication-shutdown",
+    "post-crisis-publication-evacuation",
+    "director-epilogue",
+    "shutdown-epilogue",
+    "evacuation-epilogue",
+    "couples-session-entry",
+    "couples-session-stas",
+    "couples-session-polina",
+    "olva-relationship-review",
+    "show-18-pavilion",
+    "couples-session-plan",
+    "couples-session-choice"
+  ],
   "criticalClues": [
-    {
-      "id": "system-overload",
-      "sourceSceneIds": [
-        "hotel-overload",
-        "hotel-gallery"
-      ]
-    },
-    {
-      "id": "voice-reset-required",
-      "sourceSceneIds": [
-        "hotel-overload",
-        "groom-preparation-room"
-      ]
-    },
     {
       "id": "egorik-lead",
       "sourceSceneIds": [
         "hotel-overload",
-        "hotel-gallery"
-      ]
-    },
-    {
-      "id": "dressing-room-route",
-      "sourceSceneIds": [
-        "hotel-gallery",
+        "pussy-audience",
         "closed-bar"
       ]
     },
     {
-      "id": "celebrity-kreed",
-      "sourceSceneIds": [
-        "artists-dressing-room",
-        "egorik-bungalow-reveal"
-      ]
-    },
-    {
-      "id": "egorik-not-groom",
+      "id": "groom-location",
       "sourceSceneIds": [
         "egorik-bungalow-reveal",
         "groom-preparation-room"
-      ]
-    },
-    {
-      "id": "kreed-is-groom",
-      "sourceSceneIds": [
-        "egorik-bungalow-reveal",
-        "groom-preparation-room"
-      ]
-    },
-    {
-      "id": "bride-sinyak",
-      "sourceSceneIds": [
-        "groom-preparation-room",
-        "ceremony-villa"
-      ]
-    },
-    {
-      "id": "shutdown-options",
-      "sourceSceneIds": [
-        "hotel-overload",
-        "restore-control-log",
-        "ceremony-villa"
       ]
     }
   ],
   "nodes": [
     {
       "id": "tavern-invitation",
-      "title": "Пять браслетов без имён",
-      "type": "framing",
-      "start": true,
-      "expectedMinutes": 5,
+      "title": "Пять приглашений",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "invitation-to-hotel-video",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "start": true
+    },
+    {
+      "id": "invitation-to-hotel-video",
+      "title": "Мальчишник и утро без памяти",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
           "to": "hotel-overload",
-          "label": "Вступительный монтаж: отправить Кострюльку и перейти к утру",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "invitation-accepted",
-              "value": true
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "hotel-overload",
-      "title": "Пульт конца света",
-      "type": "investigation",
-      "expectedMinutes": 30,
-      "clueIds": [
-        "system-overload",
-        "voice-reset-required",
-        "egorik-lead",
-        "shutdown-options"
-      ],
+      "title": "Похмельное утро",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
           "to": "hotel-gallery",
-          "label": "Оставить кулон подключённым",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "pendant-connected",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "to": "hotel-gallery",
-          "label": "Временно разорвать связь кулона с пультом",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "pendant-connected",
-              "value": false
-            },
-            {
-              "type": "set-flag",
-              "flag": "recording-damaged",
-              "value": true
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "hotel-gallery",
       "title": "Гостиничная галерея",
-      "type": "hazard-investigation",
-      "expectedMinutes": 20,
-      "clueIds": [
-        "system-overload",
-        "egorik-lead",
-        "dressing-room-route"
-      ],
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
-          "to": "closed-bar",
-          "label": "Остановить или обойти цикл Рельсового кракена",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "egorik-theory-strengthened",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "rail-kraken-disabled",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "rail-kraken-fight",
-          "label": "Разобрать Рельсового кракена в инициативе",
-          "effects": [
-            {
-              "type": "increment-counter",
-              "counter": "pre-final-combats",
-              "value": 1
-            }
-          ]
+          "to": "alexis-room",
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
-      "id": "rail-kraken-fight",
-      "title": "Бой с Рельсовым кракеном",
-      "type": "optional-combat",
-      "optional": true,
+      "id": "alexis-room",
+      "title": "Комната Алексиса: образ 10/10 для конца света",
+      "type": "scene",
       "expectedMinutes": 12,
       "transitions": [
         {
-          "to": "closed-bar",
-          "label": "Освободить лестницу и продолжить поиск Егорика",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "egorik-theory-strengthened",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "rail-kraken-disabled",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
+          "to": "pussy-audience",
+          "label": "Продолжить сюжет"
         }
       ]
+    },
+    {
+      "id": "pussy-audience",
+      "title": "Pussy Sultan: аудиенция без регалии",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "pussy-prop-room",
+          "label": "Продолжить сюжет"
+        },
+        {
+          "to": "closed-bar",
+          "label": "Жетоны получены альтернативным исходом; Вуманайзер не получен"
+        }
+      ]
+    },
+    {
+      "id": "pussy-prop-room",
+      "title": "Реквизиторская: скипетр под паланкином",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "pussy-scepter-return",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "optional": true
+    },
+    {
+      "id": "pussy-scepter-return",
+      "title": "Возвращение золотого скипетра Pussy Sultan",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "closed-bar",
+          "label": "Продолжить сюжет"
+        }
+      ],
+      "optional": true
     },
     {
       "id": "closed-bar",
-      "title": "Закрытый бар",
-      "type": "hazard-investigation",
-      "expectedMinutes": 15,
-      "clueIds": [
-        "dressing-room-route"
-      ],
-      "transitions": [
-        {
-          "to": "bar-module-shutdown",
-          "label": "Закрыть заказы по процедуре",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-met",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stas-call-consent",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "to": "bar-tap-fight",
-          "label": "Выбить ключ питания из кранов",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-met",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stas-call-consent",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "pre-final-combats",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "to": "artists-dressing-room",
-          "label": "Не тратить время на модуль",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-met",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stas-call-consent",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "bar-module-active",
-              "value": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "bar-tap-fight",
-      "title": "Бой с кранами «Бездонное дно»",
-      "type": "optional-combat",
-      "optional": true,
+      "title": "Закрытый бар: застывший танец",
+      "type": "scene",
       "expectedMinutes": 12,
       "transitions": [
         {
-          "to": "artists-dressing-room",
-          "label": "Забрать ключ питания из отключённого бара",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "bar-power-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "bar-module-active",
-              "value": false
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
+          "to": "guest-bungalows",
+          "label": "Продолжить сюжет"
         }
-      ]
-    },
-    {
-      "id": "bar-module-shutdown",
-      "title": "Аварийное питание бара",
-      "type": "optional-preparation",
-      "optional": true,
-      "expectedMinutes": 10,
-      "transitions": [
-        {
-          "to": "artists-dressing-room",
-          "label": "Забрать первый ключ питания",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "bar-power-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "bar-module-active",
-              "value": false
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "artists-dressing-room",
-      "title": "Артистическая гримёрка",
-      "type": "investigation-reveal",
-      "expectedMinutes": 30,
-      "clueIds": [
-        "dressing-room-route",
-        "celebrity-kreed"
       ],
-      "transitions": [
-        {
-          "to": "stage-module-shutdown",
-          "label": "Завершить репетицию без боя и отключить сценический модуль",
-          "effects": [
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            },
-            {
-              "type": "set-flag",
-              "flag": "dressing-doubles-disabled",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-rehearsal-cue",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "guest-bungalows",
-          "label": "Завершить репетицию без боя и продолжить погоню",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stage-module-active",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "dressing-doubles-disabled",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-rehearsal-cue",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "dressing-room-double-fight",
-          "label": "Силой освободить Satyr и забрать улики",
-          "effects": [
-            {
-              "type": "increment-counter",
-              "counter": "pre-final-combats",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "dressing-room-double-fight",
-      "title": "Бой с Гримёрными дублёрами",
-      "type": "optional-combat",
-      "optional": true,
-      "expectedMinutes": 12,
-      "transitions": [
-        {
-          "to": "stage-module-shutdown",
-          "label": "После боя отключить сценический модуль",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "dressing-doubles-disabled",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-rehearsal-cue",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "to": "guest-bungalows",
-          "label": "После боя продолжить погоню за Егориком",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "dressing-doubles-disabled",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-rehearsal-cue",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-module-active",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "stage-module-shutdown",
-      "title": "Питание сцены",
-      "type": "optional-preparation",
-      "optional": true,
-      "expectedMinutes": 10,
-      "transitions": [
-        {
-          "to": "guest-bungalows",
-          "label": "Забрать второй ключ питания",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stage-power-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stage-module-active",
-              "value": false
-            }
-          ]
-        }
-      ]
+      "allowCycle": true
     },
     {
       "id": "guest-bungalows",
-      "title": "Семейное крыло: выбор ветки",
-      "type": "social-encounter",
-      "expectedMinutes": 10,
+      "title": "Развилка гостевых бунгало",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
-          "to": "show-18-pavilion",
-          "label": "Передать Вуманайзер Полине и принять квест Олвы",
+          "to": "bungalow-courtyard",
+          "label": "Продолжить сюжет"
+        },
+        {
+          "to": "closed-bar",
+          "label": "Вернуться в бар за Станисом"
+        },
+        {
+          "to": "egorik-bungalow-reveal",
+          "label": "Пройти к Егорику с ключами",
+          "condition": {
+            "flag": "olva-bungalow-access-issued",
+            "equals": true
+          }
+        }
+      ],
+      "allowCycle": true
+    },
+    {
+      "id": "bungalow-courtyard",
+      "title": "Леди Оливия — наставница чувственных искусств",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "guest-bungalows",
+          "label": "Взяться найти мужа Полинетты",
           "effects": [
             {
               "type": "set-flag",
-              "flag": "womanizer-given-to-polina",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "family-branch-womanizer",
+              "flag": "olva-quest-accepted",
               "value": true
             }
           ]
         },
         {
-          "to": "egorik-bungalow-reveal",
-          "label": "Передать Вуманайзер Полине и отказаться от квеста Олвы",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "womanizer-given-to-polina",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "family-branch-womanizer",
-              "value": true
-            }
-          ]
+          "to": "olva-date-rehearsal",
+          "label": "Начать консультацию со Станисом",
+          "condition": {
+            "any": [
+              {
+                "flag": "olva-stas-recruited",
+                "equals": true
+              },
+              {
+                "flag": "olva-table-opened",
+                "equals": true
+              },
+              {
+                "flag": "olva-table-complete",
+                "equals": true
+              }
+            ]
+          }
         },
         {
-          "to": "couples-session-stas",
-          "label": "Сохранить Вуманайзер и позвать Стаса на прямой разговор",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "womanizer-given-to-polina",
-              "value": false
-            },
-            {
-              "type": "set-flag",
-              "flag": "family-branch-therapy",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "stas-called-to-session",
-              "value": true
-            }
-          ]
+          "to": "olva-passes-handoff",
+          "label": "Получить ключи без консультации"
         }
-      ]
+      ],
+      "allowCycle": true
     },
     {
-      "id": "show-18-pavilion",
-      "title": "Павильон 18+",
-      "type": "optional-side-quest",
-      "optional": true,
-      "expectedMinutes": 20,
+      "id": "olva-passes-handoff",
+      "title": "Пропуск без условий",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
           "to": "egorik-bungalow-reveal",
-          "label": "Разоблачить Алгоритм универсальных советов",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "show-18-complete",
-              "value": true
-            },
-            {
-              "type": "grant-item",
-              "itemId": "red-button-18-plus"
-            }
-          ]
-        },
-        {
-          "to": "egorik-bungalow-reveal",
-          "label": "Прервать эфир и вернуться к поискам",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "show-18-complete",
-              "value": false
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
-      ]
-    },
-    {
-      "id": "couples-session-stas",
-      "title": "Бесконечный бар Стаса",
-      "type": "social-reflection",
-      "expectedMinutes": 7,
-      "transitions": [
-        {
-          "to": "couples-session-polina",
-          "label": "Выслушать, чего Стас хочет и от чего прячется",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-motivation-heard",
-              "value": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "couples-session-polina",
-      "title": "Идеальный план Полины",
-      "type": "social-reflection",
-      "expectedMinutes": 7,
-      "transitions": [
-        {
-          "to": "couples-session-choice",
-          "label": "Выслушать, какую семью Полина пытается гарантировать",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "polina-motivation-heard",
-              "value": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "couples-session-choice",
-      "title": "Первый честный ответ",
-      "type": "social-choice",
-      "expectedMinutes": 10,
-      "transitions": [
-        {
-          "to": "egorik-bungalow-reveal",
-          "label": "Поддержать свободу Стаса и завершить брак",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-marriage-ended",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "polina-family-plan",
-              "value": false
-            },
-            {
-              "type": "set-flag",
-              "flag": "clear-choice-confirmation",
-              "value": true
-            },
-            {
-              "type": "grant-item",
-              "itemId": "clear-choice-confirmation"
-            }
-          ]
-        },
-        {
-          "to": "egorik-bungalow-reveal",
-          "label": "Поддержать добровольный семейный план Полины",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "stas-marriage-ended",
-              "value": false
-            },
-            {
-              "type": "set-flag",
-              "flag": "polina-family-plan",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "clear-choice-confirmation",
-              "value": true
-            },
-            {
-              "type": "grant-item",
-              "itemId": "clear-choice-confirmation"
-            }
-          ]
-        }
-      ]
+      ],
+      "allowCycle": true
     },
     {
       "id": "egorik-bungalow-reveal",
-      "title": "Не те молодожёны",
-      "type": "midpoint-reveal",
-      "expectedMinutes": 20,
-      "clueIds": [
-        "celebrity-kreed",
-        "egorik-not-groom",
-        "kreed-is-groom"
-      ],
+      "title": "Бунгало Егорика",
+      "type": "scene",
+      "expectedMinutes": 12,
       "transitions": [
         {
           "to": "groom-tunnel",
-          "label": "Признать ошибку и попросить помощи",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "egorik-nastya-allies",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "to": "groom-tunnel",
-          "label": "Немедленно идти за настоящим женихом",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "egorik-nastya-allies",
-              "value": false
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "groom-tunnel",
-      "title": "Технический тоннель под сценой",
-      "type": "hazard",
-      "expectedMinutes": 25,
+      "title": "Служебный тоннель под сценой",
+      "type": "scene",
+      "expectedMinutes": 12,
       "transitions": [
         {
           "to": "groom-preparation-room",
-          "label": "Пройти хореографию допуска или отключить охрану",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "corp-de-ballet-disabled",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "corp-de-ballet-fight",
-          "label": "Прорываться через Кордебалет в инициативе",
-          "effects": [
-            {
-              "type": "increment-counter",
-              "counter": "pre-final-combats",
-              "value": 1
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "corp-de-ballet-fight",
-      "title": "Бой с Кордебалетом конфиденциальности",
-      "type": "optional-combat",
-      "optional": true,
-      "expectedMinutes": 15,
-      "transitions": [
-        {
-          "to": "groom-preparation-room",
-          "label": "Открыть комнату подготовки жениха",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "corp-de-ballet-disabled",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 1
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "groom-preparation-room",
-      "title": "Комната настоящего жениха",
-      "type": "reveal-rescue",
-      "expectedMinutes": 20,
-      "clueIds": [
-        "voice-reset-required",
-        "egorik-not-groom",
-        "kreed-is-groom",
-        "bride-sinyak"
-      ],
+      "title": "Укрытие Kreed",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
-          "to": "restore-control-log",
-          "label": "Восстановить полный журнал пульта",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "groom-voice-key",
-              "value": true
-            },
-            {
-              "type": "increment-counter",
-              "counter": "time-pressure",
-              "value": 2
-            }
-          ]
-        },
-        {
-          "to": "ceremony-villa",
-          "label": "Сразу вести Крида к невесте",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "groom-voice-key",
-              "value": true
-            }
-          ]
+          "to": "kreed-disclosure",
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
-      "id": "restore-control-log",
-      "title": "Восстановление журнала Головача",
-      "type": "optional-preparation",
-      "optional": true,
-      "expectedMinutes": 15,
-      "clueIds": [
-        "shutdown-options"
-      ],
+      "id": "kreed-disclosure",
+      "title": "Основной жених",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
-          "to": "ceremony-villa",
-          "label": "Сохранить полный журнал",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "control-log-restored",
-              "value": true
-            }
-          ]
+          "to": "post-kreed-route",
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
-      "id": "ceremony-villa",
-      "title": "Игорь Румянец",
-      "type": "point-of-no-return",
-      "expectedMinutes": 25,
-      "clueIds": [
-        "bride-sinyak",
-        "shutdown-options"
-      ],
+      "id": "post-kreed-route",
+      "title": "У роскошной виллы",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
-          "to": "final-choice",
-          "label": "Сохранить тайну и отдать запись паре",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "bride-voice-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "couple-trust",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "footage-authorized",
-              "value": false
-            }
-          ]
-        },
-        {
-          "to": "final-choice",
-          "label": "Получить разрешение временно использовать запись",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "bride-voice-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "couple-trust",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "footage-authorized",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "final-choice",
-          "label": "Использовать запись без согласия",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "bride-voice-key",
-              "value": true
-            },
-            {
-              "type": "set-flag",
-              "flag": "couple-trust",
-              "value": false
-            },
-            {
-              "type": "set-flag",
-              "flag": "footage-authorized",
-              "value": false
-            }
-          ]
+          "to": "graywise-door-trust",
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
-      "id": "final-choice",
-      "title": "Выбор финального решения",
-      "type": "choice",
-      "expectedMinutes": 0,
+      "id": "graywise-door-trust",
+      "title": "У закрытой двери",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bedroom-reveal",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "bedroom-reveal",
+      "title": "Внутренняя дверь спальни",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "igor-unboxing",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "igor-unboxing",
+      "title": "Распаковка после конца света",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "andrey-villa-breach",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "andrey-villa-breach",
+      "title": "Взрыв в доме Grey Wiese",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
           "to": "last-take-boss",
-          "label": "Начать бой со штатного аварийного сброса",
-          "condition": {
-            "all": [
-              {
-                "flag": "groom-voice-key",
-                "equals": true
-              },
-              {
-                "flag": "bride-voice-key",
-                "equals": true
-              },
-              {
-                "flag": "couple-trust",
-                "equals": true
-              }
-            ]
-          },
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-plan-standard",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "last-take-boss",
-          "label": "Начать бой с перепрограммирования пресета",
-          "condition": {
-            "all": [
-              {
-                "flag": "pendant-connected",
-                "equals": true
-              },
-              {
-                "flag": "control-log-restored",
-                "equals": true
-              },
-              {
-                "counter": "time-pressure",
-                "lte": 4
-              }
-            ]
-          },
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-plan-director",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "last-take-boss",
-          "label": "Начать бой с физического отключения",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-plan-physical",
-              "value": true
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "last-take-boss",
-      "title": "Последний дубль",
-      "type": "mandatory-boss",
-      "expectedMinutes": 60,
+      "title": "Арена лорда Нетака",
+      "type": "combat",
+      "expectedMinutes": 30,
+      "transitions": [
+        {
+          "to": "villa-after-andrey",
+          "label": "Победа в двух фазах"
+        },
+        {
+          "to": "bad-ending-villa",
+          "label": "Поражение в любой фазе"
+        }
+      ]
+    },
+    {
+      "id": "villa-after-andrey",
+      "title": "Возвращение к вилле",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "couple-voice-reset",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "couple-voice-reset",
+      "title": "Два голоса",
+      "type": "scene",
+      "expectedMinutes": 4,
       "transitions": [
         {
           "to": "wedding-epilogue",
-          "label": "Закрыть третий контур голосовым сбросом",
-          "condition": {
-            "all": [
-              {
-                "flag": "groom-voice-key",
-                "equals": true
-              },
-              {
-                "flag": "bride-voice-key",
-                "equals": true
-              },
-              {
-                "flag": "couple-trust",
-                "equals": true
-              }
-            ]
-          },
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-standard-reset",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "director-epilogue",
-          "label": "Закрыть третий контур режиссёрским монтажом",
-          "condition": {
-            "all": [
-              {
-                "flag": "pendant-connected",
-                "equals": true
-              },
-              {
-                "flag": "control-log-restored",
-                "equals": true
-              },
-              {
-                "counter": "time-pressure",
-                "lte": 4
-              }
-            ]
-          },
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-director-cut",
-              "value": true
-            }
-          ]
-        },
-        {
-          "to": "shutdown-epilogue",
-          "label": "Разбить последний контур физически",
-          "effects": [
-            {
-              "type": "set-flag",
-              "flag": "final-physical-shutdown",
-              "value": true
-            }
-          ]
+          "label": "Продолжить сюжет"
         }
       ]
     },
     {
       "id": "wedding-epilogue",
-      "title": "Свадьба после конца света",
-      "type": "epilogue",
-      "ending": true,
-      "expectedMinutes": 15,
-      "transitions": []
+      "title": "Частная церемония после конца света",
+      "type": "ending",
+      "expectedMinutes": 4,
+      "transitions": [],
+      "ending": true
     },
     {
-      "id": "director-epilogue",
-      "title": "Оскар Головача Лены",
-      "type": "epilogue",
-      "ending": true,
-      "expectedMinutes": 15,
-      "transitions": []
+      "id": "bad-ending-villa",
+      "title": "Свадьба пошла не так",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bad-ending-netak-wedding",
+          "label": "Продолжить сюжет"
+        }
+      ]
     },
     {
-      "id": "shutdown-epilogue",
-      "title": "Счёт за разрушенную сцену",
-      "type": "epilogue",
-      "ending": true,
-      "expectedMinutes": 15,
-      "transitions": []
+      "id": "bad-ending-netak-wedding",
+      "title": "Свадьба лорда Нетака",
+      "type": "scene",
+      "expectedMinutes": 4,
+      "transitions": [
+        {
+          "to": "bad-ending-magical-prison",
+          "label": "Продолжить сюжет"
+        }
+      ]
+    },
+    {
+      "id": "bad-ending-magical-prison",
+      "title": "За магической решёткой",
+      "type": "ending",
+      "expectedMinutes": 4,
+      "transitions": [],
+      "ending": true
+    },
+    {
+      "id": "olva-date-rehearsal",
+      "title": "Двое в номере, не считая хотелок",
+      "type": "scene",
+      "expectedMinutes": 25,
+      "transitions": [
+        {
+          "to": "guest-bungalows",
+          "label": "Вернуться с любого этапа; пропуск остаётся"
+        }
+      ],
+      "optional": true,
+      "allowCycle": true
     }
   ]
 }

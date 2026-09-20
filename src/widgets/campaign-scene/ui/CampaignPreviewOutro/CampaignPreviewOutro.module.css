@@ -1,0 +1,25 @@
+.titleCard {
+  align-items: center;
+  background: var(--color-black);
+  box-sizing: border-box;
+  color: var(--color-white);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: clamp(1rem, 5vw, 4rem);
+  position: fixed;
+  z-index: 200;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.title:focus { outline: none; }

@@ -1,0 +1,46 @@
+{
+  "campaignId": "penisuela",
+  "round": 40,
+  "date": "2026-09-04",
+  "status": "completed-user-approved",
+  "auditType": "closed-bar-holographic-guards-redesign-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Полностью переделать стражей: сделать их голографическими, похожими на охрану холла, допустимо использовать другой цвет.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/campaigns/penisuela/scenes/closed-bar-dancers.png",
+    "assets/concepts/campaigns/penisuela/scenes/hotel-gallery-arcane-guards.png",
+    "assets/concepts/campaigns/penisuela/ui/enemy-tokens/hotel-arcane-guard.png",
+    "art-drafts/closed-bar-holographic-guards-combat-v1.png"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-scene-closed-bar-beat-guards-combat",
+      "path": "art-drafts/closed-bar-holographic-guards-combat-v1.png",
+      "verdict": "accept",
+      "size": "1584x993",
+      "alpha": false
+    },
+    {
+      "assetId": "penisuela-ui-token-club-beat-guard",
+      "path": "art-drafts/closed-bar-holographic-guard-avatar-v1.png",
+      "verdict": "accept",
+      "size": "1254x1254",
+      "alpha": false
+    }
+  ],
+  "checks": [
+    "В кадре ровно четыре крупных полнофигурных голографических стража и ровно пять заколдованных танцоров.",
+    "Стражи родственны охране холла по высоким гранёным шлемам, угловатым наплечникам, вытянутым пропорциям и длинным мечам.",
+    "Новый бирюзово-синий цвет и полупрозрачные световые плоскости отличают проекции пульта от красно-чёрной охраны холла.",
+    "Все четверо стоят неподвижно с мечами остриём вниз; бега, выпадов, активных ударов и лишних эффектов нет.",
+    "Исходная сцена, музыкальный пульт и танцоры сохранены; герои партии, кровь, текст и интерфейс отсутствуют."
+    ,"Квадратный аватар сохраняет тот же бирюзовый голографический материал, гранёный закрытый шлем и золотые контуры; лицо, оружие, текст и встроенная HUD-рамка отсутствуют."
+  ],
+  "approval": {
+    "required": true,
+    "received": true,
+    "userApproval": "этих окаю; делай аватарку и добавляй в игру",
+    "nextAction": "Ассеты опубликованы; перейти к каноническим данным и runtime-интеграции."
+  }
+}

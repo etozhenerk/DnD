@@ -1,39 +1,70 @@
 .card {
+  align-content: end;
   align-items: center;
-  background: var(--color-black-alpha-42);
-  border: 1px solid var(--color-brass-alpha-38);
-  display: grid;
-  gap: 0.4rem;
-  grid-template-columns: 3.8rem minmax(0, 1fr);
-  height: 100%;
   box-sizing: border-box;
+  display: grid;
+  gap: 0.35rem 0.45rem;
+  grid-template-columns: 6.4rem minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  height: 100%;
   min-width: 0;
-  overflow: hidden;
-  padding: 0.3rem 0.45rem;
+  padding: 0.25rem 0.25rem 0.35rem;
+  position: relative;
+}
+
+.details {
+  align-content: center;
+  align-self: end;
+  background: var(--gradient-combat-active-card);
+  border: 1px solid var(--color-gold-alpha-62);
+  border-radius: 1.2rem 2.8rem 2.8rem 1.2rem;
+  box-shadow: var(--shadow-combat-dock);
+  box-sizing: border-box;
+  display: grid;
+  gap: 0.38rem;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  min-height: 6.15rem;
+  min-width: 0;
+  padding: 0.62rem 0.75rem 0.55rem 6.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card[data-faction='enemy'] .details {
+  background: var(--gradient-combat-enemy-backplate);
+  border-color: var(--color-combat-threat-glow);
 }
 
 .portraitWrap {
-  height: 3.55rem;
+  align-self: end;
+  grid-column: 1;
+  grid-row: 1;
+  height: 6.35rem;
   position: relative;
-  width: 3.55rem;
+  transform: scale(0.88);
+  width: 6.35rem;
+  z-index: 2;
+}
+
+.portraitViewport {
+  border-radius: 50%;
+  height: 5rem;
+  left: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
 }
 
 .portrait {
-  border-radius: 50%;
-  height: 2.7rem;
-  left: 50%;
+  display: block;
+  height: 100%;
   object-fit: cover;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%) translateY(var(--portrait-shift-y, 0%)) scale(var(--portrait-scale, 1));
+  transform: translateY(var(--portrait-shift-y, 0%)) scale(var(--portrait-scale, 1));
   transform-origin: center;
-  width: 2.7rem;
-}
-
-.portraitWrap[data-faction='hero'] .portrait {
-  height: 3.2rem;
-  object-fit: contain;
-  width: 3.2rem;
+  width: 100%;
 }
 
 .tokenFrame {
@@ -41,6 +72,7 @@
   overflow: hidden;
   pointer-events: none;
   position: absolute;
+  z-index: 3;
 }
 
 .tokenFrame img {
@@ -51,173 +83,169 @@
   width: 300%;
 }
 
-.portraitWrap[data-faction='hero'] .tokenFrame img { left: -25%; }
-.portraitWrap[data-faction='enemy'] .tokenFrame img { left: -175%; }
-
-.identity {
-  min-width: 0;
+.portraitWrap[data-faction='hero'] .tokenFrame img {
+  left: -25%;
 }
 
-.identity > span {
+.portraitWrap[data-faction='enemy'] .tokenFrame img {
+  left: -175%;
+}
+
+.identity {
+  align-self: end;
+  box-sizing: border-box;
+  min-width: 0;
+  padding-right: 2.35rem;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+
+.turnLabel {
   color: var(--color-brass-muted);
   display: block;
-  font-size: 0.68rem;
+  font-size: var(--combat-font-text);
   font-weight: 800;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
+.effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 4;
+}
+
+.effects li {
+  display: flex;
+  min-width: 0;
+}
+
 .identity h2 {
   color: var(--color-gold-light);
   font-family: var(--font-display);
-  font-size: 0.94rem;
+  font-size: var(--combat-font-title);
   font-weight: 500;
   line-height: 1.05;
   margin: 0.08rem 0 0;
-  max-height: 2.1em;
-  overflow: hidden;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-shadow: var(--shadow-title);
+  white-space: normal;
 }
 
 .identity p {
   color: var(--color-parchment-light);
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  margin: 0.1rem 0 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: var(--combat-font-text);
+  line-height: 1.14;
+  margin: 0.16rem 0 0;
+  overflow-wrap: break-word;
+  text-shadow: var(--shadow-title);
+  white-space: normal;
 }
 
 .stats {
-  display: grid;
-  gap: 0.25rem;
-  grid-column: 1 / -1;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
   margin: 0;
-}
-
-.health {
-  background: var(--color-black-alpha-74);
-  display: block;
-  grid-column: 1 / -1;
-  height: 0.28rem;
-  overflow: hidden;
-}
-
-.health i {
-  background: var(--gradient-combat-health);
-  display: block;
-  height: 100%;
+  min-width: 0;
+  position: relative;
+  width: 100%;
+  z-index: 2;
 }
 
 .stats div {
   align-items: center;
+  background: var(--color-black-alpha-74);
+  border: 1px solid var(--color-brass-alpha-38);
+  border-radius: 999px;
   display: flex;
   gap: 0.15rem;
   justify-content: center;
-  min-width: 0;
+  flex: 0 0 auto;
+  min-width: max-content;
+  padding: 0.22rem 0.48rem;
 }
 
 .stats dt {
   align-items: center;
-  color: var(--color-brass-muted);
+  color: var(--color-transparent);
   display: flex;
-  font-family: var(--font-body);
-  font-size: 0.6rem;
-  font-weight: 500;
-  gap: 0.08rem;
+  flex: 0 0 0.9rem;
+  font-size: var(--combat-font-text);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0.9rem;
 }
 
 .stats dt img {
-  height: 0.72rem;
+  display: block;
+  flex: 0 0 auto;
+  height: 0.9rem;
   object-fit: contain;
-  width: 0.72rem;
+  width: 0.9rem;
 }
 
 .stats dd {
-  color: var(--color-brass-light);
+  color: var(--color-parchment-light);
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: var(--combat-font-text);
+  font-weight: 800;
   margin: 0;
   white-space: nowrap;
 }
 
-.card[data-compact='true'] {
-  align-content: stretch;
-  gap: 0.45rem 0.5rem;
-  grid-template-columns: 5.25rem minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) auto auto;
-  padding: 0.55rem 0.5rem;
-}
-
-.card[data-compact='true'] .portraitWrap { height: 5rem; width: 5rem; }
-.card[data-compact='true'] .portrait { height: 3.85rem; width: 3.85rem; }
-
-.card[data-compact='true'] .portraitWrap[data-faction='hero'] .portrait {
-  height: 4.7rem;
-  width: 4.7rem;
-}
-
-.card[data-compact='true'] .identity { align-self: center; }
-.card[data-compact='true'] .identity > span { font-size: 0.7rem; }
-.card[data-compact='true'] .identity h2 { font-size: 1.3rem; }
-.card[data-compact='true'] .identity p { font-size: 0.95rem; line-height: 1.18; white-space: normal; }
-.card[data-compact='true'] .health { grid-row: 2; height: 0.35rem; }
-.card[data-compact='true'] .stats { grid-row: 3; }
-.card[data-compact='true'] .stats div {
-  background: var(--color-black-alpha-42);
-  border: 1px solid var(--color-brass-alpha-38);
-  flex-direction: column;
-  gap: 0.08rem;
-  padding: 0.25rem 0.15rem;
-}
-.card[data-compact='true'] .stats dt {
-  color: var(--color-brass-light);
-  font-size: 0.62rem;
-  font-weight: 700;
-}
-.card[data-compact='true'] .stats dt img { height: 1.08rem; width: 1.08rem; }
-.card[data-compact='true'] .stats dd {
-  color: var(--color-parchment-light);
-  font-size: 1.05rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
 @media (max-width: 1500px) {
-  .card[data-compact='true'] {
-    gap: 0.3rem;
-    grid-template-columns: 3.7rem minmax(0, 1fr);
-    padding: 0.35rem;
+  .card {
+    grid-template-columns: 5.4rem minmax(0, 1fr);
   }
-  .card[data-compact='true'] .portraitWrap { height: 3.2rem; width: 3.2rem; }
-  .card[data-compact='true'] .portrait { height: 2.45rem; width: 2.45rem; }
-  .card[data-compact='true'] .portraitWrap[data-faction='hero'] .portrait { height: 3rem; width: 3rem; }
-  .card[data-compact='true'] .identity > span { font-size: 0.62rem; }
-  .card[data-compact='true'] .identity h2 { font-size: 1rem; }
-  .card[data-compact='true'] .identity p { font-size: 0.8rem; }
-  .card[data-compact='true'] .stats div { gap: 0.12rem; padding: 0.28rem 0.1rem; }
-  .card[data-compact='true'] .stats dt { font-size: 0; }
-  .card[data-compact='true'] .stats dt img { height: 0.84rem; width: 0.84rem; }
-  .card[data-compact='true'] .stats dd { font-size: 0.86rem; }
+
+  .portraitWrap {
+    height: 5.3rem;
+    width: 5.3rem;
+  }
+
+  .portraitViewport {
+    height: 4.15rem;
+    width: 4.15rem;
+  }
+
+  .details {
+    min-height: 5.25rem;
+    padding-left: 5.15rem;
+  }
 }
 
 @media (max-width: 1100px) {
   .card {
-    gap: 0.3rem;
-    grid-template-columns: 3.35rem minmax(0, 1fr);
-    height: 100%;
-    padding: 0.18rem 0.35rem;
+    grid-template-columns: 4.7rem minmax(0, 1fr);
+    padding-inline: 0.1rem;
   }
 
-  .portraitWrap { height: 3.15rem; width: 3.15rem; }
-  .portrait { height: 2.4rem; width: 2.4rem; }
-  .portraitWrap[data-faction='hero'] .portrait { height: 2.9rem; width: 2.9rem; }
-  .identity h2 { font-size: 0.88rem; }
-  .identity p { font-size: 0.72rem; }
-  .stats { gap: 0.12rem; }
-  .stats dt img { height: 0.64rem; width: 0.64rem; }
-  .stats dd { font-size: 0.68rem; }
+  .portraitWrap {
+    height: 4.65rem;
+    width: 4.65rem;
+  }
+
+  .portraitViewport {
+    height: 3.65rem;
+    width: 3.65rem;
+  }
+
+  .details {
+    min-height: 4.65rem;
+    padding-left: 4.55rem;
+  }
+
+  .stats div {
+    padding-inline: 0.36rem;
+  }
 }

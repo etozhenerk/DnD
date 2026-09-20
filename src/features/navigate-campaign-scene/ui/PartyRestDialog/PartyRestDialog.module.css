@@ -1,0 +1,8 @@
+.heroes {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem;}
+.hero {display:flex;flex-direction:column;align-items:center;gap:.65rem;padding:.8rem .55rem;border:1px solid var(--color-brass-alpha-38);background:var(--color-black-alpha-42);min-width:0;}
+.portrait {width:4.5rem;height:4.5rem;object-fit:contain;}
+.hero h3 {font:inherit;text-align:center;color:var(--color-gold-light);min-height:2.5em;margin:0;}
+.hero p {margin:0;text-align:center;}
+.preview {color:var(--color-gold-light);min-height:2.5em;}
+.error {margin:0;color:var(--color-parchment-light);}
+@media(max-width:700px) {.heroes {grid-template-columns:repeat(2,minmax(0,1fr));}}

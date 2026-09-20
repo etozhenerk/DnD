@@ -397,6 +397,20 @@
   font-weight: 500;
 }
 
+.locationGallery figcaption p + p {
+  margin-top: 0.75rem;
+}
+
+.npcGrid article:has(video) {
+  grid-template-columns: 1fr;
+}
+
+.npcGrid article:has(video) video {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  min-height: 0;
+}
+
 .locationGallery p,
 .party p,
 .cast p {
@@ -421,6 +435,10 @@
 }
 
 .npcGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.castPair {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -661,6 +679,85 @@
   padding: 1rem 1.25rem;
 }
 
+.playableEntry {
+  border-top: 1px solid var(--color-gold-alpha-32);
+  margin: 4rem auto 0;
+  max-width: 1180px;
+  padding-top: 2.5rem;
+  text-align: center;
+}
+
+.rewardList {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rewardCard {
+  align-items: center;
+  background: var(--gradient-frost-dark);
+  border: 1px solid var(--color-gold-alpha-32);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-ice);
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.4fr) minmax(0, 1fr);
+  min-width: 0;
+  padding: 0.75rem;
+}
+
+.rewardIcon {
+  aspect-ratio: 1;
+  display: block;
+  object-fit: contain;
+  width: 100%;
+}
+
+.rewardCard h3 {
+  color: var(--color-ice-bright);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0.4rem 0;
+}
+
+.rewardCard p {
+  color: var(--color-ink-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.startButton {
+  align-items: center;
+  background: var(--gradient-parchment);
+  border: 1px solid var(--color-gold-dark);
+  box-shadow: var(--shadow-soft), var(--shadow-inset-paper);
+  color: var(--color-wine-dark);
+  display: inline-flex;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  gap: 0.8rem;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0.8rem 1.4rem;
+  text-decoration: none;
+}
+
+.startButton:hover {
+  filter: brightness(1.1);
+}
+
+.startButton:focus-visible {
+  outline: 2px solid var(--color-ice-bright);
+  outline-offset: 5px;
+}
+
+.startSeal {
+  flex: 0 0 auto;
+  height: 2.7rem;
+  overflow: visible;
+  width: 2.7rem;
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -711,6 +808,8 @@
     .enemyLedger,
     .partyGrid,
     .castGrid,
+    .castPair,
+    .rewardList,
     .restored {
     grid-template-columns: 1fr;
   }

@@ -22,10 +22,10 @@ export function CombatVictoryDialog({encounterName, onConfirm, round, summary, w
         <h2 className={styles.victoryTitle} id="combat-victory-title">
           {wordmark ? (
             <>
-              <span className={styles.visuallyHidden}>Victory</span>
+              <span className={styles.visuallyHidden}>Победа</span>
               <img className={styles.victoryWordmark} src={wordmark} alt="" aria-hidden="true" />
             </>
-          ) : 'Victory'}
+          ) : 'Победа'}
         </h2>
         <span className={styles.ornament} aria-hidden="true">◆</span>
         <strong>{encounterName}</strong>

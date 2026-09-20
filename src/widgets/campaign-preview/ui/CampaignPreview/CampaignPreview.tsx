@@ -1,11 +1,27 @@
 import type {CSSProperties} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useSearchParams} from 'react-router-dom';
 import type {CampaignPreview as CampaignPreviewData} from '../../../../entities/campaign-preview/model/types';
 import {useCampaignPreview} from '../../../../features/navigate-campaign-preview/model/useCampaignPreview';
+import {usePreviewMusic} from '../../../../features/navigate-campaign-preview/model/usePreviewMusic';
+import {
+  SceneMasterControl,
+  type SceneMasterAction,
+} from '../../../../features/navigate-campaign-scene/ui/SceneMasterControl/SceneMasterControl';
+import {SceneTextPanel} from '../../../../features/navigate-campaign-scene/ui/SceneTextPanel/SceneTextPanel';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import styles from './CampaignPreview.module.css';
 
-export function CampaignPreview({preview}: {preview: CampaignPreviewData}) {
+interface CampaignPreviewProps {
+  preview: CampaignPreviewData;
+  onFinish?: () => void;
+}
+
+export function CampaignPreview({preview, onFinish}: CampaignPreviewProps) {
+  const [searchParams] = useSearchParams();
+  const requestedFrame = searchParams.get('frame');
+  const initialIndex = requestedFrame === 'last'
+    ? preview.slides.length - 1
+    : Math.max(0, Number.parseInt(requestedFrame ?? '1', 10) - 1 || 0);
   const {
     currentIndex,
     canGoPrevious,
@@ -14,7 +30,8 @@ export function CampaignPreview({preview}: {preview: CampaignPreviewData}) {
     goTo,
     goPrevious,
     goNext,
-  } = useCampaignPreview(preview.slides.length);
+  } = useCampaignPreview(preview.slides.length, initialIndex);
+  usePreviewMusic(preview.music, isLast);
   const slide = preview.slides[currentIndex];
   const slideImage = resolveAsset(slide.image);
   const previousArrow = resolveAsset('assets/concepts/ui/hero-book-arrow-left.png');
@@ -22,6 +39,16 @@ export function CampaignPreview({preview}: {preview: CampaignPreviewData}) {
   const previewStyle = {
     '--preview-parchment': `url("${resolveAsset('assets/concepts/campaigns/penisuela/ui/preview-legend-parchment.png')}")`,
   } as CSSProperties;
+  const playHref = `/campaign/${preview.campaignId}/play/${preview.outro?.nextSceneId ?? 'hotel-overload'}`;
+  const masterActions: SceneMasterAction[] = canGoNext ? [{
+    id: 'next-prologue-slide',
+    label: 'Следующий кадр',
+    onSelect: goNext,
+  }] : [{
+    id: 'start-penisuela',
+    label: 'Перейти к пробуждению на Пенисуэле',
+    ...(onFinish ? {onSelect: onFinish} : {href: playHref}),
+  }];
 
   return (
     <section className={styles.preview} style={previewStyle} aria-label={`Пролог «${preview.title}»`}>
@@ -36,12 +63,18 @@ export function CampaignPreview({preview}: {preview: CampaignPreviewData}) {
       </div>
 
       <header className={styles.header}>
-        <Link className={styles.backLink} to={`/region/${preview.regionId}`}>← Вернуться к Пенисуэле</Link>
         <div className={styles.heading}>
           <p>{preview.eyebrow}</p>
           <h1>{preview.title}</h1>
         </div>
       </header>
+      <SceneMasterControl
+        actions={masterActions}
+        backHref={`/region/${preview.regionId}`}
+        onRestartScene={() => goTo(0)}
+        onStepBack={canGoPrevious ? goPrevious : undefined}
+        sceneTitle={`${preview.title} · кадр ${slide.order}`}
+      />
 
       <button
         className={`${styles.arrow} ${styles.previous}`}
@@ -59,11 +92,21 @@ export function CampaignPreview({preview}: {preview: CampaignPreviewData}) {
         </button>
       ) : null}
 
-      <div className={styles.caption} key={`${slide.id}-caption`}>
+      <SceneTextPanel className={styles.caption} collapsible={false} resetKey={slide.id}>
         <p className={styles.speaker}>{slide.speaker.label}</p>
         <p className={`${styles.line} ${slide.speaker.kind === 'narrator' ? styles.narrationLine : ''}`}>{slide.text}</p>
-        {isLast ? <Link className={styles.finishLink} to={`/campaign/${preview.campaignId}/play/hotel-overload`}>Проснуться на Пенисуэле</Link> : null}
-      </div>
+        {isLast ? (
+          onFinish ? (
+            <button className={styles.finishLink} type="button" onClick={onFinish}>
+              Проследовать за Кострюлькой
+            </button>
+          ) : (
+            <Link className={styles.finishLink} to={playHref}>
+              Проследовать за Кострюлькой
+            </Link>
+          )
+        ) : null}
+      </SceneTextPanel>
 
       <nav className={styles.progress} aria-label="Кадры пролога">
         {preview.slides.map((item, index) => (

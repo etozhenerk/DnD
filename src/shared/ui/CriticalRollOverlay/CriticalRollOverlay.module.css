@@ -1,0 +1,464 @@
+.effect {
+  color: var(--color-gold-light);
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  z-index: 130;
+  animation: effect-lifetime var(--critical-roll-duration) ease-out both;
+}
+
+.failure {
+  color: var(--color-combat-damage-bright);
+}
+
+.vignette,
+.flash,
+.aftershock,
+.rays,
+.shockwave,
+.energyRings,
+.particles,
+.particles span,
+.fragments,
+.fragments span,
+.sigil,
+.banner {
+  position: absolute;
+}
+
+.vignette {
+  background: var(--gradient-critical-success-vignette);
+  inset: 0;
+  animation: vignette-reveal 2600ms ease-out both;
+}
+
+.failure .vignette {
+  background: var(--gradient-critical-failure-vignette);
+}
+
+.flash {
+  aspect-ratio: 1;
+  background: var(--gradient-critical-success-flash);
+  left: 50%;
+  top: 42%;
+  width: min(92vmin, 68rem);
+  animation: flash-burst 620ms ease-out both;
+}
+
+.failure .flash {
+  background: var(--gradient-critical-failure-flash);
+}
+
+.aftershock {
+  aspect-ratio: 1;
+  background: var(--gradient-critical-success-flash);
+  left: 50%;
+  top: 42%;
+  width: min(72vmin, 50rem);
+  animation: aftershock-burst 820ms 360ms ease-out both;
+}
+
+.failure .aftershock {
+  background: var(--gradient-critical-failure-flash);
+}
+
+.rays {
+  aspect-ratio: 1;
+  background: var(--gradient-critical-success-rays);
+  left: 50%;
+  mix-blend-mode: screen;
+  opacity: var(--opacity-38);
+  top: 42%;
+  width: min(88vmin, 62rem);
+  animation: rays-arrive 1700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .rays {
+  background: var(--gradient-critical-failure-rays);
+  animation-name: failure-rays-arrive;
+}
+
+.shockwave {
+  aspect-ratio: 1;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  filter: var(--filter-critical-success);
+  left: 50%;
+  top: 42%;
+  width: clamp(11rem, 24vmin, 20rem);
+  animation: shockwave-expand 1050ms 120ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .shockwave {
+  filter: var(--filter-critical-failure);
+}
+
+.energyRings {
+  aspect-ratio: 1;
+  color: currentColor;
+  filter: var(--filter-critical-success);
+  left: 50%;
+  top: 42%;
+  width: clamp(14rem, 31vmin, 25rem);
+  animation: rings-arrive 2050ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .energyRings {
+  filter: var(--filter-critical-failure);
+  animation-name: failure-rings-arrive;
+}
+
+.energyRings svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.energyRings circle,
+.energyRings path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+}
+
+.energyRings circle:first-child {
+  stroke-dasharray: 3 9 18 7;
+}
+
+.energyRings circle:nth-child(2) {
+  opacity: var(--opacity-68);
+  stroke-dasharray: 28 5 4 8;
+}
+
+.energyRings path:nth-of-type(2) {
+  opacity: var(--opacity-38);
+}
+
+.sigil {
+  aspect-ratio: 1;
+  filter: var(--filter-critical-success);
+  left: 50%;
+  top: 41%;
+  width: clamp(10rem, 20vmin, 17rem);
+  animation: sigil-arrive 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .sigil {
+  filter: var(--filter-critical-failure);
+  animation-name: failure-sigil-arrive;
+}
+
+.sigil svg {
+  display: block;
+  height: 100%;
+  overflow: visible;
+  width: 100%;
+}
+
+.dieSurface {
+  fill: var(--color-black-alpha-74);
+}
+
+.dieOutline,
+.dieFacet {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.dieOutline {
+  stroke-width: 2.4;
+}
+
+.dieFacet {
+  opacity: var(--opacity-68);
+  stroke-width: 1.15;
+}
+
+.sigil strong {
+  color: var(--color-parchment-light);
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vmin, 5rem);
+  left: 50%;
+  line-height: 1;
+  position: absolute;
+  text-shadow: var(--shadow-title);
+  top: 51%;
+  transform: translate(-50%, -50%);
+}
+
+.failure .sigil strong {
+  color: var(--color-white);
+}
+
+.banner {
+  align-items: center;
+  background: var(--gradient-critical-success-banner);
+  display: grid;
+  justify-items: center;
+  left: 50%;
+  padding: 0.85rem 0 1rem;
+  row-gap: 0.25rem;
+  top: calc(41% + clamp(6.4rem, 12vmin, 9.7rem));
+  width: min(86vw, 58rem);
+  animation: banner-arrive 1500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .banner {
+  background: var(--gradient-critical-failure-banner);
+  animation-name: failure-banner-arrive;
+}
+
+.title {
+  color: currentColor;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.4vw, 4.25rem);
+  font-weight: 700;
+  line-height: 0.98;
+  text-align: center;
+  text-shadow: var(--shadow-title);
+}
+
+.rule {
+  background: var(--gradient-brass-line);
+  height: 1px;
+  position: static;
+  transform-origin: center;
+  width: min(76vw, 48rem);
+  animation: rule-open 950ms 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.failure .rule {
+  background: currentColor;
+  opacity: var(--opacity-68);
+}
+
+.particles {
+  inset: 0;
+}
+
+.particles span {
+  background: currentColor;
+  height: 0.65rem;
+  left: 50%;
+  opacity: var(--opacity-none);
+  top: 42%;
+  transform: rotate(45deg);
+  width: 0.18rem;
+  animation: particle-rise 1450ms 190ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.particles span:nth-child(1) { --particle-x: -23rem; --particle-y: -10rem; animation-delay: 130ms; }
+.particles span:nth-child(2) { --particle-x: -18rem; --particle-y: 8rem; animation-delay: 250ms; }
+.particles span:nth-child(3) { --particle-x: -14rem; --particle-y: -15rem; animation-delay: 360ms; }
+.particles span:nth-child(4) { --particle-x: -9rem; --particle-y: 12rem; animation-delay: 190ms; }
+.particles span:nth-child(5) { --particle-x: -5rem; --particle-y: -19rem; animation-delay: 310ms; }
+.particles span:nth-child(6) { --particle-x: -2rem; --particle-y: 16rem; animation-delay: 400ms; }
+.particles span:nth-child(7) { --particle-x: 4rem; --particle-y: -18rem; animation-delay: 170ms; }
+.particles span:nth-child(8) { --particle-x: 8rem; --particle-y: 14rem; animation-delay: 330ms; }
+.particles span:nth-child(9) { --particle-x: 13rem; --particle-y: -14rem; animation-delay: 220ms; }
+.particles span:nth-child(10) { --particle-x: 17rem; --particle-y: 9rem; animation-delay: 390ms; }
+.particles span:nth-child(11) { --particle-x: 21rem; --particle-y: -8rem; animation-delay: 280ms; }
+.particles span:nth-child(12) { --particle-x: 25rem; --particle-y: 5rem; animation-delay: 150ms; }
+.particles span:nth-child(13) { --particle-x: -27rem; --particle-y: -2rem; animation-delay: 410ms; }
+.particles span:nth-child(14) { --particle-x: -11rem; --particle-y: 19rem; animation-delay: 460ms; }
+.particles span:nth-child(15) { --particle-x: -1rem; --particle-y: -22rem; animation-delay: 230ms; }
+.particles span:nth-child(16) { --particle-x: 10rem; --particle-y: 20rem; animation-delay: 370ms; }
+.particles span:nth-child(17) { --particle-x: 18rem; --particle-y: -18rem; animation-delay: 440ms; }
+.particles span:nth-child(18) { --particle-x: 28rem; --particle-y: 1rem; animation-delay: 300ms; }
+
+.failure .particles span {
+  animation-name: particle-fall;
+}
+
+.fragments {
+  inset: 0;
+}
+
+.fragments span {
+  background: currentColor;
+  clip-path: polygon(50% 0, 100% 100%, 0 74%);
+  height: 1.2rem;
+  left: 50%;
+  opacity: var(--opacity-none);
+  top: 42%;
+  width: 0.52rem;
+  animation: fragment-burst 1650ms 180ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fragments span:nth-child(1) { --fragment-x: -19rem; --fragment-y: -9rem; --fragment-rotation: -140deg; }
+.fragments span:nth-child(2) { --fragment-x: -16rem; --fragment-y: 10rem; --fragment-rotation: 220deg; animation-delay: 270ms; }
+.fragments span:nth-child(3) { --fragment-x: -10rem; --fragment-y: -16rem; --fragment-rotation: 170deg; animation-delay: 340ms; }
+.fragments span:nth-child(4) { --fragment-x: -5rem; --fragment-y: 16rem; --fragment-rotation: -210deg; animation-delay: 220ms; }
+.fragments span:nth-child(5) { --fragment-x: -1rem; --fragment-y: -19rem; --fragment-rotation: 250deg; animation-delay: 300ms; }
+.fragments span:nth-child(6) { --fragment-x: 5rem; --fragment-y: 17rem; --fragment-rotation: 190deg; animation-delay: 250ms; }
+.fragments span:nth-child(7) { --fragment-x: 10rem; --fragment-y: -16rem; --fragment-rotation: -230deg; animation-delay: 360ms; }
+.fragments span:nth-child(8) { --fragment-x: 15rem; --fragment-y: 11rem; --fragment-rotation: 210deg; animation-delay: 200ms; }
+.fragments span:nth-child(9) { --fragment-x: 20rem; --fragment-y: -7rem; --fragment-rotation: -180deg; animation-delay: 320ms; }
+.fragments span:nth-child(10) { --fragment-x: 23rem; --fragment-y: 4rem; --fragment-rotation: 260deg; animation-delay: 290ms; }
+
+@keyframes effect-lifetime {
+  0% { opacity: var(--opacity-none); }
+  5%, 78% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); }
+}
+
+@keyframes vignette-reveal {
+  0% { opacity: var(--opacity-none); }
+  12%, 72% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); }
+}
+
+@keyframes flash-burst {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(0.08); }
+  28% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(1.18); }
+}
+
+@keyframes aftershock-burst {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(0.16); }
+  22% { opacity: var(--opacity-78); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(1.45); }
+}
+
+@keyframes rays-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(-16deg) scale(0.22); }
+  34% { opacity: var(--opacity-68); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(7deg) scale(1.08); }
+}
+
+@keyframes failure-rays-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(22deg) scale(0.18); }
+  28% { opacity: var(--opacity-68); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(-5deg) scale(1.14); }
+}
+
+@keyframes shockwave-expand {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(0.3); }
+  18% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) scale(2.45); }
+}
+
+@keyframes rings-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(-34deg) scale(0.28); }
+  32% { opacity: var(--opacity-full); }
+  76% { opacity: var(--opacity-68); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(28deg) scale(1.12); }
+}
+
+@keyframes failure-rings-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(42deg) scale(1.48); }
+  28% { opacity: var(--opacity-full); }
+  74% { opacity: var(--opacity-68); }
+  100% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(-24deg) scale(0.92); }
+}
+
+@keyframes sigil-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(-24deg) scale(0.12); }
+  52% { opacity: var(--opacity-full); transform: translate(-50%, -50%) rotate(2deg) scale(1.08); }
+  72% { transform: translate(-50%, -50%) rotate(-1deg) scale(0.98); }
+  100% { opacity: var(--opacity-full); transform: translate(-50%, -50%) rotate(0) scale(1); }
+}
+
+@keyframes failure-sigil-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -50%) rotate(18deg) scale(1.65); }
+  40% { opacity: var(--opacity-full); transform: translate(-52%, -50%) rotate(-3deg) scale(0.94); }
+  52% { transform: translate(-48%, -50%) rotate(2deg) scale(1.04); }
+  64% { transform: translate(-51%, -50%) rotate(-1deg) scale(0.99); }
+  100% { opacity: var(--opacity-full); transform: translate(-50%, -50%) rotate(0) scale(1); }
+}
+
+@keyframes banner-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, 1.6rem) scaleX(0.72); }
+  38% { opacity: var(--opacity-none); }
+  68% { opacity: var(--opacity-full); transform: translate(-50%, 0) scaleX(1.02); }
+  100% { opacity: var(--opacity-full); transform: translate(-50%, 0) scaleX(1); }
+}
+
+@keyframes failure-banner-arrive {
+  0% { opacity: var(--opacity-none); transform: translate(-50%, -0.8rem) scaleX(1.2); }
+  34% { opacity: var(--opacity-none); }
+  62% { opacity: var(--opacity-full); transform: translate(-50%, 0.2rem) scaleX(0.98); }
+  100% { opacity: var(--opacity-full); transform: translate(-50%, 0) scaleX(1); }
+}
+
+@keyframes rule-open {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes particle-rise {
+  0% { opacity: var(--opacity-none); transform: translate(0, 0) rotate(45deg) scale(0.3); }
+  18% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); transform: translate(var(--particle-x), var(--particle-y)) rotate(225deg) scale(1.1); }
+}
+
+@keyframes particle-fall {
+  0% { opacity: var(--opacity-none); transform: translate(var(--particle-x), -8rem) rotate(45deg) scale(0.4); }
+  20% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); transform: translate(var(--particle-x), 18rem) rotate(310deg) scale(1.25); }
+}
+
+@keyframes fragment-burst {
+  0% { opacity: var(--opacity-none); transform: translate(0, 0) rotate(0) scale(0.2); }
+  14% { opacity: var(--opacity-full); }
+  100% { opacity: var(--opacity-none); transform: translate(var(--fragment-x), var(--fragment-y)) rotate(var(--fragment-rotation)) scale(1); }
+}
+
+@media (max-width: 700px) {
+  .sigil {
+    top: 38%;
+    width: clamp(9rem, 42vw, 12rem);
+  }
+
+  .flash,
+  .aftershock,
+  .rays {
+    top: 38%;
+  }
+
+  .banner {
+    padding-inline: 0.75rem;
+    top: calc(38% + 6.4rem);
+    width: 100vw;
+  }
+
+  .title {
+    font-size: clamp(1.65rem, 8vw, 2.7rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .effect,
+  .vignette,
+  .sigil,
+  .banner,
+  .rule {
+    animation: none;
+    opacity: var(--opacity-full);
+  }
+
+  .sigil {
+    transform: translate(-50%, -50%);
+  }
+
+  .banner {
+    transform: translateX(-50%);
+  }
+
+  .flash,
+  .aftershock,
+  .rays,
+  .shockwave,
+  .energyRings,
+  .particles,
+  .fragments {
+    display: none;
+  }
+}

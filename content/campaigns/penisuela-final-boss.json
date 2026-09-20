@@ -1,0 +1,153 @@
+{
+  "version": 2,
+  "compatibilityNote": "Прежний трёхфазный Last Take; сохранён для старого движка и журналов. Действующий финал — две фазы лорда Нетака в penisuela-gallery-gameplay.json.bossSequence. Не использовать для нового сюжета.",
+  "campaignId": "penisuela",
+  "sceneId": "last-take-boss",
+  "encounter": {
+    "id": "last-take-module",
+    "name": "Последний дубль",
+    "hp": 125,
+    "ac": 15,
+    "initiative": 4,
+    "attack": {
+      "id": "stage-volley",
+      "name": "Сценический залп",
+      "bonus": 6,
+      "damage": "1d8+3",
+      "attacks": 2
+    },
+    "weakness": {
+      "stats": ["strength", "dexterity", "wisdom", "intelligence", "charisma"],
+      "dc": 12,
+      "reducedAc": 13,
+      "text": "Герой разрывает подсвеченный активный канал. Следующая объявленная атака гаснет, а до перерасчёта канала AC модуля снижается до 13."
+    },
+    "heroAttacks": [
+      {"characterId": "bubsilda", "name": "Боинг-Смерч", "bonus": 6, "damage": "1d8+3"},
+      {"characterId": "linda", "name": "Фейские коготки", "bonus": 6, "damage": "1d6+4"},
+      {"characterId": "lambert", "name": "Лук «Инвестиция»", "bonus": 6, "damage": "1d8+4"},
+      {"characterId": "golovach-lena", "name": "Огненные кулаки", "bonus": 6, "damage": "1d10+3"},
+      {"characterId": "thorin-pukoshchit", "name": "Кувалда «После смены»", "bonus": 4, "damage": "1d6+1"}
+    ],
+    "startText": "Три кольца алтаря сходятся в механическую диафрагму. Внешний контур загорается синим, прожекторы размечают цели, а из барных труб на сцену ползёт пена.",
+    "victoryText": "Последний контур гаснет. Алтарь больше не пытается поставить чужую жизнь как финальный номер.",
+    "segmentedHp": [85, 45, 0],
+    "overflowDamageCarries": false,
+    "phaseTransitions": [
+      {
+        "hpFloor": 85,
+        "phase": 2,
+        "name": "Декорации хотят продолжения",
+        "ac": 15,
+        "attack": {"id": "moving-scenery", "name": "Декорации хотят продолжения", "bonus": 6, "damage": "1d10+3"}
+      },
+      {
+        "hpFloor": 45,
+        "phase": 3,
+        "name": "Драконье пламя Головача",
+        "ac": 15,
+        "attack": {"id": "golovach-dragon-fire", "name": "Драконье пламя Головача", "bonus": 6, "damage": "2d6+3"}
+      }
+    ]
+  },
+  "npcBehavior": {
+    "id": "last-take-module-behavior",
+    "encounterId": "last-take-module",
+    "actorIds": ["last-take-module"],
+    "actions": [
+      {"id": "stage-volley", "name": "Сценический залп", "category": "phase", "target": "multiple-opponents", "baseScore": 130, "maxTargets": 2, "phaseIds": ["storm-circuit"], "explanation": "активный синий канал делает две заранее объявленные атаки по разным героям"},
+      {"id": "moving-scenery", "name": "Декорации хотят продолжения", "category": "phase", "target": "multiple-opponents", "baseScore": 130, "maxTargets": 2, "phaseIds": ["moving-scenery"], "explanation": "движущаяся декорация и следующий залп расходятся по разным героям"},
+      {"id": "golovach-dragon-fire", "name": "Драконье пламя Головача", "category": "phase", "target": "all-opponents", "baseScore": 130, "phaseIds": ["dragonfire-circuit"], "explanation": "видимая огненная линия после зарядки накрывает всех оставшихся героев"}
+    ],
+    "targetPriorities": [
+      {"rule": "active-channel", "score": 120, "explanation": "герой находится у заранее объявленного активного канала"},
+      {"rule": "highest-hp", "score": 80, "explanation": "следующей выбирается цель с наибольшим текущим HP"},
+      {"rule": "different-target", "score": 60, "explanation": "две атаки модуля расходятся по разным целям"}
+    ]
+  },
+  "segmentedHp": [85, 45, 0],
+  "overflowDamageCarries": false,
+  "phases": [
+    {
+      "id": "storm-circuit",
+      "number": 1,
+      "name": "Гроза после вечеринки",
+      "hpFrom": 125,
+      "hpTo": 85,
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-one.webp",
+      "readAloud": "Внешнее кольцо вспыхивает синим. Локальная гроза ищет пятерых героев прожекторами, пена лезет из барных труб, а один светящийся кабель честно показывает, откуда придёт следующий залп.",
+      "attack": {"id": "stage-volley", "name": "Сценический залп", "bonus": 6, "damage": "1d8+3", "targets": 2, "distinctTargets": true},
+      "directorDc": 12
+    },
+    {
+      "id": "moving-scenery",
+      "number": 2,
+      "name": "Декорации хотят продолжения",
+      "hpFrom": 85,
+      "hpTo": 45,
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-two.webp",
+      "readAloud": "Синее кольцо лопается конфетти, но средний контур уже тянет алтарь по рельсам. Свадебные арки складываются механическими челюстями, а прожекторы заранее рисуют, куда декорация хочет поставить каждого из вас.",
+      "attack": {
+        "id": "moving-scenery",
+        "name": "Декорации хотят продолжения",
+        "bonus": 6,
+        "damage": "1d10+3",
+        "targets": 2,
+        "distinctTargets": true,
+        "secondaryAttack": {"id": "stage-volley-follow-up", "name": "Сценический залп", "bonus": 6, "damage": "1d8+3"}
+      },
+      "directorDc": 12
+    },
+    {
+      "id": "dragonfire-circuit",
+      "number": 3,
+      "name": "Драконье пламя Головача",
+      "hpFrom": 45,
+      "hpTo": 0,
+      "background": "assets/concepts/campaigns/penisuela/scenes/last-take-phase-three.webp",
+      "readAloud": "Среднее кольцо застывает идеальным свадебным кадром. Последний контур окрашивается огнём Головача, и яркая линия медленно проходит по полу — у команды остаётся целый раунд, чтобы пересечь её или разорвать канал.",
+      "attack": {"id": "golovach-dragon-fire", "name": "Драконье пламя Головача", "bonus": 0, "damage": "2d6+3", "targets": 5, "savingThrow": {"stat": "dexterity", "dc": 13, "success": "half-damage"}},
+      "directorDc": 15,
+      "preparedDirectorDc": 12
+    }
+  ],
+  "plans": [
+    {
+      "id": "standard",
+      "label": "Штатный голосовой сброс",
+      "description": "Один герой удерживает канал, Kreed и Angel добровольно подтверждают голоса. Успешная проверка закрывает текущий контур.",
+      "condition": {"allFlags": ["groom-voice-key", "bride-voice-key", "couple-trust"]},
+      "check": {"stats": ["strength", "dexterity", "wisdom", "intelligence", "charisma"], "dc": 12},
+      "endingId": "wedding",
+      "endingFlag": "final-standard-reset",
+      "epilogueSceneId": "wedding-epilogue"
+    },
+    {
+      "id": "director",
+      "label": "Режиссёрский монтаж",
+      "description": "Герой переписывает активный контур через полный журнал. Провал вызывает немедленную реакцию, но не закрывает повтор.",
+      "condition": {"allFlags": ["pendant-connected", "control-log-restored"], "counterLte": {"counter": "timePressure", "value": 4}},
+      "check": {"stats": ["intelligence"], "dcByPhase": [12, 12, 15]},
+      "endingId": "director",
+      "endingFlag": "final-director-cut",
+      "epilogueSceneId": "director-epilogue"
+    },
+    {
+      "id": "physical",
+      "label": "Физическое отключение",
+      "description": "Герои снижают HP текущего сегмента до порога обычными атаками. План доступен всегда.",
+      "condition": {"always": true},
+      "check": null,
+      "endingId": "shutdown",
+      "endingFlag": "final-physical-shutdown",
+      "epilogueSceneId": "shutdown-epilogue"
+    }
+  ],
+  "defeatFallback": {
+    "label": "Дотянуться до аварийного рубильника",
+    "resolution": "Партия приходит в себя у физического рубильника. Остров спасён, но сцена разрушена, а финалом становится самый длинный счёт Пенисуэлы.",
+    "endingId": "shutdown",
+    "endingFlag": "final-physical-shutdown",
+    "epilogueSceneId": "shutdown-epilogue"
+  }
+}

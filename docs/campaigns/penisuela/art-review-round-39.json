@@ -1,0 +1,54 @@
+{
+  "campaignId": "penisuela",
+  "round": 39,
+  "date": "2026-09-04",
+  "status": "completed-user-rejected",
+  "auditType": "closed-bar-beat-guards-combat-art-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Добавить модалку неверного выбора, бой с четырьмя новыми стражниками и не забыть аватарку и арт боевой сцены.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/campaigns/penisuela/scenes/closed-bar-dancers.png",
+    "art-drafts/closed-bar-beat-guard-v1.png",
+    "art-drafts/closed-bar-beat-guards-combat-v1.png"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-ui-token-club-beat-guard",
+      "path": "art-drafts/closed-bar-beat-guard-v1.png",
+      "verdict": "reject",
+      "size": "1254x1254",
+      "alpha": false,
+      "reason": "Пользователь отказался от чёрно-латунного робота и потребовал полностью новый, более голографический дизайн в родстве с охраной холла."
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-beat-guards-combat",
+      "path": "art-drafts/closed-bar-beat-guards-combat-v1.png",
+      "verdict": "reject",
+      "size": "1584x993",
+      "alpha": false,
+      "reason": "Четыре стража стоят фронтальной симметричной линией и выглядят как статичные манекены, а не как призванная боевая группа."
+    },
+    {
+      "assetId": "penisuela-scene-closed-bar-beat-guards-combat",
+      "path": "art-drafts/closed-bar-beat-guards-combat-v2.png",
+      "verdict": "reject",
+      "size": "1584x993",
+      "alpha": false,
+      "reason": "Пользователь отметил многочисленные визуальные дефекты, слабый силуэт и неподходящее движение стражей."
+    }
+  ],
+  "checks": [
+    "Аватар показывает одного пустого чёрно-латунного автомата с круглой решёткой динамика вместо лица и читаемой фиолетовой звуковой волной.",
+    "Боевой кадр сохраняет сцену, свет, пять танцоров и электронный пульт из утверждённого исходника.",
+    "В кандидате v2 на переднем плане ровно четыре раздельно читаемых полнофигурных Бит-стража в разных динамичных позах и на разной глубине, совпадающих с аватаром по материалам и силуэту.",
+    "Герои партии, дополнительная охрана, кровь, текст, логотипы и встроенный UI отсутствуют.",
+    "Формат и пропорции подходят для игрового экрана 1728×1084 с наложением боевого HUD."
+  ],
+  "approval": {
+    "required": true,
+    "received": true,
+    "userApproval": "давай полностью новый дизайн; сделай их более голографичными и похожими на тех что в холле, можно другим цветом",
+    "nextAction": "Провести отдельный раунд ревью нового голографического дизайна."
+  }
+}

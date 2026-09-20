@@ -1,6 +1,8 @@
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
 import type {CombatantView} from './combatTypes';
 import {combatPortraitStyle} from './combatPortraitStyle';
+import {CombatEffectBadge} from './CombatEffectBadge';
+import {CombatStatsDialog} from './CombatStatsDialog';
 import styles from './CombatantCard.module.css';
 
 interface CombatantCardProps {
@@ -16,32 +18,43 @@ const statIcons = {
 };
 
 export function CombatantCard({combatant, compact = false}: CombatantCardProps) {
+  const effects = combatant.effects ?? [];
   return (
     <article
       className={styles.card}
       data-compact={compact}
+      data-faction={combatant.faction}
       style={combatPortraitStyle(combatant)}
       aria-label={`Сейчас ходит: ${combatant.name}`}
     >
       <div className={styles.portraitWrap} data-faction={combatant.faction}>
-        <img className={styles.portrait} src={resolveAsset(combatant.token)} alt="" />
-        {combatant.faction === 'enemy' ? (
-          <span className={styles.tokenFrame} aria-hidden="true"><img src={resolveAsset(tokenFramePath)} alt="" /></span>
+        <span className={styles.portraitViewport} aria-hidden="true">
+          <img className={styles.portrait} src={resolveAsset(combatant.token)} alt="" />
+        </span>
+        <span className={styles.tokenFrame} aria-hidden="true"><img src={resolveAsset(tokenFramePath)} alt="" /></span>
+      </div>
+      <div className={styles.details}>
+        <div className={styles.identity}>
+          <span className={styles.turnLabel}>Ход</span>
+          <h2 title={combatant.name}>{combatant.name}</h2>
+          <p title={combatant.attackName}>{combatant.attackName}</p>
+        </div>
+        {effects.length ? (
+          <ul className={styles.effects} aria-label="Активные боевые эффекты">
+            {effects.map((effect) => (
+              <li key={effect.id}>
+                <CombatEffectBadge effect={effect} ownerName={combatant.name} />
+              </li>
+            ))}
+          </ul>
         ) : null}
+        <dl className={styles.stats}>
+          <div><dt><img src={resolveAsset(statIcons.hp)} alt="" />HP</dt><dd>{combatant.hp}/{combatant.maxHp}</dd></div>
+          <div><dt><img src={resolveAsset(statIcons.ac)} alt="" />AC</dt><dd>{combatant.ac}</dd></div>
+          <div><dt><img src={resolveAsset(statIcons.attack)} alt="" />АТК</dt><dd>{combatant.attackBonus >= 0 ? '+' : ''}{combatant.attackBonus}</dd></div>
+        </dl>
+        <CombatStatsDialog combatant={combatant} />
       </div>
-      <div className={styles.identity}>
-        <span>Ход</span>
-        <h2 title={combatant.name}>{combatant.name}</h2>
-        <p title={combatant.attackName}>{combatant.attackName}</p>
-      </div>
-      <span className={styles.health} aria-hidden="true">
-        <i style={{width: `${Math.max(0, combatant.hp / combatant.maxHp * 100)}%`}} />
-      </span>
-      <dl className={styles.stats}>
-        <div><dt><img src={resolveAsset(statIcons.hp)} alt="" />HP</dt><dd>{combatant.hp}/{combatant.maxHp}</dd></div>
-        <div><dt><img src={resolveAsset(statIcons.ac)} alt="" />AC</dt><dd>{combatant.ac}</dd></div>
-        <div><dt><img src={resolveAsset(statIcons.attack)} alt="" />АТК</dt><dd>{combatant.attackBonus >= 0 ? '+' : ''}{combatant.attackBonus}</dd></div>
-      </dl>
     </article>
   );
 }

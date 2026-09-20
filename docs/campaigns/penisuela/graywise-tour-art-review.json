@@ -1,0 +1,36 @@
+{
+  "id": "penisuela-scene-graywise-villa-tour-v5-review",
+  "date": "2026-09-20",
+  "skill": "review-dnd-campaign-art",
+  "assetId": "penisuela-scene-graywise-villa-tour",
+  "draftPath": "docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png",
+  "verdict": "accept",
+  "userApproval": "approved",
+  "approvalInstruction": "окаю",
+  "approvedVariant": "v5",
+  "technical": {
+    "format": "png",
+    "width": 1672,
+    "height": 941,
+    "bitDepth": 8,
+    "pngColorType": 2,
+    "sha256": "df584b640a38b2d42164e57955b74138e4b79188bc61db39b885f6ba50d6c075",
+    "copiedWithoutPixelProcessing": true
+  },
+  "checks": [
+    "Новая композиция по утверждённым референсам; Grey Wiese в полный рост, рассказывает об интерьере открытым жестом.",
+    "Сохранены утверждённые светлые волосы, эльфийские уши, лицо, закрытое чёрное платье и серебряная брошь.",
+    "Закрытая дверь справа отдельно от фигуры; ручка читается, перспектива соответствует разной глубине персонажа и двери.",
+    "Комната, кремовый мрамор, золото и вид на бассейн соответствуют существующему рум-туру.",
+    "Игорь/Angel, спальня и пятый огонь не раскрыты на арте. Нет надписей, UI или лишних персонажей.",
+    "Дверь и жест расположены выше нижней зоны рассказчика."
+  ],
+  "publication": {
+    "status": "published",
+    "canonicalPath": "assets/concepts/campaigns/penisuela/scenes/graywise-villa-tour.png",
+    "runtimeConnected": true,
+    "manifestChanged": true
+  },
+  "notes": "Утверждён последний показанный пользователю v5. Начатая корректировка v6 остановлена до показа результата и не используется.",
+  "integrationNotes": "Три кадра: рум-тур, прежний арт у закрытой двери, спальня. Кликабельная дверь использует отдельные исходные координаты каждого кадра."
+}

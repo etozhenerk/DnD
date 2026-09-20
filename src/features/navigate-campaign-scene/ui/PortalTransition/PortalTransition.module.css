@@ -1,0 +1,15 @@
+.overlay {position:fixed;inset:0;z-index:250;overflow:hidden;isolation:isolate;}
+.veil {position:absolute;inset:0;background:var(--gradient-netak-portal-veil);animation:veil 2800ms ease-in-out both;}
+.tunnel {position:absolute;inset:0;display:grid;place-items:center;animation:travel 2800ms cubic-bezier(.3,.05,.3,1) both;}
+.ring {position:absolute;width:64vmax;height:64vmax;border-radius:50%;background:var(--gradient-netak-portal-ring);mask-image:var(--gradient-netak-portal-mask);animation:swirl 2800ms ease-in both;}
+.ring:nth-child(2) {width:47vmax;height:47vmax;animation-direction:reverse;opacity:.8;}
+.ring:nth-child(3) {width:33vmax;height:33vmax;opacity:.7;}
+.ring:nth-child(4) {width:22vmax;height:22vmax;animation-direction:reverse;}
+.core {position:absolute;width:22vmax;height:22vmax;border-radius:50%;background:var(--gradient-netak-portal-core);box-shadow:var(--shadow-netak-portal);}
+.overlay button {position:absolute;right:1.2rem;top:1.2rem;z-index:1;background:var(--color-black-alpha-74);border:1px solid var(--color-brass-alpha-62);color:var(--color-parchment-light);padding:.6rem 1rem;font-family:var(--font-display);cursor:pointer;}
+.overlay button:focus-visible {outline:2px solid var(--color-ice-bright);outline-offset:3px;}
+@keyframes swirl {from {transform:rotate(-100deg);} to {transform:rotate(170deg);}}
+@keyframes travel {0% {transform:scale(.08);opacity:0;} 15% {opacity:1;} 43% {transform:scale(1.1);opacity:1;} 57% {transform:scale(8);opacity:1;} 82%,100% {transform:scale(14);opacity:0;}}
+@keyframes veil {0% {opacity:0;} 35% {opacity:.7;} 43%,60% {opacity:1;} 100% {opacity:0;}}
+.reduced .tunnel {display:none;}
+.reduced .veil {animation-duration:500ms;}

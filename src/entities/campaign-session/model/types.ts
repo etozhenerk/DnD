@@ -1,4 +1,4 @@
-export type CampaignSessionPreviewStatus = 'preview';
+export type CampaignSessionPreviewStatus = 'ready';
 
 export interface CampaignSessionPartyMember {
   characterId: string;
@@ -11,7 +11,7 @@ export interface CampaignSceneInspectable {
   label: string;
   image?: string;
   icon?: string;
-  visualKind?: 'womanizer-case';
+  visualKind?: 'womanizer-case' | 'alexis-fashion-certificate' | 'bungalow-pass' | 'grey-wiese-perfume' | 'olva-timeout';
   locationHint: string;
   summary: string;
   revealText: string;
@@ -31,21 +31,57 @@ export interface CampaignSceneExit {
   presentation?: 'door' | 'control';
 }
 
+export type CampaignOutfitCategoryId = 'top' | 'bottom' | 'accent';
+
+export interface CampaignOutfitOption {
+  id: string;
+  setId: string;
+  label: string;
+  image: string;
+  alt: string;
+}
+
+export interface CampaignOutfitCategory {
+  id: CampaignOutfitCategoryId;
+  label: string;
+  options: CampaignOutfitOption[];
+}
+
+export interface CampaignOutfitBuilder {
+  pageSize: 2;
+  categories: CampaignOutfitCategory[];
+}
+
 export interface CampaignSessionScene {
   id: string;
   title: string;
   eyebrow: string;
   background: string;
-  backgroundLayout?: 'cover' | 'portrait';
+  backgroundLayout?: 'cover' | 'contain' | 'portrait';
   alt: string;
   readAloud: string;
   roomLegend?: string;
   introActionLabel?: string;
+  interactionViews?: Array<{
+    id: string;
+    background: string;
+    alt: string;
+    readAloud?: string;
+    outfitBuilder?: CampaignOutfitBuilder;
+  }>;
   inspectables: CampaignSceneInspectable[];
   exit: CampaignSceneExit | null;
 }
 
+export interface CampaignSceneBlock {
+  id: string;
+  title: string;
+  entrySceneId: string;
+  sceneIds: string[];
+}
+
 export interface CampaignSessionPreview {
+  sceneBlocks?: CampaignSceneBlock[];
   version: number;
   id: string;
   campaignId: string;

@@ -1,0 +1,46 @@
+{
+  "campaignId": "penisuela",
+  "round": 41,
+  "date": "2026-09-04",
+  "status": "superseded-by-user-feedback",
+  "auditType": "olva-close-dialogue-and-passes-handoff-review",
+  "skill": "review-dnd-campaign-art",
+  "userRequest": "Показать Оливию близко у её бунгало и отдельным continuity-кадром передать после отказа именно пропуска, а не ключ.",
+  "sourceOfTruth": [
+    "docs/campaigns/penisuela/art-plan.json",
+    "assets/concepts/campaigns/penisuela/npcs/bungalow-consultant-linfea.webp",
+    "assets/concepts/campaigns/penisuela/scenes/bungalows-two-paths.png",
+    "art-drafts/bungalow-courtyard-conversation-v2.png",
+    "art-drafts/olva-quest-declined-passes-v1.png"
+  ],
+  "reviewItems": [
+    {
+      "assetId": "penisuela-scene-bungalow-courtyard",
+      "path": "art-drafts/bungalow-courtyard-conversation-v2.png",
+      "verdict": "accept",
+      "size": "1672x941",
+      "alpha": false
+    },
+    {
+      "assetId": "penisuela-scene-olva-quest-declined-passes",
+      "path": "art-drafts/olva-quest-declined-passes-v1.png",
+      "verdict": "reject",
+      "size": "1672x941",
+      "alpha": false
+    }
+  ],
+  "checks": [
+    "В обоих кадрах Оливия показана близко, по бёдра, и остаётся главным субъектом.",
+    "За Оливией отчётливо виден открытый вход ровно одного чёрно-золотого бунгало.",
+    "Первый кадр сохраняет обе руки пустыми и не показывает награду до решения игроков.",
+    "Во втором кадре четыре латунные бирки на шнурках ошибочно читаются как ключи, поэтому вариант отклонён и требует замены на пять плоских пропусков-карточек.",
+    "Сохранены лицо, костюм, шесть крыльев, рассвет после дождя и общая композиционная непрерывность.",
+    "Полинетта, Станис, Егорик, Настасья, другие люди, сайд-квестовый реквизит, текст, интерфейс и водяные знаки отсутствуют."
+  ],
+  "approval": {
+    "required": true,
+    "received": true,
+    "userFeedback": "почему 4 ключа?",
+    "nextAction": "Перегенерировать только второй кадр: ровно пять плоских золотых пропусков-карточек без колец, шнурков и ключевых форм."
+  }
+}

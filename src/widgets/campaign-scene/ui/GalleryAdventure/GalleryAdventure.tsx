@@ -1,31 +1,43 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {Link} from 'react-router-dom';
 import {
   penisuelaGalleryGameplay,
   penisuelaGalleryHeroes,
   penisuelaSessionPreview,
-} from '../../../../entities/campaign-session/model/data';
+} from '../../../../entities/campaign-session/model/playableData';
 import type {GalleryCheckDefinition, GalleryDoorDefinition, GalleryView, HeroStat} from '../../../../entities/campaign-session/model/galleryGameplay';
-import type {CampaignSessionScene} from '../../../../entities/campaign-session/model/types';
+import type {
+  CampaignSceneInspectable,
+  CampaignSessionScene,
+} from '../../../../entities/campaign-session/model/types';
+import {InspectableArtifact} from '../../../../entities/campaign-session/ui/InspectableArtifact/InspectableArtifact';
 import {InspectableArtifactDialog} from '../../../../entities/campaign-session/ui/InspectableArtifactDialog/InspectableArtifactDialog';
 import type {CombatPortraitPresentation} from '../../../../entities/combat/model/view';
 import {useGallerySession} from '../../../../features/navigate-campaign-scene/model/useGallerySession';
+import {getCombatActionResourceKey} from '../../../../features/run-combat/model/combatCommands';
+import {SceneDecisionModal} from '../../../../features/navigate-campaign-scene/ui/SceneDecisionModal/SceneDecisionModal';
+import type {SceneMasterAction} from '../../../../features/navigate-campaign-scene/ui/SceneMasterControl/SceneMasterControl';
+import {SceneTextPanel} from '../../../../features/navigate-campaign-scene/ui/SceneTextPanel/SceneTextPanel';
 import {resolveAsset} from '../../../../shared/lib/assets/resolveAsset';
+import type {DiceSelectionMode} from '../../../../shared/lib/dice/diceSelection';
+import {useManualCriticalRollEffect} from '../../../../shared/lib/dice/useManualCriticalRollEffect';
 import {D20Roller} from '../../../../shared/ui/D20Roller/D20Roller';
 import {CampaignScene} from '../CampaignScene/CampaignScene';
 import {CombatEncounterHud} from '../CombatEncounterHud/CombatEncounterHud';
+import {GameMasterConsole} from '../GameMasterConsole/GameMasterConsole';
 import styles from './GalleryAdventure.module.css';
 
-const galleryManagedInspectableIds = [
-  'pussy-sultan-golden-scepter-microphone',
+const pussyRewardInspectableIds = [
+  'pussy-sultan-bar-passes',
   'pussy-sultan-womanizer',
-  'closed-bar-token',
 ];
+const alexisDressingRoomKeyId = 'alexis-dressing-room-key';
 
 const statLabels: Record<HeroStat, string> = {
   strength: 'Сила',
   dexterity: 'Ловкость',
+  wisdom: 'Мудрость',
   intelligence: 'Интеллект',
   charisma: 'Харизма',
 };
@@ -64,23 +76,44 @@ function sceneForView(view: GalleryView, flags: Record<string, boolean>, encount
         : 'hotel-gallery'
     : view === 'pussy'
       ? flags['pussy-guards-defeated'] ? 'hotel-vip-guards-defeated'
-        : flags['scepter-recovered'] ? 'hotel-gallery-pussy-return' : 'hotel-gallery-pussy'
-    : view === 'prop-room' ? 'vip-prop-room'
+        : flags['scepter-returned'] ? 'hotel-gallery-pussy-return' : 'hotel-gallery-pussy'
+    : view === 'prop-room'
+      ? 'pussy-prop-room'
         : view === 'archive' ? 'hotel-archive-alexis'
           : view === 'combat' && encounterId === 'hotel-vip-guards'
             ? 'hotel-vip-guards'
+            : view === 'combat' && encounterId === 'prop-room-winding-carriers'
+              ? 'pussy-prop-room'
             : view === 'guards'
               ? flags['pussy-guards-defeated'] ? 'hotel-vip-guards-defeated' : 'hotel-vip-guards'
             : view === 'kraken' || view === 'combat' ? 'hotel-gallery-kraken'
             : 'closed-bar';
   const scene = penisuelaSessionPreview.scenes.find((item) => item.id === sceneId)
     ?? penisuelaSessionPreview.scenes.find((item) => item.id === 'hotel-gallery')!;
-  return (view === 'pussy' || encounterId === 'hotel-vip-guards') && flags['pussy-lore-revealed'] && scene.id === 'hotel-gallery-pussy'
-    ? {...scene, alt: 'Pussy Sultan в роскошном наряде встречает героев в разгромленной VIP-зоне отеля.'}
+  if ((view === 'pussy' || encounterId === 'hotel-vip-guards') && flags['pussy-lore-revealed'] && scene.id === 'hotel-gallery-pussy') {
+    return {...scene, alt: 'Pussy Sultan в роскошном наряде встречает героев в разгромленной VIP-зоне отеля.'};
+  }
+  if (scene.id !== 'pussy-prop-room') return scene;
+  const viewId = flags['prop-room-carriers-defeated']
+    ? 'carriers-defeated'
+    : flags['prop-room-carriers-awakened'] || encounterId === 'prop-room-winding-carriers'
+      ? 'carriers-awakened'
+      : flags['prop-room-force-only']
+        ? 'force-only'
+        : null;
+  const interactionView = viewId
+    ? scene.interactionViews?.find((candidate) => candidate.id === viewId)
+    : undefined;
+  return interactionView
+    ? {...scene, background: interactionView.background, alt: interactionView.alt}
     : scene;
 }
 
-export function GalleryAdventure() {
+interface GalleryAdventureProps {
+  entryView?: GalleryView;
+}
+
+export function GalleryAdventure({entryView}: GalleryAdventureProps) {
   const legacySceneIds = useMemo(() => penisuelaSessionPreview.scenes.map((scene) => scene.id), []);
   const controller = useGallerySession(
     penisuelaGalleryGameplay,
@@ -97,13 +130,27 @@ export function GalleryAdventure() {
   const [pussyGmPanelOpen, setPussyGmPanelOpen] = useState(false);
   const [pussyFallbacksOpen, setPussyFallbacksOpen] = useState(false);
   const [pussyQuestOfferOpen, setPussyQuestOfferOpen] = useState(false);
+  const [propRoomDecisionOpen, setPropRoomDecisionOpen] = useState(false);
+  const [krakenDecisionOpen, setKrakenDecisionOpen] = useState(false);
+  const [alexisDecisionOpen, setAlexisDecisionOpen] = useState(false);
   const [scepterModalOpen, setScepterModalOpen] = useState(false);
+  const [alexisRewardModalOpen, setAlexisRewardModalOpen] = useState(false);
+  const [pussyRewardPreviewIndex, setPussyRewardPreviewIndex] = useState<number | null>(null);
+  const syncedEntryViewRef = useRef<GalleryView | undefined>(undefined);
+
+  useEffect(() => {
+    if (!entryView || syncedEntryViewRef.current === entryView) return;
+    syncedEntryViewRef.current = entryView;
+    if (state.activeView !== entryView) controller.changeView(entryView);
+  }, [controller, entryView, state.activeView]);
   const [isDieRolling, setIsDieRolling] = useState(false);
   const [isDiceReady, setIsDiceReady] = useState(false);
   const [dieRollRequestId, setDieRollRequestId] = useState(0);
   const [diceError, setDiceError] = useState(false);
   const [activeDiceExpression, setActiveDiceExpression] = useState('1d20');
   const [activeDiceLabel, setActiveDiceLabel] = useState('Бросок d20');
+  const [activeDiceSelection, setActiveDiceSelection] = useState<DiceSelectionMode>('sum');
+  const {commitManualRoll, markManualRoll, resetManualRoll} = useManualCriticalRollEffect();
   const activeScene = useMemo(
     () => sceneForView(state.activeView, state.flags, state.combat?.encounterId),
     [state.activeView, state.combat?.encounterId, state.flags],
@@ -120,6 +167,23 @@ export function GalleryAdventure() {
       .find((artifact) => artifact.id === 'pussy-sultan-golden-scepter-microphone'),
     [],
   );
+  const pussyRewardArtifacts = useMemo(
+    () => pussyRewardInspectableIds
+      .map((id) => penisuelaSessionPreview.scenes
+        .flatMap((scene) => scene.inspectables)
+        .find((artifact) => artifact.id === id))
+      .filter((artifact): artifact is CampaignSceneInspectable => Boolean(artifact)),
+    [],
+  );
+  const activePussyRewardArtifact = pussyRewardPreviewIndex === null
+    ? undefined
+    : pussyRewardArtifacts[pussyRewardPreviewIndex];
+  const alexisDressingRoomKeyArtifact = useMemo(
+    () => penisuelaSessionPreview.scenes
+      .flatMap((scene) => scene.inspectables)
+      .find((artifact) => artifact.id === alexisDressingRoomKeyId),
+    [],
+  );
   const activeCombatantId = state.combat?.initiativeOrder[state.combat.turnIndex];
 
   useEffect(() => {
@@ -128,6 +192,19 @@ export function GalleryAdventure() {
     setPussyGmPanelOpen(false);
     setPussyFallbacksOpen(false);
     setPussyQuestOfferOpen(false);
+    setPropRoomDecisionOpen(false);
+    setPussyRewardPreviewIndex(null);
+  }, [state.activeView]);
+
+  useEffect(() => {
+    if (state.activeView !== 'kraken') setKrakenDecisionOpen(false);
+  }, [state.activeView]);
+
+  useEffect(() => {
+    if (state.activeView !== 'archive') {
+      setAlexisDecisionOpen(false);
+      setAlexisRewardModalOpen(false);
+    }
   }, [state.activeView]);
 
   useEffect(() => {
@@ -146,19 +223,24 @@ export function GalleryAdventure() {
   }, [activeCombatantId]);
 
   const resetDie = () => {
+    resetManualRoll('scene-check');
     setIsDieRolling(false);
     setPhysicalRoll('');
     setDiceError(false);
+    setActiveDiceSelection('sum');
   };
 
   const startDiceRoll = (
     diceExpression = '1d20',
     diceLabel = 'Бросок d20',
+    selectionMode: DiceSelectionMode = 'sum',
   ) => {
     if (isDieRolling || !isDiceReady) return;
+    resetManualRoll('scene-check');
     setPhysicalRoll('');
     setActiveDiceExpression(diceExpression);
     setActiveDiceLabel(diceLabel);
+    setActiveDiceSelection(selectionMode);
     setDiceError(false);
     setIsDieRolling(true);
     setDieRollRequestId((value) => value + 1);
@@ -195,6 +277,7 @@ export function GalleryAdventure() {
       ? undefined
       : isValidD20(physicalRoll) ? [numericRoll] : undefined;
     if (!abilityId && !rolls) return;
+    if (!abilityId) commitManualRoll('scene-check', numericRoll);
     const result = controller.resolveSceneCheck(resolvedCheckId, selectedHeroId, selectedStat, rolls, abilityId);
     if (resolvedCheckId === 'earn-pussy-acquaintance' && result?.success) {
       setPussyLoreOpen(true);
@@ -203,7 +286,16 @@ export function GalleryAdventure() {
     if (['earn-pussy-acquaintance', 'earn-pussy-trust', 'intimidate-pussy', 'steal-pussy-key'].includes(resolvedCheckId)) {
       setPussyGmPanelOpen(false);
     }
-    if (resolvedCheckId === 'recover-pussy-scepter') setScepterModalOpen(true);
+    if (
+      (
+        resolvedCheckId === 'recover-pussy-scepter'
+        || resolvedCheckId === 'recover-pussy-scepter-with-engineering'
+        || resolvedCheckId === 'recover-pussy-scepter-with-tiny-linda'
+      )
+      && result?.success
+    ) {
+      setScepterModalOpen(true);
+    }
     setActiveCheckId(null);
     resetDie();
   };
@@ -287,7 +379,10 @@ export function GalleryAdventure() {
               max="20"
               value={physicalRoll}
               disabled={isDieRolling}
-              onChange={(event) => updateRollInput(event.target.value)}
+              onChange={(event) => {
+                markManualRoll('scene-check');
+                updateRollInput(event.target.value);
+              }}
             />
           </label>
           {isValidD20(physicalRoll) ? (
@@ -315,9 +410,40 @@ export function GalleryAdventure() {
     setPussyGmPanelOpen(false);
     setPussyFallbacksOpen(false);
     setPussyQuestOfferOpen(false);
+    setPropRoomDecisionOpen(false);
+    setKrakenDecisionOpen(false);
+    setAlexisDecisionOpen(false);
     setScepterModalOpen(false);
+    setAlexisRewardModalOpen(false);
+    setPussyRewardPreviewIndex(null);
     resetDie();
     controller.resetSession();
+  };
+
+  const beginPussyRewardPresentation = () => {
+    if (pussyRewardArtifacts.length !== pussyRewardInspectableIds.length) return;
+    setPussyRewardPreviewIndex(0);
+  };
+
+  const closePussyRewardPresentation = () => {
+    if (pussyRewardPreviewIndex === null) return;
+    if (pussyRewardPreviewIndex < pussyRewardArtifacts.length - 1) {
+      setPussyRewardPreviewIndex((current) => current === null ? null : current + 1);
+      return;
+    }
+
+    setPussyRewardPreviewIndex(null);
+    controller.grantPussyReward();
+  };
+
+  const beginAlexisRewardPresentation = () => {
+    if (!alexisDressingRoomKeyArtifact) return;
+    setAlexisRewardModalOpen(true);
+  };
+
+  const closeAlexisRewardPresentation = () => {
+    setAlexisRewardModalOpen(false);
+    controller.completeAlexisProkhorTask();
   };
 
   const renderGallery = () => {
@@ -353,8 +479,11 @@ export function GalleryAdventure() {
             />
           ))}
         </div>
-        <div className={styles.legendPanel}>
-          <p className={styles.eyebrow}>Мастер</p>
+        <SceneTextPanel
+          className={styles.legendPanel}
+          resetKey={`${activeScene.id}:${selectedDoorId ?? 'default'}`}
+        >
+          <p className={styles.eyebrow}>Рассказчик</p>
           <h1>Гостиничная галерея</h1>
           <p>{narration}</p>
           {selectedDoor && !selectedDoorAvailable ? (
@@ -369,10 +498,10 @@ export function GalleryAdventure() {
           ) : null}
           {!selectedDoor && state.flags['archive-resolved'] ? (
             <div className={styles.actions}>
-              <button type="button" onClick={() => controller.changeView('closed-bar')}>Продолжить по следу</button>
+              <Link to="/campaign/penisuela/play/closed-bar">Продолжить по следу</Link>
             </div>
           ) : null}
-        </div>
+        </SceneTextPanel>
       </>
     );
   };
@@ -386,6 +515,11 @@ export function GalleryAdventure() {
     const pussyTrustMax = Boolean(state.flags['pussy-trust-max']);
     const pussyTrustRefused = Boolean(state.flags['pussy-trust-refused']);
     const pussyPathResolved = Boolean(state.flags['pussy-path-resolved']);
+    const scepterRewardDialogue = Boolean(
+      state.flags['pussy-quest-accepted']
+      && state.flags['rail-kraken-resolved']
+      && state.flags['scepter-recovered'],
+    );
     const acquaintanceCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'earn-pussy-acquaintance')!;
     const trustCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'earn-pussy-trust')!;
     const threatCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'intimidate-pussy')!;
@@ -396,7 +530,9 @@ export function GalleryAdventure() {
       setPussyLoreOpen(true);
     };
     const publicStatus = state.flags['pussy-reward-received']
-      ? 'Скипетр снова в руке хозяина. Pussy Sultan устраивается среди подушек с видом человека, который только что лично восстановил мировой порядок.'
+      ? 'Скипетр снова в руке хозяина, а два королевских подарка переходят к героям. Pussy Sultan устраивается среди подушек с видом человека, который только что лично восстановил мировой порядок.'
+      : state.flags['scepter-returned']
+        ? activeScene.readAloud
       : state.flags['pussy-guards-defeated']
         ? pussyLoreRevealed ? dialogue.guardsDefeated : dialogue.acquaintance
         : state.flags['pussy-intimidated']
@@ -406,7 +542,7 @@ export function GalleryAdventure() {
       : state.flags['scepter-recovered']
         ? 'Золотой скипетр вернулся из-под паланкина. Pussy Sultan протягивает раскрытую ладонь и терпеливо ждёт завершения церемонии.'
         : pussyQuestAccepted
-          ? 'Pussy Sultan остаётся среди обломков балдахина и ждёт возвращения своей золотой регалии.'
+          ? 'Pussy Sultan остаётся у пустого крепления и ждёт возвращения своей золотой регалии.'
           : pussyTrustMax
             ? pussyLoreRevealed ? dialogue.yesterdayReveal : dialogue.charmSuccess
             : pussyTrustRefused
@@ -419,20 +555,7 @@ export function GalleryAdventure() {
 
     return (
       <>
-        <button
-          className={styles.gmAccessButton}
-          data-label="Панель мастера"
-          type="button"
-          onClick={() => setPussyGmPanelOpen(true)}
-          aria-label="Открыть панель мастера"
-        >
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M6 22 4 10l7 5 5-9 5 9 7-5-2 12H6Z" />
-            <path d="M7 25h18" />
-            <circle cx="16" cy="18" r="2" />
-          </svg>
-        </button>
-        <div className={styles.dialoguePanel}>
+        <SceneTextPanel className={styles.dialoguePanel} resetKey={activeScene.id}>
         <p className={styles.eyebrow}>Разговор · {pussyLoreRevealed ? dialogue.speaker : 'незнакомец'}</p>
         <h1>{pussyLoreRevealed ? dialogue.speaker : 'Незнакомец у трона'}</h1>
         {!pussyAcquainted && !pussyQuestAccepted && !state.flags['scepter-recovered'] ? (
@@ -441,7 +564,9 @@ export function GalleryAdventure() {
           <p className={styles.characterStatus}>{publicStatus}</p>
         )}
         <div className={styles.actions}>
-          {pussyLoreRevealed ? <button type="button" onClick={() => setPussyLoreOpen(true)}>Открыть лор Pussy Sultan</button> : null}
+          {!scepterRewardDialogue && pussyLoreRevealed ? (
+            <button type="button" onClick={() => setPussyLoreOpen(true)}>Открыть лор Pussy Sultan</button>
+          ) : null}
           <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
         </div>
         {pussyLoreOpen && pussyLoreRevealed && dialogue.lore ? createPortal((
@@ -521,13 +646,11 @@ export function GalleryAdventure() {
                   {state.flags['pussy-key-stolen'] ? (
                     <div className={styles.gmChoices}>
                       <p>Ключ у героев. Pussy Sultan не поделился воспоминаниями и не предложил поручение.</p>
-                      <button type="button" onClick={() => controller.changeView('gallery')}>Вернуться к дверям</button>
                     </div>
                   ) : null}
                   {(state.flags['pussy-intimidated'] || state.flags['pussy-guards-defeated']) ? (
                     <div className={styles.gmChoices}>
                       <p>Pussy Sultan рассказал всё, что помнит, и отдал ключ. Ветка доверия, поручение и Вуманайзер закрыты.</p>
-                      <button type="button" onClick={() => controller.changeView('gallery')}>Вернуться к дверям</button>
                     </div>
                   ) : null}
                   {pussyLoreRevealed && pussyTrustMax && !pussyQuestAccepted ? (
@@ -555,19 +678,6 @@ export function GalleryAdventure() {
                   {pussyQuestAccepted && !state.flags['scepter-recovered'] ? (
                     <div className={styles.gmChoices}>
                       <p>{dialogue.quest}</p>
-                      <button type="button" onClick={() => controller.changeView('gallery')}>Вернуть героев в галерею</button>
-                    </div>
-                  ) : null}
-                  {state.flags['scepter-recovered'] && !state.flags['pussy-reward-received'] ? (
-                    <div className={styles.gmChoices}>
-                      <p>Отыграй благодарность, упоминание Головач Лены и подарок. Затем выдай ключ и предмет.</p>
-                      <button type="button" onClick={controller.returnScepter}>Выдать ключ и награду</button>
-                    </div>
-                  ) : null}
-                  {state.flags['pussy-reward-received'] ? (
-                    <div className={styles.gmChoices}>
-                      <p>Награда выдана, ключ от центральной двери находится у героев.</p>
-                      <button type="button" onClick={() => controller.changeView('gallery')}>Продолжить в галерее</button>
                     </div>
                   ) : null}
                 </>
@@ -575,112 +685,129 @@ export function GalleryAdventure() {
             </section>
           </div>
         ), document.body) : null}
-        </div>
+        </SceneTextPanel>
       </>
     );
   };
 
   const renderPropRoom = () => {
-    const check = penisuelaGalleryGameplay.checks.find((item) => item.id === 'recover-pussy-scepter')!;
     const pussyQuestAccepted = Boolean(state.flags['pussy-quest-accepted'] || state.flags['vip-prop-room-open']);
+    const carriersAwakened = Boolean(state.flags['prop-room-carriers-awakened']);
+    const carriersDefeated = Boolean(state.flags['prop-room-carriers-defeated']);
+    const sceneText = carriersDefeated
+      ? state.flags['scepter-recovered']
+        ? penisuelaGalleryGameplay.narration.propRoomRecoveredAfterCarriers
+        : activeScene.readAloud
+      : state.flags['scepter-recovered']
+        ? penisuelaGalleryGameplay.narration.propRoomRecovered
+        : activeScene.readAloud;
     return (
-      <div className={styles.dialoguePanel}>
-        <p className={styles.eyebrow}>{pussyQuestAccepted ? 'Поиск предмета' : 'Осмотр'} · верхняя галерея</p>
-        <h1>{pussyQuestAccepted ? 'Скипетр под паланкином' : 'Забытый паланкин'}</h1>
-        <p>{state.flags['scepter-recovered']
-          ? 'Скипетр лежит у вас в инвентаре. Из глубины отеля доносится тяжёлый лязг: внизу по медному рельсу уже движется что-то слишком большое для утренней уборки.'
-          : pussyQuestAccepted
-          ? 'Теперь описание Pussy Sultan совпадает с увиденным: золотое древко зажато между мрамором и опрокинутой рамой. Выберите героя и способ освободить его.'
-          : 'Наверху пахнет пылью, цветами и вчерашним праздником. Опрокинутый паланкин лежит среди корон, чехлов и стоек; под его рамой поблёскивает золотое древко, но пока это лишь одна из десятков чужих вещей без имени и истории.'}</p>
-        {state.flags['scepter-recovered'] ? (
-          <div className={styles.actions}>
-            <button type="button" onClick={() => controller.changeView('gallery')}>Спуститься в галерею</button>
+      <>
+        <SceneTextPanel className={styles.dialoguePanel} resetKey={activeScene.id}>
+          <p className={styles.eyebrow}>{activeScene.eyebrow}</p>
+          <h1>{activeScene.title}</h1>
+          <p>{sceneText}</p>
+          {renderLastRoll()}
+          {pussyQuestAccepted && !state.flags['scepter-recovered'] && !carriersAwakened ? (
+            <p className={styles.sceneContinuation}>{penisuelaGalleryGameplay.narration.propRoomQuest}</p>
+          ) : null}
+          {!carriersDefeated || state.flags['scepter-recovered'] ? (
+            <div className={styles.actions}>
+              <button
+                className={styles.secondaryAction}
+                type="button"
+                onClick={() => controller.changeView('gallery')}
+              >
+                {state.flags['scepter-recovered'] ? 'Спуститься в галерею' : 'Вернуться в галерею'}
+              </button>
+            </div>
+          ) : null}
+        </SceneTextPanel>
+
+        {carriersDefeated && !state.flags['scepter-recovered'] && scepterArtifact ? (
+          <div className={styles.propRoomScepterField} aria-label="Осмотр разбитого паланкина">
+            <InspectableArtifact
+              artifact={scepterArtifact}
+              presentation="search"
+              onFind={() => {
+                controller.collectScepter();
+                setScepterModalOpen(true);
+              }}
+              onOpen={() => undefined}
+            />
           </div>
-        ) : pussyQuestAccepted && activeCheckId ? renderCheckPanel() : pussyQuestAccepted ? (
-          <div className={styles.actions}>
-            <button type="button" onClick={() => beginCheck(check, undefined, 'strength')}>Поднять паланкин</button>
-            <button type="button" onClick={() => beginCheck(check, undefined, 'dexterity')}>Вытащить скипетр осторожно</button>
-            <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
+        ) : null}
+
+        {pussyQuestAccepted && activeCheckId ? createPortal((
+          <div
+            className={styles.modalBackdrop}
+            role="presentation"
+            onMouseDown={() => {
+              setActiveCheckId(null);
+              resetDie();
+            }}
+          >
+            <section
+              className={`${styles.characterModal} ${styles.gmModal}`}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Проверка поиска скипетра"
+              onMouseDown={(event) => event.stopPropagation()}
+            >
+              {renderCheckPanel()}
+            </section>
           </div>
-        ) : (
-          <div className={styles.actions}>
-            <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
-          </div>
-        )}
-      </div>
+        ), document.body) : null}
+      </>
     );
   };
 
   const renderArchive = () => {
     const dialogue = penisuelaGalleryGameplay.dialogues.alexis;
-    const calmCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'calm-alexis')!;
-    const searchCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'search-hotel-archive')!;
-    const thorinUsed = state.usedAbilities.includes('hypnotic-smile');
-    const sarcasmUsed = state.usedAbilities.includes('sarcasm');
+    const prokhorTaskCompleted = Boolean(state.flags['alexis-prokhor-task-completed']);
+    const dressingRoomKeyReceived = Boolean(state.flags['dressing-room-key-received']);
+    const archiveStateKey = state.flags['archive-resolved']
+      ? dressingRoomKeyReceived ? 'prokhor-rewarded' : prokhorTaskCompleted ? 'prokhor-returned' : 'resolved'
+      : state.flags['alexis-smile-failed'] ? 'surveillance-ready' : 'opening';
     return (
-      <div className={styles.dialoguePanel}>
+      <SceneTextPanel className={styles.dialoguePanel} resetKey={`${activeScene.id}:${archiveStateKey}`}>
         <p className={styles.eyebrow}>Разговор · {dialogue.speaker}</p>
-        <h1>{state.flags['archive-resolved'] ? 'След в счетах' : 'Сначала объясните, кто вы'}</h1>
+        <h1>{dressingRoomKeyReceived
+          ? 'Ключ от гримёрки'
+          : prokhorTaskCompleted
+            ? 'Ответ для Алексис'
+            : state.flags['archive-resolved'] ? 'Поручение Алексис'
+          : state.flags['alexis-smile-failed'] ? 'Добровольного разговора не получилось' : 'Сначала объясните, кто вы'}</h1>
         <blockquote>
-          {state.flags['alexis-calmed'] ? dialogue.success
-            : state.flags['archive-resolved'] ? dialogue.search
-              : state.flags['alexis-refused'] ? dialogue.pressure : dialogue.opening}
+          {dressingRoomKeyReceived ? `${dialogue.prokhorReturn} ${dialogue.prokhorReward}`
+            : prokhorTaskCompleted ? dialogue.prokhorReturn
+              : state.flags['alexis-calmed'] ? dialogue.success
+            : state.flags['alexis-surveillance-noticed'] ? dialogue.search
+              : state.flags['alexis-smile-failed'] ? dialogue.pressure : dialogue.opening}
         </blockquote>
         {renderLastRoll()}
-        {activeCheckId ? renderCheckPanel() : (
+        {activeCheckId ? renderCheckPanel() : null}
+        {!activeCheckId ? (
           <div className={styles.actions}>
-            {!state.flags['archive-resolved'] && !state.flags['alexis-refused'] ? (
-              <>
-                <button type="button" onClick={() => beginCheck(calmCheck, undefined, 'charisma')}>Объяснить спокойно</button>
-                <button
-                  type="button"
-                  disabled={thorinUsed}
-                  onClick={() => controller.resolveSceneCheck('calm-alexis', 'thorin-pukoshchit', 'charisma', undefined, 'hypnotic-smile')}
-                >
-                  Торин: гипнотическая улыбка
-                </button>
-                <button
-                  type="button"
-                  disabled={sarcasmUsed}
-                  onClick={() => {
-                    controller.resolveSceneCheck('calm-alexis', 'lambert', 'charisma', undefined, 'sarcasm');
-                  }}
-                >
-                  Ламберт: сарказм с преимуществом
-                </button>
-                <button className={styles.secondaryAction} type="button" onClick={controller.pressureAlexis}>Надавить на Алексиса</button>
-              </>
-            ) : null}
-            {state.flags['alexis-refused'] && !state.flags['archive-resolved'] ? (
-              <button type="button" onClick={() => beginCheck(searchCheck, undefined, 'intelligence')}>Искать маршрут в счетах</button>
-            ) : null}
             {state.flags['archive-resolved'] ? (
-              <button type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
+              <Link to="/campaign/penisuela/play/closed-bar">Отправиться в закрытый бар</Link>
             ) : null}
+            <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
           </div>
-        )}
-      </div>
+        ) : null}
+      </SceneTextPanel>
     );
   };
 
-  const renderKraken = () => {
-    const stopCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'stop-rail-kraken')!;
-    return (
-      <div className={styles.dialoguePanel}>
-        <p className={styles.eyebrow}>Опасность · Рельсовый кракен</p>
-        <h1>Красная линия вспыхивает</h1>
-        <p>Стоит вам ступить на нижнюю площадку со скипетром, как медный рельс вспыхивает красным. Гостиница сочла вынесенную регалию пропажей: фанерный кракен срывается с креплений и идёт наперерез. Можно послать Линду в сервисный люк, остановить общий механизм или принять бой в инициативе.</p>
-        {renderLastRoll()}
-        {activeCheckId ? renderCheckPanel() : (
-          <div className={styles.actions}>
-            <button type="button" onClick={controller.disableKrakenWithLinda}>Линда: уменьшиться и войти в люк</button>
-            <button type="button" onClick={() => beginCheck(stopCheck, undefined, 'intelligence')}>Остановить общий механизм</button>
-            <button className={styles.dangerAction} type="button" onClick={() => controller.startCombat()}>Вступить в бой</button>
-          </div>
-        )}
-      </div>
-    );
-  };
+  const renderKraken = () => (
+    <SceneTextPanel className={styles.dialoguePanel} resetKey={activeScene.id}>
+      <p className={styles.eyebrow}>{activeScene.eyebrow}</p>
+      <h1>{activeScene.title}</h1>
+      <p>{activeScene.readAloud}</p>
+      {renderLastRoll()}
+      {activeCheckId ? renderCheckPanel() : null}
+    </SceneTextPanel>
+  );
 
   const renderCombatArena = () => state.combat ? (
     <CombatEncounterHud
@@ -689,33 +816,50 @@ export function GalleryAdventure() {
       diceError={diceError}
       diceReady={isDiceReady}
       fallbackEnemyToken={activeScene.background}
-      heroes={penisuelaGalleryHeroes}
+      heroes={controller.sessionHeroes}
       heroHp={state.heroHp}
+      participantTemporaryModifiers={state.participantTemporaryModifiers}
+      participantConditions={Object.fromEntries(controller.sessionHeroes.map((hero) => [
+        hero.id,
+        controller.getParticipantConditions(hero.id),
+      ]))}
+      timelineEvents={state.events}
+      inventoryState={state.inventoryState}
       heroPortraits={heroPortraits}
       heroTokens={heroAvatarPaths}
       inputValue={physicalRoll}
       isRolling={isDieRolling}
       onApplyDamage={controller.applyCombatDamage}
-      onContinue={() => controller.changeView(
-        state.combat?.encounterId === 'hotel-vip-guards' ? 'guards' : 'gallery',
-      )}
+      onCancelPendingAttack={controller.cancelPendingCombatAttackWithRedButton}
+      onDefeatFallback={controller.resolveCombatDefeatFallback}
+      onContinue={() => {
+        if (state.combat?.encounterId === 'prop-room-winding-carriers') {
+          controller.clearCombat('prop-room');
+          return;
+        }
+        controller.clearCombat(state.combat?.encounterId === 'hotel-vip-guards' ? 'guards' : 'gallery');
+      }}
       onEnemyAttack={controller.enemyAttack}
       onEquipItem={controller.equipCombatItem}
-      onHeroAttack={controller.heroAttack}
+        onHeroAttack={controller.heroAttack}
+        onSummonedAllyAttack={controller.summonedAllyAttack}
+        onResolveSavingThrow={controller.resolveCombatSavingThrow}
       onInputChange={updateRollInput}
-      onReset={resetAdventure}
       onResetDie={resetDie}
       onRoll={startDiceRoll}
       onSelectAction={controller.selectCombatAction}
-      onUndo={controller.undoLastCommand}
       onUseAction={controller.useCombatAction}
+      resourceUses={state.resourceUses}
+      suggestedEnemyTargetId={controller.getNpcDecision(
+        state.combat.initiativeOrder[state.combat.turnIndex] ?? '',
+      )?.suggestion.targetIds[0]}
       victoryWordmark={resolveAsset('assets/concepts/campaigns/penisuela/ui/victory-wordmark.png')}
     />
   ) : null;
   const renderGuardsEncounter = () => {
     const defeated = state.flags['pussy-guards-defeated'];
     return (
-      <div className={styles.dialoguePanel}>
+      <SceneTextPanel className={styles.dialoguePanel} resetKey={activeScene.id}>
         <p className={styles.eyebrow}>{activeScene.eyebrow}</p>
         <h1>{activeScene.title}</h1>
         <p>{activeScene.readAloud}</p>
@@ -726,22 +870,22 @@ export function GalleryAdventure() {
         ) : (
           <div className={styles.actions}>
             <button className={styles.dangerAction} type="button" onClick={() => controller.startCombat('hotel-vip-guards')}>Начать бой</button>
+            <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в холл</button>
           </div>
         )}
-      </div>
+      </SceneTextPanel>
     );
   };
 
   const renderClosedBar = () => (
-    <div className={styles.dialoguePanel}>
+    <SceneTextPanel className={styles.dialoguePanel} resetKey={activeScene.id}>
       <p className={styles.eyebrow}>След продолжается</p>
       <h1>Закрытый бар</h1>
       <p>{activeScene.readAloud}</p>
       <div className={styles.actions}>
-        <Link to="/campaign/penisuela/play/closed-bar">Осмотреть бар</Link>
         <button className={styles.secondaryAction} type="button" onClick={() => controller.changeView('gallery')}>Вернуться в галерею</button>
       </div>
-    </div>
+    </SceneTextPanel>
   );
 
   const guardsVictoryIsFinal = state.flags['pussy-guards-defeated']
@@ -755,30 +899,196 @@ export function GalleryAdventure() {
             : state.activeView === 'guards' ? renderGuardsEncounter()
               : state.activeView === 'combat' ? renderCombatArena()
               : renderClosedBar();
+  const propRoomQuestAccepted = Boolean(state.flags['pussy-quest-accepted'] || state.flags['vip-prop-room-open']);
+  const propRoomCarriersAwakened = Boolean(state.flags['prop-room-carriers-awakened']);
+  const propRoomCarriersDefeated = Boolean(state.flags['prop-room-carriers-defeated']);
+  const propRoomForceOnly = Boolean(state.flags['prop-room-force-only']);
+  const propRoomStrengthFailed = Boolean(state.flags['prop-room-strength-failed']);
+  const scepterStrengthCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'recover-pussy-scepter')!;
+  const scepterEngineeringCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'recover-pussy-scepter-with-engineering')!;
+  const scepterLindaCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'recover-pussy-scepter-with-tiny-linda')!;
+  const lindaKrakenCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'disable-rail-kraken-with-linda')!;
+  const krakenStopCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'stop-rail-kraken')!;
+  const alexisCalmCheck = penisuelaGalleryGameplay.checks.find((item) => item.id === 'calm-alexis')!;
+  const propRoomDecisionOptions = propRoomCarriersAwakened && !propRoomCarriersDefeated ? [
+    {
+      id: 'start-carriers-combat',
+      label: 'Начать бой с заводными носильщиками',
+      onSelect: () => controller.startCombat('prop-room-winding-carriers'),
+    },
+  ] : [
+    ...(!propRoomForceOnly ? [{
+      id: 'recover-scepter-with-linda',
+      label: 'Линда: пройти через люк · Ловкость DC 15',
+      onSelect: () => beginCheck(scepterLindaCheck, 'linda', 'dexterity'),
+    }] : []),
+    ...(!propRoomForceOnly ? [{
+      id: 'recover-scepter-with-engineering',
+      label: 'Ламберт: разгрузить лебёдку · Интеллект DC 15',
+      onSelect: () => beginCheck(scepterEngineeringCheck, 'lambert', 'intelligence'),
+    }] : []),
+    ...(!propRoomStrengthFailed ? [{
+      id: 'recover-scepter-with-strength',
+      label: 'Головач Лена: поднять раму · Сила DC 18',
+      onSelect: () => beginCheck(scepterStrengthCheck, 'golovach-lena', 'strength'),
+    }] : []),
+  ];
+  const krakenDecisionOptions = [
+    {
+      id: 'disable-kraken-with-linda',
+      label: 'Линда: проникнуть в привод · Ловкость DC 12',
+      onSelect: () => beginCheck(lindaKrakenCheck, 'linda', 'dexterity'),
+    },
+    {
+      id: 'stop-kraken-mechanism',
+      label: 'Заклинить аварийный стопор · Сила DC 12',
+      onSelect: () => beginCheck(krakenStopCheck, undefined, 'strength'),
+    },
+    {
+      id: 'start-kraken-combat',
+      label: 'Начать бой с рельсовым кракеном',
+      onSelect: () => controller.startCombat(),
+    },
+  ];
+  const alexisDecisionOptions = state.flags['alexis-smile-failed'] ? [
+    {
+      id: 'search-archive-with-video-surveillance',
+      label: 'Головач: применить видеонаблюдение',
+      disabled: (() => {
+        const action = penisuelaGalleryGameplay.combatActions.find((candidate) => (
+          candidate.characterId === 'golovach-lena' && candidate.sourceId === 'video-surveillance'
+        ));
+        return action ? (state.resourceUses[getCombatActionResourceKey(action)] ?? 0) >= action.uses.max : true;
+      })(),
+      onSelect: () => controller.resolveSceneCheck(
+        'search-hotel-archive',
+        'golovach-lena',
+        'intelligence',
+        undefined,
+        'video-surveillance',
+      ),
+    },
+  ] : [
+    {
+      id: 'calm-alexis-with-thorin',
+      label: 'Торин: гипнотическая улыбка · Харизма DC 12',
+      onSelect: () => beginCheck(alexisCalmCheck, 'thorin-pukoshchit', 'charisma'),
+    },
+  ];
+  const pussyScepterReturnReady = state.activeView === 'pussy'
+    && state.flags['pussy-quest-accepted']
+    && state.flags['rail-kraken-resolved']
+    && state.inventory.includes('pussy-sultan-golden-scepter-microphone')
+    && !state.flags['scepter-returned'];
+  const pussyRewardReady = state.activeView === 'pussy'
+    && state.flags['scepter-returned']
+    && !state.flags['pussy-reward-received'];
+  const masterActions: SceneMasterAction[] = state.activeView === 'pussy' ? [
+    ...(pussyScepterReturnReady ? [{
+      id: 'return-pussy-scepter',
+      label: 'Отдать скипетр',
+      onSelect: controller.returnScepter,
+    }] : pussyRewardReady ? [{
+      id: 'grant-pussy-reward',
+      label: 'Выдать награду',
+      onSelect: beginPussyRewardPresentation,
+    }] : !state.flags['scepter-returned'] && !state.flags['pussy-reward-received'] ? [{
+      id: 'manage-pussy-dialogue',
+      label: 'Управлять разговором',
+      onSelect: () => setPussyGmPanelOpen(true),
+    }] : []),
+  ] : state.activeView === 'prop-room' ? [
+    ...(propRoomQuestAccepted && !state.flags['scepter-recovered'] && !propRoomCarriersDefeated ? [
+      {
+        id: 'manage-prop-room',
+        label: propRoomCarriersAwakened ? 'Управлять сценой' : 'Управлять поиском скипетра',
+        onSelect: () => setPropRoomDecisionOpen(true),
+      },
+    ] : []),
+  ] : state.activeView === 'kraken' && !activeCheckId ? [
+    {
+      id: 'manage-kraken',
+      label: 'Управлять сценой с кракеном',
+      onSelect: () => setKrakenDecisionOpen(true),
+    },
+  ] : state.activeView === 'archive'
+    && state.flags['alexis-prokhor-task-completed']
+    && !state.flags['dressing-room-key-received']
+    ? [{
+        id: 'complete-alexis-prokhor-task',
+        label: 'Рассказать про Успенскую',
+        onSelect: beginAlexisRewardPresentation,
+      }]
+    : state.activeView === 'archive' && !state.flags['archive-resolved'] && !activeCheckId ? [
+      {
+        id: 'manage-alexis',
+        label: 'Управлять разговором',
+        onSelect: () => setAlexisDecisionOpen(true),
+      },
+    ] : [];
+  const masterStepBack = selectedDoorId
+    ? () => setSelectedDoorId(null)
+    : controller.canUndo ? controller.undoLastCommand : undefined;
 
   return (
     <CampaignScene
+      itemController={controller} inventoryArtwork={controller.inventoryArtwork}
       campaignId={penisuelaSessionPreview.campaignId}
       campaignScenes={penisuelaSessionPreview.scenes}
       backHref={state.activeView === 'gallery' ? '/campaign/penisuela/play/hotel-overload-search' : undefined}
-      backLabel="← Вернуться в номер"
+      gameMasterConsole={(
+        <GameMasterConsole
+          campaignScenes={penisuelaSessionPreview.scenes}
+          controller={controller}
+          definition={penisuelaGalleryGameplay}
+          scene={activeScene as CampaignSessionScene}
+        />
+      )}
       externalRevealedIds={acquiredInspectableIds}
-      externallyManagedIds={galleryManagedInspectableIds}
+      externallyManagedIds={controller.managedInspectableIds}
+      masterActions={masterActions}
+      onMasterStepBack={masterStepBack}
       scene={activeScene as CampaignSessionScene}
       interactiveContent={(
         <>
-          {state.activeView !== 'combat' ? (
-            <div className={styles.sessionHud}>
-              <button type="button" onClick={controller.undoLastCommand}>Отменить ход</button>
-              <button type="button" onClick={resetAdventure}>Начать сцену заново</button>
-            </div>
-          ) : null}
           {content}
+          <SceneDecisionModal
+            description={propRoomCarriersAwakened
+              ? 'Силовой подъём сорван. Три заводных носильщика перекрыли паланкин; бой обязателен.'
+              : propRoomForceOnly
+                ? 'Тонкий способ заклинил механизм. Теперь доступна только силовая проверка Головача Лены.'
+                : 'Выберите один из трёх способов. Провал Линды или Ламберта оставит только силовой путь; провал силы немедленно начнёт бой.'}
+            eyebrow="Скрыто от игроков"
+            onClose={() => setPropRoomDecisionOpen(false)}
+            open={propRoomDecisionOpen}
+            options={propRoomDecisionOptions}
+            revealLabel={propRoomCarriersAwakened ? 'Показать действие мастера' : undefined}
+            title={propRoomCarriersAwakened ? 'Реквизит проснулся' : 'Поиск скипетра'}
+          />
+          <SceneDecisionModal
+            description="Выберите скрытый от игроков способ остановить декорацию. Решение появится на общем экране только после действия мастера."
+            eyebrow="Скрыто от игроков"
+            onClose={() => setKrakenDecisionOpen(false)}
+            open={krakenDecisionOpen}
+            options={krakenDecisionOptions}
+            title="Кракен на рельсе"
+          />
+          <SceneDecisionModal
+            description={state.flags['alexis-smile-failed']
+              ? 'Алексис отказалась говорить добровольно. Резервный способ поиска появляется только после провала улыбки Торина и расходует видеонаблюдение Головача на эту локацию.'
+              : 'Алексис слишком взвинчена для обычного разговора. Выбранное действие и его исход появятся на общем экране только после решения мастера.'}
+            eyebrow="Скрыто от игроков"
+            onClose={() => setAlexisDecisionOpen(false)}
+            open={alexisDecisionOpen}
+            options={alexisDecisionOptions}
+            title="Разговор с Алексис"
+          />
           <D20Roller
             diceExpression={activeDiceExpression}
             rollLabel={activeDiceLabel}
             requestId={dieRollRequestId}
             rolling={isDieRolling}
+            selectionMode={activeDiceSelection}
             onReadyChange={setIsDiceReady}
             onResult={finishDiceRoll}
             onError={failDiceRoll}
@@ -787,6 +1097,18 @@ export function GalleryAdventure() {
             <InspectableArtifactDialog
               artifact={scepterArtifact}
               onClose={() => setScepterModalOpen(false)}
+            />
+          ) : null}
+          {activePussyRewardArtifact ? (
+            <InspectableArtifactDialog
+              artifact={activePussyRewardArtifact}
+              onClose={closePussyRewardPresentation}
+            />
+          ) : null}
+          {alexisRewardModalOpen && alexisDressingRoomKeyArtifact ? (
+            <InspectableArtifactDialog
+              artifact={alexisDressingRoomKeyArtifact}
+              onClose={closeAlexisRewardPresentation}
             />
           ) : null}
         </>

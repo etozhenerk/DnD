@@ -2,6 +2,7 @@ declare module '@3d-dice/dice-box' {
   export interface DiceBoxConfig {
     assetPath: string;
     container?: string;
+    id?: string;
     gravity?: number;
     mass?: number;
     friction?: number;

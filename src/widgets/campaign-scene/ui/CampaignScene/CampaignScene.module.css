@@ -47,8 +47,8 @@
   z-index: 0;
 }
 
-.portraitBackground {
-  object-fit: cover;
+.containedBackground {
+  object-fit: contain;
 }
 
 .stageShade {
@@ -79,39 +79,25 @@
   z-index: 12;
 }
 
-.storyClose {
-  background: var(--color-transparent);
-  border: 1px solid var(--color-brass-alpha-38);
-  color: var(--color-brass-light);
-  cursor: pointer;
-  font-size: 1.15rem;
-  height: 2rem;
-  line-height: 1;
-  padding: 0;
-  position: absolute;
-  right: 0.75rem;
-  top: 0.75rem;
-  width: 2rem;
-}
-
-.storyToggle {
-  background: var(--gradient-session-dock);
-  border: 1px solid var(--color-brass-alpha-62);
-  bottom: clamp(5rem, 8vh, 6rem);
-  box-shadow: var(--shadow-session-control);
-  color: var(--color-gold-light);
-  cursor: pointer;
-  font-family: var(--font-display);
-  left: 50%;
-  padding: 0.7rem 1rem;
-  position: absolute;
-  transform: translateX(-50%);
-  z-index: 12;
-}
-
 .storyCopy {
   border-left: 2px solid var(--color-wine);
   padding-left: clamp(1rem, 2vw, 1.6rem);
+}
+
+.minimalStoryCopy {
+  border-left: 0;
+  padding-left: 0;
+  text-align: center;
+}
+
+.minimalStoryCopy .narrator {
+  font-size: clamp(0.58rem, 0.78vw, 0.7rem);
+  letter-spacing: 0.18em;
+  margin-bottom: 0.45rem;
+}
+
+.minimalStoryCopy .readAloud {
+  margin-inline: auto;
 }
 
 .eyebrow,
@@ -147,7 +133,6 @@
   text-wrap: pretty;
 }
 
-.backLink,
 .inventoryButton {
   background: var(--gradient-session-dock);
   border: 1px solid var(--color-brass-alpha-62);
@@ -165,27 +150,21 @@
   width: 3.2rem;
 }
 
-.backLink {
-  left: 1.1rem;
-  padding: 0 1rem;
-  text-decoration: none;
-  width: auto;
-}
-
 .inventoryButton {
   background: var(--color-transparent);
   border: 0;
   box-shadow: none;
   cursor: pointer;
   right: 1.5rem;
-  top: 1.35rem;
+  top: 0.6rem;
 }
 
-.inventoryButton > img {
-  height: 4.25rem;
+.inventoryButton > img,
+.inventoryButton > svg {
+  height: 4rem;
   max-width: none;
   object-fit: contain;
-  width: 4.25rem;
+  width: 4rem;
 }
 
 .inventoryHasItems::after {
@@ -212,6 +191,10 @@
   position: absolute;
 }
 
+.searchField[data-hover-armed='false'] > :global(button) {
+  pointer-events: none;
+}
+
 .searchField > :global(button)[data-order='1'] { left: 51%; top: 70%; }
 .searchField > :global(button)[data-order='2'] { left: 14%; top: 59%; }
 .searchField > :global(button)[data-order='3'] { left: 29%; top: 71%; }
@@ -229,7 +212,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: min(24rem, 32vw, 49vh);
-  z-index: 13;
+  z-index: 30;
 }
 
 .inventoryHeading {
@@ -302,13 +285,6 @@
 .inventoryItems > :global(button)[data-order='7'] { left: 23.1%; top: 78.4%; }
 .inventoryItems > :global(button)[data-order='8'] { left: 53.5%; top: 78.4%; }
 
-.emptyInventory {
-  color: var(--color-ink-muted);
-  font-family: var(--font-display);
-  margin: 35% 0 0;
-  text-align: center;
-}
-
 .foundNotice {
   background: var(--color-black-alpha-74);
   border: 1px solid var(--color-gold-alpha-62);
@@ -328,22 +304,8 @@
 }
 
 .searchDescription {
-  display: block;
   max-height: min(17rem, 52%);
-  max-width: 76rem;
-  min-height: 0;
   overflow: hidden;
-  width: min(86%, calc(100% - 10rem));
-}
-
-.searchStoryCopy {
-  padding-right: clamp(0.7rem, 1.5vw, 1.3rem);
-}
-
-.searchStoryCopy .readAloud {
-  font-size: clamp(0.7rem, 0.88vw, 0.84rem);
-  line-height: 1.38;
-  max-width: none;
 }
 
 .doorExit {
@@ -380,33 +342,6 @@
   outline: none;
 }
 
-.sceneExitControl {
-  background: var(--gradient-gold);
-  border: 1px solid var(--color-gold-light);
-  box-shadow: var(--shadow-session-control);
-  color: var(--color-ink-dark);
-  font-family: var(--font-display);
-  font-size: clamp(0.78rem, 1vw, 0.96rem);
-  font-weight: 700;
-  left: 50%;
-  letter-spacing: 0.035em;
-  padding: 0.68rem 1.1rem;
-  position: absolute;
-  text-decoration: none;
-  top: clamp(5.1rem, 9vh, 6.1rem);
-  transform: translateX(-50%);
-  z-index: 12;
-}
-
-.sceneExitControl:hover {
-  filter: brightness(1.08);
-}
-
-.sceneExitControl:focus-visible {
-  outline: 2px solid var(--color-ice-bright);
-  outline-offset: 3px;
-}
-
 .liveRegion {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -417,10 +352,7 @@
   width: 1px;
 }
 
-.backLink:focus-visible,
 .inventoryButton:focus-visible,
-.storyClose:focus-visible,
-.storyToggle:focus-visible,
 .inventoryHeading button:focus-visible {
   outline: 2px solid var(--color-ice-bright);
   outline-offset: 3px;
@@ -447,15 +379,10 @@
 
   .inventory { width: min(22rem, 34vw, 48vh); }
 
-  .searchDescription {
-    max-height: min(16.5rem, 52%);
-    width: calc(100% - 9rem);
-  }
-
-  .searchStoryCopy .readAloud { font-size: clamp(0.67rem, 0.8vw, 0.75rem); }
+  .searchDescription { max-height: min(16.5rem, 52%); }
 }
 
-@media (max-width: 600px) and (orientation: portrait) {
+@media (max-width: 900px) and (orientation: portrait) {
   .canvas {
     display: none;
   }
@@ -497,3 +424,26 @@
 @keyframes sessionReveal {
   from { opacity: 0; }
 }
+
+.inventoryPagination {
+  position: absolute;
+  top: 19%;
+  left: 23%;
+  width: 54%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-parchment-light);
+  font-family: var(--font-display);
+}
+
+.inventoryPagination button {
+  border: 1px solid var(--color-gold-alpha-62);
+  background: var(--color-black-alpha-74);
+  color: var(--color-parchment-light);
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.inventoryPagination button:disabled { opacity: 0.4; cursor: default; }
+.inventoryPagination button:focus-visible { outline: 2px solid var(--color-gold-light); }

@@ -1,0 +1,16 @@
+.dialog { background: var(--color-night-deep); border: 1px solid var(--color-gold-alpha-62); border-radius: 1.2rem; box-shadow: var(--shadow-combat-dock); box-sizing: border-box; color: var(--color-parchment-light); max-height: 90dvh; max-width: 70rem; padding: 1.3rem; width: calc(100vw - 2rem); }
+.dialog::backdrop { background: var(--color-black-alpha-74); }
+.header { align-items: start; display: flex; gap: 1rem; justify-content: space-between; }
+.header h2 { color: var(--color-gold-light); font-family: var(--font-display); margin: 0; }
+.header p { margin: 0.4rem 0 1rem; }
+.controls { align-items: end; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.controls label { display: grid; gap: 0.25rem; max-width: 100%; }
+.dialog button, .dialog select { background: var(--color-black-alpha-74); border: 1px solid var(--color-brass-alpha-62); border-radius: 0.5rem; color: var(--color-parchment-light); cursor: pointer; font: inherit; max-width: 100%; padding: 0.55rem 0.75rem; }
+.dialog button:disabled { cursor: default; opacity: 0.5; }
+.dialog button:focus-visible, .dialog select:focus-visible { outline: 2px solid var(--color-ice-bright); outline-offset: 3px; }
+.grid { display: grid; gap: 1.5rem 1rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); padding: 2rem 0 0.5rem; }
+.sample { align-items: center; display: flex; flex-direction: column; gap: 0.5rem; margin: 0; min-width: 0; text-align: center; }
+.token { height: 5.5rem; margin: 0.5rem 0 1rem; width: 5.5rem; }
+.portrait { border: 2px solid var(--color-gold-alpha-62); border-radius: 50%; box-sizing: border-box; height: 100%; object-fit: cover; width: 100%; }
+.sample figcaption { color: var(--color-gold-light); font-weight: 700; }
+.state { color: var(--color-brass-muted); font-size: 0.8rem; }

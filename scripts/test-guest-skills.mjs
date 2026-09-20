@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import {createServer} from 'vite';
+const server=await createServer({appType:'custom',logLevel:'silent',server:{middlewareMode:true}});
+try {
+ const load=p=>server.ssrLoadModule(p);
+ const {penisuelaGalleryGameplay:definition,penisuelaGalleryHeroes:heroes}=await load('/src/entities/campaign-session/model/data.ts');
+ const {replayGalleryEvents:replay}=await load('/src/entities/campaign-session/model/gallerySession.ts');
+ const journal=await load('/src/entities/campaign-session/model/gallerySessionJournal.ts');
+ const rules=await load('/src/entities/combat/model/combatRules.ts');
+ const cmd=await load('/src/features/run-combat/model/combatCommands.ts');
+ const {createCombatArenaView:view}=await load('/src/features/run-combat/model/createCombatArenaView.ts');
+ const {getGuaranteedCritical,getAutomaticAttackLabel}=await load('/src/entities/combat/model/guestSkills.ts');
+ const encounter=definition.encounters.find(e=>e.id==='andrey-dark-elf');
+ let serial=0,log=[];
+ const wrap=events=>{const commandId=`c-${++serial}`;return events.map(e=>({...e,id:`e-${++serial}`,commandId,sceneScopeId:'last-take-boss'}));};
+ const apply=events=>{assert.ok(events);log.push(...wrap(events));};
+ const state=()=>replay(log,definition);
+ const ctx=()=>({...state(),definition,heroes});
+ const active=()=>state().combat.initiativeOrder[state().combat.turnIndex];
+ const nextTo=id=>{for(let n=0;active()!==id&&n<20;n++)apply([{type:'turn-advanced'}]);assert.equal(active(),id);};
+ const start=()=>{log=[journal.createGallerySessionStartedEvent({definition,heroes,existingInventory:[],eventId:'seed',commandId:'seed'})];apply([{type:'combat-started',encounterId:encounter.id,initiativeOrder:[heroes[0].id,encounter.id,...heroes.slice(1).map(h=>h.id)]}]);};
+ const rescue=prison=>{nextTo(heroes[0].id);apply(cmd.createHeroAttackCommand(ctx(),heroes[0].id,prison,20));const r=cmd.createApplyCombatDamageCommand(ctx(),rules.getPendingDamageRange(state().combat.pendingAttack).max);apply(r.events);};
+ const select=id=>apply(cmd.createSelectCombatActionCommand(ctx(),id));
+ const persisted=()=>{const expectation={campaignId:definition.campaignId,definitionId:definition.id,definitionVersion:definition.version};const raw=journal.createStoredGallerySessionEnvelope(log,expectation);assert.ok(raw);const result=journal.parseStoredGallerySessionEnvelope(JSON.parse(JSON.stringify(raw)),expectation);assert.equal(result.ok,true);assert.deepEqual(JSON.parse(JSON.stringify(replay(result.events,definition))),JSON.parse(JSON.stringify(state())));};
+ const arena=()=>view({...ctx(),encounter,actions:definition.combatActions,heroTokens:{},fallbackEnemyToken:'',requestedEnemyTargetId:encounter.id,requestedHeroTargetId:heroes[0].id});
+ start();assert.equal(cmd.createSelectCombatActionCommand(ctx(),'angel-fat-trap'),null);rescue('igor-prison');assert.equal(active(),'igor-sinyak');assert.ok(arena().actions.some(a=>a.id==='angel-fat-trap'));
+ select('angel-fat-trap');assert.ok(arena().utilityAction);assert.equal(cmd.createUseCombatActionCommand(ctx(),'angel-fat-trap','kreed-prison'),null);
+ const before=log.length;apply(cmd.createUseCombatActionCommand(ctx(),'angel-fat-trap',encounter.id));assert.equal(state().combat.allies['igor-sinyak'].remainingTurns,0);assert.ok(state().combat.statuses.some(s=>s.kind==='grease-trap'));assert.equal(cmd.createUseCombatActionCommand(ctx(),'angel-fat-trap',encounter.id),null);persisted();
+ const applied=log.slice(before);apply([{type:'action-corrected',correctedCommandId:applied[0].commandId}]);assert.equal(state().combat.allies['igor-sinyak'].remainingTurns,1);assert.ok(!state().combat.statuses.some(s=>s.kind==='grease-trap'));log=log.slice(0,before);apply(applied.map(({id,commandId,sceneScopeId,...event})=>event));
+ nextTo(encounter.id);assert.equal(getAutomaticAttackLabel(state().combat,encounter.id,heroes[0].id),'Отразить атаку');
+ const hp={...state().heroHp};apply(cmd.createEnemyAttackCommand(ctx(),heroes[0].id,1));assert.equal(state().combat.pendingAttack.targetId,encounter.id);assert.equal(state().combat.pendingAttack.critical,false);assert.equal(arena().selectedTarget.id,encounter.id);persisted();
+ const hpBoss=state().combat.enemies[encounter.id].hp;apply(cmd.createApplyCombatDamageCommand(ctx(),8).events);assert.equal(state().combat.enemies[encounter.id].hp,hpBoss-11);assert.deepEqual(state().heroHp,hp);assert.ok(!state().combat.statuses.some(s=>s.kind==='grease-trap'));
+ start();apply([{type:'combat-damage-resolved',targetId:heroes[0].id,amount:heroes[0].maxHp,text:'Тест'},{type:'combat-damage-resolved',targetId:heroes[1].id,amount:2,text:'Тест'}]);
+ // Recover first hero for the rescue, then down them again before the guest sings.
+ apply([{type:'healing-applied',targetId:heroes[0].id,amount:1,maxHp:heroes[0].maxHp,text:'Тест'}]);rescue('grey-wiese-prison');apply([{type:'combat-damage-resolved',targetId:heroes[0].id,amount:1,text:'Тест'}]);select('grey-wiese-high-note');
+ for(const value of [undefined,0,7,1.5,NaN])assert.equal(cmd.createUseCombatActionCommand(ctx(),'grey-wiese-high-note','',value),null);
+ apply(cmd.createUseCombatActionCommand(ctx(),'grey-wiese-high-note','',6));assert.equal(state().heroHp[heroes[0].id],6);assert.equal(state().heroHp[heroes[1].id],heroes[1].maxHp);assert.equal(state().combat.allies.graywise.remainingTurns,0);persisted();
+ start();rescue('kreed-prison');select('kreed-chat-clip-it');assert.equal(cmd.createUseCombatActionCommand(ctx(),'kreed-chat-clip-it',encounter.id),null);apply(cmd.createUseCombatActionCommand(ctx(),'kreed-chat-clip-it',heroes[0].id));assert.equal(state().combat.allies['egor-kreed'].remainingTurns,0);persisted();
+ nextTo(heroes[0].id);assert.equal(getGuaranteedCritical(state().combat,heroes[0].id,'igor-prison'),undefined);assert.ok(getGuaranteedCritical(state().combat,heroes[0].id,encounter.id));
+ apply(cmd.createHeroAttackCommand(ctx(),heroes[0].id,'igor-prison',1));assert.ok(getGuaranteedCritical(state().combat,heroes[0].id,encounter.id));nextTo(heroes[0].id);
+ apply(cmd.createHeroAttackCommand(ctx(),heroes[0].id,encounter.id,1));assert.equal(state().combat.pendingAttack.critical,true);assert.equal(state().combat.pendingAttack.natural,20);assert.ok(!getGuaranteedCritical(state().combat,heroes[0].id,encounter.id));persisted();
+ apply([{type:'combat-started',encounterId:'andrey-dragon',initiativeOrder:[heroes[0].id,'andrey-dragon',...heroes.slice(1).map(h=>h.id)]}]);assert.ok(!state().combat.statuses.some(s=>s.kind==='guest-critical'||s.kind==='grease-trap'));
+ console.log('Guest skills PASS: all three, guest action UI, guards, single turn/use, reflection and damage, healing downed/caps, guaranteed critical targeting, save/replay/undo and phase cleanup.');
+} finally {await server.close();}

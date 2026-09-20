@@ -1,0 +1,96 @@
+Create ONE finished illustrated fantasy RPG hero information card for actual printing on one A4 sheet, portrait aspect ratio 1:1.414, ideally 2400x3392 pixels, highest available readable resolution. This is a finished flat page, not a photograph or mockup. This is a precise multi-image compositing and redesign task.
+
+INPUTS:
+1. The old cream Linda card is ONLY a composition/quality reference: retain its prominent beautiful portrait in the upper right, very large hero name, illustrated stat badges, balanced two-column information hierarchy and premium illustrated game handout character. DO NOT copy its cream parchment palette, exterior border, campaign title, extra flavor text, checkboxes or current-HP writing field.
+2. The separate square image is the ORIGINAL CURRENT LINDA PORTRAIT. Reuse this exact artwork prominently at upper right, preserving the exact face, features, proportions, expression, hair, green leaf crown, glowing insect wings, pink and pale green draped dress, and dark tropical surroundings. Do not invent a new face or outfit. Keep the portrait artwork visually identical.
+3. The 3x3 labelled sheet contains the NINE ORIGINAL ICONS, in reading order: 1 Воля жизни, 2 Полёт, 3 Изменение размера, 4 Магический шёпот, 5 Призыв питахайиноидов, 6 Курортная турбулентность, 7 Целительная пыльца, 8 Ослепляющая пыльца, 9 Запас питахайи. Extract/reuse those exact nine icon designs, do not redraw or invent alternate motifs. Each icon beside its correct entry. The numeric reference labels are not part of the output. The final three inventory entries have no original icon: give them the same text indentation with an empty icon gutter, NOT a new invented icon.
+
+ART DIRECTION:
+Dark enchanted tropical fantasy, deep midnight teal #07111a and emerald-black, warm ivory #f4e6c5 text, finely worked gold highlights, subtle ruby and turquoise accents matching the original icons. Restrained tropical foliage and a few tiny pink flowers in the HEADER only, ethereal golden fairy light, rich painterly depth around the portrait. The body below the stat row has a very clean quiet near-solid dark background for high contrast reading.
+ABSOLUTELY NO OUTER PAGE FRAME, no enclosing border, no stretched UI panel, no massive gold outline around the page or header. Use very fine internal divider rules only. No busy ornament in the body. Icons may be in thin regular circular medallions, all circles perfectly round. Frame-free elegant editorial composition with generous printer-safe margins ~7mm.
+Beautiful clear Cyrillic serif headings, very legible book type for body text, careful spacing, confident hierarchy. Main text must be readable when printed at A4, equivalent to at least 10.5pt. Do not make a plain bureaucratic document: give it the artistry of reference 1 in the current dark campaign palette.
+
+LAYOUT:
+Compact header, approximately upper 21%: large “ЛИНДА” on left, small “Карточка героя” above, race and role beneath; prominent original portrait on right. Four compact illustrated badges in one row under header: health/defense/attack/initiative. Next, SIX stat badges on ONE row, all equally sized and aligned.
+Below: two equal columns headed “СПОСОБНОСТИ” and “ИНВЕНТАРЬ”, six matched rows. Each left/right pair starts at exactly the same height and its separators align; adjust row heights to longest text in the pair. Use original icon to left of title and text. All titles and body paragraphs use the SAME left indent within the column. No text on artwork or noisy backgrounds. Body area gets most of the page, prioritize reading over decoration. Footer one small clean line for racial feature.
+ONLY INFORMATION: no checkboxes, no blank lines for handwriting, no trackers, no “Текущие HP”, no instructions to mark or cross out anything.
+DO NOT print the word “Пенисуэла” anywhere. No extra slogans, lore, marginal notes, page numbers, source labels or invented text.
+
+EXACT RUSSIAN CONTENT (preserve all mechanics, all numbers; each entry once):
+
+HEADER:
+Карточка героя
+ЛИНДА
+Фея Линфеи
+Разведчица · Поддержка · Контроль
+
+CORE BADGES:
+Здоровье 35 HP
+Защита 10 AC
+Атака 1d20+6
+Инициатива 1d20+4
+
+SIX STATS:
+Сила −1
+Ловкость +4
+Выносливость +1
+Мудрость +2
+Интеллект +2
+Харизма −1
+
+LEFT COLUMN: СПОСОБНОСТИ
+
+Воля жизни
+Пассивно · спасение 1 / бой
+Сопротивление ядам. Раз за бой смертельный урон оставляет 1 HP и снимает негативные боевые эффекты.
+
+Полёт
+Перемещение · 1 / ход
+Наземные враги атакуют с помехой. Следующая атака: +1d6 урона, затем полёт завершается.
+
+Изменение размера
+Бонусное действие · 1 / ход
+В малом облике: +3 AC, −2 к атакам; не провоцируешь реакции. Обычный рост даёт преимущество следующей атаке.
+
+Магический шёпот
+Действие · 1 / локацию
+Выбери врага. Первые попадания двух разных героев по нему наносят по +1d4 урона.
+
+Призыв питахайиноидов
+Действие · 1 / кампанию
+1d4 существ на 3 раунда; ходят после тебя. Каждый: HP 10, AC 11, атака +4, урон 1d4+2. Попадание: Выносливость DC 12; провал — помеха следующей атаке.
+
+Курортная турбулентность
+Действие · 1 / бой
+Первые две успешные атаки врагов по команде перебрасываются; берётся худший результат.
+
+RIGHT COLUMN: ИНВЕНТАРЬ
+
+Целительная пыльца
+Действие · 3 / кампанию
+Восстанавливает 2d8 HP одному союзнику.
+
+Ослепляющая пыльца
+Вместо атаки · 3 / кампанию
+Атака +4, урон 1d8. Попадание: Выносливость DC 12 или ослепление с помехой следующей атаке.
+
+Запас питахайи
+Действие · 3 / кампанию
+Восстанавливает тебе 10 HP.
+
+Фейские коготки
+Обычная атака · без расхода
+Атака +6, урон 1d6+4. Если AC цели ≥15, считай её AC на 2 ниже для этой атаки.
+
+Кольцо в носу «Отмычка»
+Пассивно · без расхода
+Преимущество на Ловкость для замков, механизмов и простых ловушек. Можно пробовать необычные маленькие механизмы.
+
+Мешочек с блёстками
+3 / кампанию
+На себя или союзника: +3 к Харизме на одну социальную сцену.
+
+FOOTER:
+Фейская природа: преимущество против ядов и газов; полёт без тяжёлой брони.
+
+All Cyrillic must be clean and correct. Keep the exact original portrait identity and original nine icons. This is a premium final printed reference card, not a rough layout.

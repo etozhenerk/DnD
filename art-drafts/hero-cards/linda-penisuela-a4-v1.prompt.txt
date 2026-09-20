@@ -1,0 +1,97 @@
+Generated with built-in imagegen. Status: generated, awaiting visual acceptance.
+References: current Penisuela Linda avatar and campaign icons; gameplay version explicitly selected by user.
+
+Create ONE finished, beautiful illustrated tabletop RPG hero card as a PRINTABLE IMAGE, portrait A4 aspect ratio 1:1.414. It must be a polished fantasy player handout, a real richly art-directed game artifact, with an avatar and distinct illustrated skill/item icons. Render the whole card flat straight-on, filling the image, no photographed paper, desk, mockup, perspective, hands or page curl. Highest available resolution, ideally 2480x3508 or similarly sharp A4. All text must be meticulously typeset in correct Russian, large enough to read on a physical A4 sheet.
+
+REFERENCES: image 1 is the CURRENT approved Penisuela avatar of Linda: preserve her recognizable face, brown hair, leaf crown, transparent glowing fairy wings, pink and pale green summer dress. Use her as a large elegant portrait in the header occupying about the upper right quarter of the header, 18-22% of the entire card height. Do not use any snowy or old northern character imagery.
+Images 2-5 are representative CURRENT campaign icon references: image 2 Воля жизни (heart and sprout), image 3 Полёт (turquoise wings), image 4 Призыв питахайиноидов (dragon-fruit creature), image 5 Целительная пыльца (pink potion). For the other icons follow the exact same gold / emerald / ruby jewelled motif: Изменение размера = large and small fairy; Магический шёпот = ear with teal whisper; Курортная турбулентность = turquoise spiral; Ослепляющая пыльца = spraying gold-green potion; Запас питахайи = dragon-fruit bag.
+Faithfully reuse their visual motifs in small round, gold-rimmed illustrated medallions beside the corresponding entries. Also illustrate three matching icons for fairy claws, a small gold nose-ring lockpick, and a glitter pouch. EVERY skill and EVERY item gets its own discernible icon.
+
+ART DIRECTION: premium illustrated fantasy collector character sheet for a tropical magical resort adventure called ПЕНИСУЭЛА. Ivory parchment center, very subtle paper grain, deep emerald title panels, antique gold filigree, small tropical leaves and pink dragon-fruit flowers around the OUTER corners, turquoise and raspberry gem accents. Delicate engraved fairy-wing ornament. Beautiful lavish but restrained. Make it look like a professional artbook/game character sheet, with a readable practical information architecture. Cream clean text panels, near-black body text with absolutely excellent contrast; never text on busy art. Decorative bold fantasy serif for the hero name only, extremely clear book font for all body copy. No bureaucratic plain document aesthetic. The design itself must feel magical.
+
+LAYOUT: safe margins about 8mm for printer. Compact illustrated header with big name, campaign, avatar, race and role. Below header a prominent row of HP/AC/initiative/attack badges (heart/shield/d20/claw), then all SIX stat medallions in one row. Main area: two balanced wide columns, left six skills, right six items. Each entry has illustrated icon, bold clear name, smaller activation/limit line, then dark readable effect text. Use generous leading and separation, full-width text below icon if needed. Do not omit or duplicate entries. Resource-limited entries have the exact number of EMPTY square checkboxes in their metadata line. Compact bottom rules strip. Keep descriptions comfortably readable: prioritize their font size over decorative margins or portrait scale. Absolutely no fake lorem ipsum or tiny unreadable text. All content below must be present exactly once; retain every mechanic and number.
+
+EXACT RUSSIAN TEXT TO TYPESET:
+
+HEADER:
+ПЕНИСУЭЛА
+ЛИНДА
+Фея Линфеи
+Разведчица • Поддержка • Контроль
+
+CORE BADGES:
+Здоровье: 35 HP
+Текущие HP: ______
+Защита: 10 AC
+Инициатива: 1d20+4
+Атака: 1d20+6
+
+SIX STATS:
+Сила −1
+Ловкость +4
+Выносливость +1
+Мудрость +2
+Интеллект +2
+Харизма −1
+
+LEFT COLUMN TITLE: НАВЫКИ
+
+1. Воля жизни
+Пассивно • спасение 1/бой [one empty square]
+Сопротивление ядам. Раз за бой смертельный урон оставляет 1 HP и снимает негативные боевые эффекты.
+
+2. Полёт
+Перемещение • 1/ход
+Наземные враги атакуют с помехой. Следующая атака: +1d6 урона, затем полёт завершается.
+
+3. Изменение размера
+Бонусное действие • 1/ход
+Малый облик: +3 AC, −2 к атакам; не провоцируешь реакции. Обычный рост даёт преимущество следующей атаке.
+
+4. Магический шёпот
+Действие • 1/локацию [one empty square]
+Выбери врага. Первые попадания двух разных героев по нему наносят по +1d4 урона.
+
+5. Призыв питахайиноидов
+Действие • 1/кампанию [one empty square]
+1d4 существ на 3 раунда; ходят после тебя. Каждый: HP 10, AC 11, атака +4, урон 1d4+2. При попадании: Выносливость DC 12; провал — помеха следующей атаке.
+
+6. Курортная турбулентность
+Действие • 1/бой [one empty square]
+Первые две успешные атаки врагов по команде перебрасываются; берётся худший результат.
+
+RIGHT COLUMN TITLE: ПРЕДМЕТЫ
+
+1. Фейские коготки
+Обычная атака • без расхода
+Атака +6, урон 1d6+4. Если AC цели ≥15, считай её AC на 2 ниже для этой атаки.
+
+2. Целительная пыльца
+Действие • 3/кампанию [three empty squares]
+Восстанавливает 2d8 HP одному союзнику.
+
+3. Ослепляющая пыльца
+Вместо атаки • 3/кампанию [three empty squares]
+Атака +4, урон 1d8. Попадание: Выносливость DC 12. Провал — ослепление и помеха на следующую атаку.
+
+4. Кольцо в носу «Отмычка»
+Пассивно • без расхода
+Преимущество на Ловкость для замков, механизмов и простых ловушек. Можно пробовать необычные маленькие механизмы.
+
+5. Мешочек с блёстками
+3/кампанию [three empty squares]
+На себя или союзника: +3 к Харизме на одну социальную сцену.
+
+6. Запас питахайи
+Действие • 3/кампанию [three empty squares]
+Восстанавливает тебе 10 HP.
+
+Below these six item entries, a small tasteful note:
+Фейская природа: преимущество против ядов и газов; полёт без тяжёлой брони.
+
+BOTTOM STRIP:
+Проверка: 1d20 + модификатор против DC.
+Преимущество / помеха: лучший / худший из 2d20.
+Зачёркивай клетки после расхода.
+
+Square-bracket English notes above are instructions for checkbox drawing ONLY, never printed. The numbered enumeration is for your ordering, no need to print item numbers. Make all titles and numbers flawless, correct diacritics and Cyrillic. NO additional flavor lore, invented statistics or extra rules. This is a finished illustrated image for a player to print and use, not a concept sketch.

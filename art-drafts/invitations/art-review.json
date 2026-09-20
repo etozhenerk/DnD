@@ -1,0 +1,19 @@
+{
+  "assetId": "penisuela-invitation-kostryulka-window",
+  "variant": "01-kostryulka-window-v2.png",
+  "verdict": "accept",
+  "status": "approved",
+  "userApproval": "голубя окаю",
+  "checks": [
+    "Кострюлька на подоконнике открытого окна",
+    "Курьерский модуль сохранён",
+    "Один чёрный конверт с золотой печатью",
+    "Нет людей и спойлеров",
+    "PNG 1024 × 1536, без преобразования изображения"
+  ],
+  "letterStatus": "approved",
+  "activeLetterSource": "shared-invitation-v1.txt",
+  "personalNotesSource": "personal-notes-v4.md",
+  "seriesStatus": "approved",
+  "assetCount": 6
+}

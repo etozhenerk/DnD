@@ -1,0 +1,37 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "png": [
+    2481,
+    3508
+  ],
+  "dpi": [
+    299.9994,
+    299.9994
+  ],
+  "abilityEntries": 5,
+  "inventoryEntries": 5,
+  "bodyFontPt": 10.5,
+  "textOverlaps": 0,
+  "fontsEmbedded": true,
+  "manualFields": false,
+  "outerFrame": false,
+  "headerFrame": false,
+  "originalPortraitAndIcons": {
+    "assets/concepts/campaigns/penisuela/ui/hero-tokens/lambert.png": "0d564cee3896505e8b102da82af8ae37a0fb6f90d9232a3590821b1163a3a670",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/lambert/gold-coin.png": "6d4ecec78c5f5d77281203b858bb33aee75ae85c0c85514071ec4cd19d0ea62a",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/lambert/hud-helmet.png": "ccd7bc51c75f031e76635a88b8f918a9b93ce8d58152ab40213538f39cdf762c",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/lambert/lego-engineer.png": "36581e206fa06bc87abc9e989ee7ad0d7fc3c081006165792a50267ac2453156",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/lambert/tools.png": "aec98a962770b0def0b6b09319931ceb21e710eb409994667543eee06626e109",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/lambert/double-shot.png": "1feff7c41c44caebfa3fe16a7479b90f6e57288d9fb49d51da213609e4361c58",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/lambert/hacker-pulse.png": "e2935b35572e2c292ff0f7bb7f8bfa6625a74877ad50003dcefede056106d88b",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/lambert/sacrifice.png": "d087fdc76422fa9d9e1ab9e21c407246b34193f447d0bcaceb2320e9b106cb3e",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/lambert/sarcasm.png": "b4f2343b3d641f66af93ae7716eb7d0211dc668d336f2c830fcca7ca29aba24f",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/lambert/tech-genius.png": "b520f7b42487891f796ad9f1d44acd382baf4e0c180f0d06cb3e39d0deabc121"
+  },
+  "itemsWithoutOriginalIcon": [
+    "investment-bow"
+  ],
+  "background": "Same approved scene and effects as Linda v5",
+  "canonicalDataChanged": false
+}

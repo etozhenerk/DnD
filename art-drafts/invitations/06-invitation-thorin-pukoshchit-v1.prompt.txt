@@ -1,0 +1,21 @@
+Use case: text-localization.
+Edit target: the provided approved Golovach Lena invitation. Create the final matching invitation, for Thorin Pukoshchit II.
+Change ONLY TWO handwritten areas:
+1. Replace the top handwritten Головач Лена! with exactly Торин Пукощит II! — full Cyrillic name followed by the Roman numeral II (two capital Latin I letters). Fit the entire name on ONE line within the existing recipient field, maintaining generous margins, in the same expressive blue-black connected quill handwriting. Reduce only the recipient lettering size as needed; do not omit surname or numeral.
+2. Replace the lower handwritten personal note completely with the following exact Russian text:
+Торин, надеюсь, за этим столом тебе наконец удастся поесть горячего, пока остальные сами носят свои стулья. Но если услышишь тихое «помогите», прислушайся. Я отправляю это письмо тебе, потому что знаю: ты услышишь его даже сквозь музыку.
+Keep the separate handwritten signature Лорд Крайнеплот under the personal note, readable and inside the paper frame.
+
+Preserve the entire rest of the approved image. The small heading ПРИГЛАШЕНИЕ and all FIVE common paragraphs must remain upright dark serif PRINTED letterpress, exactly the same wording, line breaks, size and layout. Preserve bold 20 сентября, в 14:00. The common invitation was ready-made by an anonymous sender; Krayneplot wrote ONLY the recipient name and the separate personal note and signature. Strong printed/handwritten distinction.
+The exact shared printed body, for transcription reference, is:
+На Пенисуэле готовятся к свадьбе. Морской ветер шевелит лёгкие занавеси, в погребах выбирают вино, а за праздничным столом для Вас уже оставлено место.
+
+Приглашаем Вас на закрытый мальчишник 20 сентября, в 14:00. Дорога и покои оплачены. Золотой браслет откроет перед Вами двери, а имя жениха Вы узнаете по прибытии.
+
+И всё же за праздничными хлопотами не утихает тревога. Нас не оставляет предчувствие, что в этот день на остров придут не только желанные гости. Если опасения сбудутся, музыка может оборваться прежде, чем будет поднят последний бокал.
+
+Поэтому Вы нужны нам на Пенисуэле. Когда остальные растеряются, рядом должен оказаться тот, у кого хватит решимости вмешаться.
+
+Приезжайте. Очень хочется, чтобы после этого дня нам было что вспоминать с улыбкой.
+
+Preserve warm ivory paper, subtle grain, thin golden ornamental frame, corner flourishes, dividing ornament, matte black envelope underneath, broken golden wax seal, dark wooden table, lighting, framing and 2:3 portrait composition at 1024 x 1536. Do not redesign or reflow the printed part. The note must be fully legible, match the existing blue-black cursive and fit entirely. No remnants of the old recipient name or old personal note. No extra wording, numbers, guest count, watermark, logos or collage. ONE finished letter, the same stationery as the series.

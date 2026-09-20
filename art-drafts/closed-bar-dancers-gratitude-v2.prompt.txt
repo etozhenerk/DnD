@@ -1,0 +1,8 @@
+Use case: precise-object-edit.
+Edit this fantasy illustration with only TWO small corrections. Keep the same five fictional adult male dancers, their joyful facial expressions, identities, poses, black clothes, turquoise/magenta/yellow gloves, matching belts and stiletto heels; keep the thank-you bow, air kiss, hand over heart, welcoming arm, beautiful pink neon triangle, warm amber light, gold confetti, carved wooden theatre and console on the right. Preserve the highly polished painterly style and the overall composition.
+
+Correction 1: The central yellow-gloved dancer must hold EXACTLY FOUR entry passes, not five. Remove one card from the existing fan and redraw a clean, clearly countable fan of four rectangular black cards with gold borders. Four cards total, four distinct top edges, no extra card behind them. Keep the cards at their current modest size in the extended gloved hand, blank with no symbols or writing. Keep his other yellow-gloved hand on his chest.
+
+Correction 2: Reframe only slightly wider / pull the camera back a little so every dancer's full shoes are visible ABOVE the bottom 15 percent of the image. The bottom 15 percent should be uninterrupted calm reflective wooden floor for an eventual narration panel. In the current image the central yellow heel reaches too close to the bottom edge. Keep the faces expressive and large, all five people full-body and separately countable. Do not add a caption panel or UI; this is just visual breathing space. Keep landscape proportions 1584x993.
+
+Do not change anything else. No extra or missing dancers, no guards, no binding magic, no new props, no text, logos, watermarks, nudity or weapons. Return one complete opaque scene.

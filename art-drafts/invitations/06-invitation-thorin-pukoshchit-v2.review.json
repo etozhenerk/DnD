@@ -1,0 +1,20 @@
+{
+  "assetId": "penisuela-invitation-thorin-pukoshchit",
+  "variant": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v2.png",
+  "verdict": "accept",
+  "status": "approved",
+  "width": 1024,
+  "height": 1536,
+  "reference": "art-drafts/invitations/02-invitation-bubsilda-v2.png",
+  "checks": [
+    "Фактура ровнее предыдущего варианта, нет крупного мозаичного узора",
+    "Полное имя Торин Пукощит II, без лишней точки между именем и фамилией",
+    "Печатный текст и дата сохранены полностью",
+    "Личная приписка совпадает с исходным текстом",
+    "Подпись и почерк чёткие, текст не обрезан",
+    "Рамка и бумага соответствуют первому образцу"
+  ],
+  "processing": "Прямая генерация от первого образца и копирование PNG без постобработки",
+  "canonChange": false,
+  "userApproval": "Пользователь: «четко» после исправленного варианта Торина v2."
+}

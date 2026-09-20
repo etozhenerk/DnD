@@ -1,0 +1,12 @@
+Use case: precise-object-edit.
+Asset type: 16:9 cinematic fantasy adventure background, AFTER the obstacle has been stopped.
+Edit the supplied accepted corridor image. It is the exact BEFORE state. KEEP THE SAME CAMERA, framing, perspective, floorboards, black carved timber walls, burgundy-and-brass aesthetic, warm amber lamps, blue accent lights, ceiling, distant arched door, and the entire decorated near RIGHT wall including its CLOSED concealed side door.
+
+Change ONLY the obstacle state:
+1. ALL THREE large burgundy padded scenery sweepers are now COMPLETELY RETRACTED into their corresponding LEFT WALL recesses. Their brass rods telescope back into the wall. Their padded faces are only visible flush inside the shallow wall recesses, never projecting into the walking lane. Do not leave any panel or rod sticking across the path. These are the SAME three mechanisms in the SAME order and positions along the wall, stopped safely.
+2. The upright burgundy-handled brass control lever beside the distant arched door on the far RIGHT wall has been pulled DOWN. Show the same pivot and handle, clearly lowered instead of upright.
+3. The whole continuous dry wooden passage is now unobstructed from entrance to the SAME far doorway. The doorway itself remains closed, awaiting the next scene; no view of a person or room interior.
+4. The one small wooden crate from the BEFORE image has finished sliding and rests still near the LEFT edge of the foreground, clear of the open walking lane. Keep its identity and scale. Keep the subtle scrape in the floor dust where it slid. Remove airborne dust and all motion blur; machinery and room are now still.
+
+This is a strict state-change image, NOT a redesigned room. Preserve the close diagonal composition. Do not recenter the camera, widen the corridor, add another door, repair or replace architectural details, or change the lighting mood. Leave lower 20% suitable for the existing narration overlay, but do not draw any overlay.
+No people, heroes, enemies, creatures, new objects, water, gaps, bridges, text, labels, arrows, UI, borders or watermarks. The hidden side route on the near RIGHT must remain CLOSED. Output one polished landscape image, approximately 1672x941, matching the source aspect ratio.

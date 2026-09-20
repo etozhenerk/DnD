@@ -1,0 +1,21 @@
+Use case: text-localization.
+Edit target: the supplied approved Linda invitation. Create the next invitation in the IDENTICAL series for Lambert.
+Change ONLY TWO areas of handwriting:
+1. Replace the top handwritten recipient name Линда! with exactly Ламберт! in the same large connected blue-black quill handwriting.
+2. Replace the entire lower handwritten personal note with exactly this Russian Cyrillic text:
+Ламберт, в этом приглашении меня тревожит что-то, чему я не умею дать название. Очень рассчитываю на твой ум: ты обычно находишь причину раньше, чем остальные успевают закончить спор. Только, пожалуйста, дай хозяевам произнести первый тост, прежде чем указывать на их ошибки.
+Keep the handwritten signature Лорд Крайнеплот underneath, in the same position and same handwriting.
+
+Everything else must remain as identical to the reference as possible. In particular preserve all five PRINTED paragraphs, every Cyrillic letter, the line breaks and typography, the bold date 20 сентября, в 14:00, the small ПРИГЛАШЕНИЕ heading, divider, thin gold ornamental frame, paper texture, black envelope, gold wax seal, wooden surface, warm lighting and 2:3 portrait composition. Same 1024 x 1536 dimensions. No redesign and no rearranging the common body.
+The exact shared printed text, for verification only, is:
+На Пенисуэле готовятся к свадьбе. Морской ветер шевелит лёгкие занавеси, в погребах выбирают вино, а за праздничным столом для Вас уже оставлено место.
+
+Приглашаем Вас на закрытый мальчишник 20 сентября, в 14:00. Дорога и покои оплачены. Золотой браслет откроет перед Вами двери, а имя жениха Вы узнаете по прибытии.
+
+И всё же за праздничными хлопотами не утихает тревога. Нас не оставляет предчувствие, что в этот день на остров придут не только желанные гости. Если опасения сбудутся, музыка может оборваться прежде, чем будет поднят последний бокал.
+
+Поэтому Вы нужны нам на Пенисуэле. Когда остальные растеряются, рядом должен оказаться тот, у кого хватит решимости вмешаться.
+
+Приезжайте. Очень хочется, чтобы после этого дня нам было что вспоминать с улыбкой.
+
+The common body is a ready-made anonymous invitation, typeset in upright dark serif letterpress. Lord Krayneplot only writes the recipient name and the separate personal lower addendum in blue-black slanted cursive. Keep that distinction unequivocal. Match the existing handwriting and adjust line wrapping only inside the personal addendum so the new note fits fully with readable lettering and a clear signature. Do not omit or change any words. Replace all of Linda's old note and name with Lambert's. No extra names or prose, no guest count, no logos, no watermark. One complete beautiful readable letter; no collage.

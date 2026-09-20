@@ -1,0 +1,42 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "png": [
+    2481,
+    3508
+  ],
+  "dpi": [
+    299.9994,
+    299.9994
+  ],
+  "abilityEntries": 5,
+  "inventoryEntries": 5,
+  "bodyFontPt": 10.5,
+  "textOverlaps": 0,
+  "fontsEmbedded": true,
+  "fonts": [
+    "AAAAAA+Luminari-Regular",
+    "AAAAAA+ArialMT",
+    "AAAAAA+Arial-BoldMT"
+  ],
+  "manualFields": false,
+  "outerFrame": false,
+  "headerFrame": false,
+  "originalPortraitAndIcons": {
+    "assets/concepts/campaigns/penisuela/ui/hero-tokens/golovach-lena.png": "ee9a6d857a6ef778ca195ddb5bb5c74ed1e8470f6d71bb52f18cec2a887619f5",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/golovach-lena/buldak-noodles.png": "19e261414e76402ad756dfdf44dccec55380e6fc9650438ed2f77246282036e5",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/golovach-lena/camera-pendant.png": "65ed9b5841d43fb4b51beac34a38c12e23d782dc468fe950a37ac67e7ed6398a",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/golovach-lena/dragonborn-armour.png": "79b95f44115ed77f2ef4e1d580ca14b09492cf9ec683ed1e4789fadde1d3f58d",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/golovach-lena/sleep-scroll.png": "63bd3e065a44175c49cbf1916dfee191ecc65400a3cab39a18649f66db7b9184",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/golovach-lena/buldak-breath.png": "70bd8d08650ced35781afa2da57e8a5d10d2be10c2b2912af90afd50c8258c07",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/golovach-lena/creative-crisis.png": "de397d37b0e9b6fd8b9a2bf7cb8a14514c89d7abd855b0c23dc0bd0c3ce75c74",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/golovach-lena/forgot-clothes.png": "3cbaa19326725f0a9891489de3846fb9b66ffce9ad89bc5acf07f1c433ae2ba2",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/golovach-lena/name-story.png": "83b51f47083689ed819f445c75a8d440ed75c39a87ead70a12e7909dd1a4e276",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/golovach-lena/video-surveillance.png": "25dd691b145011b0fbf6ba9ecc5d7f972c13fd2c5adf3369a3db74942a79d4f2"
+  },
+  "itemsWithoutOriginalIcon": [
+    "fire-fists"
+  ],
+  "background": "Same approved scene and effects as Linda v5",
+  "canonicalDataChanged": false
+}

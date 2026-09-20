@@ -1,0 +1,24 @@
+{
+  "pages": 1,
+  "A4": true,
+  "pngPixels": [
+    2481,
+    3508
+  ],
+  "pngDpi": [
+    299.9994,
+    299.9994
+  ],
+  "abilityCount": 6,
+  "itemCount": 6,
+  "originalSkillIcons": 6,
+  "originalItemIcons": 3,
+  "manualFields": false,
+  "fontsEmbedded": [
+    "/AAAAAA+Luminari-Regular",
+    "/AAAAAA+ArialMT",
+    "/AAAAAA+Arial-BoldMT"
+  ],
+  "textOverlaps": [],
+  "visuallyInspected": true
+}

@@ -1,0 +1,42 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "png": [
+    2481,
+    3508
+  ],
+  "dpi": [
+    299.9994,
+    299.9994
+  ],
+  "abilityEntries": 5,
+  "inventoryEntries": 5,
+  "bodyFontPt": 10.5,
+  "textOverlaps": 0,
+  "fontsEmbedded": true,
+  "fonts": [
+    "AAAAAA+Luminari-Regular",
+    "AAAAAA+ArialMT",
+    "AAAAAA+Arial-BoldMT"
+  ],
+  "manualFields": false,
+  "outerFrame": false,
+  "headerFrame": false,
+  "originalPortraitAndIcons": {
+    "assets/concepts/campaigns/penisuela/ui/hero-tokens/thorin-pukoshchit.png": "d9439466718767d69958734c5bd4cb1b994cb4a664f59ffd271b3a4cb5dd32ff",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/thorin-pukoshchit/moskvin-herald.png": "07f7460cab224d0974417c64caea040930ac6a0ef34f3e643495a2c7548af08e",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/thorin-pukoshchit/ration-and-potion-pouch.png": "23e43ab2f1e5c93381e554bff9d7e0338408a52d2a4ef0949098c820ec74457a",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/thorin-pukoshchit/seven-job-bag.png": "cb781c812d27563614000fe6e87b06d5de33cd8c435de7153782de35d53c9053",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/thorin-pukoshchit/shift-bell.png": "65789c7c9a5796f14ba89b95386f83ab04ba156519a2accf6e76f6ab6a202e5a",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/thorin-pukoshchit/beast-understanding.png": "1155b0a3e43a60abdeed0f448e27b811b011addf58486c1efb3291f8b688dbf2",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/thorin-pukoshchit/helping-stick.png": "1b70b1d98e039cce341363e2ee09c9cebe6d0756a01b03a3f8b41cac51e3c016",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/thorin-pukoshchit/hypnotic-smile.png": "f53de6218c1a25b2470e6a402eb1be12764b9b8a0db9b0d5a8eeae05763833fa",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/thorin-pukoshchit/needle-in-haystack.png": "6a3becc8cbcbf55beb9a7980029f5c3f889d5bd26caa65115b012ffd16d0ca06",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/thorin-pukoshchit/work-until-pulse-drops.png": "be8510314dda1e2eb234c1a940eda80d49ada63b21b4968b7a519ff6469597fc"
+  },
+  "itemsWithoutOriginalIcon": [
+    "worker-hammer"
+  ],
+  "background": "Same approved scene and effects as Linda v5",
+  "canonicalDataChanged": false
+}

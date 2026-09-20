@@ -1,0 +1,21 @@
+Use case: text-localization.
+Edit target: the provided APPROVED Bubsilda invitation. Create the SECOND invitation in this exact matching series, for LINDA.
+Make ONLY TWO text replacements while preserving the entire rest of the image as faithfully as possible:
+1. In the large blue-black HANDWRITTEN recipient line near the top, replace "Бубсильда!" with exactly "Линда!". Keep the same expressive connected quill handwriting, color, pen pressure, line, visual scale, and location.
+2. Replace ONLY the lower HANDWRITTEN personal addendum, below the small ornament divider, with the following exact text, in the same natural readable blue-black cursive and same writing area:
+"Линда, присмотрись к этому острову. Ты умеешь замечать чужую беду, даже когда её старательно прячут за улыбкой. Если моё предчувствие верно, кому-то очень пригодятся твоя смекалка и доброе сердце. Только позволь друзьям позаботиться о тебе тоже."
+Keep the existing handwritten signature "Лорд Крайнеплот" underneath the personal note, in the same place and handwriting.
+
+MANDATORY INVARIANTS: The small printed heading "ПРИГЛАШЕНИЕ", the entire PRINTED SHARED BODY, date, line breaks, font, all five paragraphs and their layout must be identical to the approved image. The main printed text was preprinted for every recipient by an ANONYMOUS sender; Lord Krayneplot adds only the recipient name and separate personal handwritten note. Preserve the upright black serif letterpress type of the shared body. Do not turn it into handwriting. Preserve bold "20 сентября, в 14:00". Keep paper, subtle texture, thin gold frame, corner ornaments, black envelope peeking out, broken plain gold wax seal, wooden table, illumination, exact 2:3 portrait composition and 1024 x 1536 size.
+For avoidance of any transcription drift, the shared PRINTED BODY is exactly:
+На Пенисуэле готовятся к свадьбе. Морской ветер шевелит лёгкие занавеси, в погребах выбирают вино, а за праздничным столом для Вас уже оставлено место.
+
+Приглашаем Вас на закрытый мальчишник 20 сентября, в 14:00. Дорога и покои оплачены. Золотой браслет откроет перед Вами двери, а имя жениха Вы узнаете по прибытии.
+
+И всё же за праздничными хлопотами не утихает тревога. Нас не оставляет предчувствие, что в этот день на остров придут не только желанные гости. Если опасения сбудутся, музыка может оборваться прежде, чем будет поднят последний бокал.
+
+Поэтому Вы нужны нам на Пенисуэле. Когда остальные растеряются, рядом должен оказаться тот, у кого хватит решимости вмешаться.
+
+Приезжайте. Очень хочется, чтобы после этого дня нам было что вспоминать с улыбкой.
+
+Make every Cyrillic letter readable and correct. Do not add or omit sentences. The previous addendum and previous recipient name must be fully replaced. No reference to five guests, no added title, no names except Линда and Лорд Крайнеплот, no extra caption, no grid or collage. Do not change the common body or composition to suit the new name. One finished image, exactly the same invitation template.

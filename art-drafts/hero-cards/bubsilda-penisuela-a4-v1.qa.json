@@ -1,0 +1,36 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "png": [
+    2481,
+    3508
+  ],
+  "dpi": [
+    299.9994,
+    299.9994
+  ],
+  "abilityEntries": 7,
+  "inventoryEntries": 5,
+  "bodyFontPt": 10.5,
+  "textOverlaps": 0,
+  "manualFields": false,
+  "outerFrame": false,
+  "headerFrame": false,
+  "originalPortraitAndIcons": {
+    "assets/concepts/campaigns/penisuela/ui/hero-tokens/bubsilda.png": "cbcc7202a667e8aceded535a2c567f253255afeeab2f0c6f4efbd70a982ce6b1",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/bubsilda/boeing-sword.png": "9ef11f344ce80ae31f3e5b47d2ece10a8c97b7bb5a2ed0dac98d3e29b2c8fee0",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/bubsilda/comfort-cloak.png": "5cae79ae4d5b617970d6201b1ec9dcbf5fbb2758857c80d9fda2d0390bd91233",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/bubsilda/ice-heart.png": "20b0804d1663adf8ad12dc017e507d9add0c5b8f297d8492d94606586fca12fa",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/bubsilda/vomit-bag.png": "af6d4cf48761765a83c60b1d106cb26516b78355627bd2bb2efe8770bac4e04f",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/bubsilda/yellow-snowball.png": "0e35d3813397abd279b9ee900baa87030382cf6547038df9c8fb409c20a15066",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/bubis-balance.png": "b1b3655c764a906e61b5392d9deee349dd7fdbd50706cb2712a2b30b06bc45f9",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/documentary.png": "a7b0655b155ce2c2b6ad04aa7bb3076f8b7846e274eb2f5a832bbb2c67ef5132",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/emergency-landing.png": "51d5839483ec22629eb19a96f69c959c646d8545215a9d326a1fe56380c55381",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/grandaxin.png": "08ad985b959ee2f851da7a6c2afdc397d9e8f2e38f4dffe12910131cb26fc508",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/ice-guard.png": "ef7688124bd09114ccfef583fb5c489da89ef0962623cfa1032c91170f395ae5",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/northern-resilience.png": "a1364c4abb50b1d277bfc07b26e7fafc0a53c68e26d5a90617546583508a0261",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/bubsilda/royal-will.png": "484b12bf9db282b1d45a38ae0ea97fa465b7434b62dcf19644df8e17d0bed6cd"
+  },
+  "background": "Same approved scene and effects as Linda v5",
+  "canonicalDataChanged": false
+}

@@ -1,0 +1,33 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "png": [
+    2481,
+    3508
+  ],
+  "dpi": [
+    299.9994,
+    299.9994
+  ],
+  "alignedRows": 6,
+  "bodyFontPt": 10.5,
+  "textOverlaps": 0,
+  "contentEntries": 12,
+  "manualFields": false,
+  "outerFrame": false,
+  "headerFrame": false,
+  "originalPortraitAndIcons": {
+    "assets/concepts/campaigns/penisuela/ui/hero-tokens/linda.png": "a929093c4c03d291c43698bab9af9c5cb3568ae86de73cf34e77167039b980ae",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/linda/blinding-pollen.png": "2489d7b2e0d1d654836ae3ceb44e7149159969c4cdbf914abd725474c5ec581d",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/linda/healing-pollen.png": "e2c876107c8bdbed9909390ed1e56c1c5719931dfbe74b3361c0bbb9871c881a",
+    "assets/concepts/campaigns/penisuela/ui/item-icons/linda/pitahaya-reserve.png": "c26284d6a31a08355c88676a4b38f0436ac0946543146629ae37ba0ce566e817",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/flight.png": "89d8e26ceb79ff6e69a80c2ca41bad214a2ba30c1a770270afada6248cad1b27",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/magic-whisper.png": "4e03cb92584428add4f5224c5e11cdbef7a5b0f38358bd4cf915056941bb4a9b",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/pitahayanoid-summon.png": "8714274dfa5b1a6660d97f77c9cc2fb751cf7a13bc42ed3c2497d201a207cca4",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/resort-turbulence.png": "18add49b04487530d41592dfb5a589b0f1ff85d184295489715526959ce15499",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/size-change.png": "6970775d46d81886bfc968875a6f5a409a6d259c043b9c8cfb2ab14d7643cb30",
+    "assets/concepts/campaigns/penisuela/ui/skill-icons/linda/will-to-live.png": "cd1f3d7a3e7aa1c3903e035544459e3e050b51ab1567cf95e1060419f742392d"
+  },
+  "background": "Existing campaign villa artwork, uniform opacity and vector fade",
+  "canonicalDataChanged": false
+}

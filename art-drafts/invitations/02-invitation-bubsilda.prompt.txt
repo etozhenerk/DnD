@@ -1,0 +1,23 @@
+Use case: illustration-story
+Asset type: a readable personal invitation letter, second image sent to a player of the Russian fantasy campaign Penisuela.
+Primary request: ONE premium cinematic photograph-like fantasy invitation laid flat on dark weathered timber, with a clearly handwritten recipient name added by Lord Krayneplot. This is a finished image to read on a phone, NOT a mockup containing gibberish.
+Reference image: use the provided journey letter only as a MATERIAL and PALETTE reference: matte charcoal black paper envelope, heavy warm ivory parchment, warm gold wax. Create a new portrait composition; do not reproduce its map symbols.
+Composition: portrait 2:3, nearly orthographic top down, warm ivory letter filling 88% of image width and 92% height with all edges visible and straight, only very slight natural paper undulation. It rests on dark wood with a matte black open envelope peeking from underneath and a plain unmarked broken golden wax seal near lower outside corner. Thin elegant dark-gold ornamental border, restrained corner flourishes, no elaborate coat of arms. Rich amber sidelight, exceptionally clear dark ink; paper looks well-kept expensive stationery, not burnt pirate parchment. No objects covering writing.
+Typography: exact RUSSIAN CYRILLIC. Large refined old-world serif main type with generous line spacing, aligned and readable. Main headline on top: «ЛИЧНОЕ ПРИГЛАШЕНИЕ». Below it a small typeset label «Для:» followed by a reserved generous horizontal writing space. On that space write «Бубсильда» in large expressive natural right-slanted dark blue-black quill handwriting, visibly different from the formal printed type, with varied stroke pressure and imperfect baseline; ink sits directly on paper, no floating overlay. Next a centered generous headline «ПЕНИСУЭЛА». Below, the EXACT body, line-break into tasteful balanced short lines:
+«Вы приглашены на закрытый мальчишник
+перед свадьбой.
+
+Пять гостей. Пять золотых браслетов.
+Дорога и проживание оплачены.
+Бар открыт до последнего гостя.
+Имена узнаете на месте.
+
+До встречи на празднике.
+Подписи не будет.»
+
+In lower section, after generous breathing room and a subtle small divider, a personal note in the same expressive quill handwriting as the recipient, large enough to read:
+«Имя вписал лично.
+Если что — помогите.
+Лорд Крайнеплот»
+The personal note must look added afterward by a second person, visually distinct from anonymous formal invitation copy. Main anonymous sender remains anonymous.
+Constraints: reproduce every Cyrillic letter correctly with no substitutions, no extra words, no date or real-world venue, no other names or visible guest names, no plot spoilers, no map or travel instructions, no logos, no watermarks, no hands, no extra sheet, no illustration obscuring writing. Very readable and beautiful. ONE invitation, not a grid or collage.

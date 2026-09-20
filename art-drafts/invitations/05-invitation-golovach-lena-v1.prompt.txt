@@ -1,0 +1,21 @@
+Use case: text-localization.
+Edit target: the supplied approved Lambert invitation. Create the NEXT matching invitation, for Golovach Lena.
+Change ONLY TWO handwritten areas:
+1. Replace the top handwritten Ламберт! with exactly Головач Лена! — full name, Cyrillic. Fit the entire name comfortably on ONE line in the existing reserved recipient space, same connected blue-black quill handwriting. Slightly reduce only the recipient-name size if needed to preserve generous margins. Do not omit Головач.
+2. Replace the entire lower handwritten personal addendum with this exact Russian text:
+Лена, я рассчитываю на твою способность придумать то, до чего больше никто не додумается. Боюсь, привычных решений на этом празднике может не хватить. Выспись перед дорогой: если беда всё-таки явится без приглашения, хотелось бы, чтобы ты встретил её бодрствующим.
+Keep the separate handwritten signature Лорд Крайнеплот underneath, same handwriting, readable and inside the paper frame.
+
+The common invitation is preprinted, anonymous, and identical for every recipient. Preserve ALL FIVE printed paragraphs EXACTLY as in the reference, same upright dark serif letterpress font, line breaks, size and layout. Keep bold date 20 сентября, в 14:00. Do not turn any of the common text into handwriting. The lord only wrote the name and separate lower note and signature.
+For exact transcription, the shared printed body is:
+На Пенисуэле готовятся к свадьбе. Морской ветер шевелит лёгкие занавеси, в погребах выбирают вино, а за праздничным столом для Вас уже оставлено место.
+
+Приглашаем Вас на закрытый мальчишник 20 сентября, в 14:00. Дорога и покои оплачены. Золотой браслет откроет перед Вами двери, а имя жениха Вы узнаете по прибытии.
+
+И всё же за праздничными хлопотами не утихает тревога. Нас не оставляет предчувствие, что в этот день на остров придут не только желанные гости. Если опасения сбудутся, музыка может оборваться прежде, чем будет поднят последний бокал.
+
+Поэтому Вы нужны нам на Пенисуэле. Когда остальные растеряются, рядом должен оказаться тот, у кого хватит решимости вмешаться.
+
+Приезжайте. Очень хочется, чтобы после этого дня нам было что вспоминать с улыбкой.
+
+Preserve all other visual details: ПРИГЛАШЕНИЕ heading, thin gold ornamental frame, decorative dividers, paper texture, black envelope, broken plain golden wax seal, wood surface, warm light, exact 2:3 portrait composition at 1024 x 1536. No restyling or reflow of the shared body. No new content, no guest count, no logos or watermark. Replace the old recipient and his whole note; leave no remaining Ламберт. The character Лена is male: retain the exact masculine wording встретил её бодрствующим. Entire note and signature must be visible, legible and fully inside the reading area. One finished invitation, no collage.

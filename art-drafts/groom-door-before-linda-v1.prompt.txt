@@ -1,0 +1,6 @@
+Use case: precise-object-edit.
+Create the immediately preceding story frame of this EXACT image: the same closed door in close-up BEFORE Linda flies into its inspection grille.
+Remove ONLY the tiny fairy Linda and everything belonging to her: body, hair, circlet, robe, wings, staff, dragonfruit ornament, and her cast shadow/reflections. Reconstruct the originally occluded door surface, brass grille frame, and warm view through the bars naturally and seamlessly.
+Preserve absolutely all other details: identical camera angle, crop, perspective, 16:9 dimensions, large dark wood grain, scratched antique brass frame, every grille bar and its exact spacing, bolts, hinges, normal door handle at left, blue lamp on far left, amber interior light, depth of field and shadows.
+The door stays CLOSED. The inspection opening is EMPTY and clearly visible; it is precisely the same gap Linda will use in the next image. Do not add or close any bars. Nobody is behind the opening; no new character or silhouette, no visible Kreed or bride. No changes to the architecture, hardware or lighting. Do not zoom out or recenter. Keep the quiet lower portion suitable for narration, but do not draw text.
+One seamless cinematic fantasy background, approximately 1672x941. No people, fairy, wings, sparkles, labels, writing, arrows, UI or watermark.

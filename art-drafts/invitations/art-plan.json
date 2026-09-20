@@ -1,0 +1,279 @@
+{
+  "campaignId": "penisuela",
+  "status": "approved",
+  "scope": "Личная рассылка участникам; один общий кадр доставки и пять именных приглашений.",
+  "authorization": "Пользователь прямо запросил генерацию двух последовательных картинок и уточнил, что нужны имена участвующих героев.",
+  "sourceFiles": [
+    "content/campaigns/penisuela-preview.json",
+    "content/campaigns/penisuela-session-preview.json"
+  ],
+  "canonChange": false,
+  "assets": [
+    {
+      "id": "penisuela-invitation-kostryulka-window",
+      "type": "scene",
+      "entityId": "kostryulka",
+      "purpose": "Первое сообщение участнику",
+      "visible": [
+        "Кострюлька на подоконнике открытого окна",
+        "чёрный конверт с золотой печатью"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "персонажи кроме голубя"
+      ],
+      "composition": "Вертикальный 2:3, взгляд из комнаты через открытое окно",
+      "localReferences": [
+        "assets/concepts/campaigns/penisuela/scenes/tavern-invitation/slide-08.png"
+      ],
+      "status": "approved",
+      "approvedVariant": "art-drafts/invitations/01-kostryulka-window-v2.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/kostryulka-window.png",
+      "generationStatus": "published",
+      "approvalSource": "Пользователь: «голубя окаю»",
+      "rejectedVariants": [
+        "art-drafts/invitations/01-kostryulka-porch.png"
+      ]
+    },
+    {
+      "id": "penisuela-invitation-bubsilda",
+      "type": "item",
+      "entityId": "journey-letter",
+      "characterId": "bubsilda",
+      "recipient": "Бубсильда",
+      "purpose": "Второе сообщение участнику",
+      "composition": "Единый вертикальный шаблон 2:3; общий печатный текст одинаковый, имя и личная рукописная приписка индивидуальные.",
+      "visible": [
+        "читаемое анонимное приглашение",
+        "имя адресата вписано от руки",
+        "индивидуальная рукописная приписка Крайнеплота, отделённая от основного текста",
+        "подпись Лорда Крайнеплота под припиской",
+        "20 сентября, в 14:00"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "спойлеры",
+        "выдуманные дата и адрес игры",
+        "число гостей"
+      ],
+      "localReferences": [
+        "assets/concepts/campaigns/penisuela/items/journey-letter.png"
+      ],
+      "status": "approved",
+      "generationAuthorization": "Пользователь: «го первый сделаем»; общий готовый текст одинаковый для всех, лорд вписывает имя и отдельную личную приписку.",
+      "promptPath": "art-drafts/invitations/02-invitation-bubsilda-v2.prompt.txt",
+      "sharedTextSource": "art-drafts/invitations/shared-invitation-v1.txt",
+      "personalTextSource": "art-drafts/invitations/personal-notes-v4.md",
+      "generatedVariant": {
+        "id": "penisuela-invitation-bubsilda-v2",
+        "storage": "art-drafts/invitations/02-invitation-bubsilda-v2.png",
+        "method": "built-in-imagegen",
+        "status": "user-approved",
+        "width": 1024,
+        "height": 1536
+      },
+      "reviewSource": "art-drafts/invitations/02-invitation-bubsilda-v2.review.json",
+      "approvalSource": "Пользователь: «отлично, давай второе»",
+      "approvedVariant": "art-drafts/invitations/02-invitation-bubsilda-v2.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/bubsilda.png",
+      "generationStatus": "published"
+    },
+    {
+      "id": "penisuela-invitation-linda",
+      "type": "item",
+      "entityId": "journey-letter",
+      "characterId": "linda",
+      "recipient": "Линда",
+      "purpose": "Второе сообщение участнику",
+      "composition": "Единый вертикальный шаблон 2:3; общий печатный текст одинаковый, имя и личная рукописная приписка индивидуальные.",
+      "visible": [
+        "читаемое анонимное приглашение",
+        "имя адресата вписано от руки",
+        "индивидуальная рукописная приписка Крайнеплота, отделённая от основного текста",
+        "подпись Лорда Крайнеплота под припиской",
+        "20 сентября, в 14:00"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "спойлеры",
+        "выдуманные дата и адрес игры",
+        "число гостей"
+      ],
+      "localReferences": [
+        "art-drafts/invitations/02-invitation-bubsilda-v2.png"
+      ],
+      "status": "approved",
+      "generationAuthorization": "Пользователь: «отлично, давай второе» — после первого письма Бубсильде.",
+      "sharedTextSource": "art-drafts/invitations/shared-invitation-v1.txt",
+      "personalTextSource": "art-drafts/invitations/personal-notes-v4.md",
+      "promptPath": "art-drafts/invitations/03-invitation-linda-v1.prompt.txt",
+      "generatedVariant": {
+        "id": "penisuela-invitation-linda-v1",
+        "storage": "art-drafts/invitations/03-invitation-linda-v1.png",
+        "method": "built-in-imagegen-edit",
+        "status": "user-approved",
+        "width": 1024,
+        "height": 1536
+      },
+      "reviewSource": "art-drafts/invitations/03-invitation-linda-v1.review.json",
+      "approvalSource": "Пользователь перешёл к следующему письму: «го некст».",
+      "approvedVariant": "art-drafts/invitations/03-invitation-linda-v1.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/linda.png",
+      "generationStatus": "published"
+    },
+    {
+      "id": "penisuela-invitation-lambert",
+      "type": "item",
+      "entityId": "journey-letter",
+      "characterId": "lambert",
+      "recipient": "Ламберт",
+      "purpose": "Второе сообщение участнику",
+      "composition": "Единый вертикальный шаблон 2:3; общий печатный текст одинаковый, имя и личная рукописная приписка индивидуальные.",
+      "visible": [
+        "читаемое анонимное приглашение",
+        "имя адресата вписано от руки",
+        "индивидуальная рукописная приписка Крайнеплота, отделённая от основного текста",
+        "подпись Лорда Крайнеплота под припиской",
+        "20 сентября, в 14:00"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "спойлеры",
+        "выдуманные дата и адрес игры",
+        "число гостей"
+      ],
+      "localReferences": [
+        "art-drafts/invitations/03-invitation-linda-v1.png"
+      ],
+      "status": "approved",
+      "generationAuthorization": "Пользователь: «го некст» после письма Линде.",
+      "sharedTextSource": "art-drafts/invitations/shared-invitation-v1.txt",
+      "personalTextSource": "art-drafts/invitations/personal-notes-v4.md",
+      "promptPath": "art-drafts/invitations/04-invitation-lambert-v1.prompt.txt",
+      "generatedVariant": {
+        "id": "penisuela-invitation-lambert-v1",
+        "storage": "art-drafts/invitations/04-invitation-lambert-v1.png",
+        "method": "built-in-imagegen-edit",
+        "status": "user-approved",
+        "width": 1024,
+        "height": 1536
+      },
+      "reviewSource": "art-drafts/invitations/04-invitation-lambert-v1.review.json",
+      "approvalSource": "Пользователь перешёл к следующему письму: «го некст».",
+      "approvedVariant": "art-drafts/invitations/04-invitation-lambert-v1.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/lambert.png",
+      "generationStatus": "published"
+    },
+    {
+      "id": "penisuela-invitation-golovach-lena",
+      "type": "item",
+      "entityId": "journey-letter",
+      "characterId": "golovach-lena",
+      "recipient": "Головач Лена",
+      "purpose": "Второе сообщение участнику",
+      "composition": "Единый вертикальный шаблон 2:3; общий печатный текст одинаковый, имя и личная рукописная приписка индивидуальные.",
+      "visible": [
+        "читаемое анонимное приглашение",
+        "имя адресата вписано от руки",
+        "индивидуальная рукописная приписка Крайнеплота, отделённая от основного текста",
+        "подпись Лорда Крайнеплота под припиской",
+        "20 сентября, в 14:00"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "спойлеры",
+        "выдуманные дата и адрес игры",
+        "число гостей"
+      ],
+      "localReferences": [
+        "art-drafts/invitations/04-invitation-lambert-v1.png"
+      ],
+      "status": "approved",
+      "generationAuthorization": "Пользователь: «го некст» после письма Ламберту.",
+      "sharedTextSource": "art-drafts/invitations/shared-invitation-v1.txt",
+      "personalTextSource": "art-drafts/invitations/personal-notes-v4.md",
+      "promptPath": "art-drafts/invitations/05-invitation-golovach-lena-v1.prompt.txt",
+      "generatedVariant": {
+        "id": "penisuela-invitation-golovach-lena-v1",
+        "storage": "art-drafts/invitations/05-invitation-golovach-lena-v1.png",
+        "method": "built-in-imagegen-edit",
+        "status": "user-approved",
+        "width": 1024,
+        "height": 1536
+      },
+      "reviewSource": "art-drafts/invitations/05-invitation-golovach-lena-v1.review.json",
+      "approvalSource": "Пользователь перешёл к следующему письму: «и некст».",
+      "approvedVariant": "art-drafts/invitations/05-invitation-golovach-lena-v1.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/golovach-lena.png",
+      "generationStatus": "published"
+    },
+    {
+      "id": "penisuela-invitation-thorin-pukoshchit",
+      "type": "item",
+      "entityId": "journey-letter",
+      "characterId": "thorin-pukoshchit",
+      "recipient": "Торин Пукощит II",
+      "purpose": "Второе сообщение участнику",
+      "composition": "Единый вертикальный шаблон 2:3; общий печатный текст одинаковый, имя и личная рукописная приписка индивидуальные.",
+      "visible": [
+        "читаемое анонимное приглашение",
+        "имя адресата вписано от руки",
+        "индивидуальная рукописная приписка Крайнеплота, отделённая от основного текста",
+        "подпись Лорда Крайнеплота под припиской",
+        "20 сентября, в 14:00"
+      ],
+      "forbidden": [
+        "личности отправителя и пары",
+        "спойлеры",
+        "выдуманные дата и адрес игры",
+        "число гостей"
+      ],
+      "localReferences": [
+        "art-drafts/invitations/02-invitation-bubsilda-v2.png"
+      ],
+      "status": "approved",
+      "generationAuthorization": "Исправление артефактов по запросу пользователя; перегенерация от первого чистого образца.",
+      "sharedTextSource": "art-drafts/invitations/shared-invitation-v1.txt",
+      "personalTextSource": "art-drafts/invitations/personal-notes-v4.md",
+      "promptPath": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v2.prompt.txt",
+      "generatedVariant": {
+        "id": "penisuela-invitation-thorin-pukoshchit-v2",
+        "storage": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v2.png",
+        "method": "built-in-imagegen-edit-from-original",
+        "status": "user-approved",
+        "width": 1024,
+        "height": 1536
+      },
+      "reviewSource": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v2.review.json",
+      "rejectedVariants": [
+        {
+          "id": "penisuela-invitation-thorin-pukoshchit-v1",
+          "storage": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v1.png",
+          "method": "built-in-imagegen-edit",
+          "status": "rejected",
+          "width": 1024,
+          "height": 1536,
+          "reason": "Пользователь: «очень много артефактов на картинке»; заметная деградация фактуры после цепочки редактирований."
+        }
+      ],
+      "approvalSource": "Пользователь: «четко» после исправленного варианта Торина v2.",
+      "approvedVariant": "art-drafts/invitations/06-invitation-thorin-pukoshchit-v2.png",
+      "canonicalPath": "assets/concepts/campaigns/penisuela/invitations/thorin-pukoshchit.png",
+      "generationStatus": "published"
+    }
+  ],
+  "activeLetterSource": "shared-invitation-v1.txt",
+  "letterConstraints": [
+    "Готовое анонимное основное письмо",
+    "Имя адресата вписано Крайнеплотом от руки",
+    "Внизу отдельная личная приписка для конкретного героя и подпись Лорда Крайнеплота",
+    "Без упоминания числа гостей",
+    "Предчувствие опасности и необходимость присутствия адресата",
+    "20 сентября, в 14:00"
+  ],
+  "activePersonalNotesSource": "personal-notes-v4.md",
+  "generationComplete": true,
+  "downloadArchive": "art-drafts/invitations/penisuela-invitations-v2.zip",
+  "downloadArchiveStatus": "current",
+  "referencePolicy": "Для повторных генераций приглашений брать первый чистый образец Бубсильды, избегать цепочки последовательных редактирований."
+}

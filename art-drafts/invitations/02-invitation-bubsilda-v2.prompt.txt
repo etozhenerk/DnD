@@ -1,0 +1,25 @@
+Use case: text-localization / illustration-story.
+Asset type: ONE finished personal fantasy invitation letter for Bubsilda, intended as a readable full-screen PNG sent to a Russian-speaking player.
+Input image is a MATERIAL/STYLE reference only: warm ivory paper, dark wooden surface, matte charcoal black envelope partly behind it, a broken plain golden wax seal, elegant fine ornamental frame. Discard and REPLACE ALL of its existing text. Reflow the entire layout to fit the new longer approved copy below. DO NOT preserve any old sentence. In particular never mention five guests or five bracelets, never write "Подписи не будет", "Для:", "Имя вписал лично" or "Если что — помогите".
+Create a beautiful premium near-photorealistic fantasy stationery image, portrait 2:3, target 2048 x 3072 pixels for legible Cyrillic. One large flat warm ivory sheet occupies 94% of image width and 94% height, seen almost exactly from above. Dark wooden surface and black envelope only in narrow outer margins. Plain unmarked broken golden wax seal outside the text area, bottom-left near paper edge. Thin restrained warm-gold decorative frame, clear open reading area, subtle grain without stains over text, warm evening amber light with even exposure on ALL paragraphs. No additional illustrations, maps, coats of arms, hands or props taking up reading space.
+CRITICAL AUTHORSHIP AND TYPOGRAPHY: This was a STANDARD ALREADY PRINTED ANONYMOUS invitation. Its entire formal body (all 5 paragraphs below) is typeset in the SAME upright, dark old-fashioned serif letterpress font, compact but very readable, normal sentence case, left aligned, consistent size and breathing room between paragraphs. The formal body is NOT handwriting and does NOT come from Lord Krayneplot. Later the lord filled ONLY the recipient name in a reserved name space near the top and wrote a separate personal handwritten note and signature in the lower part. These THREE handwritten parts MUST look different from the printed body: naturally connected, right-slanted blue-black quill ink with variable pressure and an imperfect baseline, human but clearly readable. Do not turn the printed body into cursive.
+Layout: tiny restrained printed heading "ПРИГЛАШЕНИЕ" near top, no oversized title. Under it, large HANDWRITTEN "Бубсильда!" in the reserved recipient line. Below, the PRINTED BODY occupies about the middle 55–60% of the sheet. Make "20 сентября, в 14:00" slightly heavier for visibility within its sentence. After ALL five printed paragraphs, add a fine small divider and ample separation. The bottom 25–28% is a distinct HANDWRITTEN ADDENDUM by the lord followed by his HANDWRITTEN signature. Both body and addendum must fit completely and be legible, no clipping, no missing last lines. Prioritize text size and complete copy over decoration. The handwritten name and addendum share one convincing handwriting.
+EXACT PRINTED BODY, reproduce every Cyrillic letter verbatim; reflow lines naturally without modifying paragraphs:
+
+На Пенисуэле готовятся к свадьбе. Морской ветер шевелит лёгкие занавеси, в погребах выбирают вино, а за праздничным столом для Вас уже оставлено место.
+
+Приглашаем Вас на закрытый мальчишник 20 сентября, в 14:00. Дорога и покои оплачены. Золотой браслет откроет перед Вами двери, а имя жениха Вы узнаете по прибытии.
+
+И всё же за праздничными хлопотами не утихает тревога. Нас не оставляет предчувствие, что в этот день на остров придут не только желанные гости. Если опасения сбудутся, музыка может оборваться прежде, чем будет поднят последний бокал.
+
+Поэтому Вы нужны нам на Пенисуэле. Когда остальные растеряются, рядом должен оказаться тот, у кого хватит решимости вмешаться.
+
+Приезжайте. Очень хочется, чтобы после этого дня нам было что вспоминать с улыбкой.
+
+EXACT HANDWRITTEN ADDENDUM IN A SEPARATE LOWER BLOCK, complete, blue-black quill cursive:
+Бубсильда, после всего, что тебе довелось вынести на севере, мне хотелось послать тебе приглашение на отдых. Теперь перечитываю его и тревожусь. Возьми «Боинг-Смерч». И береги себя хотя бы вполовину так же старательно, как бережёшь остальных.
+
+EXACT HANDWRITTEN SIGNATURE underneath the personal note:
+Лорд Крайнеплот
+
+Final constraints: Only one letter, not a collage. Anonymous shared printed invitation plus recipient name and SEPARATE personal lord addendum; never sign the common typeset body with the lord's name. Exactly the specified text, no guest count, no real location/address or year, no plot spoilers, no hidden sender or couple identities, no watermarks or stray symbols. Strong printed-versus-handwritten distinction is mandatory.

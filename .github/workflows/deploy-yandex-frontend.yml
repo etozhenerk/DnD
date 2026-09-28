@@ -1,0 +1,57 @@
+name: Deploy frontend to Yandex Cloud
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: yandex-frontend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload assets
+        uses: yc-actions/yc-obj-storage-upload@v5
+        with:
+          yc-sa-id: ${{ vars.YC_FRONTEND_SA_ID }}
+          bucket: dnd-etozhenerk-b1g8siv8ve2si1qp04nm
+          root: ./dist
+          include: '**/*'
+          exclude: |
+            index.html
+            404.html
+          cache-control: 'public, max-age=3600'
+          skip-unchanged: true
+          fail-on-error: true
+
+      - name: Publish index last
+        uses: yc-actions/yc-obj-storage-upload@v5
+        with:
+          yc-sa-id: ${{ vars.YC_FRONTEND_SA_ID }}
+          bucket: dnd-etozhenerk-b1g8siv8ve2si1qp04nm
+          root: ./dist
+          include: index.html
+          cache-control: 'no-cache, max-age=0'
+          fail-on-error: true

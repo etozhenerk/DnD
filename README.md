@@ -61,7 +61,7 @@ node scripts/test-penisuela-story-sync.mjs # пять Doom, пропуска и 
 - `/campaign/penisuela/prologue` — пролог «Мальчишника конца света»;
 - `/campaign/penisuela/play/<scene-id>` — локальная игровая сцена кампании.
 
-Маршруты управляются React Router. Для прямого открытия внутренних страниц GitHub Pages публикует SPA fallback, а после переезда в Yandex Cloud fallback на `index.html` настраивается в API Gateway.
+Маршруты управляются React Router. GitHub Pages публикует SPA fallback. Тестовый фронтенд в Yandex Cloud использует `index.html` как страницу ошибки Object Storage; итоговая маршрутизация фронтенда и API будет определена при реализации бэкенда.
 
 ## Архитектура фронтенда
 
@@ -157,6 +157,16 @@ https://etozhenerk.github.io/DnD/
 Workflow запускается при каждом push в `main`. Для ручного повторного запуска доступен `workflow_dispatch` во вкладке Actions.
 
 Если репозиторий будет переименован, необходимо изменить `base` для режима `github-pages` в `vite.config.ts`.
+
+## Тестовый фронтенд в Yandex Cloud
+
+Текущую сборку можно опубликовать в Object Storage без отдельной виртуальной машины. Ресурс, ручной деплой и подготовленный GitHub Actions workflow описаны в [инструкции по деплою](docs/yandex-cloud-frontend-deployment.md). Вариант переноса тяжёлых файлов из Git разобран в [исследовании медиа](docs/yandex-cloud-media-storage.md). GitHub Pages остаётся действующей площадкой до завершения переноса бэкенда.
+
+После установки `yc` в `PATH`, авторизации `yc init` и установки Node.js 22 повторный деплой выполняется командой:
+
+```bash
+YC_FRONTEND_BUCKET=dnd-etozhenerk-b1g8siv8ve2si1qp04nm ./scripts/deploy-yandex-frontend.sh
+```
 
 ## Ограничения MVP
 

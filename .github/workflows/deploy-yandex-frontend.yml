@@ -42,7 +42,8 @@ jobs:
           exclude: |
             index.html
             404.html
-          cache-control: 'public, max-age=3600'
+          cache-control: |
+            *: public, max-age=3600
           skip-unchanged: true
           fail-on-error: true
 
@@ -53,5 +54,6 @@ jobs:
           bucket: dnd-etozhenerk-b1g8siv8ve2si1qp04nm
           root: ./dist
           include: index.html
-          cache-control: 'no-cache, max-age=0'
+          cache-control: |
+            *: no-cache, max-age=0
           fail-on-error: true

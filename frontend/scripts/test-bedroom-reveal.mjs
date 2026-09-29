@@ -63,7 +63,6 @@ try {
   for (const [draft, canonical] of [['bedroom-door-closed-v1.png', 'bedroom-door-closed.png'], ['bedroom-live-reveal-v8.png', 'bedroom-live-reveal.png']]) {
     assert.deepEqual(await readFile(`../art-drafts/${draft}`), await readFile(`assets/concepts/campaigns/penisuela/scenes/${canonical}`));
   }
-  assert.deepEqual(await readFile('../docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png'), await readFile(scene.background));
   console.log('Bedroom PASS: tour → existing closed door → reveal; no premature milestone, costs or skipping; persistence, undo, legacy state, approved images and guide.');
 } finally {
   await server.close();

@@ -1,12 +1,15 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.1.0
+  version: 0.2.0
+  description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
+servers:
+  - url: /
 paths:
   /health:
     get:
-      summary: Проверить доступность API
       operationId: getHealth
+      summary: Проверить доступность API
       responses:
         '200':
           description: API работает
@@ -14,10 +17,380 @@ paths:
             application/json:
               schema:
                 type: object
-                additionalProperties: false
-                required:
-                  - status
+                required: [status]
                 properties:
-                  status:
-                    type: string
-                    const: ok
+                  status: {type: string, const: ok}
+  /creator/options:
+    get:
+      operationId: getCreatorOptions
+      summary: Получить правила v1 и доступные расы
+      responses:
+        '200':
+          description: Канонические правила и игровые расы
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [rules, races]
+                properties:
+                  rules: {type: object}
+                  races:
+                    type: array
+                    items: {type: object}
+  /drafts:
+    post:
+      operationId: createDraft
+      summary: Начать анонимный черновик
+      description: Секрет возвращается один раз. Клиент хранит его локально и передаёт Bearer-токеном.
+      responses:
+        '201':
+          description: Созданный черновик
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/CreatedDraft'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /drafts/{draftId}:
+    parameters:
+      - $ref: '#/components/parameters/DraftId'
+    get:
+      operationId: getDraft
+      summary: Восстановить черновик
+      security: [{draftToken: []}]
+      responses:
+        '200':
+          description: Текущее состояние анкеты
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Draft'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+    patch:
+      operationId: patchDraft
+      summary: Сохранить один раздел анкеты
+      description: Разделы appearance, race, class, attributes, abilities, equipment. Клиент отправляет изменения последовательно; сервер атомарно заменяет выбранный раздел.
+      security: [{draftToken: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/PatchDraft'}
+      responses:
+        '200':
+          description: Сохранённый черновик
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Draft'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /drafts/{draftId}/advice:
+    parameters:
+      - $ref: '#/components/parameters/DraftId'
+    post:
+      operationId: adviseDraft
+      summary: Запросить подсказку советника
+      description: До подключения агента AI Studio возвращает advisor_unavailable. Предложение советника само не меняет черновик.
+      security: [{draftToken: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [prompt]
+              properties:
+                prompt: {type: string, minLength: 1, maxLength: 2000}
+      responses:
+        '200':
+          description: Предложение для подтверждения игроком
+          content:
+            application/json:
+              schema: {type: object}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /drafts/{draftId}/assets:
+    parameters:
+      - $ref: '#/components/parameters/DraftId'
+    post:
+      operationId: uploadDraftAsset
+      summary: Загрузить портрет или иконку
+      description: До подключения хранилища файлов возвращает asset_storage_unavailable.
+      security: [{draftToken: []}]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [kind, file]
+              properties:
+                kind: {type: string, enum: [portrait, ability_icon]}
+                file: {type: string, format: binary}
+      responses:
+        '201':
+          description: Проверенный файл
+          content:
+            application/json:
+              schema: {type: object}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /drafts/{draftId}/validate:
+    parameters:
+      - $ref: '#/components/parameters/DraftId'
+    post:
+      operationId: validateDraft
+      summary: Проверить заполнение и утверждённые игровые правила
+      security: [{draftToken: []}]
+      responses:
+        '200':
+          description: Результат проверки
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Validation'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /drafts/{draftId}/complete:
+    parameters:
+      - $ref: '#/components/parameters/DraftId'
+    post:
+      operationId: completeDraft
+      summary: Проверить и сохранить готового персонажа
+      security: [{draftToken: []}]
+      responses:
+        '201':
+          description: Персонаж создан; черновик удалён
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Character'}
+        '422':
+          description: Анкета не прошла проверку
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Validation'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /characters:
+    get:
+      operationId: listCharacters
+      summary: Список готовых персонажей конструктора
+      parameters:
+        - name: limit
+          in: query
+          schema: {type: integer, minimum: 1, maximum: 100, default: 20}
+        - name: offset
+          in: query
+          schema: {type: integer, minimum: 0, default: 0}
+      responses:
+        '200':
+          description: Готовые персонажи, новые первыми
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items: {$ref: '#/components/schemas/CharacterSummary'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+  /characters/{characterId}:
+    parameters:
+      - name: characterId
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+    get:
+      operationId: getCharacter
+      summary: Прочитать готового персонажа, навыки и предметы
+      responses:
+        '200':
+          description: Готовый персонаж
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Character'}
+        '404': {$ref: '#/components/responses/NotFound'}
+components:
+  securitySchemes:
+    draftToken:
+      type: http
+      scheme: bearer
+      description: Случайный секрет конкретного анонимного черновика, не учётная запись.
+  parameters:
+    DraftId:
+      name: draftId
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
+  schemas:
+    Error:
+      type: object
+      required: [code, message]
+      properties:
+        code: {type: string}
+        message: {type: string}
+    Draft:
+      type: object
+      required: [id, rulesetId, formData, createdAt, updatedAt]
+      properties:
+        id: {type: string, format: uuid}
+        rulesetId: {type: string}
+        formData:
+          type: object
+          properties:
+            appearance: {$ref: '#/components/schemas/Appearance'}
+            race:
+              type: object
+              properties:
+                raceId: {type: string}
+            class:
+              type: object
+              properties:
+                classId: {type: string}
+            attributes:
+              type: object
+              additionalProperties: {type: integer}
+            abilities:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items: {$ref: '#/components/schemas/Ability'}
+            equipment:
+              type: object
+              properties:
+                items:
+                  type: array
+                  items: {$ref: '#/components/schemas/Item'}
+        createdAt: {type: string, format: date-time}
+        updatedAt: {type: string, format: date-time}
+    CreatedDraft:
+      allOf:
+        - $ref: '#/components/schemas/Draft'
+        - type: object
+          required: [token]
+          properties:
+            token: {type: string, description: Показывается только при создании}
+    PatchDraft:
+      type: object
+      required: [section, value]
+      additionalProperties: false
+      properties:
+        section: {type: string, enum: [appearance, race, class, attributes, abilities, equipment]}
+        value: {type: object}
+    Appearance:
+      type: object
+      properties:
+        displayName: {type: string}
+        pronouns: {type: string}
+        roleLabel: {type: string}
+        story: {type: string}
+        motivation: {type: string}
+        appearance: {type: string}
+        personality:
+          type: array
+          items: {type: string}
+    Ability:
+      type: object
+      required: [id, name, trigger, effectText]
+      properties:
+        id: {type: string, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string}
+        description: {type: string}
+        effectText: {type: string}
+        trigger: {type: string}
+        uses:
+          type: [object, 'null']
+          properties:
+            scope: {type: string, enum: [turn, round, battle, location, campaign]}
+            max: {type: integer, minimum: 1}
+      description: В v1 эффект исполняется мастером вручную; формальные effects и баланс чисел ещё не утверждены.
+    Item:
+      type: object
+      required: [id, name]
+      properties:
+        id: {type: string, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string}
+        description: {type: string}
+        effectText: {type: string}
+        charges:
+          type: [object, 'null']
+          properties:
+            scope: {type: string, enum: [turn, round, battle, location, campaign]}
+            max: {type: integer, minimum: 1}
+    Validation:
+      type: object
+      required: [valid, issues]
+      properties:
+        valid: {type: boolean}
+        issues:
+          type: array
+          items:
+            type: object
+            required: [path, code, message]
+            properties:
+              path: {type: string}
+              code: {type: string}
+              message: {type: string}
+        derived:
+          type: object
+          properties:
+            maxHp: {type: integer}
+            baseAc: {type: integer}
+            pointsSpent: {type: integer}
+    CharacterSummary:
+      type: object
+      required: [id, displayName, raceId, classId, maxHp, baseAc, createdAt]
+      properties:
+        id: {type: string, format: uuid}
+        displayName: {type: string}
+        raceId: {type: string}
+        classId: {type: string}
+        maxHp: {type: integer}
+        baseAc: {type: integer}
+        createdAt: {type: string, format: date-time}
+    Character:
+      allOf:
+        - $ref: '#/components/schemas/CharacterSummary'
+        - type: object
+          properties:
+            pronouns: {type: string}
+            roleLabel: {type: string}
+            story: {type: string}
+            motivation: {type: string}
+            appearance: {type: string}
+            personality:
+              type: array
+              items: {type: string}
+            attributes:
+              type: object
+              additionalProperties: {type: integer}
+            abilities:
+              type: array
+              items: {$ref: '#/components/schemas/Ability'}
+            equipment:
+              type: array
+              items: {$ref: '#/components/schemas/Item'}
+            rulesetId: {type: string}
+  responses:
+    BadRequest:
+      description: Неверный запрос
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unauthorized:
+      description: Не передан Bearer-токен черновика
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    NotFound:
+      description: Объект не найден или токен не подходит
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
+    Unavailable:
+      description: Зависимость пока не настроена
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}

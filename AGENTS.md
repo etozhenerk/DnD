@@ -141,6 +141,7 @@ frontend/src/
 - Локальная игра: `model-dnd-game-session` → `implement-dnd-rules-engine` → `implement-dnd-npc-behavior` → `implement-dnd-dialogue-console` → `implement-dnd-gm-console`.
 - Проверка игровых сценариев: `test-dnd-gameplay-scenarios`; финальная приёмка: `verify-dnd-campaign-release`.
 - Структура данных, связи, правила или несколько типов сущностей: `maintain-dnd-world`; применять его последним для проверки целостности.
+- Ресурсы и настройки Yandex Cloud: `manage-yandex-cloud`; SQL-схема и миграции PostgreSQL: `manage-dnd-database`; Go API и его HTTP-контракт: `develop-dnd-backend`.
 
 Каждый этап изменяет только свой рабочий артефакт. Следующий этап запускается после явного утверждения пользователя; изменение раннего этапа помечает зависимые результаты устаревшими.
 

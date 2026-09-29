@@ -1,0 +1,16 @@
+[Unit]
+Description=DnD Qwen3.5-9B CPU inference
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dnd-qwen35
+ExecStop=/usr/bin/docker stop -t 30 dnd-qwen35
+Restart=always
+RestartSec=15
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target

@@ -28,7 +28,7 @@ description: Implement the presentation layer for a published campaign in this R
 
 ## Проверка
 
-Запустить `npm run typecheck` и `npm run build`. Передать интерактивную проверку `$verify-dnd-campaign-release`; не запускать standalone Playwright автоматически.
+Из `frontend/` запустить `npm run typecheck` и `npm run build`. Передать интерактивную проверку `$verify-dnd-campaign-release`; не запускать standalone Playwright автоматически.
 
 ## Результат
 

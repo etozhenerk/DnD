@@ -2584,7 +2584,7 @@ try {
   });
 
   await scenario('remaining hero kits keep canonical sources, encounter coverage and HUD icons', async () => {
-    const characterSources = JSON.parse(await readFile(`${projectRoot}/content/characters.json`, 'utf8'));
+    const characterSources = JSON.parse(await readFile(`${projectRoot}/../content/characters.json`, 'utf8'));
     const traySource = await readFile(
       `${projectRoot}/src/widgets/campaign-scene/ui/CombatArena/CombatActionTray.tsx`,
       'utf8',

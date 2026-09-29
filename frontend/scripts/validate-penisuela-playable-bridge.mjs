@@ -4,8 +4,8 @@ import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 
 const projectRoot = fileURLToPath(new URL('..', import.meta.url));
-const gameplayPath = `${projectRoot}/content/campaigns/penisuela-gallery-gameplay.json`;
-const previewPath = `${projectRoot}/content/campaigns/penisuela-session-preview.json`;
+const gameplayPath = `${projectRoot}/../content/campaigns/penisuela-gallery-gameplay.json`;
+const previewPath = `${projectRoot}/../content/campaigns/penisuela-session-preview.json`;
 const playPagePath = `${projectRoot}/src/pages/campaign-play/ui/CampaignPlayPage/CampaignPlayPage.tsx`;
 
 const [gameplay, preview, playPage] = await Promise.all([

@@ -1,8 +1,8 @@
-import campaignSessionData from '../../../../content/campaigns/penisuela-session-preview.json';
-import dialogueData from '../../../../content/campaigns/penisuela-dialogue.json';
-import galleryGameplayData from '../../../../content/campaigns/penisuela-gallery-gameplay.json';
-import charactersData from '../../../../content/characters.json';
-import rulesData from '../../../../content/rules.json';
+import campaignSessionData from '../../../../../content/campaigns/penisuela-session-preview.json';
+import dialogueData from '../../../../../content/campaigns/penisuela-dialogue.json';
+import galleryGameplayData from '../../../../../content/campaigns/penisuela-gallery-gameplay.json';
+import charactersData from '../../../../../content/characters.json';
+import rulesData from '../../../../../content/rules.json';
 import type {GalleryGameplayDefinition, GalleryHeroSource} from './galleryGameplay';
 import type {DialogueBankDefinition} from './dialoguePresets';
 import type {CampaignSessionPreview} from './types';

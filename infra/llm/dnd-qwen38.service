@@ -1,0 +1,18 @@
+[Unit]
+Description=DnD Qwen3.8-27B vLLM server
+Requires=docker.service
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/dnd-qwen38
+ExecStop=-/usr/bin/docker stop --time 20 dnd-qwen38
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=30
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=multi-user.target

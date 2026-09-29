@@ -142,7 +142,7 @@ try {
   const oldReload = journal.parseStoredGallerySessionEnvelope(JSON.parse(JSON.stringify(oldSave)), expectation);
   assert.equal(oldReload.ok, true, 'old automatic solutions remain loadable after conversion to checks');
   assert.equal(view(state(oldReload.events).flags), 'main-open');
-  const guide=await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8');
+  const guide=await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8');
   for (const camera of [publicScene, ...publicScene.interactionViews]) assert.ok(guide.includes(camera.readAloud));
   const meeting = definition.storyScenes.find((s) => s.id === 'groom-preparation-room');
   const talk = meeting.actions.find((a) => a.id === 'continue-1-kreed-disclosure');

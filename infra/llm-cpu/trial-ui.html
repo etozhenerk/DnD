@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Qwen Lab — пробный чат</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font: 16px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --page: #10141c;
+      --panel: #1b2230;
+      --panel-light: #252e40;
+      --border: #3a465a;
+      --text: #f0f2f8;
+      --muted: #aab4c5;
+      --gold: #e8bc72;
+      --gold-text: #1b1a18;
+      --error: #ff9d9d;
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; }
+    body { overflow: hidden; background: var(--page); color: var(--text); }
+    button, select, textarea { font: inherit; }
+    button, select { cursor: pointer; }
+    button:disabled, select:disabled { cursor: wait; opacity: .6; }
+    button:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--gold); outline-offset: 2px;
+    }
+    .shell {
+      width: min(100%, 980px); height: 100vh; height: 100dvh; min-height: 0;
+      margin: 0 auto; padding: 20px 20px max(20px, env(safe-area-inset-bottom));
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    h1 { margin: 0; font-size: clamp(1.35rem, 3vw, 1.85rem); line-height: 1.15; }
+    .subtitle { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+    .status { flex: none; margin: 2px 0 0; color: var(--gold); font-size: .85rem; text-align: right; }
+    .status[data-kind="error"] { color: var(--error); }
+    .status[data-kind="ready"] { color: #9cdeb0; }
+    .mode-panel {
+      display: grid; grid-template-columns: minmax(155px, 220px) 1fr; gap: 8px 16px;
+      align-items: center; padding: 12px 14px; background: var(--panel);
+      border: 1px solid var(--border); border-radius: 14px;
+    }
+    .mode-label { display: block; margin-bottom: 5px; font-size: .8rem; color: var(--muted); }
+    #mode {
+      width: 100%; min-height: 42px; padding: 8px 12px; color: var(--text);
+      background: var(--panel-light); border: 1px solid var(--border); border-radius: 9px;
+    }
+    #mode-description { margin: 0; color: var(--muted); font-size: .91rem; }
+    #example {
+      justify-self: start; grid-column: 2; padding: 0; border: 0;
+      background: transparent; color: var(--gold); text-align: left; font-size: .85rem;
+    }
+    #example:hover { text-decoration: underline; }
+    .conversation {
+      flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+      padding: 16px; border: 1px solid var(--border); border-radius: 14px;
+      background: var(--panel); scrollbar-color: var(--border) transparent;
+    }
+    .empty { height: 100%; display: grid; place-content: center; text-align: center; color: var(--muted); }
+    .empty strong { display: block; margin-bottom: 6px; color: var(--text); font-size: 1.15rem; }
+    .message { width: fit-content; max-width: min(82%, 710px); margin: 0 0 12px;
+      padding: 10px 14px; border-radius: 13px; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .message.user { margin-left: auto; background: #34435e; }
+    .message.assistant { background: var(--panel-light); white-space: normal; }
+    .message-body > :first-child { margin-top: 0; }
+    .message-body > :last-child { margin-bottom: 0; }
+    .message-body p, .message-body ul, .message-body ol,
+    .message-body pre, .message-body blockquote { margin: 0 0 .75em; }
+    .message-body ul, .message-body ol { padding-left: 1.4em; }
+    .message-body li + li { margin-top: .3em; }
+    .message-body h2, .message-body h3, .message-body h4 {
+      margin: .8em 0 .35em; line-height: 1.25; font-size: 1.04em;
+    }
+    .message-body h2 { font-size: 1.18em; }
+    .message-body blockquote { padding-left: .8em; border-left: 2px solid var(--gold); color: var(--muted); }
+    .message-body code { padding: .08em .3em; border-radius: 4px; background: #151b26;
+      font: .9em/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .message-body pre { overflow-x: auto; padding: 10px 12px; border-radius: 8px; background: #151b26; }
+    .message-body pre code { padding: 0; background: transparent; }
+    .message-body a { color: var(--gold); overflow-wrap: anywhere; }
+    .message.streaming .message-body::after {
+      content: '▋'; color: var(--gold); animation: cursor-blink 1s steps(2, start) infinite;
+    }
+    @keyframes cursor-blink { to { opacity: 0; } }
+    .role { display: block; margin-bottom: 4px; color: var(--gold); font-weight: 700; font-size: .8rem; }
+    .message.user .role { color: #bcd2ff; }
+    .composer { display: flex; align-items: end; gap: 10px; }
+    #prompt {
+      flex: 1; min-width: 0; min-height: 50px; max-height: 150px; resize: vertical;
+      padding: 12px 14px; color: var(--text); background: var(--panel-light);
+      border: 1px solid var(--border); border-radius: 11px; font-size: 16px;
+    }
+    #prompt::placeholder { color: var(--muted); }
+    #send {
+      min-width: 115px; min-height: 50px; padding: 10px 16px; border: 0;
+      border-radius: 11px; background: var(--gold); color: var(--gold-text); font-weight: 700;
+    }
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      color: var(--muted); font-size: .8rem; }
+    .footer p { margin: 0; }
+    #clear { flex: none; padding: 4px 0; border: 0; background: transparent; color: var(--muted); }
+    #clear:hover { color: var(--text); text-decoration: underline; }
+    @media (max-width: 600px) {
+      .shell { padding: 12px 12px max(12px, env(safe-area-inset-bottom)); gap: 9px; }
+      .header { align-items: center; }
+      .subtitle { font-size: .78rem; }
+      .status { max-width: 105px; font-size: .72rem; }
+      .mode-panel { grid-template-columns: 1fr; gap: 6px; padding: 10px 12px; }
+      #mode-description, #example { grid-column: 1; font-size: .82rem; }
+      .conversation { padding: 10px; }
+      .message { max-width: 92%; padding: 9px 11px; }
+      #send { min-width: 88px; padding: 9px 10px; }
+      .footer p { max-width: 75%; }
+    }
+    @media (max-height: 620px) { .subtitle, .footer p { display: none; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div><h1>Qwen Lab</h1><p class="subtitle">Пробный чат с Qwen3.5-9B · только текст</p></div>
+      <p id="status" class="status" role="status" aria-live="polite">Проверяю модель…</p>
+    </header>
+    <div class="mode-panel">
+      <div><label class="mode-label" for="mode">Режим</label><select id="mode" aria-describedby="mode-description"></select></div>
+      <p id="mode-description">Загружаю режимы…</p>
+      <button id="example" type="button">Вставить пример запроса</button>
+    </div>
+    <section id="messages" class="conversation" aria-label="Переписка"></section>
+    <form id="chat" class="composer">
+      <textarea id="prompt" rows="1" aria-label="Сообщение" placeholder="Напишите сообщение…" enterkeyhint="send" required maxlength="4000"></textarea>
+      <button id="send" type="submit">Отправить</button>
+    </form>
+    <div class="footer"><p>Enter — отправить · Shift+Enter — новая строка. История хранится только в этом браузере.</p><button id="clear" type="button">Очистить режим</button></div>
+  </main>
+  <script>
+    const modeSelect = document.getElementById('mode');
+    const modeDescription = document.getElementById('mode-description');
+    const exampleButton = document.getElementById('example');
+    const list = document.getElementById('messages');
+    const status = document.getElementById('status');
+    const input = document.getElementById('prompt');
+    const send = document.getElementById('send');
+    const form = document.getElementById('chat');
+    let modes = [];
+    let activeMode = 'free';
+    let messages = [];
+    let pending = false;
+
+    function storageGet(key) { try { return localStorage.getItem(key); } catch { return null; } }
+    function storageSet(key, value) { try { localStorage.setItem(key, value); } catch {} }
+    function storageRemove(key) { try { localStorage.removeItem(key); } catch {} }
+    function historyKey() { return 'dnd-trial-chat-v2:' + activeMode; }
+    function loadHistory() {
+      try {
+        const saved = JSON.parse(storageGet(historyKey()) || '[]');
+        return Array.isArray(saved) ? saved.filter(m =>
+          (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string').slice(-30) : [];
+      } catch { return []; }
+    }
+    function saveHistory() { storageSet(historyKey(), JSON.stringify(messages.slice(-30))); }
+    function setStatus(text, kind = '') { status.textContent = text; status.dataset.kind = kind; }
+
+    function inlineMarkdown(source) {
+      const fragment = document.createDocumentFragment();
+      const tokens = /(\*\*([^*]+)\*\*|__([^_]+)__|`([^`]+)`|\*([^*]+)\*|_([^_]+)_|\[([^\]]+)\]\((https?:\/\/[^\s)]+)\))/g;
+      let cursor = 0;
+      for (const match of source.matchAll(tokens)) {
+        fragment.append(document.createTextNode(source.slice(cursor, match.index)));
+        let element;
+        if (match[2] || match[3]) {
+          element = document.createElement('strong');
+          element.textContent = match[2] || match[3];
+        } else if (match[4]) {
+          element = document.createElement('code');
+          element.textContent = match[4];
+        } else if (match[5] || match[6]) {
+          element = document.createElement('em');
+          element.textContent = match[5] || match[6];
+        } else {
+          element = document.createElement('a');
+          element.textContent = match[7];
+          element.href = match[8];
+          element.target = '_blank';
+          element.rel = 'noopener noreferrer';
+        }
+        fragment.append(element);
+        cursor = match.index + match[0].length;
+      }
+      fragment.append(document.createTextNode(source.slice(cursor)));
+      return fragment;
+    }
+
+    function markdownBlocks(source) {
+      const fragment = document.createDocumentFragment();
+      const lines = source.replace(/\r\n?/g, '\n').split('\n');
+      const isList = line => /^\s*(?:[-*+]\s+|\d+\.\s+)/.test(line);
+      const isBlock = line => /^\s*```/.test(line) || /^#{1,3}\s+/.test(line) || /^>\s?/.test(line) || isList(line);
+      let index = 0;
+      while (index < lines.length) {
+        const line = lines[index];
+        if (!line.trim()) { index++; continue; }
+        if (/^\s*```/.test(line)) {
+          const code = [];
+          index++;
+          while (index < lines.length && !/^\s*```/.test(lines[index])) code.push(lines[index++]);
+          if (index < lines.length) index++;
+          const pre = document.createElement('pre');
+          const element = document.createElement('code');
+          element.textContent = code.join('\n');
+          pre.append(element);
+          fragment.append(pre);
+          continue;
+        }
+        const heading = line.match(/^(#{1,3})\s+(.*)$/);
+        if (heading) {
+          const element = document.createElement('h' + Math.min(heading[1].length + 1, 4));
+          element.append(inlineMarkdown(heading[2]));
+          fragment.append(element);
+          index++;
+          continue;
+        }
+        if (/^>\s?/.test(line)) {
+          const quote = document.createElement('blockquote');
+          const paragraph = document.createElement('p');
+          while (index < lines.length && /^>\s?/.test(lines[index])) {
+            if (paragraph.childNodes.length) paragraph.append(document.createElement('br'));
+            paragraph.append(inlineMarkdown(lines[index++].replace(/^>\s?/, '')));
+          }
+          quote.append(paragraph);
+          fragment.append(quote);
+          continue;
+        }
+        if (isList(line)) {
+          const ordered = /^\s*\d+\.\s+/.test(line);
+          const element = document.createElement(ordered ? 'ol' : 'ul');
+          while (index < lines.length && isList(lines[index]) && /^\s*\d+\.\s+/.test(lines[index]) === ordered) {
+            const item = document.createElement('li');
+            item.append(inlineMarkdown(lines[index++].replace(/^\s*(?:[-*+]\s+|\d+\.\s+)/, '')));
+            element.append(item);
+          }
+          fragment.append(element);
+          continue;
+        }
+        const paragraph = document.createElement('p');
+        while (index < lines.length && lines[index].trim() && !isBlock(lines[index])) {
+          if (paragraph.childNodes.length) paragraph.append(document.createElement('br'));
+          paragraph.append(inlineMarkdown(lines[index++]));
+        }
+        fragment.append(paragraph);
+      }
+      return fragment;
+    }
+
+    function render(forceBottom = false) {
+      const nearBottom = forceBottom || list.scrollHeight - list.scrollTop - list.clientHeight < 100;
+      list.replaceChildren();
+      if (!messages.length) {
+        const empty = document.createElement('div');
+        empty.className = 'empty';
+        const title = document.createElement('strong');
+        title.textContent = 'Начните диалог';
+        empty.append(title, document.createTextNode('Выберите режим, вставьте пример или напишите свой запрос.'));
+        list.append(empty);
+      }
+      for (const message of messages) {
+        const item = document.createElement('div');
+        item.className = 'message ' + message.role;
+        const role = document.createElement('span');
+        role.className = 'role';
+        role.textContent = message.role === 'user' ? 'Вы' : modes.find(m => m.id === activeMode)?.label || 'Qwen';
+        const body = document.createElement('div');
+        body.className = 'message-body';
+        if (message.role === 'assistant') body.append(markdownBlocks(message.content));
+        else body.textContent = message.content;
+        item.append(role, body);
+        if (pending && message === messages[messages.length - 1] && message.role === 'assistant') item.classList.add('streaming');
+        list.append(item);
+      }
+      if (nearBottom) list.scrollTop = list.scrollHeight;
+    }
+    function selectMode(id) {
+      const mode = modes.find(item => item.id === id) || modes[0];
+      if (!mode) return;
+      activeMode = mode.id;
+      modeSelect.value = mode.id;
+      modeDescription.textContent = mode.description;
+      exampleButton.textContent = 'Пример: ' + mode.example;
+      storageSet('dnd-trial-mode', activeMode);
+      messages = loadHistory();
+      render();
+    }
+    async function refreshHealth() {
+      if (pending) return;
+      try {
+        const response = await fetch('/health');
+        const data = await response.json();
+        setStatus(data.ready ? 'Модель готова' : 'Модель загружается', data.ready ? 'ready' : '');
+      } catch { setStatus('Нет связи', 'error'); }
+    }
+    fetch('/modes').then(response => response.json()).then(data => {
+      modes = data;
+      for (const mode of modes) modeSelect.add(new Option(mode.label, mode.id));
+      selectMode(storageGet('dnd-trial-mode') || 'free');
+    }).catch(() => { modeDescription.textContent = 'Не удалось загрузить режимы'; });
+    refreshHealth();
+    setInterval(refreshHealth, 15000);
+    modeSelect.addEventListener('change', () => selectMode(modeSelect.value));
+    exampleButton.addEventListener('click', () => {
+      const mode = modes.find(item => item.id === activeMode);
+      if (mode) { input.value = mode.example; input.focus(); }
+    });
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && event.keyCode !== 229) {
+        event.preventDefault();
+        if (!pending) form.requestSubmit();
+      }
+    });
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const text = input.value.trim();
+      if (pending || !text || !modes.length) return;
+      messages.push({role: 'user', content: text});
+      const answer = {role: 'assistant', content: ''};
+      messages.push(answer);
+      input.value = '';
+      pending = true;
+      send.disabled = true;
+      input.disabled = true;
+      modeSelect.disabled = true;
+      setStatus('Модель отвечает…');
+      render(true);
+      const answerBody = list.lastElementChild.querySelector('.message-body');
+      const receivedChars = [];
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let visibleChars = 0;
+      let paintFrame = 0;
+      let lastFrameAt = 0;
+      let revealCredit = 0;
+      let streamFinished = false;
+      let revealDone = null;
+      function paintAnswer() {
+        const nearBottom = list.scrollHeight - list.scrollTop - list.clientHeight < 100;
+        answerBody.replaceChildren(markdownBlocks(receivedChars.slice(0, visibleChars).join('')));
+        if (nearBottom) list.scrollTop = list.scrollHeight;
+      }
+      function revealAnswer(now) {
+        paintFrame = 0;
+        const backlog = receivedChars.length - visibleChars;
+        if (!streamFinished && visibleChars === 0 && backlog < 14) return;
+        if (backlog <= 0) {
+          lastFrameAt = 0;
+          if (streamFinished && revealDone) revealDone();
+          return;
+        }
+        const elapsed = lastFrameAt ? Math.min(now - lastFrameAt, 100) : 16;
+        lastFrameAt = now;
+        const speed = Math.min(80, Math.max(streamFinished ? 28 : 8, 8 + backlog * 0.8));
+        revealCredit += elapsed * speed / 1000;
+        const advance = Math.min(backlog, Math.floor(revealCredit));
+        if (advance) {
+          visibleChars += advance;
+          revealCredit -= advance;
+          paintAnswer();
+        }
+        if (visibleChars < receivedChars.length) queueAnswerPaint();
+        else {
+          lastFrameAt = 0;
+          if (streamFinished && revealDone) revealDone();
+        }
+      }
+      function queueAnswerPaint() {
+        if (reducedMotion) {
+          visibleChars = receivedChars.length;
+          paintAnswer();
+        } else if (!paintFrame) {
+          paintFrame = requestAnimationFrame(revealAnswer);
+        }
+      }
+      async function finishReveal() {
+        streamFinished = true;
+        if (document.hidden || reducedMotion) {
+          visibleChars = receivedChars.length;
+          paintAnswer();
+          return;
+        }
+        if (visibleChars === receivedChars.length) return;
+        await new Promise(resolve => {
+          const timeout = setTimeout(resolve, 2500);
+          revealDone = () => { clearTimeout(timeout); resolve(); };
+          queueAnswerPaint();
+        });
+        revealDone = null;
+      }
+      try {
+        const response = await fetch('/chat', {
+          method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({mode: activeMode, messages: messages.slice(-30, -1)})
+        });
+        if (!response.ok) {
+          const result = await response.json();
+          throw new Error(result.error || 'Ошибка модели');
+        }
+        if (!response.body) throw new Error('Браузер не поддерживает потоковый ответ');
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+        let completed = false;
+        function handleLine(line) {
+          if (!line) return;
+          const chunk = JSON.parse(line);
+          if (chunk.error) throw new Error(chunk.error);
+          if (typeof chunk.delta === 'string') {
+            answer.content += chunk.delta;
+            receivedChars.push(...Array.from(chunk.delta));
+            queueAnswerPaint();
+          }
+          if (chunk.done) completed = true;
+        }
+        while (true) {
+          const {value, done} = await reader.read();
+          if (done) break;
+          buffer += decoder.decode(value, {stream: true});
+          let newline;
+          while ((newline = buffer.indexOf('\n')) !== -1) {
+            handleLine(buffer.slice(0, newline).trim());
+            buffer = buffer.slice(newline + 1);
+          }
+        }
+        buffer += decoder.decode();
+        handleLine(buffer.trim());
+        if (!completed || !answer.content) throw new Error('Ответ модели прервался');
+        await finishReveal();
+        messages = messages.slice(-30);
+        saveHistory();
+        setStatus('Модель готова', 'ready');
+      } catch (error) {
+        if (!answer.content) {
+          messages.splice(-2, 2);
+          input.value = text;
+        }
+        saveHistory();
+        setStatus(error.message || String(error), 'error');
+      } finally {
+        if (paintFrame) cancelAnimationFrame(paintFrame);
+        pending = false;
+        send.disabled = false;
+        input.disabled = false;
+        modeSelect.disabled = false;
+        render();
+        if (matchMedia('(pointer: fine)').matches) input.focus({preventScroll: true});
+      }
+    });
+    document.getElementById('clear').addEventListener('click', () => {
+      if (pending) return;
+      messages = [];
+      storageRemove(historyKey());
+      render();
+      input.focus();
+    });
+  </script>
+</body>
+</html>

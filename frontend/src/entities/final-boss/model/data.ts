@@ -1,4 +1,4 @@
-import finalBossData from '../../../../content/campaigns/penisuela-final-boss.json';
+import finalBossData from '../../../../../content/campaigns/penisuela-final-boss.json';
 import {penisuelaGalleryGameplay} from '../../campaign-session/model/data';
 import type {GalleryGameplayDefinition} from '../../campaign-session/model/galleryGameplay';
 import type {FinalBossDefinition} from './types';

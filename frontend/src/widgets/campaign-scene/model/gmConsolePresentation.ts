@@ -1,6 +1,6 @@
-import partyRewards from '../../../../content/party-rewards.json';
+import partyRewards from '../../../../../content/party-rewards.json';
 import {homebrewConditions} from '../../../entities/campaign-session/model/playableData';
-import metadata from '../../../../content/campaigns/penisuela-gm-console.json';
+import metadata from '../../../../../content/campaigns/penisuela-gm-console.json';
 import type {CampaignSessionScene} from '../../../entities/campaign-session/model/types';
 import type {GalleryGameplayDefinition} from '../../../entities/campaign-session/model/galleryGameplay';
 import {getLastUndoableCommandId, type GalleryEvent, type GallerySessionSnapshot} from '../../../entities/campaign-session/model/gallerySession';

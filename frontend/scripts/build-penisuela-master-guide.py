@@ -26,13 +26,13 @@ from docx.shared import Inches, Pt, RGBColor
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SESSION_PATH = ROOT / "content/campaigns/penisuela-session-preview.json"
-GAMEPLAY_PATH = ROOT / "content/campaigns/penisuela-gallery-gameplay.json"
-DIALOGUE_PATH = ROOT / "content/campaigns/penisuela-dialogue.json"
-FINAL_BOSS_PATH = ROOT / "content/campaigns/penisuela-final-boss.json"
-CHARACTERS_PATH = ROOT / "content/characters.json"
-RULES_PATH = ROOT / "content/rules.json"
-SCRIPT_PATH = ROOT / "docs/campaigns/penisuela/script.md"
+SESSION_PATH = ROOT / "../content/campaigns/penisuela-session-preview.json"
+GAMEPLAY_PATH = ROOT / "../content/campaigns/penisuela-gallery-gameplay.json"
+DIALOGUE_PATH = ROOT / "../content/campaigns/penisuela-dialogue.json"
+FINAL_BOSS_PATH = ROOT / "../content/campaigns/penisuela-final-boss.json"
+CHARACTERS_PATH = ROOT / "../content/characters.json"
+RULES_PATH = ROOT / "../content/rules.json"
+SCRIPT_PATH = ROOT / "../docs/campaigns/penisuela/script.md"
 BRACELETS_ICON_PATH = ROOT / "assets/concepts/campaigns/penisuela/items/icons/anonymous-bracelets.png"
 
 
@@ -2240,7 +2240,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=ROOT / "docs/campaigns/penisuela/penisuela-gm-master-guide.docx",
+        default=ROOT / "../docs/campaigns/penisuela/penisuela-gm-master-guide.docx",
     )
     args = parser.parse_args()
     build(args.output.resolve())

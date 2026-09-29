@@ -11,9 +11,9 @@ import {
   type GalleryEvent,
 } from '../src/entities/campaign-session/model/gallerySession.ts';
 import {createGallerySessionStartedEvent} from '../src/entities/campaign-session/model/gallerySessionJournal.ts';
-import gameplayData from '../content/campaigns/penisuela-gallery-gameplay.json' with {type: 'json'};
-import sessionPreviewData from '../content/campaigns/penisuela-session-preview.json' with {type: 'json'};
-import charactersData from '../content/characters.json' with {type: 'json'};
+import gameplayData from '../../content/campaigns/penisuela-gallery-gameplay.json' with {type: 'json'};
+import sessionPreviewData from '../../content/campaigns/penisuela-session-preview.json' with {type: 'json'};
+import charactersData from '../../content/characters.json' with {type: 'json'};
 import type {
   GalleryGameplayDefinition,
   GalleryHeroSource,
@@ -216,7 +216,7 @@ scenario('награды Pussy Sultan показываются по очеред
     import.meta.url,
   ), 'utf8');
   const scenePreview = JSON.parse(readFileSync(new URL(
-    '../content/campaigns/penisuela-session-preview.json',
+    '../../content/campaigns/penisuela-session-preview.json',
     import.meta.url,
   ), 'utf8')) as {scenes: Array<{id: string; inspectables: Array<{id: string; order: number}>}>};
   const sessionControllerSource = readFileSync(new URL(

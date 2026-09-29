@@ -5,7 +5,7 @@ description: Produce a repository-specific implementation plan from an approved 
 
 # План реализации кампании
 
-Разбить утверждённую кампанию на небольшие зависимые задачи без изменения `content/` и `src/`.
+Разбить утверждённую кампанию на небольшие зависимые задачи без изменения `content/` и `frontend/src/`.
 
 ## Входы
 

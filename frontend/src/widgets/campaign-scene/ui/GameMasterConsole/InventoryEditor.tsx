@@ -1,4 +1,4 @@
-import partyRewards from '../../../../../content/party-rewards.json';
+import partyRewards from '../../../../../../content/party-rewards.json';
 import {createPartyRewardInventory} from '../../../../entities/campaign-session/model/partyRewards';
 import {toCampaignInspectableId} from '../../../../entities/campaign-session/model/inventoryPresentation';
 import {olvaQuest} from '../../../../entities/campaign-session/model/olvaQuest';

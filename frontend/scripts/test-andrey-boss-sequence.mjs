@@ -118,7 +118,7 @@ try {
   assert.equal(available(reset,finalState,definition),false);assert.equal(available(wedding,finalState,definition),true);
   assert.equal(wedding.nextSceneId,'wedding-epilogue');assert.equal(wedding.outcome.selectedEnding,'wedding');
   assert.ok(!Object.keys(wedding.outcome.flags).some(f=>f.includes('publication')),'wedding does not imply publishing consent');
-  const guide=await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8');
+  const guide=await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8');
   for (const id of ['villa-after-andrey','couple-voice-reset','wedding-epilogue']) {
     const s=preview.scenes.find(s=>s.id===id);await access(s.background);assert.ok(guide.includes(s.readAloud));
   }

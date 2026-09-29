@@ -54,8 +54,8 @@ try {
   const {CampaignSoundtrack} = await server.ssrLoadModule('/src/features/navigate-campaign-scene/ui/CampaignSoundtrack/CampaignSoundtrack.tsx');
   const hooks = await server.ssrLoadModule('soundtrack-player-hooks');
   const {useSceneSoundtrack} = await server.ssrLoadModule('/src/features/navigate-campaign-scene/model/campaignSoundtrack.ts');
-  const soundtrack = JSON.parse(readFileSync('content/campaigns/penisuela-gallery-gameplay.json', 'utf8')).soundtrack;
-  const sceneBlocks = JSON.parse(readFileSync('content/campaigns/penisuela-session-preview.json', 'utf8')).sceneBlocks;
+  const soundtrack = JSON.parse(readFileSync('../content/campaigns/penisuela-gallery-gameplay.json', 'utf8')).soundtrack;
+  const sceneBlocks = JSON.parse(readFileSync('../content/campaigns/penisuela-session-preview.json', 'utf8')).sceneBlocks;
   globalThis.document = new EventTarget();
   let tree, media, playCalls = 0, pauseCalls = 0, source;
   const sourceChanges = [];

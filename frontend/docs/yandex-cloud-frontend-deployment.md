@@ -9,12 +9,12 @@
 - Бакет: `dnd-etozhenerk-b1g8siv8ve2si1qp04nm`.
 - Технический адрес: <https://dnd-etozhenerk-b1g8siv8ve2si1qp04nm.website.yandexcloud.net/>.
 - Класс хранения: Standard; ограничение размера бакета: 10 ГиБ.
-- Публичны чтение файлов и их список. В бакет загружается только `dist/`, без исходного кода и секретов.
+- Публичны чтение файлов и их список. В бакет загружается только `frontend/dist/`, без исходного кода и секретов.
 - Главная и страница ошибки: `index.html`.
 
 ## CI
 
-Workflow `.github/workflows/deploy-yandex-frontend.yml` собирает фронтенд командой `npm run build` при push в `main` и допускает ручной запуск. Он загружает ресурсы перед `index.html`, не удаляет старые файлы и использует GitHub OIDC вместо постоянного ключа.
+Workflow `.github/workflows/deploy-yandex-frontend.yml` запускает `npm run build` из `frontend/` при push в `main` и допускает ручной запуск. Он загружает ресурсы перед `index.html`, не удаляет старые файлы и использует GitHub OIDC вместо постоянного ключа.
 
 Настроены:
 
@@ -27,7 +27,7 @@ Workflow `.github/workflows/deploy-yandex-frontend.yml` собирает фро�
 
 ## Ручной повторный деплой
 
-Нужны Node.js 22, npm и авторизованная Yandex Cloud CLI (`yc init`). Из корня репозитория:
+Нужны Node.js 22, npm и авторизованная Yandex Cloud CLI (`yc init`). Из каталога `frontend/`:
 
 ```bash
 YC_FRONTEND_BUCKET=dnd-etozhenerk-b1g8siv8ve2si1qp04nm ./scripts/deploy-yandex-frontend.sh
@@ -45,6 +45,6 @@ Object Storage отдаёт `index.html` при неизвестном пути,
 
 ## Ограничение прежнего плана
 
-В согласованном [этапе 3](roadmap/stage-3-backend.md) предполагалась раздача всей сборки через API Gateway. У шлюза есть неизменяемый лимит 2,5 МБ на ответ, а текущая сборка содержит файлы крупнее него. Поэтому этот вариант нельзя использовать для всего фронтенда. Решение об одном HTTPS origin для фронтенда и будущего API нужно уточнить перед переносом бэкенда; тестовый адрес Object Storage не меняет согласованный порядок миграции данных.
+В согласованном [этапе 3](../../docs/roadmap/stage-3-backend.md) предполагалась раздача всей сборки через API Gateway. У шлюза есть неизменяемый лимит 2,5 МБ на ответ, а текущая сборка содержит файлы крупнее него. Поэтому этот вариант нельзя использовать для всего фронтенда. Решение об одном HTTPS origin для фронтенда и будущего API нужно уточнить перед переносом бэкенда; тестовый адрес Object Storage не меняет согласованный порядок миграции данных.
 
 Документация Yandex Cloud: [статический сайт в Object Storage](https://yandex.cloud/ru/docs/storage/concepts/hosting), [настройка SPA fallback](https://yandex.cloud/ru/docs/storage/operations/hosting/setup), [лимиты API Gateway](https://yandex.cloud/ru/docs/api-gateway/concepts/limits).

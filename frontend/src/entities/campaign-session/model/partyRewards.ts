@@ -1,5 +1,5 @@
 import {olvaQuest} from './olvaQuest';
-import catalog from '../../../../content/party-rewards.json';
+import catalog from '../../../../../content/party-rewards.json';
 import type {CombatUsageScope} from '../../combat/model/types';
 import type {HeroStat} from './galleryGameplay';
 import type {GalleryInventoryItemState, GallerySessionSnapshot} from './gallerySession';

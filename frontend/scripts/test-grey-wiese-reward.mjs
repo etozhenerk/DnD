@@ -56,6 +56,6 @@ try {
   assert.deepEqual(storage.readCarriedPartyRewards('next-campaign'),[],'undo acquisition also removes carryover');
   delete globalThis.window;
   const scene=preview.scenes.find(s=>s.id==='wedding-epilogue');
-  assert.ok((await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8')).includes(scene.interactionViews[0].readAloud));
+  assert.ok((await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8')).includes(scene.interactionViews[0].readAloud));
   console.log('Grey Wiese reward: grant, guards, 3 charges, automatic result, rest, undo, reload, next campaign and guide passed.');
 } finally {delete globalThis.window; await server.close();}

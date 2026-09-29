@@ -15,7 +15,7 @@ try {
  for(const preset of bank.presets)for(const id of preset.sceneIds)assert.ok(ids.has(id)||id==='tavern-invitation');
  const paths=new Set();const collect=v=>{if(typeof v==='string'&&v.startsWith('assets/'))paths.add(v);else if(v&&typeof v==='object')for(const child of Object.values(v))collect(child);};collect(p);collect(d);
  for(const path of paths)await access(path);
- const canonical=await readFile('content/campaigns/penisuela-gallery-gameplay.json','utf8');assert.deepEqual(JSON.parse(await readFile('docs/campaigns/penisuela/gameplay.json','utf8')),JSON.parse(canonical));
- assert.equal((await readFile('docs/campaigns/penisuela/script.md','utf8')).split('\n').slice(1).join('\n'),(await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8')).split('\n').slice(1).join('\n'));
+ const canonical=await readFile('../content/campaigns/penisuela-gallery-gameplay.json','utf8');assert.deepEqual(JSON.parse(await readFile('../docs/campaigns/penisuela/gameplay.json','utf8')),JSON.parse(canonical));
+ assert.equal((await readFile('../docs/campaigns/penisuela/script.md','utf8')).split('\n').slice(1).join('\n'),(await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8')).split('\n').slice(1).join('\n'));
  console.log(`Current release data PASS: ${ids.size} screens + search, six checkpoints, five heroes, ${encounters.size} encounters, ${bank.presets.length} presets, ${paths.size} existing assets, current references and exact guide/gameplay mirrors.`);
 } finally {await server.close();}

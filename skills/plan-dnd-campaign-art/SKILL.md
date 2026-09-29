@@ -9,7 +9,7 @@ description: Build an approval-ready art registry from an approved D&D campaign 
 
 ## Входы
 
-Прочитать утверждённый творческий пакет, `assets/concepts/manifest.json` и референсы `assets/concepts/style/`. Проверить, нельзя ли переиспользовать уже утверждённый ассет.
+Прочитать утверждённый творческий пакет, `frontend/assets/concepts/manifest.json` и референсы `frontend/assets/concepts/style/`. Проверить, нельзя ли переиспользовать уже утверждённый ассет.
 
 ## Реестр
 

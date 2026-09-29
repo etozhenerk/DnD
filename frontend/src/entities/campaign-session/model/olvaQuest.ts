@@ -1,4 +1,4 @@
-import definition from '../../../../content/campaigns/penisuela-olva-quest.json';
+import definition from '../../../../../content/campaigns/penisuela-olva-quest.json';
 import type {GallerySessionSnapshot} from './gallerySession';
 export const olvaQuest = definition;
 export type OlvaEvidence = (typeof definition.evidence[number] | typeof definition.gift.evidence) & {artwork?: string; artworkAlt?: string};

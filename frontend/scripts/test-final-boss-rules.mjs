@@ -15,7 +15,7 @@ try {
   const rules = await server.ssrLoadModule('/src/entities/final-boss/model/finalBossRules.ts');
   const conditionRules = await server.ssrLoadModule('/src/entities/campaign-session/model/conditionRules.ts');
   const definition = JSON.parse(readFileSync(
-    new URL('../content/campaigns/penisuela-final-boss.json', import.meta.url),
+    new URL('../../content/campaigns/penisuela-final-boss.json', import.meta.url),
     'utf8',
   ));
 

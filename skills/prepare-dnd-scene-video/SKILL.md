@@ -11,7 +11,7 @@ description: Prepare generation-ready video production packs from approved D&D c
 
 1. Прочитать `AGENTS.md`, `docs/campaign-skill-workflow.md`, `workflow.json`, утверждённый `script.md` и связанные сцены.
 2. Для реплик прочитать утверждённые `dialogue.json` и `dialogue.md`; для механического события — `gameplay.json` и правила.
-3. Прочитать утверждённый `art-plan.json`, вердикты арт-проверки, `assets/concepts/manifest.json` и просмотреть каждый используемый арт.
+3. Прочитать утверждённый `art-plan.json`, вердикты арт-проверки, `frontend/assets/concepts/manifest.json` и просмотреть каждый используемый арт.
 4. Полностью прочитать `references/video-production-pack.md` перед записью результата.
 5. Если primary target — Veo 3 или Veo 3.1, дополнительно полностью прочитать `references/veo3-prompting.md` и проверить текущую официальную документацию выбранной поверхности.
 6. Остановиться, если обязательная сцена или визуальный источник имеет статус `draft` или `stale`. По явному запросу разрешён только исследовательский черновик с `readiness: "blocked"` и перечисленными недостающими входами.

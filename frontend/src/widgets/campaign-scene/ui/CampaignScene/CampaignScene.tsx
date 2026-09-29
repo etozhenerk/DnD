@@ -1,6 +1,6 @@
 import {SceneCheckpointContext} from '../../../../features/navigate-campaign-scene/model/sceneCheckpointContext';
 import {CampaignStepHistoryContext} from '../../../../features/navigate-campaign-scene/model/campaignStepHistoryContext';
-import partyRewards from '../../../../../content/party-rewards.json';
+import partyRewards from '../../../../../../content/party-rewards.json';
 import type {CSSProperties, ReactNode} from 'react';
 import {useContext, useEffect, useMemo, useState} from 'react';
 import {createPortal} from 'react-dom';

@@ -2,9 +2,9 @@ import assert from 'node:assert/strict';
 import {existsSync, readFileSync} from 'node:fs';
 import {canShowCampaignCredits, penisuelaCredits} from '../src/entities/campaign-session/model/credits';
 
-const session = JSON.parse(readFileSync('content/campaigns/penisuela-session-preview.json', 'utf8'));
-const characters = JSON.parse(readFileSync('content/characters.json', 'utf8'));
-const gameplay = JSON.parse(readFileSync('content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
+const session = JSON.parse(readFileSync('../content/campaigns/penisuela-session-preview.json', 'utf8'));
+const characters = JSON.parse(readFileSync('../content/characters.json', 'utf8'));
+const gameplay = JSON.parse(readFileSync('../content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
 const manifest = JSON.parse(readFileSync('assets/concepts/manifest.json', 'utf8'));
 const credits = penisuelaCredits;
 

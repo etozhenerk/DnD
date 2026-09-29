@@ -1,0 +1,6 @@
+[Unit]
+Description=Stop DnD GPU VM after the session time limit
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/shutdown -h now

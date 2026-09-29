@@ -25,11 +25,18 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
+        working-directory: frontend
         run: npm ci --no-audit --no-fund
 
+      - name: Regression tests
+        working-directory: frontend
+        run: npm run test:regression
+
       - name: Build
+        working-directory: frontend
         run: npm run build
 
       - name: Upload assets
@@ -37,7 +44,7 @@ jobs:
         with:
           yc-sa-id: ${{ vars.YC_FRONTEND_SA_ID }}
           bucket: dnd-etozhenerk-b1g8siv8ve2si1qp04nm
-          root: ./dist
+          root: ./frontend/dist
           include: '**/*'
           exclude: |
             index.html
@@ -52,7 +59,7 @@ jobs:
         with:
           yc-sa-id: ${{ vars.YC_FRONTEND_SA_ID }}
           bucket: dnd-etozhenerk-b1g8siv8ve2si1qp04nm
-          root: ./dist
+          root: ./frontend/dist
           include: index.html
           cache-control: |
             *: no-cache, max-age=0

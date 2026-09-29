@@ -15,7 +15,7 @@ try {
  const seed=[j.createGallerySessionStartedEvent({definition:d,heroes,existingInventory:[],eventId:'gray-seed',commandId:'gray-seed'})];
  const state=events=>replay(events,d),before=state(seed);
  assert.equal(available(exit,before,d),false);
- const guide=await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8');
+ const guide=await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8');
  for(const id of ['post-kreed-route','graywise-door-trust']) {
   const s=p.scenes.find(s=>s.id===id);await access(s.background);assert.ok(guide.includes(s.readAloud));
   for(const v of s.interactionViews??[]){await access(v.background);assert.ok(guide.includes(v.readAloud));}

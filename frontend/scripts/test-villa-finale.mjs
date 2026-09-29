@@ -96,7 +96,7 @@ try {
   for (const sceneId of ['igor-unboxing','andrey-villa-breach']) {
     const scene=preview.scenes.find(s=>s.id===sceneId);
     assert.equal((await readFile(scene.background)).subarray(1,4).toString(),'PNG','published scene is present without draft dependencies');
-    assert.ok((await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8')).includes(scene.readAloud));
+    assert.ok((await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8')).includes(scene.readAloud));
   }
   console.log('Villa PASS: optional gift, exhausted bag, owner guard, consumption, cosmetic-only skin, replay, undo, confession, teleport, battle startup and approved assets.');
 } finally {await server.close();}

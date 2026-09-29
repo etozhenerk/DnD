@@ -55,15 +55,15 @@ try {
   assert.equal(available(open, legacy, definition), false);
   assert.equal(available(approach, legacy, definition), false);
   assert.equal(available(exit, legacy, definition), true);
-  const guide = await readFile('content/campaigns/penisuela-session-preview-guide.md', 'utf8');
+  const guide = await readFile('../content/campaigns/penisuela-session-preview-guide.md', 'utf8');
   for (const view of [scene, ...scene.interactionViews]) {
     await access(view.background);
     assert.ok(guide.includes(view.readAloud));
   }
   for (const [draft, canonical] of [['bedroom-door-closed-v1.png', 'bedroom-door-closed.png'], ['bedroom-live-reveal-v8.png', 'bedroom-live-reveal.png']]) {
-    assert.deepEqual(await readFile(`art-drafts/${draft}`), await readFile(`assets/concepts/campaigns/penisuela/scenes/${canonical}`));
+    assert.deepEqual(await readFile(`../art-drafts/${draft}`), await readFile(`assets/concepts/campaigns/penisuela/scenes/${canonical}`));
   }
-  assert.deepEqual(await readFile('docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png'), await readFile(scene.background));
+  assert.deepEqual(await readFile('../docs/campaigns/penisuela/art-drafts/graywise-villa-tour-v5.png'), await readFile(scene.background));
   console.log('Bedroom PASS: tour → existing closed door → reveal; no premature milestone, costs or skipping; persistence, undo, legacy state, approved images and guide.');
 } finally {
   await server.close();

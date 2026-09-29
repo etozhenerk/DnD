@@ -1,6 +1,6 @@
 ---
 name: publish-dnd-campaign-assets
-description: Prepare and register explicitly approved campaign visual assets for runtime use. Use when assigning final repository paths, applying lossless or approved format optimization, preserving map transparency, updating assets/concepts/manifest.json, and verifying that content references only canonical art.
+description: Prepare and register explicitly approved campaign visual assets for runtime use. Use when assigning final repository paths, applying lossless or approved format optimization, preserving map transparency, updating frontend/assets/concepts/manifest.json, and verifying that content references only canonical art.
 ---
 
 # Публикация ассетов кампании
@@ -13,12 +13,12 @@ description: Prepare and register explicitly approved campaign visual assets for
 
 ## Порядок
 
-1. Выбрать путь по существующей структуре `assets/concepts/campaigns/<campaign-id>/`.
+1. Выбрать путь по существующей структуре `frontend/assets/concepts/campaigns/<campaign-id>/`.
 2. Сохранить прозрачность, анимацию и качество, необходимые интерфейсу.
 3. Оптимизировать формат только без изменения утверждённого содержания.
 4. Не переносить личную фотографию, тяжёлый исходник или временный рендер.
 5. Для персонажа по реальному человеку удалить из метаданных имя частного источника, путь к фото и рабочие сведения о публичной фигуре; alt-текст должен описывать только вымышленного персонажа.
-6. Добавить запись в `assets/concepts/manifest.json` со связанной сущностью и назначением.
+6. Добавить запись в `frontend/assets/concepts/manifest.json` со связанной сущностью и назначением. В JSON использовать прежний логический путь `assets/...`.
 7. Проверить уникальность `id`, существование файла и отсутствие ссылок на отклонённые версии.
 
 ## Результат

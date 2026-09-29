@@ -58,16 +58,16 @@ try {
   const bedroom = apply(four, openBedroom.outcome);
   assert.equal(replay(bedroom, definition).counters.doom, 5);
   assert.equal(replay(apply(bedroom, action('bedroom-reveal', 'continue-1-igor-unboxing').outcome), definition).counters.doom, 5);
-  const guide = await readFile('content/campaigns/penisuela-session-preview-guide.md', 'utf8');
-  const canonical = JSON.parse(await readFile('content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
-  const snapshot = JSON.parse(await readFile('docs/campaigns/penisuela/gameplay.json', 'utf8'));
+  const guide = await readFile('../content/campaigns/penisuela-session-preview-guide.md', 'utf8');
+  const canonical = JSON.parse(await readFile('../content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
+  const snapshot = JSON.parse(await readFile('../docs/campaigns/penisuela/gameplay.json', 'utf8'));
   for (const key of Object.keys(canonical)) assert.deepEqual(snapshot[key], canonical[key], `gameplay snapshot ${key}`);
   const current = new Set([...canonical.storyTruth.currentRouteSceneIds, ...canonical.storyTruth.badEndingSceneIds]);
   for (const scene of preview.scenes.filter(s => current.has(s.id))) {
     for (const view of [scene, ...(scene.interactionViews ?? [])]) assert.ok(!view.readAloud || guide.includes(view.readAloud), `guide contains ${scene.id}/${view.id} narration`);
   }
-  assert.deepEqual(JSON.parse(await readFile('docs/campaigns/penisuela/dialogue.json', 'utf8')), JSON.parse(await readFile('content/campaigns/penisuela-dialogue.json', 'utf8')));
-  const bank = JSON.parse(await readFile('content/campaigns/penisuela-dialogue.json', 'utf8'));
+  assert.deepEqual(JSON.parse(await readFile('../docs/campaigns/penisuela/dialogue.json', 'utf8')), JSON.parse(await readFile('../content/campaigns/penisuela-dialogue.json', 'utf8')));
+  const bank = JSON.parse(await readFile('../content/campaigns/penisuela-dialogue.json', 'utf8'));
   const {evaluateDialoguePresetConditions} = await server.ssrLoadModule('/src/entities/campaign-session/model/dialoguePresets.ts');
   for (const preset of bank.presets) {
     const result = evaluateDialoguePresetConditions(preset, replay([seed], definition), null);

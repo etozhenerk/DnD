@@ -1,4 +1,4 @@
-import rules from '../../../../content/rules.json';
+import rules from '../../../../../content/rules.json';
 import type {CombatConditionId} from './types';
 
 export const combatConditionPresentation: Record<CombatConditionId, {label: string; shortLabel: string}> = {

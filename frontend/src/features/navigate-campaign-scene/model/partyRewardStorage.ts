@@ -1,4 +1,4 @@
-import rewards from '../../../../content/party-rewards.json';
+import rewards from '../../../../../content/party-rewards.json';
 
 const STORAGE_KEY = 'dnd-party-rewards-v1';
 const knownIds = new Set(rewards.filter((item) => item.carryToNextCampaign).map((item) => item.id));

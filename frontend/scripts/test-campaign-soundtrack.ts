@@ -20,9 +20,9 @@ assert.deepEqual(getSoundtrackPlaylist(definition, undefined, 'unknown').map((tr
 assert.deepEqual(getSoundtrackPlaylist(definition, undefined, 'silent'), [], 'An explicitly silent scene does not use exploration music.');
 assert.deepEqual(getSoundtrackPlaylist(definition, 'guards', 'tunnel').map((track) => track.id), ['battle'], 'Combat takes priority over a scene playlist.');
 assert.deepEqual(getSoundtrackPlaylist(definition, 'silent', 'tunnel'), [], 'An explicitly silent battle does not use the scene playlist.');
-const gameplay = JSON.parse(readFileSync('content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
+const gameplay = JSON.parse(readFileSync('../content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
 const soundtrack: CampaignSoundtrackDefinition = gameplay.soundtrack;
-const preview = JSON.parse(readFileSync('content/campaigns/penisuela-session-preview.json', 'utf8'));
+const preview = JSON.parse(readFileSync('../content/campaigns/penisuela-session-preview.json', 'utf8'));
 const sceneBlocks: CampaignSceneBlock[] = preview.sceneBlocks;
 const canonicalPlaylist = (encounterId?: string, sceneId?: string, flags?: Readonly<Record<string, boolean>>) => getSoundtrackPlaylist(soundtrack, encounterId, sceneId, flags, sceneBlocks);
 for (const [blockId, ids] of Object.entries(soundtrack.blocks ?? {})) {

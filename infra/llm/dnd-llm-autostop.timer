@@ -1,0 +1,9 @@
+[Unit]
+Description=Limit every GPU VM boot to three hours
+
+[Timer]
+OnBootSec=3h
+Unit=dnd-llm-autostop.service
+
+[Install]
+WantedBy=timers.target

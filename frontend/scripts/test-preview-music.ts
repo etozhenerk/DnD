@@ -85,7 +85,7 @@ const pendingPlayer = createPreviewMusicPlayback(pending.audio, options, pending
 pendingPlayer.setLastSlide(false); pendingPlayer.dispose(); finishPlay(); await settle();
 assert.equal(pending.audio.paused, true, 'Late play resolution cannot restart audio after leaving the prologue.');
 
-const preview = JSON.parse(readFileSync('content/campaigns/penisuela-preview.json', 'utf8'));
+const preview = JSON.parse(readFileSync('../content/campaigns/penisuela-preview.json', 'utf8'));
 const manifest = JSON.parse(readFileSync('assets/concepts/manifest.json', 'utf8'));
 assert.equal(preview.music.title, 'Шёпот каменных стен');
 assert.equal(preview.music.fadeOutMs, 3000);
@@ -95,6 +95,6 @@ assert.ok(manifest.campaigns.some((asset: {id: string; path: string; status: str
 assert.equal(preview.slides.at(-1).id, 'penisuela-scene-kostryulka-flight');
 assert.equal(preview.outro.titleCard.durationMs, 5000);
 assert.equal(preview.outro.nextSceneId, 'hotel-overload');
-const gameplay = JSON.parse(readFileSync('content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
+const gameplay = JSON.parse(readFileSync('../content/campaigns/penisuela-gallery-gameplay.json', 'utf8'));
 assert.notEqual(preview.music.source, gameplay.soundtrack.tracks.find((track: {id: string}) => track.id === 'stone-whisper').source);
 console.log('Preview music PASS: loop, continuous ordinary slides, smooth three-second fade, silent final entry, back/cancellation, autoplay retries, late-play cleanup and canonical media references.');

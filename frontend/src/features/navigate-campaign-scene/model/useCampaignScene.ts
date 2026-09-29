@@ -1,4 +1,4 @@
-import partyRewards from '../../../../content/party-rewards.json';
+import partyRewards from '../../../../../content/party-rewards.json';
 import {toCampaignInspectableId as inspectableId} from '../../../entities/campaign-session/model/inventoryPresentation';
 import {reconcileInventorySlots} from '../../../entities/campaign-session/model/inventorySlots';
 import {useCallback, useEffect, useMemo, useState} from 'react';

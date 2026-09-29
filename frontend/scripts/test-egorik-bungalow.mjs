@@ -121,7 +121,7 @@ try {
   const parsedCloseup = journal.parseStoredGallerySessionEnvelope(JSON.parse(JSON.stringify(savedCloseup)), expectation);
   assert.equal(parsedCloseup.ok, true);
   assert.equal(replay(parsedCloseup.events).flags['egorik-bracelet-visible'], true);
-  const guide = await readFile('content/campaigns/penisuela-session-preview-guide.md', 'utf8');
+  const guide = await readFile('../content/campaigns/penisuela-session-preview-guide.md', 'utf8');
   assert.ok(guide.includes(published.readAloud));
   console.log('Egorik bungalow: PASS — assets, combat, delayed truth, route gating, repeatable views, undo and journal restore.');
 } finally {

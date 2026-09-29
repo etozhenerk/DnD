@@ -1,4 +1,4 @@
-import creditsData from '../../../../content/campaigns/penisuela-credits.json';
+import creditsData from '../../../../../content/campaigns/penisuela-credits.json';
 
 export interface CampaignCreditsPhoto {
   id: string;

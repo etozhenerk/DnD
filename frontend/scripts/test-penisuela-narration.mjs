@@ -27,7 +27,7 @@ try {
   }
   for(const claimed of [false,true]) prose.push([`olva/reward/${claimed}`,view({...state,flags:{'olva-table-complete':true,'olva-table-reward-shown':true,'olva-table-reward-claimed':claimed}}).narration]);
   for(const [id,text] of prose) assert.doesNotMatch(text,/[«»]|(?:^|\n)\s*[—–]\s|(?:Оливия|Станис|Полинетта|Kreed|Angel|Grey Wiese)\s*:/u,id);
-  const guide=await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8');
+  const guide=await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8');
   for(const scene of preview.scenes) for(const v of [scene,...scene.interactionViews??[]]) if(v.readAloud) assert.ok(guide.includes(v.readAloud),`${scene.id}/${v.id}: guide`);
   const stas=gameplay.storyScenes.find(s=>s.id==='closed-bar').actions.find(a=>a.id==='invite-stas-to-olva');
   assert.match(stas.resolution,/«/u,'Original character speech is retained separately');

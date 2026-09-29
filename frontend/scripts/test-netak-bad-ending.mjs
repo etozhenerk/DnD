@@ -55,7 +55,7 @@ try {
   const legacy={...state,selectedEnding:null,flags:{'andrey-defeat-fallback':true},combat:null};
   assert.ok(create(d,legacy,heroes,'defeat').some(e=>e.type==='ending-selected'));
  }
- const guide=await readFile('content/campaigns/penisuela-session-preview-guide.md','utf8');
+ const guide=await readFile('../content/campaigns/penisuela-session-preview-guide.md','utf8');
  for(const id of ['bad-ending-villa','bad-ending-netak-wedding','bad-ending-magical-prison']){
   assert.equal(preview.scenes.filter(s=>s.id===id).length,1);assert.equal(d.storyScenes.filter(s=>s.id===id).length,1);
   const scene=preview.scenes.find(s=>s.id===id);await access(scene.background);assert.ok(guide.includes(scene.readAloud));

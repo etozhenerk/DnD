@@ -11,8 +11,8 @@ description: Verify a D&D campaign release with terminal checks and Codex's buil
 
 1. Прочитать `AGENTS.md`, [браузерный чеклист](references/browser-checklist.md) и затронутые документы кампании.
 2. Применить `$maintain-dnd-world` и устранить контентные блокеры.
-3. Запустить `npm run typecheck`, `npm run build` и `npm run build:pages`.
-4. Запустить локальный dev или preview server без Playwright.
+3. Из `frontend/` запустить `npm run typecheck`, `npm run build` и `npm run build:pages`.
+4. Из `frontend/` запустить локальный dev или preview server без Playwright.
 
 ## Встроенный браузер
 

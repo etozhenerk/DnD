@@ -15,7 +15,8 @@ import {
 } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const FRONTEND_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const REPO_ROOT = resolve(FRONTEND_ROOT, '..');
 const CAMPAIGN_DOCS = 'docs/campaigns/penisuela';
 const CAMPAIGN_ID = 'penisuela';
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -89,7 +90,8 @@ function repoPath(relativePath, source = relativePath) {
     fail('PATH_ABSOLUTE', source, `Ожидался путь относительно репозитория, получен: ${relativePath}`);
     return null;
   }
-  const absolutePath = resolve(REPO_ROOT, relativePath);
+  const frontendPath = relativePath.startsWith('assets/') || relativePath.startsWith('src/') || relativePath.startsWith('scripts/');
+  const absolutePath = resolve(frontendPath ? FRONTEND_ROOT : REPO_ROOT, relativePath);
   if (absolutePath !== REPO_ROOT && !absolutePath.startsWith(`${REPO_ROOT}${sep}`)) {
     fail('PATH_ESCAPE', source, `Путь выходит за пределы репозитория: ${relativePath}`);
     return null;

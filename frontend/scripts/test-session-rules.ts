@@ -29,11 +29,11 @@ import {
 } from '../src/features/run-combat/model/combatCommands.ts';
 
 const definition = JSON.parse(readFileSync(
-  new URL('../content/campaigns/penisuela-gallery-gameplay.json', import.meta.url),
+  new URL('../../content/campaigns/penisuela-gallery-gameplay.json', import.meta.url),
   'utf8',
 )) as GalleryGameplayDefinition;
 const allHeroes = JSON.parse(readFileSync(
-  new URL('../content/characters.json', import.meta.url),
+  new URL('../../content/characters.json', import.meta.url),
   'utf8',
 )) as GalleryHeroSource[];
 const partyIds = new Set(['bubsilda', 'linda', 'lambert', 'golovach-lena', 'thorin-pukoshchit']);

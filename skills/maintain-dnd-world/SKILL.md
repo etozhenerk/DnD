@@ -33,7 +33,7 @@ description: Maintain the canonical structure, references, schemas, rules, and c
 1. Сначала обновить описание схемы в `content/README.md`, если меняется структура.
 2. Обновить канонический JSON без дублирования фактов.
 3. Обновить все ссылки и соответствующие `*-guide.md`.
-4. Не переносить сырые бинарные исходники из `source-materials/` в Git. Утверждённые оптимизированные изображения оформлять через `assets/concepts/` и регистрировать в `assets/concepts/manifest.json`.
+4. Не переносить сырые бинарные исходники из `source-materials/` в Git. Утверждённые оптимизированные изображения оформлять через `frontend/assets/concepts/` и регистрировать в `frontend/assets/concepts/manifest.json`. Логические пути `assets/...` в JSON сохранять.
 5. Явно перечислить новые канонические факты и допущения.
 
 ## Инварианты

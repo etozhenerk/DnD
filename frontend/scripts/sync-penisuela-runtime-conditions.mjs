@@ -4,8 +4,8 @@ import {readFile, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 
 const root = resolve(import.meta.dirname, '..');
-const graphPath = resolve(root, 'docs/campaigns/penisuela/story-graph.json');
-const gameplayPath = resolve(root, 'content/campaigns/penisuela-gallery-gameplay.json');
+const graphPath = resolve(root, '../docs/campaigns/penisuela/story-graph.json');
+const gameplayPath = resolve(root, '../content/campaigns/penisuela-gallery-gameplay.json');
 
 const graph = JSON.parse(await readFile(graphPath, 'utf8'));
 const gameplay = JSON.parse(await readFile(gameplayPath, 'utf8'));

@@ -1,11 +1,11 @@
-import productRoadmapSource from '../../../../docs/product-roadmap.md?raw';
-import stage1Source from '../../../../docs/roadmap/stage-1-static-mvp.md?raw';
-import stage2Source from '../../../../docs/roadmap/stage-2-agent-campaign.md?raw';
-import stage3Source from '../../../../docs/roadmap/stage-3-backend.md?raw';
-import stage4Source from '../../../../docs/roadmap/stage-4-character-editor.md?raw';
-import stage5Source from '../../../../docs/roadmap/stage-5-auth.md?raw';
-import stage6Source from '../../../../docs/roadmap/stage-6-campaign-studio.md?raw';
-import stage7Source from '../../../../docs/roadmap/stage-7-game-sessions.md?raw';
+import productRoadmapSource from '../../../../../docs/product-roadmap.md?raw';
+import stage1Source from '../../../../../docs/roadmap/stage-1-static-mvp.md?raw';
+import stage2Source from '../../../../../docs/roadmap/stage-2-agent-campaign.md?raw';
+import stage3Source from '../../../../../docs/roadmap/stage-3-backend.md?raw';
+import stage4Source from '../../../../../docs/roadmap/stage-4-character-editor.md?raw';
+import stage5Source from '../../../../../docs/roadmap/stage-5-auth.md?raw';
+import stage6Source from '../../../../../docs/roadmap/stage-6-campaign-studio.md?raw';
+import stage7Source from '../../../../../docs/roadmap/stage-7-game-sessions.md?raw';
 
 export type MarkdownBlock =
   | {type: 'heading'; level: 3 | 4; text: string}

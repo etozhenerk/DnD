@@ -181,11 +181,11 @@ assert.equal(
 );
 
 const galleryGameplay = JSON.parse(readFileSync(
-  new URL('../content/campaigns/penisuela-gallery-gameplay.json', import.meta.url),
+  new URL('../../content/campaigns/penisuela-gallery-gameplay.json', import.meta.url),
   'utf8',
 )) as {npcBehaviors: NpcBehaviorDefinition[]};
 const finalBoss = JSON.parse(readFileSync(
-  new URL('../content/campaigns/penisuela-final-boss.json', import.meta.url),
+  new URL('../../content/campaigns/penisuela-final-boss.json', import.meta.url),
   'utf8',
 )) as {npcBehavior: NpcBehaviorDefinition};
 const canonicalShow18 = galleryGameplay.npcBehaviors.find(

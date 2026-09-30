@@ -10,7 +10,7 @@ go vet ./...
 DATABASE_URL='postgres://...' CORS_ALLOWED_ORIGINS='https://example.org' go run ./cmd/api
 ```
 
-`go` запускается из `backend/`. Сервер слушает `PORT` (по умолчанию `8080`) и читает канонические `../content/character-creation.json`, `../content/races.json` и `../content/rules.json`. Для контейнера задайте `CONTENT_DIR` и включите эти три файла в образ. `DATABASE_URL` обязателен; база доступна только из облачной сети. Для облачного подключения используйте TLS и секрет из Lockbox, не сохраняйте строку подключения в репозитории.
+`go` запускается из `backend/`. Сервер слушает `PORT` (по умолчанию `8080`) и читает канонические `../content/character-creation.json`, `../content/races.json` и `../content/rules.json`. Контейнер включает эти три файла и задаёт `CONTENT_DIR`. Для локального запуска используйте `DATABASE_URL`. В облаке используются отдельные `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_NAME`, `DB_PASSWORD`, `DB_SSL_ROOT_CERT`; пароль приходит из Lockbox, TLS проверяет сертификат и имя хоста (`verify-full`). База доступна только из облачной сети. Пул каждого экземпляра API ограничен двумя соединениями.
 
 `CORS_ALLOWED_ORIGINS` — список полных origin через запятую: схема, домен и при необходимости порт, без пути и завершающего `/`. Укажите действительный адрес фронтенда при развёртывании. `*` не поддерживается. Разрешены `GET`, `POST`, `PATCH`, предварительный `OPTIONS`, заголовки `Authorization` и `Content-Type`. Токен анонимного черновика передаётся как `Authorization: Bearer <token>`; фронтенд должен хранить его локально и не включать в URL. Авторизации пользователя пока нет.
 
@@ -26,4 +26,14 @@ DATABASE_URL='postgres://...' CORS_ALLOWED_ORIGINS='https://example.org' go run 
 
 Миграция [`000001_character_creator.up.sql`](migrations/000001_character_creator.up.sql) применена 29 сентября 2026 года к базе `dnd` кластера `dnd-characters-pg` через Yandex WebSQL. Она создаёт `schema_migrations`, `users`, `character_drafts`, `characters`, `character_abilities`, `character_items` и `character_assets`. Повторно запускать файл в этой базе нельзя. Схема и сетевые параметры описаны в [`docs/architecture/character-database.md`](../docs/architecture/character-database.md) и [`docs/architecture/yandex-postgres.md`](../docs/architecture/yandex-postgres.md).
 
-Реализация API пока не развёрнута в облаке. При развёртывании нужна приватная сетевая связь с PostgreSQL и точный CORS origin фронтенда.
+Миграция [`000002_api_permissions.up.sql`](migrations/000002_api_permissions.up.sql) применена 30 сентября 2026 года: пользователь `dnd_api` получает права на черновики и чтение/создание готовых персонажей. Он не управляет схемой, пользователями и миграциями.
+
+## Контейнер и деплой
+
+Образ собирается из корня репозитория:
+
+```bash
+docker build -f backend/Dockerfile -t dnd-api .
+```
+
+Workflow [deploy-yandex-backend.yml](../.github/workflows/deploy-yandex-backend.yml) проверяет Go, собирает образ и публикует API из `main`. Секретов GitHub и постоянных ключей CI нет: используется OIDC. Параметры облака, HTTPS адрес и порядок проверки описаны в [yandex-backend.md](../docs/architecture/yandex-backend.md).

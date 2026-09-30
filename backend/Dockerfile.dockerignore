@@ -1,0 +1,10 @@
+**
+!backend/
+!backend/**
+!content/
+!content/character-creation.json
+!content/races.json
+!content/rules.json
+backend/.env*
+backend/tmp/
+backend/dnd-api

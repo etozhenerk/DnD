@@ -31,7 +31,8 @@ func New(ctx context.Context, url string) (*Store, error) {
 	if err != nil {
 		return nil, err
 	}
-	cfg.MaxConns = 5
+	cfg.MaxConns = 2
+	cfg.MaxConnIdleTime = time.Minute
 	pool, err := pgxpool.NewWithConfig(ctx, cfg)
 	if err != nil {
 		return nil, err

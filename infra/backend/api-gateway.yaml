@@ -1,0 +1,20 @@
+openapi: 3.0.0
+info:
+  title: DnD character API gateway
+  version: 1.0.0
+paths:
+  /{proxy+}:
+    x-yc-apigateway-any-method:
+      parameters:
+        - name: proxy
+          in: path
+          required: false
+          schema:
+            type: string
+            default: '-'
+          style: simple
+          explode: false
+      x-yc-apigateway-integration:
+        type: serverless_containers
+        container_id: bbam71p2dn50q57l250i
+        service_account_id: aje3b6tpq50p9b5ae4mf

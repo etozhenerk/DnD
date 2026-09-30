@@ -297,15 +297,15 @@ func main() {
 	if err != nil {
 		log.Fatalf("load creator rules: %v", err)
 	}
-	dbURL := os.Getenv("DATABASE_URL")
-	if dbURL == "" {
-		log.Fatal("DATABASE_URL is required")
+	dbURL, err := databaseURL(os.Getenv)
+	if err != nil {
+		log.Fatal(err)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	st, err := storage.New(ctx, dbURL)
 	if err != nil {
-		log.Fatalf("connect database: %v", err)
+		log.Fatalf("connect database failed (%T)", err)
 	}
 	defer st.Pool.Close()
 	port := os.Getenv("PORT")

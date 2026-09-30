@@ -1,0 +1,101 @@
+name: Deploy backend to Yandex Cloud
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'content/character-creation.json'
+      - 'content/races.json'
+      - 'content/rules.json'
+      - '.github/workflows/deploy-yandex-backend.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: yandex-backend
+  cancel-in-progress: false
+
+env:
+  YC_FOLDER_ID: b1g8siv8ve2si1qp04nm
+  YC_REGISTRY_ID: crp3ok452qdp2r44ene5
+  YC_BACKEND_SA_ID: aje20v69nl71ka3gjm66
+  YC_RUNTIME_SA_ID: aje99fiebjm3lg4k2fpk
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+
+      - name: Test and vet
+        working-directory: backend
+        run: |
+          go test ./...
+          go vet ./...
+
+      - name: Login to Container Registry with OIDC
+        uses: yc-actions/yc-cr-login@v2
+        with:
+          yc-sa-id: ${{ env.YC_BACKEND_SA_ID }}
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: backend/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: cr.yandex/${{ env.YC_REGISTRY_ID }}/dnd-api:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Deploy private container revision
+        uses: yc-actions/yc-sls-container-deploy@v5
+        with:
+          yc-sa-id: ${{ env.YC_BACKEND_SA_ID }}
+          folder-id: ${{ env.YC_FOLDER_ID }}
+          container-name: dnd-api
+          revision-service-account-id: ${{ env.YC_RUNTIME_SA_ID }}
+          revision-image-url: cr.yandex/${{ env.YC_REGISTRY_ID }}/dnd-api:${{ github.sha }}
+          revision-cores: '1'
+          revision-memory: 512Mb
+          revision-core-fraction: '100'
+          revision-concurrency: '6'
+          revision-execution-timeout: '30'
+          revision-provisioned: '0'
+          revision-zone-instances-limit: '1'
+          revision-network-id: enpeeej3ge2i9lqn8cer
+          revision-log-options-folder-id: ${{ env.YC_FOLDER_ID }}
+          revision-env: |
+            DB_HOST=rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net
+            DB_PORT=6432
+            DB_USER=dnd_api
+            DB_NAME=dnd
+            CORS_ALLOWED_ORIGINS=http://dnd-etozhenerk-b1g8siv8ve2si1qp04nm.website.yandexcloud.net,https://dnd-etozhenerk-b1g8siv8ve2si1qp04nm.website.yandexcloud.net,https://etozhenerk.github.io
+          revision-secrets: |
+            DB_PASSWORD=e6q52abgke68mcms2ntu/e6qcp09mdr8hvlce0tra/postgresql_password
+
+      - name: Smoke test HTTPS API and database
+        env:
+          API_URL: https://d5dopqqib47kpsh6929m.jki8ffxa.apigw.yandexcloud.net
+        run: |
+          for route in health creator/options characters; do
+            curl --fail --silent --show-error --max-time 40 \
+              --retry 6 --retry-delay 5 --retry-all-errors \
+              "$API_URL/$route" > /dev/null
+          done

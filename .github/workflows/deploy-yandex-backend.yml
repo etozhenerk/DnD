@@ -32,6 +32,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /backend/
+            /content/character-creation.json
+            /content/races.json
+            /content/rules.json
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -59,7 +66,9 @@ jobs:
           context: .
           file: backend/Dockerfile
           platforms: linux/amd64
-          push: true
+          outputs: type=image,push=true,oci-mediatypes=false
+          provenance: false
+          sbom: false
           tags: cr.yandex/${{ env.YC_REGISTRY_ID }}/dnd-api:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

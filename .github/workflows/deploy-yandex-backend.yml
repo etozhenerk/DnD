@@ -46,7 +46,7 @@ jobs:
           --health-retries 5
     env:
       TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/dnd_test?sslmode=disable
-      CONTRACT_FIXTURE_DIR: ${{ runner.temp }}/dnd-api-fixtures
+      CONTRACT_FIXTURE_DIR: /tmp/dnd-api-fixtures
     steps:
       - name: Checkout
         uses: actions/checkout@v4

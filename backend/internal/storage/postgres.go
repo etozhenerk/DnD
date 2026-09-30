@@ -102,11 +102,7 @@ func (s *Store) Complete(ctx context.Context, id, token string, catalog *creator
 	if err = json.Unmarshal([]byte(form), &data); err != nil {
 		return creator.Character{}, creator.Validation{}, err
 	}
-	validation, ch := catalog.Validate(data)
-	if ruleset != catalog.Rules.ID {
-		validation.Valid = false
-		validation.Issues = append(validation.Issues, creator.Issue{Path: "rulesetId", Code: "obsolete", Message: "Правила черновика больше не доступны"})
-	}
+	validation, ch := catalog.ValidateForRuleset(ruleset, data)
 	if !validation.Valid {
 		return creator.Character{}, validation, nil
 	}
@@ -118,15 +114,8 @@ func (s *Store) Complete(ctx context.Context, id, token string, catalog *creator
 	}
 	ch.CreatedAt = createdAt.Format(time.RFC3339Nano)
 	for i, x := range ch.Abilities {
-		var scope any
-		var max any
-		if x.Uses != nil {
-			scope = x.Uses.Scope
-			max = x.Uses.Max
-		}
-		_, err = tx.Exec(ctx, `INSERT INTO character_abilities (character_id,ability_id,position,name,description,effect_text,trigger,automation_mode,effects,uses_scope,uses_max) VALUES ($1,$2,$3,$4,$5,$6,$7,'manual','[]'::jsonb,$8,$9)`, ch.ID, x.ID, i+1, x.Name, x.Description, x.EffectText, x.Trigger, scope, max)
-		if err != nil {
-			return creator.Character{}, validation, fmt.Errorf("insert ability: %w", err)
+		if err := insertAbility(ctx, tx, ch.ID, i+1, x); err != nil {
+			return creator.Character{}, validation, err
 		}
 	}
 	for i, x := range ch.Equipment {
@@ -201,25 +190,7 @@ func (s *Store) GetCharacter(ctx context.Context, id string) (creator.Character,
 	if c.Personality == nil {
 		c.Personality = []string{}
 	}
-	ar, err := s.Pool.Query(ctx, `SELECT ability_id,name,description,effect_text,trigger,uses_scope,uses_max FROM character_abilities WHERE character_id=$1 ORDER BY position`, id)
-	if err != nil {
-		return c, err
-	}
-	for ar.Next() {
-		var x creator.Ability
-		var scope *string
-		var max *int
-		if err = ar.Scan(&x.ID, &x.Name, &x.Description, &x.EffectText, &x.Trigger, &scope, &max); err != nil {
-			ar.Close()
-			return c, err
-		}
-		if scope != nil && max != nil {
-			x.Uses = &creator.Uses{Scope: *scope, Max: *max}
-		}
-		c.Abilities = append(c.Abilities, x)
-	}
-	err = ar.Err()
-	ar.Close()
+	c.Abilities, err = s.loadAbilities(ctx, id)
 	if err != nil {
 		return c, err
 	}

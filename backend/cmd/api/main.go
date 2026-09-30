@@ -111,7 +111,7 @@ func (s *server) createDraft(w http.ResponseWriter, r *http.Request) {
 	if !s.ready(w) {
 		return
 	}
-	d, token, err := s.store.CreateDraft(r.Context(), s.catalog.Rules.ID)
+	d, token, err := s.store.CreateDraft(r.Context(), s.catalog.RulesetID)
 	if err != nil {
 		internal(w, err)
 		return
@@ -184,6 +184,9 @@ func (s *server) patchDraft(w http.ResponseWriter, r *http.Request) {
 		fail(w, 400, "invalid_value", "Значение раздела должно быть объектом")
 		return
 	}
+	if body.Section == "abilities" && !s.checkAbilityPatch(w, r, id, token, body.Value) {
+		return
+	}
 	d, err := s.store.PatchDraft(r.Context(), id, token, body.Section, body.Value)
 	if err != nil {
 		storeFailure(w, err)
@@ -225,7 +228,7 @@ func (s *server) validateDraft(w http.ResponseWriter, r *http.Request) {
 		storeFailure(w, err)
 		return
 	}
-	v, _ := s.catalog.Validate(d.FormData)
+	v, _ := s.catalog.ValidateForRuleset(d.RulesetID, d.FormData)
 	jsonResponse(w, 200, v)
 }
 func (s *server) completeDraft(w http.ResponseWriter, r *http.Request) {

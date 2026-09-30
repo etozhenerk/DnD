@@ -1,0 +1,32 @@
+"""Check actual HTTP response fixtures emitted by integration tests against OpenAPI."""
+
+import json
+from pathlib import Path
+import sys
+
+from jsonschema import Draft202012Validator, FormatChecker
+import yaml
+
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def main():
+    contract = yaml.safe_load((ROOT / "shared/api/openapi.yaml").read_text())
+    fixtures = Path(sys.argv[1])
+    cases = {
+        "options.json": contract["paths"]["/creator/options"]["get"]["responses"]["200"]["content"]["application/json"]["schema"],
+        "validation.json": {"$ref": "#/components/schemas/Validation"},
+        "character.json": {"$ref": "#/components/schemas/Character"},
+        "legacy-character.json": {"$ref": "#/components/schemas/Character"},
+    }
+    for name, schema in cases.items():
+        wrapped = {"allOf": [schema], "components": contract["components"]}
+        Draft202012Validator.check_schema(wrapped)
+        validator = Draft202012Validator(wrapped, format_checker=FormatChecker())
+        validator.validate(json.loads((fixtures / name).read_text()))
+        print(f"PASS: {name} matches OpenAPI")
+
+
+if __name__ == "__main__":
+    main()

@@ -6,11 +6,19 @@ on:
     paths:
       - backend/**
       - shared/api/**
+      - content/character-creation.json
+      - content/character-abilities.json
+      - content/races.json
+      - content/rules.json
       - .github/workflows/check-backend.yml
   pull_request:
     paths:
       - backend/**
       - shared/api/**
+      - content/character-creation.json
+      - content/character-abilities.json
+      - content/races.json
+      - content/rules.json
       - .github/workflows/check-backend.yml
 
 permissions:
@@ -19,6 +27,24 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: dnd_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/dnd_test?sslmode=disable
+      CONTRACT_FIXTURE_DIR: ${{ runner.temp }}/dnd-api-fixtures
     defaults:
       run:
         working-directory: backend
@@ -29,8 +55,10 @@ jobs:
           sparse-checkout: |
             /backend/
             /content/character-creation.json
+            /content/character-abilities.json
             /content/races.json
             /content/rules.json
+            /shared/api/openapi.yaml
       - uses: actions/setup-go@v7
         with:
           go-version: '1.27.1'
@@ -39,6 +67,11 @@ jobs:
         run: |
           python3 -m unittest discover -s scripts -p 'test_code_style.py'
           python3 scripts/check_code_style.py
-      - run: go test ./...
+      - run: go test -race ./...
+      - name: Check HTTP responses against OpenAPI
+        run: |
+          python3 -m venv "$RUNNER_TEMP/dnd-schema-venv"
+          "$RUNNER_TEMP/dnd-schema-venv/bin/pip" install --disable-pip-version-check PyYAML==6.0.3 jsonschema==4.25.1
+          "$RUNNER_TEMP/dnd-schema-venv/bin/python" scripts/verify_api_responses.py "$CONTRACT_FIXTURE_DIR"
       - run: go vet ./...
       - run: go build ./cmd/api

@@ -6,6 +6,7 @@ on:
     paths:
       - 'backend/**'
       - 'content/character-creation.json'
+      - 'content/character-abilities.json'
       - 'content/races.json'
       - 'content/rules.json'
       - '.github/workflows/deploy-yandex-backend.yml'
@@ -29,6 +30,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: dnd_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/dnd_test?sslmode=disable
+      CONTRACT_FIXTURE_DIR: ${{ runner.temp }}/dnd-api-fixtures
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,8 +55,10 @@ jobs:
           sparse-checkout: |
             /backend/
             /content/character-creation.json
+            /content/character-abilities.json
             /content/races.json
             /content/rules.json
+            /shared/api/openapi.yaml
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -51,8 +71,11 @@ jobs:
         run: |
           python3 -m unittest discover -s scripts -p 'test_code_style.py'
           python3 scripts/check_code_style.py
-          go test ./...
+          go test -race ./...
           go vet ./...
+          python3 -m venv "$RUNNER_TEMP/dnd-schema-venv"
+          "$RUNNER_TEMP/dnd-schema-venv/bin/pip" install --disable-pip-version-check PyYAML==6.0.3 jsonschema==4.25.1
+          "$RUNNER_TEMP/dnd-schema-venv/bin/python" scripts/verify_api_responses.py "$CONTRACT_FIXTURE_DIR"
 
       - name: Login to Container Registry with OIDC
         uses: yc-actions/yc-cr-login@ee42362bcacb854964afa3a3180ca8ae6dd388f8 # v3.0.2, OIDC

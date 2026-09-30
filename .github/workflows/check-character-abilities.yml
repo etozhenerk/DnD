@@ -6,6 +6,7 @@ on:
     paths:
       - 'docs/architecture/character-abilities-v1/**'
       - 'shared/api/proposals/character-abilities-v1.yaml'
+      - 'shared/api/openapi.yaml'
       - 'backend/scripts/verify_ability_proposal.py'
       - 'content/character-creation.json'
       - 'content/character-abilities.json'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'docs/architecture/character-abilities-v1/**'
       - 'shared/api/proposals/character-abilities-v1.yaml'
+      - 'shared/api/openapi.yaml'
       - 'backend/scripts/verify_ability_proposal.py'
       - 'content/character-creation.json'
       - 'content/character-abilities.json'
@@ -39,6 +41,7 @@ jobs:
             /backend/scripts/verify_ability_proposal.py
             /docs/architecture/character-abilities-v1/
             /shared/api/proposals/character-abilities-v1.yaml
+            /shared/api/openapi.yaml
             /content/character-creation.json
             /content/character-abilities.json
             /content/characters.json

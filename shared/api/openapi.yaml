@@ -1,8 +1,9 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.2.0
+  version: 0.3.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
+x-ability-rules-source: content/character-abilities.json
 servers:
   - url: /
 paths:
@@ -23,7 +24,7 @@ paths:
   /creator/options:
     get:
       operationId: getCreatorOptions
-      summary: Получить правила v1 и доступные расы
+      summary: Получить версию конструктора, правила характеристик, навыков и расы
       responses:
         '200':
           description: Канонические правила и игровые расы
@@ -31,8 +32,10 @@ paths:
             application/json:
               schema:
                 type: object
-                required: [rules, races]
+                required: [rulesetId, rules, races, abilityRules]
                 properties:
+                  rulesetId: {type: string, const: character-creation-v2}
+                  abilityRules: {$ref: '#/components/schemas/AbilityRules'}
                   rules: {type: object}
                   races:
                     type: array
@@ -41,7 +44,7 @@ paths:
     post:
       operationId: createDraft
       summary: Начать анонимный черновик
-      description: Секрет возвращается один раз. Клиент хранит его локально и передаёт Bearer-токеном.
+      description: Новые черновики используют character-creation-v2. Секрет возвращается один раз. Клиент хранит его локально и передаёт Bearer-токеном. Начатые ранее черновики character-creation-v1 сохраняют прежнюю валидацию описательных навыков.
       responses:
         '201':
           description: Созданный черновик
@@ -67,7 +70,7 @@ paths:
     patch:
       operationId: patchDraft
       summary: Сохранить один раздел анкеты
-      description: Разделы appearance, race, class, attributes, abilities, equipment. Клиент отправляет изменения последовательно; сервер атомарно заменяет выбранный раздел.
+      description: Разделы appearance, race, class, attributes, abilities, equipment. Клиент отправляет изменения последовательно; сервер атомарно заменяет выбранный раздел. Для abilities в v2 неизвестные поля и неверные типы дают 400; неполный раздел разрешён, игровые пределы проверяются при validate/complete.
       security: [{draftToken: []}]
       requestBody:
         required: true
@@ -252,11 +255,14 @@ components:
               type: object
               additionalProperties: {type: integer}
             abilities:
-              type: object
-              properties:
-                items:
-                  type: array
-                  items: {$ref: '#/components/schemas/Ability'}
+              anyOf:
+                - {$ref: '#/components/schemas/PartialCharacterSkillsInput'}
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items: {$ref: '#/components/schemas/Ability'}
+              description: Форма определяется rulesetId черновика; старые анкеты v1 используют описательные Ability.
             equipment:
               type: object
               properties:
@@ -305,7 +311,9 @@ components:
           properties:
             scope: {type: string, enum: [turn, round, battle, location, campaign]}
             max: {type: integer, minimum: 1}
-      description: В действующем API эффект исполняется мастером вручную. Правила в content/character-abilities.json утверждены, но ещё не реализованы; формальные effects пока отклоняются.
+        automationMode: {type: string, const: manual}
+        effects: {type: array, maxItems: 0, items: {type: object}}
+      description: Описательный навык старой анкеты v1 или повествовательная особенность v2. Формальные эффекты отсутствуют.
     Item:
       type: object
       required: [id, name]
@@ -333,6 +341,7 @@ components:
               path: {type: string}
               code: {type: string}
               message: {type: string}
+        skills: {$ref: '#/components/schemas/SkillValidation'}
         derived:
           type: object
           properties:
@@ -368,11 +377,230 @@ components:
               additionalProperties: {type: integer}
             abilities:
               type: array
-              items: {$ref: '#/components/schemas/Ability'}
+              items:
+                anyOf:
+                  - {$ref: '#/components/schemas/NormalizedAbility'}
+                  - {$ref: '#/components/schemas/Ability'}
             equipment:
               type: array
               items: {$ref: '#/components/schemas/Item'}
             rulesetId: {type: string}
+    ModifierStat:
+      type: string
+      enum: [strength, dexterity, wisdom, intelligence, charisma]
+    ProfileId:
+      type: string
+      enum:
+        - damage-d8-twice
+        - damage-2d6-once
+        - damage-2d8-once
+        - healing-d6-twice
+        - healing-d8-twice
+        - healing-2d6-once
+        - healing-2d8-once
+    BasicActionInput:
+      type: object
+      additionalProperties: false
+      required: [name, description, modifierStat]
+      properties:
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, maxLength: 2000}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+    CustomAbilityInput:
+      type: object
+      additionalProperties: false
+      required: [id, name, description, profileId, modifierStat]
+      properties:
+        id: {type: string, maxLength: 80, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, maxLength: 2000}
+        profileId: {$ref: '#/components/schemas/ProfileId'}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        iconAssetId:
+          type: [string, 'null']
+          format: uuid
+          description: Необязательная иконка; использовать после подключения хранилища.
+    NarrativeAbilityInput:
+      type: object
+      additionalProperties: false
+      required: [id, name, description]
+      properties:
+        id: {type: string, maxLength: 80, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, minLength: 1, maxLength: 2000, pattern: '\S'}
+      description: Повествовательная особенность без формального игрового усиления.
+    CharacterSkillsInput:
+      type: object
+      additionalProperties: false
+      required: [basicAction, items, narrativeItems]
+      properties:
+        basicAction: {$ref: '#/components/schemas/BasicActionInput'}
+        items:
+          type: array
+          maxItems: 3
+          items: {$ref: '#/components/schemas/CustomAbilityInput'}
+        narrativeItems:
+          type: array
+          maxItems: 3
+          items: {$ref: '#/components/schemas/NarrativeAbilityInput'}
+      x-budget-points: 6
+      x-unique-fields: [items.id, items.profileId, narrativeItems.id]
+      description: |
+        Полный раздел abilities для validate/complete черновика character-creation-v2.
+        Сервер проверяет уникальность ID во всём разделе, включая reserved basic-attack,
+        уникальность профилей, бюджет и существование выбранной характеристики.
+        Частичный черновик можно сохранять без соблюдения required полей;
+        эта полная схема применяется при validate/complete.
+    AbilityProfile:
+      type: object
+      additionalProperties: false
+      required: [id, kind, points, dice, uses, target]
+      properties:
+        id: {$ref: '#/components/schemas/ProfileId'}
+        kind: {type: string, enum: [damage, healing]}
+        points: {type: integer, minimum: 2, maximum: 4}
+        dice:
+          type: object
+          additionalProperties: false
+          required: [count, sides]
+          properties:
+            count: {type: integer, minimum: 1, maximum: 2}
+            sides: {type: integer, enum: [6, 8]}
+        uses:
+          type: object
+          additionalProperties: false
+          required: [scope, max]
+          properties:
+            scope: {type: string, const: battle}
+            max: {type: integer, minimum: 1, maximum: 2}
+        target: {type: string, enum: [one-enemy, one-friendly]}
+      description: Серверный каталог; клиент не задаёт цену, кубики или частоту.
+    SkillValidation:
+      type: object
+      additionalProperties: false
+      required: [valid, pointsSpent, pointsBudget, issues]
+      properties:
+        valid: {type: boolean}
+        pointsSpent: {type: integer, minimum: 0}
+        pointsBudget: {type: integer, const: 6}
+        issues:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [path, code, message]
+            properties:
+              path: {type: string}
+              code:
+                type: string
+                enum: [required, invalid, unknown_profile, unknown_stat, duplicate_id, duplicate_profile, too_many, too_long, budget, asset_unavailable]
+              message: {type: string}
+    NormalizedAbility:
+      type: object
+      additionalProperties: false
+      required: [id, name, description, profileId, modifierStat, effectText, automationMode, trigger, effects, uses]
+      properties:
+        id: {type: string}
+        name: {type: string}
+        description: {type: string}
+        profileId:
+          anyOf:
+            - {$ref: '#/components/schemas/ProfileId'}
+            - {type: string, const: basic-attack}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        effectText: {type: string, readOnly: true}
+        automationMode: {type: string, const: automatic, readOnly: true}
+        trigger: {type: string, const: action, readOnly: true}
+        effects:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            type: object
+            additionalProperties: false
+            required: [rulesetId, profileId, type, target, dice, modifierStat, modifier]
+            properties:
+              rulesetId: {type: string, const: character-abilities-v1}
+              profileId:
+                anyOf:
+                  - {$ref: '#/components/schemas/ProfileId'}
+                  - {type: string, const: basic-attack}
+              modifier: {type: integer}
+              attackBonus: {type: integer, description: Присутствует только у урона, уже включает выбранный модификатор}
+              type: {type: string, enum: [damage, healing]}
+              target: {type: string, enum: [one-enemy, one-friendly]}
+              dice:
+                type: object
+                additionalProperties: false
+                required: [count, sides]
+                properties:
+                  count: {type: integer, minimum: 1, maximum: 2}
+                  sides: {type: integer, enum: [6, 8]}
+              modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        uses:
+          type: [object, 'null']
+          additionalProperties: false
+          required: [scope, max]
+          properties:
+            scope: {type: string, const: battle}
+            max: {type: integer, minimum: 1, maximum: 2}
+        iconAssetId: {type: [string, 'null'], format: uuid}
+      description: |
+        Результат серверной нормализации, не вход для PATCH.
+        Автоматическая механика определена структурированными данными;
+        её подключение к игровому runtime — последующий этап.
+    PartialCharacterSkillsInput:
+      type: object
+      additionalProperties: false
+      properties:
+        basicAction:
+          type: object
+          additionalProperties: false
+          properties:
+            name: {type: string}
+            description: {type: string}
+            modifierStat: {type: string}
+        items:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              id: {type: string}
+              name: {type: string}
+              description: {type: string}
+              profileId: {type: string}
+              modifierStat: {type: string}
+              iconAssetId: {type: [string, 'null']}
+        narrativeItems:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            properties:
+              id: {type: string}
+              name: {type: string}
+              description: {type: string}
+      description: Неполный ввод для сохранения раздела. Вычисленные поля (effects, uses, points, effectText) не принимаются.
+    AbilityRules:
+      type: object
+      required: [id, status, characterCreationRulesetId, sourceRulesVersion, sourceCharacterCreationRulesetId, budget, modifierStats, basicAction, profiles, resolution, narrativeAbilities]
+      properties:
+        id: {type: string, const: character-abilities-v1}
+        status: {type: string, const: approved}
+        characterCreationRulesetId: {type: string, const: character-creation-v2}
+        sourceRulesVersion: {type: integer, const: 1}
+        sourceCharacterCreationRulesetId: {type: string, const: character-creation-v1}
+        budget: {type: object}
+        modifierStats:
+          type: array
+          items: {$ref: '#/components/schemas/ModifierStat'}
+        basicAction: {type: object}
+        profiles:
+          type: array
+          items: {$ref: '#/components/schemas/AbilityProfile'}
+        resolution: {type: object}
+        narrativeAbilities: {type: object}
   responses:
     BadRequest:
       description: Неверный запрос

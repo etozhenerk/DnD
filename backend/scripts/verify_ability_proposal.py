@@ -10,7 +10,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 PROPOSAL = ROOT / "content/character-abilities.json"
-CONTRACT = ROOT / "shared/api/proposals/character-abilities-v1.yaml"
+CONTRACT = ROOT / "shared/api/openapi.yaml"
 
 
 def require(condition, message):
@@ -23,13 +23,13 @@ def validator(contract, name):
         "$ref": f"#/components/schemas/{name}",
         "components": contract["components"],
     }
-    Draft202012Validator.check_schema(schema)
+    Draft202012Validator.check_schema(contract["components"]["schemas"][name])
     return Draft202012Validator(schema, format_checker=FormatChecker())
 
 
 def verify_schemas(proposal, contract):
-    require(contract["openapi"] == "3.1.0" and contract["x-status"] == "approved-design", "schema status")
-    require(contract["x-gameplay-source"] == str(PROPOSAL.relative_to(ROOT)), "schema source differs")
+    require(contract["openapi"] == "3.1.0", "schema version")
+    require(contract["x-ability-rules-source"] == str(PROPOSAL.relative_to(ROOT)), "schema source differs")
     for name in contract["components"]["schemas"]:
         validator(contract, name)
     profiles = proposal["profiles"]

@@ -9,6 +9,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	"github.com/etozhenerk/DnD/backend/internal/abilities"
 )
 
 type Rules struct {
@@ -58,11 +60,13 @@ type Race struct {
 }
 
 type Catalog struct {
-	Rules   Rules  `json:"rules"`
-	Races   []Race `json:"races"`
-	raceIDs map[string]bool
-	classes map[string]Class
-	scopes  map[string]bool
+	RulesetID    string          `json:"rulesetId"`
+	AbilityRules abilities.Rules `json:"abilityRules"`
+	Rules        Rules           `json:"rules"`
+	Races        []Race          `json:"races"`
+	raceIDs      map[string]bool
+	classes      map[string]Class
+	scopes       map[string]bool
 }
 
 func Load(dir string) (*Catalog, error) {
@@ -130,6 +134,11 @@ func Load(dir string) (*Catalog, error) {
 			return nil, fmt.Errorf("preset %s costs %d", cl.ID, spent)
 		}
 	}
+	c.AbilityRules, err = abilities.Load(filepath.Join(dir, "character-abilities.json"), c.Rules.ID, base.Version)
+	if err != nil {
+		return nil, err
+	}
+	c.RulesetID = c.AbilityRules.CharacterCreationRulesetID
 	return c, nil
 }
 
@@ -144,16 +153,8 @@ type Appearance struct {
 	PortraitAssetID string   `json:"portraitAssetId"`
 }
 
-type Ability struct {
-	ID          string            `json:"id"`
-	Name        string            `json:"name"`
-	Description string            `json:"description"`
-	EffectText  string            `json:"effectText"`
-	Trigger     string            `json:"trigger"`
-	Uses        *Uses             `json:"uses,omitempty"`
-	Effects     []json.RawMessage `json:"effects,omitempty"`
-	IconAssetID string            `json:"iconAssetId,omitempty"`
-}
+// Ability is a normalized skill or a legacy descriptive skill.
+type Ability = abilities.Ability
 
 type Item struct {
 	ID          string            `json:"id"`
@@ -164,24 +165,22 @@ type Item struct {
 	Effects     []json.RawMessage `json:"effects,omitempty"`
 }
 
-type Uses struct {
-	Scope string `json:"scope"`
-	Max   int    `json:"max"`
-}
-type Issue struct {
-	Path    string `json:"path"`
-	Code    string `json:"code"`
-	Message string `json:"message"`
-}
+// Uses defines the attempt limit and recovery scope.
+type Uses = abilities.Uses
+
+// Issue identifies a validation failure.
+type Issue = abilities.Issue
+
 type Derived struct {
 	MaxHP       int `json:"maxHp"`
 	BaseAC      int `json:"baseAc"`
 	PointsSpent int `json:"pointsSpent"`
 }
 type Validation struct {
-	Valid   bool     `json:"valid"`
-	Issues  []Issue  `json:"issues"`
-	Derived *Derived `json:"derived,omitempty"`
+	Skills  *abilities.Result `json:"skills,omitempty"`
+	Valid   bool              `json:"valid"`
+	Issues  []Issue           `json:"issues"`
+	Derived *Derived          `json:"derived,omitempty"`
 }
 type Character struct {
 	ID          string         `json:"id"`
@@ -215,12 +214,20 @@ type Summary struct {
 
 var slug = regexp.MustCompile(`^[a-z0-9]+(-[a-z0-9]+)*$`)
 
-// Validate applies only the approved point-buy, race, class and HP/AC rules.
-// Custom effect magnitudes have no approved budget; formal effects are rejected for now.
+// Validate applies the current constructor rules to a complete form.
 func (c *Catalog) Validate(form map[string]json.RawMessage) (Validation, Character) {
+	return c.ValidateForRuleset(c.RulesetID, form)
+}
+
+// ValidateForRuleset preserves v1 drafts while applying priced skills to v2.
+func (c *Catalog) ValidateForRuleset(rulesetID string, form map[string]json.RawMessage) (Validation, Character) {
 	v := Validation{Issues: []Issue{}}
-	ch := Character{Personality: []string{}, Attributes: map[string]int{}, Abilities: []Ability{}, Equipment: []Item{}, RulesetID: c.Rules.ID}
+	ch := Character{Personality: []string{}, Attributes: map[string]int{}, Abilities: []Ability{}, Equipment: []Item{}, RulesetID: rulesetID}
 	add := func(path, code, message string) { v.Issues = append(v.Issues, Issue{path, code, message}) }
+	if rulesetID != c.Rules.ID && rulesetID != c.RulesetID {
+		add("rulesetId", "obsolete", "Правила черновика больше не доступны")
+		return v, ch
+	}
 	if len(form["appearance"]) == 0 {
 		add("appearance", "required", "Заполните внешность и имя")
 	}
@@ -337,44 +344,15 @@ func (c *Catalog) Validate(form map[string]json.RawMessage) (Validation, Charact
 		ch.MaxHP = v.Derived.MaxHP
 		ch.BaseAC = ac
 	}
-	var abilities struct {
-		Items []Ability `json:"items"`
-	}
-	if raw := form["abilities"]; len(raw) > 0 && json.Unmarshal(raw, &abilities) != nil {
-		add("abilities", "invalid", "Неверная структура навыков")
-	}
-	ch.Abilities = abilities.Items
-	if ch.Abilities == nil {
-		ch.Abilities = []Ability{}
-	}
-	if len(ch.Abilities) > 20 {
-		add("abilities", "too_many", "Не более 20 навыков")
-	}
-	ids := map[string]bool{}
-	for i, x := range ch.Abilities {
-		p := fmt.Sprintf("abilities.items.%d", i)
-		if !slug.MatchString(x.ID) || ids[x.ID] {
-			add(p+".id", "invalid", "ID навыка должен быть уникальным lower-kebab-case")
-		}
-		ids[x.ID] = true
-		if strings.TrimSpace(x.Name) == "" || len([]rune(x.Name)) > 120 {
-			add(p+".name", "invalid", "Укажите короткое название")
-		}
-		if strings.TrimSpace(x.Trigger) == "" || len([]rune(x.Trigger)) > 500 {
-			add(p+".trigger", "invalid", "Укажите условие применения")
-		}
-		if strings.TrimSpace(x.EffectText) == "" || len([]rune(x.EffectText)) > 2000 {
-			add(p+".effectText", "invalid", "Опишите эффект")
-		}
-		if len(x.Effects) > 0 {
-			add(p+".effects", "unapproved", "Формальные эффекты требуют отдельного утверждения баланса")
-		}
-		if x.IconAssetID != "" {
-			add(p+".iconAssetId", "unavailable", "Загрузка иконок пока не подключена")
-		}
-		if x.Uses != nil && (!c.scopes[x.Uses.Scope] || x.Uses.Max < 1) {
-			add(p+".uses", "invalid", "Неверный лимит использований")
-		}
+	if rulesetID == c.Rules.ID {
+		var issues []Issue
+		ch.Abilities, issues = c.validateLegacyAbilities(form["abilities"])
+		v.Issues = append(v.Issues, issues...)
+	} else {
+		skills := c.AbilityRules.Validate(form["abilities"], ch.Attributes)
+		v.Skills = &skills
+		v.Issues = append(v.Issues, skills.Issues...)
+		ch.Abilities = skills.Abilities
 	}
 	var equipment struct {
 		Items []Item `json:"items"`
@@ -389,7 +367,7 @@ func (c *Catalog) Validate(form map[string]json.RawMessage) (Validation, Charact
 	if len(ch.Equipment) > 20 {
 		add("equipment", "too_many", "Не более 20 предметов")
 	}
-	ids = map[string]bool{}
+	ids := map[string]bool{}
 	for i, x := range ch.Equipment {
 		p := fmt.Sprintf("equipment.items.%d", i)
 		if !slug.MatchString(x.ID) || ids[x.ID] {

@@ -3,6 +3,7 @@
 !backend/**
 !content/
 !content/character-creation.json
+!content/character-abilities.json
 !content/races.json
 !content/rules.json
 backend/.env*

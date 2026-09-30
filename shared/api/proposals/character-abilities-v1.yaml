@@ -3,11 +3,12 @@ info:
   title: Согласованный дизайн контракта навыков конструктора
   version: 0.1.0-approved-design
   description: |
-    Схемы утверждены 30 сентября 2026 года и ожидают реализации в API.
+    Первоначальный дизайн утверждён 30 сентября 2026 года и реализован в API v0.3.0.
+    Актуальные схемы, включая рассчитанные модификаторы эффектов, находятся в shared/api/openapi.yaml.
     Параметры относятся только к новым персонажам конструктора.
     Основной контракт остаётся в shared/api/openapi.yaml.
     Проверка бюджета и уникальности профилей выполняется сервером.
-x-status: approved-design
+x-status: implemented
 x-gameplay-source: content/character-abilities.json
 paths: {}
 components:

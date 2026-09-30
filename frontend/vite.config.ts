@@ -26,10 +26,8 @@ export default defineConfig(({mode}) => ({
         target: 'https://d5dopqqib47kpsh6929m.jki8ffxa.apigw.yandexcloud.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api(?=\/|$)/, ''),
-        configure: (proxy) => {
-          // Same-origin local requests are forwarded by Vite, not sent cross-origin by the browser.
-          proxy.on('proxyReq', (request) => request.removeHeader('origin'));
-        },
+        // Vite forwards same-origin requests; an empty Origin avoids a localhost CORS check upstream.
+        headers: {Origin: ''},
       },
     },
   },

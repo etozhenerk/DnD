@@ -1,14 +1,14 @@
 openapi: 3.1.0
 info:
-  title: Предложение контракта навыков конструктора
-  version: 0.1.0-draft
+  title: Согласованный дизайн контракта навыков конструктора
+  version: 0.1.0-approved-design
   description: |
-    Схемы для обсуждения, не действующий HTTP-контракт.
-    Параметры относятся только к новым персонажам после утверждения правил.
+    Схемы утверждены 30 сентября 2026 года и ожидают реализации в API.
+    Параметры относятся только к новым персонажам конструктора.
     Основной контракт остаётся в shared/api/openapi.yaml.
     Проверка бюджета и уникальности профилей выполняется сервером.
-x-status: draft
-x-gameplay-source: docs/architecture/character-abilities-v1/gameplay.json
+x-status: approved-design
+x-gameplay-source: content/character-abilities.json
 paths: {}
 components:
   schemas:

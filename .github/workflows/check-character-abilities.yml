@@ -1,4 +1,4 @@
-name: Check draft character abilities
+name: Check character ability rules
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
       - 'shared/api/proposals/character-abilities-v1.yaml'
       - 'backend/scripts/verify_ability_proposal.py'
       - 'content/character-creation.json'
+      - 'content/character-abilities.json'
       - 'content/characters.json'
       - 'content/rules.json'
       - '.github/workflows/check-character-abilities.yml'
@@ -17,6 +18,7 @@ on:
       - 'shared/api/proposals/character-abilities-v1.yaml'
       - 'backend/scripts/verify_ability_proposal.py'
       - 'content/character-creation.json'
+      - 'content/character-abilities.json'
       - 'content/characters.json'
       - 'content/rules.json'
       - '.github/workflows/check-character-abilities.yml'
@@ -38,13 +40,14 @@ jobs:
             /docs/architecture/character-abilities-v1/
             /shared/api/proposals/character-abilities-v1.yaml
             /content/character-creation.json
+            /content/character-abilities.json
             /content/characters.json
             /content/rules.json
       - name: Install schema validation tools in isolated CI environment
         run: |
           python3 -m venv "$RUNNER_TEMP/ability-proposal-venv"
           "$RUNNER_TEMP/ability-proposal-venv/bin/pip" install --disable-pip-version-check PyYAML==6.0.3 jsonschema==4.25.1
-      - name: Validate proposal and calculate bounds
+      - name: Validate approved rules and calculate bounds
         run: |
           "$RUNNER_TEMP/ability-proposal-venv/bin/python" backend/scripts/verify_ability_proposal.py | tee "$RUNNER_TEMP/ability-bounds.txt"
           cat "$RUNNER_TEMP/ability-bounds.txt" >> "$GITHUB_STEP_SUMMARY"

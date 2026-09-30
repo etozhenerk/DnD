@@ -1,6 +1,6 @@
 {
   "id": "character-abilities-v1",
-  "status": "draft",
+  "status": "approved",
   "sourceRulesVersion": 1,
   "sourceCharacterCreationRulesetId": "character-creation-v1",
   "referencePartyIds": ["bubsilda", "linda", "lambert", "golovach-lena", "thorin-pukoshchit"],

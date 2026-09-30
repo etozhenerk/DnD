@@ -1,4 +1,4 @@
-"""Validate the draft schemas and report bounded damage/healing estimates in CI."""
+"""Validate approved ability rules and report bounded damage/healing estimates in CI."""
 
 from itertools import combinations, product
 import json
@@ -9,7 +9,7 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PROPOSAL = ROOT / "docs/architecture/character-abilities-v1/gameplay.json"
+PROPOSAL = ROOT / "content/character-abilities.json"
 CONTRACT = ROOT / "shared/api/proposals/character-abilities-v1.yaml"
 
 
@@ -28,7 +28,8 @@ def validator(contract, name):
 
 
 def verify_schemas(proposal, contract):
-    require(contract["openapi"] == "3.1.0" and contract["x-status"] == "draft", "schema status")
+    require(contract["openapi"] == "3.1.0" and contract["x-status"] == "approved-design", "schema status")
+    require(contract["x-gameplay-source"] == str(PROPOSAL.relative_to(ROOT)), "schema source differs")
     for name in contract["components"]["schemas"]:
         validator(contract, name)
     profiles = proposal["profiles"]
@@ -96,7 +97,7 @@ def verify_sources_and_examples(proposal):
     rules = json.loads((ROOT / "content/rules.json").read_text())
     creation = json.loads((ROOT / "content/character-creation.json").read_text())
     characters = json.loads((ROOT / "content/characters.json").read_text())
-    require(proposal["status"] == "draft", "proposal must remain draft before approval")
+    require(proposal["status"] == "approved", "ability rules must be approved")
     require(proposal["sourceRulesVersion"] == rules["version"], "source rules changed")
     require(proposal["sourceCharacterCreationRulesetId"] == creation["id"], "source creation rules changed")
     require(proposal["budget"]["uniqueProfiles"] is True, "duplicate profiles need a new balance model")
@@ -132,7 +133,7 @@ def main():
         if modifier == 4:
             require(healing == (28 if rounds == 3 else 32), "documented healing bound changed")
         print(f"{rounds:6} | {modifier:8} | {ac:2} | {damage:19.2f} | {healing:21.2f}")
-    print("PASS: draft schemas, invalid inputs, sources, examples and bounded estimates")
+    print("PASS: approved rules, schemas, invalid inputs, sources, examples and bounded estimates")
 
 
 if __name__ == "__main__":

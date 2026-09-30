@@ -305,7 +305,7 @@ components:
           properties:
             scope: {type: string, enum: [turn, round, battle, location, campaign]}
             max: {type: integer, minimum: 1}
-      description: В v1 эффект исполняется мастером вручную; формальные effects и баланс чисел ещё не утверждены.
+      description: В действующем API эффект исполняется мастером вручную. Правила в content/character-abilities.json утверждены, но ещё не реализованы; формальные effects пока отклоняются.
     Item:
       type: object
       required: [id, name]

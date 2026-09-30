@@ -223,7 +223,9 @@ func (c *Catalog) Validate(form map[string]json.RawMessage) (Validation, Charact
 func (c *Catalog) ValidateForRuleset(rulesetID string, form map[string]json.RawMessage) (Validation, Character) {
 	v := Validation{Issues: []Issue{}}
 	ch := Character{Personality: []string{}, Attributes: map[string]int{}, Abilities: []Ability{}, Equipment: []Item{}, RulesetID: rulesetID}
-	add := func(path, code, message string) { v.Issues = append(v.Issues, Issue{path, code, message}) }
+	add := func(path, code, message string) {
+		v.Issues = append(v.Issues, Issue{Path: path, Code: code, Message: message})
+	}
 	if rulesetID != c.Rules.ID && rulesetID != c.RulesetID {
 		add("rulesetId", "obsolete", "Правила черновика больше не доступны")
 		return v, ch

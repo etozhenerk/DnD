@@ -1,0 +1,171 @@
+openapi: 3.1.0
+info:
+  title: Предложение контракта навыков конструктора
+  version: 0.1.0-draft
+  description: |
+    Схемы для обсуждения, не действующий HTTP-контракт.
+    Параметры относятся только к новым персонажам после утверждения правил.
+    Основной контракт остаётся в shared/api/openapi.yaml.
+    Проверка бюджета и уникальности профилей выполняется сервером.
+x-status: draft
+x-gameplay-source: docs/architecture/character-abilities-v1/gameplay.json
+paths: {}
+components:
+  schemas:
+    ModifierStat:
+      type: string
+      enum: [strength, dexterity, wisdom, intelligence, charisma]
+    ProfileId:
+      type: string
+      enum:
+        - damage-d8-twice
+        - damage-2d6-once
+        - damage-2d8-once
+        - healing-d6-twice
+        - healing-d8-twice
+        - healing-2d6-once
+        - healing-2d8-once
+    BasicActionInput:
+      type: object
+      additionalProperties: false
+      required: [name, description, modifierStat]
+      properties:
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, maxLength: 2000}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+    CustomAbilityInput:
+      type: object
+      additionalProperties: false
+      required: [id, name, description, profileId, modifierStat]
+      properties:
+        id: {type: string, maxLength: 80, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, maxLength: 2000}
+        profileId: {$ref: '#/components/schemas/ProfileId'}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        iconAssetId:
+          type: [string, 'null']
+          format: uuid
+          description: Необязательная иконка; использовать после подключения хранилища.
+    NarrativeAbilityInput:
+      type: object
+      additionalProperties: false
+      required: [id, name, description]
+      properties:
+        id: {type: string, maxLength: 80, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+        name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+        description: {type: string, minLength: 1, maxLength: 2000, pattern: '\S'}
+      description: Повествовательная особенность без формального игрового усиления.
+    CharacterSkillsInput:
+      type: object
+      additionalProperties: false
+      required: [basicAction, items, narrativeItems]
+      properties:
+        basicAction: {$ref: '#/components/schemas/BasicActionInput'}
+        items:
+          type: array
+          maxItems: 3
+          items: {$ref: '#/components/schemas/CustomAbilityInput'}
+        narrativeItems:
+          type: array
+          maxItems: 3
+          items: {$ref: '#/components/schemas/NarrativeAbilityInput'}
+      x-budget-points: 6
+      x-unique-fields: [items.id, items.profileId, narrativeItems.id]
+      description: |
+        Значение раздела abilities при PATCH черновика будущей версии правил.
+        Сервер проверяет уникальность ID во всём разделе, включая reserved basic-attack,
+        уникальность профилей, бюджет и существование выбранной характеристики.
+        Частичный черновик можно сохранять без соблюдения required полей;
+        эта полная схема применяется при validate/complete.
+    AbilityProfile:
+      type: object
+      additionalProperties: false
+      required: [id, kind, points, dice, uses, target]
+      properties:
+        id: {$ref: '#/components/schemas/ProfileId'}
+        kind: {type: string, enum: [damage, healing]}
+        points: {type: integer, minimum: 2, maximum: 4}
+        dice:
+          type: object
+          additionalProperties: false
+          required: [count, sides]
+          properties:
+            count: {type: integer, minimum: 1, maximum: 2}
+            sides: {type: integer, enum: [6, 8]}
+        uses:
+          type: object
+          additionalProperties: false
+          required: [scope, max]
+          properties:
+            scope: {type: string, const: battle}
+            max: {type: integer, minimum: 1, maximum: 2}
+        target: {type: string, enum: [one-enemy, one-friendly]}
+      description: Серверный каталог; клиент не задаёт цену, кубики или частоту.
+    SkillValidation:
+      type: object
+      additionalProperties: false
+      required: [valid, pointsSpent, pointsBudget, issues]
+      properties:
+        valid: {type: boolean}
+        pointsSpent: {type: integer, minimum: 0}
+        pointsBudget: {type: integer, const: 6}
+        issues:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: [path, code, message]
+            properties:
+              path: {type: string}
+              code:
+                type: string
+                enum: [required, unknown_profile, unknown_stat, duplicate_id, duplicate_profile, too_many, budget, unsupported_effect, asset_unavailable]
+              message: {type: string}
+    NormalizedAbility:
+      type: object
+      additionalProperties: false
+      required: [id, name, description, profileId, modifierStat, effectText, automationMode, trigger, effects, uses]
+      properties:
+        id: {type: string}
+        name: {type: string}
+        description: {type: string}
+        profileId:
+          anyOf:
+            - {$ref: '#/components/schemas/ProfileId'}
+            - {type: string, const: basic-attack}
+        modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        effectText: {type: string, readOnly: true}
+        automationMode: {type: string, const: automatic, readOnly: true}
+        trigger: {type: string, const: action, readOnly: true}
+        effects:
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            type: object
+            additionalProperties: false
+            required: [type, target, dice, modifierStat]
+            properties:
+              type: {type: string, enum: [damage, healing]}
+              target: {type: string, enum: [one-enemy, one-friendly]}
+              dice:
+                type: object
+                additionalProperties: false
+                required: [count, sides]
+                properties:
+                  count: {type: integer, minimum: 1, maximum: 2}
+                  sides: {type: integer, enum: [6, 8]}
+              modifierStat: {$ref: '#/components/schemas/ModifierStat'}
+        uses:
+          type: [object, 'null']
+          additionalProperties: false
+          required: [scope, max]
+          properties:
+            scope: {type: string, const: battle}
+            max: {type: integer, minimum: 1, maximum: 2}
+        iconAssetId: {type: [string, 'null'], format: uuid}
+      description: |
+        Результат серверной нормализации, не вход для PATCH.
+        Автоматическая механика определена структурированными данными;
+        её подключение к игровому runtime — последующий этап.

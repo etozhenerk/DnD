@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "snapshotCommit": "0d27157c776a701528c7716c8293f59ed74f019f",
+  "legacyFiles": [
+    "cmd/api/config.go",
+    "cmd/api/config_test.go",
+    "cmd/api/main.go",
+    "cmd/api/main_test.go",
+    "internal/creator/creator.go",
+    "internal/creator/creator_test.go",
+    "internal/storage/postgres.go"
+  ]
+}

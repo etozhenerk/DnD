@@ -49,6 +49,8 @@ jobs:
       - name: Test and vet
         working-directory: backend
         run: |
+          python3 -m unittest discover -s scripts -p 'test_code_style.py'
+          python3 scripts/check_code_style.py
           go test ./...
           go vet ./...
 

@@ -1,0 +1,55 @@
+{
+  "id": "character-abilities-v1",
+  "status": "draft",
+  "sourceRulesVersion": 1,
+  "sourceCharacterCreationRulesetId": "character-creation-v1",
+  "referencePartyIds": ["bubsilda", "linda", "lambert", "golovach-lena", "thorin-pukoshchit"],
+  "budget": {"points": 6, "maximumCustomAbilities": 3, "mustSpendAll": false, "uniqueProfiles": true},
+  "modifierStats": ["strength", "dexterity", "wisdom", "intelligence", "charisma"],
+  "basicAction": {
+    "id": "basic-attack",
+    "kind": "damage",
+    "points": 0,
+    "trigger": "action",
+    "dice": {"count": 1, "sides": 6},
+    "uses": null,
+    "target": "one-enemy"
+  },
+  "profiles": [
+    {"id": "damage-d8-twice", "kind": "damage", "points": 2, "dice": {"count": 1, "sides": 8}, "uses": {"scope": "battle", "max": 2}, "target": "one-enemy"},
+    {"id": "damage-2d6-once", "kind": "damage", "points": 2, "dice": {"count": 2, "sides": 6}, "uses": {"scope": "battle", "max": 1}, "target": "one-enemy"},
+    {"id": "damage-2d8-once", "kind": "damage", "points": 3, "dice": {"count": 2, "sides": 8}, "uses": {"scope": "battle", "max": 1}, "target": "one-enemy"},
+    {"id": "healing-d6-twice", "kind": "healing", "points": 2, "dice": {"count": 1, "sides": 6}, "uses": {"scope": "battle", "max": 2}, "target": "one-friendly"},
+    {"id": "healing-d8-twice", "kind": "healing", "points": 3, "dice": {"count": 1, "sides": 8}, "uses": {"scope": "battle", "max": 2}, "target": "one-friendly"},
+    {"id": "healing-2d6-once", "kind": "healing", "points": 3, "dice": {"count": 2, "sides": 6}, "uses": {"scope": "battle", "max": 1}, "target": "one-friendly"},
+    {"id": "healing-2d8-once", "kind": "healing", "points": 4, "dice": {"count": 2, "sides": 8}, "uses": {"scope": "battle", "max": 1}, "target": "one-friendly"}
+  ],
+  "resolution": {
+    "mode": "automatic",
+    "actionCost": 1,
+    "maximumEffectsPerAbility": 1,
+    "maximumTargets": 1,
+    "attackBonusBase": 2,
+    "damageModifier": "selected-stat",
+    "healingModifier": "max-zero-selected-stat",
+    "damageMinimum": 0,
+    "criticalDamageMultiplier": 2,
+    "healingCanCritical": false,
+    "spendUseOnAttempt": true,
+    "healingRequiresActiveCombat": true,
+    "healingCanTargetSelf": true,
+    "healingCeiling": "target-max-hp",
+    "battleRestore": "confirmed-new-hostile-encounter",
+    "battleRestoreAuthority": "game-master"
+  },
+  "narrativeAbilities": {"maximum": 3, "points": 0, "resolution": "manual", "formalMechanicalBenefit": false},
+  "excludedMechanicalEffects": ["multi-target", "damage-over-time", "temporary-hp", "summon", "modify-ac", "modify-attack", "extra-action", "add-condition", "guaranteed-hit", "guaranteed-critical", "out-of-combat-healing", "resistance-override"],
+  "reviewScenarios": {"roundCounts": [3, 6], "targetACs": [10, 13, 15], "modifiers": [0, 3, 4]},
+  "exampleBuilds": [
+    {"id": "fighter-damage", "classId": "fighter", "profileIds": ["damage-d8-twice", "damage-2d8-once"], "points": 5},
+    {"id": "rogue-mixed", "classId": "rogue", "profileIds": ["damage-2d6-once", "damage-2d8-once"], "points": 5},
+    {"id": "wizard-damage", "classId": "wizard", "profileIds": ["damage-d8-twice", "damage-2d6-once", "healing-d6-twice"], "points": 6},
+    {"id": "cleric-healing", "classId": "cleric", "profileIds": ["healing-2d8-once", "healing-d6-twice"], "points": 6},
+    {"id": "bard-support", "classId": "bard", "profileIds": ["damage-d8-twice", "healing-d8-twice"], "points": 5}
+  ]
+}

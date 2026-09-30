@@ -3554,6 +3554,18 @@
       "status": "canonical",
       "campaignId": "penisuela",
       "purpose": "Монета удачи: окно награды за натуральную 20 вне боя и помощь с нарядом Алексиса; один ручной переброс."
+    },
+    {
+      "id": "character-creator-moonlit-forest",
+      "path": "assets/concepts/ui/character-creator/moonlit-forest.png",
+      "status": "reference",
+      "purpose": "Декоративный фон конструктора по утверждённым рендерам; не задаёт новую локацию канона."
+    },
+    {
+      "id": "character-creator-advisor-owl",
+      "path": "assets/concepts/ui/character-creator/advisor-owl.png",
+      "status": "reference",
+      "purpose": "Декоративная сова панели советника; не персонаж канона."
     }
   ],
   "world": [

@@ -1,0 +1,16 @@
+.back {
+  color: var(--creator-accent);
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: .5rem 0;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--creator-focus);
+}
+
+.back:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 4px;
+}

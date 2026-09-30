@@ -1,0 +1,25 @@
+.toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 0 0 1.5rem;
+}
+
+.toolbar h2 {
+  color: var(--creator-heading);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}

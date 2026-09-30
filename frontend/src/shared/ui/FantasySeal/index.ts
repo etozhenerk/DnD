@@ -1,0 +1,1 @@
+export {FantasySeal} from './FantasySeal';

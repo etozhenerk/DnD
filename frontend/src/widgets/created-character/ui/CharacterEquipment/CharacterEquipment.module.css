@@ -1,0 +1,32 @@
+.section {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  padding: 1.5rem;
+}
+
+.section h2 {
+  color: var(--creator-heading);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.section article + article {
+  border-top: 1px solid var(--creator-border);
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.section h3 {
+  color: var(--creator-accent);
+  font-size: 1rem;
+  margin: 0 0 .5rem;
+  overflow-wrap: anywhere;
+}
+
+.section p {
+  line-height: 1.65;
+  margin: .35rem 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}

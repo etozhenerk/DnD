@@ -1,0 +1,25 @@
+.story {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  padding: 1.5rem;
+}
+
+.story h2 {
+  color: var(--creator-heading);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.story h3 {
+  color: var(--creator-accent);
+  font-size: .9rem;
+  margin: 1.5rem 0 .5rem;
+}
+
+.story p {
+  line-height: 1.7;
+  margin: 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}

@@ -1,0 +1,10 @@
+.action {
+  max-width: 32rem;
+}
+
+.action p {
+  color: var(--creator-error);
+  font-size: .88rem;
+  line-height: 1.5;
+  margin: .75rem 0 0;
+}

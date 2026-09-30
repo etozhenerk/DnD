@@ -1,0 +1,1 @@
+export {resolveAsset} from './resolveAsset';

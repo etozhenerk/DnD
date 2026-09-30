@@ -1,0 +1,47 @@
+.advisor {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  padding: 1.3rem;
+}
+
+.advisor h2 {
+  color: var(--creator-accent);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0 0 .75rem;
+}
+
+.art {
+  border-block: 1px solid var(--creator-border);
+  display: block;
+  height: auto;
+  margin-inline: -.5rem;
+  width: calc(100% + 1rem);
+}
+
+.advisor p {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.status {
+  border-block: 1px solid var(--creator-border);
+  color: var(--creator-accent);
+  font-size: .86rem;
+  margin: 1.25rem 0 1rem;
+  padding: .85rem 0;
+}
+
+.advisor small {
+  color: var(--creator-muted);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 681px) and (max-width: 1000px) {
+  .art {
+    float: right;
+    margin: 0 0 0 1.5rem;
+    width: 160px;
+  }
+}

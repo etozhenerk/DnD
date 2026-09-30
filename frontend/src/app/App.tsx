@@ -37,6 +37,18 @@ const router = createBrowserRouter([
         lazy: async () => ({Component: (await import('../pages/heroes/ui/HeroesPage/HeroesPage')).HeroesPage}),
       },
       {
+        path: 'characters',
+        lazy: async () => ({Component: (await import('../pages/characters')).CharactersPage}),
+      },
+      {
+        path: 'characters/new/:stepId?',
+        lazy: async () => ({Component: (await import('../pages/character-creator')).CharacterCreatorPage}),
+      },
+      {
+        path: 'characters/:characterId',
+        lazy: async () => ({Component: (await import('../pages/character-details')).CharacterDetailsPage}),
+      },
+      {
         path: 'races',
         lazy: async () => ({Component: (await import('../pages/races/ui/RacesPage/RacesPage')).RacesPage}),
       },

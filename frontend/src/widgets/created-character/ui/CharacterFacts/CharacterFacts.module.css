@@ -1,0 +1,61 @@
+.facts {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  padding: 2rem;
+}
+
+.emblem {
+  composes: medallion from '../../../../shared/styles/fantasy-surfaces.module.css';
+  height: 100px;
+  margin: 0 auto 1.75rem;
+  padding: .75rem;
+  width: 100px;
+}
+
+.facts h1 {
+  color: var(--creator-heading);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 400;
+  margin: .7rem 0 1rem;
+  overflow-wrap: anywhere;
+}
+
+.facts p {
+  color: var(--creator-muted);
+  line-height: 1.5;
+}
+
+.vitals {
+  border-block: 1px solid var(--creator-border);
+  display: flex;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+}
+
+.vitals dd {
+  color: var(--creator-heading);
+  font-size: 1.7rem;
+  margin: .3rem 0 0;
+}
+
+.vitals dt, .attributes dt {
+  font-size: .85rem;
+}
+
+.attributes {
+  display: grid;
+  gap: .7rem;
+  margin: 0;
+}
+
+.attributes div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.attributes dd {
+  color: var(--creator-focus);
+  margin: 0;
+}

@@ -1,0 +1,11 @@
+.seal {
+  color: var(--creator-accent);
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1;
+  width: 100%;
+}
+
+.star {
+  fill: currentColor;
+}

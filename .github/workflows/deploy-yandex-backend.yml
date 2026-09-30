@@ -46,7 +46,7 @@ jobs:
           go vet ./...
 
       - name: Login to Container Registry with OIDC
-        uses: yc-actions/yc-cr-login@v2
+        uses: yc-actions/yc-cr-login@ee42362bcacb854964afa3a3180ca8ae6dd388f8 # v3.0.2, OIDC
         with:
           yc-sa-id: ${{ env.YC_BACKEND_SA_ID }}
 
@@ -65,7 +65,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Deploy private container revision
-        uses: yc-actions/yc-sls-container-deploy@v5
+        uses: yc-actions/yc-sls-container-deploy@4d43a2554afca02dca947a10fc29ae6239378c55 # v5.0.0
         with:
           yc-sa-id: ${{ env.YC_BACKEND_SA_ID }}
           folder-id: ${{ env.YC_FOLDER_ID }}

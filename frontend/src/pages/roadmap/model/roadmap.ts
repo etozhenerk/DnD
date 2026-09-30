@@ -6,6 +6,8 @@ import stage4Source from '../../../../../docs/roadmap/stage-4-character-editor.m
 import stage5Source from '../../../../../docs/roadmap/stage-5-auth.md?raw';
 import stage6Source from '../../../../../docs/roadmap/stage-6-campaign-studio.md?raw';
 import stage7Source from '../../../../../docs/roadmap/stage-7-game-sessions.md?raw';
+import {getStageProgress} from './stage-progress';
+import type {StageProgress} from './stage-progress';
 
 export type MarkdownBlock =
   | {type: 'heading'; level: 3 | 4; text: string}
@@ -25,6 +27,7 @@ export interface RoadmapStage {
   shortTitle: string;
   summary: string;
   status: string;
+  progress: StageProgress;
   goal: string;
   sections: RoadmapSection[];
 }
@@ -156,12 +159,15 @@ function parseStage(source: string): RoadmapStage {
 
   if (!titleMatch) throw new Error('Не удалось прочитать заголовок этапа roadmap');
 
+  const status = statusMatch?.[1] ?? 'Не указан';
+
   return {
     number: Number(titleMatch[1]),
     title: titleMatch[2],
     shortTitle: plainText(shortTitleMatch?.[1] ?? titleMatch[2]).replace(/\.$/, ''),
     summary: plainText(summaryMatch?.[1] ?? goal).replace(/\.$/, ''),
-    status: statusMatch?.[1] ?? 'Не указан',
+    status,
+    progress: getStageProgress(status),
     goal,
     sections,
   };
@@ -195,6 +201,9 @@ function parseResearchProducts(source: string): ResearchProduct[] {
 const stageSources = [stage1Source, stage2Source, stage3Source, stage4Source, stage5Source, stage6Source, stage7Source];
 
 export const roadmapStages = stageSources.map(parseStage);
+
+export const roadmapCurrentStageNumber = roadmapStages.find((stage) => stage.progress.state === 'current')?.number
+  ?? roadmapStages[0].number;
 
 export const roadmapResearch = parseResearchProducts(productRoadmapSource);
 

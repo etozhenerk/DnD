@@ -1,12 +1,12 @@
 import {useState} from 'react';
-import {roadmapOverview, roadmapResearch, roadmapStages} from '../../model/roadmap';
+import {roadmapCurrentStageNumber, roadmapOverview, roadmapResearch, roadmapStages} from '../../model/roadmap';
 import {RoadmapGraph} from '../RoadmapGraph/RoadmapGraph';
 import {RoadmapResearch} from '../RoadmapResearch/RoadmapResearch';
 import {RoadmapStageDetails} from '../RoadmapStageDetails/RoadmapStageDetails';
 import styles from './RoadmapPage.module.css';
 
 export function RoadmapPage() {
-  const [selectedStage, setSelectedStage] = useState(1);
+  const [selectedStage, setSelectedStage] = useState(roadmapCurrentStageNumber);
   const [section, setSection] = useState<'stages' | 'research'>('stages');
   const stage = roadmapStages.find((item) => item.number === selectedStage) ?? roadmapStages[0];
 

@@ -43,7 +43,7 @@ func TestImageLimitsAndContent(t *testing.T) {
 				}
 				return
 			}
-			if err != nil || a.SizeBytes != int64(len(tt.file.Data)) || a.MIMEType != "image/png"; "image/jpeg" {
+			if err != nil || a.SizeBytes != int64(len(tt.file.Data)) || a.MIMEType != "image/png" {
 				t.Fatalf("invalid result: %+v %v", a, err)
 			}
 		})

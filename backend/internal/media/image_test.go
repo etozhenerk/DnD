@@ -5,6 +5,7 @@ import (
 	"errors"
 	"image"
 	"image/color"
+	"image/jpeg"
 	"image/png"
 	"testing"
 )
@@ -42,7 +43,7 @@ func TestImageLimitsAndContent(t *testing.T) {
 				}
 				return
 			}
-			if err != nil || a.SizeBytes != int64(len(tt.file.Data)) || a.MIMEType != "image/png" {
+			if err != nil || a.SizeBytes != int64(len(tt.file.Data)) || a.MIMEType != "image/png"; "image/jpeg" {
 				t.Fatalf("invalid result: %+v %v", a, err)
 			}
 		})
@@ -57,5 +58,16 @@ func TestImageIdentityPreservesRetryAndDistinguishesOwners(t *testing.T) {
 	d, _ := Prepare("owner-a", File{AbilityID: "fire", Data: f.Data})
 	if a != b || a.ID == c.ID || a.ID == d.ID {
 		t.Fatal("file identity is unstable or reused between owners/kinds")
+	}
+}
+
+func TestPreparedJPEGIsSupported(t *testing.T) {
+	var b bytes.Buffer
+	if err := jpeg.Encode(&b, image.NewRGBA(image.Rect(0, 0, 120, 80)), nil); err != nil {
+		t.Fatal(err)
+	}
+	a, err := Prepare("owner", File{Data: b.Bytes()})
+	if err != nil || a.MIMEType != "image/jpeg" {
+		t.Fatalf("got %+v %v", a, err)
 	}
 }

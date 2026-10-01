@@ -9,6 +9,7 @@
   background: var(--creator-input-fill);
   border-radius: 12px 5px 12px 5px;
   box-shadow: var(--creator-input-shadow);
+  min-height: 84px;
   min-width: 0;
   padding: .7rem .85rem;
 }

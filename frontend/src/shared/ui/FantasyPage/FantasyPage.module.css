@@ -11,6 +11,10 @@
   max-width: 1440px;
 }
 
+:global(html):has(.page) {
+  scrollbar-gutter: stable;
+}
+
 .animated {
   composes: scene from '../../styles/fantasy-motion.module.css';
 }

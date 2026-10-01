@@ -7,12 +7,12 @@ export function CharacterCardSkeleton() {
     <article className={`${card.card} ${styles.skeleton}`} aria-hidden="true">
       <Skeleton shape="image" className={card.portrait} />
       <div className={card.content}>
-        <div className={`${card.identity} ${styles.identity}`}>
-          <Skeleton shape="heading" width="medium" />
-          <Skeleton width="short" />
+        <div className={card.identity}>
+          <Skeleton shape="heading" width="medium" className={styles.title} />
+          <Skeleton width="short" className={styles.race} />
         </div>
         <div className={card.stats}><Skeleton className={styles.vitals} /></div>
-        <Skeleton width="medium" className={styles.link} />
+        <div className={card.open}><Skeleton width="medium" className={styles.link} /></div>
       </div>
     </article>
   );

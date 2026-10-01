@@ -2,8 +2,12 @@
   animation: none;
 }
 
-.identity {
-  gap: 1rem;
+.title {
+  height: 4.44rem;
+}
+
+.race {
+  height: 1.425rem;
 }
 
 .vitals {
@@ -11,5 +15,6 @@
 }
 
 .link {
-  margin-top: .9rem;
+  height: 1lh;
+  width: 10rem;
 }

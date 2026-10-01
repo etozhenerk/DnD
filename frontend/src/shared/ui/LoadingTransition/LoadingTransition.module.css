@@ -1,0 +1,57 @@
+.region {
+  --fantasy-ready-delay: 0ms;
+  --fantasy-ready-duration: 0ms;
+  display: flow-root;
+  min-width: 0;
+  overflow-anchor: none;
+  position: relative;
+}
+
+.region[data-resizing] {
+  overflow: clip;
+}
+
+.placeholder {
+  inset: 0 0 auto;
+  opacity: var(--fantasy-motion-hidden);
+  pointer-events: none;
+  position: absolute;
+  transition: opacity var(--fantasy-loading-duration) ease-out, visibility 0s var(--fantasy-loading-duration);
+  visibility: hidden;
+}
+
+.content {
+  animation: content-enter var(--fantasy-loading-duration) ease-out;
+  display: flow-root;
+}
+
+.region[data-loading] .placeholder {
+  opacity: var(--fantasy-motion-visible);
+  position: static;
+  transition: none;
+  visibility: visible;
+}
+
+.region[data-loading] .content {
+  display: none;
+}
+
+@keyframes content-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content {
+    animation: none;
+  }
+
+  .placeholder {
+    transition: none;
+  }
+}

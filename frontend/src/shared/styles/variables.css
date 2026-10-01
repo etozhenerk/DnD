@@ -322,8 +322,6 @@
 :root {
   --fantasy-motion-hidden: 0;
   --fantasy-motion-visible: 1;
-  --fantasy-motion-light-opacity: .7;
-  --fantasy-motion-light-wash: radial-gradient(ellipse at 38% 40%, #dfb97729, #9fdff216 38%, #dfb97700 72%);
   --fantasy-motion-ease: cubic-bezier(.2, .75, .25, 1);
   --fantasy-motion-page-duration: 380ms;
   --fantasy-motion-route-duration: 260ms;
@@ -331,7 +329,7 @@
   --fantasy-motion-step-duration: 360ms;
   --fantasy-motion-reveal-duration: 560ms;
   --fantasy-motion-portrait-duration: 700ms;
-  --fantasy-motion-light-duration: 900ms;
+  --fantasy-loading-duration: 240ms;
   --fantasy-skeleton-fill: linear-gradient(110deg, #8c947512, #bac9c91c 50%, #8c947510);
   --fantasy-skeleton-portrait: radial-gradient(ellipse at 50% 42%, #3d667729, #111c2480 72%);
   --fantasy-loader-muted-opacity: .45;

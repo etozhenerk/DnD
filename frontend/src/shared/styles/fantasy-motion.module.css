@@ -4,22 +4,15 @@
 
 .reveal {
   animation: reveal var(--fantasy-motion-reveal-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
+  animation-delay: var(--fantasy-ready-delay, var(--fantasy-motion-delay, 0ms));
+  animation-duration: var(--fantasy-ready-duration, var(--fantasy-motion-reveal-duration));
 }
 
 .portrait {
   animation: portrait-enter var(--fantasy-motion-portrait-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
+  animation-delay: var(--fantasy-ready-delay, var(--fantasy-motion-delay, 0ms));
+  animation-duration: var(--fantasy-ready-duration, var(--fantasy-motion-portrait-duration));
   position: relative;
-}
-
-.portrait::after {
-  animation: portrait-light var(--fantasy-motion-light-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
-  background: var(--fantasy-motion-light-wash);
-  border-radius: inherit;
-  content: '';
-  inset: 0;
-  opacity: var(--fantasy-motion-hidden);
-  pointer-events: none;
-  position: absolute;
 }
 
 .step {
@@ -61,22 +54,6 @@
   }
 }
 
-@keyframes portrait-light {
-  from {
-    opacity: var(--fantasy-motion-hidden);
-    transform: translateX(-25%);
-  }
-
-  35% {
-    opacity: var(--fantasy-motion-light-opacity);
-  }
-
-  to {
-    opacity: var(--fantasy-motion-hidden);
-    transform: translateX(25%);
-  }
-}
-
 @keyframes step-enter {
   from {
     opacity: var(--fantasy-motion-hidden);
@@ -93,12 +70,7 @@
   .scene,
   .reveal,
   .portrait,
-  .portrait::after,
   .step {
     animation: none;
-  }
-
-  .portrait::after {
-    display: none;
   }
 }

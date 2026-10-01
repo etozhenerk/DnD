@@ -2,21 +2,18 @@
   animation: none;
 }
 
-.loading .still::after {
-  display: none;
+.loading .portrait {
+  aspect-ratio: 4 / 5;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-  margin: 0 auto 2rem;
-  max-width: 62rem;
+.origin {
+  height: 1.5em;
+  margin-inline: auto;
 }
 
 .name {
-  height: clamp(2.6rem, 4.3vw, 4.3rem);
+  height: 1.08em;
+  margin-inline: auto;
   width: 80%;
 }
 
@@ -27,9 +24,8 @@
 
 .vitals {
   display: grid;
-  gap: .5rem;
+  gap: .75rem;
   grid-template-columns: 1fr 1fr;
-  margin: 1.25rem 0 1.5rem;
 }
 
 .vitals > * {
@@ -38,15 +34,15 @@
 
 .attributes {
   display: grid;
-  gap: .45rem;
-  margin-top: .75rem;
+  gap: .4rem;
 }
 
 .attribute {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  min-height: 40px;
+  min-height: 42px;
+  padding: .45rem .6rem;
 }
 
 .value {
@@ -60,7 +56,7 @@
 }
 
 @media (max-width: 680px) {
-  .header {
-    margin-bottom: 1.4rem;
+  .name {
+    height: 2.16em;
   }
 }

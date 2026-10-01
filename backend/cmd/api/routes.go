@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/etozhenerk/DnD/backend/internal/characterapp"
 	"github.com/etozhenerk/DnD/backend/internal/httpapi"
 )
 
@@ -20,10 +21,21 @@ func (s *server) routes() http.Handler {
 	mux.HandleFunc("POST /drafts/{draftId}/validate", s.validateDraft)
 	mux.HandleFunc("POST /drafts/{draftId}/complete", s.completeDraft)
 	mux.HandleFunc("GET /characters", s.listCharacters)
+	var objects characterapp.ObjectWriter
+	var reader httpapi.ObjectReader
+	if s.objects != nil {
+		objects = s.objects
+		reader = s.objects
+	}
 	if s.store == nil {
 		mux.HandleFunc("POST /characters", httpapi.CreateCharacterHandler(s.catalog, nil))
 	} else {
-		mux.HandleFunc("POST /characters", httpapi.CreateCharacterHandler(s.catalog, s.store))
+		mux.HandleFunc("POST /characters", httpapi.CreateCharacterWithMediaHandler(s.catalog, s.store, objects))
+	}
+	if s.store != nil {
+		mux.HandleFunc("GET /assets/{assetId}", httpapi.GetAssetHandler(s.store, reader))
+	} else {
+		mux.HandleFunc("GET /assets/{assetId}", httpapi.GetAssetHandler(nil, reader))
 	}
 	mux.HandleFunc("GET /characters/{characterId}", s.getCharacter)
 	return mux

@@ -116,6 +116,7 @@ jobs:
           revision-network-id: enpeeej3ge2i9lqn8cer
           revision-log-options-folder-id: ${{ env.YC_FOLDER_ID }}
           revision-env: |
+            ASSET_BUCKET=dnd-character-media-b1g8siv8ve2si1qp04nm
             DB_HOST=rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net
             DB_PORT=6432
             DB_USER=dnd_api

@@ -4,18 +4,25 @@ import {useNavigate} from 'react-router-dom';
 import type {CharacterFormData, FormValidation} from '../../../entities/character-form';
 import {createdCharacterQuery, characterListQuery, listCreatedCharacters} from '../../../entities/character';
 import {createCharacter} from '../api/create-character';
+import {getMediaSignature} from './media';
+import type {CharacterMedia} from './media';
+import type {CharacterSubmission} from './submission';
 import {getSaveAttempt} from './submission';
 import type {SaveAttempt} from './submission';
 import {getSaveIssues, getSaveMessage} from './save-errors';
 
-export function useSaveCharacter(formData: CharacterFormData, validation: FormValidation) {
+export function useSaveCharacter(formData: CharacterFormData, validation: FormValidation, media: CharacterMedia) {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const attempt = useRef<SaveAttempt | null>(null);
   const locked = useRef(false);
   const active = useRef(true);
   const [preparationError, setPreparationError] = useState<unknown>(null);
-  const mutation = useMutation({mutationFn: createCharacter, retry: false});
+  const mediaSignature = getMediaSignature(media);
+  const mutation = useMutation({
+    mutationFn: ({submission, files}: {submission: CharacterSubmission; files: CharacterMedia}) => createCharacter(submission, files),
+    retry: false,
+  });
   const {reset} = mutation;
   useEffect(() => {
     active.current = true;
@@ -23,7 +30,7 @@ export function useSaveCharacter(formData: CharacterFormData, validation: FormVa
   }, []);
   useEffect(() => {
     if (!locked.current) { reset(); setPreparationError(null); }
-  }, [formData, reset]);
+  }, [formData, reset, mediaSignature]);
 
   async function save() {
     if (locked.current || !validation.valid) return;
@@ -31,12 +38,12 @@ export function useSaveCharacter(formData: CharacterFormData, validation: FormVa
     setPreparationError(null);
     try {
       try {
-        attempt.current = getSaveAttempt(formData, attempt.current);
+        attempt.current = getSaveAttempt(formData, attempt.current, mediaSignature);
       } catch (error) {
         setPreparationError(error);
         return;
       }
-      const character = await mutation.mutateAsync(attempt.current.submission);
+      const character = await mutation.mutateAsync({submission: attempt.current.submission, files: media});
       queryClient.setQueryData(createdCharacterQuery(character.id).queryKey, character);
       await queryClient.invalidateQueries({queryKey: ['characters', 'list'], refetchType: 'none'});
       // Read through any other container's list cache after the committed write.

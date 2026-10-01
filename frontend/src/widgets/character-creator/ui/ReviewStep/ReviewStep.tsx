@@ -7,9 +7,9 @@ import type {SaveCharacterController} from '../../../../features/save-character'
 import {ReviewSection} from '../ReviewSection';
 import styles from './ReviewStep.module.css';
 
-export type ReviewStepProps = {controller: CharacterFormController; saving: SaveCharacterController; hasLocalMedia: boolean};
+export type ReviewStepProps = {controller: CharacterFormController; saving: SaveCharacterController};
 
-export function ReviewStep({controller, saving, hasLocalMedia}: ReviewStepProps) {
+export function ReviewStep({controller, saving}: ReviewStepProps) {
   const {formData, appearance, skills} = controller;
   const attributes = formData.attributes ?? {};
   const vitals = getBuildVitals(formData, attributes);
@@ -48,7 +48,7 @@ export function ReviewStep({controller, saving, hasLocalMedia}: ReviewStepProps)
         <ul>{formData.equipment?.items.map((item) => <li key={item.id}><strong>{item.name}</strong>{item.description && <p>{item.description}</p>}</li>)}</ul>
         {!formData.equipment?.items.length && <p>Герой отправляется в путь без снаряжения.</p>}
       </ReviewSection>
-      <SaveCharacterAction controller={saving} hasLocalMedia={hasLocalMedia} />
+      <SaveCharacterAction controller={saving} />
     </div>
   );
 }

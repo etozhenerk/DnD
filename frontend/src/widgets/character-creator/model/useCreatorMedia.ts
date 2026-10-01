@@ -29,6 +29,7 @@ export function useCreatorMedia() {
   return {
     portraits, selected, selectPortrait: setSelectedId, uploadIcon, removeIcon,
     iconError: iconImages.error,
+    getIconImage: (skillId: string) => iconImages.images.find((image) => image.id === icons[skillId]),
     hasIcons: Object.keys(icons).length > 0,
     getIcon: (skillId: string) => iconImages.images.find((image) => image.id === icons[skillId])?.url,
   };

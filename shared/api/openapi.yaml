@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.5.0
+  version: 0.6.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
 x-ability-rules-source: content/character-abilities.json
 servers:
@@ -119,6 +119,25 @@ paths:
       description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
         '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
+  /assets/{assetId}:
+    get:
+      operationId: getCharacterAsset
+      summary: Прочитать проверенное изображение готового персонажа
+      parameters:
+        - name: assetId
+          in: path
+          required: true
+          schema: {type: string, format: uuid}
+      responses:
+        '200':
+          description: Неизменяемое изображение; Cache-Control public, max-age=31536000, immutable
+          content:
+            image/png:
+              schema: {type: string, format: binary}
+            image/jpeg:
+              schema: {type: string, format: binary}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
   /characters:
     post:
       operationId: createCharacter
@@ -127,13 +146,31 @@ paths:
         Публичное создание по текущим правилам character-creation-v3. Создатель — NULL до авторизации.
         requestId — UUID одной попытки сохранения и ID будущей карточки. Повтор с той же
         нормализованной анкетой возвращает существующую карточку; другая анкета с тем же ID — 409.
-        Сервер рассчитывает HP/AC и эффекты; изображения этим запросом не загружаются.
-        Лимит JSON — 256 КиБ. Черновики и редактирование остаются закрыты.
+        Сервер рассчитывает HP/AC и эффекты. Для изображений используйте multipart/form-data:
+        character — JSON анкеты, portrait — выбранный портрет, icon:<abilityId> — до трёх иконок активных навыков.
+        Файлы — бинарные PNG/JPEG: портрет до 1 МиБ и 1600 px, иконка до 128 КиБ и 512 px по длинной стороне.
+        Лимит JSON — 256 КиБ, всего multipart — 2 МиБ. Изображения проверяются сервером,
+        ссылки и метаданные создаются одной транзакцией вместе с героем. Черновики и редактирование остаются закрыты.
       requestBody:
         required: true
         content:
           application/json:
             schema: {$ref: '#/components/schemas/CreateCharacter'}
+          multipart/form-data:
+            schema:
+              type: object
+              required: [character]
+              maxProperties: 5
+              additionalProperties: false
+              properties:
+                character: {$ref: '#/components/schemas/CreateCharacter'}
+                portrait: {type: string, format: binary}
+              patternProperties:
+                '^icon:[a-z0-9]+(-[a-z0-9]+)*$': {type: string, format: binary}
+            encoding:
+              character: {contentType: application/json}
+              portrait: {contentType: 'image/png, image/jpeg'}
+            x-max-body-bytes: 2097152
       responses:
         '201':
           description: Персонаж, навыки и предметы сохранены одной транзакцией
@@ -152,7 +189,7 @@ paths:
             application/json:
               schema: {$ref: '#/components/schemas/Error'}
         '413':
-          description: Тело запроса превышает 256 КиБ; код request_too_large
+          description: Превышен лимит JSON или multipart; код request_too_large
           content:
             application/json:
               schema: {$ref: '#/components/schemas/Error'}
@@ -451,8 +488,8 @@ components:
         classId: {type: string}
         portraitUrl:
           type: [string, 'null']
-          format: uri
-          description: Необязательный URL портрета. До подключения сохранения медиа поле отсутствует; клиент использует заглушку.
+          format: uri-reference
+          description: Путь /assets/<uuid> проверенного портрета на API. Без портрета поле отсутствует; клиент использует заглушку.
         maxHp: {type: integer}
         baseAc: {type: integer}
         createdAt: {type: string, format: date-time}
@@ -642,6 +679,7 @@ components:
             scope: {type: string, const: battle}
             max: {type: integer, minimum: 1, maximum: 2}
         iconAssetId: {type: [string, 'null'], format: uuid}
+        iconUrl: {type: string, format: uri-reference}
       description: |
         Результат серверной нормализации, не вход для PATCH.
         Автоматическая механика определена структурированными данными;

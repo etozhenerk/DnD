@@ -68,6 +68,13 @@ func testDatabase(t *testing.T) (*storage.Store, *creator.Catalog) {
 	if _, err := conn.Exec(t.Context(), string(creationMigration)); err != nil {
 		t.Fatal(err)
 	}
+	mediaMigration, err := os.ReadFile("../../migrations/000004_character_media.up.sql")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := conn.Exec(t.Context(), string(mediaMigration)); err != nil {
+		t.Fatal(err)
+	}
 	query := u.Query()
 	query.Set("search_path", schema)
 	u.RawQuery = query.Encode()

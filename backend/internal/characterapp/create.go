@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/etozhenerk/DnD/backend/internal/creator"
+	"github.com/etozhenerk/DnD/backend/internal/media"
 )
 
 // CharacterWriter atomically saves a normalized character and handles repeat submissions.
@@ -17,6 +18,7 @@ type CharacterWriter interface {
 type CreateInput struct {
 	RequestID string
 	RulesetID string
+	Files     []media.File
 	FormData  map[string]json.RawMessage
 }
 
@@ -31,6 +33,7 @@ type Creation struct {
 type Creator struct {
 	catalog *creator.Catalog
 	writer  CharacterWriter
+	objects ObjectWriter
 }
 
 // NewCreator connects approved rules with a persistence boundary.
@@ -53,6 +56,14 @@ func (s *Creator) Create(ctx context.Context, input CreateInput) (Creation, erro
 		return result, nil
 	}
 	character.ID = input.RequestID
+	result.Validation.Issues = append(result.Validation.Issues, prepareMedia(&character, input.Files)...)
+	result.Validation.Valid = len(result.Validation.Issues) == 0
+	if !result.Validation.Valid {
+		return result, nil
+	}
+	if err := s.uploadMedia(ctx, character, input.Files); err != nil {
+		return Creation{}, err
+	}
 	var err error
 	result.Character, result.Created, err = s.writer.CreateCharacter(ctx, character)
 	if err != nil {

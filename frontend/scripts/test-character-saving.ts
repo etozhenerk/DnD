@@ -31,3 +31,8 @@ assert.deepEqual(getSaveIssues(new ApiError('Validation', 422, 'validation_faile
 assert.deepEqual(getSaveIssues(new Error('Network')), []);
 assert.deepEqual(getSaveIssues(new ApiError('Malformed', 422, 'validation_failed', {issues: [null, {}]})), []);
 console.log('Character saving: retry identity, changed form, server-owned fields and validation links passed.');
+
+const withPortrait = getSaveAttempt(form, first, 'portrait-a');
+assert.notEqual(withPortrait.submission.requestId, first.submission.requestId);
+assert.equal(getSaveAttempt(form, withPortrait, 'portrait-a'), withPortrait);
+assert.notEqual(getSaveAttempt(form, withPortrait, 'portrait-b').submission.requestId, withPortrait.submission.requestId);

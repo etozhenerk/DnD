@@ -195,26 +195,30 @@ type Validation struct {
 	Derived *Derived          `json:"derived,omitempty"`
 }
 type Character struct {
-	ID          string         `json:"id"`
-	DisplayName string         `json:"displayName"`
-	Pronouns    string         `json:"pronouns,omitempty"`
-	RoleLabel   string         `json:"roleLabel,omitempty"`
-	RaceID      string         `json:"raceId"`
-	ClassID     string         `json:"classId"`
-	Story       string         `json:"story,omitempty"`
-	Motivation  string         `json:"motivation,omitempty"`
-	Appearance  string         `json:"appearance,omitempty"`
-	Personality []string       `json:"personality"`
-	Attributes  map[string]int `json:"attributes"`
-	MaxHP       int            `json:"maxHp"`
-	BaseAC      int            `json:"baseAc"`
-	Abilities   []Ability      `json:"abilities"`
-	Equipment   []Item         `json:"equipment"`
-	RulesetID   string         `json:"rulesetId"`
-	CreatedAt   string         `json:"createdAt"`
+	PortraitURL     string         `json:"portraitUrl,omitempty"`
+	PortraitAssetID string         `json:"-"`
+	Assets          []Asset        `json:"-"`
+	ID              string         `json:"id"`
+	DisplayName     string         `json:"displayName"`
+	Pronouns        string         `json:"pronouns,omitempty"`
+	RoleLabel       string         `json:"roleLabel,omitempty"`
+	RaceID          string         `json:"raceId"`
+	ClassID         string         `json:"classId"`
+	Story           string         `json:"story,omitempty"`
+	Motivation      string         `json:"motivation,omitempty"`
+	Appearance      string         `json:"appearance,omitempty"`
+	Personality     []string       `json:"personality"`
+	Attributes      map[string]int `json:"attributes"`
+	MaxHP           int            `json:"maxHp"`
+	BaseAC          int            `json:"baseAc"`
+	Abilities       []Ability      `json:"abilities"`
+	Equipment       []Item         `json:"equipment"`
+	RulesetID       string         `json:"rulesetId"`
+	CreatedAt       string         `json:"createdAt"`
 }
 
 type Summary struct {
+	PortraitURL string `json:"portraitUrl,omitempty"`
 	ID          string `json:"id"`
 	DisplayName string `json:"displayName"`
 	RaceID      string `json:"raceId"`

@@ -10,6 +10,7 @@ export type CharacterSummary = {
 };
 
 export type CreatedCharacterAbility = {
+  iconUrl?: string;
   id: string;
   name: string;
   description: string;

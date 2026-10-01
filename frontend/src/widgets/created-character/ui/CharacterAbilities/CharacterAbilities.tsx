@@ -12,7 +12,7 @@ export function CharacterAbilities({abilities}: CharacterAbilitiesProps) {
       {abilities.length === 0 && <p>Навыки не добавлены.</p>}
       <div className={styles.items}>{abilities.map((ability) => (
         <article key={ability.id} className={styles.ability}>
-          <h3>{ability.name}</h3>
+          <header className={styles.heading}>{ability.iconUrl && <img className={styles.icon} src={ability.iconUrl} alt="" loading="lazy" />}<h3>{ability.name}</h3></header>
           {ability.description && <p>{ability.description}</p>}
           {ability.effectText && <p className={styles.effect}>{ability.effectText}</p>}
           {ability.uses && <small>{getUsesLabel(ability.uses.scope, ability.uses.max)}</small>}

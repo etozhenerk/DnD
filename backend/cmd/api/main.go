@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/etozhenerk/DnD/backend/internal/blobstore"
 	"github.com/etozhenerk/DnD/backend/internal/creator"
 	"github.com/etozhenerk/DnD/backend/internal/httpapi"
 	"github.com/etozhenerk/DnD/backend/internal/storage"
@@ -22,6 +23,7 @@ type server struct {
 	catalog *creator.Catalog
 	store   *storage.Store
 	origins map[string]bool
+	objects *blobstore.Client
 }
 type apiError struct {
 	Code    string `json:"code"`
@@ -45,7 +47,10 @@ func internal(w http.ResponseWriter, err error) {
 	fail(w, 500, "internal_error", "Ошибка сервера")
 }
 func newHandler(c *creator.Catalog, st *storage.Store, origins []string) http.Handler {
-	s := &server{catalog: c, store: st, origins: map[string]bool{}}
+	return newHandlerWithMedia(c, st, origins, nil)
+}
+func newHandlerWithMedia(c *creator.Catalog, st *storage.Store, origins []string, objects *blobstore.Client) http.Handler {
+	s := &server{catalog: c, store: st, objects: objects, origins: map[string]bool{}}
 	for _, origin := range origins {
 		origin = strings.TrimSpace(origin)
 		if origin != "" {
@@ -309,7 +314,11 @@ func main() {
 	if port == "" {
 		port = "8080"
 	}
-	srv := &http.Server{Addr: ":" + port, Handler: newHandler(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ",")), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
+	var objects *blobstore.Client
+	if bucket := os.Getenv("ASSET_BUCKET"); bucket != "" {
+		objects = blobstore.New(bucket)
+	}
+	srv := &http.Server{Addr: ":" + port, Handler: newHandlerWithMedia(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","), objects), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
 	log.Printf("API listening on %s", srv.Addr)
 	log.Fatal(srv.ListenAndServe())
 }

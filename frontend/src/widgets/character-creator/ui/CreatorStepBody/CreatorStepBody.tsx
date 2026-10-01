@@ -20,6 +20,6 @@ export function CreatorStepBody({step, controller, media, saving}: CreatorStepBo
     case 'attributes': return <AttributeStep controller={controller} />;
     case 'abilities': return <SkillsStep controller={controller} media={media} />;
     case 'equipment': return <EquipmentStep controller={controller} />;
-    case 'review': return <ReviewStep controller={controller} saving={saving} hasLocalMedia={Boolean(media.selected) || media.hasIcons} />;
+    case 'review': return <ReviewStep controller={controller} saving={saving} />;
   }
 }

@@ -32,6 +32,9 @@ func (s *Store) CreateCharacter(ctx context.Context, ch creator.Character) (crea
 		return creator.Character{}, false, err
 	}
 	if created {
+		if err := insertAssets(ctx, tx, ch); err != nil {
+			return creator.Character{}, false, err
+		}
 		if err := insertCharacterChildren(ctx, tx, ch); err != nil {
 			return creator.Character{}, false, err
 		}
@@ -50,13 +53,13 @@ func insertReadyCharacter(ctx context.Context, tx pgx.Tx, ch creator.Character, 
 		INSERT INTO characters (
 			id, creator_user_id, display_name, pronouns, role_label, race_id, class_id,
 			story, motivation, appearance, personality, strength, dexterity, constitution,
-			wisdom, intelligence, charisma, max_hp, base_ac, ruleset_id, creation_request_hash
-		) VALUES ($1,NULL,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20)
+			wisdom, intelligence, charisma, max_hp, base_ac, ruleset_id, creation_request_hash, portrait_asset_id
+		) VALUES ($1,NULL,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)
 		ON CONFLICT (id) DO NOTHING RETURNING created_at`,
 		ch.ID, ch.DisplayName, ch.Pronouns, ch.RoleLabel, ch.RaceID, ch.ClassID,
 		ch.Story, ch.Motivation, ch.Appearance, ch.Personality,
 		a["strength"], a["dexterity"], a["constitution"], a["wisdom"], a["intelligence"], a["charisma"],
-		ch.MaxHP, ch.BaseAC, ch.RulesetID, hash).Scan(&createdAt)
+		ch.MaxHP, ch.BaseAC, ch.RulesetID, hash, nullableID(ch.PortraitAssetID)).Scan(&createdAt)
 	if err == nil {
 		return createdAt, true, nil
 	}

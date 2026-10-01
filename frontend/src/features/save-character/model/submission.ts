@@ -20,9 +20,9 @@ export function getSubmissionData(form: CharacterFormData): Omit<CharacterSubmis
 
 export type SaveAttempt = {fingerprint: string; submission: CharacterSubmission};
 
-export function getSaveAttempt(form: CharacterFormData, previous: SaveAttempt | null): SaveAttempt {
+export function getSaveAttempt(form: CharacterFormData, previous: SaveAttempt | null, mediaSignature = ''): SaveAttempt {
   const data = getSubmissionData(form);
-  const fingerprint = JSON.stringify(data);
+  const fingerprint = JSON.stringify(data) + mediaSignature;
   if (previous?.fingerprint === fingerprint) return previous;
   return {fingerprint, submission: {...data, requestId: crypto.randomUUID()}};
 }

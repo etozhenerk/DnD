@@ -139,7 +139,12 @@ func (s *Store) Complete(ctx context.Context, id, token string, catalog *creator
 	return ch, validation, nil
 }
 func (s *Store) ListCharacters(ctx context.Context, limit, offset int) ([]creator.Summary, error) {
-	rows, err := s.Pool.Query(ctx, `SELECT id::text,display_name,race_id,class_id,max_hp,base_ac,created_at FROM characters ORDER BY created_at DESC,id DESC LIMIT $1 OFFSET $2`, limit, offset)
+	rows, err := s.Pool.Query(ctx, `
+        SELECT c.id::text,c.display_name,c.race_id,c.class_id,c.max_hp,c.base_ac,
+            c.created_at,COALESCE(a.id::text,'')
+        FROM characters c LEFT JOIN character_assets a
+            ON a.id=c.portrait_asset_id AND a.character_id=c.id AND a.status='verified'
+        ORDER BY c.created_at DESC,c.id DESC LIMIT $1 OFFSET $2`, limit, offset)
 	if err != nil {
 		return nil, err
 	}
@@ -147,11 +152,13 @@ func (s *Store) ListCharacters(ctx context.Context, limit, offset int) ([]creato
 	out := []creator.Summary{}
 	for rows.Next() {
 		var c creator.Summary
+		var portraitID string
 		var t time.Time
-		if err = rows.Scan(&c.ID, &c.DisplayName, &c.RaceID, &c.ClassID, &c.MaxHP, &c.BaseAC, &t); err != nil {
+		if err = rows.Scan(&c.ID, &c.DisplayName, &c.RaceID, &c.ClassID, &c.MaxHP, &c.BaseAC, &t, &portraitID); err != nil {
 			return nil, err
 		}
 		c.CreatedAt = t.Format(time.RFC3339Nano)
+		c.PortraitURL = creator.AssetURL(portraitID)
 		out = append(out, c)
 	}
 	return out, rows.Err()
@@ -161,7 +168,14 @@ func (s *Store) GetCharacter(ctx context.Context, id string) (creator.Character,
 	var t time.Time
 	var vals [6]int
 	var pronouns, roleLabel, story, motivation, appearance *string
-	err := s.Pool.QueryRow(ctx, `SELECT id::text,display_name,pronouns,role_label,race_id,class_id,story,motivation,appearance,personality,strength,dexterity,constitution,wisdom,intelligence,charisma,max_hp,base_ac,ruleset_id,created_at FROM characters WHERE id=$1`, id).Scan(&c.ID, &c.DisplayName, &pronouns, &roleLabel, &c.RaceID, &c.ClassID, &story, &motivation, &appearance, &c.Personality, &vals[0], &vals[1], &vals[2], &vals[3], &vals[4], &vals[5], &c.MaxHP, &c.BaseAC, &c.RulesetID, &t)
+	err := s.Pool.QueryRow(ctx, `
+        SELECT c.id::text,c.display_name,c.pronouns,c.role_label,c.race_id,c.class_id,
+            c.story,c.motivation,c.appearance,c.personality,c.strength,c.dexterity,
+            c.constitution,c.wisdom,c.intelligence,c.charisma,c.max_hp,c.base_ac,
+            c.ruleset_id,c.created_at,COALESCE(a.id::text,'')
+        FROM characters c LEFT JOIN character_assets a
+            ON a.id=c.portrait_asset_id AND a.character_id=c.id AND a.status='verified'
+        WHERE c.id=$1`, id).Scan(&c.ID, &c.DisplayName, &pronouns, &roleLabel, &c.RaceID, &c.ClassID, &story, &motivation, &appearance, &c.Personality, &vals[0], &vals[1], &vals[2], &vals[3], &vals[4], &vals[5], &c.MaxHP, &c.BaseAC, &c.RulesetID, &t, &c.PortraitAssetID)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return c, ErrNotFound
 	}
@@ -184,6 +198,7 @@ func (s *Store) GetCharacter(ctx context.Context, id string) (creator.Character,
 		c.Appearance = *appearance
 	}
 	c.CreatedAt = t.Format(time.RFC3339Nano)
+	c.PortraitURL = creator.AssetURL(c.PortraitAssetID)
 	c.Attributes = map[string]int{"strength": vals[0], "dexterity": vals[1], "constitution": vals[2], "wisdom": vals[3], "intelligence": vals[4], "charisma": vals[5]}
 	c.Abilities = []creator.Ability{}
 	c.Equipment = []creator.Item{}

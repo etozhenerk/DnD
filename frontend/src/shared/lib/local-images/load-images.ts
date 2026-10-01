@@ -11,7 +11,7 @@ export async function loadImages(files: readonly File[]) {
     try {
       const bitmap = await createImageBitmap(file);
       bitmap.close();
-      images.push({id: crypto.randomUUID(), name: file.name, url: URL.createObjectURL(file)});
+      images.push({id: crypto.randomUUID(), name: file.name, url: URL.createObjectURL(file), file});
     } catch { problems.push('Не удалось открыть ' + file.name + '.'); }
   }
   return {images, problems};

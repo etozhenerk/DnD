@@ -18,7 +18,13 @@ export type CharacterCreatorProps = {stepId: string};
 export function CharacterCreator({stepId}: CharacterCreatorProps) {
   const controller = useCharacterForm();
   const media = useCreatorMedia();
-  const saving = useSaveCharacter(controller.formData, controller.form.validation);
+  const saving = useSaveCharacter(controller.formData, controller.form.validation, {
+    portrait: media.selected,
+    icons: controller.skills.items.flatMap((skill) => {
+      const image = media.getIconImage(skill.id);
+      return image ? [{abilityId: skill.id, image}] : [];
+    }),
+  });
   const viewTransition = useViewTransitions();
   const navigation = getCreatorNavigation(stepId);
   if (!navigation) return <RequestState title="Такого шага нет" message="Выберите шаг из конструктора персонажей." />;

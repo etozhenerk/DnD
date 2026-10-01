@@ -1,4 +1,5 @@
 import {readArray, readNumber, readObject, readOptionalString, readString, readUuid} from '../../../shared/lib/json-fields';
+import {resolveCharacterMedia} from '../lib/resolve-character-media';
 import type {CharacterSummary, CreatedCharacter, CreatedCharacterAbility, CreatedCharacterItem, CreatorCatalog} from '../model/created-character';
 
 export function parseCharacterSummary(value: unknown): CharacterSummary {
@@ -10,7 +11,7 @@ export function parseCharacterSummary(value: unknown): CharacterSummary {
     createdAt: readString(data.createdAt),
   };
   if (data.portraitUrl !== undefined) {
-    summary.portraitUrl = data.portraitUrl === null ? null : readString(data.portraitUrl);
+    summary.portraitUrl = data.portraitUrl === null ? null : resolveCharacterMedia(readString(data.portraitUrl));
   }
   return summary;
 }
@@ -54,6 +55,7 @@ function parseAbility(value: unknown): CreatedCharacterAbility {
   return {
     id: readString(data.id), name: readString(data.name),
     description: readOptionalString(data.description), effectText: readOptionalString(data.effectText),
+    iconUrl: data.iconUrl === undefined ? undefined : resolveCharacterMedia(readString(data.iconUrl)),
     uses: uses ? {scope: readString(uses.scope), max: readNumber(uses.max)} : null,
   };
 }

@@ -1,1 +1,1 @@
-export type LocalImage = {id: string; name: string; url: string};
+export type LocalImage = {id: string; name: string; url: string; file: File};

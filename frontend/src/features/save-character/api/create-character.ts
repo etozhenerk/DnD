@@ -1,9 +1,13 @@
 import {parseCharacter} from '../../../entities/character';
-import {ApiError, requestJson} from '../../../shared/api/http';
+import {ApiError, requestJson, requestForm} from '../../../shared/api/http';
+import {prepareCharacterUpload} from '../model/media';
+import type {CharacterMedia} from '../model/media';
 import type {CharacterSubmission} from '../model/submission';
 
-export async function createCharacter(submission: CharacterSubmission) {
-  const response = await requestJson('/characters', {method: 'POST', body: submission});
+export async function createCharacter(submission: CharacterSubmission, media?: CharacterMedia) {
+  const response = media && (media.portrait || media.icons.length > 0)
+    ? await requestForm('/characters', await prepareCharacterUpload(submission, media))
+    : await requestJson('/characters', {method: 'POST', body: submission});
   try {
     const character = parseCharacter(response);
     if (character.id !== submission.requestId) throw new Error('Unexpected character ID');

@@ -56,6 +56,7 @@ type Ability struct {
 	Uses           *Uses    `json:"uses"`
 	Effects        []Effect `json:"effects"`
 	IconAssetID    string   `json:"iconAssetId,omitempty"`
+	IconURL        string   `json:"iconUrl,omitempty"`
 }
 
 // Issue identifies a field and a stable validation error code.

@@ -17,6 +17,6 @@ export function getSaveIssues(error: unknown): SaveIssue[] {
 }
 
 export function getSaveMessage(error: unknown): string {
-  if (error instanceof Error && !(error instanceof ApiError) && error.message.startsWith('Заполните')) return error.message;
+  if (error instanceof Error && !(error instanceof ApiError) && ['Заполните', 'Изображение', 'Не удалось подготовить'].some((prefix) => error.message.startsWith(prefix))) return error.message;
   return getRequestError(error);
 }

@@ -22,10 +22,10 @@ func insertAbility(ctx context.Context, tx pgx.Tx, characterID string, position 
 	_, err = tx.Exec(ctx, `
 		INSERT INTO character_abilities (
 			character_id, ability_id, position, name, description, effect_text,
-			trigger, automation_mode, effects, uses_scope, uses_max
-		) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10,$11)`,
+			trigger, automation_mode, effects, uses_scope, uses_max, icon_asset_id
+		) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9::jsonb,$10,$11,$12)`,
 		characterID, a.ID, position, a.Name, a.Description, a.EffectText,
-		a.Trigger, a.AutomationMode, string(effects), scope, limit)
+		a.Trigger, a.AutomationMode, string(effects), scope, limit, nullableID(a.IconAssetID))
 	if err != nil {
 		return fmt.Errorf("insert ability: %w", err)
 	}
@@ -34,9 +34,10 @@ func insertAbility(ctx context.Context, tx pgx.Tx, characterID string, position 
 
 func (s *Store) loadAbilities(ctx context.Context, characterID string) ([]creator.Ability, error) {
 	rows, err := s.Pool.Query(ctx, `
-		SELECT ability_id, name, description, effect_text, trigger, automation_mode,
-			effects::text, uses_scope, uses_max
-		FROM character_abilities WHERE character_id=$1 ORDER BY position`, characterID)
+		SELECT b.ability_id, b.name, b.description, b.effect_text, b.trigger, b.automation_mode,
+			b.effects::text, b.uses_scope, b.uses_max, COALESCE(a.id::text,'')
+		FROM character_abilities b LEFT JOIN character_assets a ON a.id=b.icon_asset_id AND a.character_id=b.character_id AND a.status='verified'
+		WHERE b.character_id=$1 ORDER BY b.position`, characterID)
 	if err != nil {
 		return nil, fmt.Errorf("query abilities: %w", err)
 	}
@@ -47,12 +48,13 @@ func (s *Store) loadAbilities(ctx context.Context, characterID string) ([]creato
 		var raw string
 		var scope *string
 		var limit *int
-		if err := rows.Scan(&a.ID, &a.Name, &a.Description, &a.EffectText, &a.Trigger, &a.AutomationMode, &raw, &scope, &limit); err != nil {
+		if err := rows.Scan(&a.ID, &a.Name, &a.Description, &a.EffectText, &a.Trigger, &a.AutomationMode, &raw, &scope, &limit, &a.IconAssetID); err != nil {
 			return nil, fmt.Errorf("scan ability: %w", err)
 		}
 		if err := json.Unmarshal([]byte(raw), &a.Effects); err != nil {
 			return nil, fmt.Errorf("decode ability effects: %w", err)
 		}
+		a.IconURL = creator.AssetURL(a.IconAssetID)
 		if scope != nil && limit != nil {
 			a.Uses = &creator.Uses{Scope: *scope, Max: *limit}
 		}

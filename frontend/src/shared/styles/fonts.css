@@ -27,3 +27,19 @@
   font-weight: 400;
   src: url('../assets/fonts/BadScript-Regular.ttf') format('truetype');
 }
+
+@font-face {
+  font-display: swap;
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300 700;
+  src: url('../assets/fonts/CormorantGaramond-Variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400 900;
+  src: url('../assets/fonts/Alegreya-Variable.ttf') format('truetype');
+}

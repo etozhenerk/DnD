@@ -1,0 +1,23 @@
+.entry {
+  align-items: center;
+  background: var(--creator-medallion);
+  border: 0;
+  border-radius: 24px;
+  color: var(--creator-accent);
+  display: inline-flex;
+  font-family: var(--font-fantasy-copy);
+  font-size: .95rem;
+  gap: .5rem;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 44px;
+  padding: .5rem 1rem;
+}
+
+@media (max-width: 520px) {
+  .entry {
+    font-size: .8rem;
+    gap: .35rem;
+    padding-inline: .65rem;
+  }
+}

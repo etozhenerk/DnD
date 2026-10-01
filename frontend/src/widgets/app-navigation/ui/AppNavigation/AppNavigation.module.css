@@ -1,177 +1,79 @@
 .navigation {
+  view-transition-name: fantasy-navigation;
   align-items: center;
-  background: var(--gradient-navigation);
-  border-bottom: 1px solid var(--color-brass-alpha-62);
+  background: var(--creator-navigation-wash), var(--navigation-art) center / auto 210px;
   box-shadow: var(--shadow-navigation);
-  display: flex;
-  height: 76px;
-  justify-content: space-between;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(228px, 1fr) auto minmax(90px, 1fr);
+  height: 68px;
   left: 0;
-  padding: 0 clamp(1rem, 5vw, 5rem);
+  padding: 0 clamp(1rem, 2.5vw, 2.5rem);
   position: fixed;
   right: 0;
   top: 0;
   z-index: 20;
 }
 
-.brand {
+.actions {
   align-items: center;
   display: flex;
-  gap: 0.65rem;
-  text-decoration: none;
+  gap: .5rem;
+  justify-self: end;
 }
 
-.sigil {
+.menuToggle {
   align-items: center;
-  background: var(--gradient-sigil);
-  border: 1px solid var(--color-brass-light);
+  background: var(--creator-surface);
+  border: 0;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 3px var(--color-black-alpha-42);
-  color: var(--color-parchment-pale);
-  display: flex;
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  height: 2.35rem;
+  color: var(--creator-accent);
+  display: none;
+  font-size: 1.2rem;
+  height: 44px;
   justify-content: center;
-  letter-spacing: 0.08em;
-  width: 2.35rem;
+  width: 44px;
 }
 
-.brandText {
-  display: grid;
-}
-
-.brand small {
-  color: var(--color-brass-muted);
-  font-size: 0.5rem;
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
-.brand strong {
-  color: var(--color-parchment-pale);
-  font-family: var(--font-display);
-  font-size: 1.16rem;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-}
-
-.links {
-  align-items: center;
-  display: flex;
-  gap: 0.35rem;
-  height: 100%;
-}
-
-.links a {
-  align-items: center;
-  background: var(--color-transparent);
-  border: 1px solid var(--color-transparent);
-  color: var(--color-ink-muted);
-  display: flex;
-  font-family: var(--font-display);
-  gap: 0.45rem;
-  min-width: 6.7rem;
-  padding: 0.65rem 1.15rem;
-  position: relative;
-  text-decoration: none;
-}
-
-.links a::after {
-  background: var(--gradient-brass-line);
-  bottom: -0.2rem;
-  content: '';
-  height: 1px;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%) scaleX(0);
-  transition: transform 180ms ease;
-  width: calc(100% - 2rem);
-}
-
-.links a span {
-  color: var(--color-brass-muted);
-  font-size: 0.88rem;
-}
-
-.links a:hover {
-  color: var(--color-parchment-pale);
-}
-
-.links .active {
-  background: var(--color-brass-alpha-12);
-  border-color: var(--color-brass-alpha-38);
-  color: var(--color-brass-light);
-}
-
-.links .active::after {
-  transform: translateX(-50%) scaleX(1);
-}
-
-.links .active span {
-  color: var(--color-brass-light);
-}
-
-.brand:focus-visible,
-.links a:focus-visible {
-  outline: 2px solid var(--color-ice-bright);
+.menuToggle:focus-visible {
+  outline: 2px solid var(--creator-focus);
   outline-offset: 3px;
 }
 
-@media (max-width: 1120px) {
-  .brandText {
-    display: none;
+@media (max-width: 900px) {
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
   }
-  .links a {
-    min-width: auto;
-    padding-inline: .7rem;
+
+  .linksPanel {
+    background: var(--gradient-navigation);
+    box-shadow: var(--shadow-navigation);
+    display: none;
+    left: .75rem;
+    position: absolute;
+    right: .75rem;
+    top: calc(100% + .5rem);
+  }
+
+  .expanded {
+    display: block;
+  }
+
+  .menuToggle {
+    display: inline-flex;
   }
 }
 
 @media (max-width: 520px) {
   .navigation {
+    gap: .5rem;
     height: 60px;
-    padding: 0 0.65rem;
-  }
-  .brand {
-    gap: 0;
-  }
-  .brandText {
-    display: none;
-  }
-  .sigil {
-    height: 2rem;
-    width: 2rem;
-  }
-  .links {
-    gap: 0.18rem;
-  }
-  .links a {
-    font-size: 0.72rem;
-    gap: 0.2rem;
-    min-width: auto;
-    padding: 0.5rem 0.32rem;
-  }
-  .links a span {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .links a::after {
-    transition: none;
-  }
-}
-
-@media (max-width: 380px) {
-  .links {
-    gap: .08rem;
+    padding-inline: .65rem;
   }
 
-  .links a {
-    font-size: .64rem;
-    min-height: 44px;
-    padding-inline: .24rem;
+  .actions {
+    gap: .35rem;
   }
 }

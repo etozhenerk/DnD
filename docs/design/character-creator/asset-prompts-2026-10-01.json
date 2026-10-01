@@ -1,0 +1,147 @@
+{
+  "tool": "image_gen.imagegen",
+  "status": "local-ui-review",
+  "purpose": "Новые карточки рас с мужчиной и женщиной по существующим рендерам; отдельные эмблемы двенадцати классов. Не меняют канон.",
+  "assets": [
+    {
+      "id": "ice-wardens",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve pale cold-toned skin, silver-white hair, ice-blue eyes, slender elfin features, small pointed ears and heavy frosted fur winter clothing. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/ice-wardens.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/ice-wardens-v1.png"
+    },
+    {
+      "id": "humans",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve ordinary human faces, dark natural hair, rugged grey-brown layered winter leather, wool scarves and fur. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/humans.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/humans-v1.png"
+    },
+    {
+      "id": "elves",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve graceful adult elven faces, clearly pointed ears, dark hair, elegant dark winter leather armour and grey fur, attentive calm expressions. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/elves.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/elves-v1.png"
+    },
+    {
+      "id": "halflings",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve short adult halfling proportions, rounded faces, slightly pointed ears, rosy cheeks, knitted winter layers and thick scarves. Adult man and adult woman, not children. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/halflings.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/halflings-v1.png"
+    },
+    {
+      "id": "dwarves",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve stout sturdy dwarf proportions, mature broad weathered faces, silver hair, a strong beard on the man, winter fur and forged armour. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/dwarves.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/dwarves-v1.png"
+    },
+    {
+      "id": "dragonborn",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve the reference's humanoid faces combined with dark draconic scales and swept large horns, reptilian texture around temples/neck and dark leather. Do not replace their faces with animal dragon heads. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/dragonborn.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/dragonborn-v1.png"
+    },
+    {
+      "id": "fairies",
+      "category": "races",
+      "prompt": "Use case: stylized-concept. Asset type: a new square 1024x1024 race icon portrait for a beautiful dark-fantasy character creator. Input image is an existing race render and visual reference only; take the two characters from the portrait part, ignore the reference's UI, text and borders. Primary request: ONE adult man and ONE adult woman of this same race, standing shoulder-to-shoulder as a balanced double bust portrait. Both faces equally large and clearly readable at 160px, both complete heads and characteristic ears/horns/wings visible, neither cropped off. Head/upper-chest composition, pair centered with safe margins, faces mostly frontal or slight three-quarter. Preserve delicate humanoid features, flowing pale pink, soft green and ivory clothing, leafy hair decoration and translucent dragonfly-like fairy wings. Create an adult male counterpart in matching botanical travel clothing. Both are anonymous fairy adults, not the named campaign character Linda. Style: richly detailed realistic painted fantasy game art matching the provided existing render, atmospheric snowy forest, cold blue light with gentle warm bronze reflection. Fill the square with the portrait art only. Bottom 20 percent darkens softly and contains shoulders/clothing rather than faces, reserved for a UI title added separately. No text, no letters, no UI, no frame, no border, no watermark, no additional people. Keep this race's established appearance and do not invent new lore.",
+      "reference": "frontend/assets/concepts/races/fairies-linfea.webp",
+      "transparent": false,
+      "output": "frontend/assets/concepts/ui/character-creator/races/fairies-v1.png"
+    },
+    {
+      "id": "barbarian",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a broad double-headed battle axe intertwined with a rugged leather grip and bear-claw talisman. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/barbarian-v1.png"
+    },
+    {
+      "id": "bard",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: an elegant ornate lute with flowing harp-like curves and a bronze feather. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/bard-v1.png"
+    },
+    {
+      "id": "cleric",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a sacred radiant sun pendant over a small ceremonial mace. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/cleric-v1.png"
+    },
+    {
+      "id": "druid",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: graceful stag antlers enclosing a living emerald oak leaf and small amber seed. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/druid-v1.png"
+    },
+    {
+      "id": "fighter",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a plain noble steel longsword crossed behind a battered bronze kite shield. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/fighter-v1.png"
+    },
+    {
+      "id": "monk",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a strong wrapped martial-artist fist encircled by wooden prayer beads. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/monk-v1.png"
+    },
+    {
+      "id": "paladin",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a majestic sun-engraved knight shield and upright silver sword with a subtle golden halo. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/paladin-v1.png"
+    },
+    {
+      "id": "ranger",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: an elegant curved wood longbow crossed with a bronze-tipped feathered arrow. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/ranger-v1.png"
+    },
+    {
+      "id": "rogue",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: two slender curved silver daggers crossing over a dark leather hood silhouette. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/rogue-v1.png"
+    },
+    {
+      "id": "sorcerer",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: a radiant amethyst flame captured between two gracefully spiralling bronze shapes. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/sorcerer-v1.png"
+    },
+    {
+      "id": "warlock",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: an eerie violet all-seeing eye set into a curling obsidian and antique bronze talisman. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/warlock-v1.png"
+    },
+    {
+      "id": "wizard",
+      "category": "classes",
+      "prompt": "Use case: stylized-concept. Asset type: one exquisite fantasy RPG class emblem with genuine transparent background, square 1024x1024. Subject: an open ancient spellbook with gold-edged pages and a luminous sapphire crystal above it. Premium hand-painted sculptural game inventory icon, antique bronze, silver highlights, small restrained jewel color, dramatic volume, tactile engraved materials. Highly readable coherent silhouette at 80px. Main emblem fills central 80 percent, generous equal transparent padding, fully visible with nothing cut off. Refined painterly realism, dark fantasy illustrated character creator aesthetic, soft warm metal light and cool edge light. No people, no literal frame, no badge background, no circular border, no lettering, no typography, no watermark, no shadows cast on a background. Actual alpha transparency, not black/checkerboard backdrop. One emblem only.",
+      "transparent": true,
+      "output": "frontend/assets/concepts/ui/character-creator/classes/wizard-v1.png"
+    }
+  ]
+}

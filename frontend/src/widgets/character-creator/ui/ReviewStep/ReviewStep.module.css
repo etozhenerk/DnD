@@ -1,0 +1,31 @@
+.review {
+  display: grid;
+  gap: 1rem;
+}
+
+.ready {
+  color: var(--creator-focus);
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.review h4 {
+  color: var(--creator-heading);
+  font-family: var(--font-fantasy-heading);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.story {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.review > small {
+  color: var(--creator-muted);
+  font-size: .85rem;
+  line-height: 1.5;
+}

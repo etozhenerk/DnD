@@ -1,0 +1,17 @@
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,15 @@
+.skeleton[aria-hidden] {
+  animation: none;
+}
+
+.identity {
+  gap: 1rem;
+}
+
+.vitals {
+  height: 84px;
+}
+
+.link {
+  margin-top: .9rem;
+}

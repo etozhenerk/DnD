@@ -42,7 +42,12 @@
     "source": "content/races.json",
     "requiredStatus": "playable",
     "statBonuses": false,
-    "featureSource": "selected-race"
+    "featureSource": "selected-race",
+    "explanation": "Раса определяет происхождение героя и даёт собственную игровую особенность. Она действует вместе с любым классом и сохраняется при настройке характеристик. Раса не добавляет очки к характеристикам и не ограничивает выбор класса."
+  },
+  "classSelection": {
+    "explanation": "Класс задаёт сильные и слабые стороны героя, основу здоровья и защиты. Его базовые характеристики сохраняются; на следующем этапе вы распределите ещё 4 очка усиления. Выбранные значения видны в предпросмотре героя.",
+    "skillExplanation": "Класс помогает выбрать образ и сильные стороны. Базовую атаку и собственные навыки вы соберёте на этапе «Навыки»: их описание, урон или лечение не назначаются автоматически."
   },
   "classCatalogStatus": "approved",
   "derivedStats": {
@@ -59,141 +64,242 @@
     {
       "id": "barbarian",
       "name": "Варвар",
+      "description": "Боец прямого натиска, который полагается на физическую силу и выносливость. Его образ подходит герою, готовому первым встретить опасность лицом к лицу.",
+      "playStyle": "Ближний бой, давление на противника и стойкость.",
       "defaultStats": {
         "strength": 4,
-        "dexterity": 2,
-        "constitution": 2,
+        "dexterity": 1,
+        "constitution": 3,
         "wisdom": 0,
         "intelligence": -2,
-        "charisma": 0
+        "charisma": -1
       },
       "baseHp": 36,
       "baseAc": 11,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": 3,
+        "dexterity": 1,
+        "constitution": 3,
+        "wisdom": 0,
+        "intelligence": -2,
+        "charisma": -1
+      },
+      "weakness": "Интеллект −2 и Харизма −1: специализация на натиске и выносливости оставляет меньше подготовки для знаний и переговоров."
     },
     {
       "id": "bard",
       "name": "Бард",
+      "description": "Артист, рассказчик или обаятельный авантюрист. Его главное оружие — влияние на окружающих, а ловкость и широкий кругозор помогают находить необычные решения.",
+      "playStyle": "Общение, поддержка команды и находчивость.",
       "defaultStats": {
-        "strength": 0,
+        "strength": -1,
         "dexterity": 2,
-        "constitution": 1,
-        "wisdom": 1,
-        "intelligence": 2,
+        "constitution": 2,
+        "wisdom": 2,
+        "intelligence": 0,
         "charisma": 3
       },
       "baseHp": 32,
       "baseAc": 10,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": -1,
+        "dexterity": 2,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": 0,
+        "charisma": 3
+      },
+      "weakness": "Сила −1: артист опирается на влияние и ловкость, а не на тяжёлую физическую работу."
     },
     {
       "id": "cleric",
       "name": "Жрец",
+      "description": "Хранитель веры или духовной традиции. Мудрость и стойкость помогают ему заботиться о спутниках и понимать, когда группе нужна помощь.",
+      "playStyle": "Поддержка, помощь союзникам и вдумчивые решения.",
       "defaultStats": {
-        "strength": 1,
-        "dexterity": 0,
+        "strength": 2,
+        "dexterity": -1,
         "constitution": 2,
         "wisdom": 3,
-        "intelligence": 1,
+        "intelligence": 0,
         "charisma": 2
       },
       "baseHp": 34,
       "baseAc": 12,
-      "dexterityAcCap": 1
+      "dexterityAcCap": 1,
+      "baseStats": {
+        "strength": 1,
+        "dexterity": -1,
+        "constitution": 2,
+        "wisdom": 3,
+        "intelligence": 0,
+        "charisma": 1
+      },
+      "weakness": "Ловкость −1: стойкость и мудрость важнее быстрых и тонких движений."
     },
     {
       "id": "druid",
       "name": "Друид",
+      "description": "Знаток природы, чувствующий живой мир и его скрытые связи. Подходит герою, который ищет ответы в животных, растениях и окружающей среде.",
+      "playStyle": "Исследование, связь с природой и поддержка.",
       "defaultStats": {
-        "strength": 0,
-        "dexterity": 1,
+        "strength": -1,
+        "dexterity": 2,
         "constitution": 2,
         "wisdom": 3,
         "intelligence": 2,
-        "charisma": 1
+        "charisma": 0
       },
       "baseHp": 32,
       "baseAc": 11,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": -1,
+        "dexterity": 1,
+        "constitution": 2,
+        "wisdom": 3,
+        "intelligence": 1,
+        "charisma": 0
+      },
+      "weakness": "Сила −1: знания природы и внимательность важнее силового натиска."
     },
     {
       "id": "fighter",
       "name": "Воин",
+      "description": "Мастер оружия и тактических решений. Сила и подготовка помогают ему держать удар, защищать спутников и находить надёжный путь через опасность.",
+      "playStyle": "Оружие, тактика и участие в передней линии боя.",
       "defaultStats": {
         "strength": 3,
         "dexterity": 2,
         "constitution": 2,
-        "wisdom": 1,
-        "intelligence": 1,
+        "wisdom": 2,
+        "intelligence": -1,
         "charisma": 0
       },
       "baseHp": 36,
       "baseAc": 12,
-      "dexterityAcCap": 2
-    },
-    {
-      "id": "monk",
-      "name": "Монах",
-      "defaultStats": {
-        "strength": 1,
-        "dexterity": 3,
-        "constitution": 2,
-        "wisdom": 2,
-        "intelligence": 1,
-        "charisma": 0
-      },
-      "baseHp": 32,
-      "baseAc": 10,
-      "dexterityAcCap": 3
-    },
-    {
-      "id": "paladin",
-      "name": "Паладин",
-      "defaultStats": {
+      "dexterityAcCap": 2,
+      "baseStats": {
         "strength": 3,
         "dexterity": 1,
         "constitution": 2,
         "wisdom": 1,
-        "intelligence": 0,
-        "charisma": 2
-      },
-      "baseHp": 36,
-      "baseAc": 13,
-      "dexterityAcCap": 1
-    },
-    {
-      "id": "ranger",
-      "name": "Следопыт",
-      "defaultStats": {
-        "strength": 1,
-        "dexterity": 3,
-        "constitution": 1,
-        "wisdom": 3,
-        "intelligence": 0,
+        "intelligence": -1,
         "charisma": 0
       },
-      "baseHp": 32,
-      "baseAc": 11,
-      "dexterityAcCap": 2
+      "weakness": "Интеллект −1: воин лучше подготовлен к физическому противостоянию, чем к учёным задачам."
     },
     {
-      "id": "rogue",
-      "name": "Плут",
+      "id": "monk",
+      "name": "Монах",
+      "description": "Дисциплинированный боец, полагающийся на собственное тело и внимательность. Ловкость помогает ему действовать точно и выбирать удобный момент для атаки.",
+      "playStyle": "Подвижный ближний бой, точность и самообладание.",
       "defaultStats": {
         "strength": 0,
-        "dexterity": 4,
+        "dexterity": 3,
+        "constitution": 2,
+        "wisdom": 2,
+        "intelligence": 2,
+        "charisma": -1
+      },
+      "baseHp": 32,
+      "baseAc": 10,
+      "dexterityAcCap": 3,
+      "baseStats": {
+        "strength": 0,
+        "dexterity": 3,
         "constitution": 1,
         "wisdom": 2,
         "intelligence": 1,
         "charisma": -1
       },
+      "weakness": "Харизма −1: тренировка тела и внимания важнее искусства убеждать."
+    },
+    {
+      "id": "paladin",
+      "name": "Паладин",
+      "description": "Воин с клятвой, идеалом или личным кодексом. Сила и высокая основа защиты сочетаются с харизмой героя, который готов вести спутников за собой.",
+      "playStyle": "Защита команды, ближний бой и верность своим принципам.",
+      "defaultStats": {
+        "strength": 3,
+        "dexterity": 1,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": -1,
+        "charisma": 3
+      },
+      "baseHp": 36,
+      "baseAc": 13,
+      "dexterityAcCap": 1,
+      "baseStats": {
+        "strength": 3,
+        "dexterity": 0,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": -1,
+        "charisma": 2
+      },
+      "weakness": "Интеллект −1: оружие, клятва и влияние важнее академических знаний."
+    },
+    {
+      "id": "ranger",
+      "name": "Следопыт",
+      "description": "Охотник, проводник или наблюдательный путешественник. Ловкость и мудрость помогают замечать следы, оценивать местность и выбирать подход к противнику.",
+      "playStyle": "Разведка, поиск следов и точные атаки.",
+      "defaultStats": {
+        "strength": 1,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 3,
+        "intelligence": 1,
+        "charisma": -1
+      },
+      "baseHp": 32,
+      "baseAc": 11,
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": 1,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 0,
+        "charisma": -1
+      },
+      "weakness": "Харизма −1: следопыт увереннее читает местность, чем ведёт светскую беседу."
+    },
+    {
+      "id": "rogue",
+      "name": "Плут",
+      "description": "Ловкий специалист по скрытности и нестандартным подходам. Хорошо подходит герою, предпочитающему точность, хитрость и удобный момент грубой силе.",
+      "playStyle": "Скрытность, ловкие действия и поиск обходных путей.",
+      "defaultStats": {
+        "strength": -1,
+        "dexterity": 4,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 1,
+        "charisma": 0
+      },
       "baseHp": 32,
       "baseAc": 10,
-      "dexterityAcCap": 3
+      "dexterityAcCap": 3,
+      "baseStats": {
+        "strength": -1,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 1,
+        "charisma": 0
+      },
+      "weakness": "Сила −1: плут полагается на точность и обходные пути вместо грубой силы."
     },
     {
       "id": "sorcerer",
       "name": "Чародей",
+      "description": "Герой, для которого магия — часть собственной природы. Харизма определяет его яркий образ, а меньшая основа здоровья делает осторожность особенно полезной.",
+      "playStyle": "Выразительная магия, влияние и рискованные решения.",
       "defaultStats": {
         "strength": -1,
         "dexterity": 2,
@@ -204,26 +310,48 @@
       },
       "baseHp": 28,
       "baseAc": 10,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": -1,
+        "dexterity": 2,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": 0,
+        "charisma": 3
+      },
+      "weakness": "Сила −1: магическая выразительность важнее физического натиска."
     },
     {
       "id": "warlock",
       "name": "Колдун",
+      "description": "Искатель необычной силы, связанный договором, покровителем или тайной. Харизма и знания помогают ему действовать убедительно и замечать скрытые возможности.",
+      "playStyle": "Таинственная магия, переговоры и нестандартные решения.",
       "defaultStats": {
         "strength": 0,
-        "dexterity": 1,
+        "dexterity": 2,
         "constitution": 2,
-        "wisdom": 1,
+        "wisdom": -1,
         "intelligence": 2,
         "charisma": 3
       },
       "baseHp": 30,
       "baseAc": 10,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 2,
+        "wisdom": -1,
+        "intelligence": 1,
+        "charisma": 3
+      },
+      "weakness": "Мудрость −1: специализация на необычной силе оставляет меньше подготовки для восприятия и выживания."
     },
     {
       "id": "wizard",
       "name": "Волшебник",
+      "description": "Исследователь магии, который полагается на знания и подготовку. Интеллект помогает разбирать загадки, а небольшой запас здоровья поощряет продуманные действия.",
+      "playStyle": "Знания, изученная магия и подготовка к опасностям.",
       "defaultStats": {
         "strength": -1,
         "dexterity": 1,
@@ -234,7 +362,21 @@
       },
       "baseHp": 28,
       "baseAc": 10,
-      "dexterityAcCap": 2
+      "dexterityAcCap": 2,
+      "baseStats": {
+        "strength": -1,
+        "dexterity": 1,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 3,
+        "charisma": 0
+      },
+      "weakness": "Сила −1: волшебник опирается на знания и подготовку, а не на физическую мощь."
     }
-  ]
+  ],
+  "classFoundation": {
+    "rulesetId": "character-creation-v3",
+    "baseBudget": 10,
+    "bonusBudget": 4
+  }
 }

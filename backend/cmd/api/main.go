@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/etozhenerk/DnD/backend/internal/creator"
+	"github.com/etozhenerk/DnD/backend/internal/httpapi"
 	"github.com/etozhenerk/DnD/backend/internal/storage"
 )
 
@@ -51,19 +52,7 @@ func newHandler(c *creator.Catalog, st *storage.Store, origins []string) http.Ha
 			s.origins[origin] = true
 		}
 	}
-	mux := http.NewServeMux()
-	mux.HandleFunc("GET /health", func(w http.ResponseWriter, _ *http.Request) { jsonResponse(w, 200, map[string]string{"status": "ok"}) })
-	mux.HandleFunc("GET /creator/options", s.options)
-	mux.HandleFunc("POST /drafts", s.createDraft)
-	mux.HandleFunc("GET /drafts/{draftId}", s.getDraft)
-	mux.HandleFunc("PATCH /drafts/{draftId}", s.patchDraft)
-	mux.HandleFunc("POST /drafts/{draftId}/advice", s.advice)
-	mux.HandleFunc("POST /drafts/{draftId}/assets", s.assets)
-	mux.HandleFunc("POST /drafts/{draftId}/validate", s.validateDraft)
-	mux.HandleFunc("POST /drafts/{draftId}/complete", s.completeDraft)
-	mux.HandleFunc("GET /characters", s.listCharacters)
-	mux.HandleFunc("GET /characters/{characterId}", s.getCharacter)
-	return s.cors(mux)
+	return s.cors(restrictDrafts(httpapi.NewPublicReadCache().Wrap(s.routes())))
 }
 func (s *server) cors(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -75,6 +64,7 @@ func (s *server) cors(next http.Handler) http.Handler {
 				return
 			}
 			w.Header().Set("Access-Control-Allow-Origin", origin)
+			w.Header().Set("Access-Control-Expose-Headers", "Server-Timing")
 		}
 		if r.Method == http.MethodOptions {
 			w.Header().Add("Vary", "Access-Control-Request-Method")

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.3.0
+  version: 0.4.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
 x-ability-rules-source: content/character-abilities.json
 servers:
@@ -28,152 +28,97 @@ paths:
       responses:
         '200':
           description: Канонические правила и игровые расы
+          headers:
+            Server-Timing: {$ref: '#/components/headers/ServerTiming'}
+            Cache-Control: {$ref: '#/components/headers/ReadCacheControl'}
           content:
             application/json:
               schema:
                 type: object
                 required: [rulesetId, rules, races, abilityRules]
                 properties:
-                  rulesetId: {type: string, const: character-creation-v2}
+                  rulesetId: {type: string, const: character-creation-v3}
                   abilityRules: {$ref: '#/components/schemas/AbilityRules'}
-                  rules: {type: object}
+                  rules:
+                    type: object
+                    properties:
+                      classSelection:
+                        type: object
+                        required: [explanation, skillExplanation]
+                        properties:
+                          explanation: {type: string}
+                          skillExplanation: {type: string}
+                      classFoundation:
+                        type: object
+                        required: [rulesetId, baseBudget, bonusBudget]
+                        properties:
+                          rulesetId: {type: string, const: character-creation-v3}
+                          baseBudget: {type: integer, const: 10}
+                          bonusBudget: {type: integer, const: 4}
+                      classProfiles:
+                        type: array
+                        items: {$ref: '#/components/schemas/CreatorClassProfile'}
                   races:
                     type: array
                     items: {type: object}
   /drafts:
     post:
       operationId: createDraft
-      summary: Начать анонимный черновик
-      description: Новые черновики используют character-creation-v2. Секрет возвращается один раз. Клиент хранит его локально и передаёт Bearer-токеном. Начатые ранее черновики character-creation-v1 сохраняют прежнюю валидацию описательных навыков.
+      summary: Начать черновик после входа
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '201':
-          description: Созданный черновик
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/CreatedDraft'}
-        '503': {$ref: '#/components/responses/Unavailable'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /drafts/{draftId}:
     parameters:
       - $ref: '#/components/parameters/DraftId'
     get:
       operationId: getDraft
-      summary: Восстановить черновик
-      security: [{draftToken: []}]
+      summary: Восстановить свой черновик после входа
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '200':
-          description: Текущее состояние анкеты
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/Draft'}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
     patch:
       operationId: patchDraft
-      summary: Сохранить один раздел анкеты
-      description: Разделы appearance, race, class, attributes, abilities, equipment. Клиент отправляет изменения последовательно; сервер атомарно заменяет выбранный раздел. Для abilities в v2 неизвестные поля и неверные типы дают 400; неполный раздел разрешён, игровые пределы проверяются при validate/complete.
-      security: [{draftToken: []}]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: {$ref: '#/components/schemas/PatchDraft'}
+      summary: Сохранить раздел своего черновика после входа
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '200':
-          description: Сохранённый черновик
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/Draft'}
-        '400': {$ref: '#/components/responses/BadRequest'}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /drafts/{draftId}/advice:
     parameters:
       - $ref: '#/components/parameters/DraftId'
     post:
       operationId: adviseDraft
-      summary: Запросить подсказку советника
-      description: До подключения агента AI Studio возвращает advisor_unavailable. Предложение советника само не меняет черновик.
-      security: [{draftToken: []}]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [prompt]
-              properties:
-                prompt: {type: string, minLength: 1, maxLength: 2000}
+      summary: Запросить подсказку для своего черновика
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '200':
-          description: Предложение для подтверждения игроком
-          content:
-            application/json:
-              schema: {type: object}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
-        '503': {$ref: '#/components/responses/Unavailable'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /drafts/{draftId}/assets:
     parameters:
       - $ref: '#/components/parameters/DraftId'
     post:
       operationId: uploadDraftAsset
-      summary: Загрузить портрет или иконку
-      description: До подключения хранилища файлов возвращает asset_storage_unavailable.
-      security: [{draftToken: []}]
-      requestBody:
-        required: true
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              required: [kind, file]
-              properties:
-                kind: {type: string, enum: [portrait, ability_icon]}
-                file: {type: string, format: binary}
+      summary: Загрузить файл для своего черновика
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '201':
-          description: Проверенный файл
-          content:
-            application/json:
-              schema: {type: object}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
-        '503': {$ref: '#/components/responses/Unavailable'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /drafts/{draftId}/validate:
     parameters:
       - $ref: '#/components/parameters/DraftId'
     post:
       operationId: validateDraft
-      summary: Проверить заполнение и утверждённые игровые правила
-      security: [{draftToken: []}]
+      summary: Проверить свой черновик
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '200':
-          description: Результат проверки
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/Validation'}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /drafts/{draftId}/complete:
     parameters:
       - $ref: '#/components/parameters/DraftId'
     post:
       operationId: completeDraft
-      summary: Проверить и сохранить готового персонажа
-      security: [{draftToken: []}]
+      summary: Завершить свой черновик
+      description: Авторизация ещё не подключена. Маршрут всегда возвращает 403, в том числе со старым токеном черновика. Доступ и контракт записи будут включены после проверки личности пользователя и владельца анкеты.
       responses:
-        '201':
-          description: Персонаж создан; черновик удалён
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/Character'}
-        '422':
-          description: Анкета не прошла проверку
-          content:
-            application/json:
-              schema: {$ref: '#/components/schemas/Validation'}
-        '401': {$ref: '#/components/responses/Unauthorized'}
-        '404': {$ref: '#/components/responses/NotFound'}
+        '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /characters:
     get:
       operationId: listCharacters
@@ -188,6 +133,9 @@ paths:
       responses:
         '200':
           description: Готовые персонажи, новые первыми
+          headers:
+            Server-Timing: {$ref: '#/components/headers/ServerTiming'}
+            Cache-Control: {$ref: '#/components/headers/ReadCacheControl'}
           content:
             application/json:
               schema:
@@ -210,16 +158,21 @@ paths:
       responses:
         '200':
           description: Готовый персонаж
+          headers:
+            Server-Timing: {$ref: '#/components/headers/ServerTiming'}
+            Cache-Control: {$ref: '#/components/headers/ReadCacheControl'}
           content:
             application/json:
               schema: {$ref: '#/components/schemas/Character'}
         '404': {$ref: '#/components/responses/NotFound'}
 components:
-  securitySchemes:
-    draftToken:
-      type: http
-      scheme: bearer
-      description: Случайный секрет конкретного анонимного черновика, не учётная запись.
+  headers:
+    ServerTiming:
+      description: Длительность обработки публичного чтения в процессе API (app;dur, миллисекунды) и результат серверного кэша (read_cache;desc, hit или miss). Не включает запуск контейнера и сетевой путь до него.
+      schema: {type: string}
+    ReadCacheControl:
+      description: no-store. Браузерный HTTP-кэш не используется; актуальность публичных данных контролируют TanStack Query и короткий кэш процесса API.
+      schema: {type: string, const: no-store}
   parameters:
     DraftId:
       name: draftId
@@ -227,6 +180,26 @@ components:
       required: true
       schema: {type: string, format: uuid}
   schemas:
+    CreatorClassProfile:
+      type: object
+      required: [id, name, description, playStyle, weakness, baseStats, defaultStats, baseHp, baseAc, dexterityAcCap]
+      properties:
+        id: {type: string}
+        name: {type: string}
+        description: {type: string}
+        playStyle: {type: string}
+        weakness:
+          type: string
+          description: Объяснение слабых сторон базового распределения, которые игрок может усилить.
+        baseStats:
+          type: object
+          additionalProperties: {type: integer, minimum: -4, maximum: 4}
+        defaultStats:
+          type: object
+          additionalProperties: {type: integer, minimum: -4, maximum: 4}
+        baseHp: {type: integer}
+        baseAc: {type: integer}
+        dexterityAcCap: {type: integer}
     Error:
       type: object
       required: [code, message]
@@ -356,6 +329,10 @@ components:
         displayName: {type: string}
         raceId: {type: string}
         classId: {type: string}
+        portraitUrl:
+          type: [string, 'null']
+          format: uri
+          description: Необязательный URL портрета. До подключения сохранения медиа поле отсутствует; клиент использует заглушку.
         maxHp: {type: integer}
         baseAc: {type: integer}
         createdAt: {type: string, format: date-time}
@@ -446,7 +423,7 @@ components:
       x-budget-points: 6
       x-unique-fields: [items.id, items.profileId, narrativeItems.id]
       description: |
-        Полный раздел abilities для validate/complete черновика character-creation-v2.
+        Полный раздел abilities для validate/complete анкеты character-creation-v2 или character-creation-v3.
         Сервер проверяет уникальность ID во всём разделе, включая reserved basic-attack,
         уникальность профилей, бюджет и существование выбранной характеристики.
         Частичный черновик можно сохранять без соблюдения required полей;
@@ -602,6 +579,16 @@ components:
         resolution: {type: object}
         narrativeAbilities: {type: object}
   responses:
+    DraftsRequireAuthentication:
+      description: Черновики недоступны до подключения авторизации пользователей.
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Error'
+              - type: object
+                properties:
+                  code: {type: string, const: drafts_require_authentication}
     BadRequest:
       description: Неверный запрос
       content:

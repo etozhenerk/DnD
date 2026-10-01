@@ -1,4 +1,13 @@
 :root {
+  --creator-dialog-backdrop: #02080ecc;
+  --creator-tooltip-fill: linear-gradient(145deg, #25231ffb, #08121afb);
+  --creator-tooltip-shadow: 0 12px 36px #000000a6, inset 0 1px #dfb97740;
+  --creator-portrait-fill: #081118;
+  --creator-portrait-ambience-opacity: .55;
+  --creator-portrait-vignette: radial-gradient(ellipse at center, #0a15204d 25%, #061019e6 100%);
+  --creator-portrait-subject-shadow: 0 5px 14px #00000080;
+  --creator-invisible-opacity: 0;
+  --creator-choice-shade: linear-gradient(180deg, #060f170d, #060f1759 45%, #030910f2);
   --opacity-action-disabled: 0.4;
   --dance-screen-off: #000;
   --dance-rose: #ffb8f5;
@@ -271,24 +280,59 @@
 
 :root {
   --creator-heading: #eee7d6;
-  --font-fantasy-copy: Georgia, 'Times New Roman', serif;
+  --font-fantasy-copy: 'Alegreya', Georgia, serif;
+  --font-fantasy-heading: 'Cormorant Garamond', Georgia, serif;
   --creator-copy: #d0d4d1;
   --creator-muted: #a6b2b4;
   --creator-surface: #111313;
   --creator-raised: #172329;
   --creator-border: #7b6748;
+  --creator-carved-border: #a17a44;
+  --creator-workbench-wash: linear-gradient(135deg, #0b0d1099, #0a0b1073 60%, #0a0e16b3);
+  --creator-sheet-fill: radial-gradient(ellipse at 25% 0%, #89632926, #11141600 60%), linear-gradient(140deg, #131717c9, #0a1115e3 60%, #090f12e0);
+  --creator-back-wash: linear-gradient(120deg, #30281dcc, #09151bcc);
+  --creator-locked-opacity: .7;
+  --creator-caption-wash: radial-gradient(ellipse at 50% 100%, #030d13ed 35%, #030f1566 80%, #030f1500);
+  --creator-attribute-wash: linear-gradient(90deg, #49382126, #07121a80 45%, #07121a00);
+  --creator-progress-wash: radial-gradient(ellipse at 50% 100%, #020a12eb 45%, #04182380 80%, #04182300);
+  --creator-advisor-wash: radial-gradient(ellipse at 50% 100%, #030c14ed 35%, #030c1466 75%, #03121b00);
+  --creator-conversation-wash: radial-gradient(ellipse at 50% 45%, #030c14e8 45%, #040e1680 75%, #040e1600);
+  --creator-input-fill: linear-gradient(145deg, #111b1ddd, #030a10f2);
+  --creator-input-shadow: inset 0 2px 10px #00000080, inset 0 1px #c8a26e26, 0 1px #dfb9770d;
+  --creator-selection-shadow: inset 0 0 0 1px #a6e4ffb3, 0 0 14px #2aa1df40;
+  --creator-navigation-wash: linear-gradient(180deg, #06080966, #03070ab3);
+  --creator-title-glow: 0 0 16px #8ac6ef42, 0 2px 3px #000000cc;
   --creator-accent: #dfb977;
-  --creator-focus: #a5dced;
-  --creator-action: linear-gradient(180deg, #124461, #072538 60%, #103b4b);
+  --creator-focus: #a6e4ff;
+  --creator-action: linear-gradient(180deg, #244858, #0a2435 60%, #173749);
   --creator-page-shade: linear-gradient(180deg, #020b1270, #020b1280 65%, #020b12d9);
   --creator-panel-wash: linear-gradient(135deg, #0d121acc, #090b0cc7 60%, #101820bf);
-  --creator-medallion: radial-gradient(circle, #153240, #07131c 64%, #372c19 66%, #0c1720 73%);
-  --creator-frame: 0 14px 36px #00000066, inset 0 0 24px #00000080;
+  --creator-medallion: radial-gradient(circle at 38% 30%, #3e3827, #101b20 64%, #5c4427 66%, #091219 74%);
+  --creator-frame: 0 10px 24px #00000040, inset 0 1px #c7aa5833, inset 0 0 30px #00000059;
   --creator-seal-shadow: 0 0 0 3px #111516, 0 0 0 4px #977344, 0 8px 20px #00000080;
-  --creator-button-shadow: inset 0 0 0 2px #07131ccc, inset 0 0 0 3px #b28f5370, 0 0 14px #3dadd526;
+  --creator-button-shadow: inset 0 1px #e6c88c55, inset 0 -1px #a6e4ff26, 0 3px 12px #00000066;
   --creator-active-glow: 0 0 6px #73c7f5b3, 0 0 18px #2aa1df66;
+  --creator-action-glow: inset 0 1px #e6c88c66, inset 0 -1px #a6e4ff33, 0 0 18px #2aa1df33;
   --creator-portrait-shade: linear-gradient(180deg, #050a0c00, #050a0c80 58%, #050a0cf2);
-  --creator-portrait-glow: radial-gradient(ellipse at 50% 35%, #39759950, #020a12b3 78%);
+  --creator-portrait-glow: radial-gradient(ellipse at 50% 35%, #39759920, #020a1273 78%);
   --creator-rune-line: linear-gradient(90deg, #dfb97700, #dfb977b3, #dfb97700);
   --creator-error: #edb1a1;
+}
+
+:root {
+  --fantasy-motion-hidden: 0;
+  --fantasy-motion-visible: 1;
+  --fantasy-motion-light-opacity: .7;
+  --fantasy-motion-light-wash: radial-gradient(ellipse at 38% 40%, #dfb97729, #9fdff216 38%, #dfb97700 72%);
+  --fantasy-motion-ease: cubic-bezier(.2, .75, .25, 1);
+  --fantasy-motion-page-duration: 380ms;
+  --fantasy-motion-route-duration: 260ms;
+  --fantasy-motion-exit-duration: 160ms;
+  --fantasy-motion-step-duration: 360ms;
+  --fantasy-motion-reveal-duration: 560ms;
+  --fantasy-motion-portrait-duration: 700ms;
+  --fantasy-motion-light-duration: 900ms;
+  --fantasy-skeleton-fill: linear-gradient(110deg, #8c947512, #bac9c91c 50%, #8c947510);
+  --fantasy-skeleton-portrait: radial-gradient(ellipse at 50% 42%, #3d667729, #111c2480 72%);
+  --fantasy-loader-muted-opacity: .45;
 }

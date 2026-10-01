@@ -1,0 +1,10 @@
+.icon {
+  color: var(--creator-accent);
+  filter: var(--filter-session-gold-glow);
+  height: 100%;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  width: 100%;
+}

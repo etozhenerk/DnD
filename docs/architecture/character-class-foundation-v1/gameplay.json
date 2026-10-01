@@ -1,0 +1,160 @@
+{
+  "id": "character-class-foundation-v1",
+  "status": "approved",
+  "characterCreationRulesetId": "character-creation-v3",
+  "sourceCharacterCreationRules": "content/character-creation.json",
+  "sourceAbilityRules": "content/character-abilities.json",
+  "scope": "new-constructor-characters-only",
+  "allocation": {
+    "foundationCost": 10,
+    "bonusBudget": 4,
+    "mustSpendAll": true,
+    "costSource": "content/character-creation.json#/pointBuy/costByModifier",
+    "limitsSource": "content/character-creation.json#/pointBuy",
+    "foundationEditable": false,
+    "refundFoundation": false,
+    "bonusCost": "cost(finalModifier) - cost(classFoundationModifier)",
+    "finalModifierMinimum": "classFoundationModifier",
+    "classChange": "confirm-and-reset-class-foundation-and-bonuses",
+    "reset": "remove-bonuses-only",
+    "recommendedFinalStatsSource": "content/character-creation.json#/classProfiles/*/defaultStats"
+  },
+  "derivedStatsSource": "content/character-creation.json#/derivedStats",
+  "classVitalsSource": "content/character-creation.json#/classProfiles",
+  "raceFeaturesSource": "content/races.json",
+  "classFoundations": [
+    {
+      "id": "barbarian",
+      "stats": {
+        "strength": 3,
+        "dexterity": 1,
+        "constitution": 3,
+        "wisdom": 0,
+        "intelligence": -2,
+        "charisma": -1
+      }
+    },
+    {
+      "id": "bard",
+      "stats": {
+        "strength": -1,
+        "dexterity": 2,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": 0,
+        "charisma": 3
+      }
+    },
+    {
+      "id": "cleric",
+      "stats": {
+        "strength": 1,
+        "dexterity": -1,
+        "constitution": 2,
+        "wisdom": 3,
+        "intelligence": 0,
+        "charisma": 1
+      }
+    },
+    {
+      "id": "druid",
+      "stats": {
+        "strength": -1,
+        "dexterity": 1,
+        "constitution": 2,
+        "wisdom": 3,
+        "intelligence": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "fighter",
+      "stats": {
+        "strength": 3,
+        "dexterity": 1,
+        "constitution": 2,
+        "wisdom": 1,
+        "intelligence": -1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "monk",
+      "stats": {
+        "strength": 0,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 1,
+        "charisma": -1
+      }
+    },
+    {
+      "id": "paladin",
+      "stats": {
+        "strength": 3,
+        "dexterity": 0,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": -1,
+        "charisma": 2
+      }
+    },
+    {
+      "id": "ranger",
+      "stats": {
+        "strength": 1,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 0,
+        "charisma": -1
+      }
+    },
+    {
+      "id": "rogue",
+      "stats": {
+        "strength": -1,
+        "dexterity": 3,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 1,
+        "charisma": 0
+      }
+    },
+    {
+      "id": "sorcerer",
+      "stats": {
+        "strength": -1,
+        "dexterity": 2,
+        "constitution": 1,
+        "wisdom": 1,
+        "intelligence": 0,
+        "charisma": 3
+      }
+    },
+    {
+      "id": "warlock",
+      "stats": {
+        "strength": 0,
+        "dexterity": 1,
+        "constitution": 2,
+        "wisdom": -1,
+        "intelligence": 1,
+        "charisma": 3
+      }
+    },
+    {
+      "id": "wizard",
+      "stats": {
+        "strength": -1,
+        "dexterity": 1,
+        "constitution": 1,
+        "wisdom": 2,
+        "intelligence": 3,
+        "charisma": 0
+      }
+    }
+  ],
+  "approval": "2026-10-01: пользователь утвердил основу + 4 очка и поручил перебалансировать слабые стороны классов с отрицательными модификаторами."
+}

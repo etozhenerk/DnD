@@ -1,0 +1,90 @@
+.tile {
+  background: var(--creator-input-fill);
+  border: 0;
+  border-radius: 30px 8px 18px 8px;
+  box-shadow: var(--creator-input-shadow);
+  color: var(--creator-heading);
+  display: flex;
+  flex-direction: column;
+  font: inherit;
+  gap: .35rem;
+  justify-content: flex-end;
+  min-height: 110px;
+  min-width: 0;
+  overflow: hidden;
+  padding: .9rem .7rem;
+  position: relative;
+  text-align: center;
+}
+
+.tile > img {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  object-position: center 25%;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+.tile:has(> img)::before {
+  background: var(--creator-choice-shade);
+  content: '';
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.title,
+.tile small,
+.icon {
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  min-height: 1.15em;
+  overflow-wrap: anywhere;
+}
+
+.tile small {
+  color: var(--creator-copy);
+  font-size: .8rem;
+  line-height: 1.2;
+}
+
+.icon {
+  color: var(--creator-accent);
+  flex: 0 0 84px;
+  height: 84px;
+  margin: 0 auto .5rem;
+  width: 84px;
+}
+
+.icon > img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.tile:has(.icon) {
+  align-items: center;
+  justify-content: center;
+  min-height: 170px;
+  padding-block: 1rem;
+}
+
+.tile[aria-pressed='true'] {
+  box-shadow: var(--creator-thumbnail-selected);
+  color: var(--creator-focus);
+}
+
+.tile:hover,
+.tile:focus-visible {
+  outline: 1px solid var(--creator-focus);
+  outline-offset: 3px;
+}

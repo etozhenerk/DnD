@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestAllClassPresetsWithV2Skills(t *testing.T) {
+func TestAllClassPresetsWithCurrentSkills(t *testing.T) {
 	c, err := Load("../../../content")
 	if err != nil {
 		t.Fatal(err)
@@ -15,7 +15,7 @@ func TestAllClassPresetsWithV2Skills(t *testing.T) {
 			form := testForm(cl.ID, "humans", cl.DefaultStats)
 			form["abilities"] = json.RawMessage(`{"basicAction":{"name":"Атака","description":"","modifierStat":"strength"},"items":[],"narrativeItems":[]}`)
 			v, ch := c.Validate(form)
-			if !v.Valid || ch.RulesetID != "character-creation-v2" || v.Skills == nil || v.Skills.PointsSpent != 0 || v.Derived.PointsSpent != 14 || ch.MaxHP != cl.BaseHP+2*cl.DefaultStats["constitution"] {
+			if !v.Valid || ch.RulesetID != "character-creation-v3" || v.Skills == nil || v.Skills.PointsSpent != 0 || v.Derived.PointsSpent != 14 || ch.MaxHP != cl.BaseHP+2*cl.DefaultStats["constitution"] {
 				t.Fatalf("validation=%+v character=%+v", v, ch)
 			}
 		})

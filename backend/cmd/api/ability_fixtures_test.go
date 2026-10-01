@@ -17,6 +17,13 @@ type draftCredentials struct {
 	Token     string `json:"token"`
 }
 
+// Exercise the retained draft mechanics only against CI's temporary database.
+// The production handler always applies restrictDrafts, tested separately.
+func newDraftMechanicsTestHandler(c *creator.Catalog, st *storage.Store) http.Handler {
+	s := &server{catalog: c, store: st}
+	return s.routes()
+}
+
 func apiRequest(handler http.Handler, method, path, token string, body []byte) *httptest.ResponseRecorder {
 	req := httptest.NewRequest(method, path, bytes.NewReader(body))
 	if token != "" {
@@ -88,7 +95,7 @@ func filledDraft(t *testing.T, handler http.Handler, c *creator.Catalog) draftCr
 	t.Helper()
 	var d draftCredentials
 	decodeResponse(t, apiRequest(handler, http.MethodPost, "/drafts", "", nil), http.StatusCreated, &d)
-	if d.RulesetID != "character-creation-v2" || len(d.Token) != 43 {
+	if d.RulesetID != "character-creation-v3" || len(d.Token) != 43 {
 		t.Fatalf("unexpected created draft ruleset or token length")
 	}
 	saveForm(t, handler, d, fixtureForm(t, c))

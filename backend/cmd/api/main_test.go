@@ -45,9 +45,10 @@ func TestCORSPreflight(t *testing.T) {
 }
 func TestMissingDraftToken(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/drafts/00000000-0000-0000-0000-000000000001", nil)
+	req.SetPathValue("draftId", "00000000-0000-0000-0000-000000000001")
 	w := httptest.NewRecorder()
-	newHandler(nil, nil, nil).ServeHTTP(w, req)
-	if w.Code != http.StatusUnauthorized {
+	_, _, ok := draftAuth(w, req)
+	if ok || w.Code != http.StatusUnauthorized {
 		t.Fatalf("status=%d", w.Code)
 	}
 }

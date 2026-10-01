@@ -1,0 +1,73 @@
+.overview {
+  align-items: start;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-areas: 'portrait story facts';
+  grid-template-columns: minmax(240px, .9fr) minmax(0, 1.4fr) minmax(300px, 1fr);
+}
+
+.portrait {
+  composes: portrait from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 40ms;
+  aspect-ratio: 4 / 5;
+  border-radius: 28px 8px 28px 8px;
+  box-shadow: var(--creator-frame);
+  grid-area: portrait;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.facts {
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 160ms;
+  grid-area: facts;
+  min-width: 0;
+}
+
+.story {
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 100ms;
+  grid-area: story;
+  min-width: 0;
+}
+
+.collections {
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 240ms;
+  align-items: start;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  margin-top: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .overview {
+    grid-template-areas: 'portrait facts' 'portrait story';
+    grid-template-columns: minmax(240px, .85fr) minmax(0, 1.4fr);
+  }
+
+  .portrait {
+    position: sticky;
+    top: 86px;
+  }
+}
+
+@media (max-width: 760px) {
+  .overview {
+    grid-template-areas: 'portrait' 'facts' 'story';
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portrait {
+    justify-self: center;
+    max-width: 26rem;
+    position: static;
+    width: 100%;
+  }
+
+  .collections {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 1.5rem;
+  }
+}

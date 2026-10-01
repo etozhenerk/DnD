@@ -3566,6 +3566,182 @@
       "path": "assets/concepts/ui/character-creator/advisor-owl.png",
       "status": "reference",
       "purpose": "Декоративная сова панели советника; не персонаж канона."
+    },
+    {
+      "id": "character-creator-hero-silhouette",
+      "path": "assets/concepts/ui/character-creator/hero-silhouette.png",
+      "status": "reference",
+      "purpose": "Анонимный персонаж в капюшоне для незаполненного конструктора; настоящий альфа-канал из генератора, без заданных расы и класса."
+    },
+    {
+      "id": "character-creator-reference-owl",
+      "path": "assets/concepts/ui/character-creator/reference-owl.png",
+      "status": "reference",
+      "purpose": "Сова на ветке по утверждённому эскизу; настоящий альфа-канал непосредственно из генератора."
+    },
+    {
+      "id": "character-creator-reference-forest",
+      "path": "assets/concepts/ui/character-creator/reference-forest.png",
+      "status": "reference",
+      "purpose": "Снежный лес по фону утверждённого эскиза, без UI; не задаёт локацию канона."
+    },
+    {
+      "id": "character-creator-reference-wood",
+      "path": "assets/concepts/ui/character-creator/reference-wood.png",
+      "status": "reference",
+      "purpose": "Материал тёмного дерева по центральной поверхности утверждённого эскиза, без рамок и надписей."
+    },
+    {
+      "id": "character-creator-reference-trim",
+      "path": "assets/concepts/ui/character-creator/reference-trim.png",
+      "status": "reference",
+      "purpose": "Материал резной деревянной перекладины с бронзовой отделкой по эскизу; используется с сохранением масштаба рисунка в шапке и нижнем разделителе."
+    },
+    {
+      "id": "chronicles-navigation-logo",
+      "path": "assets/concepts/ui/character-creator/chronicles-logo.png",
+      "status": "reference",
+      "purpose": "Цельная резная плашка логотипа по верхнему левому углу утверждённого эскиза: золотое солнце и точное название «Хроники Восьми Земель». Прозрачный PNG непосредственно из imagegen; ожидает визуального одобрения."
+    },
+    {
+      "id": "character-creator-race-ice-wardens",
+      "path": "assets/concepts/ui/character-creator/races/ice-wardens-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/ice-wardens.webp"
+    },
+    {
+      "id": "character-creator-race-humans",
+      "path": "assets/concepts/ui/character-creator/races/humans-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/humans.webp"
+    },
+    {
+      "id": "character-creator-race-elves",
+      "path": "assets/concepts/ui/character-creator/races/elves-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/elves.webp"
+    },
+    {
+      "id": "character-creator-race-halflings",
+      "path": "assets/concepts/ui/character-creator/races/halflings-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/halflings.webp"
+    },
+    {
+      "id": "character-creator-race-dwarves",
+      "path": "assets/concepts/ui/character-creator/races/dwarves-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/dwarves.webp"
+    },
+    {
+      "id": "character-creator-race-dragonborn",
+      "path": "assets/concepts/ui/character-creator/races/dragonborn-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/dragonborn.webp"
+    },
+    {
+      "id": "character-creator-race-fairies",
+      "path": "assets/concepts/ui/character-creator/races/fairies-v1.png",
+      "status": "reference",
+      "purpose": "Парный портрет: мужчина и женщина одной расы по существующему рендеру.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж.",
+      "source": "assets/concepts/races/fairies-linfea.webp"
+    },
+    {
+      "id": "character-creator-class-barbarian",
+      "path": "assets/concepts/ui/character-creator/classes/barbarian-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-bard",
+      "path": "assets/concepts/ui/character-creator/classes/bard-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-cleric",
+      "path": "assets/concepts/ui/character-creator/classes/cleric-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-druid",
+      "path": "assets/concepts/ui/character-creator/classes/druid-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-fighter",
+      "path": "assets/concepts/ui/character-creator/classes/fighter-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-monk",
+      "path": "assets/concepts/ui/character-creator/classes/monk-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-paladin",
+      "path": "assets/concepts/ui/character-creator/classes/paladin-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-ranger",
+      "path": "assets/concepts/ui/character-creator/classes/ranger-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-rogue",
+      "path": "assets/concepts/ui/character-creator/classes/rogue-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-sorcerer",
+      "path": "assets/concepts/ui/character-creator/classes/sorcerer-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-warlock",
+      "path": "assets/concepts/ui/character-creator/classes/warlock-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
+    },
+    {
+      "id": "character-creator-class-wizard",
+      "path": "assets/concepts/ui/character-creator/classes/wizard-v1.png",
+      "status": "reference",
+      "purpose": "Декоративная эмблема класса для конструктора.",
+      "approval": "Создано по запросу пользователя 1 октября 2026; локальный UI для визуальной приёмки, не новый канонический персонаж."
     }
   ],
   "world": [

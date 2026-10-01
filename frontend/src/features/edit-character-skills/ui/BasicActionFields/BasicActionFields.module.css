@@ -1,0 +1,39 @@
+.basic {
+  display: grid;
+  gap: .85rem;
+}
+
+.basic header {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.basic h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.basic span,
+.basic small {
+  color: var(--creator-muted);
+  font-size: .8rem;
+}
+
+.row {
+  display: grid;
+  gap: .85rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

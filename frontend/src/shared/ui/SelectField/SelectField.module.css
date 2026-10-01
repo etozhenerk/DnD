@@ -1,0 +1,26 @@
+.field {
+  color: var(--creator-heading);
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  min-width: 0;
+}
+
+.field select {
+  background: var(--creator-surface);
+  border: 0;
+  border-radius: 12px 5px 12px 5px;
+  box-shadow: var(--creator-input-shadow);
+  color: var(--creator-heading);
+  font: inherit;
+  line-height: 1.2;
+  min-width: 0;
+  min-height: 44px;
+  padding: .6rem .7rem;
+  width: 100%;
+}
+
+.field select:focus-visible {
+  outline: 1px solid var(--creator-focus);
+  outline-offset: 2px;
+}

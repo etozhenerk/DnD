@@ -1,16 +1,26 @@
-import {FantasyFrame} from '../../../../shared/ui/FantasyFrame';
 import {advisorOwl} from '../../config/creator-art';
+import {advisorPrompts} from '../../config/advisor-prompts';
+import type {CreatorStep} from '../../config/creator-steps';
+import {FantasyHeading} from '../../../../shared/ui/FantasyHeading';
 import styles from './CreatorAdvisorPreview.module.css';
 
-export function CreatorAdvisorPreview() {
+export type CreatorAdvisorPreviewProps = {stepId: CreatorStep['id']};
+
+export function CreatorAdvisorPreview({stepId}: CreatorAdvisorPreviewProps) {
+  const prompt = advisorPrompts[stepId];
   return (
     <aside className={styles.advisor} aria-label="Советник">
-      <FantasyFrame />
-      <h2>Советник</h2>
+      <header><FantasyHeading>Советник</FantasyHeading><p>{prompt.intro}</p></header>
       <img className={styles.art} src={advisorOwl} alt="" />
-      <p>Поможет с образом, объяснит выбор и предложит навыки, подходящие вашему герою.</p>
-      <div className={styles.status}>Появится позже</div>
-      <small>Решения всегда остаются за вами.</small>
+      <div className={styles.conversation}>
+        <p>{prompt.text}</p>
+        <label className={styles.question}>
+          <span>Спросить советника</span>
+          <textarea placeholder={prompt.placeholder} disabled rows={2} />
+        </label>
+        <button className={styles.action} type="button" disabled title="Советник появится после подключения агента">✦ {prompt.action}</button>
+        <small>Советник появится позже</small>
+      </div>
     </aside>
   );
 }

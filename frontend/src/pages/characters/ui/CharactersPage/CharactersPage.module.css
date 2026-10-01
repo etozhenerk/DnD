@@ -1,5 +1,6 @@
 .header {
-  margin: 0 auto 3rem;
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  margin: 0 auto 1.5rem;
   max-width: 52rem;
   text-align: center;
 }
@@ -13,19 +14,19 @@
 
 .header h1 {
   color: var(--creator-heading);
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-family: var(--font-fantasy-heading);
+  font-size: clamp(2.8rem, 4vw, 3.6rem);
   text-shadow: var(--shadow-title);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.1;
-  margin: .5rem 0 1rem;
+  margin: .4rem 0 .65rem;
 }
 
 .header span {
   color: var(--creator-copy);
   display: block;
   line-height: 1.6;
-  font-size: 1.05rem;
+  font-size: .95rem;
   margin-inline: auto;
   max-width: 38rem;
 }
@@ -35,6 +36,6 @@
   content: '';
   display: block;
   height: 1px;
-  margin: 1.75rem auto 0;
+  margin: 1rem auto 0;
   max-width: 26rem;
 }

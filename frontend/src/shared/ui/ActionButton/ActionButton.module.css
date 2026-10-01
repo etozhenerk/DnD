@@ -2,21 +2,22 @@
   composes: button from '../../styles/fantasy-surfaces.module.css';
   cursor: pointer;
   font-size: 1.05rem;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .primary {
   background: var(--creator-action);
-  border-color: var(--creator-accent);
   color: var(--creator-heading);
 }
 
 .secondary {
-  background: var(--creator-surface);
+  background: var(--creator-back-wash);
   color: var(--creator-copy);
 }
 
 .button:hover:not(:disabled) {
-  border-color: var(--creator-focus);
+  box-shadow: var(--creator-action-glow);
   color: var(--creator-heading);
 }
 

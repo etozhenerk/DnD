@@ -1,0 +1,37 @@
+.vitals {
+  display: grid;
+  gap: .75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+}
+
+.vitals > div {
+  background: var(--creator-input-fill);
+  border-radius: 12px 5px 12px 5px;
+  box-shadow: var(--creator-input-shadow);
+  min-width: 0;
+  padding: .7rem .85rem;
+}
+
+.vitals dt {
+  align-items: center;
+  color: var(--creator-muted);
+  display: flex;
+  font-size: .85rem;
+  gap: .45rem;
+  line-height: 1.2;
+}
+
+.vitals dt span {
+  flex: 0 0 18px;
+  height: 18px;
+}
+
+.vitals dd {
+  color: var(--creator-focus);
+  font-family: var(--font-fantasy-heading);
+  font-size: 2rem;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1.1;
+  margin: .5rem 0 0;
+}

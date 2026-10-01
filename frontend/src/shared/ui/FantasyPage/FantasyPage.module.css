@@ -11,8 +11,107 @@
   max-width: 1440px;
 }
 
+.animated {
+  composes: scene from '../../styles/fantasy-motion.module.css';
+}
+
+:global(html):has(.animated)::view-transition-old(root) {
+  animation: route-exit var(--fantasy-motion-exit-duration) ease-out both;
+}
+
+:global(html):has(.animated)::view-transition-new(root) {
+  animation: route-enter var(--fantasy-motion-route-duration) var(--fantasy-motion-ease) both;
+}
+
+:global(::view-transition-group(fantasy-navigation)) {
+  z-index: 20;
+}
+
+:global(::view-transition-old(fantasy-navigation)) {
+  display: none;
+}
+
+:global(::view-transition-new(fantasy-navigation)) {
+  animation: none;
+}
+
+:global(::view-transition-group(fantasy-step)) {
+  animation-duration: var(--fantasy-motion-step-duration);
+  animation-timing-function: var(--fantasy-motion-ease);
+}
+
+:global(::view-transition-old(fantasy-step)) {
+  animation: step-exit var(--fantasy-motion-exit-duration) ease-out both;
+  height: auto;
+  mix-blend-mode: normal;
+}
+
+:global(::view-transition-new(fantasy-step)) {
+  animation: step-enter var(--fantasy-motion-step-duration) var(--fantasy-motion-ease) both;
+  height: auto;
+  mix-blend-mode: normal;
+}
+
+@keyframes route-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+  }
+}
+
+@keyframes route-exit {
+  to {
+    opacity: var(--fantasy-motion-hidden);
+  }
+}
+
+@keyframes step-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@keyframes step-exit {
+  to {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html):has(.animated)::view-transition-old(root),
+  :global(html):has(.animated)::view-transition-new(root),
+  :global(::view-transition-group(fantasy-navigation)),
+  :global(::view-transition-group(fantasy-step)),
+  :global(::view-transition-old(fantasy-step)),
+  :global(::view-transition-new(fantasy-step)) {
+    animation: none;
+  }
+}
+
+.workspace {
+  padding: 68px 0 0;
+}
+
+.workspace .content {
+  max-width: none;
+}
+
 @media (max-width: 520px) {
   .page {
     padding: 86px .85rem 2rem;
+  }
+
+  .workspace {
+    padding: 60px 0 0;
   }
 }

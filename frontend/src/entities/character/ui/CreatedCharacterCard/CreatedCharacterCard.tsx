@@ -1,7 +1,9 @@
-import {FantasyFrame} from '../../../../shared/ui/FantasyFrame';
 import {Link} from 'react-router-dom';
+import {useViewTransitions} from '../../../../shared/lib/view-transitions';
 import type {CharacterSummary} from '../../model/created-character';
-import {FantasySeal} from '../../../../shared/ui/FantasySeal';
+import {CharacterPortrait} from '../CharacterPortrait';
+import {CharacterVitals} from '../CharacterVitals';
+import {usePrefetchCharacter} from '../../model/usePrefetchCharacter';
 import styles from './CreatedCharacterCard.module.css';
 
 export type CreatedCharacterCardProps = {
@@ -11,17 +13,22 @@ export type CreatedCharacterCardProps = {
 };
 
 export function CreatedCharacterCard({character, race, className}: CreatedCharacterCardProps) {
+  const viewTransition = useViewTransitions();
+  const prefetch = usePrefetchCharacter(character.id);
   return (
-    <article className={styles.card}>
-      <FantasyFrame />
-      <div className={styles.emblem}><FantasySeal /></div>
-      <p className={styles.race}>{race} · {className}</p>
-      <h2><Link to={`/characters/${character.id}`}>{character.displayName}</Link></h2>
-      <dl className={styles.stats}>
-        <div><dt>Здоровье</dt><dd>{character.maxHp}</dd></div>
-        <div><dt>Защита</dt><dd>{character.baseAc}</dd></div>
-      </dl>
-      <Link className={styles.open} to={`/characters/${character.id}`}>Открыть персонажа →</Link>
+    <article className={styles.card} onPointerEnter={prefetch} onFocusCapture={prefetch} onPointerDown={prefetch}>
+      <Link className={styles.portrait} to={`/characters/${character.id}`} viewTransition={viewTransition}
+        aria-label={`Открыть персонажа: ${character.displayName}`}>
+        <CharacterPortrait src={character.portraitUrl} name={character.displayName} />
+      </Link>
+      <div className={styles.content}>
+        <header className={styles.identity}>
+          <h2><Link to={`/characters/${character.id}`} viewTransition={viewTransition}>{character.displayName}</Link></h2>
+          <p className={styles.race}>{race} · {className}</p>
+        </header>
+        <div className={styles.stats}><CharacterVitals maxHp={character.maxHp} baseAc={character.baseAc} /></div>
+        <Link className={styles.open} to={`/characters/${character.id}`} viewTransition={viewTransition}>Открыть персонажа →</Link>
+      </div>
     </article>
   );
 }

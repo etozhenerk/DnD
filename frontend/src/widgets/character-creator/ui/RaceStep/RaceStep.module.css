@@ -1,0 +1,42 @@
+.step {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail {
+  background: var(--creator-attribute-wash);
+  border: 0;
+  border-radius: 20px 6px 20px 6px;
+  padding: 1rem;
+}
+
+.detail h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0 0 .6rem;
+}
+
+.detail h4 {
+  color: var(--creator-focus);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1rem 0 .5rem;
+}
+
+.detail p {
+  color: var(--creator-copy);
+  font-family: var(--font-fantasy-copy);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hint,
+.step small {
+  color: var(--creator-muted);
+  font-size: .85rem;
+  line-height: 1.5;
+  margin: 0;
+}

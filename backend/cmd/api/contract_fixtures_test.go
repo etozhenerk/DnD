@@ -24,7 +24,7 @@ func recordResponse(t *testing.T, name string, w *httptest.ResponseRecorder) {
 	}
 }
 
-func TestOptionsExposeV2Skills(t *testing.T) {
+func TestOptionsExposeCurrentSkills(t *testing.T) {
 	c, err := creator.Load("../../../content")
 	if err != nil {
 		t.Fatal(err)
@@ -43,7 +43,7 @@ func TestOptionsExposeV2Skills(t *testing.T) {
 		} `json:"abilityRules"`
 	}
 	decodeResponse(t, w, http.StatusOK, &response)
-	if response.RulesetID != "character-creation-v2" || response.AbilityRules.ID != "character-abilities-v1" || len(response.AbilityRules.Profiles) != 7 || response.AbilityRules.Budget.Points != 6 {
+	if response.RulesetID != "character-creation-v3" || response.AbilityRules.ID != "character-abilities-v1" || len(response.AbilityRules.Profiles) != 7 || response.AbilityRules.Budget.Points != 6 {
 		t.Fatalf("options=%+v", response)
 	}
 	recordResponse(t, "options.json", w)

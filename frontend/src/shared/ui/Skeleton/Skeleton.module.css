@@ -1,0 +1,33 @@
+.bone {
+  background: var(--fantasy-skeleton-fill);
+  border-radius: 12px 4px 12px 4px;
+  display: block;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.line {
+  height: .85rem;
+}
+
+.heading {
+  height: 2rem;
+}
+
+.image {
+  aspect-ratio: 4 / 3;
+  background: var(--fantasy-skeleton-portrait);
+  height: auto;
+}
+
+.full {
+  width: 100%;
+}
+
+.medium {
+  width: 65%;
+}
+
+.short {
+  width: 35%;
+}

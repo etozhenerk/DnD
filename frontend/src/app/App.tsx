@@ -1,7 +1,7 @@
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import {CriticalRollOverlayHost} from '../shared/ui/CriticalRollOverlay/CriticalRollOverlayHost';
 import {AppLayout} from './ui/AppLayout/AppLayout';
-import {RouteFallback} from './ui/RouteFallback/RouteFallback';
+import {RouteFallback} from './ui/RouteFallback';
 
 const router = createBrowserRouter([
   {

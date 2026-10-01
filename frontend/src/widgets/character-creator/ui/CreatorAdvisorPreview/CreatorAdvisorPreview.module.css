@@ -1,47 +1,143 @@
 .advisor {
-  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
-  padding: 1.3rem;
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 180ms;
+  align-self: start;
+  --fantasy-heading-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  background: var(--creator-advisor-wash);
+  border-radius: 8px 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: .6rem 1rem 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 1101px) and (min-height: 750px) {
+  .advisor {
+    position: sticky;
+    top: 82px;
+  }
+}
+
+.advisor header {
+  position: relative;
+  z-index: 1;
 }
 
 .advisor h2 {
-  color: var(--creator-accent);
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  margin: 0 0 .75rem;
+  margin: .35rem 0 .4rem;
+}
+
+.advisor header p {
+  color: var(--creator-muted);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  line-height: 1.25;
+  margin: 0;
+  max-width: 45%;
 }
 
 .art {
-  border-block: 1px solid var(--creator-border);
+  align-self: end;
   display: block;
-  height: auto;
-  margin-inline: -.5rem;
+  height: 220px;
+  margin: -2.5rem -.5rem -.25rem;
+  object-fit: contain;
+  object-position: right bottom;
   width: calc(100% + 1rem);
 }
 
-.advisor p {
-  font-size: 1rem;
-  line-height: 1.65;
+.conversation {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  border-radius: 20px 6px 20px 6px;
+  padding: .9rem .8rem 1rem;
 }
 
-.status {
-  border-block: 1px solid var(--creator-border);
-  color: var(--creator-accent);
-  font-size: .86rem;
-  margin: 1.25rem 0 1rem;
-  padding: .85rem 0;
+.conversation > p {
+  color: var(--creator-copy);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.4;
+  margin: 0;
+  padding: 0 0 .85rem;
 }
 
-.advisor small {
+.question span {
   color: var(--creator-muted);
-  font-size: .84rem;
-  line-height: 1.5;
+  display: block;
+  font-size: .9rem;
+  margin-bottom: .4rem;
 }
 
-@media (min-width: 681px) and (max-width: 1000px) {
+.question textarea {
+  background: var(--creator-input-fill);
+  border: 0;
+  border-radius: 16px 6px 16px 6px;
+  box-shadow: var(--creator-input-shadow);
+  color: var(--creator-copy);
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  min-height: 116px;
+  padding: .8rem .9rem;
+  resize: none;
+  width: 100%;
+}
+
+.question textarea::placeholder {
+  color: var(--creator-muted);
+}
+
+.action {
+  composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
+  border: 0;
+  border-radius: 20px 6px 20px 6px;
+  font-size: clamp(1rem, 1.5vw, 1.35rem);
+  font-family: var(--font-fantasy-heading);
+  font-weight: 600;
+  box-shadow: var(--creator-action-glow);
+  margin-top: .75rem;
+  min-height: 54px;
+  padding: .6rem .5rem;
+  width: 100%;
+}
+
+.action:disabled {
+  color: var(--creator-muted);
+  cursor: not-allowed;
+}
+
+.conversation small {
+  color: var(--creator-muted);
+  display: block;
+  font-size: .85rem;
+  margin-top: .75rem;
+  text-align: center;
+}
+
+@media (min-width: 681px) and (max-width: 900px) {
+  .advisor {
+    display: grid;
+    grid-template-columns: minmax(140px, .7fr) minmax(0, 1.3fr);
+    gap: 0 1rem;
+  }
+
+  .advisor header {
+    grid-column: 1 / 3;
+  }
+
   .art {
-    float: right;
-    margin: 0 0 0 1.5rem;
-    width: 160px;
+    grid-column: 1;
+    height: 190px;
+    margin-top: .5rem;
+  }
+
+  .conversation {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .art {
+    height: 200px;
+    margin-top: -2rem;
   }
 }

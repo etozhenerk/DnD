@@ -1,0 +1,63 @@
+.description {
+  background: var(--creator-attribute-wash);
+  border: 0;
+  border-radius: 20px 6px 20px 6px;
+  padding: 1.2rem;
+}
+
+.description h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 .7rem;
+}
+
+.description h4 {
+  color: var(--creator-focus);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 1.1rem 0 .6rem;
+}
+
+.description p,
+.facts dd,
+.impact {
+  color: var(--creator-copy);
+  font-family: var(--font-fantasy-copy);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.facts {
+  display: grid;
+  gap: .75rem;
+  margin: 1rem 0;
+}
+
+.facts dt {
+  color: var(--creator-accent);
+  font-size: .85rem;
+  line-height: 1.2;
+  margin-bottom: .25rem;
+}
+
+.impact {
+  display: grid;
+  gap: .65rem;
+  padding-left: 1.1rem;
+}
+
+.impact strong {
+  color: var(--creator-heading);
+  font-weight: 500;
+}
+
+.description .skills {
+  color: var(--creator-muted);
+  font-size: .9rem;
+  margin-top: 1rem;
+}

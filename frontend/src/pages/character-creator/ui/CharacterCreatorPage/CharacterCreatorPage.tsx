@@ -4,5 +4,5 @@ import {FantasyPage} from '../../../../shared/ui/FantasyPage';
 
 export function CharacterCreatorPage() {
   const {stepId = 'appearance'} = useParams();
-  return <FantasyPage><CharacterCreator stepId={stepId} /></FantasyPage>;
+  return <FantasyPage animated layout="workspace"><CharacterCreator stepId={stepId} /></FantasyPage>;
 }

@@ -1,25 +1,31 @@
 .section {
   composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
   padding: 1.5rem;
+  min-width: 0;
 }
 
 .section h2 {
-  color: var(--creator-heading);
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 400;
-  margin: 0 0 1rem;
+  margin-bottom: 1.2rem;
 }
 
-.ability + .ability {
-  border-top: 1px solid var(--creator-border);
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
+.items {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+.ability {
+  background: var(--creator-attribute-wash);
+  border-radius: 18px 6px 18px 6px;
+  min-width: 0;
+  padding: 1rem;
 }
 
 .ability h3 {
   color: var(--creator-accent);
-  font-size: 1rem;
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.35rem;
+  font-weight: 500;
   margin: 0 0 .5rem;
   overflow-wrap: anywhere;
 }

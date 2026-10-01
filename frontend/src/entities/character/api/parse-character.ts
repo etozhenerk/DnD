@@ -3,12 +3,16 @@ import type {CharacterSummary, CreatedCharacter, CreatedCharacterAbility, Create
 
 export function parseCharacterSummary(value: unknown): CharacterSummary {
   const data = readObject(value);
-  return {
+  const summary: CharacterSummary = {
     id: readUuid(data.id), displayName: readString(data.displayName),
     raceId: readString(data.raceId), classId: readString(data.classId),
     maxHp: readNumber(data.maxHp), baseAc: readNumber(data.baseAc),
     createdAt: readString(data.createdAt),
   };
+  if (data.portraitUrl !== undefined) {
+    summary.portraitUrl = data.portraitUrl === null ? null : readString(data.portraitUrl);
+  }
+  return summary;
 }
 
 export function parseCharacterList(value: unknown): CharacterSummary[] {

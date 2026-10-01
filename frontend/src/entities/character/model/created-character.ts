@@ -3,6 +3,7 @@ export type CharacterSummary = {
   displayName: string;
   raceId: string;
   classId: string;
+  portraitUrl?: string | null;
   maxHp: number;
   baseAc: number;
   createdAt: string;

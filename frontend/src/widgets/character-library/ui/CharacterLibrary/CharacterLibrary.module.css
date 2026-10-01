@@ -1,4 +1,6 @@
 .toolbar {
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 70ms;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -8,11 +10,7 @@
 }
 
 .toolbar h2 {
-  color: var(--creator-heading);
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 400;
-  margin: 0;
+  flex: 1 1 15rem;
 }
 
 .pagination {

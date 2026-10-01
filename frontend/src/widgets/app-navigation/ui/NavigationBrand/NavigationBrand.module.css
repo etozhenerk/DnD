@@ -1,0 +1,57 @@
+.brand {
+  align-self: start;
+  display: block;
+  height: 68px;
+  justify-self: start;
+  line-height: 0;
+  margin-left: calc(8px - clamp(1rem, 2.5vw, 2.5rem));
+  position: relative;
+  text-decoration: none;
+  width: 258px;
+}
+
+.logo {
+  display: block;
+  height: 86px;
+  left: 0;
+  max-height: 86px;
+  max-width: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: -3px;
+  width: 258px;
+}
+
+.brand:focus-visible {
+  border-radius: 12px;
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .brand {
+    flex: 0 0 220px;
+    margin-left: -.5rem;
+    width: 220px;
+  }
+
+  .logo {
+    height: 73px;
+    top: 0;
+    width: 220px;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand {
+    flex-basis: 180px;
+    height: 60px;
+    margin-left: -.15rem;
+    width: 180px;
+  }
+
+  .logo {
+    height: 60px;
+    width: 180px;
+  }
+}

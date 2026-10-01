@@ -1,13 +1,16 @@
 .back {
+  background: var(--creator-back-wash);
+  border-radius: 18px 5px 18px 5px;
   color: var(--creator-accent);
   display: inline-block;
   margin-bottom: 1.5rem;
-  padding: .5rem 0;
+  padding: .55rem 1rem;
   text-decoration: none;
 }
 
 .back:hover {
-  color: var(--creator-focus);
+  box-shadow: var(--creator-action-glow);
+  color: var(--creator-heading);
 }
 
 .back:focus-visible {

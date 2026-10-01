@@ -1,0 +1,42 @@
+.upload {
+  align-items: center;
+  background: var(--creator-input-fill);
+  border-radius: 22px 6px 22px 6px;
+  color: var(--creator-accent);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 95px;
+  overflow: hidden;
+  padding: .75rem;
+  position: relative;
+  text-align: center;
+}
+
+.upload img {
+  height: 60px;
+  object-fit: contain;
+  width: 60px;
+}
+
+.upload svg {
+  height: 30px;
+  width: 30px;
+}
+
+.upload input {
+  cursor: pointer;
+  height: 100%;
+  inset: 0;
+  opacity: var(--creator-invisible-opacity);
+  position: absolute;
+  width: 100%;
+}
+
+.upload:focus-within {
+  outline: 1px solid var(--creator-focus);
+  outline-offset: 3px;
+}

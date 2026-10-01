@@ -1,4 +1,13 @@
 export {listCreatedCharacters, getCreatedCharacter, getCreatorCatalog} from './api/character-api';
+export {creatorCatalogQuery, characterListQuery, createdCharacterQuery} from './api/character-queries';
 export {getCharacterLabels, getAttributeLabel, getUsesLabel} from './model/catalog-labels';
+export {getCharacterAttributeRows} from './model/attribute-presentation';
+export type {CharacterAttributeRow} from './model/attribute-presentation';
 export type {CharacterSummary, CreatedCharacter, CreatedCharacterAbility, CreatedCharacterItem, CreatorCatalog} from './model/created-character';
+export {defaultCharacterPortrait} from './config/character-portrait';
+export {CharacterPortrait} from './ui/CharacterPortrait';
+export type {CharacterPortraitProps} from './ui/CharacterPortrait';
 export {CreatedCharacterCard} from './ui/CreatedCharacterCard';
+export {CharacterCardSkeleton} from './ui/CharacterCardSkeleton';
+export {CharacterAttributeList} from './ui/CharacterAttributeList';
+export {CharacterVitals} from './ui/CharacterVitals';

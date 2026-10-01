@@ -1,28 +1,79 @@
 .progress {
-  background: var(--creator-panel-wash), var(--creator-wood) center / auto 1400px;
-  border-block: 2px solid var(--creator-border);
-  box-shadow: var(--creator-frame);
-  margin: 1.5rem 0 1rem;
-  padding: .65rem .4rem;
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 60ms;
+  background: var(--creator-progress-wash);
+  margin: 0;
+  padding: .15rem .75rem .55rem;
+  position: relative;
 }
 
 .progress ol {
   display: flex;
   flex-wrap: wrap;
-  gap: .35rem;
+  gap: .2rem;
   justify-content: space-between;
   list-style: none;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+
+.progress ol::before {
+  background: var(--creator-rune-line);
+  content: '';
+  height: 1px;
+  left: 1.5rem;
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 40px;
 }
 
 .progress li {
   flex: 1 1 auto;
+  position: relative;
 }
 
-@media (max-width: 760px) {
+.hint {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 1100px) {
+  .progress {
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 58px;
+    flex-shrink: 0;
+    overscroll-behavior-x: contain;
+    scrollbar-color: var(--creator-border) var(--creator-surface);
+    scrollbar-width: thin;
+  }
+
   .progress ol {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-wrap: nowrap;
+    gap: .75rem;
+    min-width: max-content;
+  }
+
+  .progress li {
+    flex: 0 0 auto;
+  }
+
+  .progress ol::before {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .progress ol {
+    gap: 1rem;
   }
 }

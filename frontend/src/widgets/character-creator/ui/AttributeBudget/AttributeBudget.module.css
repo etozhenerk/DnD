@@ -1,0 +1,46 @@
+.budget {
+  align-items: center;
+  background: var(--creator-attribute-wash);
+  border-radius: 18px 6px 18px 6px;
+  display: grid;
+  gap: .5rem 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: .9rem 1rem;
+}
+
+.label {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  line-height: 1.2;
+}
+
+.count {
+  color: var(--creator-focus);
+  font-family: var(--font-fantasy-heading);
+  font-size: 2rem;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.budget[data-warning='true'] .count {
+  color: var(--creator-accent);
+}
+
+.remaining {
+  color: var(--creator-muted);
+  font-size: .85rem;
+  grid-column: 1 / -1;
+  line-height: 1.3;
+}
+
+.status {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

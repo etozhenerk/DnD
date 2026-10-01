@@ -1,0 +1,20 @@
+.editor {
+  background: var(--creator-attribute-wash);
+  border-radius: 18px 6px 18px 6px;
+  display: grid;
+  gap: .85rem;
+  padding: 1rem;
+}
+
+.editor button {
+  background: none;
+  border: 0;
+  color: var(--creator-muted);
+  font: inherit;
+  justify-self: end;
+  min-height: 36px;
+}
+
+.editor button:focus-visible {
+  outline: 1px solid var(--creator-focus);
+}

@@ -1,68 +1,30 @@
 .step {
   composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
-  min-height: 530px;
-  padding: 1.8rem;
-}
-
-.step header {
-  border-bottom: 1px solid var(--creator-border);
-  padding-bottom: 1rem;
-}
-
-.step header span {
-  color: var(--creator-muted);
-  font-size: .7rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.step h2 {
-  color: var(--creator-accent);
-  font-family: var(--font-display);
-  font-size: clamp(1.7rem, 2.5vw, 2.2rem);
-  font-weight: 400;
-  margin: .6rem 0 0;
-}
-
-.step > p {
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-.placeholder {
-  align-items: center;
+  composes: step from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-heading-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  border-radius: 24px 8px 0 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 320px;
-  padding: 1.5rem .5rem;
-  text-align: center;
+  min-width: 0;
+  padding: .55rem clamp(1rem, 1.6vw, 1.6rem) 1.25rem;
+  position: relative;
 }
 
-.seal {
-  height: 86px;
-  width: 86px;
+.step > header {
+  margin-bottom: 1.2rem;
+  padding-top: .35rem;
 }
 
-.placeholder h3 {
-  color: var(--creator-heading);
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 400;
-  margin: 1.4rem 0 .6rem;
-}
-
-.placeholder p {
+.status {
   color: var(--creator-muted);
-  font-size: .95rem;
-  line-height: 1.7;
-  margin: 0;
-  max-width: 26rem;
+  font-size: .75rem;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  padding: .8rem 0 .25rem;
 }
 
 @media (max-width: 680px) {
   .step {
-    min-height: auto;
-    padding-inline: .5rem;
+    padding: 1.25rem;
   }
 }

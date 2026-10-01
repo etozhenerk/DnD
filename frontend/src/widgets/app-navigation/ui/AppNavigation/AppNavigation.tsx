@@ -1,25 +1,29 @@
-import {NavLink, useLocation} from 'react-router-dom';
+import {useState} from 'react';
+import {useLocation} from 'react-router-dom';
+import {navigationArt} from '../../config/navigation-art';
+import {NavigationBrand} from '../NavigationBrand';
+import {NavigationLinks} from '../NavigationLinks';
+import {AccountEntry} from '../AccountEntry';
 import styles from './AppNavigation.module.css';
 
 export function AppNavigation() {
   const {pathname} = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const isAtlasActive = pathname === '/' || pathname.startsWith('/region/');
 
-  const getLinkClass = ({isActive}: {isActive: boolean}) => isActive ? styles.active : undefined;
-
   return (
-    <nav className={styles.navigation} aria-label="Основная навигация">
-      <NavLink className={styles.brand} to="/" aria-label="Атлас приключений — на карту">
-        <span className={styles.sigil} aria-hidden="true">D20</span>
-        <span className={styles.brandText}><small>D&amp;D кампании</small><strong>Атлас приключений</strong></span>
-      </NavLink>
-      <div className={styles.links}>
-        <NavLink end aria-current={isAtlasActive ? 'page' : undefined} className={isAtlasActive ? styles.active : undefined} to="/"><span aria-hidden="true">⌖</span>Карта</NavLink>
-        <NavLink className={getLinkClass} to="/heroes"><span aria-hidden="true">♜</span>Герои</NavLink>
-        <NavLink className={getLinkClass} to="/characters"><span aria-hidden="true">✧</span>Персонажи</NavLink>
-        <NavLink className={getLinkClass} to="/races"><span aria-hidden="true">✦</span>Расы</NavLink>
-        <NavLink className={getLinkClass} to="/roadmap"><span aria-hidden="true">◫</span>Roadmap</NavLink>
+    <header className={styles.navigation} style={navigationArt} onKeyDown={(event) => {if (event.key === 'Escape') setMenuOpen(false);}}>
+      <NavigationBrand />
+      <div id="app-navigation-links" className={`${styles.linksPanel} ${menuOpen ? styles.expanded : ''}`}>
+        <NavigationLinks isAtlasActive={isAtlasActive} onNavigate={() => setMenuOpen(false)} />
       </div>
-    </nav>
+      <div className={styles.actions}>
+        <AccountEntry />
+        <button className={styles.menuToggle} type="button" aria-controls="app-navigation-links"
+          aria-expanded={menuOpen} aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'} onClick={() => setMenuOpen(!menuOpen)}>
+          <span aria-hidden="true">{menuOpen ? '×' : '☰'}</span>
+        </button>
+      </div>
+    </header>
   );
 }

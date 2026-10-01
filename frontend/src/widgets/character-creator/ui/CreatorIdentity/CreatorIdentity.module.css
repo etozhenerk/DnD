@@ -1,0 +1,119 @@
+.identity {
+  align-self: flex-start;
+  background: var(--creator-portrait-glow);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: calc(100dvh - 68px);
+  position: sticky;
+  text-align: center;
+  top: 68px;
+}
+
+.art {
+  composes: portrait from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 40ms;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.placeholder {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  object-position: center top;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.uploaded {
+  border-radius: 0 0 28px 8px;
+  inset: .5rem;
+  height: auto;
+  position: absolute;
+  width: auto;
+}
+
+.sheet {
+  composes: panel from '../../../../shared/styles/fantasy-surfaces.module.css';
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  --fantasy-motion-delay: 120ms;
+  border-radius: 20px 8px 0 0;
+  margin: 0 .65rem 1rem;
+  min-width: 0;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: .3rem .2rem;
+  position: relative;
+}
+
+.choices::after {
+  background: var(--creator-rune-line);
+  bottom: 0;
+  content: '';
+  height: 1px;
+  left: .75rem;
+  position: absolute;
+  right: .75rem;
+}
+
+.choices > span {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.2rem;
+  padding: .6rem;
+}
+
+.choices small {
+  color: var(--creator-muted);
+  display: block;
+  font-size: .8rem;
+  margin-top: .3rem;
+}
+
+@media (max-width: 680px) {
+  .identity {
+    display: grid;
+    grid-template-columns: minmax(100px, .85fr) minmax(0, 1.15fr);
+    grid-template-rows: auto 1fr;
+    height: auto;
+    position: relative;
+    top: auto;
+  }
+
+  .art {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    min-height: 310px;
+  }
+
+  .placeholder {
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .uploaded {
+    inset: .35rem;
+  }
+
+  .sheet {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    margin: .25rem .5rem .75rem 0;
+  }
+
+  .choices > span {
+    font-size: 1rem;
+    padding: .5rem .25rem;
+  }
+
+  .choices small {
+    font-size: .7rem;
+  }
+}

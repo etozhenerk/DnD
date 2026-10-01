@@ -1,0 +1,37 @@
+.loader {
+  align-items: center;
+  color: var(--creator-muted);
+  display: inline-flex;
+  font-family: var(--font-fantasy-copy);
+  font-size: .95rem;
+  gap: .65rem;
+  line-height: 1.4;
+}
+
+.rune {
+  animation: breathe 1600ms ease-in-out infinite alternate;
+  color: var(--creator-accent);
+  display: inline-grid;
+  font-size: 1.4rem;
+  height: 24px;
+  place-items: center;
+  width: 24px;
+}
+
+@keyframes breathe {
+  from {
+    opacity: var(--fantasy-loader-muted-opacity);
+    transform: scale(.9);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rune {
+    animation: none;
+  }
+}

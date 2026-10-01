@@ -1,6 +1,5 @@
 .state {
-  background: var(--creator-surface);
-  border: 1px solid var(--creator-border);
+  composes: panel from '../../styles/fantasy-surfaces.module.css';
   color: var(--creator-copy);
   padding: clamp(1.25rem, 3vw, 2.5rem);
   text-align: center;
@@ -8,9 +7,9 @@
 
 .state h2 {
   color: var(--creator-heading);
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 400;
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.9rem;
+  font-weight: 500;
   margin: 0 0 .75rem;
 }
 

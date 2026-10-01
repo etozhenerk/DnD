@@ -1,0 +1,41 @@
+.portrait {
+  background: var(--creator-portrait-fill);
+  display: block;
+  height: 100%;
+  isolation: isolate;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.ambience {
+  filter: blur(22px) saturate(.8);
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: var(--creator-portrait-ambience-opacity);
+  position: absolute;
+  transform: scale(1.12);
+  width: 100%;
+  z-index: -2;
+}
+
+.portrait::after {
+  background: var(--creator-portrait-vignette);
+  content: '';
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.image {
+  filter: drop-shadow(var(--creator-portrait-subject-shadow));
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  width: 100%;
+}

@@ -1,0 +1,46 @@
+.header {
+  composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
+  margin: 0 auto 2rem;
+  max-width: 62rem;
+  text-align: center;
+}
+
+.origin {
+  color: var(--creator-accent);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0 0 .55rem;
+  overflow-wrap: anywhere;
+}
+
+.origin span {
+  padding-inline: .5rem;
+}
+
+.header h1 {
+  color: var(--creator-heading);
+  font-family: var(--font-fantasy-heading);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.08;
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-shadow: var(--creator-title-glow);
+}
+
+.details {
+  color: var(--creator-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.25rem;
+  justify-content: center;
+  line-height: 1.5;
+  margin-top: .85rem;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 680px) {
+  .header {
+    margin-bottom: 1.4rem;
+  }
+}

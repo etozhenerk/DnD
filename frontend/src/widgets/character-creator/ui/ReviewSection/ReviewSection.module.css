@@ -1,0 +1,66 @@
+.section {
+  background: var(--creator-attribute-wash);
+  border-radius: 22px 6px 22px 6px;
+  display: grid;
+  gap: .9rem;
+  padding: 1rem;
+}
+
+.section header {
+  align-items: baseline;
+  display: flex;
+  gap: .5rem;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.section h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.section a {
+  color: var(--creator-focus);
+  font-size: .85rem;
+  text-decoration: none;
+}
+
+.section a:focus-visible {
+  outline: 1px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+.section p {
+  color: var(--creator-copy);
+  line-height: 1.6;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.section ul {
+  display: grid;
+  gap: .65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section li {
+  display: grid;
+  gap: .25rem;
+  overflow-wrap: anywhere;
+}
+
+.section li strong {
+  color: var(--creator-heading);
+  font-weight: 500;
+}
+
+.section small {
+  color: var(--creator-muted);
+  font-size: .85rem;
+}

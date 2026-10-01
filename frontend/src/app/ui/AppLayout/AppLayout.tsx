@@ -1,5 +1,5 @@
 import {Outlet} from 'react-router-dom';
-import {AppNavigation} from '../../../widgets/app-navigation/ui/AppNavigation/AppNavigation';
+import {AppNavigation} from '../../../widgets/app-navigation';
 
 export function AppLayout() {
   return (

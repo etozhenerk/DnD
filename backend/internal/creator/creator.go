@@ -19,7 +19,12 @@ type Rules struct {
 	SourceRulesVersion int             `json:"sourceRulesVersion"`
 	Stats              []string        `json:"stats"`
 	RaceSelection      json.RawMessage `json:"raceSelection"`
-	PointBuy           struct {
+	ClassSelection     struct {
+		Explanation      string `json:"explanation"`
+		SkillExplanation string `json:"skillExplanation"`
+	} `json:"classSelection"`
+	ClassFoundation FoundationRules `json:"classFoundation"`
+	PointBuy        struct {
 		Budget                    int            `json:"budget"`
 		MustSpendAll              bool           `json:"mustSpendAll"`
 		MinimumModifier           int            `json:"minimumModifier"`
@@ -45,6 +50,10 @@ type Rules struct {
 type Class struct {
 	ID             string         `json:"id"`
 	Name           string         `json:"name"`
+	Description    string         `json:"description"`
+	PlayStyle      string         `json:"playStyle"`
+	Weakness       string         `json:"weakness"`
+	BaseStats      map[string]int `json:"baseStats"`
 	DefaultStats   map[string]int `json:"defaultStats"`
 	BaseHP         int            `json:"baseHp"`
 	BaseAC         int            `json:"baseAc"`
@@ -138,7 +147,10 @@ func Load(dir string) (*Catalog, error) {
 	if err != nil {
 		return nil, err
 	}
-	c.RulesetID = c.AbilityRules.CharacterCreationRulesetID
+	if err := c.checkFoundations(); err != nil {
+		return nil, err
+	}
+	c.RulesetID = c.Rules.ClassFoundation.RulesetID
 	return c, nil
 }
 
@@ -219,14 +231,14 @@ func (c *Catalog) Validate(form map[string]json.RawMessage) (Validation, Charact
 	return c.ValidateForRuleset(c.RulesetID, form)
 }
 
-// ValidateForRuleset preserves v1 drafts while applying priced skills to v2.
+// ValidateForRuleset preserves v1/v2 drafts and applies class foundations to v3.
 func (c *Catalog) ValidateForRuleset(rulesetID string, form map[string]json.RawMessage) (Validation, Character) {
 	v := Validation{Issues: []Issue{}}
 	ch := Character{Personality: []string{}, Attributes: map[string]int{}, Abilities: []Ability{}, Equipment: []Item{}, RulesetID: rulesetID}
 	add := func(path, code, message string) {
 		v.Issues = append(v.Issues, Issue{Path: path, Code: code, Message: message})
 	}
-	if rulesetID != c.Rules.ID && rulesetID != c.RulesetID {
+	if rulesetID != c.Rules.ID && rulesetID != c.AbilityRules.CharacterCreationRulesetID && rulesetID != c.RulesetID {
 		add("rulesetId", "obsolete", "Правила черновика больше не доступны")
 		return v, ch
 	}
@@ -322,7 +334,14 @@ func (c *Catalog) ValidateForRuleset(rulesetID string, form map[string]json.RawM
 		}
 	}
 	if spent != c.Rules.PointBuy.Budget {
-		add("attributes", "budget", fmt.Sprintf("Нужно распределить ровно %d очков, сейчас %d", c.Rules.PointBuy.Budget, spent))
+		message := fmt.Sprintf("Нужно распределить ровно %d очков, сейчас %d", c.Rules.PointBuy.Budget, spent)
+		if rulesetID == c.RulesetID {
+			message = fmt.Sprintf("Нужно распределить ровно %d дополнительных очков, сейчас %d", c.Rules.ClassFoundation.BonusBudget, spent-c.Rules.ClassFoundation.BaseBudget)
+		}
+		add("attributes", "budget", message)
+	}
+	if rulesetID == c.RulesetID {
+		v.Issues = append(v.Issues, c.validateFoundation(class.ClassID, attrs)...)
 	}
 	if negative > c.Rules.PointBuy.MaximumNegativeStats || belowMinusTwo > c.Rules.PointBuy.MaximumStatsBelowMinusTwo || atPlusFour > c.Rules.PointBuy.MaximumStatsAtPlusFour {
 		add("attributes", "limits", "Нарушены пределы отрицательных или максимальных характеристик")

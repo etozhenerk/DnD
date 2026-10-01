@@ -1,0 +1,86 @@
+.editor {
+  background: var(--creator-attribute-wash);
+  border-radius: 24px 8px 24px 8px;
+  display: grid;
+  gap: .9rem;
+  min-width: 0;
+  padding: 1rem;
+}
+
+.editor header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.editor h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.editor header button {
+  background: none;
+  border: 0;
+  color: var(--creator-muted);
+  font: inherit;
+  font-size: .8rem;
+  min-height: 36px;
+}
+
+.identity {
+  align-items: center;
+  display: grid;
+  gap: .9rem;
+  grid-template-columns: 95px minmax(0, 1fr);
+}
+
+.effects,
+.row {
+  display: grid;
+  gap: .7rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.effects button {
+  background: var(--creator-back-wash);
+  border: 0;
+  border-radius: 18px 6px 18px 6px;
+  color: var(--creator-heading);
+  font: inherit;
+  min-height: 44px;
+}
+
+.effects button[aria-pressed='true'] {
+  box-shadow: var(--creator-thumbnail-selected);
+  color: var(--creator-focus);
+}
+
+.editor button:focus-visible {
+  outline: 1px solid var(--creator-focus);
+  outline-offset: 2px;
+}
+
+.editor small {
+  color: var(--creator-muted);
+  font-size: .8rem;
+}
+
+@media (max-width: 520px) {
+  .row,
+  .identity {
+    grid-template-columns: 1fr;
+  }
+
+  .identity > label:first-child {
+    justify-self: start;
+    width: 100px;
+  }
+}

@@ -5,10 +5,11 @@
   color: var(--creator-copy);
   display: flex;
   font: inherit;
-  font-size: .95rem;
-  gap: .55rem;
+  font-size: .88rem;
+  gap: .4rem;
+  line-height: 1.2;
   min-height: 44px;
-  padding: .25rem .45rem;
+  padding: .15rem .25rem;
   text-align: left;
   text-decoration: none;
   width: 100%;
@@ -18,7 +19,47 @@
   composes: medallion from '../../../../shared/styles/fantasy-surfaces.module.css';
   flex: 0 0 2rem;
   font-size: 1.2rem;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 600;
   height: 2rem;
+  line-height: 1;
+  position: relative;
+}
+
+.value {
+  display: block;
+  line-height: 1;
+  transform: translateY(-.035em);
+}
+
+.check {
+  display: block;
+  font-family: var(--font-fantasy-copy);
+  font-size: .95em;
+  line-height: 1;
+}
+
+.label {
+  display: block;
+}
+
+.lock {
+  align-items: center;
+  background: var(--creator-surface);
+  border: 1px solid var(--creator-border);
+  border-radius: 50%;
+  bottom: -3px;
+  display: flex;
+  height: 14px;
+  justify-content: center;
+  position: absolute;
+  right: -3px;
+  width: 14px;
+}
+
+.lock svg {
+  height: 10px;
+  width: 10px;
 }
 
 .step[aria-current] {
@@ -42,7 +83,13 @@
 
 .step:disabled {
   cursor: not-allowed;
-  opacity: var(--opacity-50);
+  color: var(--creator-muted);
+}
+
+.step:disabled .number {
+  border-color: var(--creator-border);
+  color: var(--creator-muted);
+  opacity: var(--creator-locked-opacity);
 }
 
 @media (max-width: 520px) {

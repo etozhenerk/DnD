@@ -1,8 +1,10 @@
 import {StartCharacterButton} from '../../../../features/start-character';
 import {ActionButton} from '../../../../shared/ui/ActionButton';
 import {RequestState} from '../../../../shared/ui/RequestState';
+import {FantasyHeading} from '../../../../shared/ui/FantasyHeading';
 import {useCharacterLibrary} from '../../model/useCharacterLibrary';
 import {CharacterGrid} from '../CharacterGrid';
+import {CharacterGridSkeleton} from '../CharacterGridSkeleton';
 import styles from './CharacterLibrary.module.css';
 
 export function CharacterLibrary() {
@@ -10,10 +12,10 @@ export function CharacterLibrary() {
   return (
     <section aria-label="Все персонажи конструктора">
       <div className={styles.toolbar}>
-        <h2>Все персонажи</h2>
+        <FantasyHeading>Все персонажи</FantasyHeading>
         <StartCharacterButton />
       </div>
-      {library.state.status === 'loading' && <RequestState title="Собираем ваших героев…" isLoading />}
+      {library.state.status === 'loading' && <CharacterGridSkeleton />}
       {library.state.status === 'error' && (
         <RequestState title="Не удалось открыть список" message={library.state.message} isError onRetry={library.retry} />
       )}

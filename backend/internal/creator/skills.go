@@ -13,7 +13,7 @@ func (c *Catalog) CheckAbilitySection(rulesetID string, raw json.RawMessage) err
 	if rulesetID == c.Rules.ID {
 		return nil
 	}
-	if rulesetID != c.RulesetID {
+	if rulesetID != c.RulesetID && rulesetID != c.AbilityRules.CharacterCreationRulesetID {
 		return errors.New("unknown creation ruleset")
 	}
 	_, err := abilities.Decode(raw)

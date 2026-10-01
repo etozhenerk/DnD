@@ -1,10 +1,10 @@
 import styles from './RouteFallback.module.css';
+import {LoadingIndicator} from '../../../shared/ui/LoadingIndicator';
 
 export function RouteFallback() {
   return (
-    <main className={styles.fallback} aria-live="polite">
-      <span aria-hidden="true">✦</span>
-      <p>Открываем нужную страницу…</p>
+    <main className={styles.fallback}>
+      <LoadingIndicator label="Открываем страницу" />
     </main>
   );
 }

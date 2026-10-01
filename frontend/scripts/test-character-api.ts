@@ -9,6 +9,10 @@ const summary = {
 
 assert.deepEqual(parseCharacterList({items: []}), []);
 assert.deepEqual(parseCharacterList({items: [summary]}), [summary]);
+assert.equal(parseCharacterList({items: [{...summary, portraitUrl: null}]})[0].portraitUrl, null);
+assert.equal(parseCharacterList({items: [{...summary, portraitUrl: 'https://example.com/portrait.webp'}]})[0].portraitUrl,
+  'https://example.com/portrait.webp');
+assert.throws(() => parseCharacterList({items: [{...summary, portraitUrl: 42}]}));
 assert.throws(() => parseCharacterList({items: [{...summary, id: 'not-a-uuid'}]}));
 assert.throws(() => parseCharacterList({items: [{...summary, maxHp: Infinity}]}));
 assert.throws(() => parseCharacterList({items: null}));

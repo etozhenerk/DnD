@@ -1,0 +1,104 @@
+.scene {
+  animation: scene-enter var(--fantasy-motion-page-duration) var(--fantasy-motion-ease) backwards;
+}
+
+.reveal {
+  animation: reveal var(--fantasy-motion-reveal-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
+}
+
+.portrait {
+  animation: portrait-enter var(--fantasy-motion-portrait-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
+  position: relative;
+}
+
+.portrait::after {
+  animation: portrait-light var(--fantasy-motion-light-duration) var(--fantasy-motion-ease) var(--fantasy-motion-delay, 0ms) backwards;
+  background: var(--fantasy-motion-light-wash);
+  border-radius: inherit;
+  content: '';
+  inset: 0;
+  opacity: var(--fantasy-motion-hidden);
+  pointer-events: none;
+  position: absolute;
+}
+
+.step {
+  animation: step-enter var(--fantasy-motion-step-duration) var(--fantasy-motion-ease) backwards;
+  view-transition-name: fantasy-step;
+}
+
+@keyframes scene-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@keyframes portrait-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(8px) scale(.985);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@keyframes portrait-light {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateX(-25%);
+  }
+
+  35% {
+    opacity: var(--fantasy-motion-light-opacity);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateX(25%);
+  }
+}
+
+@keyframes step-enter {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene,
+  .reveal,
+  .portrait,
+  .portrait::after,
+  .step {
+    animation: none;
+  }
+
+  .portrait::after {
+    display: none;
+  }
+}

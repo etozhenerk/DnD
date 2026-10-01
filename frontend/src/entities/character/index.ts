@@ -1,4 +1,5 @@
 export {listCreatedCharacters, getCreatedCharacter, getCreatorCatalog} from './api/character-api';
+export {parseCharacter} from './api/parse-character';
 export {creatorCatalogQuery, characterListQuery, createdCharacterQuery} from './api/character-queries';
 export {getCharacterLabels, getAttributeLabel, getUsesLabel} from './model/catalog-labels';
 export {getCharacterAttributeRows} from './model/attribute-presentation';

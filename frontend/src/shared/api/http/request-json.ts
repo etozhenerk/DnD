@@ -26,9 +26,12 @@ export async function requestJson(path: string, options: JsonRequestOptions = {}
 }
 
 function readApiError(value: unknown, status: number): ApiError {
+  if (status === 422) {
+    return new ApiError('Проверьте анкету перед сохранением.', status, 'validation_failed', value);
+  }
   if (typeof value === 'object' && value !== null && 'message' in value && 'code' in value
     && typeof value.message === 'string' && typeof value.code === 'string') {
-    return new ApiError(value.message, status, value.code);
+    return new ApiError(value.message, status, value.code, value);
   }
   return new ApiError('Сервис временно недоступен. Попробуйте ещё раз.', status, 'unavailable');
 }

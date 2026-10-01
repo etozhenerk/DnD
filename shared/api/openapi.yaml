@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.4.0
+  version: 0.5.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
 x-ability-rules-source: content/character-abilities.json
 servers:
@@ -120,6 +120,53 @@ paths:
       responses:
         '403': {$ref: '#/components/responses/DraftsRequireAuthentication'}
   /characters:
+    post:
+      operationId: createCharacter
+      summary: Сохранить целую готовую анкету без черновика
+      description: |
+        Публичное создание по текущим правилам character-creation-v3. Создатель — NULL до авторизации.
+        requestId — UUID одной попытки сохранения и ID будущей карточки. Повтор с той же
+        нормализованной анкетой возвращает существующую карточку; другая анкета с тем же ID — 409.
+        Сервер рассчитывает HP/AC и эффекты; изображения этим запросом не загружаются.
+        Лимит JSON — 256 КиБ. Черновики и редактирование остаются закрыты.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CreateCharacter'}
+      responses:
+        '201':
+          description: Персонаж, навыки и предметы сохранены одной транзакцией
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Character'}
+        '200':
+          description: Повтор ранее успешного сохранения, без новой записи
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Character'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '409':
+          description: requestId уже занят другой анкетой; код creation_conflict
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '413':
+          description: Тело запроса превышает 256 КиБ; код request_too_large
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
+        '422':
+          description: Анкета не прошла проверку, ни одна строка не создана
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Validation'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+        '500':
+          description: Сбой сохранения; повтор с тем же requestId безопасен
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Error'}
     get:
       operationId: listCharacters
       summary: Список готовых персонажей конструктора
@@ -130,6 +177,10 @@ paths:
         - name: offset
           in: query
           schema: {type: integer, minimum: 0, default: 0}
+        - name: fresh
+          in: query
+          description: Обойти кэш процесса после сохранения, чтобы увидеть запись через любой экземпляр API.
+          schema: {type: boolean, default: false}
       responses:
         '200':
           description: Готовые персонажи, новые первыми
@@ -180,6 +231,75 @@ components:
       required: true
       schema: {type: string, format: uuid}
   schemas:
+    CreateCharacter:
+      type: object
+      additionalProperties: false
+      required: [requestId, rulesetId, formData]
+      x-max-body-bytes: 262144
+      properties:
+        requestId: {type: string, format: uuid}
+        rulesetId: {type: string, const: character-creation-v3}
+        formData: {$ref: '#/components/schemas/CompleteCharacterForm'}
+    CompleteCharacterForm:
+      type: object
+      additionalProperties: false
+      required: [appearance, race, class, attributes, abilities, equipment]
+      properties:
+        appearance:
+          type: object
+          additionalProperties: false
+          required: [displayName]
+          properties:
+            displayName: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+            pronouns: {type: string, maxLength: 4000}
+            roleLabel: {type: string, maxLength: 4000}
+            story: {type: string, maxLength: 4000}
+            motivation: {type: string, maxLength: 4000}
+            appearance: {type: string, maxLength: 4000}
+            personality:
+              type: array
+              maxItems: 20
+              items: {type: string, maxLength: 120}
+        race:
+          type: object
+          additionalProperties: false
+          required: [raceId]
+          properties:
+            raceId: {type: string}
+        class:
+          type: object
+          additionalProperties: false
+          required: [classId]
+          properties:
+            classId: {type: string}
+        attributes:
+          type: object
+          additionalProperties: false
+          required: [strength, dexterity, constitution, wisdom, intelligence, charisma]
+          properties:
+            strength: {type: integer, minimum: -4, maximum: 4}
+            dexterity: {type: integer, minimum: -4, maximum: 4}
+            constitution: {type: integer, minimum: -4, maximum: 4}
+            wisdom: {type: integer, minimum: -4, maximum: 4}
+            intelligence: {type: integer, minimum: -4, maximum: 4}
+            charisma: {type: integer, minimum: -4, maximum: 4}
+        abilities: {$ref: '#/components/schemas/CharacterSkillsInput'}
+        equipment:
+          type: object
+          additionalProperties: false
+          required: [items]
+          properties:
+            items:
+              type: array
+              maxItems: 20
+              items:
+                type: object
+                additionalProperties: false
+                required: [id, name, description]
+                properties:
+                  id: {type: string, maxLength: 80, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$'}
+                  name: {type: string, minLength: 1, maxLength: 120, pattern: '\S'}
+                  description: {type: string, maxLength: 2000}
     CreatorClassProfile:
       type: object
       required: [id, name, description, playStyle, weakness, baseStats, defaultStats, baseHp, baseAc, dexterityAcCap]

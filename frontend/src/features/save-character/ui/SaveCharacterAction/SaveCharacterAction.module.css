@@ -1,0 +1,36 @@
+.action {
+  display: grid;
+  gap: .75rem;
+}
+
+.action > small {
+  color: var(--creator-muted);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+.error {
+  color: var(--creator-heading);
+  padding: .75rem 1rem;
+  background: var(--creator-input-fill);
+  border-radius: .75rem;
+}
+
+.error p {
+  margin: 0;
+}
+
+.error ul {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.error a {
+  color: var(--creator-focus);
+  text-underline-offset: .2em;
+}
+
+.error a:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}

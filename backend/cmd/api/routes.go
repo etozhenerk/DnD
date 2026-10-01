@@ -1,6 +1,10 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/etozhenerk/DnD/backend/internal/httpapi"
+)
 
 func (s *server) routes() http.Handler {
 	mux := http.NewServeMux()
@@ -16,6 +20,11 @@ func (s *server) routes() http.Handler {
 	mux.HandleFunc("POST /drafts/{draftId}/validate", s.validateDraft)
 	mux.HandleFunc("POST /drafts/{draftId}/complete", s.completeDraft)
 	mux.HandleFunc("GET /characters", s.listCharacters)
+	if s.store == nil {
+		mux.HandleFunc("POST /characters", httpapi.CreateCharacterHandler(s.catalog, nil))
+	} else {
+		mux.HandleFunc("POST /characters", httpapi.CreateCharacterHandler(s.catalog, s.store))
+	}
 	mux.HandleFunc("GET /characters/{characterId}", s.getCharacter)
 	return mux
 }

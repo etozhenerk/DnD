@@ -10,8 +10,9 @@ async function readResponse<T>(path: string, parse: (value: unknown) => T, signa
   }
 }
 
-export function listCreatedCharacters(offset: number, limit: number, signal?: AbortSignal) {
-  return readResponse(`/characters?offset=${offset}&limit=${limit}`, parseCharacterList, signal);
+export function listCreatedCharacters(offset: number, limit: number, signal?: AbortSignal, fresh = false) {
+  const suffix = fresh ? '&fresh=true' : '';
+  return readResponse(`/characters?offset=${offset}&limit=${limit}${suffix}`, parseCharacterList, signal);
 }
 
 export function getCreatedCharacter(id: string, signal?: AbortSignal) {

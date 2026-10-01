@@ -242,6 +242,10 @@ func (s *server) listCharacters(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	limit, offset := 20, 0
+	if fresh := r.URL.Query().Get("fresh"); fresh != "" && fresh != "true" && fresh != "false" {
+		fail(w, 400, "invalid_fresh", "fresh должен быть true или false")
+		return
+	}
 	if raw := r.URL.Query().Get("limit"); raw != "" {
 		n, err := strconv.Atoi(raw)
 		if err != nil || n < 1 || n > 100 {

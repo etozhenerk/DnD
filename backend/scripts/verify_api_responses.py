@@ -20,6 +20,9 @@ def main():
         "character.json": {"$ref": "#/components/schemas/Character"},
         "legacy-character.json": {"$ref": "#/components/schemas/Character"},
         "draft-access-denied.json": contract["components"]["responses"]["DraftsRequireAuthentication"]["content"]["application/json"]["schema"],
+        "created-character.json": contract["paths"]["/characters"]["post"]["responses"]["201"]["content"]["application/json"]["schema"],
+        "creation-validation.json": contract["paths"]["/characters"]["post"]["responses"]["422"]["content"]["application/json"]["schema"],
+        "create-character-request.json": {"$ref": "#/components/schemas/CreateCharacter"},
     }
     for name, schema in cases.items():
         wrapped = {"allOf": [schema], "components": contract["components"]}

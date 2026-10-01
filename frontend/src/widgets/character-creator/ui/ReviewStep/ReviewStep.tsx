@@ -2,13 +2,14 @@ import {abilityRules, getSelectedClass, getSelectedRace, getBuildVitals, getProf
 import type {CharacterFormController} from '../../../../entities/character-form';
 import {CharacterAttributeList, CharacterVitals, getCharacterAttributeRows, getAttributeLabel} from '../../../../entities/character';
 import {SceneTextPanel} from '../../../../features/navigate-campaign-scene';
-import {ActionButton} from '../../../../shared/ui/ActionButton';
+import {SaveCharacterAction} from '../../../../features/save-character';
+import type {SaveCharacterController} from '../../../../features/save-character';
 import {ReviewSection} from '../ReviewSection';
 import styles from './ReviewStep.module.css';
 
-export type ReviewStepProps = {controller: CharacterFormController};
+export type ReviewStepProps = {controller: CharacterFormController; saving: SaveCharacterController; hasLocalMedia: boolean};
 
-export function ReviewStep({controller}: ReviewStepProps) {
+export function ReviewStep({controller, saving, hasLocalMedia}: ReviewStepProps) {
   const {formData, appearance, skills} = controller;
   const attributes = formData.attributes ?? {};
   const vitals = getBuildVitals(formData, attributes);
@@ -47,8 +48,7 @@ export function ReviewStep({controller}: ReviewStepProps) {
         <ul>{formData.equipment?.items.map((item) => <li key={item.id}><strong>{item.name}</strong>{item.description && <p>{item.description}</p>}</li>)}</ul>
         {!formData.equipment?.items.length && <p>Герой отправляется в путь без снаряжения.</p>}
       </ReviewSection>
-      <ActionButton disabled title="Запись персонажа подключается отдельно">Создать героя</ActionButton>
-      <small>Анкета готова к проверке. Сохранение персонажа и его изображений подключается следующим этапом.</small>
+      <SaveCharacterAction controller={saving} hasLocalMedia={hasLocalMedia} />
     </div>
   );
 }

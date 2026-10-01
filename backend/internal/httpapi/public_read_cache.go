@@ -116,13 +116,22 @@ func (c *PublicReadCache) evictExpired() {
 }
 
 func (c *PublicReadCache) serveUncached(w http.ResponseWriter, r *http.Request, next http.Handler) {
-	if r.Method != http.MethodPost || !strings.HasPrefix(r.URL.Path, "/drafts/") || !strings.HasSuffix(r.URL.Path, "/complete") {
+	if r.Method == http.MethodGet && r.URL.Path == "/characters" && r.URL.Query().Get("fresh") == "true" {
+		started := time.Now()
+		response := newReadResponse()
+		next.ServeHTTP(response, r)
+		response.send(w, started, "bypass")
+		return
+	}
+	isCreation := r.URL.Path == "/characters"
+	isCompletion := strings.HasPrefix(r.URL.Path, "/drafts/") && strings.HasSuffix(r.URL.Path, "/complete")
+	if r.Method != http.MethodPost || (!isCreation && !isCompletion) {
 		next.ServeHTTP(w, r)
 		return
 	}
 	observer := &writeObserver{ResponseWriter: w}
 	next.ServeHTTP(observer, r)
-	if observer.status == http.StatusCreated {
+	if observer.status == http.StatusCreated || isCreation && observer.status == http.StatusOK {
 		c.mu.Lock()
 		c.generation++
 		clear(c.entries)
@@ -138,6 +147,9 @@ func publicReadTTL(r *http.Request) time.Duration {
 	case r.URL.Path == "/creator/options":
 		return 5 * time.Minute
 	case r.URL.Path == "/characters":
+		if r.URL.Query().Get("fresh") == "true" {
+			return 0
+		}
 		return 15 * time.Second
 	case strings.HasPrefix(r.URL.Path, "/characters/") && !strings.Contains(strings.TrimPrefix(r.URL.Path, "/characters/"), "/"):
 		return time.Minute

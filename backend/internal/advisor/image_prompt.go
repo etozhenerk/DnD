@@ -65,7 +65,7 @@ func CompileImagePrompt(raw, kind string) (string, error) {
 	}
 	d := json.NewDecoder(strings.NewReader(raw))
 	d.DisallowUnknownFields()
-	if d.Decode(&parts) != nil || d.Decode(new(any)) != io.EOF || !validText(parts.Subject, 2000) ||
+	if d.Decode(&parts) != nil || d.Decode(new(any)) != io.EOF || !validText(parts.Subject, 2000) || strings.ContainsRune(parts.Subject, 0) ||
 		!validOptionalImageText(parts.Details) || !validOptionalImageText(parts.Scene) {
 		return "", ErrInvalid
 	}
@@ -83,5 +83,5 @@ func CompileImagePrompt(raw, kind string) (string, error) {
 }
 
 func validOptionalImageText(value string) bool {
-	return value == "" || validText(value, 2000)
+	return value == "" || validText(value, 2000) && !strings.ContainsRune(value, 0)
 }

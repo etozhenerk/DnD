@@ -12,7 +12,7 @@
   margin: auto;
   max-height: none;
   max-width: none;
-  overflow: hidden;
+  overflow: clip;
   padding: 1.5rem 1.75rem 1rem;
   position: fixed;
   width: min(1100px, calc(100vw - 48px));

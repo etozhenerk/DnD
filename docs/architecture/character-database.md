@@ -108,6 +108,14 @@ JSONB допускает разные формальные эффекты, но 
 
 Миграции `000004_character_media` и `000005_media_permissions` применены 2 октября 2026 года. FK портрета проверяется в конце транзакции: персонаж создаётся перед своими файлами, ссылки остаются атомарными. `dnd_api` имеет SELECT/INSERT на `character_assets`, без UPDATE/DELETE. SQL не управляет транзакцией Object Storage; непривязанные объекты при сбое обслуживаются отдельно по [правилам медиа](character-media.md).
 
+## Отдельный журнал советника
+
+Миграции `000006_advisor_sessions` и `000007_advisor_permissions` применены
+2 октября 2026 года. Таблицы `advisor_sessions`, `advisor_turns`, `advisor_months`
+хранят приватную беседу, срок доступа и финансовый учёт, но не анкету и не владельца
+персонажа. Авторизованные черновики остаются закрытыми. Приложение имеет только
+SELECT/INSERT/UPDATE этих таблиц. [Схема, резервирование и ограничения](character-advisor.md).
+
 - Уникальные: `users(provider, provider_subject)`, `character_drafts(draft_token_hash)`, `character_assets(object_key)`, `character_abilities(character_id, position)` и `character_items(character_id, position)`.
 - Для списков: `characters(created_at DESC)` и `characters(creator_user_id, created_at DESC)`; второй нужен после появления авторизации.
 - Проверки БД: непустые имена, формат локальных ID, положительные номера позиций и лимиты использований, неотрицательные HP/AC, совместное заполнение `uses_scope`/`uses_max` и `charges_scope`/`charges_max`, ровно один владелец файла (`draft_id` либо `character_id`).

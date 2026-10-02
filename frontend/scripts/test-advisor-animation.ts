@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {getAdvisorFrame} from '../src/entities/character-advisor/model/animation-frame';
+
+assert.equal(getAdvisorFrame('idle', 2599).column, 0);
+assert.equal(getAdvisorFrame('idle', 2600).column, 1);
+assert.equal(getAdvisorFrame('idle', 2780).column, 2);
+assert.equal(getAdvisorFrame('idle', 4220).column, 0);
+assert.equal(getAdvisorFrame('thinking', 1880).row, 1);
+assert.equal(getAdvisorFrame('thinking', 1880).column, 0);
+assert.equal(getAdvisorFrame('happy', 600).row, 3);
+assert.equal(getAdvisorFrame('happy', 600).column, 3);
+assert.equal(getAdvisorFrame('happy', 1120).row, 0);
+assert.equal(getAdvisorFrame('happy', 3720).column, 1);
+assert.equal(getAdvisorFrame('error', 1280).row, 0);
+assert.equal(getAdvisorFrame('speaking', -1).column, 0);
+assert.equal(getAdvisorFrame('greeting', 180).viewBox, '454 1096 304 300');
+assert.equal(getAdvisorFrame('curious', 1480).row, 0);
+assert.equal(getAdvisorFrame('curious', 1480).column, 0);
+assert.equal(getAdvisorFrame('curious', 800).row, 5);
+assert.equal(getAdvisorFrame('playful', 400).row, 6);
+assert.equal(getAdvisorFrame('playful', 400).column, 2);
+assert.equal(getAdvisorFrame('playful', 1240).row, 0);

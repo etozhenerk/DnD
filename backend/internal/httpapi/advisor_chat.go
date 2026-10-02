@@ -78,7 +78,7 @@ func (h AdvisorHandlers) ready(w http.ResponseWriter) bool {
 	if h.Service != nil {
 		return true
 	}
-	writeCreationError(w, 503, "advisor_unavailable", "Сова пока обустраивает библиотеку. Диалог скоро заработает.")
+	writeCreationError(w, 503, "advisor_unavailable", "Советник пока не на связи. Попробуй чуть позже.")
 	return false
 }
 
@@ -107,7 +107,7 @@ func advisorFailure(w http.ResponseWriter, err error) {
 	case errors.Is(err, advisor.ErrBusy):
 		writeCreationError(w, 409, "advisor_busy", "Предыдущая реплика ещё не завершена. Проверь её ответ.")
 	case errors.Is(err, advisor.ErrLimit):
-		writeCreationError(w, 429, "advisor_limit", "Достигнут лимит диалога, общего бюджета или частоты. Попробуй позже.")
+		writeCreationError(w, 429, "advisor_limit", "Советнику нужен передых: запас или частота обращений достигли предела. Попробуй позже.")
 	case errors.Is(err, advisor.ErrUnavailable):
 		writeCreationError(w, 503, "advisor_uncertain", "Ответ потерялся. Проверь диалог перед новой отправкой.")
 	default:

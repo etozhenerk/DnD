@@ -1,0 +1,506 @@
+{
+  "version": 1,
+  "pixelRatio": 2,
+  "cellWidth": 384,
+  "cellHeight": 352,
+  "columns": 6,
+  "rows": 7,
+  "imageWidth": 4608,
+  "imageHeight": 4928,
+  "alpha": "Generated directly; no chroma key or background removal",
+  "branch": {
+    "file": "advisor-branch-v1.webp",
+    "position": [
+      60,
+      208
+    ],
+    "size": [
+      278.0,
+      121.5
+    ],
+    "sourceSha256": "95c1e1a379148205bfa80d953f1b42b71c27ad0858f200dcf808ca0d77c0c12a"
+  },
+  "states": [
+    {
+      "state": "idle",
+      "row": 0,
+      "frameCount": 4,
+      "sourceSha256": "0cb2762d19d107c5b9d5fe27d036e45651c361928f2853ddde00647679553071",
+      "sharedScale": 0.5384615384615384,
+      "clawAnchor": [
+        260,
+        500
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            95.0,
+            52.0,
+            301.5,
+            320.0
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            94.5,
+            52.0,
+            302.5,
+            320.0
+          ],
+          "registrationOffset": [
+            2,
+            0
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            93.5,
+            52.0,
+            301.5,
+            319.5
+          ],
+          "registrationOffset": [
+            3,
+            0
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            94.0,
+            52.5,
+            301.0,
+            319.5
+          ],
+          "registrationOffset": [
+            2,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "state": "thinking",
+      "row": 1,
+      "frameCount": 4,
+      "sourceSha256": "eb572d78d0a67d1f96312bbe16374cc76f6bd077173fb954edc53d802727a4a5",
+      "sharedScale": 0.5084745762711864,
+      "clawAnchor": [
+        286,
+        525
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            98.5,
+            51.5,
+            312.5,
+            310.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            92.0,
+            51.0,
+            311.5,
+            311.0
+          ],
+          "registrationOffset": [
+            14,
+            0
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            92.5,
+            49.5,
+            309.5,
+            310.0
+          ],
+          "registrationOffset": [
+            13,
+            1
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            96.5,
+            49.5,
+            307.0,
+            310.0
+          ],
+          "registrationOffset": [
+            5,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "state": "speaking",
+      "row": 2,
+      "frameCount": 4,
+      "sourceSha256": "635d413f17e004ba9660cbefe190eccc95cfab956b17d74998f32deb70e711ca",
+      "sharedScale": 0.5412371134020618,
+      "clawAnchor": [
+        299,
+        500
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            94.5,
+            52.0,
+            302.0,
+            320.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            93.0,
+            52.0,
+            299.0,
+            320.5
+          ],
+          "registrationOffset": [
+            3,
+            0
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            88.5,
+            60.5,
+            299.5,
+            321.0
+          ],
+          "registrationOffset": [
+            11,
+            0
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            93.0,
+            52.0,
+            299.0,
+            320.0
+          ],
+          "registrationOffset": [
+            2,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "state": "greeting",
+      "row": 3,
+      "frameCount": 6,
+      "sourceSha256": "07e5236eaacd1821c1c339cd216b50724fd8f131c2ff721bf2ad3e30bf909904",
+      "sharedScale": 0.9051724137931034,
+      "clawAnchor": [
+        182,
+        445
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            100.0,
+            52.0,
+            296.0,
+            311.0
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            97.5,
+            50.5,
+            295.5,
+            310.5
+          ],
+          "registrationOffset": [
+            2,
+            1
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            92.5,
+            50.5,
+            335.0,
+            311.0
+          ],
+          "registrationOffset": [
+            7,
+            1
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            95.0,
+            49.5,
+            357.5,
+            310.0
+          ],
+          "registrationOffset": [
+            5,
+            2
+          ]
+        },
+        {
+          "column": 4,
+          "bounds": [
+            92.0,
+            51.0,
+            309.0,
+            312.0
+          ],
+          "registrationOffset": [
+            8,
+            0
+          ]
+        },
+        {
+          "column": 5,
+          "bounds": [
+            99.5,
+            50.5,
+            293.5,
+            311.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "state": "error",
+      "row": 4,
+      "frameCount": 4,
+      "sourceSha256": "0dad6b5db44ff024d148c217b3050d9d9baac32e7dd4686e9df79943fbe83eba",
+      "sharedScale": 0.6422018348623854,
+      "clawAnchor": [
+        299,
+        490
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            91.5,
+            52.0,
+            302.0,
+            330.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            79.5,
+            45.5,
+            302.0,
+            330.5
+          ],
+          "registrationOffset": [
+            19,
+            0
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            87.0,
+            53.0,
+            303.0,
+            330.5
+          ],
+          "registrationOffset": [
+            7,
+            0
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            91.5,
+            51.0,
+            301.5,
+            330.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "state": "curious",
+      "row": 5,
+      "frameCount": 4,
+      "sourceSha256": "1d675ee8030b7f962d5e716abe45efac41c866478583a6adb3b7f4b7a14c8581",
+      "sharedScale": 0.5011933174224343,
+      "clawAnchor": [
+        244,
+        515
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            95.5,
+            52.0,
+            300.0,
+            317.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            85.5,
+            65.5,
+            306.0,
+            315.0
+          ],
+          "registrationOffset": [
+            20,
+            5
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            88.5,
+            53.0,
+            297.5,
+            315.5
+          ],
+          "registrationOffset": [
+            14,
+            4
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            89.5,
+            50.0,
+            297.0,
+            315.0
+          ],
+          "registrationOffset": [
+            12,
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "state": "playful",
+      "row": 6,
+      "frameCount": 4,
+      "sourceSha256": "0957e4deb430582958dea33d35d9d1989f6bf2d71b6f8640d5a0b9d5c72b71e3",
+      "sharedScale": 0.49528301886792453,
+      "clawAnchor": [
+        255,
+        528
+      ],
+      "frames": [
+        {
+          "column": 0,
+          "bounds": [
+            98.0,
+            52.0,
+            303.5,
+            315.5
+          ],
+          "registrationOffset": [
+            0,
+            0
+          ]
+        },
+        {
+          "column": 1,
+          "bounds": [
+            91.5,
+            46.5,
+            303.5,
+            316.0
+          ],
+          "registrationOffset": [
+            14,
+            0
+          ]
+        },
+        {
+          "column": 2,
+          "bounds": [
+            92.0,
+            54.5,
+            308.0,
+            313.5
+          ],
+          "registrationOffset": [
+            12,
+            0
+          ]
+        },
+        {
+          "column": 3,
+          "bounds": [
+            101.5,
+            51.0,
+            301.5,
+            315.0
+          ],
+          "registrationOffset": [
+            -7,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

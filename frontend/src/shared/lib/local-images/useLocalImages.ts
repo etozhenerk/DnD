@@ -17,7 +17,7 @@ export function useLocalImages(maximum = 8) {
     };
   }, []);
 
-  async function addFiles(files: FileList | null): Promise<LocalImage[]> {
+  async function addFiles(files: FileList | readonly File[] | null): Promise<LocalImage[]> {
     if (!files || busy.current) return [];
     busy.current = true;
     try {

@@ -6,13 +6,14 @@ export type JsonRequestOptions = {
   body?: unknown;
   token?: string;
   signal?: AbortSignal;
+  timeoutMs?: number;
 };
 
 export async function requestJson(path: string, options: JsonRequestOptions = {}): Promise<unknown> {
   const headers = new Headers({Accept: 'application/json'});
   if (options.body !== undefined) headers.set('Content-Type', 'application/json');
   if (options.token) headers.set('Authorization', `Bearer ${options.token}`);
-  const timeout = AbortSignal.timeout(35000);
+  const timeout = AbortSignal.timeout(options.timeoutMs ?? 35000);
   const signal = options.signal ? AbortSignal.any([options.signal, timeout]) : timeout;
   const response = await fetch(`${apiBaseUrl}${path}`, {
     method: options.method ?? 'GET', headers, signal,

@@ -13,3 +13,5 @@ export {getAttributeAdjustment} from './model/attribute-adjustment';
 export type {AttributeAdjustment} from './model/attribute-adjustment';
 export {getSkillBalance, getProfileLabel} from './model/skill-balance';
 export type {CharacterFormController} from './model/controller';
+export {canApplyCharacterProposal} from './model/proposal-validation';
+export {applyAdvisorProposal} from './model/apply-advisor-proposal';

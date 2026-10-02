@@ -21,7 +21,7 @@ func (s *Store) AdvisorReady(ctx context.Context) error {
 	}
 	_, err := s.Pool.Exec(ctx, `
         SELECT s.token_hash, s.expires_at, s.accounted_micro_rub, m.blocked,
-            t.request_hash, t.reserved_micro_rub, t.model, t.cached_tokens
+            t.request_hash, t.reserved_micro_rub, t.model, t.cached_tokens, t.mode, t.target, t.result_asset
         FROM advisor_sessions s CROSS JOIN advisor_months m CROSS JOIN advisor_turns t
         WHERE false
     `)

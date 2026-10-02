@@ -18,31 +18,53 @@ import (
 // Client uses one reusable HTTP client and the runtime's short-lived IAM token.
 // It never retries a completion or exposes provider bodies in errors.
 type Client struct {
-	model    string
-	endpoint string
-	http     *http.Client
-	token    func(context.Context) (string, error)
+	model         string
+	folder        string
+	endpoint      string
+	http          *http.Client
+	imageHTTP     *http.Client
+	imageEndpoint string
+	token         func(context.Context) (string, error)
 }
 
 // New pins the model and pricing; it does not store a long-lived API key.
 func New(folderID string) *Client {
 	h := &http.Client{Timeout: 22 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }}
 	tokens := &runtimeToken{http: h, endpoint: "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token"}
-	return &Client{model: "gpt://" + folderID + "/" + advisor.ModelName,
-		endpoint: "https://ai.api.cloud.yandex.net/v1/chat/completions", http: h, token: tokens.get}
+	return &Client{model: "gpt://" + folderID + "/" + advisor.ModelName, folder: folderID,
+		imageHTTP:     &http.Client{Timeout: 80 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }},
+		imageEndpoint: "https://ai.api.cloud.yandex.net/v1/images/generations",
+		endpoint:      "https://ai.api.cloud.yandex.net/v1/chat/completions", http: h, token: tokens.get}
 }
 
 // Complete limits visible output plus reasoning to the reserved token envelope.
 // store=false and x-data-logging-enabled=false avoid provider conversation storage.
-func (c *Client) Complete(ctx context.Context, messages []advisor.Message) (advisor.Completion, error) {
+func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode string) (advisor.Completion, error) {
+	maxTokens := 1536
+	var format *struct {
+		Type string `json:"type"`
+	}
+	if mode == "comment" {
+		maxTokens = 384
+	}
+	if mode == "fill" || mode == "suggest" {
+		maxTokens = advisor.MaxOutputTokens
+		format = &struct {
+			Type string `json:"type"`
+		}{Type: "json_object"}
+	}
 	body, err := json.Marshal(struct {
+		Reasoning string `json:"reasoning_effort"`
+		Format    *struct {
+			Type string `json:"type"`
+		} `json:"response_format,omitempty"`
 		Model     string            `json:"model"`
 		Messages  []advisor.Message `json:"messages"`
 		MaxTokens int               `json:"max_completion_tokens"`
 		Store     bool              `json:"store"`
 		Stream    bool              `json:"stream"`
 		N         int               `json:"n"`
-	}{c.model, messages, advisor.MaxOutputTokens, false, false, 1})
+	}{"low", format, c.model, messages, maxTokens, false, false, 1})
 	if err != nil {
 		return advisor.Completion{}, fmt.Errorf("serialize completion request")
 	}

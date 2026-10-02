@@ -67,7 +67,7 @@ func (s *Store) GetAdvisorSession(ctx context.Context, id string, tokenHash []by
         SELECT request_id::text, message, reply,
             CASE WHEN status='reserved' AND created_at < now()-interval '2 minutes'
                 THEN 'uncertain' ELSE status END,
-            accounted_micro_rub, created_at
+            accounted_micro_rub, created_at, mode, target, result_asset->>'mimeType'
         FROM advisor_turns WHERE session_id=$1 ORDER BY created_at, request_id LIMIT 100
     `, id)
 	if err != nil {
@@ -76,8 +76,12 @@ func (s *Store) GetAdvisorSession(ctx context.Context, id string, tokenHash []by
 	defer rows.Close()
 	for rows.Next() {
 		var turn advisor.Turn
-		if err := rows.Scan(&turn.RequestID, &turn.Message, &turn.Reply, &turn.Status, &turn.Accounted, &turn.CreatedAt); err != nil {
+		var mime *string
+		if err := rows.Scan(&turn.RequestID, &turn.Message, &turn.Reply, &turn.Status, &turn.Accounted, &turn.CreatedAt, &turn.Mode, &turn.Target, &mime); err != nil {
 			return advisor.Session{}, err
+		}
+		if mime != nil && turn.Status == "succeeded" {
+			turn.Image = &advisor.ImageResult{RequestID: turn.RequestID, Kind: turn.Mode, Target: turn.Target, MIMEType: *mime}
 		}
 		session.Turns = append(session.Turns, turn)
 	}

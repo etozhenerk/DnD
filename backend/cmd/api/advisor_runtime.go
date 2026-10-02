@@ -9,6 +9,7 @@ import (
 
 	"github.com/etozhenerk/DnD/backend/internal/advisor"
 	"github.com/etozhenerk/DnD/backend/internal/aistudio"
+	"github.com/etozhenerk/DnD/backend/internal/blobstore"
 	"github.com/etozhenerk/DnD/backend/internal/characterapp"
 	"github.com/etozhenerk/DnD/backend/internal/creator"
 	"github.com/etozhenerk/DnD/backend/internal/storage"
@@ -41,5 +42,14 @@ func advisorRuntime(getenv func(string) string, catalog *creator.Catalog, store 
 	if err != nil {
 		return nil, err
 	}
-	return characterapp.NewAdvisor(store, aistudio.New(folder), prompt), nil
+	model := aistudio.New(folder)
+	service := characterapp.NewAdvisor(store, model, prompt)
+	if getenv("ADVISOR_IMAGES_ENABLED") == "true" {
+		bucket := getenv("ASSET_BUCKET")
+		if bucket == "" {
+			return nil, fmt.Errorf("advisor image storage unavailable")
+		}
+		service.EnableImages(model, blobstore.New(bucket))
+	}
+	return service, nil
 }

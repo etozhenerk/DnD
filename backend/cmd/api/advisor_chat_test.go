@@ -19,11 +19,12 @@ import (
 type advisorModelStub struct {
 	calls   atomic.Int32
 	failure error
+	reply   string
 	entered chan struct{}
 	release chan struct{}
 }
 
-func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message) (advisor.Completion, error) {
+func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message, _ string) (advisor.Completion, error) {
 	m.calls.Add(1)
 	if m.entered != nil {
 		close(m.entered)
@@ -35,7 +36,11 @@ func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message) (a
 			return advisor.Completion{}, ctx.Err()
 		}
 	}
-	return advisor.Completion{Reply: "**Сова:** выбери характер героя!", InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
+	reply := m.reply
+	if reply == "" {
+		reply = "**Советник:** выбери характер героя!"
+	}
+	return advisor.Completion{Reply: reply, InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
 }
 
 func advisorTestHandler(t *testing.T, model *advisorModelStub) (*storage.Store, *characterapp.Advisor, http.Handler) {
@@ -46,6 +51,13 @@ func advisorTestHandler(t *testing.T, model *advisorModelStub) (*storage.Store, 
 		t.Fatal(err)
 	}
 	if _, err := store.Pool.Exec(t.Context(), string(migration)); err != nil {
+		t.Fatal(err)
+	}
+	tools, err := os.ReadFile("../../migrations/000008_advisor_tools.up.sql")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := store.Pool.Exec(t.Context(), string(tools)); err != nil {
 		t.Fatal(err)
 	}
 	prompt, err := advisor.LoadPrompt("../../../shared/advisor/persona.md", "../../../content/world-map.json", catalog)
@@ -177,5 +189,36 @@ func TestAdvisorAmbiguousFailureRetainsReservation(t *testing.T) {
 	}
 	if model.calls.Load() != 1 {
 		t.Fatal("ambiguous request resubmitted")
+	}
+}
+
+func TestAdvisorFillPersistsProposalWithoutCreatingCharacter(t *testing.T) {
+	model := &advisorModelStub{reply: `{"reply":"Беру перо!","character":{"appearance":{"displayName":"Алес","pronouns":"он","appearance":"Лесной плащ","story":"Странник","motivation":"Вернуть долг","personality":["Хитрый"]},"raceId":"elves","classId":"rogue","skills":[],"equipment":[]}}`}
+	store, service, handler := advisorTestHandler(t, model)
+	session, token, err := service.Create(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	input := advisorInput("00000000-0000-0000-0000-000000000045")
+	input.Mode = "fill"
+	var before, after int
+	if err := store.Pool.QueryRow(t.Context(), "SELECT count(*) FROM characters").Scan(&before); err != nil {
+		t.Fatal(err)
+	}
+	result, err := service.Send(t.Context(), session.ID, token, input)
+	if err != nil || len(result.Turns) != 1 || result.Turns[0].Proposal == nil {
+		t.Fatalf("proposal not returned: %+v err=%v", result, err)
+	}
+	duplicate, err := service.Send(t.Context(), session.ID, token, input)
+	if err != nil || model.calls.Load() != 1 || duplicate.Accounted != result.Accounted || duplicate.Turns[0].Proposal == nil {
+		t.Fatal("fill repeated or lost its stored proposal")
+	}
+	if err := store.Pool.QueryRow(t.Context(), "SELECT count(*) FROM characters").Scan(&after); err != nil || after != before {
+		t.Fatal("advisor created a character without player acceptance")
+	}
+	response := apiRequest(handler, http.MethodGet, "/advisor/sessions/"+session.ID, token, nil)
+	recordResponse(t, "advisor-proposal.json", response)
+	if response.Code != 200 {
+		t.Fatalf("read proposal status=%d", response.Code)
 	}
 }

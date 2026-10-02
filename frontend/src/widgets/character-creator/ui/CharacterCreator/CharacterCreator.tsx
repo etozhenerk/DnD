@@ -50,7 +50,7 @@ export function CharacterCreator({stepId}: CharacterCreatorProps) {
             onClickCapture={(event) => {if (saving.isPending) event.preventDefault();}}>
             <CreatorStepPreview step={navigation.step} controller={controller} media={media} saving={saving} />
           </fieldset>
-          <CreatorAdvisorPreview stepId={navigation.step.id} formData={controller.formData} />
+          <CreatorAdvisorPreview stepId={navigation.step.id} formData={controller.formData} onApply={controller.replaceForm} media={media} disabled={saving.isPending} />
         </div>
       </div>
     </section>

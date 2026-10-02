@@ -20,16 +20,17 @@ func TestCompletionLimitsPrivacyAndUsage(t *testing.T) {
 			t.Error("privacy/auth headers missing")
 		}
 		var body struct {
-			Model  string `json:"model"`
-			Max    int    `json:"max_completion_tokens"`
-			Store  bool   `json:"store"`
-			Stream bool   `json:"stream"`
-			N      int    `json:"n"`
+			Model     string `json:"model"`
+			Reasoning string `json:"reasoning_effort"`
+			Max       int    `json:"max_completion_tokens"`
+			Store     bool   `json:"store"`
+			Stream    bool   `json:"stream"`
+			N         int    `json:"n"`
 		}
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 			t.Error(err)
 		}
-		if body.Model != "gpt://test/deepseek-v4-flash" || body.Max != advisor.MaxOutputTokens || body.Store || body.Stream || body.N != 1 {
+		if body.Reasoning != "low" || body.Model != "gpt://test/deepseek-v4-flash" || body.Max != 1536 || body.Store || body.Stream || body.N != 1 {
 			t.Error("wrong generation envelope")
 		}
 		_, err := w.Write([]byte(`{"choices":[{"message":{"content":"**Привет!**"},"finish_reason":"stop"}],"usage":{"prompt_tokens":100,"completion_tokens":200,"prompt_tokens_details":{"cached_tokens":25},"completion_tokens_details":{"reasoning_tokens":150}}}`))
@@ -39,7 +40,7 @@ func TestCompletionLimitsPrivacyAndUsage(t *testing.T) {
 	}))
 	defer remote.Close()
 	client := &Client{model: "gpt://test/deepseek-v4-flash", endpoint: remote.URL, http: remote.Client(), token: func(context.Context) (string, error) { return "test-token", nil }}
-	result, err := client.Complete(t.Context(), []advisor.Message{{Role: "user", Content: "test"}})
+	result, err := client.Complete(t.Context(), []advisor.Message{{Role: "user", Content: "test"}}, "chat")
 	if err != nil || result.OutputTokens != 200 || result.CachedTokens != 25 || result.Reply != "**Привет!**" || calls.Load() != 1 {
 		t.Fatalf("bad result: %+v err=%v", result, err)
 	}
@@ -66,8 +67,29 @@ func TestProviderErrorIsNotRetriedOrExposed(t *testing.T) {
 	}))
 	defer remote.Close()
 	client := &Client{endpoint: remote.URL, http: remote.Client(), token: func(context.Context) (string, error) { return "test", nil }}
-	_, err := client.Complete(t.Context(), []advisor.Message{{Role: "user", Content: "test"}})
+	_, err := client.Complete(t.Context(), []advisor.Message{{Role: "user", Content: "test"}}, "chat")
 	if err == nil || strings.Contains(err.Error(), "secret-provider-detail") || calls.Load() != 1 {
 		t.Fatal("leaked error or repeated paid call")
+	}
+}
+
+func TestFillRequestsBoundedStructuredOutput(t *testing.T) {
+	remote := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		var body struct {
+			Max       int    `json:"max_completion_tokens"`
+			Reasoning string `json:"reasoning_effort"`
+			Format    struct {
+				Type string `json:"type"`
+			} `json:"response_format"`
+		}
+		if json.NewDecoder(r.Body).Decode(&body) != nil || body.Max != advisor.MaxOutputTokens || body.Reasoning != "low" || body.Format.Type != "json_object" {
+			t.Error("unbounded or unstructured fill")
+		}
+		_, _ = w.Write([]byte(`{"choices":[{"message":{"content":"{}"},"finish_reason":"stop"}],"usage":{"prompt_tokens":100,"completion_tokens":200}}`))
+	}))
+	defer remote.Close()
+	client := &Client{endpoint: remote.URL, http: remote.Client(), token: func(context.Context) (string, error) { return "test", nil }}
+	if _, err := client.Complete(t.Context(), []advisor.Message{{Role: "user", Content: "fill"}}, "fill"); err != nil {
+		t.Fatal(err)
 	}
 }

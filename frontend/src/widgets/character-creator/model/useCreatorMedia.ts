@@ -8,12 +8,13 @@ export function useCreatorMedia() {
   const [icons, setIcons] = useState<Record<string, string>>({});
   const selected = portraits.images.find((image) => image.id === selectedId) ?? portraits.images[0];
 
-  async function uploadIcon(skillId: string, files: FileList | null) {
+  async function uploadIcon(skillId: string, files: FileList | readonly File[] | null) {
     const added = await iconImages.addFiles(files);
-    if (!added[0]) return;
+    if (!added[0]) return false;
     const previous = icons[skillId];
     if (previous) iconImages.remove(previous);
     setIcons((current) => ({...current, [skillId]: added[0].id}));
+    return true;
   }
 
   function removeIcon(skillId: string) {
@@ -32,6 +33,15 @@ export function useCreatorMedia() {
     getIconImage: (skillId: string) => iconImages.images.find((image) => image.id === icons[skillId]),
     hasIcons: Object.keys(icons).length > 0,
     getIcon: (skillId: string) => iconImages.images.find((image) => image.id === icons[skillId])?.url,
+    acceptAdvisorImage: async (kind: 'portrait' | 'icon', target: string | undefined, file: File) => {
+      if (kind === 'icon') {
+        return target ? uploadIcon(target, [file]) : false;
+      } else {
+        const added = await portraits.addFiles([file]);
+        if (added[0]) setSelectedId(added[0].id);
+        return !!added[0];
+      }
+    },
   };
 }
 

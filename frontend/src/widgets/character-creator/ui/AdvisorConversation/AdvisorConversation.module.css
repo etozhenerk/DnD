@@ -1,5 +1,6 @@
 .history {
   min-height: 0;
+  overflow-anchor: none;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -72,4 +73,26 @@
 .thinking {
   color: var(--creator-muted);
   font-style: italic;
+}
+
+.turn {
+  animation: turn-arrive 260ms var(--fantasy-motion-ease);
+}
+
+@keyframes turn-arrive {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .turn {
+    animation: none;
+  }
 }

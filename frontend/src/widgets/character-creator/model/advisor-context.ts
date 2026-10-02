@@ -1,15 +1,21 @@
 import type {AdvisorContext, AdvisorStepId} from '../../../entities/character-advisor';
 import type {CharacterFormData} from '../../../entities/character-form';
+import {getAdvisorSnapshot} from './advisor-snapshot';
+
+function short(value = '', limit = 180) {
+  return [...value].slice(0, limit).join('');
+}
 
 export function getAdvisorContext(stepId: AdvisorStepId, form: CharacterFormData): AdvisorContext {
   const appearance = form.appearance;
   const concept = JSON.stringify({
-    story: appearance?.story, motivation: appearance?.motivation, personality: appearance?.personality,
+    story: short(appearance?.story, 300), motivation: short(appearance?.motivation),
+    appearance: short(appearance?.appearance), pronouns: short(appearance?.pronouns, 40),
+    personality: appearance?.personality.slice(0, 4).map((value) => short(value, 50)),
     attributes: form.attributes,
-    skills: form.abilities?.items.map(({name, description, profileId}) => ({name, description, profileId})),
-    equipment: form.equipment?.items.map(({name}) => name),
+    skills: form.abilities?.items.slice(0, 3).map(({name, profileId}) => ({name: short(name, 80), profileId})),
+    equipment: form.equipment?.items.slice(0, 5).map(({name}) => short(name, 60)),
   });
-  return {stepId, name: [...(appearance?.displayName ?? '')].slice(0, 120).join(''),
-    raceId: form.race?.raceId ?? '', classId: form.class?.classId ?? '',
-    concept: [...concept].slice(0, 2000).join('')};
+  return {stepId, name: short(appearance?.displayName, 120),
+    raceId: form.race?.raceId ?? '', classId: form.class?.classId ?? '', concept, formData: getAdvisorSnapshot(form)};
 }

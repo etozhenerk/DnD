@@ -46,15 +46,25 @@ func (s *Store) ReserveAdvisorTurn(ctx context.Context, id string, tokenHash []b
 	if err != pgx.ErrNoRows {
 		return false, err
 	}
-	if err := checkAdvisorLimits(ctx, tx, id, accounted, total, blocked); err != nil {
+	amount := advisor.ReservationFor(in.Mode)
+	if err := checkAdvisorLimits(ctx, tx, id, accounted, total, blocked, amount); err != nil {
 		return false, err
 	}
-	amount := advisor.Reservation()
+	if err := checkAdvisorToolLimits(ctx, tx, id, in.Mode); err != nil {
+		return false, err
+	}
+	mode, model := in.Mode, advisor.ModelName
+	if mode == "" {
+		mode = "chat"
+	}
+	if mode == "portrait" || mode == "icon" {
+		model = advisor.ImageModelName
+	}
 	_, err = tx.Exec(ctx, `
         INSERT INTO advisor_turns (session_id, request_id, request_hash, month, message,
-            reserved_micro_rub, accounted_micro_rub, model)
-        VALUES ($1,$2,$3,$4::text::date,$5,$6,$6,$7)
-    `, id, in.RequestID, in.Hash(), month, in.Message, amount, advisor.ModelName)
+            reserved_micro_rub, accounted_micro_rub, model, mode, target)
+        VALUES ($1,$2,$3,$4::text::date,$5,$6,$6,$7,$8,$9)
+    `, id, in.RequestID, in.Hash(), month, in.Message, amount, model, mode, in.Target)
 	if err != nil {
 		return false, err
 	}
@@ -86,7 +96,7 @@ func lockAdvisorMonth(ctx context.Context, tx pgx.Tx) (string, advisor.Money, bo
 	return month, total, blocked, err
 }
 
-func checkAdvisorLimits(ctx context.Context, tx pgx.Tx, id string, session, month advisor.Money, blocked bool) error {
+func checkAdvisorLimits(ctx context.Context, tx pgx.Tx, id string, session, month advisor.Money, blocked bool, amount advisor.Money) error {
 	var count, pending int
 	err := tx.QueryRow(ctx, `
         SELECT count(*), count(*) FILTER (WHERE status IN ('reserved','uncertain'))
@@ -98,8 +108,8 @@ func checkAdvisorLimits(ctx context.Context, tx pgx.Tx, id string, session, mont
 	if pending > 0 {
 		return advisor.ErrBusy
 	}
-	if blocked || count >= advisor.MaxTurns || session+advisor.Reservation() > advisor.SessionBudget ||
-		month+advisor.Reservation() > advisor.MonthlyBudget {
+	if blocked || count >= advisor.MaxTurns || session+amount > advisor.SessionBudget ||
+		month+amount > advisor.MonthlyBudget {
 		return advisor.ErrLimit
 	}
 	var active, recent int

@@ -7,6 +7,10 @@
 !content/races.json
 !content/rules.json
 !content/world-map.json
+!content/campaigns/
+!content/campaigns/nor-il-skald.json
+!content/campaigns/linda-small.json
+!content/campaigns/penisuela-chronicle.json
 !shared/
 !shared/advisor/
 !shared/advisor/guide.json

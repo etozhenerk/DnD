@@ -1,0 +1,55 @@
+.tools {
+  display: grid;
+  gap: .55rem;
+  min-height: 0;
+  overflow-y: auto;
+  padding: .2rem .35rem .5rem;
+  text-align: left;
+}
+
+.tools label {
+  color: var(--creator-accent);
+  display: grid;
+  font-size: .9rem;
+  gap: .3rem;
+}
+
+.tools select {
+  background: var(--creator-input-fill);
+  border: 0;
+  border-radius: 12px 4px;
+  box-shadow: var(--creator-input-shadow);
+  color: var(--creator-copy);
+  font: inherit;
+  max-width: 100%;
+  padding: .4rem .5rem;
+  width: 100%;
+}
+
+.action {
+  composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
+  cursor: pointer;
+  font: inherit;
+  padding: .55rem .7rem;
+}
+
+.tools button:disabled {
+  cursor: default;
+  opacity: var(--fantasy-loader-muted-opacity);
+}
+
+.tools button:focus-visible, .tools select:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+.tools small {
+  color: var(--creator-muted);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+
+.tools p {
+  font: inherit;
+  margin: .3rem 0;
+}

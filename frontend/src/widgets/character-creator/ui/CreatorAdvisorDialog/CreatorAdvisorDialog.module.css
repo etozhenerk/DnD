@@ -7,7 +7,7 @@
   box-shadow: var(--creator-tooltip-shadow);
   color: var(--creator-copy);
   font-family: var(--font-fantasy-copy);
-  height: min(680px, calc(100dvh - 64px));
+  height: min(720px, calc(100dvh - 48px));
   inset: 0;
   margin: auto;
   max-height: none;
@@ -15,13 +15,13 @@
   overflow: hidden;
   padding: 1.5rem 1.75rem 1rem;
   position: fixed;
-  width: min(920px, calc(100vw - 64px));
+  width: min(1100px, calc(100vw - 48px));
 }
 
 .dialog[open] {
   display: grid;
   gap: 1rem;
-  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto minmax(0, 1fr);
 }
 
 .dialog::backdrop {
@@ -73,4 +73,80 @@
   .dialog {
     animation: none;
   }
+}
+
+.workspace {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(260px, 32%) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.companion {
+  align-content: stretch;
+  display: grid;
+  gap: .8rem;
+  grid-template-rows: minmax(140px, .65fr) auto auto minmax(0, 1fr);
+  min-height: 0;
+  padding: 0 .25rem;
+  text-align: center;
+}
+
+.art {
+  height: 100%;
+  isolation: isolate;
+  min-height: 0;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  justify-self: center;
+}
+
+.art::before {
+  background: var(--advisor-companion-glow);
+  border-radius: 50%;
+  content: '';
+  inset: 4% 0 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.companion p {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.companion > small {
+  color: var(--creator-muted);
+  font-size: .85rem;
+  margin-inline: auto;
+  max-width: 28ch;
+}
+
+.conversation {
+  display: grid;
+  gap: .75rem;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.fill {
+  composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
+  cursor: pointer;
+  font: inherit;
+  padding: .65rem .75rem;
+}
+
+.fill:disabled {
+  cursor: default;
+  opacity: var(--fantasy-loader-muted-opacity);
+}
+
+.fill:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 4px;
 }

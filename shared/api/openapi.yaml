@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.8.0
+  version: 0.10.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
 x-ability-rules-source: content/character-abilities.json
 servers:
@@ -108,6 +108,26 @@ paths:
           content:
             application/json:
               schema: {$ref: '#/components/schemas/AdvisorSession'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /advisor/sessions/{sessionId}/images/{requestId}:
+    parameters:
+      - $ref: '#/components/parameters/AdvisorSessionId'
+      - name: requestId
+        in: path
+        required: true
+        schema: {type: string, format: uuid}
+    get:
+      operationId: getAdvisorImage
+      security: [{AdvisorToken: []}]
+      description: Бинарный результат доступен только с секретом сессии. Не публикует изображение в книге или списке персонажей.
+      responses:
+        '200':
+          description: Подготовленный портрет или иконка.
+          content:
+            image/jpeg: {schema: {type: string, format: binary}}
+            image/png: {schema: {type: string, format: binary}}
         '401': {$ref: '#/components/responses/Unauthorized'}
         '404': {$ref: '#/components/responses/NotFound'}
         '503': {$ref: '#/components/responses/Unavailable'}
@@ -369,10 +389,35 @@ components:
       type: object
       additionalProperties: false
       required: [requestId, message, context]
+      allOf:
+        - if:
+            required: [mode]
+            properties: {mode: {const: suggest}}
+          then:
+            required: [target]
+            properties: {target: {enum: [name, appearance, race, class, abilities, equipment]}}
+        - if:
+            required: [mode]
+            properties: {mode: {const: icon}}
+          then:
+            required: [target]
+            properties: {target: {minLength: 1, pattern: '\S'}}
+        - if:
+            not:
+              required: [mode]
+              properties: {mode: {enum: [suggest, icon]}}
+          then:
+            properties: {target: {const: ''}}
       x-max-body-bytes: 16384
       properties:
         requestId: {type: string, format: uuid}
         message: {type: string, minLength: 1, maxLength: 2000, pattern: '\S'}
+        mode:
+          type: string
+          enum: [chat, comment, suggest, fill, portrait, icon]
+          default: chat
+          description: comment — короткая заметка; suggest — предложение для target; fill — полная анкета; portrait/icon — изображение. Применяет игрок.
+        target: {type: string, maxLength: 80, description: Поле предложения или ID навыка для иконки.}
         context:
           type: object
           additionalProperties: false
@@ -383,6 +428,18 @@ components:
             raceId: {type: string, maxLength: 80}
             classId: {type: string, maxLength: 80}
             concept: {type: string, maxLength: 2000}
+            formData:
+              type: object
+              description: Ограниченный снимок текущей анкеты, не сохраняется в БД.
+              x-max-json-bytes: 12288
+              additionalProperties: false
+              properties:
+                appearance: {type: object}
+                race: {type: object}
+                class: {type: object}
+                attributes: {type: object}
+                abilities: {type: object}
+                equipment: {type: object}
     AdvisorTurn:
       type: object
       additionalProperties: false
@@ -391,9 +448,30 @@ components:
         requestId: {type: string, format: uuid}
         message: {type: string, maxLength: 2000}
         reply: {type: string, maxLength: 16000}
+        proposal: {$ref: '#/components/schemas/AdvisorProposal'}
+        mode: {type: string, enum: [chat, comment, suggest, fill, portrait, icon]}
+        target: {type: string, maxLength: 80}
+        image: {$ref: '#/components/schemas/AdvisorImage'}
         status: {type: string, enum: [reserved, succeeded, uncertain]}
         accountedMicroRub: {type: integer, minimum: 0}
         createdAt: {type: string, format: date-time}
+    AdvisorProposal:
+      type: object
+      additionalProperties: false
+      required: [formData]
+      description: Полная анкета без изображений, проверенная текущими правилами. Не создаёт персонажа и не является черновиком.
+      properties:
+        formData: {$ref: '#/components/schemas/CompleteCharacterForm'}
+        target: {type: string, enum: [name, appearance, race, class, abilities, equipment]}
+    AdvisorImage:
+      type: object
+      additionalProperties: false
+      required: [requestId, kind, mimeType]
+      properties:
+        requestId: {type: string, format: uuid}
+        kind: {type: string, enum: [portrait, icon]}
+        target: {type: string, maxLength: 80}
+        mimeType: {type: string, enum: [image/jpeg, image/png]}
     AdvisorSession:
       type: object
       additionalProperties: false
@@ -437,9 +515,9 @@ components:
           properties:
             stepHints: {type: boolean, const: true}
             chat: {type: boolean}
-            proactiveComments: {type: boolean, const: false}
-            fillCharacter: {type: boolean, const: false}
-            images: {type: boolean, const: false}
+            proactiveComments: {type: boolean}
+            fillCharacter: {type: boolean}
+            images: {type: boolean}
         steps:
           type: array
           minItems: 7

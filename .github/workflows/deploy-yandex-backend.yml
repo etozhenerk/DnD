@@ -10,6 +10,9 @@ on:
       - 'content/character-abilities.json'
       - 'content/races.json'
       - 'content/world-map.json'
+      - 'content/campaigns/nor-il-skald.json'
+      - 'content/campaigns/linda-small.json'
+      - 'content/campaigns/penisuela-chronicle.json'
       - 'content/rules.json'
       - '.github/workflows/deploy-yandex-backend.yml'
   workflow_dispatch:
@@ -60,6 +63,9 @@ jobs:
             /content/character-abilities.json
             /content/races.json
             /content/world-map.json
+            /content/campaigns/nor-il-skald.json
+            /content/campaigns/linda-small.json
+            /content/campaigns/penisuela-chronicle.json
             /content/rules.json
             /shared/api/openapi.yaml
             /shared/advisor/
@@ -114,13 +120,14 @@ jobs:
           revision-memory: 512Mb
           revision-core-fraction: '100'
           revision-concurrency: '12'
-          revision-execution-timeout: '30'
+          revision-execution-timeout: '120'
           revision-provisioned: '0'
           revision-zone-instances-limit: '1'
           revision-network-id: enpeeej3ge2i9lqn8cer
           revision-log-options-folder-id: ${{ env.YC_FOLDER_ID }}
           revision-env: |
             ADVISOR_CHAT_ENABLED=${{ vars.DND_ADVISOR_CHAT_ENABLED || 'false' }}
+            ADVISOR_IMAGES_ENABLED=${{ vars.DND_ADVISOR_IMAGES_ENABLED || 'false' }}
             ADVISOR_FOLDER_ID=${{ env.YC_FOLDER_ID }}
             ASSET_BUCKET=dnd-character-media-b1g8siv8ve2si1qp04nm
             DB_HOST=rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net

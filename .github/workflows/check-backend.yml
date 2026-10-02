@@ -11,6 +11,9 @@ on:
       - content/character-abilities.json
       - content/races.json
       - content/world-map.json
+      - content/campaigns/nor-il-skald.json
+      - content/campaigns/linda-small.json
+      - content/campaigns/penisuela-chronicle.json
       - content/rules.json
       - .github/workflows/check-backend.yml
   pull_request:
@@ -22,6 +25,9 @@ on:
       - content/character-abilities.json
       - content/races.json
       - content/world-map.json
+      - content/campaigns/nor-il-skald.json
+      - content/campaigns/linda-small.json
+      - content/campaigns/penisuela-chronicle.json
       - content/rules.json
       - .github/workflows/check-backend.yml
 
@@ -62,6 +68,9 @@ jobs:
             /content/character-abilities.json
             /content/races.json
             /content/world-map.json
+            /content/campaigns/nor-il-skald.json
+            /content/campaigns/linda-small.json
+            /content/campaigns/penisuela-chronicle.json
             /content/rules.json
             /shared/api/openapi.yaml
             /shared/advisor/

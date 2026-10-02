@@ -70,7 +70,7 @@ func TestPromptUsesApprovedCatalogAndRecentHistory(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	in := Input{Message: "Подскажи имя", Context: Context{StepID: "appearance"}}
+	in := Input{Message: "Подскажи имя", Context: Context{StepID: "appearance", ClassID: "fighter"}}
 	history := []Turn{{Message: "старое", Reply: "первый ответ", Status: "succeeded"}, {Message: "таймаут", Status: "uncertain"}}
 	messages, err := prompt.Messages(history, in)
 	if err != nil {

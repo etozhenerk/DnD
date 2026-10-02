@@ -1,0 +1,54 @@
+.examples {
+  color: var(--creator-muted);
+  display: grid;
+  gap: .65rem;
+  padding: 1.1rem 0 .25rem;
+  text-align: center;
+}
+
+.examples > p {
+  color: var(--creator-heading);
+  font-family: var(--font-fantasy-copy);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.actions {
+  display: grid;
+  gap: .45rem;
+  justify-items: stretch;
+  margin-inline: auto;
+  max-width: 390px;
+  width: 100%;
+}
+
+.actions button {
+  background: var(--creator-input-fill);
+  border: 1px solid var(--creator-border);
+  border-radius: 20px 7px 20px 7px;
+  color: var(--creator-accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: .9rem;
+  min-height: 40px;
+  padding: .6rem 1rem;
+}
+
+.actions button:hover:not(:disabled) {
+  box-shadow: var(--creator-action-glow);
+  color: var(--creator-heading);
+}
+
+.actions button:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+.actions button:disabled {
+  cursor: default;
+  opacity: var(--opacity-action-disabled);
+}
+
+.examples > small {
+  font-size: .82rem;
+}

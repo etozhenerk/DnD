@@ -15,7 +15,7 @@ export function useAdvisorHistoryScroll() {
     observer.observe(body);
     return () => observer.disconnect();
   }, []);
-  return {viewport, content, onScroll: () => {
+  return {viewport, content, pause: () => {follow.current = false;}, onScroll: () => {
     const element = viewport.current;
     if (element) follow.current = element.scrollHeight - element.scrollTop - element.clientHeight < 80;
   }};

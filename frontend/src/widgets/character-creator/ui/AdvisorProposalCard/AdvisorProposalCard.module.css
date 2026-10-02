@@ -1,0 +1,72 @@
+.card {
+  animation: proposal-arrive 320ms var(--fantasy-motion-ease);
+  background: var(--advisor-proposal-fill);
+  border-radius: 20px 6px 20px 6px;
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.eyebrow {
+  color: var(--creator-muted);
+  font-size: .85rem;
+}
+
+.card h3 {
+  color: var(--creator-accent);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.6rem;
+  margin: .2rem 0 .65rem;
+}
+
+.card button {
+  background: var(--creator-action);
+  border: 0;
+  border-radius: 12px 3px;
+  color: var(--creator-heading);
+  cursor: pointer;
+  font: inherit;
+  padding: .5rem .9rem;
+}
+
+.card button:disabled {
+  cursor: default;
+  opacity: var(--fantasy-loader-muted-opacity);
+}
+
+.card button:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+.actions {
+  align-items: start;
+  display: grid;
+  gap: .65rem;
+  margin-top: .75rem;
+}
+
+.actions small {
+  color: var(--creator-muted);
+}
+
+.actions button {
+  justify-self: start;
+}
+
+@keyframes proposal-arrive {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+}

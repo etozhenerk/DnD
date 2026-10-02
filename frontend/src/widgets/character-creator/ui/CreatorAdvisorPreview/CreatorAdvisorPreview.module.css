@@ -50,16 +50,58 @@
 
 @media (min-width: 901px) {
   .advisor {
+    --fantasy-heading-size: 1.8rem;
+    gap: .75rem;
+    isolation: isolate;
+    margin: .25rem .7rem 1rem;
+    padding: .5rem 0 0;
     position: sticky;
     top: 80px;
   }
 
+  .advisor::before {
+    background: var(--advisor-scene-wash);
+    border-radius: 48% 48% 28% 28%;
+    content: '';
+    inset: 0 -1rem -1rem;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .advisor header {
+    padding: 0 .25rem;
+  }
+
+  .advisor header p {
+    font-size: .9rem;
+  }
+
   .stage {
-    height: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    height: auto;
   }
 
   .art {
-    height: 260px;
+    align-self: center;
+    aspect-ratio: 304 / 300;
+    bottom: auto;
+    flex-shrink: 0;
+    height: auto;
+    position: relative;
+    right: auto;
+    margin-bottom: -.8rem;
+    width: clamp(160px, 23dvh, 210px);
+  }
+
+  .speech {
+    --advisor-tail-right: 65%;
+    flex-shrink: 0;
+    inset: auto;
+    position: relative;
+    width: 100%;
   }
 }
 

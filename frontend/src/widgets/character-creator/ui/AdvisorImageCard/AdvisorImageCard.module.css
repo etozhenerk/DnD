@@ -1,0 +1,48 @@
+.card {
+  display: grid;
+  gap: .75rem;
+  justify-items: start;
+  margin: .75rem 0;
+}
+
+.card img {
+  border-radius: 20px 8px;
+  box-shadow: var(--creator-seal-shadow);
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.portrait {
+  max-height: 300px;
+}
+
+.icon {
+  height: 128px;
+  width: 128px;
+}
+
+.card figcaption {
+  display: grid;
+  gap: .4rem;
+}
+
+.action {
+  composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
+  cursor: pointer;
+  font: inherit;
+  padding: .6rem 1rem;
+}
+
+.card small {
+  color: var(--creator-muted);
+}
+
+.card button:disabled {
+  cursor: default;
+  opacity: var(--fantasy-loader-muted-opacity);
+}
+
+.card button:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}

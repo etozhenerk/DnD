@@ -1,3 +1,4 @@
+import {readProposal} from './read-proposal';
 import {ApiError} from '../../../shared/api/http';
 import type {AdvisorSession, AdvisorTurn} from '../model/chat-types';
 
@@ -7,14 +8,15 @@ function object(value: unknown): Record<string, unknown> {
 }
 
 function invalid() {
-  return new ApiError('Сова принесла неполный ответ. Проверь диалог ещё раз.', 502, 'invalid_advisor_response');
+  return new ApiError('Советник принёс неполный ответ. Проверь диалог ещё раз.', 502, 'invalid_advisor_response');
 }
 
 export function readAvailability(value: unknown) {
   const data = object(value);
   const capabilities = object(data.capabilities);
   if (data.version !== 'character-advisor-v1' || typeof capabilities.chat !== 'boolean') throw invalid();
-  return {chat: capabilities.chat};
+  return {chat: capabilities.chat, fillCharacter: capabilities.fillCharacter === true,
+    proactiveComments: capabilities.proactiveComments === true, images: capabilities.images === true};
 }
 
 export function readCreatedSession(value: unknown) {
@@ -35,13 +37,21 @@ export function readSession(value: unknown): AdvisorSession {
 
 function readTurn(value: unknown): AdvisorTurn {
   const data = object(value);
+  const modes = ['chat', 'comment', 'suggest', 'fill', 'portrait', 'icon'] as const;
+  const mode = modes.find((item) => item === (data.mode ?? 'chat'));
+  if (!mode || (data.target !== undefined && typeof data.target !== 'string')) throw invalid();
   if (typeof data.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(data.requestId)
     || typeof data.message !== 'string' || [...data.message].length > 2000
     || typeof data.reply !== 'string' || [...data.reply].length > 16000
     || (data.status !== 'reserved' && data.status !== 'succeeded' && data.status !== 'uncertain')
     || !money(data.accountedMicroRub) || typeof data.createdAt !== 'string'
     || !Number.isFinite(Date.parse(data.createdAt))) throw invalid();
-  return {requestId: data.requestId, message: data.message, reply: data.reply,
+  const image = data.image === undefined ? undefined : object(data.image);
+  if (image && (image.requestId !== data.requestId || (image.kind !== 'portrait' && image.kind !== 'icon')
+    || (image.mimeType !== 'image/jpeg' && image.mimeType !== 'image/png') || (image.target !== undefined && typeof image.target !== 'string'))) throw invalid();
+  return {requestId: data.requestId, message: data.message, reply: data.reply, proposal: readProposal(data.proposal), mode,
+    target: typeof data.target === 'string' ? data.target : undefined,
+    image: image ? {requestId: data.requestId, kind: image.kind === 'portrait' ? 'portrait' : 'icon', mimeType: String(image.mimeType), target: typeof image.target === 'string' ? image.target : undefined} : undefined,
     status: data.status, accountedMicroRub: data.accountedMicroRub, createdAt: data.createdAt};
 }
 

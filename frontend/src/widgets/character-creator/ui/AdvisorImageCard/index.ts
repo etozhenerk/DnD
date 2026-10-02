@@ -1,0 +1,1 @@
+export {AdvisorImageCard} from './AdvisorImageCard';

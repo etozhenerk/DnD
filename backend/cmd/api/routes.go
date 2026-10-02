@@ -18,6 +18,7 @@ func (s *server) routes() http.Handler {
 	mux.HandleFunc("POST /advisor/sessions", chat.Create)
 	mux.HandleFunc("GET /advisor/sessions/{sessionId}", chat.Read)
 	mux.HandleFunc("POST /advisor/sessions/{sessionId}/messages", chat.Send)
+	mux.HandleFunc("GET /advisor/sessions/{sessionId}/images/{requestId}", chat.Image)
 	mux.HandleFunc("POST /drafts", s.createDraft)
 	mux.HandleFunc("GET /drafts/{draftId}", s.getDraft)
 	mux.HandleFunc("PATCH /drafts/{draftId}", s.patchDraft)

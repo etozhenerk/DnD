@@ -12,8 +12,8 @@ export function useTypedReply(text: string, animate: boolean) {
     setVisible(0);
     let frame = 0;
     let start: number | null = null;
-    // Long answers finish within five seconds; short ones still feel like typing.
-    const speed = Math.max(100, characters.length / 5);
+    // Long answers finish within two seconds; short ones still feel like typing.
+    const speed = Math.max(180, characters.length / 2);
     function tick(now: number) {
       start ??= now;
       const count = Math.min(characters.length, Math.floor((now - start) * speed / 1000));

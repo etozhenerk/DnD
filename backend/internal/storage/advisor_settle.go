@@ -2,6 +2,7 @@ package storage
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/etozhenerk/DnD/backend/internal/advisor"
 )
@@ -30,11 +31,11 @@ func (s *Store) SettleAdvisorTurn(ctx context.Context, id, requestID string, res
 		return err
 	}
 	var before advisor.Money
-	var status string
+	var status, mode string
 	err = tx.QueryRow(ctx, `
-        SELECT accounted_micro_rub, status FROM advisor_turns
+        SELECT accounted_micro_rub, status, mode FROM advisor_turns
         WHERE session_id=$1 AND request_id=$2 FOR UPDATE
-    `, id, requestID).Scan(&before, &status)
+    `, id, requestID).Scan(&before, &status, &mode)
 	if err != nil {
 		return err
 	}
@@ -44,11 +45,21 @@ func (s *Store) SettleAdvisorTurn(ctx context.Context, id, requestID string, res
 	if cost > before {
 		return advisor.ErrLimit
 	}
+	if result.ImageCharge != (mode == "portrait" || mode == "icon") || (result.Asset != nil && !result.ImageCharge) {
+		return advisor.ErrInvalid
+	}
+	var asset []byte
+	if result.Asset != nil {
+		asset, err = json.Marshal(result.Asset)
+		if err != nil {
+			return err
+		}
+	}
 	_, err = tx.Exec(ctx, `
         UPDATE advisor_turns SET reply=$3, status='succeeded', accounted_micro_rub=$4,
-            input_tokens=$5, output_tokens=$6, cached_tokens=$7
+            input_tokens=$5, output_tokens=$6, cached_tokens=$7, result_asset=$8
         WHERE session_id=$1 AND request_id=$2
-    `, id, requestID, result.Reply, cost, result.InputTokens, result.OutputTokens, result.CachedTokens)
+    `, id, requestID, result.Reply, cost, result.InputTokens, result.OutputTokens, result.CachedTokens, asset)
 	if err != nil {
 		return err
 	}

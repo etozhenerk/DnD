@@ -34,6 +34,11 @@ export function useCharacterForm() {
     form: {formData, validation: validateForm(formData, confirmed)},
     formData,
     setSection,
+    replaceForm: (data: CharacterFormData) => {
+      setFormData(data);
+      setConfirmed(new Set());
+      setPendingClassId(null);
+    },
     selectClass,
     pendingClassId,
     confirmClassChange: () => { if (pendingClassId) applyClass(pendingClassId); },

@@ -1,7 +1,7 @@
 .open {
   composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   gap: .65rem;
   width: 100%;
 }

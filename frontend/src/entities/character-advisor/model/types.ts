@@ -7,4 +7,4 @@ export type AdvisorStep = {
   placeholder: string;
 };
 
-export type AdvisorMood = 'idle' | 'greeting' | 'thinking' | 'speaking' | 'happy' | 'error';
+export type AdvisorMood = 'idle' | 'greeting' | 'thinking' | 'speaking' | 'happy' | 'error' | 'curious' | 'playful';

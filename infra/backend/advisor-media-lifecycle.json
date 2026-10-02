@@ -1,0 +1,10 @@
+{
+  "lifecycleRules": [
+    {
+      "id": "advisor-temporary-results",
+      "enabled": true,
+      "filter": {"prefix": "advisor/"},
+      "expiration": {"days": "2"}
+    }
+  ]
+}

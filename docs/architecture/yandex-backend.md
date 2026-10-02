@@ -47,14 +47,14 @@ CORS проверяет точные origin:
 ## Секреты, сеть и права
 
 - Runtime может читать образы только из реестра `dnd-backend` и содержимое только секрета `dnd_api` (`lockbox.payloadViewer`). Пароль внедряется в `DB_PASSWORD` платформой; CI его не читает.
-- Для текстового советника runtime имеет `ai.languageModels.user` на каталог проекта. AI вызывается с краткоживущим IAM из metadata; постоянных ключей AI и новых прав CI для этого не создавалось.
+- Runtime имеет `ai.languageModels.user` и `ai.imageGeneration.user` на каталог проекта. Вторая роль выдана 2 октября 2026 для согласованной генерации портретов и иконок. AI вызывается с краткоживущим IAM из metadata; постоянных ключей AI и новых прав CI для этого не создавалось.
 - Шлюз имеет только `serverless-containers.containerInvoker` на `dnd-api`.
 - CI имеет `container-registry.images.pusher` на реестр, `serverless-containers.editor` на контейнер и `iam.serviceAccounts.user` на runtime. Для поиска контейнера официальному action нужен `serverless-containers.viewer` на каталог.
 - Дополнительно CI получает `vpc.user` на каталог для подключения ревизии к сети и `functions.editor` на каталог для ссылок на секреты. Попытка назначить вторую роль только на контейнер не устранила `PERMISSION_DENIED`. Роль на каталог позволяет CI также управлять Cloud Functions в этом каталоге; этот запасной вариант отдельно согласован с пользователем. [Требования action](https://github.com/yc-actions/yc-sls-container-deploy#permissions).
 - OIDC federation `ajeiea3qe37gcboihrbj`, credential `ajegd2pnul43mu9dljqe`; доверие только subject `repo:etozhenerk/DnD:ref:refs/heads/main`. Долгоживущие IAM-ключи не создаются.
 - Секрет `e6q52abgke68mcms2ntu`, версия `e6qcp09mdr8hvlce0tra`, ключ `postgresql_password`. После ротации обновить ссылку на версию в workflow и развернуть ревизию.
 - PostgreSQL принимает TCP 6432 из [служебного диапазона Serverless](https://yandex.cloud/ru/docs/serverless-containers/concepts/networking) в VPC проекта. Публичного IP у БД нет.
-- Dockerfile получает CA PostgreSQL с официального адреса Yandex, запускает статический Go-бинарник непривилегированным UID и содержит каталоги правил/рас, мировую карту и инструкцию/подсказки совы. Для AI используется явная публичная проекция карты. Канонические герои и кампании не включаются в образ.
+- Dockerfile получает CA PostgreSQL с официального адреса Yandex, запускает статический Go-бинарник непривилегированным UID и содержит каталоги правил/рас, мировую карту и инструкцию/подсказки Советника. Обновление добавляет три JSON летописей; для AI используются только публичная проекция карты и опубликованные итоги пройденных историй. Мастерские сведения не попадают в prompt. Канонические герои не включаются в образ.
 
 ## Деплой
 

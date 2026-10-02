@@ -63,6 +63,9 @@ func newHandlerWithAdvisorRuntime(c *creator.Catalog, st *storage.Store, origins
 	if guide != nil {
 		copy := *guide
 		copy.Capabilities.Chat = chat != nil
+		copy.Capabilities.FillCharacter = chat != nil
+		copy.Capabilities.ProactiveComments = chat != nil
+		copy.Capabilities.Images = chat.ImagesEnabled()
 		guide = &copy
 	}
 	s := &server{catalog: c, store: st, objects: objects, advisor: guide, chat: chat, origins: map[string]bool{}}
@@ -341,7 +344,7 @@ func main() {
 	if bucket := os.Getenv("ASSET_BUCKET"); bucket != "" {
 		objects = blobstore.New(bucket)
 	}
-	srv := &http.Server{Addr: ":" + port, Handler: newHandlerWithAdvisorRuntime(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","), objects, guide, chat), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
+	srv := &http.Server{Addr: ":" + port, Handler: newHandlerWithAdvisorRuntime(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","), objects, guide, chat), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 120 * time.Second}
 	log.Printf("API listening on %s", srv.Addr)
 	log.Fatal(srv.ListenAndServe())
 }

@@ -1,0 +1,53 @@
+.limit {
+  display: grid;
+  gap: .5rem;
+  width: 100%;
+}
+
+.limit label {
+  color: var(--creator-accent);
+  display: flex;
+  font-size: .95rem;
+  justify-content: space-between;
+}
+
+.limit meter {
+  appearance: none;
+  background: var(--advisor-meter-track);
+  border: 0;
+  border-radius: 999px;
+  height: 7px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.limit meter::-webkit-meter-bar {
+  background: var(--advisor-meter-track);
+  border: 0;
+  height: 7px;
+}
+
+.limit meter::-webkit-meter-optimum-value,
+.limit meter::-webkit-meter-suboptimum-value,
+.limit meter::-webkit-meter-even-less-good-value {
+  background: var(--advisor-meter-fill);
+  border-radius: 999px;
+  transition: width 320ms ease;
+}
+
+.limit meter::-moz-meter-bar {
+  background: var(--advisor-meter-fill);
+}
+
+.limit small {
+  color: var(--creator-muted);
+  font-size: .8rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .limit meter::-webkit-meter-optimum-value,
+  .limit meter::-webkit-meter-suboptimum-value,
+  .limit meter::-webkit-meter-even-less-good-value {
+    transition: none;
+  }
+}

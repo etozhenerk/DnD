@@ -17,6 +17,8 @@ def main():
     cases = {
         "advisor-created.json": {"$ref": "#/components/schemas/AdvisorSessionCreated"},
         "advisor-session.json": {"$ref": "#/components/schemas/AdvisorSession"},
+        "advisor-proposal.json": {"$ref": "#/components/schemas/AdvisorSession"},
+        "advisor-image.json": {"$ref": "#/components/schemas/AdvisorSession"},
         "advisor-guide.json": {"$ref": "#/components/schemas/AdvisorGuide"},
         "options.json": contract["paths"]["/creator/options"]["get"]["responses"]["200"]["content"]["application/json"]["schema"],
         "validation.json": {"$ref": "#/components/schemas/Validation"},

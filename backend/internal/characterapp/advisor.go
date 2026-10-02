@@ -20,14 +20,16 @@ type AdvisorStore interface {
 
 // AdvisorModel never retries a paid completion automatically.
 type AdvisorModel interface {
-	Complete(context.Context, []advisor.Message) (advisor.Completion, error)
+	Complete(context.Context, []advisor.Message, string) (advisor.Completion, error)
 }
 
 // Advisor coordinates a dialogue; it has no character writer or draft dependency.
 type Advisor struct {
-	store  AdvisorStore
-	model  AdvisorModel
-	prompt *advisor.Prompt
+	store   AdvisorStore
+	model   AdvisorModel
+	prompt  *advisor.Prompt
+	images  AdvisorImageModel
+	objects AdvisorObjects
 }
 
 // NewAdvisor requires prepared persistence, approved prompt and a configured model.
@@ -53,13 +55,24 @@ func (a *Advisor) Read(ctx context.Context, id, token string) (advisor.Session, 
 	if !advisor.ValidAccess(id, token) {
 		return advisor.Session{}, advisor.ErrNotFound
 	}
-	return a.store.GetAdvisorSession(ctx, id, advisor.TokenHash(token))
+	session, err := a.store.GetAdvisorSession(ctx, id, advisor.TokenHash(token))
+	for i := range session.Turns {
+		a.prompt.DecodeTurn(&session.Turns[i])
+	}
+	return session, err
 }
 
 // Send returns the stored state for duplicates; only a successful reservation
 // grants this process permission to call the provider once.
 func (a *Advisor) Send(ctx context.Context, id, token string, in advisor.Input) (advisor.Session, error) {
-	requestCtx, requestCancel := context.WithTimeout(ctx, 26*time.Second)
+	timeout := 26 * time.Second
+	if in.Mode == "portrait" || in.Mode == "icon" {
+		if !a.ImagesEnabled() {
+			return advisor.Session{}, advisor.ErrUnavailable
+		}
+		timeout = 110 * time.Second
+	}
+	requestCtx, requestCancel := context.WithTimeout(ctx, timeout)
 	defer requestCancel()
 	ctx = requestCtx
 	in.RequestID = strings.ToLower(in.RequestID)
@@ -91,9 +104,7 @@ func (a *Advisor) Send(ctx context.Context, id, token string, in advisor.Input) 
 	if err != nil {
 		return advisor.Session{}, err
 	}
-	callCtx, cancel := context.WithTimeout(ctx, 22*time.Second)
-	result, callErr := a.model.Complete(callCtx, messages)
-	cancel()
+	result, callErr := a.generate(ctx, id, in, messages)
 	// Accounting is a bounded inline cleanup even if the browser disconnected;
 	// no goroutine continues a paid call after the request finishes.
 	finishCtx, finishCancel := context.WithTimeout(context.WithoutCancel(ctx), 3*time.Second)

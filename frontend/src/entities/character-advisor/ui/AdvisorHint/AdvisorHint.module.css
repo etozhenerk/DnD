@@ -21,7 +21,7 @@
   height: 23px;
   pointer-events: none;
   position: absolute;
-  right: var(--advisor-tail-right, 28%);
+  right: var(--advisor-tail-right, 50%);
   width: 30px;
 }
 

@@ -1,3 +1,4 @@
+import type {AdvisorProposal} from './proposal-types';
 import type {AdvisorStepId} from './types';
 
 export type AdvisorContext = {
@@ -6,13 +7,19 @@ export type AdvisorContext = {
   raceId: string;
   classId: string;
   concept: string;
+  formData?: Record<string, unknown>;
 };
 
-export type AdvisorInput = {requestId: string; message: string; context: AdvisorContext};
+export type AdvisorMode = 'chat' | 'comment' | 'suggest' | 'fill' | 'portrait' | 'icon';
+export type AdvisorInput = {requestId: string; message: string; context: AdvisorContext; mode?: AdvisorMode; target?: string};
 export type AdvisorTurn = {
   requestId: string;
   message: string;
   reply: string;
+  proposal?: AdvisorProposal;
+  mode: AdvisorMode;
+  target?: string;
+  image?: {requestId: string; kind: 'portrait' | 'icon'; target?: string; mimeType: string};
   status: 'reserved' | 'succeeded' | 'uncertain';
   accountedMicroRub: number;
   createdAt: string;

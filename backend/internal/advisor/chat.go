@@ -35,28 +35,35 @@ var (
 
 // Context is a bounded transient snapshot, never a stored character draft.
 type Context struct {
-	StepID  string `json:"stepId"`
-	Name    string `json:"name"`
-	RaceID  string `json:"raceId"`
-	ClassID string `json:"classId"`
-	Concept string `json:"concept"`
+	StepID   string                     `json:"stepId"`
+	Name     string                     `json:"name"`
+	RaceID   string                     `json:"raceId"`
+	ClassID  string                     `json:"classId"`
+	Concept  string                     `json:"concept"`
+	FormData map[string]json.RawMessage `json:"formData,omitempty"`
 }
 
 // Input identifies one paid attempt; changing its contents requires a new ID.
 type Input struct {
 	RequestID string  `json:"requestId"`
+	Mode      string  `json:"mode,omitempty"`
+	Target    string  `json:"target,omitempty"`
 	Message   string  `json:"message"`
 	Context   Context `json:"context"`
 }
 
 // Turn holds a user message and the provider outcome, without transient context.
 type Turn struct {
-	RequestID string    `json:"requestId"`
-	Message   string    `json:"message"`
-	Reply     string    `json:"reply"`
-	Status    string    `json:"status"`
-	Accounted Money     `json:"accountedMicroRub"`
-	CreatedAt time.Time `json:"createdAt"`
+	RequestID string       `json:"requestId"`
+	Message   string       `json:"message"`
+	Reply     string       `json:"reply"`
+	Proposal  *Proposal    `json:"proposal,omitempty"`
+	Mode      string       `json:"mode,omitempty"`
+	Target    string       `json:"target,omitempty"`
+	Image     *ImageResult `json:"image,omitempty"`
+	Status    string       `json:"status"`
+	Accounted Money        `json:"accountedMicroRub"`
+	CreatedAt time.Time    `json:"createdAt"`
 }
 
 // Session is readable only with its capability token, until expiry.
@@ -80,6 +87,8 @@ type Completion struct {
 	InputTokens  int
 	OutputTokens int
 	CachedTokens int
+	ImageCharge  bool
+	Asset        *ImageAsset
 }
 
 // NewToken returns a bearer secret and its SHA-256; only the hash is stored.
@@ -106,7 +115,7 @@ func ValidAccess(id, token string) bool {
 
 // Validate checks payload limits; it does not validate or save a complete form.
 func (in Input) Validate() error {
-	if !uuid.MatchString(in.RequestID) || !validText(in.Message, 2000) {
+	if !uuid.MatchString(in.RequestID) || !validText(in.Message, 2000) || !validMode(in.Mode) || !validTarget(in.Mode, in.Target) {
 		return ErrInvalid
 	}
 	steps := map[string]bool{"appearance": true, "race": true, "class": true, "attributes": true, "abilities": true, "equipment": true, "review": true}
@@ -124,6 +133,9 @@ func (in Input) Validate() error {
 	}
 	if strings.ContainsRune(in.Message, 0) {
 		return ErrInvalid
+	}
+	if err := validateSnapshot(c.FormData); err != nil {
+		return err
 	}
 	return nil
 }

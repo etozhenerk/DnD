@@ -72,8 +72,8 @@
 
   .progress ol {
     display: grid;
-    gap: .35rem .5rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.55fr);
+    gap: .4rem;
+    grid-template-columns: .9fr .8fr .9fr 1.7fr 1fr 1.5fr .8fr;
     min-width: 0;
   }
 
@@ -81,7 +81,4 @@
     min-width: 0;
   }
 
-  .progress li:nth-child(6) {
-    grid-column: span 2;
-  }
 }

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {mock} from 'node:test';
 import {createServer} from 'vite';
 const id='\0effect-feedback-hooks';
 const server=await createServer({appType:'custom',logLevel:'silent',server:{middlewareMode:true,hmr:false},plugins:[{
@@ -19,12 +20,14 @@ let hooks;
 try {
  hooks=await server.ssrLoadModule('effect-feedback-hooks');
  const {useCombatEffectFeedback:useFeedback,COMBAT_EFFECT_ANIMATION_MS:duration}=await server.ssrLoadModule('/src/widgets/campaign-scene/model/useCombatEffectFeedback.ts');
+ // Advance the hook's clock deterministically; runner scheduling must not decide assertions.
+ mock.timers.enable({apis:['Date','setTimeout'],now:1000});
  const passive={id:'passive',visual:'ice',passive:true,shortLabel:'Стойкость',label:'Стойкость',tone:'positive'};
  const prone={id:'prone',visual:'prone',shortLabel:'Лежит',label:'Лежит',tone:'negative'};
  const stun={id:'stun',visual:'stun',shortLabel:'Оглушён',label:'Оглушён',tone:'negative'};
  let subjects=[{id:'hero',effects:[passive]}],feedback;
  const draw=()=>{for(let i=0;i<20;i++){feedback=hooks.render(()=>useFeedback(subjects));hooks.flush();if(!hooks.needsRender())return;}throw new Error('Feedback does not settle');};
- const tick=async()=>{await new Promise(resolve=>setTimeout(resolve,duration+70));draw();};
+ const tick=()=>{mock.timers.tick(duration);draw();};
  draw();assert.equal(feedback.cueFor('hero'),undefined,'no passive animation on start');
  subjects=[{id:'hero',effects:[passive,prone,stun]}];draw();
  assert.equal(feedback.cueFor('hero').effect.id,'prone');
@@ -39,4 +42,4 @@ try {
  subjects=[{id:'hero',effects:[passive]}];draw();assert.equal(feedback.cueFor('hero'),undefined,'undo cancels pending animation');
  subjects=[{id:'another-hero',effects:[passive,prone]}];draw();assert.equal(feedback.cueFor('another-hero'),undefined,'actor switch does not replay an old status');
  console.log('PASS: application → one finite clip → caption; sequential effects, no passive/idle/reload/turn-switch animation, undo cancels cues.');
-} finally {hooks?.reset();await server.close();}
+} finally {hooks?.reset();mock.timers.reset();await server.close();}

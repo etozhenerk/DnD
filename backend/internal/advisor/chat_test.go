@@ -82,6 +82,9 @@ func TestPromptUsesApprovedCatalogAndRecentHistory(t *testing.T) {
 	if !strings.Contains(messages[0].Content, catalog.RulesetID) || !strings.Contains(messages[0].Content, "пернатый") {
 		t.Fatal("missing rules or persona")
 	}
+	if strings.Contains(messages[0].Content, "defaultStats") || !strings.Contains(messages[0].Content, "baseStats") {
+		t.Fatal("class projection must keep foundations without duplicate presets")
+	}
 	in.Context.RaceID = "invented-race"
 	if _, err := prompt.Messages(nil, in); !errors.Is(err, ErrInvalid) {
 		t.Fatal("accepted unknown race")

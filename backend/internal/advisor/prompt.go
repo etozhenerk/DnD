@@ -21,7 +21,7 @@ func LoadPrompt(path, worldPath string, catalog *creator.Catalog) (*Prompt, erro
 	if err != nil || len(persona) == 0 || len(persona) > 12<<10 || catalog == nil {
 		return nil, fmt.Errorf("advisor persona or catalog unavailable")
 	}
-	public, err := json.Marshal(catalog)
+	public, err := marshalPublicCatalog(catalog)
 	if err != nil {
 		return nil, fmt.Errorf("serialize advisor public catalog: %w", err)
 	}

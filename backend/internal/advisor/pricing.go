@@ -6,7 +6,8 @@ import "fmt"
 const ModelName = "deepseek-v4-flash"
 
 // Reservation deliberately exceeds a byte-level prompt estimate: three tokens
-// per UTF-8 byte plus 1024 framing tokens. No tools, images or automatic retries.
+// per UTF-8 byte plus 1024 framing tokens. Tool schemas share this prompt envelope;
+// image calls have a separate fixed-price reservation. No automatic retries.
 // Provider-specific tokenization and current prices must be checked before enablement.
 func Reservation() Money {
 	return Money(MaxPromptBytes*3+1024)*300 + Money(MaxOutputTokens)*500

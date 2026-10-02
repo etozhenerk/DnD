@@ -68,6 +68,9 @@ func (p *Prompt) PrepareProposal(raw string) string {
 // DecodeTurn preserves old plain-text history. Only our tagged, validated envelope
 // can become a proposal; user text and provider JSON cannot masquerade as one.
 func (p *Prompt) DecodeTurn(turn *Turn) {
+	if decodeImageAction(turn) {
+		return
+	}
 	if !strings.HasPrefix(turn.Reply, proposalPrefix) {
 		turn.Reply = cleanReply(turn.Reply)
 		return

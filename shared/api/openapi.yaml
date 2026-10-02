@@ -416,7 +416,7 @@ components:
           type: string
           enum: [chat, comment, suggest, fill, portrait, icon]
           default: chat
-          description: comment — короткая заметка; suggest — предложение для target; fill — полная анкета; portrait/icon — изображение. Применяет игрок.
+          description: chat — диалог с инструментами заполнения и рисования; comment — короткая заметка; suggest — предложение для target; fill — полная анкета; portrait/icon — изображение. Применяет игрок.
         target: {type: string, maxLength: 80, description: Поле предложения или ID навыка для иконки.}
         context:
           type: object
@@ -452,7 +452,8 @@ components:
         mode: {type: string, enum: [chat, comment, suggest, fill, portrait, icon]}
         target: {type: string, maxLength: 80}
         image: {$ref: '#/components/schemas/AdvisorImage'}
-        status: {type: string, enum: [reserved, succeeded, uncertain]}
+        action: {$ref: '#/components/schemas/AdvisorImageAction'}
+        status: {type: string, enum: [reserved, succeeded, uncertain], description: uncertain сохраняет финансовый резерв, но позволяет отправить новую реплику.}
         accountedMicroRub: {type: integer, minimum: 0}
         createdAt: {type: string, format: date-time}
     AdvisorProposal:
@@ -463,6 +464,16 @@ components:
       properties:
         formData: {$ref: '#/components/schemas/CompleteCharacterForm'}
         target: {type: string, enum: [name, appearance, race, class, abilities, equipment]}
+    AdvisorImageAction:
+      type: object
+      additionalProperties: false
+      required: [requestId, kind, prompt]
+      description: Проверенное поручение рисования из чата. Клиент исполняет один раз отдельным запросом portrait/icon с указанным UUID и исходным снимком анкеты; чтение истории ничего не запускает.
+      properties:
+        requestId: {type: string, format: uuid}
+        kind: {type: string, enum: [portrait, icon]}
+        prompt: {type: string, minLength: 1, maxLength: 500}
+        target: {type: string, maxLength: 80}
     AdvisorImage:
       type: object
       additionalProperties: false

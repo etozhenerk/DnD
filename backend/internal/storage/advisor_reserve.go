@@ -46,6 +46,14 @@ func (s *Store) ReserveAdvisorTurn(ctx context.Context, id string, tokenHash []b
 	if err != pgx.ErrNoRows {
 		return false, err
 	}
+	// The container has a hard 120-second lifetime. After three minutes a lost
+	// worker cannot still be generating; retain its reserve and immutable UUID.
+	if _, err := tx.Exec(ctx, `
+        UPDATE advisor_turns SET status='uncertain'
+        WHERE session_id=$1 AND status='reserved' AND created_at < now()-interval '3 minutes'
+    `, id); err != nil {
+		return false, err
+	}
 	amount := advisor.ReservationFor(in.Mode)
 	if err := checkAdvisorLimits(ctx, tx, id, accounted, total, blocked, amount); err != nil {
 		return false, err
@@ -99,7 +107,7 @@ func lockAdvisorMonth(ctx context.Context, tx pgx.Tx) (string, advisor.Money, bo
 func checkAdvisorLimits(ctx context.Context, tx pgx.Tx, id string, session, month advisor.Money, blocked bool, amount advisor.Money) error {
 	var count, pending int
 	err := tx.QueryRow(ctx, `
-        SELECT count(*), count(*) FILTER (WHERE status IN ('reserved','uncertain'))
+        SELECT count(*), count(*) FILTER (WHERE status='reserved')
         FROM advisor_turns WHERE session_id=$1
     `, id).Scan(&count, &pending)
 	if err != nil {

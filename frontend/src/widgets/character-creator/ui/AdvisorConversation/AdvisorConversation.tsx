@@ -28,7 +28,7 @@ export function AdvisorConversation({chat, application, media, disabled}: Adviso
                 application={application} disabled={disabled || chat.pending} />}
               {turn.image && <AdvisorImageCard image={turn.image} chat={chat} media={media} disabled={disabled} />}
               {turn.status === 'reserved' && <p className={styles.thinking}>Шуршу страницами…</p>}
-              {turn.status === 'uncertain' && <p>Ответ затерялся по дороге. Проверим, успел ли он добраться.</p>}
+              {turn.status === 'uncertain' && <p>Не получилось завершить эту реплику. Можешь продолжить разговор или попросить ещё раз.</p>}
             </div>
           </div>
         ))}

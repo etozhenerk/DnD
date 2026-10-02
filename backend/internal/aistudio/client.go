@@ -34,13 +34,26 @@ func New(folderID string) *Client {
 	return &Client{model: "gpt://" + folderID + "/" + advisor.ModelName, folder: folderID,
 		imageHTTP:     &http.Client{Timeout: 80 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }},
 		imageEndpoint: "https://ai.api.cloud.yandex.net/v1/images/generations",
-		endpoint:      "https://ai.api.cloud.yandex.net/v1/chat/completions", http: h, token: tokens.get}
+		endpoint:      "https://ai.api.cloud.yandex.net/v1/chat/completions",
+		http:          &http.Client{Timeout: 65 * time.Second, CheckRedirect: func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }},
+		token:         tokens.get}
 }
 
 // Complete limits visible output plus reasoning to the reserved token envelope.
 // store=false and x-data-logging-enabled=false avoid provider conversation storage.
 func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode string) (advisor.Completion, error) {
 	maxTokens := 1536
+	var tools []functionTool
+	var parallel *bool
+	if mode == "chat" || mode == "" {
+		var err error
+		tools, err = chatTools(messages)
+		if err != nil {
+			return advisor.Completion{}, err
+		}
+		maxTokens = advisor.MaxOutputTokens
+		parallel = new(bool)
+	}
 	var format *struct {
 		Type string `json:"type"`
 	}
@@ -64,7 +77,9 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 		Store     bool              `json:"store"`
 		Stream    bool              `json:"stream"`
 		N         int               `json:"n"`
-	}{"low", format, c.model, messages, maxTokens, false, false, 1})
+		Tools     []functionTool    `json:"tools,omitempty"`
+		Parallel  *bool             `json:"parallel_tool_calls,omitempty"`
+	}{Reasoning: "low", Format: format, Model: c.model, Messages: messages, MaxTokens: maxTokens, N: 1, Tools: tools, Parallel: parallel})
 	if err != nil {
 		return advisor.Completion{}, fmt.Errorf("serialize completion request")
 	}
@@ -98,8 +113,15 @@ func decodeCompletion(data []byte) (advisor.Completion, error) {
 	var body struct {
 		Choices []struct {
 			Message struct {
-				Content string  `json:"content"`
-				Refusal *string `json:"refusal"`
+				Content   string  `json:"content"`
+				Refusal   *string `json:"refusal"`
+				ToolCalls []struct {
+					Type     string `json:"type"`
+					Function struct {
+						Name      string `json:"name"`
+						Arguments string `json:"arguments"`
+					} `json:"function"`
+				} `json:"tool_calls"`
 			} `json:"message"`
 			FinishReason string `json:"finish_reason"`
 		} `json:"choices"`
@@ -117,9 +139,21 @@ func decodeCompletion(data []byte) (advisor.Completion, error) {
 	}
 	choice := body.Choices[0]
 	reply := strings.TrimSpace(choice.Message.Content)
+	tool := ""
+	if len(choice.Message.ToolCalls) > 0 {
+		// Malformed tools are charged using valid usage, without executing or retrying them.
+		reply = "Перо сбилось с курса. Попробуй описать задумку ещё раз."
+		if choice.FinishReason == "tool_calls" && choice.Message.Refusal == nil && len(choice.Message.ToolCalls) == 1 && choice.Message.ToolCalls[0].Type == "function" {
+			call := choice.Message.ToolCalls[0].Function
+			if (call.Name == "propose_character" || call.Name == "generate_character_image") && json.Valid([]byte(call.Arguments)) && utf8.ValidString(call.Arguments) &&
+				utf8.RuneCountInString(call.Arguments) <= 16000 && !strings.ContainsRune(call.Arguments, 0) {
+				tool, reply = call.Name, call.Arguments
+			}
+		}
+	}
 	if !utf8.ValidString(reply) || reply == "" || utf8.RuneCountInString(reply) > 16000 || strings.ContainsRune(reply, 0) ||
-		(choice.FinishReason != "stop" && choice.FinishReason != "length") {
+		(choice.FinishReason != "stop" && choice.FinishReason != "length" && choice.FinishReason != "tool_calls") {
 		return advisor.Completion{}, fmt.Errorf("invalid completion reply")
 	}
-	return advisor.Completion{Reply: reply, InputTokens: *body.Usage.Input, OutputTokens: *body.Usage.Output, CachedTokens: body.Usage.Details.Cached}, nil
+	return advisor.Completion{Reply: reply, Tool: tool, InputTokens: *body.Usage.Input, OutputTokens: *body.Usage.Output, CachedTokens: body.Usage.Details.Cached}, nil
 }

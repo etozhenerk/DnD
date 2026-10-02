@@ -66,6 +66,9 @@ func (a *Advisor) Read(ctx context.Context, id, token string) (advisor.Session, 
 // grants this process permission to call the provider once.
 func (a *Advisor) Send(ctx context.Context, id, token string, in advisor.Input) (advisor.Session, error) {
 	timeout := 26 * time.Second
+	if in.Mode == "" || in.Mode == "chat" || in.Mode == "fill" || in.Mode == "suggest" {
+		timeout = 70 * time.Second
+	}
 	if in.Mode == "portrait" || in.Mode == "icon" {
 		if !a.ImagesEnabled() {
 			return advisor.Session{}, advisor.ErrUnavailable

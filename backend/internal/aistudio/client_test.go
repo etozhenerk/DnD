@@ -20,17 +20,19 @@ func TestCompletionLimitsPrivacyAndUsage(t *testing.T) {
 			t.Error("privacy/auth headers missing")
 		}
 		var body struct {
-			Model     string `json:"model"`
-			Reasoning string `json:"reasoning_effort"`
-			Max       int    `json:"max_completion_tokens"`
-			Store     bool   `json:"store"`
-			Stream    bool   `json:"stream"`
-			N         int    `json:"n"`
+			Model     string         `json:"model"`
+			Reasoning string         `json:"reasoning_effort"`
+			Max       int            `json:"max_completion_tokens"`
+			Store     bool           `json:"store"`
+			Stream    bool           `json:"stream"`
+			N         int            `json:"n"`
+			Tools     []functionTool `json:"tools"`
+			Parallel  *bool          `json:"parallel_tool_calls"`
 		}
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
 			t.Error(err)
 		}
-		if body.Reasoning != "low" || body.Model != "gpt://test/deepseek-v4-flash" || body.Max != 1536 || body.Store || body.Stream || body.N != 1 {
+		if body.Reasoning != "low" || body.Model != "gpt://test/deepseek-v4-flash" || body.Max != advisor.MaxOutputTokens || body.Store || body.Stream || body.N != 1 || len(body.Tools) != 2 || body.Parallel == nil || *body.Parallel {
 			t.Error("wrong generation envelope")
 		}
 		_, err := w.Write([]byte(`{"choices":[{"message":{"content":"**Привет!**"},"finish_reason":"stop"}],"usage":{"prompt_tokens":100,"completion_tokens":200,"prompt_tokens_details":{"cached_tokens":25},"completion_tokens_details":{"reasoning_tokens":150}}}`))

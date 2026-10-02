@@ -20,6 +20,7 @@ const (
 	MonthlyBudget   Money = 10_000 * 1_000_000
 	MaxOutputTokens       = 4096
 	MaxPromptBytes        = 32 << 10
+	MaxToolBytes          = 4096
 	MaxTurns              = 100
 )
 
@@ -61,6 +62,7 @@ type Turn struct {
 	Mode      string       `json:"mode,omitempty"`
 	Target    string       `json:"target,omitempty"`
 	Image     *ImageResult `json:"image,omitempty"`
+	Action    *ImageAction `json:"action,omitempty"`
 	Status    string       `json:"status"`
 	Accounted Money        `json:"accountedMicroRub"`
 	CreatedAt time.Time    `json:"createdAt"`
@@ -89,6 +91,7 @@ type Completion struct {
 	CachedTokens int
 	ImageCharge  bool
 	Asset        *ImageAsset
+	Tool         string
 }
 
 // NewToken returns a bearer secret and its SHA-256; only the hash is stored.

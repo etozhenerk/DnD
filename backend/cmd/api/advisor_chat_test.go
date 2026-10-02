@@ -20,6 +20,7 @@ type advisorModelStub struct {
 	calls   atomic.Int32
 	failure error
 	reply   string
+	tool    string
 	entered chan struct{}
 	release chan struct{}
 }
@@ -40,7 +41,7 @@ func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message, _ 
 	if reply == "" {
 		reply = "**Советник:** выбери характер героя!"
 	}
-	return advisor.Completion{Reply: reply, InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
+	return advisor.Completion{Reply: reply, Tool: m.tool, InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
 }
 
 func advisorTestHandler(t *testing.T, model *advisorModelStub) (*storage.Store, *characterapp.Advisor, http.Handler) {
@@ -58,6 +59,13 @@ func advisorTestHandler(t *testing.T, model *advisorModelStub) (*storage.Store, 
 		t.Fatal(err)
 	}
 	if _, err := store.Pool.Exec(t.Context(), string(tools)); err != nil {
+		t.Fatal(err)
+	}
+	recovery, err := os.ReadFile("../../migrations/000009_advisor_recovery.up.sql")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := store.Pool.Exec(t.Context(), string(recovery)); err != nil {
 		t.Fatal(err)
 	}
 	prompt, err := advisor.LoadPrompt("../../../shared/advisor/persona.md", "../../../content/world-map.json", catalog)
@@ -174,7 +182,7 @@ func TestAdvisorConcurrentRepeatMakesOnePaidCall(t *testing.T) {
 
 func TestAdvisorAmbiguousFailureRetainsReservation(t *testing.T) {
 	model := &advisorModelStub{failure: errors.New("lost provider response")}
-	_, service, _ := advisorTestHandler(t, model)
+	store, service, _ := advisorTestHandler(t, model)
 	session, token, err := service.Create(t.Context())
 	if err != nil {
 		t.Fatal(err)
@@ -189,6 +197,20 @@ func TestAdvisorAmbiguousFailureRetainsReservation(t *testing.T) {
 	}
 	if model.calls.Load() != 1 {
 		t.Fatal("ambiguous request resubmitted")
+	}
+	model.failure = nil
+	next := advisorInput("00000000-0000-0000-0000-000000000002")
+	next.Message = "Продолжим разговор"
+	continued, err := service.Send(t.Context(), session.ID, token, next)
+	if err != nil || len(continued.Turns) != 2 || continued.Turns[1].Status != "succeeded" || continued.Accounted != advisor.Reservation()+350000 {
+		t.Fatalf("failed turn blocked continued dialogue or lost reserve: %+v %v", continued, err)
+	}
+	if _, err := service.Send(t.Context(), session.ID, token, in); err != nil || model.calls.Load() != 2 {
+		t.Fatal("failed UUID generated again after recovery")
+	}
+	var monthly advisor.Money
+	if err := store.Pool.QueryRow(t.Context(), `SELECT accounted_micro_rub FROM advisor_months`).Scan(&monthly); err != nil || monthly != continued.Accounted {
+		t.Fatalf("monthly reserve lost after recovery: %d %v", monthly, err)
 	}
 }
 
@@ -220,5 +242,49 @@ func TestAdvisorFillPersistsProposalWithoutCreatingCharacter(t *testing.T) {
 	recordResponse(t, "advisor-proposal.json", response)
 	if response.Code != 200 {
 		t.Fatalf("read proposal status=%d", response.Code)
+	}
+}
+
+func TestAdvisorChatToolReturnsValidatedProposal(t *testing.T) {
+	model := &advisorModelStub{tool: "propose_character", reply: `{"reply":"Беру перо!","character":{"appearance":{"displayName":"Алес","pronouns":"он","appearance":"Лесной плащ","story":"Странник","motivation":"Вернуть долг","personality":["Хитрый"]},"raceId":"elves","classId":"rogue","skills":[],"equipment":[]}}`}
+	_, service, handler := advisorTestHandler(t, model)
+	session, token, err := service.Create(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	in := advisorInput("00000000-0000-0000-0000-000000000067")
+	in.Mode, in.Message = "chat", "Заполни все поля"
+	result, err := service.Send(t.Context(), session.ID, token, in)
+	if err != nil || result.Turns[0].Proposal == nil || result.Turns[0].Mode != "chat" {
+		t.Fatalf("chat tool lost proposal: %+v %v", result, err)
+	}
+	response := apiRequest(handler, http.MethodGet, "/advisor/sessions/"+session.ID, token, nil)
+	recordResponse(t, "advisor-chat-proposal.json", response)
+	if response.Code != 200 {
+		t.Fatalf("read chat tool status=%d", response.Code)
+	}
+}
+
+func TestAdvisorAbandonedWorkerDoesNotBlockConversation(t *testing.T) {
+	model := &advisorModelStub{}
+	store, service, _ := advisorTestHandler(t, model)
+	session, token, err := service.Create(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	lost := advisorInput("00000000-0000-0000-0000-000000000077")
+	if fresh, err := store.ReserveAdvisorTurn(t.Context(), session.ID, advisor.TokenHash(token), lost); err != nil || !fresh {
+		t.Fatalf("reserve: %v", err)
+	}
+	if _, err := store.Pool.Exec(t.Context(), `UPDATE advisor_turns SET created_at=now()-interval '4 minutes' WHERE session_id=$1`, session.ID); err != nil {
+		t.Fatal(err)
+	}
+	next := advisorInput("00000000-0000-0000-0000-000000000078")
+	result, err := service.Send(t.Context(), session.ID, token, next)
+	if err != nil || len(result.Turns) != 2 || result.Turns[0].Status != "uncertain" || result.Accounted != advisor.Reservation()+350000 {
+		t.Fatalf("abandoned worker blocked chat: %+v %v", result, err)
+	}
+	if _, err := service.Send(t.Context(), session.ID, token, lost); err != nil || model.calls.Load() != 1 {
+		t.Fatal("abandoned request repeated a paid call")
 	}
 }

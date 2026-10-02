@@ -10,7 +10,7 @@ func TestCommentsAndImagePromptsRemainBounded(t *testing.T) {
 	p := proposalPrompt(t)
 	in := Input{Mode: "portrait", Message: "Нужен зелёный плащ", Context: Context{RaceID: "elves", ClassID: "rogue", FormData: map[string]json.RawMessage{"appearance": json.RawMessage(`{"appearance":"` + strings.Repeat("длинная внешность ", 100) + `"}`)}}}
 	prompt := p.ImagePrompt(in)
-	if len([]rune(prompt)) > 500 || !strings.Contains(prompt, "зелёный плащ") || !strings.Contains(prompt, "Эльфы") {
+	if len([]rune(prompt)) > 500 || !strings.Contains(prompt, "зелёный плащ") || !strings.Contains(prompt, "Эльфы") || !strings.Contains(prompt, "полный рост") || strings.Contains(prompt, "по пояс") {
 		t.Fatalf("bad image prompt=%s", prompt)
 	}
 	comment := ShortComment("### " + strings.Repeat("Репейник на плаще! ", 100))

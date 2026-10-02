@@ -47,11 +47,17 @@ function readTurn(value: unknown): AdvisorTurn {
     || !money(data.accountedMicroRub) || typeof data.createdAt !== 'string'
     || !Number.isFinite(Date.parse(data.createdAt))) throw invalid();
   const image = data.image === undefined ? undefined : object(data.image);
+  const action = data.action === undefined ? undefined : object(data.action);
+  if (action && (typeof action.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(action.requestId)
+    || (action.kind !== 'portrait' && action.kind !== 'icon') || typeof action.prompt !== 'string' || !action.prompt.trim() || [...action.prompt].length > 500
+    || (action.target !== undefined && (typeof action.target !== 'string' || action.target.length > 80))
+    || (action.kind === 'icon' && !action.target) || (action.kind === 'portrait' && action.target))) throw invalid();
   if (image && (image.requestId !== data.requestId || (image.kind !== 'portrait' && image.kind !== 'icon')
     || (image.mimeType !== 'image/jpeg' && image.mimeType !== 'image/png') || (image.target !== undefined && typeof image.target !== 'string'))) throw invalid();
   return {requestId: data.requestId, message: data.message, reply: data.reply, proposal: readProposal(data.proposal), mode,
     target: typeof data.target === 'string' ? data.target : undefined,
     image: image ? {requestId: data.requestId, kind: image.kind === 'portrait' ? 'portrait' : 'icon', mimeType: String(image.mimeType), target: typeof image.target === 'string' ? image.target : undefined} : undefined,
+    action: action ? {requestId: String(action.requestId), kind: action.kind === 'portrait' ? 'portrait' : 'icon', prompt: String(action.prompt), target: typeof action.target === 'string' ? action.target : undefined} : undefined,
     status: data.status, accountedMicroRub: data.accountedMicroRub, createdAt: data.createdAt};
 }
 

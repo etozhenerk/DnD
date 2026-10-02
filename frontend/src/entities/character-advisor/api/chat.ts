@@ -33,6 +33,6 @@ export async function createAdvisorSession() {
 export async function sendAdvisorMessage(access: AdvisorAccess, input: AdvisorInput) {
   return readSession(await requestJson(`/advisor/sessions/${access.id}/messages`, {
     method: 'POST', token: access.token, body: input,
-    timeoutMs: input.mode === 'portrait' || input.mode === 'icon' ? 115000 : 35000,
+    timeoutMs: input.mode === 'portrait' || input.mode === 'icon' ? 115000 : input.mode === 'comment' ? 35000 : 75000,
   }));
 }

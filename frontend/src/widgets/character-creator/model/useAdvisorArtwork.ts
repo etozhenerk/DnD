@@ -30,7 +30,7 @@ export function useAdvisorArtwork(chat: AdvisorChatController, application: Advi
       const turn = session?.turns.at(-1);
       if (!turn?.proposal || stop.current) return;
       const snapshot = getAdvisorContext(chat.context.stepId, turn.proposal.formData);
-      const jobs = [{kind: 'portrait' as const, prompt: 'Портрет героя по предложенной внешности.', target: undefined as string | undefined},
+      const jobs = [{kind: 'portrait' as const, prompt: 'Герой в полный рост по предложенной внешности.', target: undefined as string | undefined},
         ...turn.proposal.formData.abilities.items.map((skill) => ({kind: 'icon' as const, prompt: skill.name + '. ' + skill.description, target: skill.id}))];
       const images: AdvisorTurn[] = [];
       for (const [index, job] of jobs.entries()) {

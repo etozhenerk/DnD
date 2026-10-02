@@ -20,6 +20,7 @@ export type AdvisorTurn = {
   mode: AdvisorMode;
   target?: string;
   image?: {requestId: string; kind: 'portrait' | 'icon'; target?: string; mimeType: string};
+  action?: {requestId: string; kind: 'portrait' | 'icon'; prompt: string; target?: string};
   status: 'reserved' | 'succeeded' | 'uncertain';
   accountedMicroRub: number;
   createdAt: string;

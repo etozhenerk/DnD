@@ -9,6 +9,9 @@ import (
 
 func (a *Advisor) generate(ctx context.Context, id string, in advisor.Input, messages []advisor.Message) (advisor.Completion, error) {
 	timeout := 22 * time.Second
+	if in.Mode == "" || in.Mode == "chat" || in.Mode == "fill" || in.Mode == "suggest" {
+		timeout = 60 * time.Second
+	}
 	if in.Mode == "portrait" || in.Mode == "icon" {
 		timeout = 100 * time.Second
 	}
@@ -20,6 +23,25 @@ func (a *Advisor) generate(ctx context.Context, id string, in advisor.Input, mes
 	result, err := a.model.Complete(callCtx, messages, in.Mode)
 	if err != nil {
 		return result, err
+	}
+	if result.Tool != "" {
+		if in.Mode != "" && in.Mode != "chat" {
+			result.Reply = "Перо сбилось с курса. Попробуй попросить ещё раз."
+			return result, nil
+		}
+		switch result.Tool {
+		case "propose_character":
+			result.Reply = a.prompt.PreserveAttributes(a.prompt.PrepareProposal(result.Reply), in.Context.FormData)
+		case "generate_character_image":
+			if a.ImagesEnabled() {
+				result.Reply = advisor.PrepareImageAction(result.Reply, in)
+			} else {
+				result.Reply = "Кисти пока недоступны. Давай пока придумаем образ словами."
+			}
+		default:
+			result.Reply = "Такого инструмента у меня пока нет. Попробуй описать задумку иначе."
+		}
+		return result, nil
 	}
 	switch in.Mode {
 	case "fill":

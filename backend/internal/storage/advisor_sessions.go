@@ -65,7 +65,7 @@ func (s *Store) GetAdvisorSession(ctx context.Context, id string, tokenHash []by
 	}
 	rows, err := tx.Query(ctx, `
         SELECT request_id::text, message, reply,
-            CASE WHEN status='reserved' AND created_at < now()-interval '2 minutes'
+            CASE WHEN status='reserved' AND created_at < now()-interval '3 minutes'
                 THEN 'uncertain' ELSE status END,
             accounted_micro_rub, created_at, mode, target, result_asset->>'mimeType'
         FROM advisor_turns WHERE session_id=$1 ORDER BY created_at, request_id LIMIT 100

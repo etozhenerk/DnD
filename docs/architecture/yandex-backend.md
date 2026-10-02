@@ -19,7 +19,7 @@ flowchart LR
 | HTTPS API | `https://d5dopqqib47kpsh6929m.jki8ffxa.apigw.yandexcloud.net` |
 | API Gateway | `dnd-api`, `d5dopqqib47kpsh6929m` |
 | Контейнер | `dnd-api`, `bbam71p2dn50q57l250i` |
-| Ресурсы ревизии | 1 vCPU, 512 МБ, 100% CPU, до 12 HTTP-запросов на экземпляр, таймаут 30 с |
+| Ресурсы ревизии | 1 vCPU, 512 МБ, 100% CPU, до 12 HTTP-запросов на экземпляр, таймаут 120 с |
 | Масштабирование | 0 подготовленных экземпляров, максимум 1 экземпляр на зону |
 | Реестр | `dnd-backend`, `crp3ok452qdp2r44ene5` |
 | Образ | `cr.yandex/crp3ok452qdp2r44ene5/dnd-api:<git-sha>`, Linux amd64 |

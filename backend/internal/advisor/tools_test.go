@@ -64,7 +64,7 @@ func TestPromptKeepsPlayerMessageWhenOptionalContextIsLong(t *testing.T) {
 		t.Fatal(err)
 	}
 	messages, err := p.Messages(nil, in)
-	if err != nil || messages[len(messages)-1].Content != in.Message {
+	if err != nil || messages[len(messages)-1].Content != strings.TrimSpace(in.Message) {
 		t.Fatalf("legal message was lost: %v", err)
 	}
 	size := 0

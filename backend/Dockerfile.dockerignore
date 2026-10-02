@@ -6,6 +6,11 @@
 !content/character-abilities.json
 !content/races.json
 !content/rules.json
+!content/world-map.json
+!shared/
+!shared/advisor/
+!shared/advisor/guide.json
+!shared/advisor/persona.md
 backend/.env*
 backend/tmp/
 backend/dnd-api

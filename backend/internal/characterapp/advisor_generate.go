@@ -44,6 +44,8 @@ func (a *Advisor) generate(ctx context.Context, id string, in advisor.Input, mes
 		return result, nil
 	}
 	switch in.Mode {
+	case "", "chat":
+		result.Reply = advisor.PrepareChatReply(result.Reply)
 	case "fill":
 		result.Reply = a.prompt.PrepareProposal(result.Reply)
 		result.Reply = a.prompt.PreserveAttributes(result.Reply, in.Context.FormData)

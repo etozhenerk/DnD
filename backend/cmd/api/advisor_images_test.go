@@ -40,6 +40,40 @@ func (s *advisorObjectStub) Get(_ context.Context, asset creator.Asset) ([]byte,
 	return append([]byte(nil), data...), nil
 }
 
+func TestAdvisorChatImageActionIsPrivateAndIdempotent(t *testing.T) {
+	model := &advisorModelStub{tool: "generate_character_image", reply: `{"kind":"portrait","prompt":"Эльф в полный рост, зелёный плащ"}`}
+	_, service, handler := advisorTestHandler(t, model)
+	images := &advisorImageStub{}
+	service.EnableImages(images, &advisorObjectStub{data: map[string][]byte{}})
+	session, token, err := service.Create(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	in := advisorInput("00000000-0000-0000-0000-000000000091")
+	in.Mode, in.Message = "chat", "Нарисуй героя"
+	result, err := service.Send(t.Context(), session.ID, token, in)
+	if err != nil || result.Turns[0].Action == nil || images.calls.Load() != 0 {
+		t.Fatalf("invalid delegation: %+v %v", result, err)
+	}
+	response := apiRequest(handler, http.MethodGet, "/advisor/sessions/"+session.ID, token, nil)
+	recordResponse(t, "advisor-image-action.json", response)
+	action := result.Turns[0].Action
+	job := advisor.Input{RequestID: action.RequestID, Mode: action.Kind, Message: action.Prompt, Target: action.Target, Context: in.Context}
+	result, err = service.Send(t.Context(), session.ID, token, job)
+	if err != nil || len(result.Turns) != 2 || result.Turns[1].Image == nil || result.Accounted != 350000+advisor.ImagePrice {
+		t.Fatalf("delegated image failed: %+v %v", result, err)
+	}
+	for _, repeat := range []advisor.Input{in, job} {
+		same, err := service.Send(t.Context(), session.ID, token, repeat)
+		if err != nil || same.Accounted != result.Accounted || len(same.Turns) != 2 {
+			t.Fatal("duplicate chat/image changed accounting")
+		}
+	}
+	if images.calls.Load() != 1 || model.calls.Load() != 1 {
+		t.Fatal("delegated request repeated provider")
+	}
+}
+
 func TestAdvisorImagesArePrivateIdempotentAndAccounted(t *testing.T) {
 	model := &advisorModelStub{}
 	store, service, handler := advisorTestHandler(t, model)

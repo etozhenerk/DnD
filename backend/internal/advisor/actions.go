@@ -10,6 +10,14 @@ import (
 
 const imageActionPrefix = "advisor-image-action-v1:"
 
+// PrepareChatReply prevents provider prose from impersonating a stored tool envelope.
+func PrepareChatReply(raw string) string {
+	if strings.HasPrefix(strings.TrimSpace(raw), imageActionPrefix) || strings.HasPrefix(strings.TrimSpace(raw), proposalPrefix) {
+		return "Перо сбилось с курса. Попробуй описать задумку ещё раз."
+	}
+	return cleanReply(raw)
+}
+
 // ImageAction delegates one image call with a stable ID, charged by image admission.
 type ImageAction struct {
 	RequestID string `json:"requestId"`

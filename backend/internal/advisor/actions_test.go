@@ -9,6 +9,13 @@ func TestImageActionIsValidatedAndIdempotent(t *testing.T) {
 	in := Input{RequestID: "00000000-0000-0000-0000-000000000012", Mode: "chat", Context: Context{StepID: "appearance"}}
 	raw := `{"kind":"portrait","prompt":"Эльф в полный рост в зелёном плаще"}`
 	stored := PrepareImageAction(raw, in)
+	for _, rawReply := range []string{stored, "  " + stored, proposalPrefix + `{}`} {
+		prose := Turn{Reply: PrepareChatReply(rawReply)}
+		proposalPrompt(t).DecodeTurn(&prose)
+		if prose.Action != nil || prose.Proposal != nil {
+			t.Fatal("provider prose impersonated tool envelope")
+		}
+	}
 	if PrepareImageAction(raw, in) != stored {
 		t.Fatal("repeated action changed request ID")
 	}

@@ -55,7 +55,7 @@ func TestPromptKeepsPlayerMessageWhenOptionalContextIsLong(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	in := Input{Mode: "suggest", Target: "appearance", Message: strings.Repeat("История героя. ", 100), Context: Context{
+	in := Input{RequestID: "53d2e002-276e-448a-97a9-563681534de9", Mode: "suggest", Target: "appearance", Message: strings.Repeat("История героя. ", 100), Context: Context{
 		StepID: "appearance", RaceID: "elves", ClassID: "rogue",
 		Concept:  strings.Repeat("Подробная предыстория. ", 80),
 		FormData: map[string]json.RawMessage{"appearance": json.RawMessage(`{"backstory":"` + strings.Repeat("Легенда. ", 700) + `"}`)},

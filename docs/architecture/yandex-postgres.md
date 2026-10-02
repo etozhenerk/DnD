@@ -35,3 +35,10 @@
 и одинаковую учтённую сумму 1 665 300 микрорублей у хода, сессии и месяца.
 После проверки WebSQL отключён: операция `c9qk7th2ni04iravqq8e` завершилась без
 ошибки; кластер RUNNING/ALIVE, `config.access.web_sql` не включён.
+
+После отдельного согласия на временный WebSQL 2 октября применена
+`000008_advisor_tools`: `mode text NOT NULL DEFAULT 'chat'`,
+`target text NOT NULL DEFAULT ''`, `result_asset jsonb NULL`.
+Проверены одна запись версии и SELECT/INSERT/UPDATE-права `dnd_api` на таблицу.
+WebSQL сразу отключён; операция `c9qb3u5ppvr9glm027u3` завершилась без ошибки,
+кластер RUNNING/ALIVE, `config.access={}`. Публичный IP и новые SQL-права не добавлялись.

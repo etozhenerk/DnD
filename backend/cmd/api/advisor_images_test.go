@@ -9,6 +9,7 @@ import (
 	"image"
 	"image/png"
 	"net/http"
+	"strings"
 	"sync/atomic"
 	"testing"
 
@@ -16,13 +17,41 @@ import (
 	"github.com/etozhenerk/DnD/backend/internal/creator"
 )
 
-type advisorImageStub struct{ calls atomic.Int32 }
+type advisorImageStub struct {
+	calls  atomic.Int32
+	prompt string
+}
 
-func (s *advisorImageStub) Generate(context.Context, string, string) ([]byte, error) {
+func (s *advisorImageStub) Generate(_ context.Context, prompt, _ string) ([]byte, error) {
 	s.calls.Add(1)
+	s.prompt = prompt
 	var data bytes.Buffer
 	err := png.Encode(&data, image.NewRGBA(image.Rect(0, 0, 1024, 1024)))
 	return data.Bytes(), err
+}
+
+func TestInvalidImageWriterOutputChargesOnlyTextAndDoesNotBlockChat(t *testing.T) {
+	model := &advisorModelStub{imageReply: "not structured JSON"}
+	_, service, _ := advisorTestHandler(t, model)
+	images := &advisorImageStub{}
+	service.EnableImages(images, &advisorObjectStub{data: map[string][]byte{}})
+	session, token, err := service.Create(t.Context())
+	if err != nil {
+		t.Fatal(err)
+	}
+	in := advisorInput("00000000-0000-0000-0000-000000000095")
+	in.Mode = "portrait"
+	result, err := service.Send(t.Context(), session.ID, token, in)
+	if err != nil || result.Accounted != 350000 || result.Turns[0].Image != nil || images.calls.Load() != 0 {
+		t.Fatalf("bad writer response called image or lost text cost: %+v %v", result, err)
+	}
+	if _, err := service.Send(t.Context(), session.ID, token, in); err != nil || model.calls.Load() != 1 {
+		t.Fatal("repeat called prompt writer again")
+	}
+	in.Mode, in.RequestID = "chat", "00000000-0000-0000-0000-000000000096"
+	if _, err := service.Send(t.Context(), session.ID, token, in); err != nil || model.calls.Load() != 2 {
+		t.Fatal("invalid image prompt blocked the next chat message")
+	}
 }
 
 type advisorObjectStub struct{ data map[string][]byte }
@@ -60,7 +89,7 @@ func TestAdvisorChatImageActionIsPrivateAndIdempotent(t *testing.T) {
 	action := result.Turns[0].Action
 	job := advisor.Input{RequestID: action.RequestID, Mode: action.Kind, Message: action.Prompt, Target: action.Target, Context: in.Context}
 	result, err = service.Send(t.Context(), session.ID, token, job)
-	if err != nil || len(result.Turns) != 2 || result.Turns[1].Image == nil || result.Accounted != 350000+advisor.ImagePrice {
+	if err != nil || len(result.Turns) != 2 || result.Turns[1].Image == nil || result.Accounted != 700000+advisor.ImagePrice {
 		t.Fatalf("delegated image failed: %+v %v", result, err)
 	}
 	for _, repeat := range []advisor.Input{in, job} {
@@ -69,7 +98,7 @@ func TestAdvisorChatImageActionIsPrivateAndIdempotent(t *testing.T) {
 			t.Fatal("duplicate chat/image changed accounting")
 		}
 	}
-	if images.calls.Load() != 1 || model.calls.Load() != 1 {
+	if images.calls.Load() != 1 || model.calls.Load() != 2 {
 		t.Fatal("delegated request repeated provider")
 	}
 }
@@ -93,7 +122,7 @@ func TestAdvisorImagesArePrivateIdempotentAndAccounted(t *testing.T) {
 	response := apiRequest(handler, http.MethodPost, path+"/messages", token, body)
 	decodeResponse(t, response, 200, &session)
 	recordResponse(t, "advisor-image.json", response)
-	if len(session.Turns) != 1 || session.Turns[0].Image == nil || session.Accounted != advisor.ImagePrice || model.calls.Load() != 0 {
+	if len(session.Turns) != 1 || session.Turns[0].Image == nil || session.Accounted != 350000+advisor.ImagePrice || model.calls.Load() != 1 {
 		t.Fatalf("wrong image ledger: %+v", session)
 	}
 	for range 2 {
@@ -101,6 +130,9 @@ func TestAdvisorImagesArePrivateIdempotentAndAccounted(t *testing.T) {
 	}
 	if imageModel.calls.Load() != 1 {
 		t.Fatal("repeated a paid image")
+	}
+	if !strings.Contains(imageModel.prompt, "Фотореалистичное") || !strings.Contains(imageModel.prompt, "полный рост") || !strings.Contains(imageModel.prompt, "Серебристые волосы") {
+		t.Fatal("image API did not receive the compiled writer prompt")
 	}
 	imagePath := path + "/images/" + input.RequestID
 	binary := apiRequest(handler, http.MethodGet, imagePath, token, nil)

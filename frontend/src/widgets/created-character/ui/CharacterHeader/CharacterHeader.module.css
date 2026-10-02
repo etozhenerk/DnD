@@ -6,11 +6,16 @@
 }
 
 .origin {
-  color: var(--creator-accent);
+  background: var(--creator-origin-fill);
+  border-radius: 999px;
+  box-shadow: var(--creator-origin-shadow);
+  color: var(--creator-heading);
+  display: inline-block;
   font-size: 1.05rem;
   line-height: 1.5;
   margin: 0 0 .55rem;
   overflow-wrap: anywhere;
+  padding: .35rem 1.2rem;
 }
 
 .origin span {

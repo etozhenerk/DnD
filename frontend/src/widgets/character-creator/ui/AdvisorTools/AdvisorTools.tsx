@@ -1,29 +1,24 @@
-import {useState} from 'react';
 import type {AdvisorChatController} from '../../../../features/chat-with-advisor';
-import {advisorTargets} from '../../config/advisor-tools';
+import {getAdvisorSuggestionTarget} from '../../model/advisor-target';
 import type {AdvisorArtworkController} from '../../model/useAdvisorArtwork';
 import styles from './AdvisorTools.module.css';
 
 export type AdvisorToolsProps = {chat: AdvisorChatController; artwork: AdvisorArtworkController; disabled: boolean};
 
 export function AdvisorTools({chat, artwork: art, disabled}: AdvisorToolsProps) {
-  const [target, setTarget] = useState('name');
-  const [skillId, setSkillId] = useState('');
-  const skills = (chat.context.formData?.abilities as {items?: {id: string; name: string; description: string}[]} | undefined)?.items ?? [];
-  const skill = skills.find((item) => item.id === skillId) ?? skills[0];
+  const target = getAdvisorSuggestionTarget(chat.context.stepId);
+  const skills = chat.imageTargets;
+  const skill = skills.find((item) => item.id === chat.imageTargetId) ?? skills[0];
   const blocked = disabled || !chat.canSend || art.busy;
   return (
     <div className={styles.tools}>
       {chat.canFill && <>
-        <label>Предложить для раздела<select value={target} disabled={blocked} onChange={(event) => setTarget(event.target.value)}>
-          {advisorTargets.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
-        </select></label>
-        <button className={styles.action} type="button" disabled={blocked} onClick={() => void chat.suggest(target)}>Придумать вариант</button>
+        {target !== 'full' && <button className={styles.action} type="button" disabled={blocked} onClick={() => void chat.suggest(target)}>Придумать для этого этапа</button>}
         <button className={styles.action} type="button" disabled={blocked} onClick={() => void chat.fill()}>✦ Собрать всего героя</button>
       </>}
       {chat.canImages && <>
         <button className={styles.action} type="button" disabled={blocked} onClick={() => void chat.generate('portrait', chat.text || 'Портрет героя по текущей анкете.')}>Нарисовать портрет</button>
-        {!!skills.length && <><label>Иконка навыка<select value={skill?.id ?? ''} disabled={blocked} onChange={(event) => setSkillId(event.target.value)}>
+        {!!skills.length && <><label>Иконка навыка<select value={skill?.id ?? ''} disabled={blocked} onChange={(event) => chat.setImageTargetId(event.target.value)}>
           {skills.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
         </select></label><button className={styles.action} type="button" disabled={blocked || !skill} onClick={() => void chat.generate('icon', chat.text || skill!.name + '. ' + skill!.description, skill?.id)}>Нарисовать иконку</button></>}
         {chat.canFill && <button className={styles.action} type="button" disabled={blocked} onClick={() => void art.create()}>Герой с портретом и иконками</button>}

@@ -29,30 +29,52 @@ type ImageResult struct {
 
 // ImagePrompt bounds the prompt to 500 runes, retaining the player's requested changes.
 func (p *Prompt) ImagePrompt(in Input) string {
-	style := "Тёмное сказочное фэнтези, живописная иллюстрация, мягкий свет, без надписей. "
 	if in.Mode == "icon" {
-		style += "Квадратная иконка умения, выразительный символ и чистый силуэт. "
-	} else {
-		style += "Герой в полный рост: от макушки до ступней, ноги и обувь целиком в кадре, запас сверху и снизу, атмосферный фон. Не обрезать фигуру. "
+		return composeImagePrompt(iconStyle, in.Message, imageSkillDescription(in))
 	}
-	description := ""
+	style := portraitStyle
+	identity := ""
 	for _, race := range p.catalog.Races {
 		if race.ID == in.Context.RaceID {
-			description += "Раса: " + race.Name + ". "
+			identity += race.Name + ". "
 		}
 	}
 	for _, cl := range p.catalog.Rules.ClassProfiles {
 		if cl.ID == in.Context.ClassID {
-			description += "Класс: " + cl.Name + ". "
+			identity += cl.Name + ". "
 		}
 	}
 	var appearance struct {
 		Appearance string `json:"appearance"`
 	}
-	if json.Unmarshal(in.Context.FormData["appearance"], &appearance) == nil && in.Mode != "icon" {
-		description += appearance.Appearance
+	_ = json.Unmarshal(in.Context.FormData["appearance"], &appearance) // Optional context; an incomplete form still permits a drawing.
+	return composeImagePrompt(style+identity, in.Message, appearance.Appearance)
+}
+
+func composeImagePrompt(style, wish, detail string) string {
+	// Alice ART accepts 500 characters. Reserve context space even for a long player wish.
+	remaining := 500 - len([]rune(style)) - 2
+	contextReserve := min(100, len([]rune(detail)))
+	wish = shortImageText(wish, min(160, max(0, remaining-contextReserve)))
+	remaining -= len([]rune(wish))
+	return shortImageText(style+wish+". "+shortImageText(detail, max(0, remaining)), 500)
+}
+
+func imageSkillDescription(in Input) string {
+	var section struct {
+		Items []struct {
+			ID, Name, Description string
+		} `json:"items"`
 	}
-	return shortImageText(style+shortImageText(in.Message, 230)+". "+description, 500)
+	if json.Unmarshal(in.Context.FormData["abilities"], &section) != nil {
+		return ""
+	}
+	for _, skill := range section.Items {
+		if skill.ID == in.Target {
+			return skill.Name + ". " + skill.Description
+		}
+	}
+	return ""
 }
 
 func shortImageText(text string, maximum int) string {
@@ -83,7 +105,7 @@ func imageSkillExists(in Input) bool {
 // ReservationFor includes every paid tool in the same session/month envelope.
 func ReservationFor(mode string) Money {
 	if mode == "portrait" || mode == "icon" {
-		return ImagePrice
+		return ImagePrice + ImagePromptReservation()
 	}
 	return Reservation()
 }

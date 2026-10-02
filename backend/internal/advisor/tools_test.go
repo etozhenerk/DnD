@@ -18,11 +18,34 @@ func TestCommentsAndImagePromptsRemainBounded(t *testing.T) {
 		t.Fatal("invalid bubble comment")
 	}
 	cost, err := Cost(Completion{ImageCharge: true})
-	if err != nil || cost != ImagePrice || ReservationFor("icon") != ImagePrice {
+	if err != nil || cost != ImagePrice || ReservationFor("icon") != ImagePrice+ImagePromptReservation() {
 		t.Fatal("image price outside shared envelope")
 	}
 	if _, err := Cost(Completion{ImageCharge: true, InputTokens: 100}); err == nil {
 		t.Fatal("image accepted text usage")
+	}
+}
+
+func TestImagePromptKeepsRealismAppearanceAndIconSubject(t *testing.T) {
+	p := proposalPrompt(t)
+	in := Input{Mode: "portrait", Message: "Зелёный плащ. " + strings.Repeat("Дополнительные пожелания. ", 100), Context: Context{
+		RaceID: "elves", ClassID: "rogue",
+		FormData: map[string]json.RawMessage{"appearance": json.RawMessage(`{"appearance":"Серебристые волосы, шрам на щеке"}`)},
+	}}
+	prompt := p.ImagePrompt(in)
+	for _, detail := range []string{"Фотореалистичное", "фактура кожи", "Не мультфильм", "полный рост", "ступни", "Зелёный плащ", "Серебристые волосы", "Эльфы"} {
+		if !strings.Contains(prompt, detail) {
+			t.Fatalf("image prompt lost %q: %s", detail, prompt)
+		}
+	}
+	if len([]rune(prompt)) > 500 {
+		t.Fatal("image prompt exceeded provider limit")
+	}
+	in.Mode, in.Target, in.Message = "icon", "spark", "Нарисуй иконку"
+	in.Context.FormData["abilities"] = json.RawMessage(`{"items":[{"id":"spark","name":"Искра","description":"Огненная ладонь"}]}`)
+	icon := p.ImagePrompt(in)
+	if !strings.Contains(icon, "Огненная ладонь") || strings.Contains(icon, "Серебристые волосы") || strings.Contains(icon, "полный рост") {
+		t.Fatalf("icon mixed with portrait: %s", icon)
 	}
 }
 

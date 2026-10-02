@@ -4,12 +4,16 @@ import {advisorAvailabilityOptions, advisorImageOptions, advisorSessionOptions} 
 import type {AdvisorContext, AdvisorInput, AdvisorMode, AdvisorSession} from '../../../entities/character-advisor';
 import {getRequestError} from '../../../shared/api/http';
 import {useAdvisorTransport} from './useAdvisorTransport';
+import {getAdvisorImageIntent, getAdvisorImageTargets} from '../lib/image-intent';
+import {isAdvisorPlayerMessage} from '../lib/player-message';
 
 export function useAdvisorChat(context: AdvisorContext) {
   const {access, action} = useAdvisorTransport();
   const [text, setText] = useState('');
   const [attempt, setAttempt] = useState<AdvisorInput | null>(null);
   const [latestReplyId, setLatestReplyId] = useState<string | null>(null);
+  const [imageTargetId, setImageTargetId] = useState('');
+  const typedIds = useRef(new Set<string>());
   const locked = useRef(false);
   const availability = useQuery(advisorAvailabilityOptions);
   const history = useQuery(advisorSessionOptions(access));
@@ -29,6 +33,7 @@ export function useAdvisorChat(context: AdvisorContext) {
     const input = repeat ? attempt : {requestId: crypto.randomUUID(), message: message.trim(), context: snapshot, mode, ...(target ? {target} : {})};
     if (!input || !input.message || [...input.message].length > 2000 || (!repeat && ((attempt && !confirmedAttempt) || unresolved))) return;
     locked.current = true;
+    if (!repeat && input.mode !== 'comment' && text.trim() && input.message === text.trim()) typedIds.current.add(input.requestId);
     setAttempt(input);
     if (!repeat && input.mode !== 'comment') setText('');
     try {
@@ -55,6 +60,8 @@ export function useAdvisorChat(context: AdvisorContext) {
 
   return {
     text, setText, turns, context, session: history.data, latestReplyId,
+    imageTargets: getAdvisorImageTargets(context), imageTargetId, setImageTargetId,
+    isPlayerMessage: (turn: Pick<AdvisorInput, 'requestId' | 'mode'>) => isAdvisorPlayerMessage(turn, turns, typedIds.current),
     canFill: availability.data?.fillCharacter === true,
     canImages: availability.data?.images === true,
     canComment: availability.data?.proactiveComments === true,
@@ -65,7 +72,10 @@ export function useAdvisorChat(context: AdvisorContext) {
     error: action.error ? getRequestError(action.error) : history.error ? getRequestError(history.error) : null,
     canRetry: !!attempt && !pending && !confirmedAttempt,
     canRefresh: !!access && (!!attempt && !confirmedAttempt || turns.some((turn) => turn.status === 'reserved')),
-    submit: () => send('chat', text),
+    submit: () => {
+      const intent = availability.data?.images ? getAdvisorImageIntent(text, context, imageTargetId) : null;
+      return send(intent?.kind ?? 'chat', text, intent?.target);
+    },
     fill: () => send('fill', text || 'Собери героя по моей задумке и нашему разговору. Заполни все разделы анкеты.'),
     suggest: (target: string) => send('suggest', text || 'Предложи интересный вариант для выбранного раздела.', target),
     comment: (snapshot: AdvisorContext) => send('comment', 'Коротко отреагируй на новый выбор в анкете. Если имя выбивается из мира — мягко предложи один вариант.', undefined, snapshot),

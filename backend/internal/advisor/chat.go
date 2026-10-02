@@ -90,6 +90,7 @@ type Completion struct {
 	OutputTokens int
 	CachedTokens int
 	ImageCharge  bool
+	ImagePrompt  bool
 	Asset        *ImageAsset
 	Tool         string
 }

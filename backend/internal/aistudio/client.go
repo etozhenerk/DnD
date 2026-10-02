@@ -60,7 +60,10 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 	if mode == "comment" {
 		maxTokens = 384
 	}
-	if mode == "fill" || mode == "suggest" {
+	if mode == "image_prompt" {
+		maxTokens = advisor.ImagePromptMaxOutputTokens
+	}
+	if mode == "fill" || mode == "suggest" || mode == "image_prompt" {
 		maxTokens = advisor.MaxOutputTokens
 		format = &struct {
 			Type string `json:"type"`

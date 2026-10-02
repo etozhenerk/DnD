@@ -17,15 +17,16 @@ import (
 )
 
 type advisorModelStub struct {
-	calls   atomic.Int32
-	failure error
-	reply   string
-	tool    string
-	entered chan struct{}
-	release chan struct{}
+	calls      atomic.Int32
+	failure    error
+	reply      string
+	imageReply string
+	tool       string
+	entered    chan struct{}
+	release    chan struct{}
 }
 
-func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message, _ string) (advisor.Completion, error) {
+func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message, mode string) (advisor.Completion, error) {
 	m.calls.Add(1)
 	if m.entered != nil {
 		close(m.entered)
@@ -38,10 +39,17 @@ func (m *advisorModelStub) Complete(ctx context.Context, _ []advisor.Message, _ 
 		}
 	}
 	reply := m.reply
+	tool := m.tool
+	if mode == "image_prompt" {
+		reply, tool = m.imageReply, ""
+		if reply == "" {
+			reply = `{"subject":"Эльф-разбойник в зелёном плаще","details":"Серебристые волосы, кожаная броня","scene":"Туманный лес"}`
+		}
+	}
 	if reply == "" {
 		reply = "**Советник:** выбери характер героя!"
 	}
-	return advisor.Completion{Reply: reply, Tool: m.tool, InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
+	return advisor.Completion{Reply: reply, Tool: tool, InputTokens: 1000, OutputTokens: 100, CachedTokens: 0}, m.failure
 }
 
 func advisorTestHandler(t *testing.T, model *advisorModelStub) (*storage.Store, *characterapp.Advisor, http.Handler) {

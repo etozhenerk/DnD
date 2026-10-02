@@ -316,6 +316,12 @@
   --creator-title-glow: 0 0 16px #8ac6ef42, 0 2px 3px #000000cc;
   --creator-accent: #dfb977;
   --creator-focus: #a6e4ff;
+  --creator-origin-fill: #080d16e8;
+  --creator-origin-shadow: 0 2px 16px #00000066;
+  --creator-effect-border: #dfb97733;
+  --creator-effect-selected-fill: linear-gradient(120deg, #ecd39a, #b98e51);
+  --creator-effect-selected-copy: #231608;
+  --creator-effect-selected-shadow: 0 0 20px #dfb97726, inset 0 1px 0 #fff0cf80;
   --creator-action: linear-gradient(180deg, #244858, #0a2435 60%, #173749);
   --creator-page-shade: linear-gradient(180deg, #020b1270, #020b1280 65%, #020b12d9);
   --creator-panel-wash: linear-gradient(135deg, #0d121acc, #090b0cc7 60%, #101820bf);

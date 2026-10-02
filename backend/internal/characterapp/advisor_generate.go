@@ -18,7 +18,7 @@ func (a *Advisor) generate(ctx context.Context, id string, in advisor.Input, mes
 	callCtx, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 	if in.Mode == "portrait" || in.Mode == "icon" {
-		return a.makeImage(callCtx, id, in)
+		return a.makeImage(callCtx, id, in, messages)
 	}
 	result, err := a.model.Complete(callCtx, messages, in.Mode)
 	if err != nil {

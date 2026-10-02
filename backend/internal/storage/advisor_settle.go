@@ -45,7 +45,7 @@ func (s *Store) SettleAdvisorTurn(ctx context.Context, id, requestID string, res
 	if cost > before {
 		return advisor.ErrLimit
 	}
-	if result.ImageCharge != (mode == "portrait" || mode == "icon") || (result.Asset != nil && !result.ImageCharge) {
+	if (result.ImageCharge || result.ImagePrompt) != (mode == "portrait" || mode == "icon") || (result.Asset != nil && !result.ImageCharge) {
 		return advisor.ErrInvalid
 	}
 	var asset []byte

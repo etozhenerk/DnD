@@ -68,6 +68,6 @@ func decodeImageAction(turn *Turn) bool {
 		return true
 	}
 	turn.Action = &action
-	turn.Reply = "Беру кисти! Сейчас нарисую вариант — выберешь, оставляем ли его герою."
+	turn.Reply = "Сейчас появится рисунок. Потом решишь, оставляем его или пробуем другой."
 	return true
 }

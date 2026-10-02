@@ -21,7 +21,7 @@ export function AdvisorConversation({chat, application, media, disabled}: Adviso
         )}
         {chat.turns.map((turn) => (
           <div className={styles.turn} key={turn.requestId}>
-            {turn.mode !== 'comment' && <div className={styles.player}><span>Ты</span><p>{turn.message}</p></div>}
+            {chat.isPlayerMessage(turn) && <div className={styles.player}><span>Ты</span><p>{turn.message}</p></div>}
             <div className={styles.owl}><span>Советник</span>
               {turn.status === 'succeeded' && <AdvisorReply text={turn.reply} animate={chat.latestReplyId === turn.requestId} />}
               {turn.proposal && <AdvisorProposalCard proposal={turn.proposal} requestId={turn.requestId}
@@ -32,7 +32,7 @@ export function AdvisorConversation({chat, application, media, disabled}: Adviso
             </div>
           </div>
         ))}
-        {chat.pendingMessage && chat.pendingMessage.mode !== 'comment' && <div className={styles.player}><span>Ты</span><p>{chat.pendingMessage.message}</p></div>}
+        {chat.pendingMessage && chat.isPlayerMessage(chat.pendingMessage) && <div className={styles.player}><span>Ты</span><p>{chat.pendingMessage.message}</p></div>}
         {chat.pending && !chat.turns.some((turn) => turn.status === 'reserved') && (
           <p className={styles.thinking} role="status">Советник перебирает идеи…</p>
         )}

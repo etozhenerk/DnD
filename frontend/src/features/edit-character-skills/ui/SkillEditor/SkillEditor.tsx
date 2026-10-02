@@ -16,7 +16,8 @@ export type SkillEditorProps = {
 };
 
 export function SkillEditor({skill, usedProfiles, icon, onChange, onRemove, onIconUpload}: SkillEditorProps) {
-  const [kind, setKind] = useState(getSkillKind(skill.profileId));
+  const [requestedKind, setKind] = useState('damage');
+  const kind = skill.profileId ? getSkillKind(skill.profileId) : requestedKind;
   return (
     <section className={styles.editor} aria-label={skill.name || 'Новый навык'}>
       <header><h3>{skill.name || 'Новый навык'}</h3><button type="button" onClick={onRemove}>Удалить навык</button></header>

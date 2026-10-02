@@ -51,16 +51,29 @@
 
 .effects button {
   background: var(--creator-back-wash);
-  border: 0;
+  border: 2px solid var(--creator-effect-border);
   border-radius: 18px 6px 18px 6px;
   color: var(--creator-heading);
   font: inherit;
   min-height: 44px;
+  position: relative;
+  padding: .6rem 1.7rem;
 }
 
 .effects button[aria-pressed='true'] {
-  box-shadow: var(--creator-thumbnail-selected);
-  color: var(--creator-focus);
+  background: var(--creator-effect-selected-fill);
+  border-color: var(--creator-accent);
+  box-shadow: var(--creator-effect-selected-shadow);
+  color: var(--creator-effect-selected-copy);
+  font-weight: 700;
+}
+
+.effects button[aria-pressed='true']::after {
+  content: '✓';
+  position: absolute;
+  right: .7rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .editor button:focus-visible {

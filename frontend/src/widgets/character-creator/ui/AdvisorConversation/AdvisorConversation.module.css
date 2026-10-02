@@ -1,0 +1,75 @@
+.history {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.content {
+  min-height: 100%;
+  padding: .5rem .5rem 1rem;
+}
+
+.empty {
+  align-content: center;
+  color: var(--creator-muted);
+  display: grid;
+  min-height: 280px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.empty > span {
+  color: var(--creator-accent);
+  font-size: 2rem;
+}
+
+.empty p {
+  color: var(--creator-heading);
+  font-family: var(--font-fantasy-heading);
+  font-size: 1.7rem;
+  margin: .75rem 0;
+}
+
+.empty small {
+  font-size: 1rem;
+}
+
+.turn {
+  display: grid;
+  gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+
+.player {
+  background: var(--creator-input-fill);
+  border-radius: 20px 6px 20px 20px;
+  justify-self: end;
+  margin-left: 3rem;
+  max-width: 85%;
+  padding: .75rem 1rem;
+}
+
+.player p {
+  line-height: 1.5;
+  margin: .4rem 0 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.player > span,
+.owl > span {
+  color: var(--creator-accent);
+  font-size: .9rem;
+}
+
+.owl {
+  margin-right: 2rem;
+  padding: .5rem 0;
+}
+
+.thinking {
+  color: var(--creator-muted);
+  font-style: italic;
+}

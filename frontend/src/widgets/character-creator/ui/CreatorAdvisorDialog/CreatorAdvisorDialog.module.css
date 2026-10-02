@@ -1,0 +1,76 @@
+.dialog {
+  --fantasy-heading-size: 2.1rem;
+  animation: dialog-arrive 240ms var(--fantasy-motion-ease);
+  background: var(--advisor-dialog-fill);
+  border: 0;
+  border-radius: 32px 12px 32px 12px;
+  box-shadow: var(--creator-tooltip-shadow);
+  color: var(--creator-copy);
+  font-family: var(--font-fantasy-copy);
+  height: min(680px, calc(100dvh - 64px));
+  inset: 0;
+  margin: auto;
+  max-height: none;
+  max-width: none;
+  overflow: hidden;
+  padding: 1.5rem 1.75rem 1rem;
+  position: fixed;
+  width: min(920px, calc(100vw - 64px));
+}
+
+.dialog[open] {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+}
+
+.dialog::backdrop {
+  background: var(--creator-dialog-backdrop);
+}
+
+.header {
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.close {
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  color: var(--creator-accent);
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  height: 44px;
+  line-height: 1;
+  width: 44px;
+}
+
+.close:hover {
+  color: var(--creator-heading);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}
+
+@keyframes dialog-arrive {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog {
+    animation: none;
+  }
+}

@@ -1,0 +1,16 @@
+.open {
+  composes: button from '../../../../shared/styles/fantasy-surfaces.module.css';
+  cursor: pointer;
+  font-size: 1.25rem;
+  gap: .65rem;
+  width: 100%;
+}
+
+.open:hover {
+  box-shadow: var(--creator-action-glow);
+}
+
+.open:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 4px;
+}

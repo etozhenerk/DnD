@@ -5,9 +5,11 @@ on:
     branches: [main]
     paths:
       - 'backend/**'
+      - 'shared/advisor/**'
       - 'content/character-creation.json'
       - 'content/character-abilities.json'
       - 'content/races.json'
+      - 'content/world-map.json'
       - 'content/rules.json'
       - '.github/workflows/deploy-yandex-backend.yml'
   workflow_dispatch:
@@ -57,8 +59,10 @@ jobs:
             /content/character-creation.json
             /content/character-abilities.json
             /content/races.json
+            /content/world-map.json
             /content/rules.json
             /shared/api/openapi.yaml
+            /shared/advisor/
 
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -109,13 +113,15 @@ jobs:
           revision-cores: '1'
           revision-memory: 512Mb
           revision-core-fraction: '100'
-          revision-concurrency: '6'
+          revision-concurrency: '12'
           revision-execution-timeout: '30'
           revision-provisioned: '0'
           revision-zone-instances-limit: '1'
           revision-network-id: enpeeej3ge2i9lqn8cer
           revision-log-options-folder-id: ${{ env.YC_FOLDER_ID }}
           revision-env: |
+            ADVISOR_CHAT_ENABLED=${{ vars.DND_ADVISOR_CHAT_ENABLED || 'false' }}
+            ADVISOR_FOLDER_ID=${{ env.YC_FOLDER_ID }}
             ASSET_BUCKET=dnd-character-media-b1g8siv8ve2si1qp04nm
             DB_HOST=rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net
             DB_PORT=6432
@@ -129,7 +135,7 @@ jobs:
         env:
           API_URL: https://d5dopqqib47kpsh6929m.jki8ffxa.apigw.yandexcloud.net
         run: |
-          for route in health creator/options characters; do
+          for route in health creator/options creator/advisor characters; do
             curl --fail --silent --show-error --max-time 40 \
               --retry 6 --retry-delay 5 --retry-all-errors \
               "$API_URL/$route" > /dev/null

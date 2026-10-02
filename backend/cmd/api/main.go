@@ -13,7 +13,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/etozhenerk/DnD/backend/internal/advisor"
 	"github.com/etozhenerk/DnD/backend/internal/blobstore"
+	"github.com/etozhenerk/DnD/backend/internal/characterapp"
 	"github.com/etozhenerk/DnD/backend/internal/creator"
 	"github.com/etozhenerk/DnD/backend/internal/httpapi"
 	"github.com/etozhenerk/DnD/backend/internal/storage"
@@ -24,6 +26,8 @@ type server struct {
 	store   *storage.Store
 	origins map[string]bool
 	objects *blobstore.Client
+	advisor *advisor.Guide
+	chat    *characterapp.Advisor
 }
 type apiError struct {
 	Code    string `json:"code"`
@@ -50,7 +54,18 @@ func newHandler(c *creator.Catalog, st *storage.Store, origins []string) http.Ha
 	return newHandlerWithMedia(c, st, origins, nil)
 }
 func newHandlerWithMedia(c *creator.Catalog, st *storage.Store, origins []string, objects *blobstore.Client) http.Handler {
-	s := &server{catalog: c, store: st, objects: objects, origins: map[string]bool{}}
+	return newHandlerWithAdvisor(c, st, origins, objects, nil)
+}
+func newHandlerWithAdvisor(c *creator.Catalog, st *storage.Store, origins []string, objects *blobstore.Client, guide *advisor.Guide) http.Handler {
+	return newHandlerWithAdvisorRuntime(c, st, origins, objects, guide, nil)
+}
+func newHandlerWithAdvisorRuntime(c *creator.Catalog, st *storage.Store, origins []string, objects *blobstore.Client, guide *advisor.Guide, chat *characterapp.Advisor) http.Handler {
+	if guide != nil {
+		copy := *guide
+		copy.Capabilities.Chat = chat != nil
+		guide = &copy
+	}
+	s := &server{catalog: c, store: st, objects: objects, advisor: guide, chat: chat, origins: map[string]bool{}}
 	for _, origin := range origins {
 		origin = strings.TrimSpace(origin)
 		if origin != "" {
@@ -299,6 +314,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("load creator rules: %v", err)
 	}
+	guide, err := advisor.Load(advisorGuidePath(os.Getenv))
+	if err != nil {
+		log.Fatalf("load advisor guide failed (%T)", err)
+	}
 	dbURL, err := databaseURL(os.Getenv)
 	if err != nil {
 		log.Fatal(err)
@@ -310,6 +329,10 @@ func main() {
 		log.Fatalf("connect database failed (%T)", err)
 	}
 	defer st.Pool.Close()
+	chat, err := advisorRuntime(os.Getenv, catalog, st)
+	if err != nil {
+		log.Fatalf("configure advisor failed (%T)", err)
+	}
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -318,7 +341,7 @@ func main() {
 	if bucket := os.Getenv("ASSET_BUCKET"); bucket != "" {
 		objects = blobstore.New(bucket)
 	}
-	srv := &http.Server{Addr: ":" + port, Handler: newHandlerWithMedia(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","), objects), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
+	srv := &http.Server{Addr: ":" + port, Handler: newHandlerWithAdvisorRuntime(catalog, st, strings.Split(os.Getenv("CORS_ALLOWED_ORIGINS"), ","), objects, guide, chat), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 30 * time.Second}
 	log.Printf("API listening on %s", srv.Addr)
 	log.Fatal(srv.ListenAndServe())
 }

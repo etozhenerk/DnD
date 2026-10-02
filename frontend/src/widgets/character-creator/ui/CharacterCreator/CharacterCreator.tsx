@@ -42,13 +42,15 @@ export function CharacterCreator({stepId}: CharacterCreatorProps) {
       <div className={styles.hero}><CreatorIdentity form={controller.form}
         portrait={media.selected?.url} /></div>
       <div className={styles.workspace}>
-        <div inert={saving.isPending}><CreatorProgress currentId={navigation.step.id} availableUntil={availableUntil} /></div>
+        <div className={styles.progress} inert={saving.isPending}>
+          <CreatorProgress currentId={navigation.step.id} availableUntil={availableUntil} />
+        </div>
         <div className={styles.layout}>
           <fieldset className={styles.form} disabled={saving.isPending}
             onClickCapture={(event) => {if (saving.isPending) event.preventDefault();}}>
             <CreatorStepPreview step={navigation.step} controller={controller} media={media} saving={saving} />
           </fieldset>
-          <CreatorAdvisorPreview stepId={navigation.step.id} />
+          <CreatorAdvisorPreview stepId={navigation.step.id} formData={controller.formData} />
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Хроники Восьми Земель API
-  version: 0.6.0
+  version: 0.8.0
   description: Конструктор новых персонажей. Готовые герои книги остаются в content/.
 x-ability-rules-source: content/character-abilities.json
 servers:
@@ -61,6 +61,93 @@ paths:
                   races:
                     type: array
                     items: {type: object}
+  /creator/advisor:
+    get:
+      operationId: getCreatorAdvisor
+      summary: Получить бесплатные подсказки и доступные возможности советника
+      description: |
+        Не создаёт сессию, не сохраняет анкету и не вызывает LLM.
+        chat включается только при настроенных AI Studio и учёте расходов.
+      responses:
+        '200':
+          description: Публичный каталог советника
+          headers:
+            Server-Timing: {$ref: '#/components/headers/ServerTiming'}
+            Cache-Control: {$ref: '#/components/headers/ReadCacheControl'}
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AdvisorGuide'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /advisor/sessions:
+    post:
+      operationId: createAdvisorSession
+      summary: Начать отдельный диалог с советником
+      description: |
+        Не создаёт черновик анкеты. Токен выдаётся один раз, хранится только в памяти
+        страницы. Сессия действует 24 часа, бюджет 200 ₽, общий месячный предел 10000 ₽.
+        Создание сессии не вызывает LLM. Не более 12 новых сессий за минуту и 60 за сутки
+        на весь сервис. Без авторизации это ограничение сессии, а не личности игрока.
+      responses:
+        '201':
+          description: Сессия и её секрет
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AdvisorSessionCreated'}
+        '429': {$ref: '#/components/responses/AdvisorLimit'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /advisor/sessions/{sessionId}:
+    parameters:
+      - $ref: '#/components/parameters/AdvisorSessionId'
+    get:
+      operationId: getAdvisorSession
+      summary: Прочитать историю и остаток бюджета своей сессии
+      security: [{AdvisorToken: []}]
+      responses:
+        '200':
+          description: До 100 запросов сессии, без снимков анкеты и токена
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AdvisorSession'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '503': {$ref: '#/components/responses/Unavailable'}
+  /advisor/sessions/{sessionId}/messages:
+    parameters:
+      - $ref: '#/components/parameters/AdvisorSessionId'
+    post:
+      operationId: sendAdvisorMessage
+      summary: Получить совет с учётом текущего этапа и публичного лора
+      security: [{AdvisorToken: []}]
+      description: |
+        Один активный запрос на сессию, до 6 во всём сервисе. Резерв стоимости
+        фиксируется до вызова провайдера. Повтор того же requestId и тела возвращает
+        прежний результат без повторной генерации. Иное тело с тем же ID — 409.
+        Неясный исход или обрыв сохраняет резерв и блокирует новые сообщения сессии
+        до административной сверки. GET сессии позволяет проверить потерянный ответ.
+        Контекст анкеты используется для этого вызова и не сохраняется в БД;
+        совет не меняет персонажа. Формат ответа — текст Markdown, без HTML.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/AdvisorMessageInput'}
+      responses:
+        '200':
+          description: Ответ или ранее завершённый запрос
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AdvisorSession'}
+        '202':
+          description: Такой запрос уже выполняется или его исход пока неизвестен
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/AdvisorSession'}
+        '400': {$ref: '#/components/responses/BadRequest'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '404': {$ref: '#/components/responses/NotFound'}
+        '409': {$ref: '#/components/responses/BadRequest'}
+        '429': {$ref: '#/components/responses/AdvisorLimit'}
+        '503': {$ref: '#/components/responses/Unavailable'}
   /drafts:
     post:
       operationId: createDraft
@@ -254,6 +341,11 @@ paths:
               schema: {$ref: '#/components/schemas/Character'}
         '404': {$ref: '#/components/responses/NotFound'}
 components:
+  securitySchemes:
+    AdvisorToken:
+      type: http
+      scheme: bearer
+      description: Случайный секрет отдельной сессии советника, не авторизация игрока.
   headers:
     ServerTiming:
       description: Длительность обработки публичного чтения в процессе API (app;dur, миллисекунды) и результат серверного кэша (read_cache;desc, hit или miss). Не включает запуск контейнера и сетевой путь до него.
@@ -262,12 +354,97 @@ components:
       description: no-store. Браузерный HTTP-кэш не используется; актуальность публичных данных контролируют TanStack Query и короткий кэш процесса API.
       schema: {type: string, const: no-store}
   parameters:
+    AdvisorSessionId:
+      name: sessionId
+      in: path
+      required: true
+      schema: {type: string, format: uuid}
     DraftId:
       name: draftId
       in: path
       required: true
       schema: {type: string, format: uuid}
   schemas:
+    AdvisorMessageInput:
+      type: object
+      additionalProperties: false
+      required: [requestId, message, context]
+      x-max-body-bytes: 16384
+      properties:
+        requestId: {type: string, format: uuid}
+        message: {type: string, minLength: 1, maxLength: 2000, pattern: '\S'}
+        context:
+          type: object
+          additionalProperties: false
+          required: [stepId, name, raceId, classId, concept]
+          properties:
+            stepId: {type: string, enum: [appearance, race, class, attributes, abilities, equipment, review]}
+            name: {type: string, maxLength: 120}
+            raceId: {type: string, maxLength: 80}
+            classId: {type: string, maxLength: 80}
+            concept: {type: string, maxLength: 2000}
+    AdvisorTurn:
+      type: object
+      additionalProperties: false
+      required: [requestId, message, reply, status, accountedMicroRub, createdAt]
+      properties:
+        requestId: {type: string, format: uuid}
+        message: {type: string, maxLength: 2000}
+        reply: {type: string, maxLength: 16000}
+        status: {type: string, enum: [reserved, succeeded, uncertain]}
+        accountedMicroRub: {type: integer, minimum: 0}
+        createdAt: {type: string, format: date-time}
+    AdvisorSession:
+      type: object
+      additionalProperties: false
+      required: [id, expiresAt, budgetMicroRub, accountedMicroRub, turns]
+      properties:
+        id: {type: string, format: uuid}
+        expiresAt: {type: string, format: date-time}
+        budgetMicroRub: {type: integer, const: 200000000}
+        accountedMicroRub: {type: integer, minimum: 0}
+        turns:
+          type: array
+          maxItems: 100
+          items: {$ref: '#/components/schemas/AdvisorTurn'}
+    AdvisorSessionCreated:
+      type: object
+      additionalProperties: false
+      required: [session, token]
+      properties:
+        session: {$ref: '#/components/schemas/AdvisorSession'}
+        token: {type: string, pattern: '^[A-Za-z0-9_-]{43}$'}
+    AdvisorStep:
+      type: object
+      additionalProperties: false
+      required: [id, intro, text, placeholder]
+      properties:
+        id: {type: string, enum: [appearance, race, class, attributes, abilities, equipment, review]}
+        intro: {type: string, minLength: 1, maxLength: 120}
+        text: {type: string, minLength: 1, maxLength: 600}
+        placeholder: {type: string, minLength: 1, maxLength: 160}
+    AdvisorGuide:
+      type: object
+      additionalProperties: false
+      required: [version, budgetRub, capabilities, steps]
+      properties:
+        version: {type: string, const: character-advisor-v1}
+        budgetRub: {type: integer, const: 200}
+        capabilities:
+          type: object
+          additionalProperties: false
+          required: [stepHints, chat, proactiveComments, fillCharacter, images]
+          properties:
+            stepHints: {type: boolean, const: true}
+            chat: {type: boolean}
+            proactiveComments: {type: boolean, const: false}
+            fillCharacter: {type: boolean, const: false}
+            images: {type: boolean, const: false}
+        steps:
+          type: array
+          minItems: 7
+          maxItems: 7
+          items: {$ref: '#/components/schemas/AdvisorStep'}
     CreateCharacter:
       type: object
       additionalProperties: false
@@ -737,6 +914,11 @@ components:
         resolution: {type: object}
         narrativeAbilities: {type: object}
   responses:
+    AdvisorLimit:
+      description: Лимит бюджета, числа запросов или частоты достигнут. Новый платный вызов не выполнялся.
+      content:
+        application/json:
+          schema: {$ref: '#/components/schemas/Error'}
     DraftsRequireAuthentication:
       description: Черновики недоступны до подключения авторизации пользователей.
       content:

@@ -1,0 +1,33 @@
+.owl {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  object-position: right bottom;
+  transform-origin: 75% 80%;
+  width: 100%;
+}
+
+.owl[data-mood='greeting'] {
+  animation: greeting 850ms var(--fantasy-motion-ease);
+}
+
+@keyframes greeting {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  40% {
+    transform: rotate(-1deg);
+  }
+
+  70% {
+    transform: rotate(.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .owl[data-mood] {
+    animation: none;
+  }
+}

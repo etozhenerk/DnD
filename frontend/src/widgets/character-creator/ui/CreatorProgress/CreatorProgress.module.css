@@ -1,7 +1,6 @@
 .progress {
   composes: reveal from '../../../../shared/styles/fantasy-motion.module.css';
   --fantasy-motion-delay: 60ms;
-  background: var(--creator-progress-wash);
   margin: 0;
   padding: .15rem .75rem .55rem;
   position: relative;
@@ -16,17 +15,6 @@
   margin: 0;
   padding: 0;
   position: relative;
-}
-
-.progress ol::before {
-  background: var(--creator-rune-line);
-  content: '';
-  height: 1px;
-  left: 1.5rem;
-  pointer-events: none;
-  position: absolute;
-  right: 1rem;
-  top: 40px;
 }
 
 .progress li {
@@ -67,13 +55,33 @@
     flex: 0 0 auto;
   }
 
-  .progress ol::before {
-    display: none;
-  }
 }
 
 @media (max-width: 520px) {
   .progress ol {
     gap: 1rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .progress {
+    min-height: 0;
+    overflow: visible;
+    padding: .15rem 1rem .65rem;
+  }
+
+  .progress ol {
+    display: grid;
+    gap: .35rem .5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 1.55fr);
+    min-width: 0;
+  }
+
+  .progress li {
+    min-width: 0;
+  }
+
+  .progress li:nth-child(6) {
+    grid-column: span 2;
   }
 }

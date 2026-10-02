@@ -40,7 +40,12 @@
 }
 
 .label {
+  color: var(--creator-heading);
   display: block;
+  font-size: .95rem;
+  font-weight: 600;
+  min-width: 0;
+  text-shadow: var(--creator-step-label-shadow);
 }
 
 .lock {
@@ -66,6 +71,10 @@
   color: var(--creator-focus);
 }
 
+.step[aria-current] .label {
+  color: var(--creator-focus);
+}
+
 .step[aria-current] .number {
   border-color: var(--creator-focus);
   box-shadow: var(--creator-active-glow);
@@ -73,6 +82,10 @@
 }
 
 .step:hover:not(:disabled) {
+  color: var(--creator-accent);
+}
+
+.step:hover:not(:disabled) .label {
   color: var(--creator-accent);
 }
 
@@ -90,6 +103,12 @@
   border-color: var(--creator-border);
   color: var(--creator-muted);
   opacity: var(--creator-locked-opacity);
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .label {
+    font-size: .9rem;
+  }
 }
 
 @media (max-width: 520px) {

@@ -1,0 +1,52 @@
+.slot {
+  position: relative;
+  z-index: 2;
+}
+
+.bubble {
+  animation: speech-arrive 500ms var(--fantasy-motion-ease) both;
+  background: var(--advisor-speech-fill);
+  border-radius: 24px 24px 24px 10px;
+  box-shadow: var(--advisor-speech-shadow);
+  padding: .85rem 1rem;
+  position: relative;
+  transform-origin: 64% 100%;
+}
+
+.bubble::before {
+  background: var(--advisor-speech-tail);
+  bottom: -22px;
+  clip-path: polygon(0 0, 100% 100%, 70% 0);
+  content: '';
+  height: 23px;
+  pointer-events: none;
+  position: absolute;
+  right: var(--advisor-tail-right, 28%);
+  width: 30px;
+}
+
+.bubble p {
+  color: var(--advisor-speech-copy);
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@keyframes speech-arrive {
+  from {
+    opacity: var(--fantasy-motion-hidden);
+    transform: translateY(8px) scale(.94);
+  }
+
+  to {
+    opacity: var(--fantasy-motion-visible);
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    animation: none;
+  }
+}

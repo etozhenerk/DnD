@@ -15,6 +15,9 @@ def main():
     contract = yaml.safe_load((ROOT / "shared/api/openapi.yaml").read_text())
     fixtures = Path(sys.argv[1])
     cases = {
+        "advisor-created.json": {"$ref": "#/components/schemas/AdvisorSessionCreated"},
+        "advisor-session.json": {"$ref": "#/components/schemas/AdvisorSession"},
+        "advisor-guide.json": {"$ref": "#/components/schemas/AdvisorGuide"},
         "options.json": contract["paths"]["/creator/options"]["get"]["responses"]["200"]["content"]["application/json"]["schema"],
         "validation.json": {"$ref": "#/components/schemas/Validation"},
         "character.json": {"$ref": "#/components/schemas/Character"},

@@ -1,6 +1,5 @@
 .identity {
   align-self: flex-start;
-  background: var(--creator-portrait-glow);
   display: flex;
   flex-direction: column;
   min-width: 0;

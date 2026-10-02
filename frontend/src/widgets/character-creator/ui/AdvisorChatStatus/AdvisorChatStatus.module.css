@@ -1,0 +1,30 @@
+.status {
+  align-items: center;
+  color: var(--creator-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .9rem;
+  gap: .5rem 1rem;
+  justify-content: center;
+  min-height: 1.5rem;
+}
+
+.status p {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.status button {
+  background: none;
+  border: 0;
+  color: var(--creator-accent);
+  cursor: pointer;
+  font: inherit;
+  padding: .2rem .4rem;
+}
+
+.status button:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 2px;
+}

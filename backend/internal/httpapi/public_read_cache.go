@@ -144,7 +144,7 @@ func publicReadTTL(r *http.Request) time.Duration {
 		return 0
 	}
 	switch {
-	case r.URL.Path == "/creator/options":
+	case r.URL.Path == "/creator/options" || r.URL.Path == "/creator/advisor":
 		return 5 * time.Minute
 	case r.URL.Path == "/characters":
 		if r.URL.Query().Get("fresh") == "true" {

@@ -1,0 +1,56 @@
+.composer {
+  position: relative;
+}
+
+.composer label {
+  display: grid;
+  gap: .5rem;
+}
+
+.composer label > span {
+  color: var(--creator-muted);
+  font-size: .95rem;
+}
+
+.composer textarea {
+  background: var(--creator-input-fill);
+  border: 0;
+  border-radius: 18px 6px 18px 6px;
+  box-shadow: var(--creator-input-shadow);
+  color: var(--creator-copy);
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  padding: .85rem 4rem .85rem 1rem;
+  resize: none;
+  width: 100%;
+}
+
+.composer textarea::placeholder {
+  color: var(--creator-muted);
+}
+
+.composer button {
+  background: var(--creator-action);
+  border: 0;
+  border-radius: 14px;
+  bottom: .8rem;
+  color: var(--creator-heading);
+  cursor: pointer;
+  font-size: 1.6rem;
+  height: 44px;
+  position: absolute;
+  right: .8rem;
+  width: 44px;
+}
+
+.composer button:disabled {
+  color: var(--creator-muted);
+  cursor: default;
+}
+
+.composer textarea:focus-visible,
+.composer button:focus-visible {
+  outline: 2px solid var(--creator-focus);
+  outline-offset: 3px;
+}

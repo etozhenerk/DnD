@@ -1,0 +1,39 @@
+.reply {
+  color: var(--creator-copy);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.reply p {
+  margin: .5rem 0;
+}
+
+.heading {
+  color: var(--creator-heading);
+  font-weight: 600;
+}
+
+.list {
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.list::before {
+  color: var(--creator-accent);
+  content: '✦';
+  left: 0;
+  position: absolute;
+}
+
+.reply code {
+  font-size: .9em;
+}
+
+.accessible {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

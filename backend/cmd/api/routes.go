@@ -13,6 +13,11 @@ func (s *server) routes() http.Handler {
 		jsonResponse(w, http.StatusOK, map[string]string{"status": "ok"})
 	})
 	mux.HandleFunc("GET /creator/options", s.options)
+	mux.HandleFunc("GET /creator/advisor", httpapi.AdvisorGuideHandler(s.advisor))
+	chat := httpapi.AdvisorHandlers{Service: s.chat}
+	mux.HandleFunc("POST /advisor/sessions", chat.Create)
+	mux.HandleFunc("GET /advisor/sessions/{sessionId}", chat.Read)
+	mux.HandleFunc("POST /advisor/sessions/{sessionId}/messages", chat.Send)
 	mux.HandleFunc("POST /drafts", s.createDraft)
 	mux.HandleFunc("GET /drafts/{draftId}", s.getDraft)
 	mux.HandleFunc("PATCH /drafts/{draftId}", s.patchDraft)

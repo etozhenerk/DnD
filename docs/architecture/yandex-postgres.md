@@ -1,6 +1,6 @@
 # PostgreSQL в Yandex Cloud для конструктора персонажей
 
-Кластер создан 29 сентября 2026 года. В базу `dnd` применены миграции `000001_character_creator`, `000002_api_permissions` и `000003_character_creation_request` из `backend/migrations/`. Существующие герои остаются в `content/characters.json` до отдельного переноса.
+Кластер создан 29 сентября 2026 года. В базу `dnd` применены миграции `000001`–`000007` из `backend/migrations/`, включая изображения персонажей и журнал советника. Существующие герои остаются в `content/characters.json` до отдельного переноса.
 
 | Ресурс | Значение |
 | --- | --- |
@@ -26,3 +26,12 @@
 Миграции выполнены через Yandex WebSQL от имени `dnd_owner`; версии проверены в `schema_migrations`. 1 октября добавлен хэш анкеты для безопасного повторного сохранения: проверены колонка, ограничение и права приложения. После операции WebSQL отключён; операция `c9q1sfmeh1k36tvrgjv0` завершилась без ошибки. WebSQL включается только на время административных операций. Канонические шесть героев не переносятся автоматически.
 
 Пользователь приложения — `dnd_api`, лимит 10 соединений. Его Connection Manager ID — `a59mlh81akkocv5eifm5`, секрет Lockbox — `e6q52abgke68mcms2ntu`, ключ `postgresql_password`. Права приложения: `SELECT/INSERT/UPDATE/DELETE` на `character_drafts`, `SELECT/INSERT` на `characters`, `character_abilities`, `character_items`, `USAGE` схемы `public` и подключение к `dnd`. API не использует пароль владельца. Конфигурация развёртывания описана в [yandex-backend.md](yandex-backend.md).
+
+2 октября через WebSQL от `dnd_owner` применены `000006_advisor_sessions` и
+`000007_advisor_permissions`. Проверены семь записей `schema_migrations`, три таблицы
+советника, ограничения и индексы, в том числе уникальный активный ход на сессию.
+`dnd_api` имеет только SELECT/INSERT/UPDATE на `advisor_sessions`, `advisor_turns`,
+`advisor_months`, без DELETE. Проверка живой реплики подтвердила один завершённый ход
+и одинаковую учтённую сумму 1 665 300 микрорублей у хода, сессии и месяца.
+После проверки WebSQL отключён: операция `c9qk7th2ni04iravqq8e` завершилась без
+ошибки; кластер RUNNING/ALIVE, `config.access.web_sql` не включён.

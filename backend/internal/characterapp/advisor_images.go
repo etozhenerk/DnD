@@ -2,7 +2,9 @@ package characterapp
 
 import (
 	"context"
+	"errors"
 	"fmt"
+	"log/slog"
 	"time"
 
 	"github.com/etozhenerk/DnD/backend/internal/advisor"
@@ -30,11 +32,20 @@ func (a *Advisor) EnableImages(model AdvisorImageModel, objects AdvisorObjects) 
 func (a *Advisor) ImagesEnabled() bool { return a != nil && a.images != nil && a.objects != nil }
 
 func (a *Advisor) makeImage(ctx context.Context, id string, in advisor.Input, messages []advisor.Message) (advisor.Completion, error) {
-	writeCtx, cancel := context.WithTimeout(ctx, 20*time.Second)
+	started := time.Now()
+	writeCtx, cancel := context.WithTimeout(ctx, 45*time.Second)
 	result, err := a.model.Complete(writeCtx, messages, "image_prompt")
 	cancel()
 	result.ImagePrompt = true
 	if err != nil {
+		logImageFailure(ctx, in, "image_prompt", started, err)
+		var failure *advisor.CallError
+		if errors.As(err, &failure) && failure.UsageKnown {
+			if _, costErr := advisor.Cost(result); costErr == nil {
+				result.Reply = "Образ не сложился. Добавь пару деталей — попробуем ещё раз."
+				return result, nil // Known text usage is billed; no image request was sent.
+			}
+		}
 		return result, err
 	}
 	if _, err := advisor.Cost(result); err != nil {
@@ -42,11 +53,13 @@ func (a *Advisor) makeImage(ctx context.Context, id string, in advisor.Input, me
 	}
 	prompt, err := advisor.CompileImagePrompt(result.Reply, in.Mode)
 	if err != nil || result.Tool != "" {
+		slog.WarnContext(ctx, "advisor_image_failed", "request_id", in.RequestID, "stage", "image_prompt", "code", "invalid_prompt", "duration_ms", time.Since(started).Milliseconds())
 		result.Reply = "Не сложился образ для рисунка. Добавь пару деталей — попробуем ещё раз."
 		return result, nil
 	}
 	raw, err := a.images.Generate(ctx, prompt, in.Mode)
 	if err != nil {
+		logImageFailure(ctx, in, "image", started, err)
 		return result, err
 	}
 	result.ImageCharge = true
@@ -70,6 +83,15 @@ func (a *Advisor) makeImage(ctx context.Context, id string, in advisor.Input, me
 	result.Reply = "Вот что вышло. Нравится — забирай в анкету!"
 	result.Asset = &advisor.ImageAsset{ObjectKey: asset.ObjectKey, MIMEType: asset.MIMEType, SHA256: asset.SHA256, SizeBytes: asset.SizeBytes}
 	return result, nil
+}
+
+func logImageFailure(ctx context.Context, in advisor.Input, stage string, started time.Time, err error) {
+	code, status := "dependency_failed", 0
+	var failure *advisor.CallError
+	if errors.As(err, &failure) {
+		code, status = failure.Code, failure.HTTPStatus
+	}
+	slog.WarnContext(ctx, "advisor_image_failed", "request_id", in.RequestID, "stage", stage, "code", code, "http_status", status, "duration_ms", time.Since(started).Milliseconds())
 }
 
 // Image reads a private result; it makes no paid call and never accepts a storage URL.

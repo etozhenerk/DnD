@@ -5,6 +5,10 @@ import "fmt"
 // ModelName pins pricing and model together; a URI change requires a price review.
 const ModelName = "deepseek-v4-flash"
 
+// ImagePromptModelName pins the independent visual writer, priced at .2 RUB/1k
+// input, cached input and output tokens on 2026-10-02.
+const ImagePromptModelName = "yandexgpt-5-lite"
+
 // Reservation deliberately exceeds a byte-level prompt estimate: three tokens
 // per UTF-8 byte plus 1024 framing tokens. Tool schemas share this prompt envelope;
 // image calls reserve their prompt writer and the fixed image price. No automatic retries.
@@ -22,7 +26,7 @@ func Cost(result Completion) (Money, error) {
 			result.CachedTokens < 0 || result.CachedTokens > result.InputTokens {
 			return 0, fmt.Errorf("image prompt usage outside reserved envelope")
 		}
-		cost := Money(result.InputTokens-result.CachedTokens)*300 + Money(result.CachedTokens)*75 + Money(result.OutputTokens)*500
+		cost := Money(result.InputTokens+result.OutputTokens) * 200
 		if result.ImageCharge {
 			cost += ImagePrice
 		}
@@ -45,5 +49,5 @@ func Cost(result Completion) (Money, error) {
 
 // ImagePromptReservation covers the isolated writer's bounded text request.
 func ImagePromptReservation() Money {
-	return Money(ImagePromptMaxBytes*3+1024)*300 + Money(ImagePromptMaxOutputTokens)*500
+	return Money(ImagePromptMaxBytes*3+1024+ImagePromptMaxOutputTokens) * 200
 }

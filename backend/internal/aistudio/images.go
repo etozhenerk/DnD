@@ -43,11 +43,11 @@ func (c *Client) Generate(ctx context.Context, prompt, kind string) ([]byte, err
 	req.Header.Set("x-data-logging-enabled", "false")
 	resp, err := c.imageHTTP.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("image request failed")
+		return nil, requestError(ctx, "image", err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("image status %d", resp.StatusCode)
+		return nil, &advisor.CallError{Stage: "image", Code: "http_status", HTTPStatus: resp.StatusCode}
 	}
 	raw, err := io.ReadAll(io.LimitReader(resp.Body, (16<<20)+1))
 	if err != nil || len(raw) > 16<<20 {

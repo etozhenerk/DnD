@@ -43,6 +43,7 @@ func New(folderID string) *Client {
 // store=false and x-data-logging-enabled=false avoid provider conversation storage.
 func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode string) (advisor.Completion, error) {
 	maxTokens := 1536
+	model, reasoning := c.model, "low"
 	var tools []functionTool
 	var parallel *bool
 	if mode == "chat" || mode == "" {
@@ -62,6 +63,7 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 	}
 	if mode == "image_prompt" {
 		maxTokens = advisor.ImagePromptMaxOutputTokens
+		model, reasoning = "gpt://"+c.folder+"/"+advisor.ImagePromptModelName, ""
 	}
 	if mode == "fill" || mode == "suggest" {
 		maxTokens = advisor.MaxOutputTokens
@@ -72,7 +74,7 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 		}{Type: "json_object"}
 	}
 	body, err := json.Marshal(struct {
-		Reasoning string `json:"reasoning_effort"`
+		Reasoning string `json:"reasoning_effort,omitempty"`
 		Format    *struct {
 			Type string `json:"type"`
 		} `json:"response_format,omitempty"`
@@ -84,7 +86,7 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 		N         int               `json:"n"`
 		Tools     []functionTool    `json:"tools,omitempty"`
 		Parallel  *bool             `json:"parallel_tool_calls,omitempty"`
-	}{Reasoning: "low", Format: format, Model: c.model, Messages: messages, MaxTokens: maxTokens, N: 1, Tools: tools, Parallel: parallel})
+	}{Reasoning: reasoning, Format: format, Model: model, Messages: messages, MaxTokens: maxTokens, N: 1, Tools: tools, Parallel: parallel})
 	if err != nil {
 		return advisor.Completion{}, fmt.Errorf("serialize completion request")
 	}
@@ -101,15 +103,15 @@ func (c *Client) Complete(ctx context.Context, messages []advisor.Message, mode 
 	req.Header.Set("x-data-logging-enabled", "false")
 	resp, err := c.http.Do(req)
 	if err != nil {
-		return advisor.Completion{}, fmt.Errorf("completion request failed")
+		return advisor.Completion{}, requestError(ctx, "completion", err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return advisor.Completion{}, fmt.Errorf("completion status %d", resp.StatusCode)
+		return advisor.Completion{}, &advisor.CallError{Stage: "completion", Code: "http_status", HTTPStatus: resp.StatusCode}
 	}
 	data, err := io.ReadAll(io.LimitReader(resp.Body, (256<<10)+1))
 	if err != nil || len(data) > 256<<10 {
-		return advisor.Completion{}, fmt.Errorf("completion response exceeded limit")
+		return advisor.Completion{}, &advisor.CallError{Stage: "completion", Code: "response_limit"}
 	}
 	return decodeCompletion(data)
 }
@@ -140,7 +142,7 @@ func decodeCompletion(data []byte) (advisor.Completion, error) {
 	}
 	if err := json.Unmarshal(data, &body); err != nil || len(body.Choices) != 1 || body.Usage == nil ||
 		body.Usage.Input == nil || body.Usage.Output == nil {
-		return advisor.Completion{}, fmt.Errorf("incomplete completion response")
+		return advisor.Completion{}, &advisor.CallError{Stage: "completion", Code: "incomplete_response"}
 	}
 	choice := body.Choices[0]
 	reply := strings.TrimSpace(choice.Message.Content)
@@ -158,7 +160,8 @@ func decodeCompletion(data []byte) (advisor.Completion, error) {
 	}
 	if !utf8.ValidString(reply) || reply == "" || utf8.RuneCountInString(reply) > 16000 || strings.ContainsRune(reply, 0) ||
 		(choice.FinishReason != "stop" && choice.FinishReason != "length" && choice.FinishReason != "tool_calls") {
-		return advisor.Completion{}, fmt.Errorf("invalid completion reply")
+		return advisor.Completion{InputTokens: *body.Usage.Input, OutputTokens: *body.Usage.Output, CachedTokens: body.Usage.Details.Cached},
+			&advisor.CallError{Stage: "completion", Code: "invalid_reply", UsageKnown: true}
 	}
 	return advisor.Completion{Reply: reply, Tool: tool, InputTokens: *body.Usage.Input, OutputTokens: *body.Usage.Output, CachedTokens: body.Usage.Details.Cached}, nil
 }

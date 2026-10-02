@@ -42,7 +42,7 @@ func TestInvalidImageWriterOutputChargesOnlyTextAndDoesNotBlockChat(t *testing.T
 	in := advisorInput("00000000-0000-0000-0000-000000000095")
 	in.Mode = "portrait"
 	result, err := service.Send(t.Context(), session.ID, token, in)
-	if err != nil || result.Accounted != 350000 || result.Turns[0].Image != nil || images.calls.Load() != 0 {
+	if err != nil || result.Accounted != 220000 || result.Turns[0].Image != nil || images.calls.Load() != 0 {
 		t.Fatalf("bad writer response called image or lost text cost: %+v %v", result, err)
 	}
 	if _, err := service.Send(t.Context(), session.ID, token, in); err != nil || model.calls.Load() != 1 {
@@ -89,7 +89,7 @@ func TestAdvisorChatImageActionIsPrivateAndIdempotent(t *testing.T) {
 	action := result.Turns[0].Action
 	job := advisor.Input{RequestID: action.RequestID, Mode: action.Kind, Message: action.Prompt, Target: action.Target, Context: in.Context}
 	result, err = service.Send(t.Context(), session.ID, token, job)
-	if err != nil || len(result.Turns) != 2 || result.Turns[1].Image == nil || result.Accounted != 700000+advisor.ImagePrice {
+	if err != nil || len(result.Turns) != 2 || result.Turns[1].Image == nil || result.Accounted != 350000+220000+advisor.ImagePrice {
 		t.Fatalf("delegated image failed: %+v %v", result, err)
 	}
 	for _, repeat := range []advisor.Input{in, job} {
@@ -122,7 +122,7 @@ func TestAdvisorImagesArePrivateIdempotentAndAccounted(t *testing.T) {
 	response := apiRequest(handler, http.MethodPost, path+"/messages", token, body)
 	decodeResponse(t, response, 200, &session)
 	recordResponse(t, "advisor-image.json", response)
-	if len(session.Turns) != 1 || session.Turns[0].Image == nil || session.Accounted != 350000+advisor.ImagePrice || model.calls.Load() != 1 {
+	if len(session.Turns) != 1 || session.Turns[0].Image == nil || session.Accounted != 220000+advisor.ImagePrice || model.calls.Load() != 1 {
 		t.Fatalf("wrong image ledger: %+v", session)
 	}
 	for range 2 {

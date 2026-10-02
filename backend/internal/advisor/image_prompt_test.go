@@ -56,12 +56,12 @@ func TestCompiledImagePromptKeepsCompositionAndNeverExceeds500Characters(t *test
 func TestImagePipelinePricesIncludeOnlyCompletedStages(t *testing.T) {
 	writer := Completion{ImagePrompt: true, InputTokens: 1000, OutputTokens: 100}
 	cost, err := Cost(writer)
-	if err != nil || cost != 350000 {
+	if err != nil || cost != 220000 {
 		t.Fatalf("writer cost=%d err=%v", cost, err)
 	}
 	writer.ImageCharge = true
 	cost, err = Cost(writer)
-	if err != nil || cost != 350000+ImagePrice || cost > ReservationFor("portrait") {
+	if err != nil || cost != 220000+ImagePrice || cost > ReservationFor("portrait") {
 		t.Fatalf("pipeline cost=%d err=%v", cost, err)
 	}
 	writer.InputTokens, writer.OutputTokens = ImagePromptMaxBytes*3+1024, ImagePromptMaxOutputTokens

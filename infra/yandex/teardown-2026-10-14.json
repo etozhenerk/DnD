@@ -487,5 +487,25 @@
       }
     ]
   },
-  "retryPolicy": "User requested to retry later; no support ticket sent and no scheduled retry."
+  "retryPolicy": "Manual recheck requested by user: disk, security group and managed secret remain blocked. No scheduled retry or support ticket.",
+  "latestRetry": {
+    "checkedAt": "2026-10-14T14:32:25.281773+00:00",
+    "attempts": [
+      {
+        "resource": "disk",
+        "status": "blocked",
+        "reason": "RESOURCE_EXHAUSTED / Service is overloaded"
+      },
+      {
+        "resource": "security-group",
+        "status": "blocked",
+        "reason": "FAILED_PRECONDITION / reference to managed VM network interface"
+      },
+      {
+        "resource": "managed-secret",
+        "status": "blocked",
+        "reason": "System-managed resource: direct deletion is forbidden"
+      }
+    ]
+  }
 }

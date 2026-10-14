@@ -438,5 +438,54 @@
     "7 pre-existing subnets",
     "2 default security groups",
     "automatic DNS zones"
-  ]
+  ],
+  "lastReadOnlyCheck": {
+    "disks": [
+      {
+        "id": "fhm1suggimufieop65r1",
+        "name": "dnd-llm-qwen35-dev-boot",
+        "status": "READY",
+        "size": "42949672960",
+        "created_at": "2026-09-28T12:47:28Z"
+      }
+    ],
+    "postgresBackups": [
+      {
+        "id": "c9qdojtaghn6i5h4vq4o:mdbetg2ko21vo6hb97oe",
+        "status": "DONE",
+        "size": "3326373",
+        "source_cluster_id": "c9qdojtaghn6i5h4vq4o",
+        "created_at": "2026-10-07T00:05:29.275168Z"
+      }
+    ],
+    "secrets": [
+      {
+        "id": "e6q52abgke68mcms2ntu",
+        "name": "connection-a59mlh81akkocv5eifm5",
+        "status": "ACTIVE",
+        "created_at": "2026-09-30T08:43:54.157Z"
+      }
+    ],
+    "securityGroups": [
+      {
+        "id": "enp6nds9dm4t5h1dksfr",
+        "name": "default-sg-enpjbkeoqu36b3fs59vb",
+        "status": "ACTIVE",
+        "created_at": "2026-02-27T11:03:41Z"
+      },
+      {
+        "id": "enpqelua6dlb6ij5dr29",
+        "name": "default-sg-enpeeej3ge2i9lqn8cer",
+        "status": "ACTIVE",
+        "created_at": "2026-03-31T11:27:58Z"
+      },
+      {
+        "id": "enpt92gqapt4lb0rtm4i",
+        "name": "dnd-postgres-private",
+        "status": "ACTIVE",
+        "created_at": "2026-09-29T16:16:30Z"
+      }
+    ]
+  },
+  "retryPolicy": "User requested to retry later; no support ticket sent and no scheduled retry."
 }

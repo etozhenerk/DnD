@@ -1,0 +1,442 @@
+{
+  "date": "2026-10-14",
+  "dataBackup": false,
+  "dataDisposition": "Test data discarded by explicit user request.",
+  "operations": [
+    {
+      "resource": "dnd-backend-ci",
+      "operationId": "ajee1u58nn67nk7q8fht",
+      "status": "done"
+    },
+    {
+      "resource": "dnd-frontend-ci",
+      "operationId": "ajek6uaiv7u5uvdh6ciq",
+      "status": "done"
+    },
+    {
+      "resource": "API Gateway dnd-api",
+      "command": [
+        "serverless",
+        "api-gateway",
+        "delete",
+        "d5dopqqib47kpsh6929m"
+      ],
+      "status": "done",
+      "operationId": "d5d7sd2tqtek2n5ofcf0"
+    },
+    {
+      "resource": "Container dnd-api",
+      "command": [
+        "serverless",
+        "container",
+        "delete",
+        "bbam71p2dn50q57l250i"
+      ],
+      "status": "done",
+      "operationId": "bba07do8hqnmracu5pb8"
+    },
+    {
+      "resource": "CPU model disk",
+      "command": [
+        "compute",
+        "disk",
+        "delete",
+        "fhm1suggimufieop65r1"
+      ],
+      "status": "error",
+      "error": "RESOURCE_EXHAUSTED / Service is overloaded"
+    },
+    {
+      "resource": "Static IPv4 e9bi47bkuerbgdetvlvo",
+      "command": [
+        "vpc",
+        "address",
+        "delete",
+        "e9bi47bkuerbgdetvlvo"
+      ],
+      "status": "done",
+      "operationId": "enpvbv5cpp5vgsnhfkbr"
+    },
+    {
+      "resource": "Static IPv4 e9bu3rnps8tlgai1d9mj",
+      "command": [
+        "vpc",
+        "address",
+        "delete",
+        "e9bu3rnps8tlgai1d9mj"
+      ],
+      "status": "done",
+      "operationId": "enpvuemd9698f3ttt8e1"
+    },
+    {
+      "resource": "Disable PostgreSQL deletion protection",
+      "command": [
+        "managed-postgresql",
+        "cluster",
+        "update",
+        "c9qdojtaghn6i5h4vq4o",
+        "--deletion-protection=false"
+      ],
+      "status": "done",
+      "operationId": "c9q9fqctgcgs7qihfv02"
+    },
+    {
+      "resource": "PostgreSQL cluster",
+      "command": [
+        "managed-postgresql",
+        "cluster",
+        "delete",
+        "c9qdojtaghn6i5h4vq4o"
+      ],
+      "status": "done",
+      "operationId": "c9q7d9ovlbl4t2a9cpc3"
+    },
+    {
+      "resource": "Objects dnd-etozhenerk-b1g8siv8ve2si1qp04nm",
+      "command": [
+        "storage",
+        "s3",
+        "rm",
+        "s3://dnd-etozhenerk-b1g8siv8ve2si1qp04nm/",
+        "--recursive",
+        "--quiet"
+      ],
+      "status": "done",
+      "operationId": null
+    },
+    {
+      "resource": "Bucket dnd-etozhenerk-b1g8siv8ve2si1qp04nm",
+      "command": [
+        "storage",
+        "bucket",
+        "delete",
+        "dnd-etozhenerk-b1g8siv8ve2si1qp04nm"
+      ],
+      "status": "done",
+      "operationId": "e3ei89fg64h3o33i20h8"
+    },
+    {
+      "resource": "Objects dnd-character-media-b1g8siv8ve2si1qp04nm",
+      "command": [
+        "storage",
+        "s3",
+        "rm",
+        "s3://dnd-character-media-b1g8siv8ve2si1qp04nm/",
+        "--recursive",
+        "--quiet"
+      ],
+      "status": "done",
+      "operationId": null
+    },
+    {
+      "resource": "Bucket dnd-character-media-b1g8siv8ve2si1qp04nm",
+      "command": [
+        "storage",
+        "bucket",
+        "delete",
+        "dnd-character-media-b1g8siv8ve2si1qp04nm"
+      ],
+      "status": "done",
+      "operationId": "e3e2hd9cbi68aadrk22a"
+    },
+    {
+      "resource": "Docker image crp0u4medi3g9dqjjv2a",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crp0u4medi3g9dqjjv2a"
+      ],
+      "status": "done",
+      "operationId": "crpemd04i9pl3v1al0kl"
+    },
+    {
+      "resource": "Docker image crp361tfbjul54jebvup",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crp361tfbjul54jebvup"
+      ],
+      "status": "done",
+      "operationId": "crpjj51ujpk0go2mu9m3"
+    },
+    {
+      "resource": "Docker image crp2eogvooamvhjamupv",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crp2eogvooamvhjamupv"
+      ],
+      "status": "done",
+      "operationId": "crpes9gvsthgubc840it"
+    },
+    {
+      "resource": "Docker image crpgqe6bs7506kjbps02",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpgqe6bs7506kjbps02"
+      ],
+      "status": "done",
+      "operationId": "crpk0pk86d99sj7pt62e"
+    },
+    {
+      "resource": "Docker image crpd21sa9sg98b9gkibb",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpd21sa9sg98b9gkibb"
+      ],
+      "status": "done",
+      "operationId": "crpno0ob2sr8r6jrm0ca"
+    },
+    {
+      "resource": "Docker image crpr32pc9f74udiomjpm",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpr32pc9f74udiomjpm"
+      ],
+      "status": "done",
+      "operationId": "crpn05bqoubk620dl7ij"
+    },
+    {
+      "resource": "Docker image crp08ftsamb0fmr5tj6j",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crp08ftsamb0fmr5tj6j"
+      ],
+      "status": "done",
+      "operationId": "crpfhj13k8e2599hks1c"
+    },
+    {
+      "resource": "Docker image crpd9fncpc7ccu0827tj",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpd9fncpc7ccu0827tj"
+      ],
+      "status": "done",
+      "operationId": "crpgcn9pa8tmkd40frhk"
+    },
+    {
+      "resource": "Docker image crpikjlth0000tl9hua7",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpikjlth0000tl9hua7"
+      ],
+      "status": "done",
+      "operationId": "crpvcpllf0ivmlhinunj"
+    },
+    {
+      "resource": "Docker image crptlt1i34rh9qejuns4",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crptlt1i34rh9qejuns4"
+      ],
+      "status": "done",
+      "operationId": "crpgr2dt1at95k0t7hrp"
+    },
+    {
+      "resource": "Docker image crpna1rpidgle7e01q0c",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpna1rpidgle7e01q0c"
+      ],
+      "status": "done",
+      "operationId": "crpanq2og7goq52nlmjl"
+    },
+    {
+      "resource": "Docker image crpqfhvce312i1efls5c",
+      "command": [
+        "container",
+        "image",
+        "delete",
+        "crpqfhvce312i1efls5c"
+      ],
+      "status": "done",
+      "operationId": "crpsdep27g6uchuvuhpi"
+    },
+    {
+      "resource": "Container registry",
+      "command": [
+        "container",
+        "registry",
+        "delete",
+        "crp3ok452qdp2r44ene5"
+      ],
+      "status": "done",
+      "operationId": "crpc4arpjdkfifjo77ef"
+    },
+    {
+      "resource": "Security group dnd-llm-ssh",
+      "command": [
+        "vpc",
+        "security-group",
+        "delete",
+        "enpcdfodrmjnev3lfn36"
+      ],
+      "status": "done",
+      "operationId": "b5o4fncks18tltcdrmst"
+    },
+    {
+      "resource": "Security group dnd-api-db-client",
+      "command": [
+        "vpc",
+        "security-group",
+        "delete",
+        "enpq1pnbcm3ooj59gdm1"
+      ],
+      "status": "done",
+      "operationId": "b5olph10er8m7l4efa9e"
+    },
+    {
+      "resource": "Security group dnd-postgres-private",
+      "command": [
+        "vpc",
+        "security-group",
+        "delete",
+        "enpt92gqapt4lb0rtm4i"
+      ],
+      "status": "error",
+      "error": "FAILED_PRECONDITION / reference to managed PostgreSQL network interface"
+    },
+    {
+      "resource": "Lockbox secret e6q52abgke68mcms2ntu",
+      "command": [
+        "lockbox",
+        "secret",
+        "delete",
+        "e6q52abgke68mcms2ntu"
+      ],
+      "status": "error",
+      "error": "FAILED_PRECONDITION / managed by Connection Manager and deleted PostgreSQL cluster"
+    },
+    {
+      "resource": "Lockbox secret e6qekfvk3errjqmfthia",
+      "command": [
+        "lockbox",
+        "secret",
+        "delete",
+        "e6qekfvk3errjqmfthia"
+      ],
+      "status": "absent"
+    },
+    {
+      "resource": "Service account dnd-api-gateway",
+      "command": [
+        "iam",
+        "service-account",
+        "delete",
+        "aje3b6tpq50p9b5ae4mf"
+      ],
+      "status": "done",
+      "operationId": "ajep5qe4v4thiukgejh8"
+    },
+    {
+      "resource": "Service account dnd-api-runtime",
+      "command": [
+        "iam",
+        "service-account",
+        "delete",
+        "aje99fiebjm3lg4k2fpk"
+      ],
+      "status": "done",
+      "operationId": "ajebk3kl91f11eh3g5sr"
+    },
+    {
+      "resource": "Service account ai-studio-e3a4c0",
+      "command": [
+        "iam",
+        "service-account",
+        "delete",
+        "ajetfg5l4bvqav2moljl"
+      ],
+      "status": "done",
+      "operationId": "aje4u0e2hoounpsmnvig"
+    },
+    {
+      "resource": "GitHub OIDC federation",
+      "command": [
+        "iam",
+        "workload-identity",
+        "oidc",
+        "federation",
+        "delete",
+        "ajeiea3qe37gcboihrbj"
+      ],
+      "status": "done",
+      "operationId": "ajemplck402jefpkulv7"
+    },
+    {
+      "resource": "Frontend incomplete multipart uploads",
+      "status": "done",
+      "count": 7
+    }
+  ],
+  "remaining": [
+    {
+      "type": "disk",
+      "id": "fhm1suggimufieop65r1",
+      "name": "dnd-llm-qwen35-dev-boot",
+      "sizeGiB": 40,
+      "reason": "Compute delete returns HTTP 429 Service is overloaded; reads confirm READY."
+    },
+    {
+      "type": "security-group",
+      "id": "enpt92gqapt4lb0rtm4i",
+      "reason": "Referenced by managed PostgreSQL network interface 10.129.0.24 despite cluster deletion."
+    },
+    {
+      "type": "managed-secret",
+      "id": "e6q52abgke68mcms2ntu",
+      "connectionId": "a59mlh81akkocv5eifm5",
+      "reason": "System-managed; direct deletion forbidden."
+    },
+    {
+      "type": "automated-postgres-backup",
+      "id": "c9qdojtaghn6i5h4vq4o:mdbetg2ko21vo6hb97oe",
+      "reason": "Only manual backups may be deleted. Provider retains deleted cluster backups for 7 days."
+    },
+    {
+      "type": "log-group",
+      "id": "e23end2dgqdg1obeh4ed",
+      "existence": "unconfirmed",
+      "reason": "Logging list/get/delete returns HTTP 503 Unavailable."
+    }
+  ],
+  "status": "partial-provider-blocked",
+  "verifiedAbsent": [
+    "instances",
+    "static public IPs",
+    "PostgreSQL clusters",
+    "storage buckets",
+    "container registries and images",
+    "serverless containers",
+    "API gateways",
+    "service accounts",
+    "OIDC federation",
+    "dnd-llm-ssh",
+    "dnd-api-db-client"
+  ],
+  "preExistingRetained": [
+    "default/default-1 VPC networks",
+    "7 pre-existing subnets",
+    "2 default security groups",
+    "automatic DNS zones"
+  ]
+}

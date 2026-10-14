@@ -33,6 +33,7 @@ env:
 
 jobs:
   deploy:
+    if: vars.DND_YANDEX_CLOUD_ENABLED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     services:

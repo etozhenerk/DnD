@@ -1,0 +1,981 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-14",
+  "purpose": "Recreate an empty deployment; no user data, objects, credentials or database dumps are included.",
+  "cloudId": "b1gslf6gm8gn0v36r53e",
+  "folderId": "b1g8siv8ve2si1qp04nm",
+  "lastDeployedCommit": "00e1c8ce773e215393bf26395fb5b6db5b7c65e9",
+  "preExistingNetworks": [
+    {
+      "id": "enpeeej3ge2i9lqn8cer",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-03-31T11:27:56Z",
+      "name": "default-1",
+      "description": "Auto-created network",
+      "default_security_group_id": "enpqelua6dlb6ij5dr29"
+    },
+    {
+      "id": "enpjbkeoqu36b3fs59vb",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-02-27T11:03:39Z",
+      "name": "default",
+      "description": "Auto-created network",
+      "default_security_group_id": "enp6nds9dm4t5h1dksfr"
+    }
+  ],
+  "preExistingSubnets": [
+    {
+      "id": "ajcg8ldb9uahdsopvhkc",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-03-31T11:27:59Z",
+      "name": "default-1-ru-central1-e",
+      "description": "Auto-created default subnet for zone ru-central1-e in default-1",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "zone_id": "ru-central1-e",
+      "v4_cidr_blocks": [
+        "10.131.0.0/24"
+      ]
+    },
+    {
+      "id": "e2lc1oah9b65162oqhd3",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-03-31T11:27:59Z",
+      "name": "default-1-ru-central1-b",
+      "description": "Auto-created default subnet for zone ru-central1-b in default-1",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "zone_id": "ru-central1-b",
+      "v4_cidr_blocks": [
+        "10.129.0.0/24"
+      ]
+    },
+    {
+      "id": "e2lovfbhaouuqmiceata",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-02-27T11:03:41Z",
+      "name": "default-ru-central1-b",
+      "description": "Auto-created default subnet for zone ru-central1-b in default",
+      "network_id": "enpjbkeoqu36b3fs59vb",
+      "zone_id": "ru-central1-b",
+      "v4_cidr_blocks": [
+        "10.129.0.0/24"
+      ]
+    },
+    {
+      "id": "e9bmfutqp4d2qu9e2vc5",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-03-31T11:27:59Z",
+      "name": "default-1-ru-central1-a",
+      "description": "Auto-created default subnet for zone ru-central1-a in default-1",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "zone_id": "ru-central1-a",
+      "v4_cidr_blocks": [
+        "10.128.0.0/24"
+      ]
+    },
+    {
+      "id": "e9bsi03dfj8a2e602em6",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-02-27T11:03:41Z",
+      "name": "default-ru-central1-a",
+      "description": "Auto-created default subnet for zone ru-central1-a in default",
+      "network_id": "enpjbkeoqu36b3fs59vb",
+      "zone_id": "ru-central1-a",
+      "v4_cidr_blocks": [
+        "10.128.0.0/24"
+      ]
+    },
+    {
+      "id": "fl846vd265a7o1vq6m5b",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-02-27T11:03:41Z",
+      "name": "default-ru-central1-d",
+      "description": "Auto-created default subnet for zone ru-central1-d in default",
+      "network_id": "enpjbkeoqu36b3fs59vb",
+      "zone_id": "ru-central1-d",
+      "v4_cidr_blocks": [
+        "10.130.0.0/24"
+      ]
+    },
+    {
+      "id": "fl8k71qmfgrg9dqt4du5",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-03-31T11:27:59Z",
+      "name": "default-1-ru-central1-d",
+      "description": "Auto-created default subnet for zone ru-central1-d in default-1",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "zone_id": "ru-central1-d",
+      "v4_cidr_blocks": [
+        "10.130.0.0/24"
+      ]
+    }
+  ],
+  "postgres": {
+    "id": "c9qdojtaghn6i5h4vq4o",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "created_at": "2026-09-29T16:17:20.285743Z",
+    "name": "dnd-characters-pg",
+    "description": "Character creator PostgreSQL",
+    "labels": {
+      "project": "dnd",
+      "stage": "development"
+    },
+    "environment": "PRODUCTION",
+    "config": {
+      "version": "17",
+      "postgresql_config_17": {
+        "effective_config": {
+          "max_connections": "400",
+          "shared_buffers": "1073741824",
+          "temp_buffers": "8388608",
+          "max_prepared_transactions": "0",
+          "work_mem": "4194304",
+          "maintenance_work_mem": "134217728",
+          "autovacuum_work_mem": "-1",
+          "temp_file_limit": "-1",
+          "vacuum_cost_delay": "0",
+          "vacuum_cost_page_hit": "1",
+          "vacuum_cost_page_miss": "10",
+          "vacuum_cost_page_dirty": "20",
+          "vacuum_cost_limit": "200",
+          "bgwriter_delay": "200",
+          "bgwriter_lru_maxpages": "100",
+          "bgwriter_lru_multiplier": 2,
+          "bgwriter_flush_after": "524288",
+          "backend_flush_after": "0",
+          "wal_level": "WAL_LEVEL_LOGICAL",
+          "synchronous_commit": "SYNCHRONOUS_COMMIT_ON",
+          "checkpoint_timeout": "3600000",
+          "checkpoint_completion_target": 0.9,
+          "checkpoint_flush_after": "524288",
+          "max_wal_size": "2147483648",
+          "min_wal_size": "1073741824",
+          "max_standby_streaming_delay": "30000",
+          "default_statistics_target": "1000",
+          "constraint_exclusion": "CONSTRAINT_EXCLUSION_PARTITION",
+          "cursor_tuple_fraction": 0.1,
+          "from_collapse_limit": "8",
+          "join_collapse_limit": "8",
+          "client_min_messages": "LOG_LEVEL_NOTICE",
+          "log_min_messages": "LOG_LEVEL_WARNING",
+          "log_min_error_statement": "LOG_LEVEL_ERROR",
+          "log_min_duration_statement": "-1",
+          "log_checkpoints": false,
+          "log_connections": false,
+          "log_disconnections": false,
+          "log_duration": false,
+          "log_error_verbosity": "LOG_ERROR_VERBOSITY_DEFAULT",
+          "log_lock_waits": false,
+          "log_statement": "LOG_STATEMENT_NONE",
+          "log_temp_files": "-1",
+          "search_path": "\"$user\", public",
+          "row_security": true,
+          "default_transaction_isolation": "TRANSACTION_ISOLATION_READ_COMMITTED",
+          "statement_timeout": "0",
+          "lock_timeout": "0",
+          "idle_in_transaction_session_timeout": "0",
+          "bytea_output": "BYTEA_OUTPUT_HEX",
+          "xmlbinary": "XML_BINARY_BASE64",
+          "xmloption": "XML_OPTION_CONTENT",
+          "gin_pending_list_limit": "4194304",
+          "deadlock_timeout": "1000",
+          "max_locks_per_transaction": "64",
+          "max_pred_locks_per_transaction": "64",
+          "array_nulls": true,
+          "backslash_quote": "BACKSLASH_QUOTE_SAFE_ENCODING",
+          "default_with_oids": false,
+          "escape_string_warning": true,
+          "lo_compat_privileges": false,
+          "quote_all_identifiers": false,
+          "standard_conforming_strings": true,
+          "synchronize_seqscans": true,
+          "transform_null_equals": false,
+          "exit_on_error": false,
+          "seq_page_cost": 1,
+          "random_page_cost": 1,
+          "autovacuum_max_workers": "3",
+          "autovacuum_vacuum_cost_delay": "45",
+          "autovacuum_vacuum_cost_limit": "700",
+          "autovacuum_naptime": "15000",
+          "archive_timeout": "30000",
+          "track_activity_query_size": "1024",
+          "enable_bitmapscan": true,
+          "enable_hashagg": true,
+          "enable_hashjoin": true,
+          "enable_indexscan": true,
+          "enable_indexonlyscan": true,
+          "enable_material": true,
+          "enable_mergejoin": true,
+          "enable_nestloop": true,
+          "enable_seqscan": true,
+          "enable_sort": true,
+          "enable_tidscan": true,
+          "max_worker_processes": "8",
+          "max_parallel_workers": "8",
+          "max_parallel_workers_per_gather": "2",
+          "autovacuum_vacuum_scale_factor": 1e-05,
+          "autovacuum_analyze_scale_factor": 0.0001,
+          "default_transaction_read_only": false,
+          "timezone": "Europe/Moscow",
+          "enable_parallel_append": true,
+          "enable_parallel_hash": true,
+          "enable_partition_pruning": true,
+          "enable_partitionwise_aggregate": false,
+          "enable_partitionwise_join": false,
+          "max_parallel_maintenance_workers": "2",
+          "parallel_leader_participation": true,
+          "effective_io_concurrency": "1",
+          "auto_explain_log_min_duration": "-1",
+          "auto_explain_log_analyze": false,
+          "auto_explain_log_buffers": false,
+          "auto_explain_log_timing": false,
+          "auto_explain_log_triggers": false,
+          "auto_explain_log_verbose": false,
+          "auto_explain_log_nested_statements": false,
+          "auto_explain_sample_rate": 1,
+          "pg_hint_plan_enable_hint": true,
+          "pg_hint_plan_enable_hint_table": false,
+          "pg_hint_plan_debug_print": "PG_HINT_PLAN_DEBUG_PRINT_OFF",
+          "pg_hint_plan_message_level": "LOG_LEVEL_INFO",
+          "max_slot_wal_keep_size": "-1",
+          "enable_incremental_sort": true,
+          "enable_async_append": true,
+          "enable_gathermerge": true,
+          "enable_memoize": true,
+          "max_standby_archive_delay": "30000",
+          "log_replication_commands": false,
+          "log_autovacuum_min_duration": "1000",
+          "password_encryption": "PASSWORD_ENCRYPTION_SCRAM_SHA_256",
+          "auto_explain_log_format": "AUTO_EXPLAIN_LOG_FORMAT_TEXT",
+          "track_commit_timestamp": false,
+          "max_logical_replication_workers": "4",
+          "max_wal_senders": "20",
+          "max_replication_slots": "20",
+          "idle_session_timeout": "0",
+          "checkpoint_warning": "420000"
+        },
+        "user_config": {
+          "password_encryption": "PASSWORD_ENCRYPTION_SCRAM_SHA_256"
+        },
+        "default_config": {
+          "max_connections": "400",
+          "shared_buffers": "1073741824",
+          "temp_buffers": "8388608",
+          "max_prepared_transactions": "0",
+          "work_mem": "4194304",
+          "maintenance_work_mem": "134217728",
+          "autovacuum_work_mem": "-1",
+          "temp_file_limit": "-1",
+          "vacuum_cost_delay": "0",
+          "vacuum_cost_page_hit": "1",
+          "vacuum_cost_page_miss": "10",
+          "vacuum_cost_page_dirty": "20",
+          "vacuum_cost_limit": "200",
+          "bgwriter_delay": "200",
+          "bgwriter_lru_maxpages": "100",
+          "bgwriter_lru_multiplier": 2,
+          "bgwriter_flush_after": "524288",
+          "backend_flush_after": "0",
+          "wal_level": "WAL_LEVEL_LOGICAL",
+          "synchronous_commit": "SYNCHRONOUS_COMMIT_ON",
+          "checkpoint_timeout": "3600000",
+          "checkpoint_completion_target": 0.9,
+          "checkpoint_flush_after": "524288",
+          "max_wal_size": "2147483648",
+          "min_wal_size": "1073741824",
+          "max_standby_streaming_delay": "30000",
+          "default_statistics_target": "1000",
+          "constraint_exclusion": "CONSTRAINT_EXCLUSION_PARTITION",
+          "cursor_tuple_fraction": 0.1,
+          "from_collapse_limit": "8",
+          "join_collapse_limit": "8",
+          "client_min_messages": "LOG_LEVEL_NOTICE",
+          "log_min_messages": "LOG_LEVEL_WARNING",
+          "log_min_error_statement": "LOG_LEVEL_ERROR",
+          "log_min_duration_statement": "-1",
+          "log_checkpoints": false,
+          "log_connections": false,
+          "log_disconnections": false,
+          "log_duration": false,
+          "log_error_verbosity": "LOG_ERROR_VERBOSITY_DEFAULT",
+          "log_lock_waits": false,
+          "log_statement": "LOG_STATEMENT_NONE",
+          "log_temp_files": "-1",
+          "search_path": "\"$user\", public",
+          "row_security": true,
+          "default_transaction_isolation": "TRANSACTION_ISOLATION_READ_COMMITTED",
+          "statement_timeout": "0",
+          "lock_timeout": "0",
+          "idle_in_transaction_session_timeout": "0",
+          "bytea_output": "BYTEA_OUTPUT_HEX",
+          "xmlbinary": "XML_BINARY_BASE64",
+          "xmloption": "XML_OPTION_CONTENT",
+          "gin_pending_list_limit": "4194304",
+          "deadlock_timeout": "1000",
+          "max_locks_per_transaction": "64",
+          "max_pred_locks_per_transaction": "64",
+          "array_nulls": true,
+          "backslash_quote": "BACKSLASH_QUOTE_SAFE_ENCODING",
+          "default_with_oids": false,
+          "escape_string_warning": true,
+          "lo_compat_privileges": false,
+          "quote_all_identifiers": false,
+          "standard_conforming_strings": true,
+          "synchronize_seqscans": true,
+          "transform_null_equals": false,
+          "exit_on_error": false,
+          "seq_page_cost": 1,
+          "random_page_cost": 1,
+          "autovacuum_max_workers": "3",
+          "autovacuum_vacuum_cost_delay": "45",
+          "autovacuum_vacuum_cost_limit": "700",
+          "autovacuum_naptime": "15000",
+          "archive_timeout": "30000",
+          "track_activity_query_size": "1024",
+          "enable_bitmapscan": true,
+          "enable_hashagg": true,
+          "enable_hashjoin": true,
+          "enable_indexscan": true,
+          "enable_indexonlyscan": true,
+          "enable_material": true,
+          "enable_mergejoin": true,
+          "enable_nestloop": true,
+          "enable_seqscan": true,
+          "enable_sort": true,
+          "enable_tidscan": true,
+          "max_worker_processes": "8",
+          "max_parallel_workers": "8",
+          "max_parallel_workers_per_gather": "2",
+          "autovacuum_vacuum_scale_factor": 1e-05,
+          "autovacuum_analyze_scale_factor": 0.0001,
+          "default_transaction_read_only": false,
+          "timezone": "Europe/Moscow",
+          "enable_parallel_append": true,
+          "enable_parallel_hash": true,
+          "enable_partition_pruning": true,
+          "enable_partitionwise_aggregate": false,
+          "enable_partitionwise_join": false,
+          "max_parallel_maintenance_workers": "2",
+          "parallel_leader_participation": true,
+          "effective_io_concurrency": "1",
+          "auto_explain_log_min_duration": "-1",
+          "auto_explain_log_analyze": false,
+          "auto_explain_log_buffers": false,
+          "auto_explain_log_timing": false,
+          "auto_explain_log_triggers": false,
+          "auto_explain_log_verbose": false,
+          "auto_explain_log_nested_statements": false,
+          "auto_explain_sample_rate": 1,
+          "pg_hint_plan_enable_hint": true,
+          "pg_hint_plan_enable_hint_table": false,
+          "pg_hint_plan_debug_print": "PG_HINT_PLAN_DEBUG_PRINT_OFF",
+          "pg_hint_plan_message_level": "LOG_LEVEL_INFO",
+          "max_slot_wal_keep_size": "-1",
+          "enable_incremental_sort": true,
+          "enable_async_append": true,
+          "enable_gathermerge": true,
+          "enable_memoize": true,
+          "max_standby_archive_delay": "30000",
+          "log_replication_commands": false,
+          "log_autovacuum_min_duration": "1000",
+          "auto_explain_log_format": "AUTO_EXPLAIN_LOG_FORMAT_TEXT",
+          "track_commit_timestamp": false,
+          "max_logical_replication_workers": "4",
+          "max_wal_senders": "20",
+          "max_replication_slots": "20",
+          "idle_session_timeout": "0",
+          "checkpoint_warning": "420000"
+        }
+      },
+      "resources": {
+        "resource_preset_id": "c4a-c2-m4",
+        "disk_size": "21474836480",
+        "disk_type_id": "network-ssd"
+      },
+      "autofailover": true,
+      "backup_window_start": {
+        "hours": 22
+      },
+      "backup_retain_period_days": "7",
+      "access": {},
+      "performance_diagnostics": {
+        "sessions_sampling_interval": "60",
+        "statements_sampling_interval": "600"
+      },
+      "disk_size_autoscaling": {},
+      "full_version": "17.11",
+      "connection_manager": {
+        "enabled": true
+      }
+    },
+    "network_id": "enpeeej3ge2i9lqn8cer",
+    "status": "RUNNING",
+    "maintenance_window": {
+      "weekly_maintenance_window": {
+        "day": "TUE",
+        "hour": "2"
+      }
+    },
+    "security_group_ids": [
+      "enpt92gqapt4lb0rtm4i"
+    ],
+    "deletion_protection": true,
+    "maintenance_windows": {
+      "weekly_maintenance_schedule": {
+        "slots": [
+          {
+            "day": "TUESDAY",
+            "start_time": {
+              "hours": 1
+            },
+            "duration": "3600s",
+            "allow_temporary_unavailability": true
+          }
+        ]
+      }
+    }
+  },
+  "postgresUsers": [
+    {
+      "name": "dnd_api",
+      "cluster_id": "c9qdojtaghn6i5h4vq4o",
+      "permissions": [
+        {
+          "database_name": "dnd"
+        }
+      ],
+      "conn_limit": "10",
+      "settings": {},
+      "login": true,
+      "user_password_encryption": "USER_PASSWORD_ENCRYPTION_SCRAM_SHA_256",
+      "user_connection_manager": {
+        "connection_id": "a59mlh81akkocv5eifm5",
+        "connection_folder_id": "b1g8siv8ve2si1qp04nm",
+        "secret_folder_id": "b1g8siv8ve2si1qp04nm"
+      },
+      "auth_method": "AUTH_METHOD_PASSWORD"
+    },
+    {
+      "name": "dnd_owner",
+      "cluster_id": "c9qdojtaghn6i5h4vq4o",
+      "permissions": [
+        {
+          "database_name": "dnd"
+        }
+      ],
+      "conn_limit": "50",
+      "settings": {},
+      "login": true,
+      "user_password_encryption": "USER_PASSWORD_ENCRYPTION_SCRAM_SHA_256",
+      "user_connection_manager": {
+        "connection_id": "a59bin7a1l0h7lgurb4m",
+        "connection_folder_id": "b1g8siv8ve2si1qp04nm",
+        "secret_folder_id": "b1g8siv8ve2si1qp04nm"
+      },
+      "auth_method": "AUTH_METHOD_PASSWORD"
+    }
+  ],
+  "postgresHosts": [
+    {
+      "name": "rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net",
+      "cluster_id": "c9qdojtaghn6i5h4vq4o",
+      "zone_id": "ru-central1-b",
+      "resources": {
+        "resource_preset_id": "c4a-c2-m4",
+        "disk_size": "21474836480",
+        "disk_type_id": "network-ssd"
+      },
+      "subnet_id": "e2lc1oah9b65162oqhd3",
+      "priority": "0",
+      "config": {
+        "postgresql_config_17": {}
+      }
+    }
+  ],
+  "postgresDatabases": [
+    {
+      "name": "dnd",
+      "cluster_id": "c9qdojtaghn6i5h4vq4o",
+      "owner": "dnd_owner",
+      "lc_collate": "C",
+      "lc_ctype": "C"
+    }
+  ],
+  "appliedMigrations": [
+    "000001",
+    "000002",
+    "000003",
+    "000004",
+    "000005",
+    "000006",
+    "000007",
+    "000008",
+    "000009"
+  ],
+  "unappliedWorkInProgressMigration": "000010_character_loadout",
+  "activeContainerRevision": {
+    "id": "bbamshmvr7so1oj1g1lk",
+    "container_id": "bbam71p2dn50q57l250i",
+    "created_at": "2026-10-02T18:12:54.699Z",
+    "image": {
+      "image_url": "cr.yandex/crp3ok452qdp2r44ene5/dnd-api:00e1c8ce773e215393bf26395fb5b6db5b7c65e9",
+      "image_digest": "sha256:b9b9494216d35081795ed74349db7eab3c5f57fef82e51e8ee87265f88b8347e",
+      "environment": {
+        "ADVISOR_CHAT_ENABLED": "true",
+        "ADVISOR_FOLDER_ID": "b1g8siv8ve2si1qp04nm",
+        "ADVISOR_IMAGES_ENABLED": "true",
+        "ASSET_BUCKET": "dnd-character-media-b1g8siv8ve2si1qp04nm",
+        "CORS_ALLOWED_ORIGINS": "http://dnd-etozhenerk-b1g8siv8ve2si1qp04nm.website.yandexcloud.net,https://dnd-etozhenerk-b1g8siv8ve2si1qp04nm.website.yandexcloud.net,https://etozhenerk.github.io",
+        "DB_HOST": "rc1b-9l6pgd7u2a2cnrg9.mdb.yandexcloud.net",
+        "DB_NAME": "dnd",
+        "DB_PORT": "6432",
+        "DB_USER": "dnd_api"
+      }
+    },
+    "resources": {
+      "memory": "536870912",
+      "cores": "1",
+      "core_fraction": "100"
+    },
+    "execution_timeout": "120s",
+    "concurrency": "12",
+    "service_account_id": "aje99fiebjm3lg4k2fpk",
+    "status": "ACTIVE",
+    "connectivity": {
+      "network_id": "enpeeej3ge2i9lqn8cer"
+    },
+    "provision_policy": {},
+    "secrets": [
+      {
+        "id": "e6q52abgke68mcms2ntu",
+        "version_id": "e6qcp09mdr8hvlce0tra",
+        "key": "postgresql_password",
+        "environment_variable": "DB_PASSWORD"
+      }
+    ],
+    "log_options": {
+      "folder_id": "b1g8siv8ve2si1qp04nm"
+    },
+    "scaling_policy": {
+      "zone_instances_limit": "1"
+    },
+    "runtime": {
+      "http": {}
+    },
+    "metadata_options": {}
+  },
+  "gateway": {
+    "id": "d5dopqqib47kpsh6929m",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "created_at": "2026-09-30T09:01:56.225Z",
+    "name": "dnd-api",
+    "status": "ACTIVE",
+    "domain": "d5dopqqib47kpsh6929m.jki8ffxa.apigw.yandexcloud.net",
+    "connectivity": {},
+    "log_options": {
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "min_level": "WARN"
+    },
+    "execution_timeout": "30s"
+  },
+  "frontendBucket": {
+    "name": "dnd-etozhenerk-b1g8siv8ve2si1qp04nm",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "anonymous_access_flags": {
+      "read": true,
+      "list": true,
+      "config_read": false
+    },
+    "default_storage_class": "STANDARD",
+    "versioning": "VERSIONING_DISABLED",
+    "max_size": "10737418240",
+    "created_at": "2026-09-28T09:00:19.739735Z",
+    "resource_id": "e3emb08qejtp1bfs6o0r",
+    "website_settings": {
+      "index": "index.html",
+      "error": "index.html"
+    }
+  },
+  "mediaBucket": {
+    "name": "dnd-character-media-b1g8siv8ve2si1qp04nm",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "anonymous_access_flags": {
+      "read": false,
+      "list": false,
+      "config_read": false
+    },
+    "default_storage_class": "STANDARD",
+    "versioning": "VERSIONING_DISABLED",
+    "max_size": "1073741824",
+    "created_at": "2026-10-01T21:05:53.497557Z",
+    "resource_id": "e3ebvn71sbamj72vq54k",
+    "lifecycle_rules": [
+      {
+        "id": "advisor-temporary-results",
+        "enabled": true,
+        "filter": {
+          "prefix": "advisor/"
+        },
+        "expiration": {
+          "days": "2"
+        }
+      }
+    ]
+  },
+  "registry": {
+    "id": "crp3ok452qdp2r44ene5",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "name": "dnd-backend",
+    "status": "ACTIVE",
+    "created_at": "2026-09-30T08:52:10.197Z"
+  },
+  "serviceAccounts": [
+    {
+      "id": "aje20v69nl71ka3gjm66",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-30T08:52:17Z",
+      "name": "dnd-backend-ci",
+      "last_authenticated_at": "2026-10-02T18:10:00Z",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "aje3b6tpq50p9b5ae4mf",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-30T08:52:20Z",
+      "name": "dnd-api-gateway",
+      "last_authenticated_at": "2026-10-10T02:50:00Z",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "aje99fiebjm3lg4k2fpk",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-30T08:52:14Z",
+      "name": "dnd-api-runtime",
+      "last_authenticated_at": "2026-10-10T02:50:00Z",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "ajel1o5ev5sctelav1fp",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-28T09:23:42Z",
+      "name": "dnd-frontend-ci",
+      "description": "GitHub Actions upload of the DnD frontend to Object Storage",
+      "last_authenticated_at": "2026-10-02T18:10:00Z",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "ajetfg5l4bvqav2moljl",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-28T13:45:29Z",
+      "name": "ai-studio-e3a4c0",
+      "description": "Сервисный аккаунт для работы в AI Studio",
+      "status": "ACTIVE"
+    }
+  ],
+  "oidc": {
+    "id": "ajeiea3qe37gcboihrbj",
+    "name": "dnd-frontend-github",
+    "folder_id": "b1g8siv8ve2si1qp04nm",
+    "enabled": true,
+    "audiences": [
+      "https://github.com/etozhenerk"
+    ],
+    "issuer": "https://token.actions.githubusercontent.com",
+    "jwks_url": "https://token.actions.githubusercontent.com/.well-known/jwks",
+    "created_at": "2026-09-28T09:25:00.906501Z"
+  },
+  "oidcSubject": "repo:etozhenerk/DnD:ref:refs/heads/main",
+  "bindings": {
+    "registries-crp3ok452qdp2r44ene5-bindings": [
+      {
+        "role_id": "container-registry.images.pusher",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "container-registry.images.puller",
+        "subject": {
+          "id": "aje99fiebjm3lg4k2fpk",
+          "type": "serviceAccount"
+        }
+      }
+    ],
+    "federations-ajeiea3qe37gcboihrbj-bindings": [],
+    "service-accounts-aje3b6tpq50p9b5ae4mf-bindings": [],
+    "lockbox-secrets-e6q52abgke68mcms2ntu-bindings": [
+      {
+        "role_id": "lockbox.payloadViewer",
+        "subject": {
+          "id": "aje99fiebjm3lg4k2fpk",
+          "type": "serviceAccount"
+        }
+      }
+    ],
+    "service-accounts-aje99fiebjm3lg4k2fpk-bindings": [
+      {
+        "role_id": "iam.serviceAccounts.user",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      }
+    ],
+    "service-accounts-ajetfg5l4bvqav2moljl-bindings": [],
+    "api-gateways-d5dopqqib47kpsh6929m-bindings": [],
+    "folder-bindings": [
+      {
+        "role_id": "functions.editor",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "serverless.mcpGateways.invoker",
+        "subject": {
+          "id": "ajetfg5l4bvqav2moljl",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "serverless.mcpGateways.anonymousInvoker",
+        "subject": {
+          "id": "ajetfg5l4bvqav2moljl",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "ai.languageModels.user",
+        "subject": {
+          "id": "aje99fiebjm3lg4k2fpk",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "serverless.workflows.executor",
+        "subject": {
+          "id": "ajetfg5l4bvqav2moljl",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "search-api.webSearch.user",
+        "subject": {
+          "id": "ajetfg5l4bvqav2moljl",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "ai.imageGeneration.user",
+        "subject": {
+          "id": "aje99fiebjm3lg4k2fpk",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "vpc.user",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "serverless-containers.viewer",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "ai.editor",
+        "subject": {
+          "id": "ajetfg5l4bvqav2moljl",
+          "type": "serviceAccount"
+        }
+      }
+    ],
+    "containers-bbam71p2dn50q57l250i-bindings": [
+      {
+        "role_id": "serverless-containers.editor",
+        "subject": {
+          "id": "aje20v69nl71ka3gjm66",
+          "type": "serviceAccount"
+        }
+      },
+      {
+        "role_id": "serverless-containers.containerInvoker",
+        "subject": {
+          "id": "aje3b6tpq50p9b5ae4mf",
+          "type": "serviceAccount"
+        }
+      }
+    ],
+    "service-accounts-aje20v69nl71ka3gjm66-bindings": [],
+    "service-accounts-ajel1o5ev5sctelav1fp-bindings": [],
+    "lockbox-secrets-e6qekfvk3errjqmfthia-bindings": []
+  },
+  "securityGroups": [
+    {
+      "id": "enpcdfodrmjnev3lfn36",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-28T10:08:56Z",
+      "name": "dnd-llm-ssh",
+      "description": "SSH from owner IPv4 only; model API localhost",
+      "network_id": "enpjbkeoqu36b3fs59vb",
+      "status": "ACTIVE",
+      "rules": [
+        {
+          "id": "enpnptcqd6p32rer58hu",
+          "direction": "EGRESS",
+          "ports": {
+            "from_port": "443",
+            "to_port": "443"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "0.0.0.0/0"
+            ]
+          }
+        },
+        {
+          "id": "enphd3o0vs6ur43li6is",
+          "direction": "EGRESS",
+          "ports": {
+            "from_port": "80",
+            "to_port": "80"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "0.0.0.0/0"
+            ]
+          }
+        },
+        {
+          "id": "enp9tuqsdm7npq7q724l",
+          "direction": "EGRESS",
+          "ports": {
+            "from_port": "53",
+            "to_port": "53"
+          },
+          "protocol_name": "UDP",
+          "protocol_number": "17",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "0.0.0.0/0"
+            ]
+          }
+        },
+        {
+          "id": "enphd8gdv52q4aq97dog",
+          "direction": "EGRESS",
+          "ports": {
+            "from_port": "53",
+            "to_port": "53"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "0.0.0.0/0"
+            ]
+          }
+        },
+        {
+          "id": "enpn1c9pukqntak88g8c",
+          "direction": "INGRESS",
+          "ports": {
+            "from_port": "22",
+            "to_port": "22"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "REPLACE_WITH_CURRENT_TRUSTED_IP/32"
+            ]
+          }
+        },
+        {
+          "id": "enpsupmo41mq8c78vb3d",
+          "direction": "INGRESS",
+          "ports": {
+            "from_port": "8080",
+            "to_port": "8080"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "0.0.0.0/0"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "enpq1pnbcm3ooj59gdm1",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-29T16:15:50Z",
+      "name": "dnd-api-db-client",
+      "description": "Private PostgreSQL client for future DnD backend",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "status": "ACTIVE",
+      "rules": [
+        {
+          "id": "enpcpenu6h7m1rjk5jsi",
+          "direction": "EGRESS",
+          "ports": {
+            "from_port": "6432",
+            "to_port": "6432"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "security_group_id": "enpt92gqapt4lb0rtm4i"
+        }
+      ]
+    },
+    {
+      "id": "enpt92gqapt4lb0rtm4i",
+      "folder_id": "b1g8siv8ve2si1qp04nm",
+      "created_at": "2026-09-29T16:16:30Z",
+      "name": "dnd-postgres-private",
+      "description": "Private PostgreSQL access from DnD backend only",
+      "network_id": "enpeeej3ge2i9lqn8cer",
+      "status": "ACTIVE",
+      "rules": [
+        {
+          "id": "enppblq1ohr4ch6pcr8n",
+          "direction": "INGRESS",
+          "ports": {
+            "from_port": "6432",
+            "to_port": "6432"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "security_group_id": "enpq1pnbcm3ooj59gdm1"
+        },
+        {
+          "id": "enpg07v4p3m9bdq5lpdm",
+          "description": "Serverless Containers in project VPC",
+          "direction": "INGRESS",
+          "ports": {
+            "from_port": "6432",
+            "to_port": "6432"
+          },
+          "protocol_name": "TCP",
+          "protocol_number": "6",
+          "cidr_blocks": {
+            "v4_cidr_blocks": [
+              "198.19.0.0/16"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -487,7 +487,7 @@
       }
     ]
   },
-  "retryPolicy": "Manual recheck requested by user: disk, security group and managed secret remain blocked. No scheduled retry or support ticket.",
+  "retryPolicy": "Support ticket KS311813045 submitted at user request. Await provider deletion confirmation; no scheduled retry.",
   "latestRetry": {
     "checkedAt": "2026-10-14T14:32:25.281773+00:00",
     "attempts": [
@@ -507,5 +507,14 @@
         "reason": "System-managed resource: direct deletion is forbidden"
       }
     ]
+  },
+  "supportTicket": {
+    "id": "KS311813045",
+    "url": "https://center.yandex.cloud/support/tickets/KS311813045",
+    "submittedDate": "2026-10-14",
+    "submissionVerified": true,
+    "resourceDeletionConfirmed": false,
+    "reason": "Resources used under a grant for Yandex employees; releasing allocations at the request in a mailing.",
+    "scope": "All five groups in remaining; test data and backups need not be retained."
   }
 }
